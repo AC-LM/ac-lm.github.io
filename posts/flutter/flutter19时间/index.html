@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(19)——时间</a></h2>
+                <p>@LM | 2021-06-04</p>
+            </div>
+        </header>
+        <div class="content">
+            <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">var</span> today <span style="color:#f92672">=</span> DateTime.now();
+print(<span style="color:#e6db74">&#39;当前时间是：</span><span style="color:#e6db74">$</span>today<span style="color:#e6db74">&#39;</span>);
+<span style="color:#66d9ef">var</span> date1 <span style="color:#f92672">=</span> today.millisecondsSinceEpoch;
+print(<span style="color:#e6db74">&#39;当前时间戳：</span><span style="color:#e6db74">$</span>date1<span style="color:#e6db74">&#39;</span>);
+<span style="color:#66d9ef">var</span> date2 <span style="color:#f92672">=</span> DateTime.fromMillisecondsSinceEpoch(date1);
+print(<span style="color:#e6db74">&#39;时间戳转日期：</span><span style="color:#e6db74">$</span>date2<span style="color:#e6db74">&#39;</span>);
+<span style="color:#75715e">//拼接成date
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> dentistAppointment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DateTime(<span style="color:#ae81ff">2019</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">20</span>);
+print(dentistAppointment);
+<span style="color:#75715e">// 字符串转date
+</span><span style="color:#75715e"></span>DateTime date3 <span style="color:#f92672">=</span> DateTime.parse(<span style="color:#e6db74">&#34;2019-06-20 15:32:41&#34;</span>);
+print(date3);
+<span style="color:#75715e">// 时间比较
+</span><span style="color:#75715e"></span>print(today.isBefore(date3));<span style="color:#75715e">// 在之前
+</span><span style="color:#75715e"></span>print(today.isAfter(date3)); <span style="color:#75715e">// 在之后
+</span><span style="color:#75715e"></span>print(date3.isAtSameMomentAs(date3));<span style="color:#75715e">// 相同
+</span><span style="color:#75715e"></span>print(date3.compareTo(today));<span style="color:#75715e">// 大于返回1；等于返回0；小于返回-1。
+</span><span style="color:#75715e">// print(DateTime.now().toString());
+</span><span style="color:#75715e">// print(DateTime.now().toIso8601String());
+</span><span style="color:#75715e">// 时间增加
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> fiftyDaysFromNow <span style="color:#f92672">=</span> today.add(<span style="color:#66d9ef">new</span> Duration(days: <span style="color:#ae81ff">5</span>));
+print(<span style="color:#e6db74">&#39;today加5天：</span><span style="color:#e6db74">$</span>fiftyDaysFromNow<span style="color:#e6db74">&#39;</span>);
+<span style="color:#75715e">//时间减少
+</span><span style="color:#75715e"></span>DateTime fiftyDaysAgo <span style="color:#f92672">=</span> today.subtract(<span style="color:#66d9ef">new</span> Duration(days: <span style="color:#ae81ff">5</span>));
+print(<span style="color:#e6db74">&#39;today减5天：</span><span style="color:#e6db74">$</span>fiftyDaysAgo<span style="color:#e6db74">&#39;</span>);
+<span style="color:#75715e">//时间差   两个时间相差 小时数
+</span><span style="color:#75715e"></span>print(<span style="color:#e6db74">&#39;比较两个时间 差 小时数：</span><span style="color:#e6db74">${</span>fiftyDaysFromNow.difference(fiftyDaysAgo)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
+print(<span style="color:#e6db74">&#39;本地时区简码：</span><span style="color:#e6db74">${</span>today.timeZoneName<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
+print(<span style="color:#e6db74">&#39;返回UTC与本地时差 小时数：</span><span style="color:#e6db74">${</span>today.timeZoneOffset<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
+print(<span style="color:#e6db74">&#39;获取年月日：</span><span style="color:#e6db74">${</span>today.year<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);<span style="color:#75715e">//month、day、hour、minute、second、millisecond、microsecond
+</span><span style="color:#75715e"></span>print(<span style="color:#e6db74">&#39;星期：</span><span style="color:#e6db74">${</span>today.weekday<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);<span style="color:#75715e">// 返回星期几
+</span></code></pre></div>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter20%E8%AF%BB%E5%8F%96%E6%89%8B%E6%9C%BA%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter21apk%E7%98%A6%E8%BA%AB/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

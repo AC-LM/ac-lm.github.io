@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">BUG(6)——Wapiti报告丢失js文件问题</a></h2>
+                <p>@LM | 2021-06-09</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考文献：<a href="https://github.com/wapiti-scanner/wapiti/issues/86"> github-wapiti-issues @Maxime Alay-Eddine </a></p>
+</blockquote>
+<h2 id="问题描述">问题描述</h2>
+<p>在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件</p>
+<h2 id="resolution">Resolution</h2>
+<p>需手动从目录<code>wapitiCore/report_template</code>中找到并添加</p>
+<blockquote>
+<p>Ok, when generating the html report it is supposed to copy the js file from wapitiCore/report_template into output directory, that is why it was missing.</p>
+</blockquote>
+
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/" class="button large previous">上一页</a></li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

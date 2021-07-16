@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(28)——hashlib模块</a></h2>
+                <p>@LM | 2021-03-31</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="sha256">SHA256</h2>
+<p>SHA256的全程是Secure Hash Algorithm 256，一种常用的加密算法，是SHA-2族算法中的一个，其它的还是SHA222、SHA512等。</p>
+<ul>
+<li>Secure的意思是指算法的输入输出一一对应，且是不可逆的（即只有编码而没有解码）</li>
+<li>Hash Algorithm指的是散列算法，散列算法指的是将一个任意长度的输入数据转换成固定长度的输出</li>
+<li>256是输出结果的位数，这个输出结果又被称为Hash值或者摘要</li>
+</ul>
+<h2 id="hashlib模块">hashlib模块</h2>
+<p>hashlib是Python提供的能使用各类hash算法的一个模块</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    s <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256()    <span style="color:#75715e"># Get the hash algorithm.</span>
+    s<span style="color:#f92672">.</span>update(<span style="color:#e6db74">&#34;jiangwei&#34;</span>)    <span style="color:#75715e"># Hash the data.</span>
+    b <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>hexdigest()       <span style="color:#75715e"># Get he hash value.</span>
+    <span style="color:#66d9ef">print</span> b
+    
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#ae81ff">36</span>d6824c3942c1ec34d1b5cc2f5cbe3d2c4110223bce905ddafe0592723411f0
+<span style="color:#75715e"># 它的长度是64，每个字符4位，所以总计是256位。</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>s <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha512()    <span style="color:#75715e"># Get the hash algorithm.</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#ae81ff">3</span>ee15fe269635e2c05d7e965d97d82b95fefcdf7f937cb14e117d235a440b9e173d90f3c669a5dce21d6b8a20ff2376172d171d0c9d9b1f2670d39aefaab7a10
+<span style="color:#75715e"># 可以得到512位的摘要</span>
+</code></pre></div>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

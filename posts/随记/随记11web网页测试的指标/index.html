@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(11)——Web网页测试的指标</a></h2>
+                <p>@LM | 2020-09-17</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1事务">1.事务</h2>
+<p>事务就是用户某一步或几步操作的集合，它具有一个完整意义。比如用户对某一个页面的一次请求，对某系统的一次登录，对商品的一次确认支付过程。这些我们都可以看作一个事务，需要理解的是事务不等于请求。</p>
+<h2 id="2请求pv">2.请求(PV)</h2>
+<p>PV 是 Page View 的缩写。用户通过浏览器访问页面，对应用服务器产生的一次请求，记为一个 PV。将这个概念做了延伸，系统真实处理的一个请求，视为一个 PV。</p>
+<h2 id="3tpstransaction-per-second">3.TPS(Transaction Per second)</h2>
+<p>每秒钟系统能够处理事务的数量，它是衡量系统处理能力的重要指标。此外，一个系统的性能其实是由TPS决定，跟并发用户数没有多大关系。一般在同样的TPS下，可以用不同并发用户数去压测得到，只是得到响应时间不同。</p>
+<h2 id="4qpsquery-per-second">4.QPS(Query Per Second)</h2>
+<p>每秒查询数。QPS 基本类似于 TPS，但是不同的是，对于一个页面的一次访问，形成一个TPS；但一次页面请求，可能产生多次对服务器的请求，服务器对这些请求，会被计入QPS之中。</p>
+<ul>
+<li>例如：访问一个页面会请求服务器3次，产生一个“T”，产生3个“Q”。</li>
+<li>PS： QPS(TPS) = 并发数 / 平均响应时间</li>
+</ul>
+<h2 id="5hpshit-per-second---rpsrequest-per-second">5.HPS(Hit Per Second ) / RPS(Request Per Second)</h2>
+<p>点击率 / 每秒HTTP请求数。</p>
+<h2 id="6响应时间rt">6.响应时间(RT)</h2>
+<p>网页响应请求的时间，测试时可参考2/5/8原则，即2秒之内用户觉得很快，5秒之内用户觉得还可以，8秒之外用户觉得系统慢，无法忍受。</p>
+<h2 id="7吞吐量">7.吞吐量</h2>
+<p>吞吐量指在一次性能测试过程中网络上传输的数据量的总和。对于交互式应用来说，吞吐量指标反映的是服务器承受的压力，在容量规划的测试中，吞吐量是一个重点关注的指标，因为它能够说明系统级别的负载能力，另外，在性能调优过程中，吞吐量指标也有重要的价值。吞吐量是整个系统的瓶颈。</p>
+<p>但是，用吞吐量来衡量一个系统的输出能力是极其不准确的，我们要加单位时间的限制，这就引出了一个新的概念——吞吐率（单位时间内网络上传输的数据量，也可以指单位时间内处理客户请求数量，通常情况下，吞吐率用“字节数/秒”来衡量）</p>
+<h3 id="a吞吐量指标的作用">a.吞吐量指标的作用</h3>
+<ul>
+<li>用于协助设计性能测试场景，以及衡量性能测试场景是否达到了预期的设计目标。</li>
+<li>用于协助分析性能瓶颈：吞吐量的限制是性能瓶颈的一种重要表现形式，因此，有针对性地对吞吐量设计测试，可以协助尽快定位到性能瓶颈的所在位置。</li>
+<li>一般情况下 TPS 与 吞吐量说的是同一个东西</li>
+</ul>
+<h3 id="b快速识别系统性能瓶颈的方法rbirapid-bottleneck-identify">b.快速识别系统性能瓶颈的方法——RBI（rapid bottleneck identify）</h3>
+<ul>
+<li>80%的系统，其性能瓶颈都由吞吐量制约</li>
+<li>并发用户数和吞吐量瓶颈之间存在一定的关联</li>
+<li>采用吞吐量测试可以更快速定位问题</li>
+<li>通过不断增加并发用户数和吞吐量观察系统的性能瓶颈。然后，从网络、数据库、应用服务器和代码本身4个环节确定系统的的性能瓶颈。</li>
+</ul>
+<h2 id="c容量预测">c.容量预测</h2>
+<p>对于我们设计的系统，我们在上线前肯定需要测试下能接收用户多大的访问量。即希望评估出最大的日PV到来的时候，我们的系统是否能支撑。但怎么去评估呢，难道要造一个最大日PV的情景来测试？其实根据已有的经验和数据，可以总结出了高峰QPS和日PV的关系。通过数学建模，我们发现高峰每台服务器【QPS = (( 总PV X 80% ) / ( 24 X 60 X 60 X 40%)) / 服务器数量】。其中80%和40%这2个数字是个不固定的参数，这个公式代表的意思是，<strong>在40%的时间（12小时）内产生80%总PV的QPS均值</strong>。对于不同的情景有不同的参数。</p>
+<p>这样我们就可以通过压测应用获取其高峰QPS，然后根据公式算出指定高峰QPS下的日PV，通过这样来进行容量预测。即：【日预估PV = 压测QPS X (24 X 60 X 60 X 时间百分比) / 0.8 X 机器数量】</p>
+<pre><code>1.每天300w PV 的在单台机器上，这台机器需要多少QPS？ 
+( 3000000 * 0.8 ) / (86400 * 0.2 ) = 139 (QPS)
+一般需要达到139QPS。(200万PV才有100峰值QPS)
+
+2.如果一台机器的QPS是58，需要几台机器来支持？
+139 / 58 = 3
+</code></pre>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B08web%E8%AF%B7%E6%B1%82/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

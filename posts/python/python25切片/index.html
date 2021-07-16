@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(25)——切片</a></h2>
+                <p>@LM | 2021-03-31</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://www.jianshu.com/p/15715d6f4dad"> 彻底搞懂Python切片操作  @马尔代夫Maldives </a></p>
+</blockquote>
+<p>利用python解决问题的过程中，经常会遇到从某个对象中抽取部分值的情况。“切片”操作正是专门用于实现这一目标的有力武器。理论上，只要条件表达式得当，可以通过单次或多次切片操作实现任意目标值切取。切片操作的基本语法比较简单，但如果不彻底搞清楚内在逻辑，也极容易产生错误，而且这种错误有时隐蔽得较深，难以察觉。本文通过详细例子总结归纳了切片操作的各种情形，下文均以list类型作为实验对象，其结论可推广至其他可切片对象。</p>
+<h2 id="1-索引方式">1. 索引方式</h2>
+<p>包括：正索引和负索引两部分，如下图所示，以list对象 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 为例：</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/37.png" alt=""></p>
+<h2 id="2操作的一般方式">2.操作的一般方式</h2>
+<p>一个完整的切片表达式包含两个&quot; : &ldquo;，用于分隔三个参数(start_index、end_index、step)。当只有一个&rdquo; : &ldquo;时，默认第三个参数step=1；当一个&rdquo; : &ldquo;也没有时，start_index=end_index，表示切取start_index指定的那个元素。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">object</span>[start_index:end_index:step]
+</code></pre></div><ul>
+<li>step：正负数均可，其绝对值大小决定了切取数据时的‘‘步长”，而正负号决定了“切取方向”，正表示“从左往右”取值，负表示“从右往左”取值。当step省略时，默认为1，即从左往右以步长1取值。</li>
+<li>start_index：表示起始索引（包含该索引对应值）；该参数省略时，表示从对象“端点”开始取值，至于是从“起点”还是从“终点”开始，则由step参数的正负决定，step为正从“起点”开始，为负从“终点”开始。</li>
+<li>end_index：表示终止索引（不包含该索引对应值）；该参数省略时，表示一直取到数据“端点”，至于是到“起点”还是到“终点”，同样由step参数的正负决定，step为正时直到“终点”，为负时直到“起点”。</li>
+</ul>
+<h2 id="3举例">3.举例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">a <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="a-切取单个元素">a. 切取单个元素</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#ae81ff">0</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">4</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#ae81ff">6</span>
+<span style="color:#960050;background-color:#1e0010">当索引只有一个数时，表示切取某一个元素。</span>
+</code></pre></div><h3 id="b-切取完整对象">b. 切取完整对象</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span>:<span style="color:#f92672">]</span> <span style="color:#75715e">#从左往右</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[::]</span><span style="color:#75715e">#从左往右</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[::-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span><span style="color:#75715e">#从右往左</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="c-start_index和end_index全为正索引的情况">c. start_index和end_index全为正（+）索引的情况</h3>
+<p>step=1，从左往右取值，start_index=1到end_index=6同样表示从左往右取值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">6</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=-1，决定了从右往左取值，而start_index=1到end_index=6决定了从左往右取值，两者矛盾，所以为空。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[]</span>
+</code></pre></div><p>step=1，决定了从左往右取值，而start_index=6到end_index=2决定了从右往左取值，两者矛盾，所以为空。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">2</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[]</span>
+</code></pre></div><p>step=1，表示从左往右取值，而start_index省略时，表示从端点开始，因此这里的端点是“起点”，即从“起点”值0开始一直取到end_index=6（该点不包括）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span>:<span style="color:#ae81ff">6</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=-1，从右往左取值，而start_index省略时，表示从端点开始，因此这里的端点是“终点”，即从“终点”值9开始一直取到end_index=6（该点不包括）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span>:<span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">7</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=1，从左往右取值，从start_index=6开始，一直取到“终点”值9。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">6</span>:<span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=-1，从右往左取值，从start_index=6开始，一直取到“起点”0。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">6</span><span style="color:#f92672">::-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="d-start_index和end_index全为负-索引的情况">d. start_index和end_index全为负（-）索引的情况</h3>
+<p>step=1，从左往右取值，而start_index=-1到end_index=-6决定了从右往左取值，两者矛盾，所以为空。
+索引-1在-6的右边</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">6</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[]</span>
+</code></pre></div><p>step=-1，从右往左取值，start_index=-1到end_index=-6同样是从右往左取值。
+索引-1在6的右边</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=1，从左往右取值，而start_index=-6到end_index=-1同样是从左往右取值。
+索引-6在-1的左边</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=1，从左往右取值，从“起点”开始一直取到end_index=-6（该点不包括）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">6</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=-1，从右往左取值，从“终点”开始一直取到end_index=-6（该点不包括）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=1，从左往右取值，从start_index=-6开始，一直取到“终点”。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">6</span>:<span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div><p>step=-1，从右往左取值，从start_index=-6开始，一直取到“起点”。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">6</span><span style="color:#f92672">::-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="e-start_index和end_index正负-混合索引的情况">e. start_index和end_index正（+）负（-）混合索引的情况</h3>
+<p>start_index=1在end_index=-6的左边，因此从左往右取值，而step=1同样决定了从左往右取值，因此结果正确</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">6</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+</code></pre></div><p>start_index=1在end_index=-6的左边，因此从左往右取值，但step=-则决定了从右往左取值，两者矛盾，因此为空。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[]</span>
+</code></pre></div><p>start_index=-1在end_index=6的右边，因此从右往左取值，但step=1则决定了从左往右取值，两者矛盾，因此为空。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">6</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[]</span>
+</code></pre></div><p>start_index=-1在end_index=6的右边，因此从右往左取值，而step=-1同样决定了从右往左取值，因此结果正确。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[-</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">6</span><span style="color:#e6db74">:-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">7</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="f-多层切片操作">f. 多层切片操作</h3>
+<p>理论上可无限次多层切片操作，只要上一次返回的是非空可切片对象即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span>:<span style="color:#ae81ff">8</span><span style="color:#f92672">][</span><span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">5</span><span style="color:#f92672">][-</span><span style="color:#ae81ff">1</span>:<span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">4</span><span style="color:#f92672">]</span>
+<span style="color:#960050;background-color:#1e0010">相当于：</span>
+a<span style="color:#f92672">[</span>:<span style="color:#ae81ff">8</span><span style="color:#f92672">]=[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span><span style="color:#f92672">]</span>
+a<span style="color:#f92672">[</span>:<span style="color:#ae81ff">8</span><span style="color:#f92672">][</span><span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">5</span><span style="color:#f92672">]=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span><span style="color:#f92672">]</span>
+a<span style="color:#f92672">[</span>:<span style="color:#ae81ff">8</span><span style="color:#f92672">][</span><span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">5</span><span style="color:#f92672">][-</span><span style="color:#ae81ff">1</span>:<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">4</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="g-切片操作的三个参数可以用表达式">g. 切片操作的三个参数可以用表达式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">7</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+<span style="color:#960050;background-color:#1e0010">即：</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">7</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="h-其他对象的切片操作">h. 其他对象的切片操作</h3>
+<p>前面的切片操作以list对象为例进行说明，但实际上可进行切片操作的数据类型还有很多，包括元组、字符串等等。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>)<span style="color:#f92672">[</span>:<span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#e6db74">&#39;ABCDEFG&#39;</span><span style="color:#f92672">[::</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#e6db74">&#39;ACEG&#39;</span>
+</code></pre></div><h2 id="4常用切片操作">4.常用切片操作</h2>
+<h3 id="a取偶数位置">a.取偶数位置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">[::</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="b取奇数位置">b.取奇数位置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">::</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="c拷贝整个对象">c.拷贝整个对象</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>:<span style="color:#f92672">]</span> <span style="color:#75715e">#</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(b) <span style="color:#75715e">#[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(id(a)) <span style="color:#75715e">#41946376</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(id(b)) <span style="color:#75715e">#41921864</span>
+<span style="color:#960050;background-color:#1e0010">或</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span>copy()
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(b) <span style="color:#75715e">#[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(id(a)) <span style="color:#75715e">#39783752</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(id(b)) <span style="color:#75715e">#39759176</span>
+</code></pre></div><p>需要注意的是：<strong>[:]和.copy()都属于“浅拷贝”，只拷贝最外层元素，内层嵌套元素则通过引用方式共享，而非独立分配内存</strong>，如果需要彻底拷贝则需采用“深拷贝”方式，如下例所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(<span style="color:#e6db74">&#39;a={}&#39;</span><span style="color:#f92672">.</span>format(a))
+<span style="color:#f92672">&gt;&gt;&gt;</span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>:<span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>b<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span> <span style="color:#75715e">#修改b的最外层元素，将1变成9</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>b<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">][</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;D&#39;</span> <span style="color:#75715e">#修改b的内嵌层元素</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(<span style="color:#e6db74">&#39;a={}&#39;</span><span style="color:#f92672">.</span>format(a))
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(<span style="color:#e6db74">&#39;b={}&#39;</span><span style="color:#f92672">.</span>format(b))
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(<span style="color:#e6db74">&#39;id(a)={}&#39;</span><span style="color:#f92672">.</span>format(id(a)))
+<span style="color:#f92672">&gt;&gt;&gt;</span>print(<span style="color:#e6db74">&#39;id(b)={}&#39;</span><span style="color:#f92672">.</span>format(id(b)))
+a<span style="color:#f92672">=[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]]</span> <span style="color:#75715e">#原始a</span>
+a<span style="color:#f92672">=[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]]</span> <span style="color:#75715e">#b修改内部元素A为D后，a中的A也变成了D，说明共享内部嵌套元素，但外部元素1没变。</span>
+b<span style="color:#f92672">=[</span><span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]]</span> <span style="color:#75715e">#修改后的b</span>
+id(a)<span style="color:#f92672">=</span><span style="color:#ae81ff">38669128</span>
+id(b)<span style="color:#f92672">=</span><span style="color:#ae81ff">38669192</span>
+</code></pre></div><h3 id="d修改单个元素">d.修改单个元素</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="e在某个位置插入元素">e.在某个位置插入元素</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">3</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span>,<span style="color:#e6db74">&#39;C&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div><h3 id="f替换一部分元素">f.替换一部分元素</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">&gt;&gt;&gt;</span>a<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+</code></pre></div>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python26%E6%B7%B1%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B5%85%E5%A4%8D%E5%88%B6/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

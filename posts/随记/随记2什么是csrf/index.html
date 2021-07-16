@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(2)——什么是CSRF</a></h2>
+                <p>@LM | 2020-09-15</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://zhuanlan.zhihu.com/p/22521378"> CSRF 是什么？@饥人谷若愚 </a></p>
+</blockquote>
+<h2 id="1什么是csrfcross-site-request-forgery跨站请求伪造">1.什么是CSRF(Cross Site Request Forgery)(跨站请求伪造)</h2>
+<p>CSRF (Cross Site Request Forgery)攻击，中文名：跨站请求伪造。其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。用户在登录状态下这个请求被服务端接收后会被误以为是用户合法的操作。对于 GET 形式的接口地址可轻易被攻击，对于 POST 形式的接口地址也不是百分百安全，攻击者可诱导用户进入带 Form 表单可用POST方式提交参数的页面</p>
+<h2 id="2如何避免">2.如何避免</h2>
+<p>在客户端防范方面：对于数据库的修改请求，全部使用POST提交，禁止使用GET请求。在服务器端防范方面：一般的做法是在表单里面添加一段隐藏的唯一的token(请求令牌)。比如：</p>
+<ul>
+<li>服务端在收到路由请求时，生成一个随机数，在渲染请求页面时把随机数埋入页面（一般埋入 form 表单内）</li>
+<li>服务端设置setCookie，把该随机数作为cookie或者session种入用户浏览器</li>
+<li>当用户发送 GET 或者 POST 请求时带上csrf_token参数（对于 Form 表单直接提交即可，因为会自动把当前表单内所有的input 提交给后台，包括csrf_token）</li>
+<li>后台在接受到请求后解析请求的cookie获取csrf_token的值，然后和用户请求提交的csrf_token做个比较，如果相等表示请求是合法的</li>
+<li>Token 保存在 Session 中。假如 Token 保存在 Cookie 中，用户浏览器开了很多页面。在一些页面 Token 被使用消耗掉后新的Token 会被重新种入，但那些老的 Tab 页面对应的 HTML 里还是老 Token。这会让用户觉得为啥几分钟前打开的页面不能正常提交？</li>
+<li>尽量少用 GET。假如攻击者在我们的网站上传了一张图片，用户在加载图片的时候实际上是向攻击者的服务器发送了请求，这个请求会带有referer表示当前图片所在的页面的 url。 而如果使用 GET 方式接口的话这个 URL 就形如：https://xxxx.com/gift?giftId=aabbcc&amp;_csrf_token=xxxxx，把token接在URL后面，那相当于攻击者获取了csrf_token，短时间内可以使用这个 token 来操作其他 GET 接口。</li>
+</ul>
+
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AFkafka/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

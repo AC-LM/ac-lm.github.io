@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on AC-LM &#39;s blog</title>
+    <link>https://ac-lm.github.io/posts/sql/</link>
+    <description>Recent content in SQL on AC-LM &#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL(1)——数据库语言</title>
+      <link>https://ac-lm.github.io/posts/sql/sql1%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/sql/sql1%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80/</guid>
+      <description>参考原文：SQL教程 @廖雪峰 
+ 1.什么是SQL(Structured Query Language) SQL是结构化查询语言的缩写，用来访问和操作数据库系统。SQL语句既可以查询数据库中的数据，也可以添加、更新和删除数据库中的数据，还可以对数据库进行管理和维护操作。不同的数据库，都支持SQL，这样，我们通过学习SQL这一种语言，就可以操作各种不同的数据库。
+虽然SQL已经被ANSI组织定义为标准，不幸地是，各个不同的数据库对标准的SQL支持不太一致。并且，大部分数据库都在标准的SQL上做了扩展。也就是说，如果只使用标准SQL，理论上所有数据库都可以支持，但如果使用某个特定数据库的扩展SQL，换一个数据库就不能执行了。例如，Oracle把自己扩展的SQL称为PL/SQL，Microsoft把自己扩展的SQL称为T-SQL。
+现实情况是，如果我们只使用标准SQL的核心功能，那么所有数据库通常都可以执行。不常用的SQL功能，不同的数据库支持的程度都不一样。而各个数据库支持的各自扩展的功能，通常我们把它们称之为“方言”。
+总的来说，SQL语言定义了这么几种操作数据库的能力：
+ DDL(Data Definition Language)：DDL允许用户定义数据，也就是创建表、删除表、修改表结构这些操作。 DML(Data Manipulation Language)：DML为用户提供添加、删除、更新数据的能力. DQL(Data Query Language):DQL允许用户查询数据，这也是通常最频繁的数据库日常操作。  PS: SQL语言关键字不区分大小写！但是，针对不同的数据库，对于表名和列名，有的数据库区分大小写，有的数据库不区分大小写
+2.为什么需要数据库 因为应用程序需要保存用户的数据，比如Word需要把用户文档保存起来，以便下次继续编辑或者拷贝到另一台电脑。要保存用户的数据，一个最简单的方法是把用户数据写入文件。例如，要保存一个班级所有学生的信息，可以向文件中写入一个CSV文件；如果要保存学校所有班级的信息，可以写入另一个CSV文件。
+但是，随着应用程序的功能越来越复杂，数据量越来越大，如何管理这些数据就成了大问题
+ 读写文件并解析出数据需要大量重复代码； 从成千上万的数据中快速查询出指定数据需要复杂的逻辑。  如果每个应用程序都各自写自己的读写数据的代码，一方面效率低，容易出错，另一方面，每个应用程序访问数据的接口都不相同，数据难以复用。
+所以，数据库作为一种专门管理数据的软件就出现了。应用程序不需要自己管理数据，而是通过数据库软件提供的接口来读写数据。至于数据本身如何存储到文件，那是数据库软件的事情，应用程序自己并不关心，这样一来，编写应用程序的时候，数据读写的功能就被大大地简化了。
+3.数据库模型 数据库按照数据结构来组织、存储和管理数据，实际上，数据库一共有三种模型：
+ 层次模型 网状模型 关系模型  层次模型就是以“上下级”的层次关系来组织数据的一种方式，层次模型的数据结构看起来就像一颗树：
+ ┌─────┐│ │└─────┘│┌───────┴───────┐│ │┌─────┐ ┌─────┐│ │ │ │└─────┘ └─────┘│ │┌───┴───┐ ┌───┴───┐│ │ │ │┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐│ │ │ │ │ │ │ │└─────┘ └─────┘ └─────┘ └─────┘网状模型把每个数据节点和其他很多节点都连接起来，它的数据结构看起来就像很多城市之间的路网：</description>
+    </item>
+    
+    <item>
+      <title>SQL(2)——查询数据</title>
+      <link>https://ac-lm.github.io/posts/sql/sql2%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/sql/sql2%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
+      <description>参考原文：SQL教程 @廖雪峰 
+ 1.基本查询 要查询数据库表的数据，我们使用如下的SQL语句：
+SELECT * FROM &amp;lt;表名&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，*表示“所有列”，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
+SELECT语句其实并不要求一定要有FROM子句：
+SELECT 100+200; 上述查询会直接计算出表达式的结果。虽然SELECT可以用作计算，但它并不是SQL的强项。此外，不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1;来测试数据库连接。
+2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件“分数在80分或以上的学生”，写成WHERE条件就是：
+SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件“分数在80分或以上”，并且还符合条件“男生”，把这两个条件写出来：
+SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是“分数在80分或以上”或者“男生”，满足任意之一的条件即选出该记录：
+SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示“不符合该条件”的记录。例如，写一个“不是2班的学生”这个条件:</description>
+    </item>
+    
+    <item>
+      <title>SQL(3)——修改数据</title>
+      <link>https://ac-lm.github.io/posts/sql/sql3%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/sql/sql3%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/</guid>
+      <description>参考原文：SQL教程 @廖雪峰 
+ 关系数据库的基本操作就是增删改查，即CRUD：Create、Retrieve、Update、Delete。其中，对于查询，我们已经详细讲述了SELECT语句的详细用法。
+而对于增、删、改，对应的SQL语句分别是：
+ INSERT：插入新记录 UPDATE：更新已有记录 DELETE：删除已有记录  1.INSERT插入 INSERT语句的基本语法是：
+INSERT INTO &amp;lt;表名&amp;gt; (字段1, 字段2, ...) VALUES (值1, 值2, ...); INSERT INTO students (class_id, name, gender, score) VALUES (2, &amp;#39;大牛&amp;#39;, &amp;#39;M&amp;#39;, 80); 注意到我们并没有列出id字段，也没有列出id字段对应的值，这是因为id字段是一个自增主键，它的值可以由数据库自己推算出来。此外，如果一个字段有默认值，那么在INSERT语句中也可以不出现。
+要注意，字段顺序不必和数据库表的字段顺序一致，但值的顺序必须和字段顺序一致。也就是说，可以写INSERT INTO students (score, gender, name, class_id) &amp;hellip;，但是对应的VALUES就得变成(80, &amp;lsquo;M&amp;rsquo;, &amp;lsquo;大牛&amp;rsquo;, 2)。
+还可以一次性添加多条记录，只需要在VALUES子句中指定多个记录值，每个记录是由(&amp;hellip;)包含的一组值：
+INSERT INTO students (class_id, name, gender, score) VALUES (1, &amp;#39;大宝&amp;#39;, &amp;#39;M&amp;#39;, 87), (2, &amp;#39;二宝&amp;#39;, &amp;#39;M&amp;#39;, 81); 2.UPDATE更新 UPDATE语句的基本语法是：
+UPDATE &amp;lt;表名&amp;gt; SET 字段1=值1, 字段2=值2, .</description>
+    </item>
+    
+    <item>
+      <title>SQL(4)——事务</title>
+      <link>https://ac-lm.github.io/posts/sql/sql4%E4%BA%8B%E5%8A%A1/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/sql/sql4%E4%BA%8B%E5%8A%A1/</guid>
+      <description>参考原文：SQL教程 @廖雪峰 
+ 1.事务 在执行SQL语句的时候，某些业务要求，一系列操作必须全部执行，而不能仅执行一部分。例如，一个转账操作：
+-- 从id=1的账户给id=2的账户转账100元 -- 第一步：将id=1的A账户余额减去100 UPDATE accounts SET balance = balance - 100 WHERE id = 1; -- 第二步：将id=2的B账户余额加上100 UPDATE accounts SET balance = balance + 100 WHERE id = 2; 这两条SQL语句必须全部执行，或者，由于某些原因，如果第一条语句成功，第二条语句失败，就必须全部撤销。
+这种把多条语句作为一个整体进行操作的功能，被称为数据库事务。数据库事务可以确保该事务范围内的所有操作都可以全部成功或者全部失败。如果事务失败，那么效果就和没有执行这些SQL一样，不会对数据库数据有任何改动。
+可见，数据库事务具有ACID这4个特性：
+ Atomic，原子性，将所有SQL作为原子工作单元执行，要么全部执行，要么全部不执行 Consistent，一致性，事务完成后，所有数据的状态都是一致的，即A账户只要减去了100，B账户则必定加上了100 Isolation，隔离性，如果有多个事务并发执行，每个事务作出的修改必须与其他事务隔离 Duration，持久性，即事务完成后，对数据库数据的修改被持久化存储  2.隐式事务 对于单条SQL语句，数据库系统自动将其作为一个事务执行。
+3.显式事务 要手动把多条SQL语句作为一个事务执行，使用BEGIN开启一个事务，使用COMMIT提交一个事务，例如，把上述的转账操作作为一个显式事务：
+BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; COMMIT; 很显然多条SQL语句要想作为一个事务执行，就必须使用显式事务。COMMIT是指提交事务，即试图把事务内的所有SQL所做的修改永久保存。如果COMMIT语句执行失败了，整个事务也会失败。</description>
+    </item>
+    
+  </channel>
+</rss>

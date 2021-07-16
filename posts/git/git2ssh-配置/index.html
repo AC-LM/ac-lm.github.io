@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Git(2)——SSH配置</a></h2>
+                <p>@LM | 2021-01-06</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1配置ssh">1.配置SSH</h2>
+<p>打开 Git 命令行工具，输入以下命令，使用邮箱创建密码对</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span style="color:#ae81ff">2048</span> -C <span style="color:#e6db74">&#34;email@example.com&#34;</span>
+</code></pre></div><p>有此结果，在对应目录【/home/user/.ssh/id_rsa】下找到生成的公钥文件 id_rsa.pub，记事本打开，将里面的内容复制到剪贴板</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Generating public/private rsa key pair.
+Enter file in which to save the key <span style="color:#f92672">(</span>/home/user/.ssh/id_rsa<span style="color:#f92672">)</span>:
+</code></pre></div><p>打开新建的github或者gitlab账户，找到 SSH Keys 选项 【setting-&gt;SSH keys】，将剪贴板内容粘贴到内容框中，title可以用默认的邮箱名字，最后点击add。这就代表这个用户被远程仓库所承认了</p>
+<p>选择克隆的项目，复制 SSH 克隆URL，进行克隆</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone + 库的地址
+</code></pre></div><h2 id="2创建ssh的目的">2.创建SSH的目的</h2>
+<p>SSH KEY的作用是来识别你的电脑，相当于人的身份证号，在你的C盘用户目录下面 (:\Users\LX) 存在一个 .ssh 目录，这个目录下有 id_rsa 和 id_rsa.pub 两个文件，这两个就是 SSH Key 的秘钥对，id_rsa 是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p>
+
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/git/git4.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(8)——Web请求</a></h2>
+                <p>@LM | 2020-09-17</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1post和get的区别">1.POST和GET的区别</h2>
+<ul>
+<li>发送时都包含请求头请求参数，POST多了请求body</li>
+<li>GET多用来查询，请求参数放在URL中，不会对服务器上的内容产生作用。POST用来提交，数据放入body中</li>
+<li>GET是直接添加到URL后面的，直接就可以在URL中看到内容，而POST是放在报文内部的，用户无法直接看到</li>
+<li>GET提交的数据长度是有限制的，因为URL长度有限制，具体的长度限制视浏览器而定。而POST没有</li>
+</ul>
+<h2 id="2响应状态码">2.响应状态码</h2>
+<p>访问一个网页时，浏览器会向web服务器发出请求。此网页所在的服务器会返回一个包含HTTP状态码的信息头用以响应浏览器的请求。常见的状态码分类</p>
+<ul>
+<li>1XX- 信息型，服务器收到请求，需要请求者继续操作。</li>
+<li>2XX- 成功型，请求成功收到，理解并处理。</li>
+<li>3XX - 重定向，需要进一步的操作以完成请求。</li>
+<li>4XX - 客户端错误，请求包含语法错误或无法完成请求。</li>
+<li>5XX - 服务器错误，服务器在处理请求的过程中发生了错误。</li>
+</ul>
+<h2 id="3常见状态码">3.常见状态码</h2>
+<ul>
+<li>200 - 客户端请求成功</li>
+<li>301 - 资源（网页等）被永久转移到其它URL</li>
+<li>302 - 临时跳转</li>
+<li>400 - 客户端请求有语法错误，不能被服务器所理解</li>
+<li>401 - 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用</li>
+<li>404 - 请求资源不存在，可能是输入了错误的URL</li>
+<li>500 - 服务器内部发生了不可预期的错误</li>
+<li>503 - 服务器当前不能处理客户端的请求，一段时间后可能恢复正常</li>
+</ul>
+<h2 id="4什么是token">4.什么是Token</h2>
+<p>Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。推荐用设备号/设备mac地址作为Token或者使用session值作为Token</p>
+<h2 id="5cookie与session">5.Cookie与Session</h2>
+<p>首先我们需要知道HTTP协议的一个重要特点——“无状态”，数据交换完成，服务端和客户端就断开连接了，所以请求之间没有相关联系，每一个请求都是一个独立的新请求，为了实现状态保留的，保证前后正常通信，需要在客户端或服务器端存储与会话相关的数据,所以设计了这两个机制——Cookie与Session</p>
+<p>Cookie是由W3C组织提出的保存在客户端本地，方便下次访问服务端时直接放到请求报文头中，如登录的cookie，下次访问同一网站时，用户不必再次输入用户名和密码就已经直接登录.</p>
+<p>Session是保存在服务器上用来记录用户状态的机制。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。Session在用户第一次访问服务器的时候自动创建。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。一般客户端和服务端通过一个SessionID来进行沟通，为了防止不同的用户之间出现冲突和重复，SessionID一般是一个32或者48个字节的随机字符串</p>
+<h2 id="6cookie与session的区别">6.Cookie与Session的区别</h2>
+<ul>
+<li>存放位置不同：cookie数据存放在客户端（浏览器）；session数据放在服务器端，一般存储在内存中，但是SessionID存储在客户端cookie中。</li>
+<li>cookie由浏览器存储在本地，安全有风险，不宜存储敏感信息，如密码等。</li>
+<li>session会在一定时间内保存在服务器上，访问较多时，影响服务器性能。</li>
+</ul>
+
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B09%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B011web%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

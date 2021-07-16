@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on AC-LM &#39;s blog</title>
+    <link>https://ac-lm.github.io/posts/android/</link>
+    <description>Recent content in Android on AC-LM &#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android(3)——APK Analyzer</title>
+      <link>https://ac-lm.github.io/posts/android/android3apk-analyzer/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/android/android3apk-analyzer/</guid>
+      <description>参考链接：译.利用好 Android Studio 中的 APK Analyzer @Glowin 
+ APK Analyzer APK Analyzer 可以打开并审查存于你电脑中的 APK 文件的内容，不管它是通过本地 Android Studio 工程构建，还是需要从服务器上或者其他构件仓库中构建后得到的。它不需要在任何 Android Studio 项目中被构建，甚至也不需要它的源代码。使用 APK analyzer 是一个非常好的途径来查找 APK 文件并了解它们的结构，并同时在发布前或调试时验证一些常见问题，例如 APK 大小和 DEX 问题。APK Analyzer 可以在顶端菜单栏中的 Build 中找到。
+利用 APK Analyzer 为应用“瘦身” APK analyzer 在应用大小方面可以给你很多有用并且可操作的信息。在屏幕的顶部，你可以从 Raw File Size 看到应用占磁盘大小。Download size 是一个估计值，表示考虑到在经过 Play Store 的压缩后，你还需要多少流量来下载应用。
+文件和文件夹根据文件大小降序排列。这让我们很容易看出对 APK 大小优化最容易从哪里入手。每当你深入到某个文件夹的时候，你能看到占用了 APK 大部分空间的资源和其他实体。资源根据文件大小以降序的方式排列。</description>
+    </item>
+    
+    <item>
+      <title>Android(1)——Android SDK的配置</title>
+      <link>https://ac-lm.github.io/posts/android/android1android-sdk%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/android/android1android-sdk%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
+      <description> 参考文档：sdkmanager @Android Studio用户指南 
+ 1.配置Android SDK 下载 Android CMD 工具 sdkmanager Command line tools only
+将 Android\cmdline-tools\latest\bin\sdkmanager.bat 添加到环境变量中
+# 执行命令，安装最新的平台工具（包括 `adb` 和 `fastboot`）以及适用于 API 级别 28 的 SDK 工具 # 请确保环境变量 ANDROID_SDK_ROOT 已被设置 sdkmanager &amp;#34;platform-tools&amp;#34; &amp;#34;platforms;android-28&amp;#34; # 若要卸载软件包，只需添加 `--uninstall` 标记 sdkmanager --uninstall packages [options] sdkmanager --uninstall --package_file=package_file [options] # 以下命令列出已安装和可用的软件包 sdkmanager --list [options] \ [--channel=channel_id] // Channels: 0 (stable), 1 (beta), 2 (dev), or 3 (canary) </description>
+    </item>
+    
+    <item>
+      <title>Android(2)——Adb调试</title>
+      <link>https://ac-lm.github.io/posts/android/android2adb%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/android/android2adb%E8%B0%83%E8%AF%95/</guid>
+      <description>参考文档：adb @Android Studio用户指南 
+ 1.adb的基础操作 adb 文件夹在SDK目录下 SDK\Android\platform-tools 内
+adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事件 adb shell #shell --》HWTRT-Q:/ $ getevent /dev/input/event4 #按键事件 --》HWTRT-Q:/ $ exit adb shell getevent /dev/input/event4 #按键事件 adb shell dumpsys #获取当前运行的服务 adb shell dumpsys battery #获取设备电池信息 adb shell dumpsys cpuinfo adb shell dumpsys meminfo # 要获取具体应用的内存信息，可加上包名 adb shell dumpsys meminfo PACKAGE_NAME # 获取某个包的信息： adb shell dumpsys package PACKAGE_NAME 2.</description>
+    </item>
+    
+  </channel>
+</rss>

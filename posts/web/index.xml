@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on AC-LM &#39;s blog</title>
+    <link>https://ac-lm.github.io/posts/web/</link>
+    <description>Recent content in Web on AC-LM &#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web开发(6)——常用开发知识</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/</guid>
+      <description>1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min文件 min，Minimized的缩写，是压缩后的js或css文件。里面的功能与没有min的文件是一样的。
+js或css文件一般都是从服务器上下载到本地浏览器上解释执行的，如果js文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩js文件的做法。
+实际压缩原理很简单，就是把原来js文件中的空格，回车符，注释全部清除。因此这种js文件通常是不可读的，因为压缩后，文件是一行写到尾。
+3.li标签间的间隔删除 li标签间的间隔是由于：行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。可以将闭合标签写到开头
+&amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
+4.CSS样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值&amp;raquo;ID选择器&amp;raquo;类选择器&amp;raquo;标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js将html字符串转换成node节点 innerHTML function createNode(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let tempNode = document.createElement(&amp;#39;div&amp;#39;); tempNode.innerHTML = template; return tempNode.firstChild; } const container = document.getElementById(&amp;#39;container&amp;#39;); container.appendChild(createNode(&amp;#39;hello&amp;#39;)); DOMParser function createDocument(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let doc = new DOMParser().</description>
+    </item>
+    
+    <item>
+      <title>Web开发(7)——Jquery消息提示插件toastr</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%917jquery%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6toastr/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%917jquery%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6toastr/</guid>
+      <description> 参考文献： github-toastr @CodeSeven 
+ toastr是一个基于jQuery简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
+1.引入toastr的js、css文件 &amp;lt;script src=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.css&amp;#34;&amp;gt; 2.使用 //常规消息提示，默认背景为浅蓝色 toastr.info(&amp;#34;你有新消息了!&amp;#34;); //成功消息提示，默认背景为浅绿色 toastr.success(&amp;#34;你有新消息了!&amp;#34;); //警告消息提示，默认背景为橘黄色 toastr.warning(&amp;#34;你有新消息了!&amp;#34;); //错误消息提示，默认背景为浅红色 toastr.error(&amp;#34;你有新消息了!&amp;#34;); //带标题的消息框 toastr.success(&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); //另一种调用方法 toastr[&amp;#34;info&amp;#34;](&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); 3.自定义参数 toastr.options = { closeButton: false, debug: false, progressBar: true, positionClass: &amp;#34;toast-bottom-center&amp;#34;, onclick: null, showDuration: &amp;#34;300&amp;#34;, hideDuration: &amp;#34;1000&amp;#34;, timeOut: &amp;#34;2000&amp;#34;, extendedTimeOut: &amp;#34;1000&amp;#34;, showEasing: &amp;#34;swing&amp;#34;, hideEasing: &amp;#34;linear&amp;#34;, showMethod: &amp;#34;fadeIn&amp;#34;, hideMethod: &amp;#34;fadeOut&amp;#34; }; 4.参数说明 closeButton：false，是否显示关闭按钮（提示框右上角关闭按钮）； debug：false，是否为调试； progressBar：false，是否显示进度条（设置关闭的超时时间进度条）； positionClass，消息框在页面显示的位置 toast-top-left 顶端左边 toast-top-right 顶端右边 toast-top-center 顶端中间 toast-top-full-width 顶端，宽度铺满整个屏幕 toast-botton-right toast-bottom-left toast-bottom-center toast-bottom-full-width onclick，点击消息框自定义事件 showDuration: “300”，显示动作时间 hideDuration: “1000”，隐藏动作时间 timeOut: “2000”，自动关闭超时时间 extendedTimeOut: “1000” showEasing: “swing”, hideEasing: “linear”, showMethod: “fadeIn” 显示的方式，和jquery相同 hideMethod: “fadeOut” 隐藏的方式，和jquery相同 </description>
+    </item>
+    
+    <item>
+      <title>Web开发(8)——定位点击位置</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%918%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%918%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/</guid>
+      <description>1.实现代码 $(&amp;#39;body&amp;#39;).click(function(e) { // 在页面任意位置点击而触发此事件  // e.target表示被点击的目标  if($(e.target).attr(&amp;#34;id&amp;#34;) == &amp;#39;btn_my_mesg&amp;#39;){ //要隐藏或显示的元素  $(&amp;#34;.myMsgs&amp;#34;).css(&amp;#34;display&amp;#34;,&amp;#34;block&amp;#34;); }else{ $(&amp;#34;.myMsgs&amp;#34;).css(&amp;#34;display&amp;#34;,&amp;#34;none&amp;#34;); } }) </description>
+    </item>
+    
+    <item>
+      <title>Web开发(9)——下拉表单插件bootstrap-select</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%919%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6bootstrap-select/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%919%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6bootstrap-select/</guid>
+      <description> 参考文献：github.com-bootstrap-select @silviomoreto  &amp;amp; blogs @懒得安分
+ 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 关于组件取值保持原生的jquery方法，比如 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的value变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
+4.赋值 组件赋值就需要稍微变换一下了，如果你直接 $(&#39;#sel&#39;).val(&#39;1&#39;); 这样赋值将会无效，正确的赋值方法为：
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，赋值的值为option的value属性！！
+在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的change事件，我们可以这么做。
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 如果是多选的赋值，也是一样
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).on(&amp;#39;click&amp;#39;, function () { //回到初始状态  $(&amp;#39;#party_a_project_name&amp;#39;).selectpicker(&amp;#39;val&amp;#39;,[&amp;#39;noneSelectedText&amp;#39;]) //对party_a_project_name这个下拉框进行重置刷新  $(&amp;#34;#party_a_project_name&amp;#34;).selectpicker(&amp;#39;refresh&amp;#39;); }); </description>
+    </item>
+    
+    <item>
+      <title>Web开发(5)——实现摄像头开启</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%915%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%915%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/</guid>
+      <description>1.HTML实现 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- 样式部分可以忽略 --&amp;gt; &amp;lt;style&amp;gt; * { padding: 0; margin: 0; } div { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; } .btn { width: 100px; height: 50px; border-radius: 10px; background: #ff9900; line-height: 50px; text-align: center; color: #fff; box-shadow: 0 0 10px #999; } video, canvas { width: 300px; height: 300px; border: 5px solid #000; border-radius: 10px; margin-left: 5px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div id=&amp;#34;play&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;开启摄像&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;take&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;拍照&amp;lt;/div&amp;gt; &amp;lt;video id=&amp;#34;video&amp;#34;&amp;gt;&amp;lt;/video&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>Web开发(4)——JS实现页面跳转</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%914js%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%914js%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</guid>
+      <description>1 页面跳转（原页面跳转） （1）a标签实现 &amp;lt;a href=&amp;#34;https://www.baidu.com&amp;#34;&amp;gt;BAT&amp;lt;/a&amp;gt; （2）window.location.href实现 window.location.href=&amp;#34;https://www.baidu.com&amp;#34;; 2 页面跳转 （打开新标签页） （1）a标签实现 &amp;lt;a href=&amp;#34;https://www.baidu.com&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;BAT&amp;lt;/a&amp;gt; （2）window.open()实现 window.open(&amp;#34;https://www.baidu.com&amp;#34;); </description>
+    </item>
+    
+    <item>
+      <title>Web开发(2)——PHP实例</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%912php%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%912php%E5%AE%9E%E4%BE%8B/</guid>
+      <description>1.PHP信息页 &amp;lt;?php phpinfo();?&amp;gt;2.数据库连接实现 &amp;lt;?php $db = new mysqli(&amp;#39;localhost&amp;#39;, &amp;#39;root&amp;#39;, &amp;#39;123456&amp;#39;, &amp;#39;ztest&amp;#39;); if (mysqli_connect_errno()) { echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Connect DB error&amp;#39;; exit; } else { echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Connect DB success&amp;#39;; } echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Test start&amp;#39;; $query = &amp;#34;select * from login&amp;#34;; $result=$db-&amp;gt;query($query); if ($result-&amp;gt;num_rows &amp;gt; 0) { // 输出数据  while($row = $result-&amp;gt;fetch_assoc()) { echo &amp;#34;&amp;lt;p&amp;gt;&amp;#34; . &amp;#34;username: &amp;#34; . $row[&amp;#34;username&amp;#34;]. &amp;#34; - password: &amp;#34; . $row[&amp;#34;password&amp;#34;]; } } else { echo &amp;#34;0 结果&amp;#34;; } $db-&amp;gt;close(); ?</description>
+    </item>
+    
+    <item>
+      <title>Web开发(3)——PHP&#43;MariaDB数据库操作</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%913php&#43;mariadb%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%913php&#43;mariadb%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</guid>
+      <description>1.连接数据库 &amp;lt;?php if (extension_loaded(&amp;#39;mysqli&amp;#39;)){ echo &amp;#39;yes&amp;#39;; } else{ echo &amp;#39;no&amp;#39;; } # mysqli组件是否已经被加载  $db = new mysqli(&amp;#39;localhost&amp;#39;, &amp;#39;root&amp;#39;, &amp;#39;admin&amp;#39;, &amp;#39;test&amp;#39;); #数据库地址，用户名，密码，表单  if (mysqli_connect_errno()){ echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Connect DB error&amp;#39;; exit; } #数据库是否连接 ?&amp;gt;2.一个用户注册和系统登录 a、创建数据库、表和用户。 DROP DATABASE IF EXISTS `test`; CREATE DATABASE `test` USE `test`; DROP TABLE IF EXISTS `tbl_user`; CREATE TABLE `tbl_user` ( `username` varchar(32) NOT NULL default &amp;#39;&amp;#39;, `password` varchar(32) NOT NULL default &amp;#39;&amp;#39;, PRIMARY KEY (`username`) ) ENGINE=InnoDB DEFAULT CHARSET=gb2312; c、注册的代码： # register_do.</description>
+    </item>
+    
+    <item>
+      <title>Web服务器(2)——Apache &amp; Tomcat</title>
+      <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A82apache-tomcat/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A82apache-tomcat/</guid>
+      <description>1.Apache  C语言实现的，专门用来提供HTTP服务的程序 特性：简单、速度快、性能稳定、可配置（代理），主要用于解析静态文本，并发性能高，侧重于HTTP服务 支持静态页（HTML），不支持动态请求如：CGI、Servlet/JSP、PHP、ASP等 具有很强的可扩展性，可以通过插件支持PHP，还可以单向Apache连接Tomcat实现连通。Apache是世界使用排名第一的Web服务器  2.Tomcat  是Java开发的一个符合JavaEE的Servlet规范的JSP服务器（Servlet容器），是 Apache 的扩展。免费的Java应用服务器 主要用于解析JSP/Servlet，侧重于Servlet引擎 支持静态页，但效率没有Apache高；支持Servlet、JSP请求 Tomcat本身也内置了一个HTTP服务器用于支持静态内容，可以通过Tomcat的配置管理工具实现与Apache整合  3.Apache + Tomcat 如果请求是静态网页则由Apache处理，并将结果返回；如果是动态请求，Apache会将解析工作转发给Tomcat处理，Tomcat处理后将结果通过Apache返回。这样可以达到分工合作，提高系统的性能的效果。</description>
+    </item>
+    
+    <item>
+      <title>Web服务器(3)——动-静态网页</title>
+      <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A83%E5%8A%A8-%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A83%E5%8A%A8-%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/</guid>
+      <description>1.静态网页  在静态Web程序中，客户端使用Web浏览器通过网络使用HTTP协议向服务器发送一个请求（Request），告诉服务器需要得到某个页面，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容返回给客户端，客户端接收到内容之后经过浏览器渲染解析，得到显示的效果。 为了让静态页面显示更加好看，使用 javascript 美化页面，但是这些处理都是在客户端上借助于浏览器展示的，在服务器上并没有任何的变化。 静态页面无法连接数据库； 现今的web页面中，大量使用JS，导致浏览器打开页面，就会占用大量的内存，服务端的压力是减轻了，但压力转移到了客户端。 运行在客户端的程序、网页、插件、组件，属于静态网页，例如：html，javascript等等，他们可以脱离服务器运行于浏览器客户端。 静态网页的内容相对稳定，URL地址相对于动态网页的更加容易被搜索引擎识别,所以网站进行SEO优化的时候一般都是建议采用静态网页。 静态网页无需数据库的支持，所以访问速度上较之动态网页比较快，不过随着浏览器以及宽带速度提升，这种差别会越来越小。  2.动态网页  动态WEB中，程序依然使用客户端和服务端，客户端依然使用浏览器通过HTTP协议发送请求（Request），但现在的所有请求都要先经过一个WEB Server来处理。 如果客户端请求的是静态资源(.html 或者是.htm)，则将请求直接转交给WEB服务器，之后WEB服务器从文件系统中取出内容，发送回客户端浏览器进行解析执行。 如果客户端请求的是动态资源，则先将请求转交给WEB Container(WEB容器)，在WEB Container中连接数据库，从数据库中取出数据并完成一系列操作后，动态拼凑页面的展示内容，最后把所有的展示内容交给WEB服务器返回。 运行在服务器端的程序、网页、组件，属于动态网页，例如：JSP,ASP,PHP等。它们会随不同客户、不同时间，返回不同的网页。  3.静态网页和动态网页区别的简单描述  静态页面中，设计者把页面上所有东西都设定好、做死了，不管是谁在任何时候看到的页面内容都是一样的，一成不变（除非手动修改页面内容）。运行于客户端的程序、网页、插件、组件，属于静态网页，例如html页、Flash、JavaScript、VBScript等等，它们是永远不变的。静态html页面文件，可以直接用本地的浏览器打开。静态页面放到什么地方都能运行的。动态页面则不行。 程序是否在服务器端运行，这个是判断网页属不属于动态网页的重要标志。动态页面是需要服务器解释的。动态页面的内容一般都是依靠服务器端的程序来生成的，不同人、不同时候访问页面，显示的内容都可能不同。网页设计者在写好服务器端的页面程序后，不需要手工控制，页面内容会按照页面程序的安排自动更改变换。在服务器端运行的程序、网页、组件，属于动态网页，它们会随不同客户、不同时间，返回不同的网页，例如ASP、PHP、JSP、ASP.net、CGI等。 动态网页相比静态网页的交互性更高，可以实现更多的功能，如用户注册、登录等一系列用户需要与网站发生互动的功能基本都需要由动态网页来满足。动态网页，与网页上的各种动画、滚动字幕等视觉上的“动态效果”没有直接关系，动态网页也可以是纯文字内容的，也可以是包含各种动画的内容，这些只是网页具体内容的表现形式。 动态网页不是一个独立存在服务器上的网页，当用户发送请求时，服务器可能还要拼凑其他元素才会返回一个完整的网页，而静态网页一旦上传到服务器上，就是实实在在保存在服务器上的网页文件。 html是w3c规范的一种网页书写格式，是一种统一协议语言，静态网页。我们上网看的网页都是大部分都是基于html语言的。jsp是一种基于动态的语言，jsp可以实现html的所有任务， HTML（Hypertext Markup Language）文本标记语言，它是静态页面，和JavaScript一样解释性语言，为什么说是解释性语言？因为，只要你有一个浏览器那么它就可以正常显示出来，而不需要指定的编译工具，只需在TXT文档中写上HTML标记就可以正常显示。JSP（Java Server Page）是Java服务端的页面，所以它是动态的，它是需要经过JDK编译后把内容发给客户端去显示，我们都知道，Java文件编译后会产生一个class文件，最终执行的就是这个class文件， html和jsp的表头不一样，这个是JSP的头&amp;lt;%@ page language=”java” import=”java.util.*” pageEncoding=”gbk”%&amp;gt;在表头中有编码格式和倒入包等。在jsp中用&amp;lt;% %&amp;gt;就可以写Java代码了，而html没有&amp;lt;% %&amp;gt;。 静态网页适合更新较少的网站，一般适用于展示型的网站，而动态网页则更新较多，一般用于用户互动较多的网站。  </description>
+    </item>
+    
+    <item>
+      <title>Web服务器(1)——Nginx反向代理</title>
+      <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A81nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A81nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+      <description>1.正向代理与反向代理 正向代理隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端通过代理服务器来访问服务端，客户端所有的请求都通过代理服务器来发送。某些科学上网工具就是典型的正向代理角色，通过在国外搭建一台代理服务器，让代理代替我去发送请求，然后代理服务器再把响应返回给我。
+反向代理隐藏了真实的服务端，客户不知道真正提供服务人的是谁，客户只需要访问反向代理服务器便可以获取到响应。例如，当我们请求百度的时候，可能有成千上万台服务器准备为我们服务，但具体是哪一台为我们服务，就不清楚了。但实际上，我们不需要知道这个，只需要知道反向代理服务器就可以了。反向代理服务器会帮我们把请求转发到真实的服务器那里去，www.baidu.com 就是这个反向代理服务器，
+两者的区别在于代理的对象不一样： 正向代理是为客户端代理，反向代理是为服务端代理。
+2.通过Nginx实现反向代理 Nginx是最为流行的反向代理服务器之一，而且能用来实现负载均衡。
+什么是负载均衡？就是把项目部署在不同的服务器上，但是通过统一的域名进入，由Nginx对请求进行分发，最终减轻服务器的压力。此时，Nginx服务器仅作为分发服务器，而真正的内容可以放在其他的服务器上，这样来，还能起到一层安全隔壁的作用，Nginx作为隔离层。其次，Nginx还能解决跨域的问题。
+3.Nginx的配置文件 1.全局块 该部分配置主要影响Nginx全局，通常包括下面几个部分：
+ 配置运行Nginx服务器用户（组） worker process数 Nginx进程PID存放路径 错误日志的存放路径 配置文件的引入  2.events块 该部分配置主要影响Nginx服务器与用户的网络连接，主要包括：
+ 设置网络连接的序列化 是否允许同时接收多个网络连接 事件驱动模型的选择 最大连接数的配置  3.http块 这部分是负责网页相关的配置
+ 定义MIMI-Type 自定义服务日志 允许sendfile方式传输文件 连接超时时间 单连接请求数上限  4.server块 这部分是负责服务器相关的配置
+ 配置网络监听 基于名称的虚拟主机配置 基于IP的虚拟主机配置  5.location块 本地文件配置
+ 请求根目录配置 更改location的URI 网站默认首页配置  4. 代码解析 1. 全局块&amp;mdash;-配置运行Nginx服务器用户（组） user user [group]; #user：指定可以运行Nginx服务器的用户 #group：可选项，可以运行Nginx服务器的用户组 user nobody nobody; #如果user指令不配置或者配置为nobody nobody，则默认所有用户都可以启动Nginx进程 ------------------------------------------------------------------------------- worker_processes number | auto; #number：Nginx进程最多可以产生的worker process数 #auto：Nginx进程将自动检测 worker_processes 3; #在后台查看进程//ps -aux | grep nginx//能发现开启了3个worker process进程 ------------------------------------------------------------------------------- error_log file | stderr; #file：日志输出到某个文件file #stderr：日志输出到标准错误输出 error_log logs/error.</description>
+    </item>
+    
+    <item>
+      <title>Web开发(1)——War文件</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%911war%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%911war%E6%96%87%E4%BB%B6/</guid>
+      <description>1.War 文件 War包一般是在进行Web开发时，一个网站Project下的所有源码的集合，里面包含前台HTML/CSS/JS/JSP等的代码，也包含编译Java的代码。当开发人员在自己的开发机器上调试所有代码并通过后，为了交给测试人员测试和未来进行产品发布，都需要将开发人员的源码打包成War进行发布。
+War包可以放在Tomcat下的webapps或者word目录下，随着tomcat服务器的启动，它可以自动被解压。
+2.扩展 | Jar、war、EAR的区别 Jar、war、EAR、在文件结构上，三者并没有什么不同，它们都采用zip或jar档案文件压缩格式。但是它们的使用目的有所区别：
+ Jar文件（扩展名为. Jar，Java Application Archive）包含Java类的普通库、资源（resources）、辅助文件（auxiliary files）等。通常是开发时要引用的通用类，打成包便于存放管理。简单来说，jar包就是别人已经写好的一些类，然后对这些类进行打包。可以将这些jar包引入到你的项目中，可以直接使用这些jar包中的类和属性，这些jar包一般放在lib目录下。 War文件（扩展名为.War,Web Application Archive）包含全部Web应用程序。在这种情形下，一个Web应用程序被定义为单独的一组文件、类和资源，用户可以对jar文件进行封装，并把它作为小型服务程序（servlet）来访问。 war包是一个可以直接运行的web模块，通常用于网站，打成包部署到容器中。以Tomcat来说，将war包放置在其\webapps\目录下,然后启动Tomcat，这个包就会自动解压，就相当于发布了。war包是Sun提出的一种web应用程序格式，与jar类似，是很多文件的压缩包。war包中的文件按照一定目录结构来组织。根据其根目录下包含有html和jsp文件，或者包含有这两种文件的目录，另外还有WEB-INF目录。通常在WEB-INF目录下含有一个web.xml文件和一个classes目录，web.xml是这个应用的配置文件，而classes目录下则包含编译好的servlet类和jsp，或者servlet所依赖的其他类（如JavaBean）。通常这些所依赖的类也可以打包成jar包放在WEB-INF下的lib目录下。 Ear文件（扩展名为.Ear,Enterprise Application Archive）包含全部企业应用程序。在这种情形下，一个企业应用程序被定义为多个jar文件、资源、类和Web应用程序的集合。  </description>
+    </item>
+    
+  </channel>
+</rss>

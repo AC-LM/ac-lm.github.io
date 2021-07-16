@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Web服务器(2)——Apache &amp; Tomcat</a></h2>
+                <p>@LM | 2020-12-03</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1apache">1.Apache</h2>
+<ol>
+<li>C语言实现的，专门用来提供HTTP服务的程序</li>
+<li>特性：简单、速度快、性能稳定、可配置（代理），主要用于解析静态文本，并发性能高，侧重于HTTP服务</li>
+<li>支持静态页（HTML），不支持动态请求如：CGI、Servlet/JSP、PHP、ASP等</li>
+<li>具有很强的可扩展性，可以通过插件支持PHP，还可以单向Apache连接Tomcat实现连通。Apache是世界使用排名第一的Web服务器</li>
+</ol>
+<h2 id="2tomcat">2.Tomcat</h2>
+<ol>
+<li>是Java开发的一个符合JavaEE的Servlet规范的JSP服务器（Servlet容器），是 Apache 的扩展。免费的Java应用服务器</li>
+<li>主要用于解析JSP/Servlet，侧重于Servlet引擎</li>
+<li>支持静态页，但效率没有Apache高；支持Servlet、JSP请求</li>
+<li>Tomcat本身也内置了一个HTTP服务器用于支持静态内容，可以通过Tomcat的配置管理工具实现与Apache整合</li>
+</ol>
+<h2 id="3apache--tomcat">3.Apache + Tomcat</h2>
+<p>如果请求是静态网页则由Apache处理，并将结果返回；如果是动态请求，Apache会将解析工作转发给Tomcat处理，Tomcat处理后将结果通过Apache返回。这样可以达到分工合作，提高系统的性能的效果。</p>
+
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A83%E5%8A%A8-%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%913php&#43;mariadb%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

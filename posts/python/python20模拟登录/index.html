@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(20)——模拟登录</a></h2>
+                <p>@LM | 2021-01-16</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1目标">1.目标</h2>
+<p>修改 LocalStorage 和 SessionStorage 中的 token</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/31.png" alt=""></p>
+<h2 id="2实现">2.实现</h2>
+<p>使用 JavaScript 进行获取 token 和修改 token 的操作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ae81ff">1.</span><span style="color:#a6e22e">设置localStorage</span>
+      <span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">set</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">val</span>) {
+        <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">val</span>);
+      }
+<span style="color:#ae81ff">2.</span><span style="color:#a6e22e">获取localStorage</span>
+      <span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">get</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#a6e22e">name</span>);
+      }
+<span style="color:#ae81ff">3.</span><span style="color:#a6e22e">调用函数</span>
+      <span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#34;status&#34;</span>, <span style="color:#e6db74">&#34;OK&#34;</span>);
+      <span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#34;quit&#34;</span>, <span style="color:#e6db74">&#34;...&#34;</span>);
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Storage</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;status&#34;</span>));
+
+</code></pre></div>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

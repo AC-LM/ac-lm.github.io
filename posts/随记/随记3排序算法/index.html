@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(3)——排序算法</a></h2>
+                <p>@LM | 2020-09-15</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/zwtgyh/p/10631760.html"> 常见排序算法  @zwtgyh </a></p>
+</blockquote>
+<h2 id="1冒泡排序">1.冒泡排序</h2>
+<h3 id="原理解析">原理解析</h3>
+<p>选择第1个和第2个数字，如果第1个大于第2个，则二者交换位置（假设是升序排列）。之后选择第2个和第3个数字，类似交换处理。一轮下来后，最大的数字会“冒泡”到最后一位。接下来，忽略已经拍好的数字，对于剩下的数字再来一轮，直到所有的数字都排列完成</p>
+<h3 id="复杂度分析">复杂度分析</h3>
+<p>若文件的初始状态是正序的，一趟扫描即可完成排序。所需的关键字比较次数C和记录移动次数M均达到最小值：Cmin=n-1，Mmin=0
+所以，冒泡排序最好的时间复杂度为O(n)</p>
+<p>若初始文件是反序的，需要进行n-1趟排序。每趟排序要进行n-1次关键字的比较(1≤i≤n-1)，且每次比较都必须移动记录三次来达到交换记录位置。在这种情况下，比较和移动次数均达到最大值：Cmax=n(n-1)/2，Mmax=3n(n-1)/2，冒泡排序的最坏时间复杂度为O(n^2)</p>
+<ul>
+<li>平均的时间负杂度为：O(n^2)</li>
+<li>最优的空间复杂度，不需要借用第三方内存空间，则复杂度为0</li>
+<li>最差的空间复杂度，每次都要借用一次内存，按照实际的循环次数，为O(N)</li>
+<li>平均的空间负杂度为：O(1)</li>
+</ul>
+<h2 id="2插入排序">2.插入排序</h2>
+<h3 id="原理解析-1">原理解析</h3>
+<ul>
+<li>从第一个元素开始，该元素可以认为已经被排序</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
+<li>把取出的元素放到已排序的元素中间的合适位置</li>
+<li>重复步骤2~3</li>
+<li>就像排队一样，依次每次挑一个同学，把该同学“插入”到已经排好的部分队伍里。</li>
+</ul>
+<h3 id="复杂度分析-1">复杂度分析</h3>
+<ul>
+<li>最优的情况，当待排序数组是有序时，只需当前数跟前一个数比较一下就可以了，这时一共需要比较N- 1次，时间复杂度为O(N) 。</li>
+<li>最坏的情况，当待排序数组是逆序的，此时需要比较次数最多，总次数记为：1+2+3+…+N-1，所以，插入排序最坏情况下的时间复杂度为O(N^2) 。</li>
+<li>平均来说，A[1..j-1]中的一半元素小于A[j]，一半元素大于A[j]。插入排序在平均情况运行时间与最坏情况运行时间一样，是输入规模的二次函数。</li>
+<li>插入排序的空间复杂度为常数阶O(1)</li>
+</ul>
+<h2 id="3快速排序">3.快速排序</h2>
+<h3 id="原理解析-2">原理解析</h3>
+<p>快速排序使用分治法策略来把一个序列分为两个子序列。其步骤为：</p>
+<ul>
+<li>从数列中挑出一个元素，称为“基准”，</li>
+<li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+<li>递归到最底部时，数列的大小是零或一，也就是已经排序好了。这个算法一定会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</li>
+</ul>
+<h3 id="复杂度分析-2">复杂度分析</h3>
+<p>快速排序的一次划分算法从两头交替搜索，直到 low 和 hight 重合，因此其一次排序时间复杂度是 O(n)，所以整个快速排序算法的时间复杂度与划分的趟数有关。</p>
+<ul>
+<li>理想的情况是，每次划分所选择的中间数恰好将当前序列几乎等分，经过log2n趟划分，便可得到长度为1的子表。这样，整个算法的时间复杂度为O(nlog2n)。</li>
+<li>最坏的情况是，每次所选的中间数是当前序列中的最大或最小元素，这使得每次划分所得的子表中一个为空表，另一子表的长度为原表的长度-1。这样，长度为n的数据表的快速排序需要经过n趟划分，使得整个排序算法的时间复杂度为O(n^2)。</li>
+<li>为改善最坏情况下的时间性能，可采用其他方法选取中间数。通常采用“三者值取中”方法，即比较H-&gt;r[low].key、H-&gt;r[high].key与H-&gt;r[(low+high)/2].key，取三者中关键字为中值的元素为中间数。</li>
+<li>从空间性能上看，尽管快速排序只需要一个元素的辅助空间，但快速排序需要一个栈空间来实现递归。最好的情况下，即快速排序的每一趟排序都将元素序列均匀地分割成长度相近的两个子表，所需栈的最大深度为log2(n+1)；但最坏的情况下，栈的最大深度为n。这样，快速排序的空间复杂度为O(log2n)。</li>
+</ul>
+
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B04%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B02%E4%BB%80%E4%B9%88%E6%98%AFcsrf/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

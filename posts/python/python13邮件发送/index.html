@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(13)——邮件发送</a></h2>
+                <p>@LM | 2020-12-15</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1发送简单邮件">1.发送简单邮件</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> smtplib
+<span style="color:#75715e">#发送字符串的邮件</span>
+<span style="color:#f92672">from</span> email.mime.text <span style="color:#f92672">import</span> MIMEText
+<span style="color:#75715e">#处理多种形态的邮件主体我们需要 MIMEMultipart 类</span>
+<span style="color:#f92672">from</span> email.mime.multipart <span style="color:#f92672">import</span> MIMEMultipart
+<span style="color:#75715e">#处理图片需要 MIMEImage 类</span>
+<span style="color:#f92672">from</span> email.mime.image <span style="color:#f92672">import</span> MIMEImage
+ 
+<span style="color:#75715e"># qq邮箱smtp服务器</span>
+host_server <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;smtp.qq.com&#39;</span>
+<span style="color:#75715e"># sender_qq为发件人的qq号码</span>
+sender_qq <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;13VVVVVVVV@qq.com&#39;</span>
+<span style="color:#75715e"># pwd为qq邮箱的授权码</span>
+pwd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;nzrVVVVVVVV&#39;</span>
+<span style="color:#75715e"># 发件人的邮箱</span>
+sender_qq_mail <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;13VVVVVVV@qq.com&#39;</span>
+<span style="color:#75715e"># 收件人邮箱</span>
+receiver <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;13VVVVVVVVV@qq.com&#39;</span>
+
+<span style="color:#75715e"># 邮件的正文内容</span>
+mail_content <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;你好，这是使用python登录qq邮箱发邮件的测试&#39;</span>
+<span style="color:#75715e"># 邮件标题</span>
+mail_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Max</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">s的邮件&#39;</span>
+
+<span style="color:#75715e"># ssl登录</span>
+smtp <span style="color:#f92672">=</span> SMTP_SSL(host_server)
+<span style="color:#75715e"># set_debuglevel()是用来调试的。参数值为1表示开启调试模式，参数值为0关闭调试模式</span>
+smtp<span style="color:#f92672">.</span>set_debuglevel(<span style="color:#ae81ff">0</span>)
+smtp<span style="color:#f92672">.</span>ehlo(host_server)
+smtp<span style="color:#f92672">.</span>login(sender_qq, pwd)
+
+msg <span style="color:#f92672">=</span> MIMEText(mail_content, <span style="color:#e6db74">&#34;plain&#34;</span>, <span style="color:#e6db74">&#39;utf-8&#39;</span>)
+msg[<span style="color:#e6db74">&#34;Subject&#34;</span>] <span style="color:#f92672">=</span> Header(mail_title, <span style="color:#e6db74">&#39;utf-8&#39;</span>)
+msg[<span style="color:#e6db74">&#34;From&#34;</span>] <span style="color:#f92672">=</span> sender_qq_mail
+msg[<span style="color:#e6db74">&#34;To&#34;</span>] <span style="color:#f92672">=</span> receiver
+smtp<span style="color:#f92672">.</span>sendmail(sender_qq_mail, receiver, msg<span style="color:#f92672">.</span>as_string())
+smtp<span style="color:#f92672">.</span>quit()
+</code></pre></div><h2 id="2发送带附件的邮件">2.发送带附件的邮件</h2>
+<p>使用MIMEMultipart来标示这个邮件是多个部分组成的，然后attach各个部分。如果是附件，则add_header加入附件的声明。</p>
+<p>MIME有很多种类型，这个略麻烦，如果附件是图片格式，我要用MIMEImage，如果是音频，要用MIMEAudio，如果是word、excel，我都不知道该用哪种MIME类型了，得上google去查。最懒的方法就是，<strong>不管什么类型的附件，都用MIMEApplication</strong>，MIMEApplication默认子类型是application/octet-stream。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> smtplib
+<span style="color:#f92672">from</span> email.mime.text <span style="color:#f92672">import</span> MIMEText
+<span style="color:#f92672">from</span> email.mime.image <span style="color:#f92672">import</span> MIMEImage
+<span style="color:#f92672">from</span> email.mime.multipart <span style="color:#f92672">import</span> MIMEMultipart
+<span style="color:#f92672">from</span> email.mime.application <span style="color:#f92672">import</span> MIMEApplication 
+ 
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+        fromaddr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;137xxxx@163.com&#39;</span>
+        password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;password&#39;</span>
+        toaddrs <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;137xxxx@163.com&#39;</span>, <span style="color:#e6db74">&#39;137xxxx@qq.com&#39;</span>]
+ 
+        content <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hello, this is email content.&#39;</span>
+        textApart <span style="color:#f92672">=</span> MIMEText(content)
+ 
+        imageFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1.png&#39;</span>
+        imageApart <span style="color:#f92672">=</span> MIMEImage(open(imageFile, <span style="color:#e6db74">&#39;rb&#39;</span>)<span style="color:#f92672">.</span>read(), imageFile<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+        imageApart<span style="color:#f92672">.</span>add_header(<span style="color:#e6db74">&#39;Content-Disposition&#39;</span>, <span style="color:#e6db74">&#39;attachment&#39;</span>, filename<span style="color:#f92672">=</span>imageFile)
+ 
+        pdfFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;算法设计与分析基础第3版PDF.pdf&#39;</span>
+        pdfApart <span style="color:#f92672">=</span> MIMEApplication(open(pdfFile, <span style="color:#e6db74">&#39;rb&#39;</span>)<span style="color:#f92672">.</span>read())
+        pdfApart<span style="color:#f92672">.</span>add_header(<span style="color:#e6db74">&#39;Content-Disposition&#39;</span>, <span style="color:#e6db74">&#39;attachment&#39;</span>, filename<span style="color:#f92672">=</span>pdfFile)
+    
+ 
+        zipFile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;算法设计与分析基础第3版PDF.zip&#39;</span>
+        zipApart <span style="color:#f92672">=</span> MIMEApplication(open(zipFile, <span style="color:#e6db74">&#39;rb&#39;</span>)<span style="color:#f92672">.</span>read())
+        zipApart<span style="color:#f92672">.</span>add_header(<span style="color:#e6db74">&#39;Content-Disposition&#39;</span>, <span style="color:#e6db74">&#39;attachment&#39;</span>, filename<span style="color:#f92672">=</span>zipFile)
+ 
+        m <span style="color:#f92672">=</span> MIMEMultipart()
+        m<span style="color:#f92672">.</span>attach(textApart)
+        m<span style="color:#f92672">.</span>attach(imageApart)
+        m<span style="color:#f92672">.</span>attach(pdfApart)
+        m<span style="color:#f92672">.</span>attach(zipApart)
+        m[<span style="color:#e6db74">&#39;Subject&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;title&#39;</span>
+ 
+        <span style="color:#66d9ef">try</span>:
+            server <span style="color:#f92672">=</span> smtplib<span style="color:#f92672">.</span>SMTP(<span style="color:#e6db74">&#39;smtp.163.com&#39;</span>)
+            server<span style="color:#f92672">.</span>login(fromaddr,password)
+            server<span style="color:#f92672">.</span>sendmail(fromaddr, toaddrs, m<span style="color:#f92672">.</span>as_string())
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;success&#39;</span>)
+            server<span style="color:#f92672">.</span>quit()
+        <span style="color:#66d9ef">except</span> smtplib<span style="color:#f92672">.</span>SMTPException <span style="color:#66d9ef">as</span> e:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;error:&#39;</span>,e) <span style="color:#75715e">#打印错误</span>
+</code></pre></div>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

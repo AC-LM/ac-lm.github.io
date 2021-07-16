@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(5)——什么是接口</a></h2>
+                <p>@LM | 2020-09-16</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/yyhh/p/6083159.html">接口测试总结  @猴子请来的救兵 </a></p>
+</blockquote>
+<h2 id="1什么是接口">1.什么是接口</h2>
+<p>我们先来看一张图，从这张图来了解什么是接口。</p>
+<p>如图中 A 线，A 线指向一个电灯的开关，这个电灯的开关就可以称为接口。它有两个状态——开和关，我们可以通过选择不同的参数来实现电灯的开关。</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/659.png" alt=""></p>
+<p>实际我们知道电灯的开关其实是通过零线、火线来操控的，而接口呢，其实就是把这些复杂的操作简化了，让你看到的只有一个开关。而我们做接口测试也只需要测试这个开关就可以完成任务。</p>
+<ul>
+<li>当你访问 http://127.0.0.1:8080/light?opt=open ，让零线、火线连通，此时灯亮。</li>
+<li>当你访问 http://127.0.0.1:8080/light?opt=close ，让零线、火线断开，此时灯灭。</li>
+</ul>
+<h2 id="2接口的结构">2.接口的结构</h2>
+<p><strong>一个URL就是一个接口</strong>，接下来需要理解一下HTTP的URL是怎么组成为一个接口的，如图：</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/698.png" alt=""></p>
+<ul>
+<li><strong>请求协议</strong>：如 http — 普通的http请求，https — 加密的http请求，ftp — 文件传输协议</li>
+<li><strong>请求IP</strong>：提供接口的系统所部署的服务器地址</li>
+<li><strong>请求端口</strong>：如果不填端口，默认是80，否则需要填写端口号</li>
+<li><strong>接口路径</strong>：指系统提供的接口在什么位置</li>
+<li><strong>接口参数</strong>：参数在接口路径后，用“?”来表示路径地址完了，剩下的都是参数了，用“&amp;”来区分参数个数</li>
+<li><strong>参数值</strong>： 接口参数的值</li>
+</ul>
+<h2 id="3接口的http参数隐藏参数">3.接口的HTTP参数【隐藏参数】</h2>
+<h3 id="http请求方式">http请求方式</h3>
+<pre><code>  GET --- 通过请求URI得到资源
+  POST --- 用于添加新的内容
+  PUT --- 用于修改某个内容
+  DELETE --- 删除某个内容
+  CONNECT --- 用于代理进行传输，如使用SSL
+  OPTIONS --- 询问可以执行哪些方法
+  PATCH --- 部分文档更改
+  PROPFIND (wedav) --- 查看属性
+  PROPPATCH (wedav) --- 设置属性
+  MKCOL (wedav) --- 创建集合（文件夹）
+  COPY (wedav) --- 拷贝
+  MOVE (wedav) --- 移动
+  LOCK (wedav) --- 加锁
+  UNLOCK (wedav) --- 解锁
+  TRACE --- 用于远程诊断服务器
+  HEAD --- 类似于GET, 但是不返回body信息，用于检查对象是否存在，以及得到对象的元数据
+</code></pre><h3 id="http请求头">http请求头</h3>
+<p>请求头包含许多有关的客户端环境和请求正文的有用信息。例如，请求头可以声明浏览器所用的语言，请求正文的长度</p>
+<pre><code>  Accept:image/gif.image/jpeg./
+  Accept-Language:zh-cn
+  Connection:Keep-Alive
+  Host:localhost
+  User-Agent:Mozila/4.0(compatible:MSIE5.01:Windows NT5.0)
+  Accept-Encoding:gzip,deflate.
+</code></pre><h3 id="http请求体">http请求体</h3>
+<p>请求体就是请求等正文了，可以有很多种请求体。最常用的是 json格式</p>
+<h2 id="4进行接口测试前的准备">4.进行接口测试前的准备</h2>
+<p>做接口测试，需要开发提供接口文档。最重要的有这几点，确定了这些，才能做好接口测试。</p>
+<ul>
+<li>被测接口的地址</li>
+<li>接口参数，以及各个参数的说明</li>
+<li>必要的http头与http体 ( http头是可以自定义的，可以用来校验是否是自己人访问 )</li>
+<li>接口返回什么值，以及各个返回值的说明</li>
+<li>接口是干什么的</li>
+</ul>
+<h2 id="5复杂一点的接口-restful">5.复杂一点的接口 RESTful</h2>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/956.png" alt=""></p>
+<p>一个用户接口可以通过以下4种不同方式的请求，来做不同的事情：</p>
+<ul>
+<li>获取用户信息</li>
+<li>创建用户</li>
+<li>修改用户</li>
+<li>删除用户</li>
+</ul>
+<p>你完全可以像“灯”的那个例子，用GET请求来传递不同的参数来实现，但是这样如果接口多了，就会很混乱，很难管理。这时，我们需要一种规则：</p>
+<ul>
+<li>当用“GET”方式时，只用来获取数据，成功了返回http状态码200</li>
+<li>当用“POST”方式时，只用来创建数据，成功了返回http状态码201</li>
+<li>当用“PUT”方式时，只用来修改数据，成功了返回http状态码203</li>
+<li>当用“DELETE”方式时，只用来删除数据，成功了返回http状态码204</li>
+<li>当请求发送失败，返回http状态码400</li>
+</ul>
+<p>这样子的规则，我们称它为 RESTful 标准。</p>
+<h2 id="6如何进行接口测试">6.如何进行接口测试</h2>
+<p>前面的搞清楚了，接口测试就简单了，无非就是这几个步骤。</p>
+<ul>
+<li>拿到接口的url地址</li>
+<li>查看接口是用什么方式发送</li>
+<li>添加请求头，请求体</li>
+<li>发送查看返回结果，校验返回结果是否正确</li>
+</ul>
+<p>这是正常的一套流程，异常的情况，比如参数不传值，传的值不正确，明明要求用&quot;GET&quot;请求发送，偏要用&quot;POST&quot;请求发送等等，有很多异常情况，这里便不再举例。</p>
+<h2 id="7接口文档的格式">7.接口文档的格式</h2>
+<pre><code>功能：获得指定节点的名字，简介，URL 及头像图片的地址。
+
+https://www.v2ex.com/api/nodes/show.json
+Method: GET
+Authentication: None（鉴权，简单来说，就是要不要登录）
+
+接受参数：
+name: 节点名
+
+例如：https://www.v2ex.com/api/nodes/show.json?name=python
+</code></pre>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B06%E6%B8%97%E9%80%8F%E7%9A%84%E6%80%9D%E8%B7%AF/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B09%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>
