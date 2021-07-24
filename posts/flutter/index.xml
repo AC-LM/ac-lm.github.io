@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/flutter/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Flutter(22)——状态(数据)监听</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter22%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter22%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC/</guid>
+      <description>1.ValueListenableBuilder 该Widget配合ValueNotifier可以实现对数据的监听
+/// 定义 ValueNotifier 这里传递的数据类型为 String ValueNotifier&amp;lt;String&amp;gt; _testValueNotifier = ValueNotifier&amp;lt;String&amp;gt;(&amp;#39;&amp;#39;); /// 定义数据变化后监听的 Widget Widget buildValueListenableBuilder() { return ValueListenableBuilder( /// 数据发生变化时回调,变化的布局  builder: (context, value, child) { if(value == &amp;#39;&amp;#39;){ return Text(&amp;#39;空&amp;#39;); }else{ return Text(value); } }, /// 监听的数据  valueListenable: _testValueNotifier, ); } /// 数据变化  void testFunction() { /// 赋值更新  _testValueNotifier.value = &amp;#39;传递的测试数据&amp;#39;; } </description>
+    </item>
+    
+    <item>
       <title>Flutter(21)——apk瘦身</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter21apk%E7%98%A6%E8%BA%AB/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>

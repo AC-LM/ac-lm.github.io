@@ -8,6 +8,33 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Web开发(12)——JS中attribute和property的区别</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9112js%E4%B8%ADattribute%E5%92%8Cproperty%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9112js%E4%B8%ADattribute%E5%92%8Cproperty%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>参考原文：JS中attribute和property的区别 @L_mj 
+ 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是DOM中的属性，是JavaScript里的对象；attribute是HTML标签上的特性，它的值只能够是字符串；简单理解，attribute就是DOM节点自带的属性，例如HTML中常用的id、class、title、align等。而property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild等。
+&amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如id, className这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在attributes属性中找到我们自定义的属性。
+从这里就可以看出，attributes是属于property的一个子集，它保存了HTML标签上定义属性。
+2.设置 常用的attribute，例如id、class等，已经被作为property附加到DOM对象上，可以和property一样取值和赋值。
+attribute取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.setAttribute(&amp;#39;title1&amp;#39;, &amp;#39;c&amp;#39;); div1.setAttribute(&amp;#39;title2&amp;#39;, &amp;#39;d&amp;#39;); property取值赋值 property取值赋值只需要使用.就可以了。对属性property可以赋任何类型的值。
+var id = div1.id; var className = div1.className; var childNodes = div1.childNodes; var attrs = div1.attributes; div1.className = &amp;#39;a&amp;#39;; div1.align = &amp;#39;center&amp;#39;; div1.</description>
+    </item>
+    
+    <item>
+      <title>Web(10)——jQuery实现界面刷新</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9110jquery%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%B7%E6%96%B0/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9110jquery%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%B7%E6%96%B0/</guid>
+      <description>1.使用Load实现的局部刷新 在jQuery中load方法可以加载本地Html文件里的某个元素，使用这个特性可以实现Html的局部更新
+$(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用location实现全局刷新 window.location.reload() </description>
+    </item>
+    
+    <item>
       <title>Web开发(6)——常用开发知识</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
@@ -54,6 +81,15 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;
 在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的change事件，我们可以这么做。
 $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 如果是多选的赋值，也是一样
 $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).on(&amp;#39;click&amp;#39;, function () { //回到初始状态  $(&amp;#39;#party_a_project_name&amp;#39;).selectpicker(&amp;#39;val&amp;#39;,[&amp;#39;noneSelectedText&amp;#39;]) //对party_a_project_name这个下拉框进行重置刷新  $(&amp;#34;#party_a_project_name&amp;#34;).selectpicker(&amp;#39;refresh&amp;#39;); }); </description>
+    </item>
+    
+    <item>
+      <title>Web开发(11)——异步POST</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9111%E5%BC%82%E6%AD%A5post/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9111%E5%BC%82%E6%AD%A5post/</guid>
+      <description>1.$ajax $.ajax({ url: &amp;#39;http://&amp;#39;, type: &amp;#39;post&amp;#39;, dataType: &amp;#39;json&amp;#39;, data: {name: &amp;#34;xu&amp;#34;, foo: &amp;#39;bar&amp;#39;}, cache: false, headers: { &amp;#34;Authorization&amp;#34;: &amp;#34;Bearer token&amp;#34;, &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39; }, success: function(res){}, error: function(e){}, }); </description>
     </item>
     
     <item>

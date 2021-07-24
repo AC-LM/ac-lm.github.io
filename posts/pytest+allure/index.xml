@@ -8,6 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/pytest+allure/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Pytest(5)——数据参数化</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest5%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E5%8C%96/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytest5%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E5%8C%96/</guid>
+      <description>参考原文：参数化@pytest.mark.parametrize @小菠萝测试笔记 
+ 1.使用fixtrue.params参数实现参数化 a.通过 request.param 返回参数值 data = [&amp;#39;anjing&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;admin&amp;#39;] @pytest.fixture(params=data) def login(request): print(&amp;#39;登录功能&amp;#39;) yield request.param print(&amp;#39;退出登录&amp;#39;) b.使用 参数化的值可以做为返回值使用
+def test_01(self, login): print(&amp;#39;---用例01---&amp;#39;) print(&amp;#39;用户名：%s&amp;#39; % login) c.自定义控制台提示信息 @pytest.fixture(params=data, ids=[&amp;#39;This is anjing&amp;#39;,&amp;#39;This is admin&amp;#39;, &amp;#39;This is test&amp;#39;]) def login(request): print(&amp;#39;登录功能&amp;#39;) yield request.param print(&amp;#39;退出登录&amp;#39;) 2.`@pytest.mark.parametrize`实现参数化 a.使用 def parametrize(self,argnames,argvalues,indirect=False,ids=None,scope=None)
+argnames：参数名称，字符串，多个使用逗号隔开
+argvalues：值，必须是列表
+indirect：是否作为函数执行
+@pytest.mark.parametrize(&amp;#34;test_input,expected&amp;#34;, [(&amp;#34;3+5&amp;#34;, 8), (&amp;#34;2+4&amp;#34;, 6), (&amp;#34;6*9&amp;#34;, 42)]) def test_eval(test_input, expected): print(f&amp;#34;测试数据{test_input},期望结果{expected}&amp;#34;) assert eval(test_input) == expected b.装饰测试类 当装饰器@pytest.mark.parametrize装饰测试类时，会将数据集合传递给类的所有测试用例方法。注意，此时所有的测试方法都必须传入这些参数</description>
+    </item>
+    
+    <item>
       <title>Pytest(4)——assert断言</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest4assert%E6%96%AD%E8%A8%80/</link>
       <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>

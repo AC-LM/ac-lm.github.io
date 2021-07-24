@@ -8,6 +8,37 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/django/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Django(10)——用户认证模块auth</title>
+      <link>https://ac-lm.github.io/posts/django/django10%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97auth/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django10%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97auth/</guid>
+      <description>参考原文：Django自带的用户认证auth模块 @Zzbj 
+ 1.介绍 Django内置了强大的用户认证系统auth，它默认创建并使用auth_user表来存储用户数据。
+from django.contrib import auth # 使用auth认证系统 from django.contrib.auth.models import User # auth认证系统默认使用User表 2.auth.authenticate() Django提供简单的用户认证功能，如果认证成功（用户名和密码正确有效），便会返回一个User对象。
+from django.contrib import auth user_obj = auth.authenticate(username=username,password=pwd) 3.auth.login(request, user) 该函数实现一个用户登录的功能，它本质上会在后端为该用户生成相关session数据。在使用login(request, user_obj)登录后之后，便可以通过request.user拿到当前登录的用户对象，否则request.user得到的是一个匿名用户对象。
+from django.shortcuts import render, HttpResponse, redirect from django.contrib import auth def login(request): if request.method == &amp;#34;POST&amp;#34;: username = request.POST.get(&amp;#39;username&amp;#39;) pwd = request.POST.get(&amp;#39;password&amp;#39;) # 调用auth模块的认证方法，判断用户名和密码是否正确，正确返回一个user_obj user_obj = auth.authenticate(username=username, password=pwd) if user_obj: # 登录成功,设置Session数据 auth.login(request, user_obj) return HttpResponse(&amp;#39;登录成功&amp;#39;) else: return render(request, &amp;#39;login.</description>
+    </item>
+    
+    <item>
+      <title>Django(11)——setting文件</title>
+      <link>https://ac-lm.github.io/posts/django/django11setting%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django11setting%E6%96%87%E4%BB%B6/</guid>
+      <description>1.setting.py import os BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #引入os，os包可以对文件进行操作管理 SECRET_KEY = &amp;#39;^#kms19!iawj2b&amp;amp;v3egmynpfwj8^v@2f(_1+jlw+#^vy^pg7oy&amp;#39; #随机生成的密钥 DEBUG = True #代表是调试环境 ALLOWED_HOSTS = [] #允许的主机路径，不填写或者ALLOWED_HOSTS = [“*”]代表允许任意主机域名，如果要指定，在里面输入， #比如域名只允许为 www.baidu.com 那么 ALLOWED_HOSTS = [“www.baidu.com”] INSTALLED_APPS = [ &amp;#39;django.contrib.admin&amp;#39;, &amp;#39;django.contrib.auth&amp;#39;, &amp;#39;django.contrib.contenttypes&amp;#39;, &amp;#39;django.contrib.sessions&amp;#39;, &amp;#39;django.contrib.messages&amp;#39;, &amp;#39;django.contrib.staticfiles&amp;#39;, ] #当前项目应用，只有加入这里才能进行模型同步等操作,注册app等 MIDDLEWARE = [ &amp;#39;django.middleware.security.SecurityMiddleware&amp;#39;, &amp;#39;django.contrib.sessions.middleware.SessionMiddleware&amp;#39;, &amp;#39;django.middleware.common.CommonMiddleware&amp;#39;, &amp;#39;django.middleware.csrf.CsrfViewMiddleware&amp;#39;, &amp;#39;django.contrib.auth.middleware.AuthenticationMiddleware&amp;#39;, &amp;#39;django.contrib.messages.middleware.MessageMiddleware&amp;#39;, &amp;#39;django.middleware.clickjacking.XFrameOptionsMiddleware&amp;#39;, ] #django的中间件,自己写的中间件要在这里填写路径注册,才会生效 ROOT_URLCONF = &amp;#39;untitled.urls&amp;#39; #主路由，也就是项目的主urls(根urls)  TEMPLATES = [ { &amp;#39;BACKEND&amp;#39;: &amp;#39;django.template.backends.django.DjangoTemplates&amp;#39;, &amp;#39;DIRS&amp;#39;: [os.path.join(BASE_DIR, &amp;#39;templates&amp;#39;)] , &amp;#39;APP_DIRS&amp;#39;: True, &amp;#39;OPTIONS&amp;#39;: { &amp;#39;context_processors&amp;#39;: [ &amp;#39;django.</description>
+    </item>
+    
+    <item>
+      <title>Django(7)——分页的实现</title>
+      <link>https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <description>1.Paginator 官方示例：view.py from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger from django.shortcuts import render def listing(request): contact_list = Contacts.objects.all() paginator = Paginator(contact_list, 25) # Show 25 contacts per page page = request.GET.get(&amp;#39;page&amp;#39;) try: contacts = paginator.page(page) except PageNotAnInteger: # If page is not an integer, deliver first page. contacts = paginator.page(1) except EmptyPage: # If page is out of range (e.g. 9999), deliver last page of results. contacts = paginator.page(paginator.num_pages) return render(request, &amp;#39;list.</description>
+    </item>
+    
+    <item>
       <title>Django(6)——系统命令</title>
       <link>https://ac-lm.github.io/posts/django/django6%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
@@ -69,6 +100,28 @@ from django.db import models import django.utils.timezone as timezone class Doc(
       <guid>https://ac-lm.github.io/posts/django/django5%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/</guid>
       <description>参考链接：Django Web接口开发 @全栈测试开发日记 
  1.在项目文件下urls.py添加接口根路径: #api path(&amp;#39;api/&amp;#39;,include(&amp;#39;django_web.urls&amp;#39;)), # url(r&amp;#39;^api/&amp;#39;,include((&amp;#39;django_web.urls&amp;#39;,&amp;#39;django_web&amp;#39;),namespace=&amp;#39;django_web&amp;#39;)), 2.在app应用django_web下新建urls.py添加具体接口： from django.urls import path from django_web.views import views_api #在django_web下创建urls.py，配置具体接口的二级目录 urlpatterns = [ # guest system interface: # ex : /api/add_event/ path(&amp;#39;add_event/&amp;#39;,views_api.add_event,name=&amp;#39;add_event&amp;#39;), # ex : /api/get_event_list/ path(&amp;#39;get_event_list/&amp;#39;,views_api.get_event_list,name=&amp;#39;get_event_list&amp;#39;), # ex: /api/add_guest/ path(&amp;#39;add_guest/&amp;#39;,views_api.add_guest,name=&amp;#39;add_guest&amp;#39;), # ex: /api/get_guest_list/ path(&amp;#39;get_guest_list/&amp;#39;,views_api.get_guest_list,name=&amp;#39;get_guest_list&amp;#39;), # ex: /api/user_sign/ path(&amp;#39;user_sign/&amp;#39;,views_api.user_sign,name=&amp;#39;user_sign&amp;#39;), ] 3.在创建接口视图函数view_api.py文件，实现具体接口： # -*- coding: utf-8 -*- from django_web.models import Event,Guest from django.http import JsonResponse from django.core.exceptions import ValidationError,ObjectDoesNotExist from django.</description>
+    </item>
+    
+    <item>
+      <title>Django(8)——外键查询</title>
+      <link>https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/</guid>
+      <description>参考原文：Django 外键查询 @尛刀石 
+ class Publish(models.Model): id = models.AutoField(primary_key=True, auto_created=True) pname = models.CharField(max_length=40) city = models.CharField(max_length=50) def __str__(self): return self.pname class Author(models.Model): id = models.AutoField(primary_key=True, auto_created=True) aname = models.CharField(max_length=10) def __str__(self): return self.aname class Book(models.Model): id = models.AutoField(primary_key=True, auto_created=True) bname = models.CharField(max_length=30) price = models.IntegerField() publish = models.ForeignKey(Publish, on_delete=models.CASCADE) author = models.ManyToManyField(Author) def __str__(self): return self.bname 1.一对多 a.通过类属性查询 # get方法的到的结果是一个对应类的对象 # 查询某本书的出版社名字 book = Book.objects.get(id=1) book.publish.pname # 查询某出版社下面有多少本书 # 此处的book是Book这张表的表名的小写（必须是小写）加上_set pub = Publish.</description>
+    </item>
+    
+    <item>
+      <title>Django(9)——CSRF中间件</title>
+      <link>https://ac-lm.github.io/posts/django/django9csrf%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django9csrf%E4%B8%AD%E9%97%B4%E4%BB%B6/</guid>
+      <description>1.CSRF中间件 CSRF中间件django.middleware.csrf.CsrfViewMiddleware默认在setting.py设置中激活。
+在使用 POST 表单的任何模板中，如果表单用于内部 URL，请在元素内使用csrf_token标签，例如&amp;lt;form method=&amp;quot;post&amp;quot;&amp;gt;{% csrf_token %}，对于针对外部 URL 的 POST 表单，不应这样做，因为这将导致 CSRF 令牌被泄露，从而导致漏洞。
+2.异步 对于任何 AJAX POST 请求，都需要将 CSRF 令牌作为 POST 数据传递进来，您可以获取这样的令牌。
+function getCookie(name) { let cookieValue = null; if (document.cookie &amp;amp;&amp;amp; document.cookie !== &amp;#39;&amp;#39;) { const cookies = document.cookie.split(&amp;#39;;&amp;#39;); for (let i = 0; i &amp;lt; cookies.length; i++) { const cookie = cookies[i].trim(); // Does this cookie string begin with the name we want?  if (cookie.substring(0, name.</description>
     </item>
     
   </channel>
