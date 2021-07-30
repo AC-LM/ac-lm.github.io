@@ -138,12 +138,13 @@ request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</sp
 </code></pre></div><p>需要注意的是，在扩展表后一定要在<code>settings.py</code>中告诉Django现在使用新定义的<code>UserInfo</code>表来做用户认证，<code>AUTH_USER_MODEL = &quot;app名.UserInfo&quot;</code>。</p>
 <p>PS：当自定义用户表与框架自动生成的用户表发生冲突时，即执行 <code>migrate</code> 命令同步数据库时出现错误，此时可以打开<code>settings.py</code>注释掉<code>INSTALL_APPS</code>中的<code>django.contrib.admin</code>，然后再次同步便可以解决该问题。为避免出现以上的问题，建议在创建数据库前先把自定义的用户表定义好。</p>
 
+            <p style="margin-top:1em;"></p>
         </div>
         <footer>
-            <p class="post-copyright-license" style="margin-bottom:1em">
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
                 <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                                                             rel="noopener" target="_blank"><i
-                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
             </p>
         </footer>
     

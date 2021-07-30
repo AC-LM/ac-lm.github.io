@@ -333,12 +333,13 @@ ADD CONSTRAINT uni_name UNIQUE (name);
 </code></pre><p>这种情况下，name列没有索引，但仍然具有唯一性保证。</p>
 <p>无论是否创建索引，对于用户和应用程序来说，使用关系数据库不会有任何区别。这里的意思是说，当我们在数据库中查询时，如果有相应的索引可用，数据库系统就会自动使用索引来提高查询效率，如果没有索引，查询也能正常执行，只是速度会变慢。因此，索引可以在使用数据库的过程中逐步优化。</p>
 
+            <p style="margin-top:1em;"></p>
         </div>
         <footer>
-            <p class="post-copyright-license" style="margin-bottom:1em">
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
                 <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                                                             rel="noopener" target="_blank"><i
-                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
             </p>
         </footer>
     

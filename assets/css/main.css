@@ -2356,7 +2356,7 @@ input, select, textarea {
 
 	ol {
 		list-style: decimal;
-		margin: 0 0 2em 0;
+		margin: 0 0 0.5em 0;
 		padding-left: 1.25em;
 	}
 
@@ -3344,15 +3344,15 @@ input, select, textarea {
 		@media screen and (max-width: 1680px) {
 
 			#wrapper {
-				padding: 3em 6em;
+				padding: 3em 10em;
 			}
 
 		}
 
-		@media screen and (max-width: 1280px) {
+		@media screen and (max-width: 1300px) {
 
 			#wrapper {
-				display: block;
+				padding: 3.5em;
 			}
 
 		}

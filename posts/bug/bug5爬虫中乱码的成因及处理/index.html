@@ -48,9 +48,9 @@
             <h2 id="为什么会出现乱码">为什么会出现乱码</h2>
 <p>在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Python 的 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(res<span style="color:#f92672">.</span>encoding) 
-<span style="color:#75715e"># 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式</span>
+<span style="color:#75715e"># 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式</span>
 <span style="color:#66d9ef">print</span>(res<span style="color:#f92672">.</span>apparent_encoding) 
-<span style="color:#75715e"># 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。</span>
+<span style="color:#75715e"># 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。</span>
 </code></pre></div><p>输出结果为：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ISO<span style="color:#f92672">-</span><span style="color:#ae81ff">8859</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
 GB2312
@@ -92,14 +92,15 @@ html <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span
 <span style="color:#66d9ef">print</span>(html)
 </code></pre></div></li>
 </ol>
-<p>基本思路三步走：确定源网页的编码GBK、程序通过编码ISO-8859-1对源网页数据还原、统一转换字符的编码UTF-8</p>
+<p>基本思路三步走：确定源网页的编码GBK、对文本通过 ISO-8859-1 编码对源网页数据还原、统一转换解码UTF-8</p>
 
+            <p style="margin-top:1em;"></p>
         </div>
         <footer>
-            <p class="post-copyright-license" style="margin-bottom:1em">
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
                 <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
                                                             rel="noopener" target="_blank"><i
-                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
             </p>
         </footer>
     

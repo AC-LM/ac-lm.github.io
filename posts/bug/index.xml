@@ -182,7 +182,7 @@ name：MaxUserPort，value：65534（十进制）； name：TcpTimedWaitDelay，
       
       <guid>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</guid>
       <description>为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Python 的 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型
-print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
+print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
 ISO-8859-1 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
 乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为GBK编码的字节流，在我们抓取后，程序直接使用UTF-8进行编码并输出到文件中，此时必然会引起乱码。
 现如今主流的编码有：Unicode、ISO-8859-1、GBK2312、GBK、UTF-8 等几种。
