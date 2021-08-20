@@ -16,7 +16,7 @@ ssh-keygen -t rsa -b 2048 -C "email@example.com"
 有此结果，在对应目录【/home/user/.ssh/id_rsa】下找到生成的公钥文件 id_rsa.pub，记事本打开，将里面的内容复制到剪贴板
 
 ```bash
-Generating public/private rsa key pair.
+Generating docs/private rsa key pair.
 Enter file in which to save the key (/home/user/.ssh/id_rsa):
 ```
 

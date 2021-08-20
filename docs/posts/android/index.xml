@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Android(4)——华为进入生产模式使用无线调试</title>
+      <link>https://ac-lm.github.io/posts/android/android4%E5%8D%8E%E4%B8%BA%E8%BF%9B%E5%85%A5%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/android/android4%E5%8D%8E%E4%B8%BA%E8%BF%9B%E5%85%A5%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</guid>
+      <description>1.生产模式的启用  拨号界面中输入*#*#2846579#*#*，进入工程菜单，将调试模式变更为生产模式 计算器界面中输入()()2846579()()，进入工程菜单，将调试模式变更为生产模式  2.启动无线调试功能  使用 USB 连接手机，将无线端口开启  adb tcpip 5555使用同一网络环境的 Wifi 连接  adb connect 手机IP:5555成功后断开USB，此时便可以在 adb 中查看到连接手机  adb devices</description>
+    </item>
+    
+    <item>
       <title>Android(3)——APK Analyzer</title>
       <link>https://ac-lm.github.io/posts/android/android3apk-analyzer/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
@@ -38,8 +47,8 @@
       
       <guid>https://ac-lm.github.io/posts/android/android2adb%E8%B0%83%E8%AF%95/</guid>
       <description>参考文档：adb @Android Studio用户指南 
- 1.adb的基础操作 adb 文件夹在SDK目录下 SDK\Android\platform-tools 内
-adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事件 adb shell #shell --》HWTRT-Q:/ $ getevent /dev/input/event4 #按键事件 --》HWTRT-Q:/ $ exit adb shell getevent /dev/input/event4 #按键事件 adb shell dumpsys #获取当前运行的服务 adb shell dumpsys battery #获取设备电池信息 adb shell dumpsys cpuinfo adb shell dumpsys meminfo # 要获取具体应用的内存信息，可加上包名 adb shell dumpsys meminfo PACKAGE_NAME # 获取某个包的信息： adb shell dumpsys package PACKAGE_NAME 2.</description>
+ 1.adb的基础操作 以华为手机为例，adb 文件夹在SDK目录下 SDK\Android\platform-tools 内
+adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事件 adb shell #shell --&amp;gt; HWTRT-Q:/ $ getevent /dev/input/event4 #按键事件 --&amp;gt; HWTRT-Q:/ $ exit adb shell getevent /dev/input/event4 #按键事件 adb shell dumpsys #获取当前运行的服务 adb shell dumpsys battery #获取设备电池信息 adb shell dumpsys cpuinfo adb shell dumpsys meminfo # 要获取具体应用的内存信息，可加上包名 adb shell dumpsys meminfo PACKAGE_NAME # 获取某个包的信息： adb shell dumpsys package PACKAGE_NAME 2.</description>
     </item>
     
   </channel>

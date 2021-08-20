@@ -46,13 +46,15 @@
         </header>
         <div class="content">
             <h2 id="为什么会出现乱码">为什么会出现乱码</h2>
-<p>在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Python 的 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型</p>
+<p>在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(res<span style="color:#f92672">.</span>encoding) 
 <span style="color:#75715e"># 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式</span>
 <span style="color:#66d9ef">print</span>(res<span style="color:#f92672">.</span>apparent_encoding) 
 <span style="color:#75715e"># 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。</span>
 </code></pre></div><p>输出结果为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ISO<span style="color:#f92672">-</span><span style="color:#ae81ff">8859</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Python使用的编解码格式</span>
+ISO<span style="color:#f92672">-</span><span style="color:#ae81ff">8859</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+<span style="color:#75715e"># 实际应该使用的编解码格式</span>
 GB2312
 </code></pre></div><p>可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致</p>
 <h2 id="乱码怎么出现的">乱码怎么出现的</h2>

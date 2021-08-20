@@ -35,9 +35,9 @@ docker exec id commend
 ## 2.防火墙操作
 
 ```bash
-firewall-cmd --zone=public --add-port=8080/tcp --permanent #开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）
-firewall-cmd --zone=public --remove-port=8080/tcp --permanent #关闭8080/tcp端口
-firewall-cmd --zone=public --query-port=80/tcp #查看端口状态
+firewall-cmd --zone=docs --add-port=8080/tcp --permanent #开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）
+firewall-cmd --zone=docs --remove-port=8080/tcp --permanent #关闭8080/tcp端口
+firewall-cmd --zone=docs --query-port=80/tcp #查看端口状态
 firewall-cmd --reload #重启防火墙
 firewall-cmd --completely-reload
 firewall-cmd --list-all #列出防火墙所以规则
@@ -57,9 +57,9 @@ yum install firewalld #安装
 firewall-cmd --panic-on #拒绝所有包：
 firewall-cmd --panic-off #取消拒绝状态： 
 firewall-cmd --query-panic #查看是否拒绝： 
-firewall-cmd --zone=public --add-port=40000-45000/tcp --permanent #批量开放端口，打开从40000到45000之间的所有端口
-firewall-cmd --zone=public --list-ports #查看系统所有开放的端口
-firewall-cmd --zone=public --remove-port=40000-45000/tcp --permanent #批量关闭端口，关闭从40000到45000之间的所有端口
+firewall-cmd --zone=docs --add-port=40000-45000/tcp --permanent #批量开放端口，打开从40000到45000之间的所有端口
+firewall-cmd --zone=docs --list-ports #查看系统所有开放的端口
+firewall-cmd --zone=docs --remove-port=40000-45000/tcp --permanent #批量关闭端口，关闭从40000到45000之间的所有端口
 firewall-cmd --zone=work --add-service=smtp  #添加服务
 firewall-cmd --zone=work --query-service=smtp  #查看服务
 firewall-cmd --zone=work --remove-service=smtp  #删除服务

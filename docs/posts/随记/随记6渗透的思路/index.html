@@ -75,23 +75,23 @@
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/20.png" alt=""></p>
 <p>然后用 <strong>nmap</strong> 扫了一下端口和运行的服务，发现开放的端口还是蛮多的</p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/21.png" alt=""></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">PORT</span> <span style="color:#a6e22e">STATE</span> <span style="color:#a6e22e">SERVICE</span>
-<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">tcpmux</span>
-<span style="color:#ae81ff">3</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">compressnet</span>
-<span style="color:#ae81ff">4</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">6</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">7</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#66d9ef">echo</span>
-<span style="color:#ae81ff">9</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">discard</span>
-<span style="color:#f92672">...</span><span style="color:#a6e22e">省略</span><span style="color:#f92672">...</span>
-<span style="color:#ae81ff">61900</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">62078</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">iphone</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sync</span>
-<span style="color:#ae81ff">63331</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">64623</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">64680</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">65000</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">65129</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-<span style="color:#ae81ff">65389</span><span style="color:#f92672">/</span><span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">open</span> <span style="color:#a6e22e">unknown</span>
-</code></pre></div><p>然后用 <strong>w3af</strong> 来检测网站的一些弱点，进而获取一些重要信息。扫出来一个敏感链接 103.27.176.227/OGeU3BGx.php</p>
+<pre><code>PORT STATE SERVICE
+1/tcp open tcpmux
+3/tcp open compressnet
+4/tcp open unknown
+6/tcp open unknown
+7/tcp open echo
+9/tcp open discard
+...省略...
+61900/tcp open unknown
+62078/tcp open iphone-sync
+63331/tcp open unknown
+64623/tcp open unknown
+64680/tcp open unknown
+65000/tcp open unknown
+65129/tcp open unknown
+65389/tcp open unknown
+</code></pre><p>然后用 <strong>w3af</strong> 来检测网站的一些弱点，进而获取一些重要信息。扫出来一个敏感链接 103.27.176.227/OGeU3BGx.php</p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/22.png" alt=""></p>
 <p>用浏览器访问这个链接，显示的是一个错误页面，但是下面出现了一个关键信息：<strong>Powered by wdcp</strong></p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/23.png" alt=""></p>

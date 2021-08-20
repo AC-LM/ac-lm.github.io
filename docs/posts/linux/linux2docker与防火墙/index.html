@@ -56,13 +56,19 @@ systemctl enable docker  <span style="color:#75715e">#自启动docker</span>
 docker version <span style="color:#75715e">#docker版本</span>
 docker ps -a <span style="color:#75715e">#查看docker安装的服务</span>
 docker start services <span style="color:#75715e">#docker运行服务</span>
-docker rm -f name <span style="color:#75715e">#删除</span>
+docker rm -f name <span style="color:#75715e">#强制删除</span>
 docker exec service_ip ping <span style="color:#75715e">#联网查看</span>
 docker exec -it id /bin/bash <span style="color:#75715e">#进入容器 </span>
+docker rename gallant_swartz python3.9 <span style="color:#75715e">#重命名</span>
+docker images
+docker rmi image
+docker export a9ad7f0cb1ad &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/itestserver.tar
 exit <span style="color:#75715e">#退出</span>
 docker stop <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 停用全部运行中的容器</span>
 docker rm <span style="color:#66d9ef">$(</span>docker ps -aq<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 删除全部容器 </span>
 docker cp testtomcat：/usr/local/tomcat/webapps/test/js/test.js /opt
+docker run --name python3.9 --privileged<span style="color:#f92672">=</span>true -v /root/pythonScript:/pythonScript -it python /bin/bash
+docker exec id commend
 </code></pre></div><h2 id="2防火墙操作">2.防火墙操作</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">firewall-cmd --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e">#开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）</span>
 firewall-cmd --zone<span style="color:#f92672">=</span>public --remove-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e">#关闭8080/tcp端口</span>

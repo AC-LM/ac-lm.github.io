@@ -47,10 +47,11 @@
         <div class="content">
             <h2 id="1-作用">1 作用</h2>
 <ul>
-<li>标识该目录是一个python的模块包（module package）。</li>
-<li>初始化导入操作。当使用 import 导入该目录时，会执行 <code>__init__.py</code> 里面的代码。</li>
+<li>标识该目录是一个 python 的模块包（module package）。</li>
+<li>初始化导入操作，当使用 import 导入该目录时，会执行 <code>__init__.py</code> 里面的代码。</li>
 </ul>
-<pre><code>.
+<p>在<code>__init__</code>.py 里面加一个 <code>print(&quot;You have imported mypackage&quot;)</code>，如果执行了该文件就会输出，很显然，<code>__init__</code>.py 会在包被导入时执行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 文件构造
 └── mypackage
     ├── __init__.py
     ├── subpackage_1
@@ -63,35 +64,31 @@
         ├── test31.py
         └── test32.py
 
-__init__.py 里面加一个print，如果执行了该文件就会输出
-print(&quot;You have imported mypackage&quot;)
-
 &gt;&gt;&gt; import mypackage
 You have imported mypackage
-很显然，__init__.py 在包被导入时会被执行。
-</code></pre><h2 id="2-from--import-">2 from &hellip;.. import *</h2>
-<p>这里使用到了<code>__all__</code>变量，<code>__all__</code>关联了一个模块列表，当执行 from &hellip;.. import * 时，就会导入列表中的模块。我们将 init.py 修改为 。</p>
-<pre><code>__all__ = ['subpackage_1', 'subpackage_2']
+</code></pre></div><h2 id="2-from--import-">2 from &hellip;.. import *</h2>
+<p>这里使用到了<code>__all__</code>变量，<code>__all__</code>关联了一个模块列表，当执行 from &hellip;.. import * 时，就会导入列表中的模块。可以将 <code>__init__.py</code> 增加一个<code>__all__</code>变量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">__all__ = [&#39;subpackage_1&#39;, &#39;subpackage_2&#39;]
 
 &gt;&gt;&gt; from mypackage import *
-&gt;&gt;&gt; dir()
-['__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'subpackage_1', 'subpackage_2']
+&gt;&gt;&gt; <span style="color:#66d9ef">dir</span>()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;subpackage_1&#39;, &#39;subpackage_2&#39;]
 &gt;&gt;&gt; 
-&gt;&gt;&gt; dir(subpackage_1)
-['__doc__', '__loader__', '__name__', '__package__', '__path__', '__spec__']
-</code></pre><p><strong>注意此时，子目录的中的模块没有导入！！！</strong></p>
-<p>上述导入操作会继续查找 subpackage_1 和 subpackage_2 中的 <code>__init__</code>.py 并执行，但不会执行 import *，默认只导入第一个。</p>
-<pre><code>&gt;&gt;&gt; from mypackage import *
-&gt;&gt;&gt; dir()
-['__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'subpackage_1', 'subpackage_2']
+&gt;&gt;&gt; <span style="color:#66d9ef">dir</span>(subpackage_1)
+[&#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;]
+</code></pre></div><p>显然导入了<code>__all__</code>变量的内容，但需要注意的是，此时子目录的中的模块没有导入，即不会导入<code>test*</code>等文件。</p>
+<p>上述导入操作会继续查找 subpackage_1 和 subpackage_2 中的 <code>__init__.py</code> 并执行，但不会执行 import *，默认只导入第一个。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt;&gt;&gt; from mypackage import *
+&gt;&gt;&gt; <span style="color:#66d9ef">dir</span>()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;subpackage_1&#39;, &#39;subpackage_2&#39;]
 &gt;&gt;&gt; 
-&gt;&gt;&gt; dir(subpackage_1)
-['__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'test11']
-</code></pre><p>如果想要导入子包的所有模块，则需要更精确指定。</p>
-<pre><code>&gt;&gt;&gt; from mypackage.subpackage_1 import *
-&gt;&gt;&gt; dir()
-['__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'test11', 'test12']
-</code></pre>
+&gt;&gt;&gt; <span style="color:#66d9ef">dir</span>(subpackage_1)
+[&#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;, &#39;test11&#39;]
+</code></pre></div><p>如果想要导入子包的所有模块，则需要更精确指定。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt;&gt;&gt; from mypackage.subpackage_1 import *
+&gt;&gt;&gt; <span style="color:#66d9ef">dir</span>()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;test11&#39;, &#39;test12&#39;]
+</code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>
         <footer>
@@ -105,10 +102,10 @@ You have imported mypackage
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/python/python30import/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/python/python28hashlib%E6%A8%A1%E5%9D%97/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/python/python30import/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

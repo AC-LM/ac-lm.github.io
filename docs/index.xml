@@ -6,7 +6,78 @@
     <description>Recent content on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随记(31)——M3U8文件</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8%E6%96%87%E4%BB%B6/</guid>
+      <description>参考原文：m3u8到底是什么格式？ @星选酷 
+ 1.视频播放的过程 要了解 m3u8 文件格式，首先要了解现在视频播放的过程。现在的视频网站采用的是流媒体传输协议，就是将一段视频分割成无数个小段，每一个小段就是一个 ts 格式的视频文件，然后传输到视频网站上一段一段的播放。这样做的好处是能使用户观看更加流畅，因为在观看过程中网站会根据网络状况自动切换视频的清晰度，下载不同分辨率的 ts 视频文件，在网络状况不稳定的情况下，对保障流畅播放非常有帮助。
+ 服务器采集编码传输视频到切片器 切片器对视频创建索引文件，并且切割成n个ts文件 这2个文件传输到http服务器上 网站/客户端根据索引文件查找http服务器上的ts文件，连续播放这n个ts文件，就可以了。  这个索引文件就是 M3U8 ，索引文件里面存储着 ts 文件的网络 url 链接，网站需要拿到索引文件，按照 url 链接下载在 http 服务器中的 ts文件，类似于爬虫，所有 ts 文件顺序播放，就完成了整个视频的播放。
+扩展阅读 M3U（Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator）是音频文件的列表文件，是纯文本文件，记录着视频资源的网络地址。
+M3U8 就是 M3U 的 UTF-8 格式文件</description>
+    </item>
+    
+    <item>
+      <title>Android(4)——华为进入生产模式使用无线调试</title>
+      <link>https://ac-lm.github.io/posts/android/android4%E5%8D%8E%E4%B8%BA%E8%BF%9B%E5%85%A5%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/android/android4%E5%8D%8E%E4%B8%BA%E8%BF%9B%E5%85%A5%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</guid>
+      <description>1.生产模式的启用  拨号界面中输入*#*#2846579#*#*，进入工程菜单，将调试模式变更为生产模式 计算器界面中输入()()2846579()()，进入工程菜单，将调试模式变更为生产模式  2.启动无线调试功能  使用 USB 连接手机，将无线端口开启  adb tcpip 5555使用同一网络环境的 Wifi 连接  adb connect 手机IP:5555成功后断开USB，此时便可以在 adb 中查看到连接手机  adb devices</description>
+    </item>
+    
+    <item>
+      <title>随记(29)——Xml可扩展标记语言</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</guid>
+      <description>XML 是纯文本格式，在许多方面类似于 HTML。XML 由 XML 元素组成，每个 XML 元素包括一个开始标记 &amp;lt;&amp;gt; ，一个结束标记 &amp;lt;/&amp;gt; 以及两个标记之间的内容。标记是对文档存储格式和逻辑结构的描述，可以包括注释、引用、字符数据段、起始标记、结束标记、空元素、文档类型声明 ( DTD ) 和序言。
+编写规则  必须有声明语句，作为 XML 文档的第一句，其格式如下：  &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt; 区分大小写  在XML文档中，大小写是有区别的。A 和 a 是不同的标记。因此注意在写元素时，前后标记的大小写要保持一致。
+XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一个根元素，紧接着声明后面建立，其他元素都是这个根元素的子元素，根元素完全包括文档中其他所有的元素。根元素的起始标记要放在所有其他元素的起始标记之前，根元素的结束标记要放在所有其他元素的结束标记之后。
+属性值使用引号  在HTML代码里面，属性值可以加引号，也可以不加。但是XML规定，所有属性值必须加引号，否则将被视为错误。
+所有的标记必须有相应的结束标记  在HTML中，标记可以不成对出现，而在XML中，所有标记必须成对出现，有一个开始标记，就必须有一个结束标记，否则将被视为错误。
+所有的空标记也必须被关闭  在XML中，规定所有的标记必须有结束标记。
+示例 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt; &amp;lt;manifest xmlns:android=&amp;#34;http://schemas.android.com/apk/res/android&amp;#34; package=&amp;#34;osg.AndroidExample&amp;#34; android:installLocation=&amp;#34;preferExternal&amp;#34; android:versionCode=&amp;#34;1&amp;#34; android:versionName=&amp;#34;1.0&amp;#34;&amp;gt; &amp;lt;uses-sdk android:targetSdkVersion=&amp;#34;8&amp;#34; android:minSdkVersion=&amp;#34;8&amp;#34;&amp;gt;&amp;lt;/uses-sdk&amp;gt; &amp;lt;uses-feature android:glEsVersion=&amp;#34;0x00020000&amp;#34;/&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.INTERNET&amp;#34;/&amp;gt; &amp;lt;application android:label=&amp;#34;@string/app_name&amp;#34; android:icon=&amp;#34;@drawable/osg&amp;#34;&amp;gt; &amp;lt;activity android:name=&amp;#34;.osgViewer&amp;#34; android:label=&amp;#34;@string/app_name&amp;#34; android:screenOrientation=&amp;#34;landscape&amp;#34;&amp;gt; &amp;lt;intent-filter&amp;gt; &amp;lt;action android:name=&amp;#34;android.</description>
+    </item>
+    
+    <item>
+      <title>随记(30)——多进程与多线程与协程</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B030%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B030%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</guid>
+      <description> 参考原文：多进程，多线程，协程的理解_@qq_43279936 
+ 1.什么是进程？什么是线程？   进程是表示资源分配的基本单位，是调度运行的基本单位。当用户运行自己的程序时，系统就创建一个进程，并为它分配包括内存空间、磁盘空间、I/O设备等资源。然后，把该进程放入进程的就绪队列中等待被系统执行。当该进程被系统的进程调度程序选中后，系统会为它分配CPU以及其它资源，运行该进程。
+  线程是进程中执行运算的最小单位，如果把进程理解为在逻辑上操作系统所完成的任务，那么线程表示完成该任务的许多可能的子任务之一。线程与进程的包含关系如下图所示。
+  2.多进程和多线程的区别？ a.数据共享、同步  多进程：不共享数据，数据交换需要用IPC(进程间通信)，数据因此同步简单 多线程：共享进程数据，数据处理交换方便，数据因此同步复杂  b.内存、CPU  多进程：占用内存多，切换复杂，CPU利用率低 多线程：占用内存少，切换简单，CPU利用率高  c.创建销毁、切换  多进程：创建销毁、切换复杂，速度慢 多线程：创建销毁、切换简单，速度快  d.编程、调试  多进程：编程简单，调试简单 多线程：编程复杂，调试复杂  e.可靠性  多进程：进程间互不影响，一个进程挂了，程序也不会整个挂掉 多线程：线程影响着进程，一个线程挂掉，将导致整个进程挂掉  3.进程间或线程间的通信方式  进程：管道， 信号量， 信号， 消息队列， 共享内存， 套接字 线程：锁机制（互斥锁、条件变量、读写锁），信号量机制(Semaphore)，信号机制(Signal)  4.什么是协程 协程(Coroutine)，又称微线程，纤程，是单线程语言中用来模拟多线程的一种方式。协程的作用，是在执行部分耗时长的函数时，可以先中断执行，去处理其他耗时短的函数，等到空闲时再继续执行该耗时长的函数，最终使得这一整个过程看上去像多线程。
+5.协程优势  执行效率极高，因为子程序切换(函数)不是线程切换，仅仅是函数的切换，没有切换线程的开销。所以与多线程相比，线程的数量越多，协程性能的优势越明显。 不需要多线程的锁机制，因为是单线程，所以不存在同时写变量冲突，在控制共享资源时也不需要加锁，因此执行效率高很多。  </description>
+    </item>
+    
+    <item>
+      <title>Python(33)——selenium expected_conditions 的使用</title>
+      <link>https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/</guid>
+      <description>参考原文：selenium expected conditions 使用实例 @乙醇 
+ 1.support.expected_conditions Expected Conditions 是 selenium 提供的断言工具，通常使用场景有2种
+ 直接在断言中使用 与 WebDriverWait 配合使用，动态等待页面上元素出现或者消失  2.方法    函数名 描述     title_contains 判断当前页面的 title 是否包含预期字符串   title_is 判断当前页面的 title 是否精确等于预期   presence_of_element_located 判断某个元素是否被加到了 DOM 树里，并不代表该元素一定可见   visibility_of_element_located 判断某个元素是否可见，可见代表元素非隐藏，并且元素的宽和高都不等于 0   presence_of_all_elements_located 判断是否至少有 1 个元素存在于 DOM 树中   text_to_be_present_in_element 判断某个元素中的 text 是否包含了预期的字符串   text_to_be_present_in_element_value 判断某个元素中的 value 属性是否包含了预期的字符串   frame_to_be_available_and_switch_to_it 判断该 frame 是否可以切换进去，如果可以则返回 True 并切换进去，否则返回 False   invisibility_of_element_located 判断某个元素中是否不存在于 DOM 树或不可见   element_to_be_clickable 判断某个元素中是否可见并且是 enable 可操作的   staleness_of 判断某个元素是否从 DOM 树中移除   element_to_be_selected 判断某个元素是否被选中了，一般用在下拉列表   element_located_selection_state_to_be 判断某个元素的选中状态是否符合预期   alert_is_present 判断页面上是否存在 alert    3.</description>
+    </item>
+    
+    <item>
+      <title>Python(32)——selenium下拉框(select)的处理</title>
+      <link>https://ac-lm.github.io/posts/python/python32selenium%E4%B8%8B%E6%8B%89%E6%A1%86select%E5%A4%84%E7%90%86/</link>
+      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python32selenium%E4%B8%8B%E6%8B%89%E6%A1%86select%E5%A4%84%E7%90%86/</guid>
+      <description>1.select 在HTML中 &amp;lt;select&amp;gt;标签可用于创建单选或多选菜单。
+&amp;lt;select&amp;gt; &amp;lt;option value=&amp;#34;a&amp;#34;&amp;gt;AA&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;b&amp;#34;&amp;gt;BB&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;c&amp;#34;&amp;gt;CC&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;d&amp;#34;&amp;gt;DD&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;e&amp;#34;&amp;gt;EE&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 2.操作 from selenium.webdriver.support.select import Select    方法 说明     select_by_index() 通过索引定位   select_by_value() 通过value值定位   select_by_visible_text() 通过文本值定位   deselect_all() 取消所有选项   deselect_by_index() 取消对应index选项   deselect_by_value() 取消对应value选项   deselect_by_visible_text() 取消对应文本选项   first_selected_option() 返回第一个选项   all_selected_options() 返回所有的选项   options() 返回所以的选择项   all_selected_options() 返回所以已选中的选择项   first_selected_option() 返回选中的第一个选择项    3.</description>
+    </item>
+    
     <item>
       <title>Django(10)——用户认证模块auth</title>
       <link>https://ac-lm.github.io/posts/django/django10%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97auth/</link>
@@ -158,7 +229,7 @@ indirect：是否作为函数执行
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python31%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
-      <description>1.二进制字符 在计算机中所有字符都是以二进制存在的，根据不同的编码格式，将二进制代码转换为字符显示。
+      <description>1.二进制字符 在计算机中所有字符都是以二进制代码储存的，系统根据不同的编码格式，将二进制代码转换为字符显示。
 print(&amp;#34;\u0394&amp;#34;) print(&amp;#34;\U00000394&amp;#34;) print(&amp;#34;\N{greek capital letter delta}&amp;#34;) 2.乱码时的处理 当编码格式与解码格式出现冲突时就会出现乱码，而此时往往需要将报错的部分进行替换处理，使得程序整体不出错。
 # 不处理 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;strict&amp;#34;)) # 替换为U+FFFD print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;replace&amp;#34;)) # 加上反斜杠 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) # 直接忽略 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;ignore&amp;#34;)) 3.字符与二进制的转换 二进制转换字符 u=chr(40960)+&amp;#34;abce&amp;#34;+chr(1972) print(u) u1=chr(123) print(u1) 字符转换二进制 u=&amp;#34;中国abc&amp;#34; print(u.encode(&amp;#34;utf-8&amp;#34;)) # b&amp;#39;\xe4\xb8\xad\xe5\x9b\xbd&amp;#39; print(u.encode(&amp;#34;ascii&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;ignore&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;replace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;xmlcharrefreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;namereplace&amp;#34;)) </description>
     </item>
@@ -182,19 +253,6 @@ $(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用locati
       <description>1.完全匹配 [\s\S]*：完全通配，\s 是指空白，包括空格，换行，Tab等所有的空白，而 \S 刚好相反，表示字符，这样一正一反下来，就表示所有。
 []：表示在它里面包含的单个字符不限顺序的出现。
 2.除换行\n外匹配 (.*)：通配符.是不会匹配换行的，当出现换行时匹配便会终止。</description>
-    </item>
-    
-    <item>
-      <title>Python(1)——Selenium库</title>
-      <link>https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/</link>
-      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/</guid>
-      <description>1.什么Selenium Selenium是一个用于测试网站的自动化测试工具，支持各种浏览器，如Chrome、Firefox、Edge等。
-2.安装 pip install Selenium3.使用前提 Selenium的使用是基于浏览器驱动webdriver来启动与操作网页的，因此想要正常的进行Selenium自动化测试就必须获取对应浏览器的webdriver驱动文件。同时在环境变量中配置Path的属性，令其指向放置webdriver驱动文件的文件夹，或在程序中指定webdriver驱动文件的位置
-4.Selenium的定位方法 |元素 | 定位一个元素 | 含义 |-------------------| --------------------------------- | -------------------|id | find_element_by_id | 通过元素id定位 |name | find_element_by_name | 通过元素name定位 |xpath | find_element_by_xpath | 通过xpath表达式定位 |link_texr | find_element_by_link_text | 通过完整超链接定位 |partial_link_text | find_element_by_partial_link_text | 通过部分链接定位 |tag_name | find_element_by_tag_name | 通过标签定位 |class_name | find_element_by_class_name | 通过类名进行定位 |css_selector | find_elements_by_css_selector | 通过css选择器进行定位 对象的定位是自动化测试的核心，要想操作一个对象，首先应该识别这个对象。一个对象就像一个人一样，他会有各种的特征（属性），我们可以通过这个属性找到这对象。以百度搜索的输入框为例，有以下属性（F12查看）
-input id=&amp;quot;kw&amp;quot; class=&amp;quot;s_ipt&amp;quot; name=&amp;quot;wd&amp;quot; value=&amp;quot;&amp;quot; maxlength=&amp;quot;255&amp;quot; autocomplete=&amp;quot;off&amp;quot;我们可以这样来定位属性（这里请注意CSS和xpath，本文中不做深入探讨，但是最常用的定位方式）
-通过id方式定位：browser.find_element_by_id(&amp;quot;kw&amp;quot;)通过name方式定位：browser.find_element_by_name(&amp;quot;wd&amp;quot;)通过tag name方式定位：browser.</description>
     </item>
     
     <item>
@@ -329,6 +387,20 @@ flutter pub get 2.获取文件路径   getTemporaryDirectory
     </item>
     
     <item>
+      <title>Python(30)——import</title>
+      <link>https://ac-lm.github.io/posts/python/python30import/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python30import/</guid>
+      <description>参考：Python中import的用法 @门书生  &amp;amp; 聊聊Python Import System？@没有50CM手臂 
+ A.基本概念 1. 什么可以被 import? 因为 Python 中一切都是对象，都属于 object，所以任何东西都可以被 import，在这些不同的对象中，我们经常使用到的结构是模块Module 和包 Package。它们在 Python 的底层都是以 PyModuleObject 的结构体实例存在的，类型为 PyModule_Type，而在 Python 中则表现为一个对象 &amp;lt;class &#39;module&#39;&amp;gt; 。
+1.1 模块（Module） Python 中，不管是对常见的.py文件，或是编译优化的.pyc，.pyo文件、扩展类型的.pyd，.pyw文件来说， 它们是属于 Python 代码载体的最小单元，这样单独存在的文件我们都称之为模块。
+1.2 包（Package） 上述这样的多个模块组合在一起，我们就称之为包。通常来说，创建包的步骤都是这样的：首先新建一个目录，然后新建__init__.py，最后再编写模块。这种包被称为 Regular packages。
+2. import 的方式 ？ 绝对导入与相对导入 2.1 绝对导入 绝对路径要求我们必须从最顶层的文件夹开始，为每个包或每个模块提供出完整详细的导入路径
+from package1 import mudule1 from package1.module2 import Fx from package2 import Cx from package2.subpackage1.module5 import Fy 2.2 相对导入 相对导入则要求我们给出相对与当前位置，想导入资源所在的位置。另外，相对导入又分为隐式相对导入和显式相对导入两种，比如我们想在package2/module3.py中引用module4模块，我们可以这么写</description>
+    </item>
+    
+    <item>
       <title>Django(1)——Models</title>
       <link>https://ac-lm.github.io/posts/django/django1models/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
@@ -389,24 +461,9 @@ from django.db import models import django.utils.timezone as timezone class Doc(
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python29__init__%E6%96%87%E4%BB%B6/</guid>
-      <description>1 作用  标识该目录是一个python的模块包（module package）。 初始化导入操作。当使用 import 导入该目录时，会执行 __init__.py 里面的代码。  .└── mypackage├── __init__.py├── subpackage_1│ ├── test11.py│ └── test12.py├── subpackage_2│ ├── test21.py│ └── test22.py└── subpackage_3├── test31.py└── test32.py__init__.py 里面加一个print，如果执行了该文件就会输出print(&amp;quot;You have imported mypackage&amp;quot;)&amp;gt;&amp;gt;&amp;gt; import mypackageYou have imported mypackage很显然，__init__.py 在包被导入时会被执行。2 from &amp;hellip;.. import * 这里使用到了__all__变量，__all__关联了一个模块列表，当执行 from &amp;hellip;.. import * 时，就会导入列表中的模块。我们将 init.py 修改为 。
-__all__ = [&#39;subpackage_1&#39;, &#39;subpackage_2&#39;]&amp;gt;&amp;gt;&amp;gt; from mypackage import *&amp;gt;&amp;gt;&amp;gt; dir()[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;subpackage_1&#39;, &#39;subpackage_2&#39;]&amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; dir(subpackage_1)[&#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;]注意此时，子目录的中的模块没有导入！！！</description>
-    </item>
-    
-    <item>
-      <title>Python(30)——import</title>
-      <link>https://ac-lm.github.io/posts/python/python30import/</link>
-      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python30import/</guid>
-      <description>参考：Python中import的用法 @门书生  &amp;amp; 聊聊Python Import System？@没有50CM手臂 
- A.基本概念 1. 什么可以被import？ 这个问题不难回答，因为Python中一切都是对象，都是属于object，所以任何东西都是可以被import的，在这些不同的对象中，我们经常使用到的是模块（Module） 和 包（Package） 这两个概念。虽然表面上它们是两个概念，但是在Python的底层都是一个PyModuleObject结构体实例，类型为PyModule_Type，而在Python中则都是表现为一个&amp;lt;class &amp;lsquo;module&amp;rsquo;&amp;gt;对象。
-1.1 模块（Module） Python中，不管是对常见的.py文件，或是编译优化的.pyc, .pyo文件、扩展类型的.pyd，.pyw文件来说， 它们是属于Python代码载体的最小单元，这样单独存在的文件我们都称之为“模块”。
-1.2 包（Package） 上述这样的多个模块组合在一起，我们就称之为“包”。通常来说，创建包的步骤都是这样的：首先新建目录A、然后新建__init__.py，最后再编写模块。这种包被称为：“Regular packages”，事实上，在PEP 420 &amp;ndash; Implicit Namespace Packages中提到，从Python3.3版本开始引入了“Namespace Packages”这个新的包类型。碍于篇幅有限，在这便不展开介绍。
-2. import的方式？&amp;ndash; 绝对导入/相对导入 2.1 绝对导入 绝对路径要求我们必须从最顶层的文件夹开始，为每个包或每个模块提供出完整详细的导入路径
-from package1 import mudule1from package1.module2 import Fxfrom package2 import Cxfrom package2.subpackage1.module5 import Fy2.2 相对导入 当我们使用相对导入时，需要给出相对与当前位置，想导入资源所在的位置。
-相对导入分为“隐式相对导入”和“显式相对导入”两种，比如我们想在package2/module3.py中引用module4模块，我们可以这么写
-# package2/module3.pyimport module4 # 隐式相对导入，被淘汰from . import module4 # 显式相对导入from package2 import module4 # 绝对导入代码中.</description>
+      <description>1 作用  标识该目录是一个 python 的模块包（module package）。 初始化导入操作，当使用 import 导入该目录时，会执行 __init__.py 里面的代码。  在__init__.py 里面加一个 print(&amp;quot;You have imported mypackage&amp;quot;)，如果执行了该文件就会输出，很显然，__init__.py 会在包被导入时执行。
+# 文件构造 └── mypackage ├── __init__.py ├── subpackage_1 │ ├── test11.py │ └── test12.py ├── subpackage_2 │ ├── test21.py │ └── test22.py └── subpackage_3 ├── test31.py └── test32.py &amp;gt;&amp;gt;&amp;gt; import mypackage You have imported mypackage 2 from &amp;hellip;.. import * 这里使用到了__all__变量，__all__关联了一个模块列表，当执行 from &amp;hellip;.. import * 时，就会导入列表中的模块。可以将 __init__.py 增加一个__all__变量。
+__all__ = [&amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;gt;&amp;gt;&amp;gt; from mypackage import * &amp;gt;&amp;gt;&amp;gt; dir() [&amp;#39;__builtins__&amp;#39;, &amp;#39;__doc__&amp;#39;, &amp;#39;__loader__&amp;#39;, &amp;#39;__name__&amp;#39;, &amp;#39;__package__&amp;#39;, &amp;#39;__spec__&amp;#39;, &amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; dir(subpackage_1) [&amp;#39;__doc__&amp;#39;, &amp;#39;__loader__&amp;#39;, &amp;#39;__name__&amp;#39;, &amp;#39;__package__&amp;#39;, &amp;#39;__path__&amp;#39;, &amp;#39;__spec__&amp;#39;] 显然导入了__all__变量的内容，但需要注意的是，此时子目录的中的模块没有导入，即不会导入test*等文件。</description>
     </item>
     
     <item>
@@ -892,96 +949,14 @@ a={&amp;#39;a&amp;#39;:1, &amp;#39;b&amp;#39;:0, &amp;#39;c&amp;#39;:1, &amp;#39
     </item>
     
     <item>
-      <title>Python(23)——os模块文件操作</title>
-      <link>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
-      <description> 参考文档：os文档 @Python文档 
- os.listdir() os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）
-os.listdir(path) # path -- 需要列出的目录路径 # 返回指定路径下的文件和文件夹列表 import os, sys path = &amp;#34;/var/www/html/&amp;#34; dirs = os.listdir(path) for file in dirs: print(file) os.path.exists() os.path.exists() 方法用于判断文件夹是否存在
-os.path.exists(path) # path -- 需要列出的目录路径 import os path = &amp;#34;/var/www/html/&amp;#34; if os.path.exists(path): pass os.mkdir() os.mkdir() 方法用于创建文件夹
-import os path=&amp;#34;/var/www/html/ABC&amp;#34; isExists=os.path.exists(path) if not isExists: os.mkdir(path) print(&amp;#39;创建成功&amp;#39;) else: print(&amp;#39;目录已存在&amp;#39;) </description>
-    </item>
-    
-    <item>
-      <title>Python(24)——获取input输入的文本值</title>
-      <link>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</guid>
-      <description>get_attribute(‘value’)获取输入的文本值 inputContext1 = driver.find_element_by_xpath(&amp;#39;//input&amp;#39;).get_attribute(&amp;#39;value&amp;#39;) 通过执行JS操作来获取输入的文本值 inputContext2 = &amp;#34;return document.getElementsByClassName(&amp;#39;ivu-input&amp;#39;)[0].value&amp;#34; driver.execute_script(inputContext2) get_attribute(‘textContent’)获取元素的文本值 logoContext1 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).get_attribute(&amp;#39;textContent&amp;#39;) 通过text来获取文本值 logoContext2 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).text 通过执行JS操作来获取输入的文本值 logoContext3 = &amp;#34;return document.getElementsByTagName(&amp;#39;span&amp;#39;)[0].innerText&amp;#34; </description>
-    </item>
-    
-    <item>
-      <title>Python(25)——切片</title>
-      <link>https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/</guid>
-      <description>参考原文：彻底搞懂Python切片操作 @马尔代夫Maldives 
- 利用python解决问题的过程中，经常会遇到从某个对象中抽取部分值的情况。“切片”操作正是专门用于实现这一目标的有力武器。理论上，只要条件表达式得当，可以通过单次或多次切片操作实现任意目标值切取。切片操作的基本语法比较简单，但如果不彻底搞清楚内在逻辑，也极容易产生错误，而且这种错误有时隐蔽得较深，难以察觉。本文通过详细例子总结归纳了切片操作的各种情形，下文均以list类型作为实验对象，其结论可推广至其他可切片对象。
-1. 索引方式 包括：正索引和负索引两部分，如下图所示，以list对象 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 为例：
-2.操作的一般方式 一个完整的切片表达式包含两个&amp;quot; : &amp;ldquo;，用于分隔三个参数(start_index、end_index、step)。当只有一个&amp;rdquo; : &amp;ldquo;时，默认第三个参数step=1；当一个&amp;rdquo; : &amp;ldquo;也没有时，start_index=end_index，表示切取start_index指定的那个元素。
-object[start_index:end_index:step]  step：正负数均可，其绝对值大小决定了切取数据时的‘‘步长”，而正负号决定了“切取方向”，正表示“从左往右”取值，负表示“从右往左”取值。当step省略时，默认为1，即从左往右以步长1取值。 start_index：表示起始索引（包含该索引对应值）；该参数省略时，表示从对象“端点”开始取值，至于是从“起点”还是从“终点”开始，则由step参数的正负决定，step为正从“起点”开始，为负从“终点”开始。 end_index：表示终止索引（不包含该索引对应值）；该参数省略时，表示一直取到数据“端点”，至于是到“起点”还是到“终点”，同样由step参数的正负决定，step为正时直到“终点”，为负时直到“起点”。  3.举例 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] a. 切取单个元素 &amp;gt;&amp;gt;&amp;gt;a[0] &amp;gt;&amp;gt;&amp;gt;0 &amp;gt;&amp;gt;&amp;gt;a[-4] &amp;gt;&amp;gt;&amp;gt;6 当索引只有一个数时，表示切取某一个元素。 b. 切取完整对象 &amp;gt;&amp;gt;&amp;gt;a[:] #从左往右 &amp;gt;&amp;gt;&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] &amp;gt;&amp;gt;&amp;gt;a[::]#从左往右 &amp;gt;&amp;gt;&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] &amp;gt;&amp;gt;&amp;gt;a[::-1]#从右往左 &amp;gt;&amp;gt;&amp;gt; [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] c.</description>
-    </item>
-    
-    <item>
-      <title>Python(26)——深复制与浅复制</title>
-      <link>https://ac-lm.github.io/posts/python/python26%E6%B7%B1%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B5%85%E5%A4%8D%E5%88%B6/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python26%E6%B7%B1%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B5%85%E5%A4%8D%E5%88%B6/</guid>
-      <description>参考原文：图解Python深拷贝和浅拷贝 @田小计划 
- 1.对象赋值 will = [&amp;#34;Will&amp;#34;, 28, [&amp;#34;Python&amp;#34;, &amp;#34;C#&amp;#34;, &amp;#34;JavaScript&amp;#34;]] wilber = will print id(will) print will print [id(ele) for ele in will] print id(wilber) print wilber print [id(ele) for ele in wilber] will[0] = &amp;#34;Wilber&amp;#34; will[2].append(&amp;#34;CSS&amp;#34;) print id(will) print will print [id(ele) for ele in will] print id(wilber) print wilber print [id(ele) for ele in wilber] 代码分析  首先，创建了一个名为will的变量，这个变量指向一个list对象，从第一张图中可以看到所有对象的地址（每次运行，结果可能不同） 然后，通过will变量对wilber变量进行赋值，那么wilber变量将指向will变量对应的对象（内存地址），也就是说&amp;quot;wilber is will&amp;quot;，&amp;ldquo;wilber[i] is will[i]&amp;quot;，可以理解为，Python中，对象的赋值都是进行对象引用（内存地址）传递 第三张图中，由于will和wilber指向同一个对象，所以对will的任何修改都会体现在wilber上，这里需要注意的一点是，str是不可变类型，所以当修改的时候会替换旧的对象，产生一个新的地址39758496  2.</description>
-    </item>
-    
-    <item>
-      <title>Python(27)——random模块</title>
-      <link>https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/</guid>
-      <description>random.randrange(a, b, c) 返回给定范围 [a, b) 内的随机整数，不包括b，第三个参数为步长，只能返回该范围内特定的数，比如该例子中[1,4,7,…,97]
-&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100)68&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100,3)16random.randint(a, b) 返回 [1,100] 范围内的随机数整数，包括100，第三个参数同random.randrange()用法一样
-&amp;gt;&amp;gt;&amp;gt; random.randint(1,100)17random.random() 返回[0, 1)范围内随机浮点数，不包括1
-&amp;gt;&amp;gt;&amp;gt; random.random()0.41385723239524297random.choice() 在给定容器中随机选择一个元素
-rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = choice(rand)random.sample(a) 在给定容器中随记选择特定数量元素
-&amp;gt;&amp;gt;&amp;gt; random.sample(&amp;quot;abcde&amp;quot;,2)[&#39;e&#39;, &#39;b&#39;] random.shuffle() 随机打乱传入的容器(容器必须是可变对象)
-&amp;gt;&amp;gt;&amp;gt; l = [1,2,3,4]&amp;gt;&amp;gt;&amp;gt; random.shuffle(l)&amp;gt;&amp;gt;&amp;gt; l[1, 3, 2, 4]</description>
-    </item>
-    
-    <item>
       <title>Python(28)——hashlib模块</title>
       <link>https://ac-lm.github.io/posts/python/python28hashlib%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python28hashlib%E6%A8%A1%E5%9D%97/</guid>
-      <description>SHA256 SHA256的全程是Secure Hash Algorithm 256，一种常用的加密算法，是SHA-2族算法中的一个，其它的还是SHA222、SHA512等。
+      <description>SHA256 SHA256 的全称是Secure Hash Algorithm 256，一种常用的加密算法，是SHA-2族算法中的一个，其它的还是SHA222、SHA512等。
  Secure的意思是指算法的输入输出一一对应，且是不可逆的（即只有编码而没有解码） Hash Algorithm指的是散列算法，散列算法指的是将一个任意长度的输入数据转换成固定长度的输出 256是输出结果的位数，这个输出结果又被称为Hash值或者摘要  hashlib模块 hashlib是Python提供的能使用各类hash算法的一个模块
 import hashlib if __name__ == &amp;#34;__main__&amp;#34;: s = hashlib.sha256() # Get the hash algorithm. s.update(&amp;#34;jiangwei&amp;#34;) # Hash the data. b = s.hexdigest() # Get he hash value. print b &amp;gt;&amp;gt;&amp;gt;36d6824c3942c1ec34d1b5cc2f5cbe3d2c4110223bce905ddafe0592723411f0 # 它的长度是64，每个字符4位，所以总计是256位。 &amp;gt;&amp;gt;&amp;gt;s = hashlib.sha512() # Get the hash algorithm. &amp;gt;&amp;gt;&amp;gt;3ee15fe269635e2c05d7e965d97d82b95fefcdf7f937cb14e117d235a440b9e173d90f3c669a5dce21d6b8a20ff2376172d171d0c9d9b1f2670d39aefaab7a10 # 可以得到512位的摘要 </description>
-    </item>
-    
-    <item>
-      <title>Python(32)——selenium下拉框(select)处理</title>
-      <link>https://ac-lm.github.io/posts/python/python32selenium%E4%B8%8B%E6%8B%89%E6%A1%86select%E5%A4%84%E7%90%86/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python32selenium%E4%B8%8B%E6%8B%89%E6%A1%86select%E5%A4%84%E7%90%86/</guid>
-      <description>1.select 在HTML中select可创建单选或多选菜单。
-&amp;lt;select&amp;gt; &amp;lt;option value=&amp;#34;a&amp;#34;&amp;gt;AA&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;b&amp;#34;&amp;gt;BB&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;c&amp;#34;&amp;gt;CC&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;d&amp;#34;&amp;gt;DD&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;e&amp;#34;&amp;gt;EE&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 2.操作 from selenium.webdriver.support.select import Select
-   方法 说明     select_by_index() 通过索引定位   select_by_value() 通过value值定位   select_by_visible_text() 通过文本值定位   deselect_all() 取消所有选项   deselect_by_index() 取消对应index选项   deselect_by_value() 取消对应value选项   deselect_by_visible_text() 取消对应文本选项   first_selected_option() 返回第一个选项   all_selected_options() 返回所有的选项   options() 返回所以的选择项   all_selected_options() 返回所以已选中的选择项   first_selected_option() 返回选中的第一个选择项    3.</description>
-    </item>
-    
-    <item>
-      <title>Python(33)——selenium中的expected_conditions使用</title>
-      <link>https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/</guid>
-      <description>参考原文：selenium expected conditions 使用实例 @乙醇 
- 1.support.expected_conditions Expected Conditions 是 selenium 提供的断言工具，通常使用场景有2种
- 直接在断言中使用 与WebDriverWait配合使用，动态等待页面上元素出现或者消失  2.方法  title_is：判断当前页面的title是否精确等于预期 title_contains：判断当前页面的title是否包含预期字符串 presence_of_element_located：判断某个元素是否被加到了DOM树里，并不代表该元素一定可见 visibility_of_element_located：判断某个元素是否可见，可见代表元素非隐藏，并且元素的宽和高都不等于0 visibility_of：同上，只是上面的方法要传入locator，这个方法直接传定位到的element就好了 presence_of_all_elements_located：判断是否至少有1个元素存在于DOM树中。举个例子，如果页面上有多个元素的class都是column-md-3，那么只要有1个元素被生成，这个方法就返回True text_to_be_present_in_element：判断某个元素中的text是否包含了预期的字符串 text_to_be_present_in_element_value：判断某个元素中的value属性是否包含了预期的字符串 frame_to_be_available_and_switch_to_it：判断该frame是否可以切换进去，如果可以的话，返回True并且切换进去，否则返回False invisibility_of_element_located：判断某个元素中是否不存在于DOM树或不可见 element_to_be_clickable：判断某个元素中是否可见并且是enable的，这样的话才叫clickable staleness_of：判断某个元素从DOM树中移除，注意，这个方法也是返回True或False element_to_be_selected：判断某个元素是否被选中了,一般用在下拉列表 element_selection_state_to_be：判断某个元素的选中状态是否符合预期 element_located_selection_state_to_be：跟上面的方法作用一样，只是上面的方法传入定位到的element，而这个方法传入locator alert_is_present：判断页面上是否存在alert，这是个老问题，很多同学会问到  3.示例 dr = webdriver.Chrome() url = &amp;#39;http://www.baidu.com&amp;#39; search_text_field_id = &amp;#39;kw&amp;#39; dr.get(url) class ECExample(unittest.TestCase): def test_title_is(self): &amp;#39;&amp;#39;&amp;#39; 判断title是否符合预期 &amp;#39;&amp;#39;&amp;#39; title_is_baidu = EC.title_is(u&amp;#39;百度一下，你就知道&amp;#39;) self.assertTrue(title_is_baidu(dr)) def test_titile_contains(self): &amp;#39;&amp;#39;&amp;#39; 判断title是否包含预期字符 &amp;#39;&amp;#39;&amp;#39; title_should_contains_baidu = EC.title_contains(u&amp;#39;百度&amp;#39;) self.assertTrue(title_should_contains_baidu(dr)) def test_presence_of_element_located(self): &amp;#39;&amp;#39;&amp;#39; 判断element是否出现在dom树 &amp;#39;&amp;#39;&amp;#39; locator = (By.</description>
     </item>
     
     <item>
@@ -991,32 +966,16 @@ import hashlib if __name__ == &amp;#34;__main__&amp;#34;: s = hashlib.sha256() #
       
       <guid>https://ac-lm.github.io/posts/windows10/windows4%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%97%B6%E7%9A%84esp%E5%92%8Cmsr%E5%88%86%E5%8C%BA/</guid>
       <description>硬盘在安装系统前需要进行格式化和分区，而两个分区必须分配在最开始
-1.esp即EFI系统分区  esp 全称 EFI system partition，EFI系统引导。支持EFI模式的电脑需要从ESP启动系统，EFI固件可从ESP加载EFI启动程序和应用程序。 esp 是一个FAT16或FAT32格式的物理分区，其分区标识是EF(十六进制) 而非常规的0E或0C，因此，该分区在 Windows 操作系统下一般是不可见的。 esp 是一个独立于操作系统之外的分区，操作系统被引导之后，就不再依赖它。这使得esp非常适合用来存储那些系统级的维护性的工具和数据，比如：引导管理程序、驱动程序、系统维护工具、系统备份等，甚至可以在esp里安装一个特殊的操作系统。  2.msr是保留分区  msr分区本身没有做任何工作，是名副其实的保留分区。 windows不会向msr分区建立文件系统或者写数据，而是为了调整分区结构而保留的分区。在Win8以上系统更新时，会检测msr分区。msr分区本质上就是写在分区表上面的“未分配空间”，目的是微软不想让别人乱动。 msr分区的用途是防止将一块GPT磁盘接到老系统中，被当作未格式化的空硬盘而继续操作（例如重新格式化）导致数据丢失。GPT磁盘上有了这个分区，当把它接入XP等老系统中，会提示无法识别的磁盘，也无法进一步操作。  </description>
+1.esp 即 EFI 系统分区  esp 全称 EFI system partition，EFI 系统引导。支持 EFI 模式的电脑需要从 ESP 启动系统，EFI 固件可从 ESP 加载 EFI 启动程序和应用程序。 esp 是一个 FAT16 或 FAT32 格式的物理分区，其分区标识是EF（十六进制）而非常规的 0E 或 0C，因此，该分区在 Windows 操作系统下一般是不可见的。 esp 是一个独立于操作系统之外的分区，操作系统被引导之后，就不再依赖它。这使得 esp 非常适合用来存储那些系统级的维护性的工具和数据，比如：引导管理程序、驱动程序、系统维护工具、系统备份等，甚至可以在 esp 里安装一个特殊的操作系统。  2.msr是保留分区  msr 分区本身没有做任何工作，是名副其实的保留分区。 windows 不会向 msr 分区建立文件系统或者写数据，而是为了调整分区结构而保留的分区。在 Win8 以上系统更新时，会检测 msr 分区。msr 分区本质上就是写在分区表上面的“未分配空间”，目的是微软不想让别人乱动。 msr 分区的用途是防止将一块 GPT 磁盘接到老系统中，被当作未格式化的空硬盘而继续操作（例如重新格式化）导致数据丢失。GPT 磁盘上有了这个分区，当把它接入 XP 等老系统中，会提示无法识别的磁盘，也无法进一步操作。  </description>
     </item>
     
     <item>
-      <title>Python(22)——sys模块</title>
-      <link>https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/</link>
+      <title>Windows(3)——执行系统自检</title>
+      <link>https://ac-lm.github.io/posts/windows10/windows3%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/</guid>
-      <description>参考原文：Python sys 模块详解 @轩辕御龙 
- 什么是sys模块 “sys”即“system”，即“系统”。sys模块为用户提供了一些接口，用于访问 Python 解释器自身使用和维护的变量，同时模块中还提供了一部分函数，可以与解释器进行比较深度的交互。但需要注意的是sys模块针对的是与Python解释器相关的变量和方法，不是主机操作系统。
-sys.argv “argv”即“argument value”的简写，其是一个列表对象，存储的是在命令行调用 Python 脚本时提供的“命令行参数”。
-这个列表中的第一个参数是被调用的脚本名称，也就是说，调用 Python 解释器的“命令”（python）本身并没有被加入这个列表当中。这个地方要注意一下，因为这一点跟 C 程序的行为有所不同，C 程序读取命令行参数是从头开始的。
-举例来说，在当前目录下新建一个 Python 文件 test.py，其内容为：
-import sys print(&amp;#34;The list of command line arguments:\n&amp;#34;, sys.argv) 在命令行运行该脚本：
-$ python test.py The list of command line arguments: [&amp;#39;example.py&amp;#39;] 加上几个参数运行，可以看到参数被获取并输出
-$ python test.py arg1 arg2 arg3 The list of command line arguments: [&amp;#39;example.py&amp;#39;, &amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;arg3&amp;#39;] sys.path A list of strings that specifies the search path for modules.</description>
-    </item>
-    
-    <item>
-      <title>Windows(3)——系统自检命令</title>
-      <link>https://ac-lm.github.io/posts/windows10/windows3%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/windows10/windows3%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.操作 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth </description>
+      <guid>https://ac-lm.github.io/posts/windows10/windows3%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80/</guid>
+      <description>1.如何实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth </description>
     </item>
     
     <item>
@@ -1047,6 +1006,53 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
+      <title>Python(27)——random模块</title>
+      <link>https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/</guid>
+      <description>random.randrange(a, b, c) 返回给定范围 [a, b) 内的随机整数，不包括b，第三个参数为步长，只能返回该范围内特定的数，比如该例子中[1,4,7,…,97]
+&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100)68&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100,3)16random.randint(a, b) 返回 [1,100] 范围内的随机数整数，包括100，第三个参数同random.randrange()用法一样
+&amp;gt;&amp;gt;&amp;gt; random.randint(1,100)17random.random() 返回[0, 1)范围内随机浮点数，不包括1
+&amp;gt;&amp;gt;&amp;gt; random.random()0.41385723239524297random.choice() 在给定容器中随机选择一个元素
+rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = choice(rand)random.sample(a) 在给定容器中随记选择特定数量元素
+&amp;gt;&amp;gt;&amp;gt; random.sample(&amp;quot;abcde&amp;quot;,2)[&#39;e&#39;, &#39;b&#39;] random.shuffle() 随机打乱传入的容器(容器必须是可变对象)
+&amp;gt;&amp;gt;&amp;gt; l = [1,2,3,4]&amp;gt;&amp;gt;&amp;gt; random.shuffle(l)&amp;gt;&amp;gt;&amp;gt; l[1, 3, 2, 4]</description>
+    </item>
+    
+    <item>
+      <title>Python(26)——深复制与浅复制</title>
+      <link>https://ac-lm.github.io/posts/python/python26%E6%B7%B1%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B5%85%E5%A4%8D%E5%88%B6/</link>
+      <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python26%E6%B7%B1%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B5%85%E5%A4%8D%E5%88%B6/</guid>
+      <description>参考原文：图解Python深拷贝和浅拷贝 @田小计划 
+ 1.对象赋值 will = [&amp;#34;Will&amp;#34;, 28, [&amp;#34;Python&amp;#34;, &amp;#34;C#&amp;#34;, &amp;#34;JavaScript&amp;#34;]] wilber = will print id(will) print will print [id(ele) for ele in will] print id(wilber) print wilber print [id(ele) for ele in wilber] will[0] = &amp;#34;Wilber&amp;#34; will[2].append(&amp;#34;CSS&amp;#34;) print id(will) print will print [id(ele) for ele in will] print id(wilber) print wilber print [id(ele) for ele in wilber] 代码分析  首先，创建了一个名为will的变量，这个变量指向一个list对象，从第一张图中可以看到所有对象的地址（每次运行，结果可能不同） 然后，通过will变量对wilber变量进行赋值，那么wilber变量将指向will变量对应的对象（内存地址），也就是说&amp;quot;wilber is will&amp;quot;，&amp;ldquo;wilber[i] is will[i]&amp;quot;，可以理解为，Python中，对象的赋值都是进行对象引用（内存地址）传递 第三张图中，由于will和wilber指向同一个对象，所以对will的任何修改都会体现在wilber上，这里需要注意的一点是，str是不可变类型，所以当修改的时候会替换旧的对象，产生一个新的地址39758496  2.</description>
+    </item>
+    
+    <item>
+      <title>Python(25)——切片</title>
+      <link>https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/</link>
+      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/</guid>
+      <description>参考原文：彻底搞懂Python切片操作 @马尔代夫Maldives 
+ 利用python解决问题的过程中，经常会遇到从某个对象中抽取部分值的情况。“切片”操作正是专门用于实现这一目标的有力武器。理论上，只要条件表达式得当，可以通过单次或多次切片操作实现任意目标值切取。切片操作的基本语法比较简单，但如果不彻底搞清楚内在逻辑，也极容易产生错误，而且这种错误有时隐蔽得较深，难以察觉。本文通过详细例子总结归纳了切片操作的各种情形，下文均以list类型作为实验对象，其结论可推广至其他可切片对象。
+1. 索引方式 包括：正索引和负索引两部分，如下图所示，以list对象 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 为例：
+2.操作的一般方式 一个完整的切片表达式包含两个&amp;quot; : &amp;ldquo;，用于分隔三个参数(start_index、end_index、step)。当只有一个&amp;rdquo; : &amp;ldquo;时，默认第三个参数step=1；当一个&amp;rdquo; : &amp;ldquo;也没有时，start_index=end_index，表示切取start_index指定的那个元素。
+object[start_index:end_index:step]  step：正负数均可，其绝对值大小决定了切取数据时的‘‘步长”，而正负号决定了“切取方向”，正表示“从左往右”取值，负表示“从右往左”取值。当step省略时，默认为1，即从左往右以步长1取值。 start_index：表示起始索引（包含该索引对应值）；该参数省略时，表示从对象“端点”开始取值，至于是从“起点”还是从“终点”开始，则由step参数的正负决定，step为正从“起点”开始，为负从“终点”开始。 end_index：表示终止索引（不包含该索引对应值）；该参数省略时，表示一直取到数据“端点”，至于是到“起点”还是到“终点”，同样由step参数的正负决定，step为正时直到“终点”，为负时直到“起点”。  3.举例 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] a. 切取单个元素 &amp;gt;&amp;gt;&amp;gt;a[0] &amp;gt;&amp;gt;&amp;gt;0 &amp;gt;&amp;gt;&amp;gt;a[-4] &amp;gt;&amp;gt;&amp;gt;6 当索引只有一个数时，表示切取某一个元素。 b. 切取完整对象 &amp;gt;&amp;gt;&amp;gt;a[:] #从左往右 &amp;gt;&amp;gt;&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] &amp;gt;&amp;gt;&amp;gt;a[::]#从左往右 &amp;gt;&amp;gt;&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] &amp;gt;&amp;gt;&amp;gt;a[::-1]#从右往左 &amp;gt;&amp;gt;&amp;gt; [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] c.</description>
+    </item>
+    
+    <item>
+      <title>Python(24)——获取input输入的文本值</title>
+      <link>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</link>
+      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</guid>
+      <description>get_attribute(‘value’)获取输入的文本值 inputContext1 = driver.find_element_by_xpath(&amp;#39;//input&amp;#39;).get_attribute(&amp;#39;value&amp;#39;) 通过执行JS操作来获取输入的文本值 inputContext2 = &amp;#34;return document.getElementsByClassName(&amp;#39;ivu-input&amp;#39;)[0].value&amp;#34; driver.execute_script(inputContext2) get_attribute(‘textContent’)获取元素的文本值 logoContext1 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).get_attribute(&amp;#39;textContent&amp;#39;) 通过text来获取文本值 logoContext2 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).text 通过执行JS操作来获取输入的文本值 logoContext3 = &amp;#34;return document.getElementsByTagName(&amp;#39;span&amp;#39;)[0].innerText&amp;#34; </description>
+    </item>
+    
+    <item>
       <title>随记(21)——什么是localStorage</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B021%E4%BB%80%E4%B9%88%E6%98%AFlocalstorage/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
@@ -1057,12 +1063,41 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
+      <title>Python(23)——os模块文件操作</title>
+      <link>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description> 参考文档：os文档 @Python文档 
+ os.listdir() os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）
+os.listdir(path) # path -- 需要列出的目录路径 # 返回指定路径下的文件和文件夹列表 import os, sys path = &amp;#34;/var/www/html/&amp;#34; dirs = os.listdir(path) for file in dirs: print(file) os.path.exists() os.path.exists() 方法用于判断文件夹是否存在
+os.path.exists(path) # path -- 需要列出的目录路径 import os path = &amp;#34;/var/www/html/&amp;#34; if os.path.exists(path): pass os.mkdir() os.mkdir() 方法用于创建文件夹
+import os path=&amp;#34;/var/www/html/ABC&amp;#34; isExists=os.path.exists(path) if not isExists: os.mkdir(path) print(&amp;#39;创建成功&amp;#39;) else: print(&amp;#39;目录已存在&amp;#39;) </description>
+    </item>
+    
+    <item>
+      <title>Python(22)——sys模块</title>
+      <link>https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/</guid>
+      <description>参考原文：Python sys 模块详解 @轩辕御龙 
+ 什么是sys模块 “sys”即“system”，即“系统”。sys模块为用户提供了一些接口，用于访问 Python 解释器自身使用和维护的变量，同时模块中还提供了一部分函数，可以与解释器进行比较深度的交互。但需要注意的是sys模块针对的是与Python解释器相关的变量和方法，不是主机操作系统。
+sys.argv “argv”即“argument value”的简写，其是一个列表对象，存储的是在命令行调用 Python 脚本时提供的“命令行参数”。
+这个列表中的第一个参数是被调用的脚本名称，也就是说，调用 Python 解释器的“命令”（python）本身并没有被加入这个列表当中。这个地方要注意一下，因为这一点跟 C 程序的行为有所不同，C 程序读取命令行参数是从头开始的。
+举例来说，在当前目录下新建一个 Python 文件 test.py，其内容为：
+import sys print(&amp;#34;The list of command line arguments:\n&amp;#34;, sys.argv) 在命令行运行该脚本：
+$ python test.py The list of command line arguments: [&amp;#39;example.py&amp;#39;] 加上几个参数运行，可以看到参数被获取并输出
+$ python test.py arg1 arg2 arg3 The list of command line arguments: [&amp;#39;example.py&amp;#39;, &amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;arg3&amp;#39;] sys.path A list of strings that specifies the search path for modules.</description>
+    </item>
+    
+    <item>
       <title>Windows(1)——CMD命令</title>
       <link>https://ac-lm.github.io/posts/windows10/windows1cmd%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/windows10/windows1cmd%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.常用的CMD命令 # 进入D盘 D: # 查看全部文件 dir # 显示 Windows 的版本 VER # 创建一个目录 MKDIR # 清除屏幕 CLS # 帮助文档 HELP # 进入文件夹 cd </description>
+      <description>1.常用的CMD命令 # 进入D盘 D: # 查看全部文件 dir # 显示 Windows 的版本 VER # 创建一个目录 MKDIR file # 清除屏幕 CLS # 帮助文档 HELP # 进入文件夹 cd file # 查看某个命令的地址 where java </description>
     </item>
     
     <item>
@@ -1083,6 +1118,18 @@ pip install PyQt5 pip install PyQt5-tools # 安装工具，QTdesigner路径Lib\s
       <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytest4assert%E6%96%AD%E8%A8%80/</guid>
       <description>参考原文：assert断言详细使用 @小菠萝测试笔记 
  1.前言  与unittest不同，pytest使用的是python自带的assert关键字来进行断言 assert关键字后面可以接一个表达式，只要表达式的最终结果为True，那么断言通过，用例执行成功，否则用例执行失败  2.实例 # 异常信息 def f(): return 3 def test_function(): a = f() assert a % 2 == 0, &amp;#34;判断 a 为偶数，当前 a 的值为：%s&amp;#34; % a 3.常用断言  assert xx ：判断 xx 为真 assert not xx ：判断 xx 不为真 assert a in b ：判断 b 包含 a assert a == b ：判断 a 等于 b assert a != b ：判断 a 不等于 b  4.</description>
+    </item>
+    
+    <item>
+      <title>Python(21)——yield生成器的用法</title>
+      <link>https://ac-lm.github.io/posts/python/python21yield%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python21yield%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
+      <description>1.generator（生成器） 带有 yield 的函数在 Python 中被称之为 generator（生成器），而不是一个函数，这个生成器带有一个next函数，在调用 next 时函数才会执行，执行到 yield 停止，下一次的 next 开始的地方是接着上一次的 next 停止的地方执行。
+def foo(): print(&amp;#34;starting...&amp;#34;) while True: yield 5 res = yield 4 print(&amp;#34;res:&amp;#34;,res) g = foo() print(next(g)) print(next(g)) print(next(g)) 2.为什么需要 yield for i in range(1000): pass 这个循环在运行中占用的内存会随着 range() 的参数的增大而增大，range() 会生成一个List。如果要控制内存占用，最好不要用 List
+for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个元素的 List，而是在每次迭代中返回下一个数值，内存空间占用很小。因为 xrange 不返回 List，而是返回一个 iterable 对象。【iterable意思为迭代，可以理解为连续的一组数据，可以遍历的数据，包含内置的string、list、dict、tuple、set()】
+在 Python3 中则是 yield</description>
     </item>
     
     <item>
@@ -1122,27 +1169,6 @@ setup和teardown的实现 通过使用 yield 关键字实现teardown 操作
     </item>
     
     <item>
-      <title>Python(17)——Python面试知识</title>
-      <link>https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</guid>
-      <description>1.语言的分类 ①编译型语言和解释性语言 编译型语言是指在程序执行之前，有一个单独的编译过程，将程序翻译成机器语言，以后执行这个程序的时候，就不用再进行翻译了。解释型语言是指是在运行的时候将程序翻译成机器语言，所以运行速度相对于编译型语言要慢。C/C++ 等都是编译型语言，而Java，C#等都是解释型语言。虽然Java程序在运行之前也有一个编译过程，但是并不是将程序编译成机器语言，而是将它编译成字节码（可以理解为一个中间语言）。在运行的时候，由JVM将字节码再翻译成机器语言。
-②动态语言和静态语言  动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型。如python和ruby等。 静态类型语言：它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型。如C/C++,java,C#等。  ③强类型定义语言和弱类型定义语言  强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了,如python。 弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。如VScript。  2.python的优点  ①Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。 ②开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。 ③高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节 ④可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行 ⑤可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C++编写，然后在你的Python程序中使用它们 ⑥可嵌入性————你可以把Python嵌入你的C/C++程序，从而向你的程序用户提供脚本功能。  3.python的缺点  ①速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。 ②代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。 ③线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是计算机程序设计语言解释器用于同步线程的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。  4.在编写Python程序时，/usr/bin/python和/usr/bin/env python的区别？  #!/usr/bin/python是告诉操作系统执行这个脚本的时候，调用/usr/bin下的python解释器 #!/usr/bin/env python这种用法是为了防止操作系统用户没有将python装在默认的/usr/bin路径里。当系统看到这一行的时候，首先会到env设置里查找python的安装路径，再调用对应路径下的解释器程序完成操作。 #!/usr/bin/python相当于写死了python路径 #!/usr/bin/env python会去环境设置寻找python目录,推荐这种写法  5.变量  ①变量名只能是字母、数字或下划线的任意组合 ②变量名的第一个字符不能是数字 ③以下关键字不能声明为变量名 [&amp;lsquo;and&amp;rsquo;, &amp;lsquo;as&amp;rsquo;, &amp;lsquo;assert&amp;rsquo;, &amp;lsquo;break&amp;rsquo;, &amp;lsquo;class&amp;rsquo;, &amp;lsquo;continue&amp;rsquo;, &amp;lsquo;def&amp;rsquo;, &amp;lsquo;del&amp;rsquo;, &amp;lsquo;elif&amp;rsquo;, &amp;lsquo;else&amp;rsquo;, &amp;lsquo;except&amp;rsquo;, &amp;lsquo;exec&amp;rsquo;, &amp;lsquo;finally&amp;rsquo;, &amp;lsquo;for&amp;rsquo;, &amp;lsquo;from&amp;rsquo;, &amp;lsquo;global&amp;rsquo;, &amp;lsquo;if&amp;rsquo;, &amp;lsquo;import&amp;rsquo;, &amp;lsquo;in&amp;rsquo;, &amp;lsquo;is&amp;rsquo;, &amp;lsquo;lambda&amp;rsquo;, &amp;lsquo;not&amp;rsquo;, &amp;lsquo;or&amp;rsquo;, &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;print&amp;rsquo;, &amp;lsquo;raise&amp;rsquo;, &amp;lsquo;return&amp;rsquo;, &amp;lsquo;try&amp;rsquo;, &amp;lsquo;while&amp;rsquo;, &amp;lsquo;with&amp;rsquo;, &amp;lsquo;yield&amp;rsquo;] ④变量名要见名之义。  6.</description>
-    </item>
-    
-    <item>
-      <title>Python(18)——执行Linux命令</title>
-      <link>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.subprocess模块 根据Python官方文档说明，subprocess模块用于取代下面这些模块。推荐使用
-&amp;gt;&amp;gt;&amp;gt; from subprocess import call &amp;gt;&amp;gt;&amp;gt; call([&amp;#34;ls&amp;#34;, &amp;#34;-l&amp;#34;]) 2.os模块的system方法 system方法会创建子进程运行外部程序，方法只返回外部程序的运行结果。这个方法比较适用于外部程序没有输出结果的情况。
-&amp;gt;&amp;gt;&amp;gt; import os &amp;gt;&amp;gt;&amp;gt; os.system(&amp;#34;echo \&amp;#34;Hello World\&amp;#34;&amp;#34;) # 直接使用os.system调用一个echo命令  Hello World ——————&amp;gt; 打印命令结果 0 ——————&amp;gt; What&amp;#39;s this ? 返回值？  &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log\&amp;#34;&amp;#34;) # 使用val接收返回值  -rw-r--r-- 1 root root 6030829 Dec 31 15:14 log ——————&amp;gt; 此时只打印了命令结果 &amp;gt;&amp;gt;&amp;gt; print val 0 ——————&amp;gt; 注意，此时命令正常运行时，返回值是0 &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log1\&amp;#34;&amp;#34;) &amp;gt;&amp;gt;&amp;gt; print val 256 ——————&amp;gt; 使用os.</description>
-    </item>
-    
-    <item>
       <title>Python(19)——telnetlib模块</title>
       <link>https://ac-lm.github.io/posts/python/python19telnetlib-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
@@ -1150,18 +1176,6 @@ setup和teardown的实现 通过使用 yield 关键字实现teardown 操作
       <guid>https://ac-lm.github.io/posts/python/python19telnetlib-%E6%A8%A1%E5%9D%97/</guid>
       <description>Python远程Linux模块
 import getpass import telnetlib HOST = &amp;#34;localhost&amp;#34; user = input(&amp;#34;Enter your remote account: &amp;#34;) password = getpass.getpass() tn = telnetlib.Telnet(HOST) tn.read_until(b&amp;#34;login: &amp;#34;) tn.write(user.encode(&amp;#39;ascii&amp;#39;) + b&amp;#34;\n&amp;#34;) if password: tn.read_until(b&amp;#34;Password: &amp;#34;) tn.write(password.encode(&amp;#39;ascii&amp;#39;) + b&amp;#34;\n&amp;#34;) tn.write(b&amp;#34;ls\n&amp;#34;) tn.write(b&amp;#34;exit\n&amp;#34;) print(tn.read_all().decode(&amp;#39;ascii&amp;#39;)) </description>
-    </item>
-    
-    <item>
-      <title>Python(21)——yield生成器的用法</title>
-      <link>https://ac-lm.github.io/posts/python/python21yield%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</link>
-      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python21yield%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
-      <description>1.generator（生成器） 带有 yield 的函数在 Python 中被称之为 generator（生成器），而不是一个函数，这个生成器带有一个next函数，在调用 next 时函数才会执行，执行到 yield 停止，下一次的 next 开始的地方是接着上一次的 next 停止的地方执行。
-def foo(): print(&amp;#34;starting...&amp;#34;) while True: yield 5 res = yield 4 print(&amp;#34;res:&amp;#34;,res) g = foo() print(next(g)) print(next(g)) print(next(g)) 2.为什么需要 yield for i in range(1000): pass 这个循环在运行中占用的内存会随着 range() 的参数的增大而增大，range() 会生成一个List。如果要控制内存占用，最好不要用 List
-for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个元素的 List，而是在每次迭代中返回下一个数值，内存空间占用很小。因为 xrange 不返回 List，而是返回一个 iterable 对象。【iterable意思为迭代，可以理解为连续的一组数据，可以遍历的数据，包含内置的string、list、dict、tuple、set()】
-在 Python3 中则是 yield</description>
     </item>
     
     <item>
@@ -1203,6 +1217,17 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
 @pytest.fixture() def K(): a = &amp;#39;leo&amp;#39; return a def test2(K): assert test1 == &amp;#39;leo&amp;#39; 3.使用多个fixture 如果用例需要用到多个fixture的返回数据，fixture也可以返回一个元祖，list或字典，然后从里面取出对应数据。
 @pytest.fixture() def test1(): a = &amp;#39;leo&amp;#39; b = &amp;#39;123456&amp;#39; print(&amp;#39;传出a,b&amp;#39;) return (a, b) def test2(test1): u = test1[0] p = test1[1] assert u == &amp;#39;leo&amp;#39; assert p == &amp;#39;123456&amp;#39; print(&amp;#39;元祖形式正确&amp;#39;) 4.fixture的作用范围 fixture里面有个scope参数可以控制fixture的作用范围：session&amp;gt;module&amp;gt;class&amp;gt;function
  function：每一个函数或方法都会调用 class：每一个类调用一次，一个类中可以有多个方法 module：每一个.py文件调用一次，该文件内又有多个function和class session：是多个文件调用一次，可以跨.py文件调用，每个.py文件就是module  5.fixture的参数 fixture（scope=&amp;#39;function&amp;#39;，params=None，autouse=False，ids=None，name=None）  scope：有四个级别参数&amp;quot;function&amp;quot;（默认），&amp;ldquo;class&amp;rdquo;，&amp;ldquo;module&amp;rdquo;，&amp;ldquo;session&amp;rdquo; params：一个可选的参数列表。 autouse：如果True，则为所有测试都可以自动使用 fixture 函数。如果为False则显示需要传参来激活fixture ids：每个字符串id的列表，每个字符串对应于params这样他们就是测试ID的一部分。如果没有提供ID它们将从params自动生成 name：fixture的名称。这默认为装饰函数的名称。  6.</description>
+    </item>
+    
+    <item>
+      <title>Python(18)——执行Linux命令</title>
+      <link>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</guid>
+      <description>1.subprocess模块 根据Python官方文档说明，subprocess模块用于取代下面这些模块。推荐使用
+&amp;gt;&amp;gt;&amp;gt; from subprocess import call &amp;gt;&amp;gt;&amp;gt; call([&amp;#34;ls&amp;#34;, &amp;#34;-l&amp;#34;]) 2.os模块的system方法 system方法会创建子进程运行外部程序，方法只返回外部程序的运行结果。这个方法比较适用于外部程序没有输出结果的情况。
+&amp;gt;&amp;gt;&amp;gt; import os &amp;gt;&amp;gt;&amp;gt; os.system(&amp;#34;echo \&amp;#34;Hello World\&amp;#34;&amp;#34;) # 直接使用os.system调用一个echo命令  Hello World ——————&amp;gt; 打印命令结果 0 ——————&amp;gt; What&amp;#39;s this ? 返回值？  &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log\&amp;#34;&amp;#34;) # 使用val接收返回值  -rw-r--r-- 1 root root 6030829 Dec 31 15:14 log ——————&amp;gt; 此时只打印了命令结果 &amp;gt;&amp;gt;&amp;gt; print val 0 ——————&amp;gt; 注意，此时命令正常运行时，返回值是0 &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log1\&amp;#34;&amp;#34;) &amp;gt;&amp;gt;&amp;gt; print val 256 ——————&amp;gt; 使用os.</description>
     </item>
     
     <item>
@@ -1291,6 +1316,16 @@ Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认
     </item>
     
     <item>
+      <title>Python(17)——Python面试知识</title>
+      <link>https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</guid>
+      <description>1.语言的分类 ①编译型语言和解释性语言 编译型语言是指在程序执行之前，有一个单独的编译过程，将程序翻译成机器语言，以后执行这个程序的时候，就不用再进行翻译了。解释型语言是指是在运行的时候将程序翻译成机器语言，所以运行速度相对于编译型语言要慢。C/C++ 等都是编译型语言，而Java，C#等都是解释型语言。虽然Java程序在运行之前也有一个编译过程，但是并不是将程序编译成机器语言，而是将它编译成字节码（可以理解为一个中间语言）。在运行的时候，由JVM将字节码再翻译成机器语言。
+②动态语言和静态语言  动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型。如python和ruby等。 静态类型语言：它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型。如C/C++,java,C#等。  ③强类型定义语言和弱类型定义语言  强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了,如python。 弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。如VScript。  2.python的优点  ①Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。 ②开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。 ③高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节 ④可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行 ⑤可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C++编写，然后在你的Python程序中使用它们 ⑥可嵌入性————你可以把Python嵌入你的C/C++程序，从而向你的程序用户提供脚本功能。  3.python的缺点  ①速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。 ②代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。 ③线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是计算机程序设计语言解释器用于同步线程的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。  4.在编写Python程序时，/usr/bin/python和/usr/bin/env python的区别？  #!/usr/bin/python是告诉操作系统执行这个脚本的时候，调用/usr/bin下的python解释器 #!/usr/bin/env python这种用法是为了防止操作系统用户没有将python装在默认的/usr/bin路径里。当系统看到这一行的时候，首先会到env设置里查找python的安装路径，再调用对应路径下的解释器程序完成操作。 #!/usr/bin/python相当于写死了python路径 #!/usr/bin/env python会去环境设置寻找python目录,推荐这种写法  5.变量  ①变量名只能是字母、数字或下划线的任意组合 ②变量名的第一个字符不能是数字 ③以下关键字不能声明为变量名 [&amp;lsquo;and&amp;rsquo;, &amp;lsquo;as&amp;rsquo;, &amp;lsquo;assert&amp;rsquo;, &amp;lsquo;break&amp;rsquo;, &amp;lsquo;class&amp;rsquo;, &amp;lsquo;continue&amp;rsquo;, &amp;lsquo;def&amp;rsquo;, &amp;lsquo;del&amp;rsquo;, &amp;lsquo;elif&amp;rsquo;, &amp;lsquo;else&amp;rsquo;, &amp;lsquo;except&amp;rsquo;, &amp;lsquo;exec&amp;rsquo;, &amp;lsquo;finally&amp;rsquo;, &amp;lsquo;for&amp;rsquo;, &amp;lsquo;from&amp;rsquo;, &amp;lsquo;global&amp;rsquo;, &amp;lsquo;if&amp;rsquo;, &amp;lsquo;import&amp;rsquo;, &amp;lsquo;in&amp;rsquo;, &amp;lsquo;is&amp;rsquo;, &amp;lsquo;lambda&amp;rsquo;, &amp;lsquo;not&amp;rsquo;, &amp;lsquo;or&amp;rsquo;, &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;print&amp;rsquo;, &amp;lsquo;raise&amp;rsquo;, &amp;lsquo;return&amp;rsquo;, &amp;lsquo;try&amp;rsquo;, &amp;lsquo;while&amp;rsquo;, &amp;lsquo;with&amp;rsquo;, &amp;lsquo;yield&amp;rsquo;] ④变量名要见名之义。  6.</description>
+    </item>
+    
+    <item>
       <title>Web开发(11)——异步POST</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9111%E5%BC%82%E6%AD%A5post/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
@@ -1305,7 +1340,7 @@ Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/windows10/windows2%E5%88%A9%E7%94%A8%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8/</guid>
-      <description>1.操作  在系统中找到目标文件夹 查看文件夹中文件的格式，如【.jpg .png .txt】 在确定了大多数文件夹中的格式后，在右上角搜索框，输入&amp;quot; .txt&amp;quot; 【正则匹配文件名】 在出现的搜索结果中，按住Ctrl+A选择全部，按住Ctrl+C复制全部，然后，在其他地方新建文件夹，按住Ctrl+V提取所有选择的文件到新文件中即可  </description>
+      <description>1.如何实现  在系统中找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定了大多数文件夹中的格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl+A选择全部，按住Ctrl+C复制全部，然后，在其他地方新建文件夹，按住Ctrl+V提取所有选择的文件到新文件中即可  </description>
     </item>
     
     <item>
@@ -1349,21 +1384,6 @@ git clone + 库的地址 2.创建SSH的目的 SSH KEY的作用是来识别你的
       
       <guid>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description>1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).</description>
-    </item>
-    
-    <item>
-      <title>Python(15)——装饰器</title>
-      <link>https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
-      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
-      <description>1.什么是装饰器 装饰器本质上是一个Python函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。它经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等场景。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量与函数功能本身无关的雷同代码并继续重用。概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能。
-2.举例说明 def foo(): print(&amp;#39;I am foo&amp;#39;) 现在有一个新的需求，希望可以记录下函数的执行日志，于是在代码中添加日志代码：
-def foo(): print(&amp;#39;I am foo&amp;#39;) logging.info(&amp;#39;foo is running&amp;#39;) bar()、bar2()也有类似的需求，怎么做？再写一个logging在bar函数里？这样就造成大量雷同的代码，为了减少重复写代码，我们可以这样做，重新定义一个函数：专门处理日志 ，日志处理完之后再执行真正的业务代码
-def use_logging(func): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) func() def bar(): print(&amp;#39;I am bar&amp;#39;) use_logging(bar) 逻辑上不难理解， 但是这样的话，我们每次都要将一个函数作为参数传递给use_logging函数。而且这种方式已经破坏了原有的代码逻辑结构，之前执行业务逻辑时，执行运行bar()，但是现在不得不改成use_logging(bar)。那么有没有更好的方式的呢？当然有，答案就是装饰器。
-def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) return func(*args, **kwargs) return wrapper def bar(): print(&amp;#39;i am bar&amp;#39;) bar = use_logging(bar) bar() 函数use_logging就是装饰器，它把执行真正业务方法的func包裹在函数里面，看起来像bar被use_logging装饰了。在这个例子中，函数进入和退出时 ，被称为一个横切面(Aspect)，这种编程方式被称为面向切面的编程(Aspect-Oriented Programming)。
-@符号是装饰器的语法糖，在定义函数的时候使用，避免再一次赋值操作
-def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) return func(*args) return wrapper @use_logging def foo(): print(&amp;#39;I am foo&amp;#39;) @use_logging def bar(): print(&amp;#39;I am bar&amp;#39;) bar() 如上所示，这样我们就可以省去bar = use_logging(bar)这一句了，直接调用bar()即可得到想要的结果。如果我们有其他的类似函数，我们可以继续调用装饰器来修饰函数，而不用重复修改函数或者增加新的封装。这样，我们就提高了程序的可重复利用性，并增加了程序的可读性。装饰器在Python使用如此方便都要归因于Python的函数能像普通的对象一样能作为参数传递给其他函数，可以被赋值给其他变量，可以作为返回值，可以被定义在另外一个函数内。</description>
     </item>
     
     <item>
@@ -1423,9 +1443,24 @@ https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息
     </item>
     
     <item>
+      <title>Python(15)——装饰器</title>
+      <link>https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <description>1.什么是装饰器 装饰器本质上是一个Python函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。它经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等场景。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量与函数功能本身无关的雷同代码并继续重用。概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能。
+2.举例说明 def foo(): print(&amp;#39;I am foo&amp;#39;) 现在有一个新的需求，希望可以记录下函数的执行日志，于是在代码中添加日志代码：
+def foo(): print(&amp;#39;I am foo&amp;#39;) logging.info(&amp;#39;foo is running&amp;#39;) bar()、bar2()也有类似的需求，怎么做？再写一个logging在bar函数里？这样就造成大量雷同的代码，为了减少重复写代码，我们可以这样做，重新定义一个函数：专门处理日志 ，日志处理完之后再执行真正的业务代码
+def use_logging(func): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) func() def bar(): print(&amp;#39;I am bar&amp;#39;) use_logging(bar) 逻辑上不难理解， 但是这样的话，我们每次都要将一个函数作为参数传递给use_logging函数。而且这种方式已经破坏了原有的代码逻辑结构，之前执行业务逻辑时，执行运行bar()，但是现在不得不改成use_logging(bar)。那么有没有更好的方式的呢？当然有，答案就是装饰器。
+def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) return func(*args, **kwargs) return wrapper def bar(): print(&amp;#39;i am bar&amp;#39;) bar = use_logging(bar) bar() 函数use_logging就是装饰器，它把执行真正业务方法的func包裹在函数里面，看起来像bar被use_logging装饰了。在这个例子中，函数进入和退出时 ，被称为一个横切面(Aspect)，这种编程方式被称为面向切面的编程(Aspect-Oriented Programming)。
+@符号是装饰器的语法糖，在定义函数的时候使用，避免再一次赋值操作
+def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) return func(*args) return wrapper @use_logging def foo(): print(&amp;#39;I am foo&amp;#39;) @use_logging def bar(): print(&amp;#39;I am bar&amp;#39;) bar() 如上所示，这样我们就可以省去bar = use_logging(bar)这一句了，直接调用bar()即可得到想要的结果。如果我们有其他的类似函数，我们可以继续调用装饰器来修饰函数，而不用重复修改函数或者增加新的封装。这样，我们就提高了程序的可重复利用性，并增加了程序的可读性。装饰器在Python使用如此方便都要归因于Python的函数能像普通的对象一样能作为参数传递给其他函数，可以被赋值给其他变量，可以作为返回值，可以被定义在另外一个函数内。</description>
+    </item>
+    
+    <item>
       <title>Python(14)——获取当前页面URL</title>
       <link>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url/</link>
-      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url/</guid>
       <description>1.直接获取 driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) print(driver.current_url) driver.quit() 2.问题 当浏览器新开页面后 current_url() 获取的还是原页面URL，这是因为浏览器还没有定位到新开的页面
@@ -1614,29 +1649,6 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>Python(10)——子类的super初始化</title>
-      <link>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
-      <description>1.使用场景 class mywindow(QtWidgets.QMainWindow, Ui_MainWindow): def __init__(self): super(mywindow, self).__init__() self.setupUi(self) # 寻找mywindow的父类QtWidgets.QMainWindow中的__init__()，进行对mywindow的初始化 2.解析 # python中的super(Net, self).__init__() 其执行时 # 首先找到Net的父类（比如是类NNet），然后把类Net的对象self转换为类NNet的对象，然后“被转换”的类NNet对象调用自己的init函数 这是对继承自父类的属性进行初始化，使用父类的初始化方法来初始化继承的属性。</description>
-    </item>
-    
-    <item>
-      <title>Python(11)——多线程的使用</title>
-      <link>https://ac-lm.github.io/posts/python/python11%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python11%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>参考原文：python 多线程 @虫师 
- 1.单线程 在好些年前操作系统处理问题都是单任务的，我想做听音乐和看电影两件事儿，那么一定要先排一下顺序。
-#coding=utf-8 import threading from time import ctime,sleep def music(func): for i in range(2): print &amp;#34;I was listening to %s. %s&amp;#34; %(func,ctime()) sleep(1) def move(func): for i in range(2): print &amp;#34;I was at the %s! %s&amp;#34; %(func,ctime()) sleep(5) if __name__ == &amp;#39;__main__&amp;#39;: music(u&amp;#39;爱情买卖&amp;#39;) move(u&amp;#39;阿凡达&amp;#39;) print &amp;#34;all over %s&amp;#34; %ctime() 我们先听了一首音乐，通过for循环来控制音乐的播放了两次，每首音乐播放需要1秒钟，sleep()来控制音乐播放的时长。接着我们又看了一场电影，每一场电影需要5秒钟，因为太好看了，所以我也通过for循环看两遍。在整个休闲娱乐活动结束后，我通过
-print &amp;#34;all over %s&amp;#34; %ctime() 看了一下当前时间，差不多该睡觉了
-运行结果：
-&amp;gt;&amp;gt;&amp;gt; ======================== RESTART ================================ &amp;gt;&amp;gt;&amp;gt; I was listening to 爱情买卖.</description>
-    </item>
-    
-    <item>
       <title>Python(12)——多线程的返回值</title>
       <link>https://ac-lm.github.io/posts/python/python12%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
@@ -1648,24 +1660,47 @@ print &amp;#34;all over %s&amp;#34; %ctime() 看了一下当前时间，差不�
     </item>
     
     <item>
-      <title>Python(8)——字典取值</title>
-      <link>https://ac-lm.github.io/posts/python/python8%E5%AD%97%E5%85%B8%E5%8F%96%E5%80%BC/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      <title>Python(11)——多线程的使用</title>
+      <link>https://ac-lm.github.io/posts/python/python11%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python8%E5%AD%97%E5%85%B8%E5%8F%96%E5%80%BC/</guid>
-      <description>1.取键：keys() bb={&amp;#39;人才/可怕&amp;#39;:23,&amp;#39;伏地魔&amp;amp;波特&amp;#39;:&amp;#39;army&amp;#39;,&amp;#39;哈哈哈,人才,回合&amp;#39;:&amp;#39;hhh&amp;#39;} for ii in bb.keys(): print(ii) #--输出------------------------------------------------------------------------- 人才/可怕 伏地魔&amp;amp;波特 哈哈哈,人才,回合 2.取值：values() for jj in bb.values(): print(jj) #--输出------------------------------------------------------------------------- 23 army hhh 4.取 键.值 对：items() for kk,vv in bb.items(): print(kk, vv) #---输出------------------------------------------------------------------------ 人才/可怕 23 伏地魔&amp;amp;波特 army 哈哈哈,人才,回合 hhh 5.获取指定键的值 c = bb.get(&amp;#39;人才&amp;#39;,&amp;#39;没有找到该键&amp;#39;) print(c) cc = bb.get(&amp;#39;人才/可怕&amp;#39;,&amp;#39;没有找到该键&amp;#39;) print(cc) #----输出------------------------------------------------------------------------ 没有找到该键 23 6.获取值，并且pop出这一键值对 d = bb.pop(&amp;#39;人才&amp;#39;,&amp;#39;pop失败&amp;#39;) print(d) dd = bb.pop(&amp;#39;人才/可怕&amp;#39;,&amp;#39;pop失败&amp;#39;) print(dd) print(bb) #----输出----------------------------------------------------------------------- pop失败 23 ！！字典变化了！！ </description>
+      <guid>https://ac-lm.github.io/posts/python/python11%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>参考原文：python 多线程 @虫师 
+ 1.单线程 在好些年前操作系统处理问题都是单任务的，我想做听音乐和看电影两件事儿，那么一定要先排一下顺序。
+#coding=utf-8 import threading from time import ctime,sleep def music(func): for i in range(2): print &amp;#34;I was listening to %s. %s&amp;#34; %(func,ctime()) sleep(1) def move(func): for i in range(2): print &amp;#34;I was at the %s! %s&amp;#34; %(func,ctime()) sleep(5) if __name__ == &amp;#39;__main__&amp;#39;: music(u&amp;#39;爱情买卖&amp;#39;) move(u&amp;#39;阿凡达&amp;#39;) print &amp;#34;all over %s&amp;#34; %ctime() 我们先听了一首音乐，通过for循环来控制音乐的播放了两次，每首音乐播放需要1秒钟，sleep()来控制音乐播放的时长。接着我们又看了一场电影，每一场电影需要5秒钟，因为太好看了，所以我也通过for循环看两遍。在整个休闲娱乐活动结束后，我通过
+print &amp;#34;all over %s&amp;#34; %ctime() 看了一下当前时间，差不多该睡觉了
+运行结果：
+&amp;gt;&amp;gt;&amp;gt; ======================== RESTART ================================ &amp;gt;&amp;gt;&amp;gt; I was listening to 爱情买卖.</description>
+    </item>
+    
+    <item>
+      <title>Python(10)——子类的super初始化</title>
+      <link>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <description>1.使用场景 class mywindow(QtWidgets.QMainWindow, Ui_MainWindow): def __init__(self): super(mywindow, self).__init__() self.setupUi(self) # 寻找mywindow的父类QtWidgets.QMainWindow中的__init__()，进行对mywindow的初始化 2.解析 # python中的super(Net, self).__init__() 其执行时 # 首先找到Net的父类（比如是类NNet），然后把类Net的对象self转换为类NNet的对象，然后“被转换”的类NNet对象调用自己的init函数 这是对继承自父类的属性进行初始化，使用父类的初始化方法来初始化继承的属性。</description>
     </item>
     
     <item>
       <title>Python(9)——异常信息打印</title>
       <link>https://ac-lm.github.io/posts/python/python9%E5%BC%82%E5%B8%B8%E4%BF%A1%E6%81%AF%E6%89%93%E5%8D%B0/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python9%E5%BC%82%E5%B8%B8%E4%BF%A1%E6%81%AF%E6%89%93%E5%8D%B0/</guid>
       <description>1. 直接打印错误 # noinspection PyBroadException (pycharm 警告注释) try: pass except KeyboardInterrupt: print(&amp;#34;quit&amp;#34;) except Exception as ex: print(&amp;#34;出现如下异常%s&amp;#34;%ex) #--------------------------------------------------- try: 2/0 except Exception as e: print(e) 2. 用traceback模块打印 上述方式看不到具体错误的信息，如行数，不便于调试的时候定位，因此可以使用traceback模块
 import traceback try: 2/0 except Exception as e: traceback.print_exc() 结果为：
 Traceback (most recent call last): File &amp;#34;c:\Users\Administrator\Desktop\test1.py&amp;#34;, line 3, in &amp;lt;module&amp;gt; 2/0 ZeroDivisionError: division by zero 结果如同出错时在命令行中报错一样打印信息
  traceback.print_exc() 是直接打印错误 traceback.format_exc() 则返回字符串 即 traceback.print_exc() === print ( traceback.format_exc())  </description>
+    </item>
+    
+    <item>
+      <title>Python(8)——字典取值</title>
+      <link>https://ac-lm.github.io/posts/python/python8%E5%AD%97%E5%85%B8%E5%8F%96%E5%80%BC/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python8%E5%AD%97%E5%85%B8%E5%8F%96%E5%80%BC/</guid>
+      <description>1.取键：keys() bb={&amp;#39;人才/可怕&amp;#39;:23,&amp;#39;伏地魔&amp;amp;波特&amp;#39;:&amp;#39;army&amp;#39;,&amp;#39;哈哈哈,人才,回合&amp;#39;:&amp;#39;hhh&amp;#39;} for ii in bb.keys(): print(ii) #--输出------------------------------------------------------------------------- 人才/可怕 伏地魔&amp;amp;波特 哈哈哈,人才,回合 2.取值：values() for jj in bb.values(): print(jj) #--输出------------------------------------------------------------------------- 23 army hhh 4.取 键.值 对：items() for kk,vv in bb.items(): print(kk, vv) #---输出------------------------------------------------------------------------ 人才/可怕 23 伏地魔&amp;amp;波特 army 哈哈哈,人才,回合 hhh 5.获取指定键的值 c = bb.get(&amp;#39;人才&amp;#39;,&amp;#39;没有找到该键&amp;#39;) print(c) cc = bb.get(&amp;#39;人才/可怕&amp;#39;,&amp;#39;没有找到该键&amp;#39;) print(cc) #----输出------------------------------------------------------------------------ 没有找到该键 23 6.获取值，并且pop出这一键值对 d = bb.pop(&amp;#39;人才&amp;#39;,&amp;#39;pop失败&amp;#39;) print(d) dd = bb.pop(&amp;#39;人才/可怕&amp;#39;,&amp;#39;pop失败&amp;#39;) print(dd) print(bb) #----输出----------------------------------------------------------------------- pop失败 23 ！！字典变化了！！ </description>
     </item>
     
     <item>
@@ -1813,10 +1848,10 @@ uname -a rpm -qa | grep kernel #查看安装内核 yum remove kernel-3.10.0-229.
       <description>1.iperf iperf 官网下载 
 iPerf 是一种网络性能测试工具，能对协议、定时、缓冲区等参数进行配置调整，能够测试TCP/UDP最大带宽、延迟抖动、数据包丢失等信息。
 iPerf基于Server/Client的工作模式，客户端向服务端发送一定数量的数据，服务端统计并记录带宽、延时抖动等信息。客户端将数据全部发送后，服务端会回复一个数据包给客户端，将测试数据反馈给客户端。不过，如果网络较为拥塞或者误码率较高，客户端无法收到服务端回复的数据包，则只能显示本地记录的部分测试结果，所以服务端和客户端的测试结果可能有所不同。
-#安装 rpm -ivh xxxx.rpm #iPerf命令语法格式 iperf [-s|-c host] [options] iperf3 -s #服务器 iperf3 -c ServerIP #客户机 #配置软链接 cd /usr/bin ln -s iperf3 iperf 2.netperf netperf 官网下载 
+# 安装 rpm -ivh xxxx.rpm # iPerf命令语法格式 iperf [-s|-c host] [options] iperf3 -s # 服务器 iperf3 -c ServerIP # 客户机 # 配置软链接 cd /usr/bin ln -s iperf3 iperf 2.netperf netperf 官网下载 
 Netperf是一种网络性能测量工具，主要用于测试TCP或UDP和Berkeley套接字接口的批量数据传输（bulk data transfer）和请求/应答（request/reponse）性能。
 Netperf工具以Client/Server方式工作，服务端是netServer，用来侦听来自客户端的连接，客户端是netperf，用来向服务发起网络测试。在客户端与服务端之间，首先建立一个控制连接，传递有关测试配置的信息，以及测试的结果。在控制连接建立并传递了测试配置信息以后，客户端与服务端之间会再建立一个测试连接，用于来回传递特殊的流量，以测试网络的性能。当netServer在服务端启动后，就可在客户端运行netperf来测试网络的性能。
-rpm -ivh xxxx.rpm netperf -V #安装完以后，会生成两个工具：netserver 和 netperf netserver -D -p 9991 #服务器，-D 前台运行，-p 指定端口 netperf -H host #客户端 3.网络性能指标  网络吞吐量：单位时间内通过某个网络（信道或接口）的数据量，吞吐量受网络的带宽或者网络的额定速率限制，单位通常表示为bit/s或bps。 网络延时：一个数据包从用户的计算机发送到网站服务器，然后再立即从网站服务器返回用户计算机的来回时间。影响网络延时的主要因素是路由的跳数和网络的流量。交换机延时（Latency）是指从交换机接收到数据包到开始向目的端口复制数据包之间的时间间隔。有许多因素会影响交换机延时大小，比如转发技术等等。 抖动：用于描述包在网络中的传输延时的变化，抖动越小，说明网络质量越稳定越好。抖动是评价一个网络性能的最重要的因素。 丢包率：理想状态下是发送了多少数据包就能接收到多少数据包，但是由于信号衰减、网络质量等诸多因素的影响并不能达到理想状态，而丢包率就是指测试中所丢失的数据包数量占所发送的数据包的比率。  4. 基于 iPerf 测试 SDN 网络 TCP测试 步骤1：在主机1上执行 iperf -s 命令，以主机1为服务器端进行TCP测试。</description>
+rpm -ivh xxxx.rpm netperf -V # 安装完以后，会生成两个工具：netserver 和 netperf netserver -D -p 9991 # 服务器，-D 前台运行，-p 指定端口 netperf -H host # 客户端 3.网络性能指标  网络吞吐量：单位时间内通过某个网络（信道或接口）的数据量，吞吐量受网络的带宽或者网络的额定速率限制，单位通常表示为bit/s或bps。 网络延时：一个数据包从用户的计算机发送到网站服务器，然后再立即从网站服务器返回用户计算机的来回时间。影响网络延时的主要因素是路由的跳数和网络的流量。交换机延时（Latency）是指从交换机接收到数据包到开始向目的端口复制数据包之间的时间间隔。有许多因素会影响交换机延时大小，比如转发技术等等。 抖动：用于描述包在网络中的传输延时的变化，抖动越小，说明网络质量越稳定越好。抖动是评价一个网络性能的最重要的因素。 丢包率：理想状态下是发送了多少数据包就能接收到多少数据包，但是由于信号衰减、网络质量等诸多因素的影响并不能达到理想状态，而丢包率就是指测试中所丢失的数据包数量占所发送的数据包的比率。  4.</description>
     </item>
     
     <item>
@@ -1882,8 +1917,8 @@ Rename the unpacked directory from cmdline-tools to tools, and place it under $C
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1%E4%BB%80%E4%B9%88%E6%98%AFip/</guid>
-      <description>1.IP的分类 Internet 上的每台主机和路由器都有一个 IP 地址，IP 地址包含网络号和主机号，并且这种组合是唯一的。原则上，Internet 上的任何两台机器不会有相同的IP地址。所有的 IP 地址都是二进制的 32 位长，被用于 IP 分组的源地址和目的地址域，细分为 A、B、C、D、E 五类。
-1）A类地址  第一位总是 0，8 位分配给网络号，24 位分配给主机号 地址范围为：0.0.0.0 ~ 127.255.255.255 二进制 32 位：0000-0000.0000-0000.0000-0000.0000-0000 ~ 0111-1111.1111-1111.1111-1111.1111-1111  2）B类地址  前两位总是 10，16 位分配给网络号，16 位分配给主机号 地址范围是：128.0.0.0 ~ 191.255.255.255 网络号：1000 0000.0000-0000 ~ 1011-1111.1111-1111  3）C类地址  前三位总是 110，24 位分配给网络号，8 位分配给主机号 地址范围是：192.0.0.0 ~ 223.255.255.255  4）D类地址  前四位总是 1110，D 类地址作为组播地址（一对多的通信） 地址范围是 224.0.0.0 ~ 239.255.255.255  5）E类地址  前五位总是 11110，E 类地址为保留地址，供以后使用 地址范围是 240.</description>
+      <description>1.IP的分类 Internet 上的每台主机和路由器都有一个由网络号和主机号唯一组成的 IP 地址，而且任意两台机器的 IP 地址互不相同。所有的 IP 地址都是一个 32 位长的二进制数，根据网络号和主机号分组方式的不同，细分为 A、B、C、D、E 五类。
+1）A类地址  第一位总是 0，8 位分配给网络号，24 位分配给主机号 地址范围为：0.0.0.0 ~ 127.255.255.255 二进制 32 位：0000-0000.0000-0000.0000-0000.0000-0000 ~ 0111-1111.1111-1111.1111-1111.1111-1111  2）B类地址  前两位总是 10，16 位分配给网络号，16 位分配给主机号 地址范围是：128.0.0.0 ~ 191.255.255.255 网络号：1000 0000.0000-0000 ~ 1011-1111.1111-1111  3）C类地址  前三位总是 110，24 位分配给网络号，8 位分配给主机号 地址范围是：192.0.0.0 ~ 223.255.255.255  4）D类地址  前四位总是 1110，D 类地址作为组播地址（一对多的通信） 地址范围是 224.0.0.0 ~ 239.255.255.255  5）E类地址  前五位总是 11110，E 类地址为保留地址，供以后使用 地址范围是 240.0.0.0 ~ 255.</description>
     </item>
     
     <item>
@@ -1894,7 +1929,7 @@ Rename the unpacked directory from cmdline-tools to tools, and place it under $C
       <guid>https://ac-lm.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/</guid>
       <description>1.为什么要划分子网  如果不划分子网，那么每个路由器中路由表的信息量将会非常大，影响网络的速度与性能。划分子网后，将减少广播所带来的负面影响，提高整体的性能。 相对来看，节省了 IP 地址资源，在分配地址时，不再按类地址进行分配，而是按需分配，所以总的来说，被浪费的 IP 地址少了，IP 地址资源节省了。 虽然划分子网没有增加可用 IP 地址，而且减少了可用 IP 地址（因为每个子网中的全 0 网络地址和全 1 广播地址均不能作为主机 IP 来使用）。但通过对一个网络进行子网划分，将一个大网络分成多个小的网络的操作，可以让更多的人拥有 IP 地址。比如，当一组 IP 地址指定给一个公司时，公司可以将该网络分割成多个小网络，分配给每个部门使用。这样，技术部门和管理部门就都可以有属于自己的小网络。  2.什么是子网掩码 子网掩码是判断两个 IP 地址是否同属一个子网的标志，同时也是一个 32 位二进制地址，它和 IP 地址一样也是使用点式十进制来表示的。如果两个 IP 地址在和子网掩码的按位与计算下所得结果相同，即表明它们共属于同一子网中。
 每个子网有 3 类地址：网络地址，主机分配地址，广播地址。如子网 192.168.1.0 — 192.168.1.63。其网络地址 192.168.1.0，广播地址 192.168.1.63，主机分配地址 192.168.1.1 — 192.168.1.62。
-3.从故事解释子网掩码 从前有一个地主，有着 256 间房子，他家的门牌号码是 192.168.1，第一间房子的门牌号码是 192.168.1.0，第二间是192.168.1.1，以此类推第 256 间的编号是 192.168.1.255 。
+3.从故事解释子网掩码 有这样一个故事：从前有一个地主，有着 256 间房子，他家的门牌号码是 192.168.1，第一间房子的门牌号码是 192.168.1.0，第二间是192.168.1.1，以此类推第 256 间的编号是 192.168.1.255 。
 某天，地主老了，需要把 256 间房子平均分给 4 个儿子，每个儿子可以分 64 间，于是请来一位先生主持公道。先生这么来操作。
  192.168.1.0 - 192.168.1.63 分给大儿子 192.168.1.64 - 192.</description>
     </item>
@@ -2130,7 +2165,7 @@ name：MaxUserPort，value：65534（十进制）； name：TcpTimedWaitDelay，
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/linux/linux2docker%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
-      <description>1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  exit #退出 docker stop $(docker ps -q) # 停用全部运行中的容器 docker rm $(docker ps -aq) # 删除全部容器  docker cp testtomcat：/usr/local/tomcat/webapps/test/js/test.</description>
+      <description>1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.</description>
     </item>
     
     <item>
@@ -2245,8 +2280,8 @@ BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts
       
       <guid>https://ac-lm.github.io/posts/android/android2adb%E8%B0%83%E8%AF%95/</guid>
       <description>参考文档：adb @Android Studio用户指南 
- 1.adb的基础操作 adb 文件夹在SDK目录下 SDK\Android\platform-tools 内
-adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事件 adb shell #shell --》HWTRT-Q:/ $ getevent /dev/input/event4 #按键事件 --》HWTRT-Q:/ $ exit adb shell getevent /dev/input/event4 #按键事件 adb shell dumpsys #获取当前运行的服务 adb shell dumpsys battery #获取设备电池信息 adb shell dumpsys cpuinfo adb shell dumpsys meminfo # 要获取具体应用的内存信息，可加上包名 adb shell dumpsys meminfo PACKAGE_NAME # 获取某个包的信息： adb shell dumpsys package PACKAGE_NAME 2.</description>
+ 1.adb的基础操作 以华为手机为例，adb 文件夹在SDK目录下 SDK\Android\platform-tools 内
+adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事件 adb shell #shell --&amp;gt; HWTRT-Q:/ $ getevent /dev/input/event4 #按键事件 --&amp;gt; HWTRT-Q:/ $ exit adb shell getevent /dev/input/event4 #按键事件 adb shell dumpsys #获取当前运行的服务 adb shell dumpsys battery #获取设备电池信息 adb shell dumpsys cpuinfo adb shell dumpsys meminfo # 要获取具体应用的内存信息，可加上包名 adb shell dumpsys meminfo PACKAGE_NAME # 获取某个包的信息： adb shell dumpsys package PACKAGE_NAME 2.</description>
     </item>
     
     <item>
@@ -2276,14 +2311,14 @@ adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事�
     </item>
     
     <item>
-      <title>随记(10)——如何理解并发</title>
-      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91/</link>
+      <title>随记(10)——并发和并行</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/</link>
       <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91/</guid>
-      <description>1.什么是并发 并发（Concurrent），在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行
-2.什么是并行 并行（Parallel），当系统有一个以上CPU时，当一个CPU执行一个进程时，另一个CPU可以执行另一个进程，两个进程互不抢占CPU资源，可以同时进行，这种方式我们称之为并行(Parallel)，决定并行的因素不是CPU的数量，而是CPU的核心数量，比如一个CPU多个核也可以并行
-3.并行和并发的区别  并发，指的是多个事情，在同一时间段内同时发生了 并行，指的是多个事情，在同一时间点上同时发生了 并发的多个任务之间是互相抢占资源的 并行的多个任务之间是不互相抢占资源的  4.并发的两种情况  一种是严格意义上的并发，即所有的用户在同一时间点做同一件事或操作，这种操作一般指做同一类型的业务。比如，所有用户同一时刻做并发登陆，同一时刻做表单提交。 另外一种并发是广义范围的并发，这种并发与前一种并发的区别是，尽管多个用户对系统发出了请求或者进行了操作，但是这些请求或都操作可以是相同的，也可以是不同的。比如，在同一时刻有用户在登录，有用户在提交表单  </description>
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/</guid>
+      <description>1.什么是并发 并发（Concurrent），在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行。并发是会抢占资源的。
+2.什么是并行 并行（Parallel），当系统有一个以上CPU时，可以让一个CPU执行一个进程，另一个CPU执行另一个进程，两个进程互不抢占CPU资源，可以同时进行，这种方式称之为并行，决定并行的因素不是CPU的数量，而是CPU的核心数量，比如一个CPU多个核也可以并行。并行是不会抢占资源的。
+3.并行和并发的区别  并发，指的是多个事情，在同一时间段内同时发生了 并行，指的是多个事情，在同一时间点上同时发生了 并发的多个任务之间是互相抢占资源的 并行的多个任务之间是不互相抢占资源的 并发是一个处理器多条等待队列 并行是多个处理器多条等待队列  4.并发的两种情况  一种是严格意义上的并发，即所有的用户在同一时间点做同一件事或操作，这种操作一般指做同一类型的业务。比如，所有用户同一时刻做并发登陆，同一时刻做表单提交。 另外一种并发是广义范围的并发，这种并发与前一种并发的区别是，尽管多个用户对系统发出了请求或者进行了操作，但是这些请求或都操作可以是相同的，也可以是不同的。比如，在同一时刻有用户在登录，有用户在提交表单  5.并发编程的性能消耗？  在使用多线程时，线程的上下文切换会消耗性能，消耗时间 其次是资源限制问题。由于程序的执行速度受限于计算机硬件资源或软件资源。例如，服务器的带宽只有 2Mb/s，某个资源的下载速度是 1Mb/s 每秒，即使系统启动 10 个线程下载资源，下载速度不会变成 10Mb/s，所以在进行并发编程时，要考虑这些资源的限制。硬件资源限制有带宽的上传/下载速度、硬盘读写速度和CPU的处理速度。软件资源限制有数据库的连接数和socket连接数等。 对于硬件资源限制，可以考虑使用集群并行执行程序。既然单机的资源有限制，那么就让程序在多机上运行，搭建服务器集群，使用不同的机器处理不同的数据。 对于软件资源限制，可以考虑使用资源池将资源复用。比如使用连接池将数据库和Socket连接复用，或者在调用对方 webservice 接口获取数据时，只建立一个连接。  6.并发编程的优势 在实现网络资源的断点续传时，通过将资源进行切分为不同大小的任务，启动多线程下载。这样即使在网络阻塞时，下载速度的减速效果也没这么明显。这便是多线程的优势，即使一个线程由于网络阻塞被卡住，但可能会有另一个线程正处在慢启动的最终加速阶段，这样总体的下载速度就明显优于单线程。</description>
     </item>
     
     <item>
@@ -2339,9 +2374,9 @@ Session是保存在服务器上用来记录用户状态的机制。客户端浏�
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</guid>
-      <description>为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Python 的 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型
+      <description>为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
 print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
-ISO-8859-1 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
+# Python使用的编解码格式 ISO-8859-1 # 实际应该使用的编解码格式 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
 乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为GBK编码的字节流，在我们抓取后，程序直接使用UTF-8进行编码并输出到文件中，此时必然会引起乱码。
 现如今主流的编码有：Unicode、ISO-8859-1、GBK2312、GBK、UTF-8 等几种。
 最早的编码是ISO-8859-1，和ASCII编码相似。ISO-8859-1属于单字节编码，最多能表示的字符范围是0-255，应用于英文环境。很明显，ISO-8859-1编码表示的字符范围很窄，无法表示中文字符。
@@ -2351,24 +2386,12 @@ ISO-8859-1 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页�
     </item>
     
     <item>
-      <title>Python(2)——程序的入口</title>
-      <link>https://ac-lm.github.io/posts/python/python2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3/</link>
-      <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/python2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3/</guid>
-      <description>1.前言 我们都知道C或者Java程序运行必然有主程序入口main函数，而python却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现C那样的主程序入口main函数，我们可以使用以下的判断
-if __name__==&#39;__main__&#39;:2.语义解释 __name__是python的内置属性，属于系统全局变量，每一个py文件都有一个属于自己的__name__
- 如果py文件作为模块被导入(import)，那么__name__就是该py文件的文件名(也称模块名) 如果py文件直接运行时，那么__name__默认等于字符串main  也就是当一个py文件作为启动文件时，该文件的内置属性__name__等于__main__，而作为导入模块时，该模块的__name__等于文件名(也称模块名字)，我们对__name__进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)
-3.作用  作为启动py文件的main函数入口 一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测bug或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得  </description>
-    </item>
-    
-    <item>
       <title>Python(3)——xlrd库</title>
       <link>https://ac-lm.github.io/posts/python/python3xlrd%E5%BA%93/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python3xlrd%E5%BA%93/</guid>
-      <description>1.什么是xlrd库 python中操作Excel表格主要用到xlrd和xlwt这两个库，xlrd库提供读取功能，xlwt库提供写入功能，但python中不存在对Excel表格进行修改的库。（注意在版本1.3.0中，这两个库不在支持xlsx格式的表格文件，如要使用请指定版本1.2.0）
+      <description>1.什么是xlrd库 python中操作Excel表格主要用到xlrd和xlwt这两个库，xlrd库提供读取功能，xlwt库提供写入功能，但python中不存在对Excel表格进行修改的库。（注意在版本1.3.0中，这两个库不再支持xlsx格式的表格文件，如要使用请指定版本1.2.0）
 2.安装 pip install xlrd==1.2.0 3.使用 import xlrd data = xlrd.open_workbook(filename) #文件名以及路径 导入和打开文档后，必须先定位到sheet，才能进行下一步操作，程序只有在获取对应的sheet之后，才能进行对行和列以及单元格的操作
 a.获取工作表 table = data.sheets()[0] #通过索引顺序获取 table = data.sheet_by_index(sheet_indx) #通过索引顺序获取 table = data.sheet_by_name(sheet_name) #通过名称获取 names = data.sheet_names() #返回book中所有工作表的名字 data.sheet_loaded(sheet_name or indx) # 检查某个sheet是否导入完毕 b.对行的操作 nrows = table.nrows #获取该sheet中的有效行数 table.row(rowx) #返回由该行中所有的单元格对象组成的列表 table.row_slice(rowx) #返回由该列中所有的单元格对象组成的列表 table.row_types(rowx, start_colx=0, end_colx=None) #返回由该行中所有单元格的数据类型组成的列表 table.row_values(rowx, start_colx=0, end_colx=None) #返回由该行中所有单元格的数据组成的列表 table.row_len(rowx) #返回该列的有效单元格长度 b.对列的操作 ncols = table.ncols #获取列表的有效列数 table.col(colx, start_rowx=0, end_rowx=None) #返回由该列中所有的单元格对象组成的列表 table.col_slice(colx, start_rowx=0, end_rowx=None) #返回由该列中所有的单元格对象组成的列表 table.col_types(colx, start_rowx=0, end_rowx=None) #返回由该列中所有单元格的数据类型组成的列表 table.</description>
     </item>
@@ -2407,7 +2430,7 @@ a.获取工作表 table = data.sheets()[0] #通过索引顺序获取 table = dat
 我们选择其中物理位置最详细的那个 IP 来尝试渗透
 首先在 WhatWeb 里面检索一下这个 IP 地址，即可知道这个网站采用的是nginx 1.8.1服务器，使用的是5.5.38版本的 PHP
 然后用 nmap 扫了一下端口和运行的服务，发现开放的端口还是蛮多的
-PORT STATE SERVICE 1/tcp open tcpmux 3/tcp open compressnet 4/tcp open unknown 6/tcp open unknown 7/tcp open echo 9/tcp open discard .</description>
+PORT STATE SERVICE1/tcp open tcpmux3/tcp open compressnet4/tcp open unknown6/tcp open unknown7/tcp open echo9/tcp open discard.</description>
     </item>
     
     <item>
@@ -2436,13 +2459,25 @@ PORT STATE SERVICE 1/tcp open tcpmux 3/tcp open compressnet 4/tcp open unknown 6
     </item>
     
     <item>
+      <title>Python(2)——程序的入口</title>
+      <link>https://ac-lm.github.io/posts/python/python2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3/</guid>
+      <description>1.前言 我们都知道C或者Java程序运行必然有主程序入口main函数，而python却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现C那样的主程序入口main函数，我们可以使用以下的判断
+if __name__==&#39;__main__&#39;:2.语义解释 __name__是python的内置属性，属于系统全局变量，每一个py文件都有一个属于自己的__name__
+ 如果py文件作为模块被导入(import)，那么__name__就是该py文件的文件名(也称模块名) 如果py文件直接运行时，那么__name__默认等于字符串main  也就是当一个py文件作为启动文件时，该文件的内置属性__name__等于__main__，而作为导入模块时，该模块的__name__等于文件名(也称模块名字)，我们对__name__进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)
+3.作用  作为启动py文件的main函数入口 一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测bug或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得  </description>
+    </item>
+    
+    <item>
       <title>随记(1)——什么是Kafka</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AFkafka/</link>
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AFkafka/</guid>
       <description>参考原文：Kafka 初识 @暮良文王 
- 1.什么是 KafKa Kafka（Apache Kafka）是一款开源的消息引擎系统 （Messaging System），根据维基百科的定义：消息引擎系统是一组规范。企业利用这组规范在不同系统之间传递语义准确的消息，实现松耦合的异步式数据传递。简单来说消息引擎的作用就是实现以下的功能
+ 1.什么是 KafKa Kafka（Apache Kafka）是一款开源的消息引擎系统 （Messaging System），根据维基百科的定义：消息引擎系统是一组规范，企业利用这组规范在不同系统之间传递语义准确的消息，实现松耦合的异步式数据传递。简单来说消息引擎的作用就是实现以下的功能
  系统 A 发送消息给消息引擎系统 系统 B 从消息引擎系统中读取 A 发送的消息。  2.Kafka 如何设计信息 Kafka 使用的是纯二进制的字节序列。如果我们在设计消息使用了 CSV、XML 亦或是 JSON 这些结构化的框架，那么在发送给 Kafka 前都要将其转换成二进制的字节序列。
 3.Kafka 如何传递消息 Kafka 同时支持两种消息引擎模型，即：
  点对点模型：也叫消息队列模型。即系统 A 发送的消息只能被系统 B 接收，其他任何系统都不能读取 A 发送的消息。日常生活的例子比如电话客服就属于这种模型：同一个客户呼入电话只能被一位客服人员处理，第二个客服人员不能为该客户服务。 发布 / 订阅模型：与上面不同的是，它有一个主题（Topic）的概念，你可以理解成逻辑语义相近的消息容器。该模型也有发送方和接收方，只不过提法不同。发送方也称为发布者（Publisher），接收方称为订阅者（Subscriber）。和点对点模型不同的是，这个模型可能存在多个发布者向相同的主题发送消息，而订阅者也可能存在多个，它们都能接收到相同主题的消息。生活中的报纸订阅就是一种典型的发布 / 订阅模型。　  4.为什们要使用 Kafka 为什么系统 A 不能直接发送消息给系统 B，中间还要隔一个消息引擎呢？为什么要使用 Kafka 呢？
@@ -2458,10 +2493,10 @@ PORT STATE SERVICE 1/tcp open tcpmux 3/tcp open compressnet 4/tcp open unknown 6
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B02%E4%BB%80%E4%B9%88%E6%98%AFcsrf/</guid>
-      <description>参考原文：CSRF 是什么？@饥人谷若愚 
- 1.什么是 CSRF ( Cross Site Request Forgery )( 跨站请求伪造 ) CSRF (Cross Site Request Forgery)攻击，中文名：跨站请求伪造。其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。用户在登录状态下这个请求被服务端接收后会被误以为是用户合法的操作。对于 GET 形式的接口地址可轻易被攻击，对于 POST 形式的接口地址也不是百分百安全，攻击者可诱导用户进入带 Form 表单可用 POST 方式提交参数的页面
+      <description> 参考原文：CSRF 是什么？@饥人谷若愚 
+ 1.什么是 CSRF ( Cross Site Request Forgery )( 跨站请求伪造 ) CSRF (Cross Site Request Forgery)攻击，中文名：跨站请求伪造。其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。这样，当用户在登录状态下请求这个地址时，服务端就会以为这个非法操作是用户合法的操作。
 2.如何避免 在客户端防范方面：对于数据库的修改请求，全部使用 POST 提交，禁止使用 GET 请求。在服务器端防范方面：一般的做法是在表单里面添加一段隐藏的唯一的 token (请求令牌)。比如：
- 服务端在收到路由请求时，生成一个随机数，在渲染请求页面时把随机数埋入页面（一般埋入 form 表单内） 服务端设置 setCookie，把该随机数作为 cookie 或者 session 种入用户浏览器 当用户发送 GET 或者 POST 请求时带上 csrf_token 参数（对于 Form 表单直接提交即可，因为会自动把当前表单内所有的 input 提交给后台，包括 csrf_token） 后台在接受到请求后解析请求的 cookie 获取 csrf_token 的值，然后和用户请求提交的 csrf_token 做个比较，如果相等表示请求是合法的 Token 保存在 Session 中。假如 Token 保存在 Cookie 中，用户浏览器开了很多页面。在一些页面 Token 被使用消耗掉后新的 Token 会被重新种入，但那些老的 Tab 页面对应的 HTML 里还是老 Token。这会让用户觉得为啥几分钟前打开的页面不能正常提交？ 尽量少用 GET。假如攻击者在我们的网站上传了一张图片，用户在加载图片的时候实际上是向攻击者的服务器发送了请求，这个请求会带有 referer 表示当前图片所在的页面的 url。 而如果使用 GET 方式接口的话这个 URL 就形如：https://xxxx.</description>
+ 服务端在收到路由请求时，生成一个随机数，在渲染请求页面时把随机数埋入页面（一般埋入 form 表单内） 服务端设置 setCookie，把该随机数作为 cookie 或者 session 种入用户浏览器 当用户发送 GET 或者 POST 请求时带上 csrf_token 参数（对于 Form 表单直接提交即可，因为会自动把当前表单内所有的 input 提交给后台，包括 csrf_token） 后台在接受到请求后解析请求的 cookie 获取 csrf_token 的值，然后和用户请求提交的 csrf_token 做个比较，如果相等表示请求是合法的 尽量少用 GET。假如攻击者在我们的网站上传了一张图片，用户在加载图片的时候实际上是向攻击者的服务器发送了请求，这个请求会带有 referer 表示当前图片所在的页面的 url。 而如果使用 GET 方式接口的话这个 URL 就形如：https://xxxx.com/gift?giftId=aabbcc&amp;amp;_csrf_token=xxxxx，把 token 接在 URL 后面，那相当于攻击者获取了 csrf_token ，短时间内可以使用这个 token 来操作其他 GET 接口。  </description>
     </item>
     
     <item>
@@ -2473,9 +2508,8 @@ PORT STATE SERVICE 1/tcp open tcpmux 3/tcp open compressnet 4/tcp open unknown 6
       <description>参考原文：常见排序算法 @zwtgyh 
  1.冒泡排序 原理解析 选择第 1 个和第 2 个数字，如果第 1 个大于第 2 个，则二者交换位置（假设是升序排列）。之后选择第 2个和第 3 个数字，类似交换处理。一轮下来后，最大的数字会冒泡到最后一位。接下来，忽略已经排好的数字，对于剩下的数字再来一轮，直到所有的数字都排列完成。
 复杂度分析 若文件的初始状态是正序的，一趟扫描即可完成排序。所需的关键字比较次数 C 和记录移动次数 M 均达到最小值：Cmin = n-1，Mmin = 0，所以，冒泡排序最优的时间复杂度为 O(n)
-若初始文件是反序的，需要进行n-1趟排序。每趟排序要进行n-1次关键字的比较(1≤i≤n-1)，且每次比较都必须移动记录三次来达到交换记录位置。在这种情况下，比较和移动次数均达到最大值：Cmax=n(n-1)/2，Mmax=3n(n-1)/2，冒泡排序的最坏时间复杂度为O(n^2)
- 平均的时间复杂度为：O(n^2) 最优的空间复杂度，不需要借用第三方内存空间，则复杂度为0 最差的空间复杂度，每次都要借用一次内存，按照实际的循环次数，为O(N) 平均的空间负杂度为：O(1)  2.插入排序 原理解析  从第一个元素开始，该元素可以认为已经被排序 取出下一个元素，在已经排序的元素序列中从后向前扫描 把取出的元素放到已排序的元素中间的合适位置 重复步骤2~3 就像排队一样，依次每次挑一个同学，把该同学插入到已经排好的部分队伍里。  复杂度分析  最优的情况，当待排序数组是有序时，只需当前数跟前一个数比较一下就可以了，这时一共需要比较N- 1次，时间复杂度为O(N) 。 最坏的情况，当待排序数组是逆序的，此时需要比较次数最多，总次数记为：1+2+3+…+N-1，所以，插入排序最坏情况下的时间复杂度为O(N^2) 。 平均来说，A[1..j-1]中的一半元素小于A[j]，一半元素大于A[j]。插入排序在平均情况运行时间与最坏情况运行时间一样，是输入规模的二次函数。 插入排序的空间复杂度为常数阶O(1)  3.快速排序 原理解析 快速排序使用分治法策略来把一个序列分为两个子序列。其步骤为：
- 从数列中挑出一个元素，称为基准， 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。 递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。 递归到最底部时，数列的大小是零或一，也就是已经排序好了。这个算法一定会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。  复杂度分析 快速排序的一次划分算法从两头交替搜索，直到 low 和 hight 重合，因此其一次排序时间复杂度是 O(n)，所以整个快速排序算法的时间复杂度与划分的趟数有关。</description>
+若初始文件是反序的，需要进行 n-1趟排序。每趟排序要进行 n-1 次关键字的比较( 1 ≤ i ≤ n-1 )，且每次比较都必须移动记录三次来达到交换记录位置。在这种情况下，比较和移动次数均达到最大值：Cmax=n(n-1)/2，Mmax=3n(n-1)/2，冒泡排序的最坏时间复杂度为O(n^2)
+ 平均的时间复杂度为：O(n^2) 最优的空间复杂度，不需要借用第三方内存空间，则复杂度为0 最差的空间复杂度，每次都要借用一次内存，按照实际的循环次数，为O(N) 平均的空间负杂度为：O(1)  2.插入排序 原理解析  从第一个元素开始，该元素可以认为已经被排序 取出下一个元素，在已经排序的元素序列中从后向前扫描 把取出的元素放到已排序的元素中间的合适位置 重复步骤2~3 就像排队一样，依次每次挑一个同学，把该同学插入到已经排好的部分队伍里。  复杂度分析  最优的情况，当待排序数组是有序时，只需当前数跟前一个数比较一下就可以了，这时一共需要比较N-1次，时间复杂度为 O(N) 。 最坏的情况，当待排序数组是逆序的，此时需要比较次数最多，总次数记为：1+2+3+…+N-1，所以，插入排序最坏情况下的时间复杂度为O(N^2) 。 平均来说，A[1..j-1] 中的一半元素小于 A[j]，一半元素大于 A[j]。插入排序在平均情况运行时间与最坏情况运行时间一样，是输入规模的二次函数。 插入排序的空间复杂度为常数阶O(1)  3.快速排序 原理解析 快速排序使用分治法策略来把一个序列分为两个子序列。其步骤为：</description>
     </item>
     
     <item>
@@ -2485,7 +2519,7 @@ PORT STATE SERVICE 1/tcp open tcpmux 3/tcp open compressnet 4/tcp open unknown 6
       
       <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B04%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/</guid>
       <description>1.服务器（进程）级别 服务器级别增加网站吞吐量是诸多措施中最容易并且是效果最好的，如果一个网站能通过增加少量的服务器来提高吞吐量，应该优先采用。毕竟一台服务器的费用相比较一个程序员费用来说要低的多。但是有一个前提，就是你的服务器是系统的瓶颈，网站系统之后的其他系统并非瓶颈。如果你的系统的瓶颈在接口或者其他服务，盲目的增加服务器并不能解决你的问题。
-通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如LVS、Nginx、F5等
+通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如 LVS、Nginx、F5 等
 2.线程级别 当一个请求到达服务器并且正确的被服务器接收之后，最终执行这个请求的载体是一个线程。当一个线程被CPU载入执行其指令的时候，在同步的状态下，当前线程会阻塞在那里等待CPU结果，如果CPU执行的是比较慢的IO操作，线程会一直被阻塞闲置很长时间，这里的很长是对比CPU的速度而言。当一个新的请求到来的时候，如果没有新的线程去领取这个任务并执行，要么会发生异常，要么创建新的线程。
 线程是一种很稀缺的资源，不可能无限制的创建。这种情况下我们就要把线程这种资源充分利用起来，不要让线程停下来。这也是程序推荐采用异步的原因。试想，一个线程不停的在工作，遇到比较慢的IO不会去等待结果，而是接着处理下一个请求，当IO的结果返回来得到通知的时候，线程再去取IO结果，岂不是能在相同时间内处理更多的请求。程序异步化（非阻塞）会明显提高系统的吞吐量，但是响应时间可能会稍微变大。
 还有一点，尽量减少线程上下文在CPU的切换，因为线程上线文切换的成本也是比较大的，在线程切换的时候，CPU需要把当前线程的上下文信息记录下来用以下次调用的时候使用，然后把新线程的上下文信息载入然后执行。这个过程相对于CPU的执行速度而言，要慢很多。
@@ -2496,6 +2530,19 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
 4.网络传输级别 由于协议大部分是TCP/IP，所以在协议传输方面优化的手段比较少，但是应用程序级别协议可以选择压缩率更好的，比如采用GRPC会比单纯的HTTP协议要好很多，HTTP2 要比HTTP 1要好很多。
 另外一方面网卡尽量加大传输速率，比如千兆网卡要比百兆网卡速度更快。由于网络传输比较偏底层，所以人工干预的切入点会少很多。
 5.代码层  加大应用的进程数，增加并发数，特别在进程数是瓶颈的情况下； 优化线程调用，尽量线程池化； 应用的代码异步化，特别是异步非阻塞式编程对于提高吞吐量效果特别明显； 充分利用多核CPU优势，实现并行编程； 减少每个调用的响应时间，缩短调用链，例如通过加索引的方式来减少访问一次数据库的时间；  </description>
+    </item>
+    
+    <item>
+      <title>Python(1)——Selenium库</title>
+      <link>https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/</link>
+      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/</guid>
+      <description>1.什么Selenium Selenium是一个用于测试网站的自动化测试工具，支持各种浏览器，如Chrome、Firefox、Edge等。
+2.安装 pip install Selenium3.使用前提 Selenium的使用是基于浏览器驱动webdriver来启动与操作网页的，因此想要正常的进行Selenium自动化测试就必须获取对应浏览器的webdriver驱动文件。同时在环境变量中配置Path的属性，令其指向放置webdriver驱动文件的文件夹，或在程序中指定webdriver驱动文件的位置
+4.Selenium的定位方法 |元素 | 定位一个元素 | 含义 |-------------------| --------------------------------- | -------------------|id | find_element_by_id | 通过元素id定位 |name | find_element_by_name | 通过元素name定位 |xpath | find_element_by_xpath | 通过xpath表达式定位 |link_texr | find_element_by_link_text | 通过完整超链接定位 |partial_link_text | find_element_by_partial_link_text | 通过部分链接定位 |tag_name | find_element_by_tag_name | 通过标签定位 |class_name | find_element_by_class_name | 通过类名进行定位 |css_selector | find_elements_by_css_selector | 通过css选择器进行定位 对象的定位是自动化测试的核心，要想操作一个对象，首先应该识别这个对象。一个对象就像一个人一样，他会有各种的特征（属性），我们可以通过这个属性找到这对象。以百度搜索的输入框为例，有以下属性（F12查看）
+input id=&amp;quot;kw&amp;quot; class=&amp;quot;s_ipt&amp;quot; name=&amp;quot;wd&amp;quot; value=&amp;quot;&amp;quot; maxlength=&amp;quot;255&amp;quot; autocomplete=&amp;quot;off&amp;quot;我们可以这样来定位属性（这里请注意CSS和xpath，本文中不做深入探讨，但是最常用的定位方式）
+通过id方式定位：browser.find_element_by_id(&amp;quot;kw&amp;quot;)通过name方式定位：browser.find_element_by_name(&amp;quot;wd&amp;quot;)通过tag name方式定位：browser.</description>
     </item>
     
     <item>
