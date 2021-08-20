@@ -1,0 +1,8 @@
+baseURL = "https://ac-lm.github.io"
+languageCode = "en-us"
+title = "AC-LM 's blog"
+theme = "X"
+
+# 分页
+paginate = 10
+paginatePath = ""

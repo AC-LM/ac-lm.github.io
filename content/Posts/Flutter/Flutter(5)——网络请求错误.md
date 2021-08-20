@@ -1,0 +1,22 @@
+---
+title: Flutter(5)——网络请求错误
+date: 2021-04-29
+author: LM
+---
+
+> 参考原文：[ Insecure HTTP is not allowed by platform @csdn ](https://blog.csdn.net/weixin_44137575/article/details/109045633)
+
+## 1.报错
+
+```
+DioError [DioErrorType.DEFAULT]: Bad state: Insecure HTTP is not allowed by platform
+```
+
+## 2.原因
+
+平台不支持不安全的 HTTP 协议，即不允许访问 HTTP 域名的地址。这是因为 IOS 和 Android 9.0 对网络请求做了一些限制，不能直接访问 Http 域名的地址。
+
+## 3.解决方案
+
+降低SDK版本至27或27以下
+

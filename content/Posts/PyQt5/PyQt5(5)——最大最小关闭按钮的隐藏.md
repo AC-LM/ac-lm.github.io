@@ -1,0 +1,31 @@
+---
+title: PyQt5(5)——最大最小关闭按钮的隐藏
+date: 2020-12-15
+author: LM
+---
+
+```python
+# 1、直接隐藏界面整个头部内容
+setWindowFlags(Qt.FramelessWindowHint)
+
+# 2、显示最小化按钮
+setWindowFlags(Qt.WindowMinimizeButtonHint)
+
+# 3、显示最大化按钮
+setWindowFlags(Qt.WindowMaximizeButtonHint)
+
+# 4、显示最小化和最大化按钮
+setWindowFlags(Qt.WindowMinMaxButtonsHint)
+
+# 5、显示关闭按钮
+setWindowFlags(Qt.WindowCloseButtonHint)
+
+# 6、固定界面大小尺寸，不能进行缩放（三种方法都可以）
+setWindowFlags(Qt.MSWindowsFixedSizeDialogHint)
+setFixedSize(width, height)
+setMinimumSize(800, 700)   setMaximumSize(800, 700)
+
+# 7、取消最小化和最大化，及关闭按钮（利用固定大小方法）
+setWindowFlags(Qt.WindowMaximizeButtonHint | Qt.MSWindowsFixedSizeDialogHint)
+```
+

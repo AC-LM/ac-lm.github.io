@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">{{ .Title }}</a></h2>
+                <p>@LM | {{.Date.Format "2006-01-02"}}</p>
+            </div>
+        </header>
+        <div class="content">
+            {{ .Content }}
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    <!-- Pagination -->
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        {{ with .PrevInSection }}
+          <li><a href="{{.Permalink}}" class="button large previous">上一页</a></li>
+        {{ end }}
+        {{ with .NextInSection }}
+          <li><a href="{{.Permalink}}" class="button large next">下一页</a></li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div id="main">
+    <!-- Post-->
+    {{ range (.Paginate ( first 15 .Site.RegularPages ) 3 ).Pages }}
+    <article class="post" style="padding:0">
+        <header>
+            <div class="title">
+                <h2><a href="{{.Permalink}}">{{ .Title }}</a></h2>
+            </div>
+        </header>
+        <footer>
+            <h2>@LM | {{.Date.Format "2006-01-02"}}</h2>
+        </footer>
+    </article>
+    {{ end }}
+    <!-- Pagination -->
+    <ul class="actions pagination" style="margin-bottom:0">
+        {{ if (.Paginator.HasPrev)}}
+        <li><a href="/{{sub .Paginator.PageNumber 1}}" class="button large previous">Previous Page</a></li>
+        {{ else }}
+        <li><a href="javascript:void(0)" class="disabled button large previous">Previous Page</a></li>
+        {{ end }}
+        {{ if (.Paginator.HasNext)}}
+        <li><a href="/{{add 1 .Paginator.PageNumber}}" class="button large next">Next Page</a></li>
+        {{ else }}
+        <li><a href="javascript:void(0)" class="disabled button large next">Next Page</a></li>
+        {{ end }}
+    </ul>
+</div>
+{{- partial "sidebar.html" . -}}
+{{ end }}

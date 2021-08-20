@@ -1,0 +1,48 @@
+---
+title: PyQt5(3)——进度条QProgressDialog
+date: 2020-12-14
+author: LM
+---
+
+## 1.QProgressDialog
+
+进度条使用steps的概念。在指定最小和最大可能的step值后，它将显示已经完成的step的百分比。百分比是通过将进度 (value() - minimum()) / (maximum() - minimum())来计算的。
+
+可以使用setMinimum()和setMaximum()指定最小和最大steps。默认值是0和99。当前的step由setValue()设置。进度条可以通过reset()重新开始。
+
+**如果最小值和最大值都设置为0，那么栏会显示一个繁忙的指示符，而不是步骤的百分比**
+
+## 2.常用方法
+
+```python
+setMinimum()  # 设置操作中的“steps”数量
+setMaximum()  # 设置操作中的“steps”数量
+setValue()  # 任意选择步数
+setAutoReset()  # 自动重置
+setAutoClose()  # 自动关闭
+setRange(0,num)  # 设置最小和最大值
+wasCanceled()  # 是否按下取消按钮
+```
+
+## 3.实例
+
+```python
+def showDialog(self):
+    num = int(self.edit.text())
+    progress = QProgressDialog(self)
+    progress.setWindowTitle("请稍等")  
+    progress.setLabelText("正在操作...")
+    progress.setCancelButtonText("取消")
+    progress.setMinimumDuration(5)
+    progress.setWindowModality(Qt.WindowModal)
+    progress.setRange(0,num) 
+    for i in range(num):
+        progress.setValue(i) 
+        if progress.wasCanceled():
+            QMessageBox.warning(self,"提示","操作失败") 
+            break
+        else:
+            progress.setValue(num)
+            QMessageBox.information(self,"提示","操作成功")
+```
+
