@@ -56,3 +56,9 @@ git push -u origin master
 git pull origin master
 ```
 
+## 7.强制推送
+
+```bash
+git push -f origin master
+```
+
