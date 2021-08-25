@@ -21,6 +21,7 @@ docker ps  # 查看容易，正在运行的
 docker rm name # 删除
 docker rm -f name # 强制删除
 docker rm $(docker ps -aq) # 删除全部容器 
+docker inspect -f {{".NetworkSettings.IPAddress"}} python3.9
 ```
 
 ## 3.启动容器
@@ -54,5 +55,12 @@ docker exec id commend  # 执行命令
 
 ```bash
 docker export a9ad7f0cb1ad > $(pwd)/itestserver.tar
+```
+
+## 7.下载镜像
+
+```
+docker search ubuntu
+docker pull ubuntu
 ```
 

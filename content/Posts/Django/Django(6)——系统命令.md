@@ -10,6 +10,7 @@ django-admin startproject 项目名称
 python manage.py runserver
 python -m django --version
 python manage.py runserver 8080
+python manage.py runserver 0.0.0.0:8000
 python manage.py startapp 应用名称
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
