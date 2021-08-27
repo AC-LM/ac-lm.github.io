@@ -65,7 +65,7 @@ application = get_wsgi_application()
 
 ## 4.Nginx
 
-- Docker 安装：`docker pull nginx`，`docker run --name some-nginx -v /your-content:/usr/share/nginx/html:ro -d nginx`
+- Docker 安装：`docker pull nginx`，`docker run --name some-nginx --privileged=true -v /your-content:/usr/share/nginx/html:ro -d -p 8000:80 nginx`
 - 检查：`nginx -v`，`/etc/init.d/nginx status`
 - 启动：`/etc/init.d/nginx start`
 - 关闭：`/etc/init.d/nginx stop`
