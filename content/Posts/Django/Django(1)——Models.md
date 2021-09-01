@@ -374,11 +374,11 @@ class BookReview(Book, Article):
 ### 查
 
 - models.UserInfo.objects.all()
-- models.UserInfo.objects.all().values('user')  #只取user列
-- models.UserInfo.objects.all().values_list('id','user')  #取出id和user列，并生成一个列表
+- models.UserInfo.objects.all().values('user')  # 只取 user 列
+- models.UserInfo.objects.all().values_list('id','user')  # 取出 id 和 user 列，并生成一个列表
 - models.UserInfo.objects.get(id=1)
 - models.UserInfo.objects.get(user='yangmv')
-- models.Tb1.objects.filter(id__in=[11, 22, 33])  # 获取id等于11、22、33的数据
+- models.Tb1.objects.filter(id__in=[11, 22, 33])  # 获取 id 等于 11、22、33 的数据
 - models.Tb1.objects.exclude(id__in=[11, 22, 33]) # not in
 
 ### 增
