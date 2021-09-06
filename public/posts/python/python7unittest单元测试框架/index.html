@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(7)——unittest单元测试框架</a></h2>
+                <p>@LM | 2020-11-30</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="test-case">Test Case</h2>
+<p>一个TestCase的实例就是一个测试用例。一个完整的测试流程，包括测试前准备环境的搭建(setUp)，执行测试代码 (run)，以及测试后环境的还原(tearDown)。元测试(unit test)的本质也就在这里，一个测试用例是一个完整的测试单元，通过运行这个测试单元，可以对某一个问题进行验证。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">testcase</span>(unittest<span style="color:#f92672">.</span>TestCase):
+    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUpClass</span>(self):
+        <span style="color:#75715e"># 所有的测试方法运行前运行，整个测试过程中只执行一次。</span>
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUp</span>(self):
+        <span style="color:#75715e"># 每个测试方法运行前运行，一条用例执行一次，若N次用例就执行N次。</span>
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDown</span>(self)<span style="color:#960050;background-color:#1e0010">：</span>
+        <span style="color:#75715e"># 每个测试方法运行结束后运行,一条用例执行一次，若N次用例就执行N次。</span>
+    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDownClass</span>(self)<span style="color:#960050;background-color:#1e0010">：</span>
+        <span style="color:#75715e"># 所有的测试方法运行结束后运行，整个测试过程中只执行一次。</span>
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_01</span>(self):
+        <span style="color:#75715e"># 测试用例</span>
+        <span style="color:#66d9ef">pass</span>
+</code></pre></div><h2 id="test-suite">Test Suite</h2>
+<p>多个测试用例集合在一起，就是TestSuite，而且TestSuite也可以嵌套TestSuite。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#75715e"># 构造TestSuite</span>
+    suite <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestSuite()
+    suite<span style="color:#f92672">.</span>addTest(testcase(<span style="color:#e6db74">&#34;test_01&#34;</span>))
+    suite<span style="color:#f92672">.</span>addTest(testcase(<span style="color:#e6db74">&#34;test_02&#34;</span>))
+    <span style="color:#75715e"># 执行测试</span>
+    runner <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TextTestRunner()
+    runner<span style="color:#f92672">.</span>run(suite)
+</code></pre></div><h2 id="test-loader">Test Loader</h2>
+<p>是用来加载TestCase到TestSuite中的，其中有几个 loadTestsFrom??() 方法，就是从各个地方寻找TestCase，创建它们的实例，然后add到TestSuite中，再返回一个TestSuite实例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#75715e">#此用法可以同时测试多个类</span>
+    suite1 <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestLoader()<span style="color:#f92672">.</span>loadTestsFromTestCase(TestCase1)
+    suite2 <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestLoader()<span style="color:#f92672">.</span>loadTestsFromTestCase(TestCase2)
+    suite <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestSuite([suite1, suite2])
+<span style="color:#75715e">#-------------------------------------------------------------------------------------</span>
+<span style="color:#75715e"># 匹配test_case目录下所有以test开头的py文件，执行这些py文件下的所有测试用例</span>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    test_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./test_case&#34;</span>
+    discover <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>defaultTestLoader<span style="color:#f92672">.</span>discover(test_dir, pattern<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test*.py&#34;</span>)
+    runner<span style="color:#f92672">=</span>unittest<span style="color:#f92672">.</span>TextTestRunner()
+    runner<span style="color:#f92672">.</span>run(discover)
+</code></pre></div><h2 id="编写规范">编写规范</h2>
+<p>使用unittest编写python的单元测试代码，包括如下几个步骤：</p>
+<ul>
+<li>1、编写一个python类，继承unittest模块中的TestCase类，这就是一个测试类</li>
+<li>2、在上面编写的测试类中定义测试方法（这个就是指的测试用例），<strong>每个方法的方法名要求以test打头，没有额外的参数。</strong> 在该测试方法中调用被测试代码，校验测试结果，TestCase类中提供了很多标准的校验方法，如最常见的assertEqual。</li>
+<li>3、<strong>执行unittest.main() ，该函数会负责运行测试，它会实例化所有TestCase的子类，并运行其中所有以test打头的方法。</strong></li>
+</ul>
+<h2 id="断言">断言</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">assertEqual(a, b) <span style="color:#75715e">#  a == b</span>
+assertNotEqual(a, b)  <span style="color:#75715e"># a != b</span>
+assertTrue(x) <span style="color:#75715e">#  bool(x) is True</span>
+assertFalse(x) <span style="color:#75715e">#  bool(x) is False</span>
+assertIs(a, b)  <span style="color:#75715e"># a is b</span>
+assertIsNot(a, b)  <span style="color:#75715e"># a is not b</span>
+assertIsNone(x) <span style="color:#75715e">#  x is None</span>
+assertIsNotNone(x) <span style="color:#75715e">#  x is not None</span>
+assertIn(a, b)  <span style="color:#75715e"># a in b</span>
+assertNotIn(a, b) <span style="color:#75715e">#  a not in b</span>
+assertIsInstance(a, b) <span style="color:#75715e">#  isinstance(a, b)</span>
+assertNotIsInstance(a, b) <span style="color:#75715e">#  not isinstance(a, b)</span>
+</code></pre></div><h2 id="unittest网易邮箱登录案例">unittest网易邮箱登录案例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> unittest <span style="color:#f92672">from</span> selenium 
+<span style="color:#f92672">import</span> webdriver <span style="color:#f92672">from</span> selenium.webdriver.support 
+<span style="color:#f92672">import</span> expected_conditions <span style="color:#66d9ef">as</span> EC
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">mailLogin</span>(unittest<span style="color:#f92672">.</span>TestCase):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUp</span>(self):
+        url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://mail.yeah.net/&#39;</span>
+        self<span style="color:#f92672">.</span>browser <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Firefox()
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>get(url)
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_login_01</span>(self):
+        <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">        用户名、密码为空
+</span><span style="color:#e6db74">        &#39;&#39;&#39;</span>
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>switch_to<span style="color:#f92672">.</span>frame(<span style="color:#e6db74">&#34;x-URS-iframe&#34;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;email&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;password&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#39;&#39;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;dologin&#39;</span>)<span style="color:#f92672">.</span>click()
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>switch_to<span style="color:#f92672">.</span>default_content()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+        name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;spnUid&#39;</span>)        
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sanzang520@yeah.net&#39;</span>:
+            print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
+        <span style="color:#66d9ef">else</span>:
+            print(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
+            
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_login_02</span>(self):
+        <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">        用户名正确、密码为错误
+</span><span style="color:#e6db74">        &#39;&#39;&#39;</span>
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>switch_to<span style="color:#f92672">.</span>frame(<span style="color:#e6db74">&#34;x-URS-iframe&#34;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;email&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#39;sanzang520&#39;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;password&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#39;xxx&#39;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;dologin&#39;</span>)<span style="color:#f92672">.</span>click()
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>switch_to<span style="color:#f92672">.</span>default_content()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+        name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;spnUid&#39;</span>)        
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sanzang520@yeah.net&#39;</span>:
+            print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
+        <span style="color:#66d9ef">else</span>:
+            print(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_login_03</span>(self):
+        <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">        用户名、密码正确
+</span><span style="color:#e6db74">        &#39;&#39;&#39;</span>
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>switch_to<span style="color:#f92672">.</span>frame(<span style="color:#e6db74">&#34;x-URS-iframe&#34;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;email&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#39;sanzang520&#39;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;password&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#39;xxx&#39;</span>)
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;dologin&#39;</span>)<span style="color:#f92672">.</span>click()
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>switch_to<span style="color:#f92672">.</span>default_content()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+        name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;spnUid&#39;</span>)        
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sanzang520@yeah.net&#39;</span>:
+            print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
+        <span style="color:#66d9ef">else</span>:
+            print(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
+            
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDown</span>(self):
+        self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>quit()
+        
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    unittest<span style="color:#f92672">.</span>main()
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python6qrcode%E5%BA%93/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python8%E5%AD%97%E5%85%B8%E5%8F%96%E5%80%BC/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

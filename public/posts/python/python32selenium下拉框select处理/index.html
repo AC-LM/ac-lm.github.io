@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(32)——selenium下拉框(select)的处理</a></h2>
+                <p>@LM | 2021-07-29</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1select">1.select</h2>
+<p>在HTML中 <code>&lt;select&gt;</code>标签可用于创建单选或多选菜单。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">select</span>&gt;
+&lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a&#34;</span>&gt;AA&lt;/<span style="color:#f92672">option</span>&gt;
+&lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>&gt;BB&lt;/<span style="color:#f92672">option</span>&gt;
+&lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;c&#34;</span>&gt;CC&lt;/<span style="color:#f92672">option</span>&gt;
+&lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;d&#34;</span>&gt;DD&lt;/<span style="color:#f92672">option</span>&gt;
+&lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;e&#34;</span>&gt;EE&lt;/<span style="color:#f92672">option</span>&gt;
+&lt;/<span style="color:#f92672">select</span>&gt;
+</code></pre></div><h2 id="2操作">2.操作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium.webdriver.support.select <span style="color:#f92672">import</span> Select
+</code></pre></div><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>select_by_index()</td>
+<td>通过索引定位</td>
+</tr>
+<tr>
+<td>select_by_value()</td>
+<td>通过value值定位</td>
+</tr>
+<tr>
+<td>select_by_visible_text()</td>
+<td>通过文本值定位</td>
+</tr>
+<tr>
+<td>deselect_all()</td>
+<td>取消所有选项</td>
+</tr>
+<tr>
+<td>deselect_by_index()</td>
+<td>取消对应index选项</td>
+</tr>
+<tr>
+<td>deselect_by_value()</td>
+<td>取消对应value选项</td>
+</tr>
+<tr>
+<td>deselect_by_visible_text()</td>
+<td>取消对应文本选项</td>
+</tr>
+<tr>
+<td>first_selected_option()</td>
+<td>返回第一个选项</td>
+</tr>
+<tr>
+<td>all_selected_options()</td>
+<td>返回所有的选项</td>
+</tr>
+<tr>
+<td>options()</td>
+<td>返回所以的选择项</td>
+</tr>
+<tr>
+<td>all_selected_options()</td>
+<td>返回所以已选中的选择项</td>
+</tr>
+<tr>
+<td>first_selected_option()</td>
+<td>返回选中的第一个选择项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3使用">3.使用</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">select <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;&#39;</span>)
+<span style="color:#75715e"># 根据下标选择，从0开始</span>
+Select(select)<span style="color:#f92672">.</span>select_by_index(<span style="color:#ae81ff">1</span>)
+time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+<span style="color:#75715e"># 根据value的值选择</span>
+Select(select)<span style="color:#f92672">.</span>select_by_value(<span style="color:#e6db74">&#39;b&#39;</span>)
+time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+<span style="color:#75715e"># 根据text选择</span>
+Select(select)<span style="color:#f92672">.</span>select_by_visible_text(<span style="color:#e6db74">&#39;AA&#39;</span>)
+time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+<span style="color:#75715e"># 断言</span>
+select <span style="color:#f92672">=</span> Select(self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>))  <span style="color:#75715e"># 定位下拉框</span>
+print(select<span style="color:#f92672">.</span>first_selected_option<span style="color:#f92672">.</span>text)  <span style="color:#75715e"># 获取下拉框当前选中得值</span>
+select<span style="color:#f92672">.</span>select_by_value(<span style="color:#e6db74">&#39;b&#39;</span>)  <span style="color:#75715e"># 选择下拉框得另一个选项</span>
+time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
+print(select<span style="color:#f92672">.</span>first_selected_option<span style="color:#f92672">.</span>text)  <span style="color:#75715e"># 重新获取下拉框选择的值</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python31%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

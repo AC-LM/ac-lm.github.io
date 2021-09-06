@@ -1,6 +1,6 @@
 ---
 title: BUG(14)——bash命令丢失
-date: 2021-01-13
+date: 2021-01-14
 author: LM
 ---
 

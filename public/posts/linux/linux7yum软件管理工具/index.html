@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(7)——yum软件管理工具</a></h2>
+                <p>@LM | 2020-11-19</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1yum">1.yum</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 新建一个目录用来保存yum安装包 </span>
+mkdir install
+<span style="color:#75715e"># 进入文件夹并输入命令</span>
+cd install
+wget http:<span style="color:#f92672">//</span>yum<span style="color:#f92672">.</span>baseurl<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>download<span style="color:#f92672">/</span><span style="color:#ae81ff">3.2</span><span style="color:#f92672">/</span>yum<span style="color:#f92672">-</span><span style="color:#ae81ff">3.2.28</span><span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>gz
+<span style="color:#75715e"># 解压</span>
+tar <span style="color:#f92672">-</span>xvf yum<span style="color:#f92672">-</span><span style="color:#ae81ff">3.2.28</span><span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>gz
+<span style="color:#75715e"># 重点：解压后先不着急安装，手动创建一个yum的conf文件，不然会报找不到文件的错 yum.cli:Config Error: Error accessing file for config file:///etc/</span>
+<span style="color:#75715e"># touch /etc/yum.conf</span>
+<span style="color:#75715e"># 进入yum目录，脚本安装</span>
+cd yum<span style="color:#f92672">-</span><span style="color:#ae81ff">3.2.28</span>
+<span style="color:#f92672">./</span>yummain<span style="color:#f92672">.</span>py install yum
+<span style="color:#75715e"># 期间会提示安装新版本，y回车即可</span>
+</code></pre></div><h2 id="2使用">2.使用</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y remove xxxx     <span style="color:#75715e">#卸载</span>
+yum -y install xxxxx   <span style="color:#75715e">#安装</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux6lamp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux8linux%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

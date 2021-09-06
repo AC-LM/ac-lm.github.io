@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Web开发(12)——JS中attribute和property的区别</a></h2>
+                <p>@LM | 2021-07-25</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/lmjZone/p/8760232.html"> JS中attribute和property的区别  @L_mj </a></p>
+</blockquote>
+<h2 id="1介绍">1.介绍</h2>
+<p><code>property</code>属性和<code>attribute</code>特性非常容易混淆，但两者不是同一个东西，<code>property</code>是DOM中的属性，是JavaScript里的对象；<code>attribute</code>是HTML标签上的特性，它的值只能够是字符串；简单理解，<code>attribute</code>就是DOM节点自带的属性，例如HTML中常用的<code>id、class、title、align</code>等。而<code>property</code>是这个DOM元素作为对象，其附加的内容，例如<code>childNodes、firstChild</code>等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;div1&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divClass&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divTitle&#34;</span> <span style="color:#a6e22e">title1</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divTitle1&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p>如上述的<code>div</code>标签，当我们使用<code>var in1=document.getElementById(&quot;div1&quot;)</code>获取这个元素并打印时<code>console.log(in1)</code>，可以看到如下图的属性。</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/20210724112511.png" alt=""></p>
+<p>可以发现有一个名为<code>attributes</code>的属性，类型是<code>NamedNodeMap</code>，同时也可以找到标签自带的属性<code>id</code>和<code>className</code>、但明显没有<code>titles</code>这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如<code>id, className</code>这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在<code>attributes</code>属性中找到我们自定义的属性。</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/20210724113029.png" alt=""></p>
+<p>从这里就可以看出，<strong><code>attributes</code>是属于<code>property</code>的一个子集</strong>，它保存了HTML标签上定义属性。</p>
+<h2 id="2设置">2.设置</h2>
+<p>常用的<code>attribute</code>，例如<code>id、class</code>等，已经被作为<code>property</code>附加到DOM对象上，可以和<code>property</code>一样取值和赋值。</p>
+<h3 id="attribute取值赋值">attribute取值赋值</h3>
+<p>使用setAttribute()和getAttribute()进行操作，注意，<code>setAttribute()</code>的两个参数，都必须是字符串。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;id&#34;</span>);              
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;class&#34;</span>);
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title&#34;</span>);
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title1&#34;</span>);   <span style="color:#75715e">//自定义特性
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>);
+ <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>);
+ <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title1&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>);
+ <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title2&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>);
+</code></pre></div><h3 id="property取值赋值">property取值赋值</h3>
+<p>property取值赋值只需要使用.就可以了。对属性<code>property</code>可以赋任何类型的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">id</span>;
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">className</span>;
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">childNodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">childNodes</span>;
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">attrs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">attributes</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">align</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">AAAAA</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">BBBBB</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</code></pre></div><h2 id="property和attribute的联系"><code>property</code>和<code>attribute</code>的联系</h2>
+<ul>
+<li><code>property</code>能够从<code>attribute</code>中得到同步；</li>
+<li><code>attribute</code>不会同步<code>property</code>上的值；</li>
+<li><code>attribute</code>和<code>property</code>之间的数据绑定是单向的，<code>attribute-&gt;property</code>；</li>
+<li>更改<code>property</code>和<code>attribute</code>上的任意值，都会将更新反映到HTML页面中；</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 如下，更改 property 的值不能更改 attribute 的值
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new value of prop&#39;</span>;
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">value</span>);               <span style="color:#75715e">// &#39;new value of prop&#39;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>);    <span style="color:#75715e">// 1
+</span><span style="color:#75715e">// 相反，更改 attribute 的值不能更改 property 的值
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;value&#39;</span>,<span style="color:#e6db74">&#39;ni&#39;</span>)
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">value</span>);          <span style="color:#75715e">//ni
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>); <span style="color:#75715e">//value=&#39;ni&#39;
+</span></code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9111%E5%BC%82%E6%AD%A5post/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9113%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

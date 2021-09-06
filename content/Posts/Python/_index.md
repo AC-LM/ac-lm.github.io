@@ -1,6 +1,6 @@
 ---
 title: Python
-date: 2021-06-22
+date: 2021-07-30
 author: LM
 ---
 

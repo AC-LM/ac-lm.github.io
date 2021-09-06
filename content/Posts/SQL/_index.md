@@ -1,6 +1,6 @@
 ---
 title: SQL
-date: 2021-06-21
+date: 2020-09-30
 author: LM
 ---
 

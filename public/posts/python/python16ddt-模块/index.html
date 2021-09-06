@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(16)——ddt 模块</a></h2>
+                <p>@LM | 2021-01-06</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1简介">1.简介</h2>
+<p>DDT(Data Driven Testing)，数据驱动，简单来说就是测试数据的参数化，在python中DDT以装饰器的形式，结合单元测试一起来使用，用来装饰测试类，为测试用例传递参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install ddt
+</code></pre></div><h2 id="2ddt-的两个方法装饰器">2.ddt 的两个方法装饰器</h2>
+<p>data：包含多个你想要传给测试用例的参数，适用动态参数，把传进来的数组组成元组，再对元组进行用例的遍历，根据索引取值相当于对每个参数进行遍历</p>
+<p>file_data：会从json或yaml中加载数据</p>
+<h2 id="3ddt-的方法">3.ddt 的方法</h2>
+<p>unpanck：通常data中包含的每一个值都会作为一个单独的参数传给测试方法，如果这些值是用元组或者列表传进来的，可以用unpack方法将其自动分解成多个参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@data</span>(a,b)         
+<span style="color:#75715e"># a和b各运行一次用例</span>
+<span style="color:#a6e22e">@data</span>([a,d],[c,d])
+<span style="color:#75715e"># 如果没有unpack，那么[a,b]当成一个参数传入用例运行</span>
+<span style="color:#75715e"># 如果有unpack，那么[a,b]被分解开，按照用例中的两个参数传递</span>
+</code></pre></div><h2 id="4ddt-的类装饰器">4.ddt 的类装饰器</h2>
+<p>ddt.ddt：对类使用</p>
+<h2 id="5举例">5.举例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> unittest
+<span style="color:#f92672">import</span> ddt  <span style="color:#75715e">#第三方库</span>
+ 
+data<span style="color:#f92672">=</span>[[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>],[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]]
+
+<span style="color:#a6e22e">@ddt</span><span style="color:#f92672">.</span>ddt
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyTestCase</span>(unittest<span style="color:#f92672">.</span>TestCase):
+    <span style="color:#75715e"># 只有一个参数时</span>
+    <span style="color:#a6e22e">@ddt</span><span style="color:#f92672">.</span>data(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_01</span>(self,a):
+        print(a)
+    
+    <span style="color:#75715e">#表示可变参数取值为data([1,2],[3,4],[5,6])，若传参是data,则后面的取值 data([[1,2],[3,4],[5,6]])</span>
+    <span style="color:#a6e22e">@ddt</span><span style="color:#f92672">.</span>data(<span style="color:#f92672">*</span>data)
+    <span style="color:#a6e22e">@ddt</span><span style="color:#f92672">.</span>unpack
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_02</span>(self,a,b):
+        print(a,<span style="color:#e6db74">&#39;----&#39;</span>,b)
+    
+    <span style="color:#a6e22e">@ddt</span><span style="color:#f92672">.</span>data([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>],[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])<span style="color:#75715e">#和上面的相似，这里未使用变量</span>
+    <span style="color:#a6e22e">@ddt</span><span style="color:#f92672">.</span>unpack
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_03</span>(self,a,b):
+        print(a, <span style="color:#e6db74">&#39;----&#39;</span>, b)
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(21)——apk瘦身</a></h2>
+                <p>@LM | 2021-06-09</p>
+            </div>
+        </header>
+        <div class="content">
+            <p>Flutter在打包编译时，会根据CPU架构（x86_64、arm64-v8a、armeabi-v7a）的不同打出对应的二进制库，体现在 apk 的 lib 文件中。</p>
+<p>PS：x86_64 一般是模拟器和平板使用， arm64-v8a 就是 arm 64 位，大部分新手机使用。 armeabi 虽然不是现在主流的 CPU 架构，但是高版本的都会对其进行兼容，所以主流的 App 如果只想发一个版本的上线，可以只使用 armeabi 。</p>
+<p>使用命令</p>
+<pre tabindex="0"><code>flutter build apk --release --target-platform android-arm
+</code></pre><pre tabindex="0"><code>flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
+</code></pre>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter20%E8%AF%BB%E5%8F%96%E6%89%8B%E6%9C%BA%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter22%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

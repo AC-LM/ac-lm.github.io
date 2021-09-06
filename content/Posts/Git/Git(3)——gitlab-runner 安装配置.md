@@ -1,6 +1,6 @@
 ---
 title: Git(3)——gitlab-runner安装配置
-date: 2021-01-06
+date: 2021-01-07
 author: LM
 ---
 

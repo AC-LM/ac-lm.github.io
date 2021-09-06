@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(12)——MD5加密与耦合</a></h2>
+                <p>@LM | 2020-09-23</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1md5加密">1.MD5加密</h2>
+<h3 id="百科">百科</h3>
+<p>MD5信息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。MD5由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于1992年公开，用以取代MD4算法。这套算法的程序在 RFC 1321 标准中被加以规范。1996年后该算法被证实存在弱点，可以被加以破解，对于需要高度安全性的数据，专家一般建议改用其他算法，如SHA-2。2004年，证实MD5算法无法防止碰撞（collision），因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途。</p>
+<h3 id="特点">特点</h3>
+<ul>
+<li>不可逆，几乎不能还原出原始数据</li>
+<li>完全相同的一段数据，不论时间地点（加密算法相同的条件）加密出的32位的字符串完全相同</li>
+<li>解密方法只有【碰撞】(撞库，穷举足够的数据，几乎难以实现解密)</li>
+<li>【散列】(Hash，哈希，把任意长度的输入通过散列算法变换成固定长度的输出，该输出就是散列值）能力强，数据即使只有百分之零点几的的差别也会导致MD5完全不一样，只要两个数据的MD5相同，那我们可以认为这两个数据完全相同</li>
+</ul>
+<h2 id="2耦合">2.耦合</h2>
+<h3 id="百科-1">百科</h3>
+<p>耦合（Coupling）表示两个子系统（或类）之间的关联程度，当一个子系统（或类）发生变化时对另一个子系统（或类）的影响很小，则称它们是松散耦合的；反之，如果变化的影响很大时，则称它们是紧密耦合的。耦合的强弱取决于模块间接间的复杂性、引用模块的位置和数据的传送方式等。设计时应尽量使模块间的耦合度小，模块间的耦合度直接影响系统的可理解性、可测试性、可靠性和可维护性。</p>
+<h3 id="分类">分类</h3>
+<p>耦合也可分为七级，从低至高为：非直接耦合（Nondirect coupling）、数据耦合（Data coupling）、标记耦合（Stamp coupling）、控制耦合（Control coupling）、外部耦合（External coupling）、公共耦合（Common coupling）、内容耦合（Content coupling）。耦合度应越低越好 。</p>
+<ul>
+<li><strong>非直接耦合</strong>：两模块间彼此无任何交互</li>
+<li><strong>数据耦合</strong>：两模块间仅通过参数交换信息</li>
+<li><strong>标记耦合</strong>：如果模块间传送的参数包含着复合数据结构，例如含有若干数据项的数据记录</li>
+<li><strong>控制耦合</strong>：传递的参数中含有控制信息，如一个用于控制模块内部逻辑的标志信息</li>
+<li><strong>外部耦合</strong>：指若干模块与同一个外部环境进行关联，如I/O处理使所有I/O模块与特定的设备、格式和通信协议相关联</li>
+<li><strong>公共耦合</strong>：指模块间存在着全局变量、公共数据区或可共享的文件</li>
+<li><strong>内容耦合</strong>：指模块间存在着一个模块直接转入另一模块内部或一个模块直接使用另一模块的数据或控制信息的路径</li>
+</ul>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B011web%E7%BD%91%E9%A1%B5%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B013%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

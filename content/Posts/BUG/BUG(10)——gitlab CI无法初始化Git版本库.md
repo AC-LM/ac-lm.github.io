@@ -1,6 +1,6 @@
 ---
 title: BUG(10)——gitlab CI无法初始化Git版本库
-date: 2020-01-05
+date: 2021-01-05
 author: LM
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: PyQt5(13)——非模式显示show与模式exec_
-date: 2020-12-15
+date: 2020-12-25
 author: LM
 ---
 

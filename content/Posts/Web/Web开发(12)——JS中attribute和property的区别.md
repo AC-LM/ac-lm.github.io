@@ -1,6 +1,6 @@
 ---
 title: Web开发(12)——JS中attribute和property的区别
-date: 2021-07-24
+date: 2021-07-25
 author: LM
 ---
 

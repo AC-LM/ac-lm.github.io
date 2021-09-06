@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Docker(1)——常用命令</a></h2>
+                <p>@LM | 2021-08-16</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1运行docker">1.运行docker</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker version <span style="color:#75715e"># 查看docker版本</span>
+systemctl start docker <span style="color:#75715e"># 运行docker</span>
+systemctl status docker <span style="color:#75715e"># 查看docker状态</span>
+systemctl enable docker  <span style="color:#75715e"># 自启动docker</span>
+</code></pre></div><h2 id="2查看容器">2.查看容器</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps -a  <span style="color:#75715e"># 查看容器，包括未运行</span>
+docker ps  <span style="color:#75715e"># 查看容易，正在运行的</span>
+docker rm name <span style="color:#75715e"># 删除</span>
+docker rm -f name <span style="color:#75715e"># 强制删除</span>
+docker rm <span style="color:#66d9ef">$(</span>docker ps -aq<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 删除全部容器 </span>
+docker inspect -f <span style="color:#f92672">{{</span><span style="color:#e6db74">&#34;.NetworkSettings.IPAddress&#34;</span><span style="color:#f92672">}}</span> python3.9
+</code></pre></div><h2 id="3启动容器">3.启动容器</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --name python3.9 --privileged<span style="color:#f92672">=</span>true -v /root/pythonScript:/pythonScript -it python /bin/bash
+<span style="color:#75715e"># name 名字，privileged 权限，-v 挂载目录，-it 以shell模式</span>
+docker rename gallant_swartz python3.9 <span style="color:#75715e"># 重命名</span>
+docker start container
+docker stop container
+docker stop <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 停用全部运行中的容器</span>
+docker restart container
+</code></pre></div><h2 id="4查看镜像">4.查看镜像</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker images
+docker rmi image
+</code></pre></div><h2 id="5执行命令">5.执行命令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker exec -it id /bin/bash <span style="color:#75715e"># 进入容器</span>
+exit <span style="color:#75715e">#退出</span>
+docker exec id commend  <span style="color:#75715e"># 执行命令</span>
+</code></pre></div><h2 id="6导出">6.导出</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker export a9ad7f0cb1ad &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/itestserver.tar
+</code></pre></div><h2 id="7下载镜像">7.下载镜像</h2>
+<pre tabindex="0"><code>docker search ubuntu
+docker pull ubuntu
+</code></pre>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/docker/docker2%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

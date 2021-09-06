@@ -1,12 +1,12 @@
 ---
 title: 随记(2)——什么是CSRF
-date: 2020-09-15
+date: 2020-09-11
 author: LM
 ---
 
 > 参考原文：[ CSRF 是什么？@饥人谷若愚 ](https://zhuanlan.zhihu.com/p/22521378)
 
-## 1.什么是 CSRF ( Cross Site Request Forgery )( 跨站请求伪造 )
+## 1.什么是 CSRF 跨站请求伪造
 
 CSRF (Cross Site Request Forgery)攻击，中文名：跨站请求伪造。其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。这样，当用户在登录状态下请求这个地址时，服务端就会以为这个非法操作是用户合法的操作。
 

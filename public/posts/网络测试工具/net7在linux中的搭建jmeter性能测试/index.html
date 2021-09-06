@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Net(7)——在Linux中的搭建Jmeter性能测试</a></h2>
+                <p>@LM | 2020-11-26</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1linux下的jmeter">1.Linux下的Jmeter</h2>
+<p><a href="https://jmeter.apache.org/download_jmeter.cgi"> Jmeter 官网下载 </a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -xvf Jmeter.tgz
+<span style="color:#75715e"># 注意需配置Java环境</span>
+</code></pre></div><h2 id="2配置jmeter环境">2.配置Jmeter环境</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/profile <span style="color:#75715e">#编辑环境</span>
+<span style="color:#75715e">#----------------------------------------#</span>
+<span style="color:#75715e">#Jmeter environment</span>
+export JMETER_HOME<span style="color:#f92672">=</span>/root/Jmeter
+export PATH<span style="color:#f92672">=</span>$PATH:<span style="color:#e6db74">${</span>JMETER_HOME<span style="color:#e6db74">}</span>/bin
+<span style="color:#75715e">#######</span>
+source /etc/profile <span style="color:#75715e">#启动环境</span>
+jmeter -v <span style="color:#75715e">#检查是否成功运行</span>
+jmeter –n –t test.jmx –l test.jtl <span style="color:#75715e">#执行jmeter脚本</span>
+</code></pre></div><h2 id="3jmeter命令参数">3.jmeter命令参数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-h 帮助 -&gt; 打印出有用的信息并退出
+-n 非 GUI 模式 -&gt; 在非 GUI 模式下运行 JMeter
+-t 测试文件 -&gt; 要运行的 JMeter 测试脚本文件
+-l 日志文件 -&gt; 记录结果的文件
+-r 远程执行 -&gt; 启动远程服务
+-H 代理主机 -&gt; 设置 JMeter 使用的代理主机
+-P 代理端口 -&gt; 设置 JMeter 使用的代理主机的端口号
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

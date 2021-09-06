@@ -1,6 +1,6 @@
 ---
 title: PyQt5(7)——消息提示类QDialog
-date: 2020-12-14
+date: 2020-12-19
 author: LM
 ---
 

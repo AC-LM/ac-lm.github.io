@@ -1,6 +1,6 @@
 ---
 title: 随记(1)——什么是Kafka
-date: 2020-09-15
+date: 2020-09-10
 author: LM
 ---
 

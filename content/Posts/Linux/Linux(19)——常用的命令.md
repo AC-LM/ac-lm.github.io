@@ -1,6 +1,6 @@
 ---
 title: Linux(19)——常用的命令
-date: 2021-01-13
+date: 2021-05-16
 author: LM
 ---
 

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(4)——Requests库</a></h2>
+                <p>@LM | 2020-09-18</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1什么是requests库">1.什么是Requests库</h2>
+<p>Requests库是一个基于urllib编写的<strong>HTTP库</strong>，相比urllib库，Requests库更加方便，能轻易的实现各种HTTP测试需求。Requests库经常被用来进行接口测试以及爬虫</p>
+<h2 id="2request函数的参数">2.request()函数的参数</h2>
+<pre tabindex="0"><code>| 参数            | 解释                                                     
+| --------------- | ------------------------------------------------------------ 
+| method          | 请求方法，比如get、options、head、post、put、patch、delete
+| url             | 请求的url                                                    
+| params          | 请求携带的params                                             
+| data            | 请求body中的data                                             
+| json            | 请求body中的json格式的data                                   
+| headers         | 请求携带的headers                                            
+| cookies         | 请求携带的cookies                                            
+| files           | 上传文件时使用                                               
+| auth            | 身份认证时使用                                               
+| timeout         | 设置请求的超时时间，可以设置连接超时和读取超时               
+| allow_redirects | 是否允许重定向，默认True，即允许重定向                       
+| proxies         | 设置请求的代理，支持http代理以及socks代理（需要安装第三方库&quot;pip install requests[socks]&quot;） 
+| verify          | 用于https请求时的ssl证书验证，默认是开启的，如果不需要则设置为False即可 
+| stream          | 是否立即下载响应内容，默认是False，即立即下载响应内容       
+| cert            | 用于指定本地文件用作客户端证书                           
+</code></pre><h2 id="3response对象">3.response对象</h2>
+<pre tabindex="0"><code>| 属性或属性方法           | 解释                                                     
+| ----------------------- | ------------------------------------------------------------ 
+| r.status_code           | 响应的http状态码，比如404和200                               
+| r.json()                | 将响应解析成json格式                                         
+| r.headers               | 响应头，可单独取出某个字段的值，比如(r.headers)['content-type'] 
+| r.raw                   | 原始响应，表示urllib3.response.HTTPResponse对象。使用raw时，要求在请求时设置“stream=True” 
+| r.url                   | 请求的最终地址                                               
+| r.encoding              | 要解码的r.text的编码方式                                     
+| r.history               | 请求的历史记录，可以用于查看重定向信息，以列表形式展示，排序方式是从最旧到最新 
+| r.reason                | 响应状态的描述，比如 &quot;Not Found&quot; or &quot;OK&quot;                     
+| r.cookies               | 服务器发回的cookies，RequestsCookieJar类型                   
+| r.elapsed               | 从发送请求到响应到达之间经过的时间量，可以用于测试响应速度   
+| r.request               | 可以用于查看发送请求时的信息，比如r.request.headers查看请求头 
+| r.ok                    | 检查”status_code“的值，如果小于400，则返回True，如果不小于400，则返回False 
+| r.is_redirect           | 判断是否重定向，返回True or False                            
+| r.is_permanent_redirect | 判断是否永久重定向，返回True or False                        
+| r.next                  | 返回重定向链中下一个请求的PreparedRequest对象               
+| r.apparent_encoding     | 用chardet库判断出的编码方式                                  
+| r.content               | 响应的内容，byte类型                                        
+| r.text                  | 响应的内容，unicode类型                                
+| r.links                 | 响应的解析头链接                                             
+</code></pre>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python3xlrd%E5%BA%93/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python5pyautogui%E5%BA%93/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

@@ -1,6 +1,6 @@
 ---
 title: Linux(6)——LAMP环境安装与使用
-date: 2020-11-17
+date: 2020-11-18
 author: LM
 ---
 

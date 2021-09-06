@@ -1,6 +1,6 @@
 ---
 title: BUG(6)——Wapiti报告丢失js文件问题
-date: 2021-06-09
+date: 2020-11-30
 author: LM
 ---
 

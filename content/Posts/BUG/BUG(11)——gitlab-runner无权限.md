@@ -1,6 +1,6 @@
 ---
 title: BUG(11)——gitlab-runner无权限
-date: 2020-01-06
+date: 2021-01-06
 author: LM
 ---
 

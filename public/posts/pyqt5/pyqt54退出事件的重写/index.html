@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">PyQt5(4)——退出事件的重写</a></h2>
+                <p>@LM | 2020-12-16</p>
+            </div>
+        </header>
+        <div class="content">
+            <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<span style="color:#f92672">from</span> PyQt5 <span style="color:#f92672">import</span> QtWidgets
+<span style="color:#f92672">from</span> PyQt5.QtGui <span style="color:#f92672">import</span> QFont
+<span style="color:#75715e"># QtWidgets不包含QFont必须调用QtGui</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MessageBox</span>(QtWidgets<span style="color:#f92672">.</span>QWidget):
+    <span style="color:#66d9ef">def</span> __init__(self,parent <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>):
+        <span style="color:#75715e"># parent = None代表此QWidget属于最上层的窗口,也就是MainWindows.</span>
+        QtWidgets<span style="color:#f92672">.</span>QWidget<span style="color:#f92672">.</span>__init__(self)
+        <span style="color:#75715e"># 因为继承关系，要对父类初始化</span>
+        <span style="color:#75715e"># 通过super初始化父类，__init__()函数无self，若直接QtWidgets.QWidget.__init__(self)，括号里是有self的</span>
+        self<span style="color:#f92672">.</span>setGeometry(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">1000</span>)  
+        <span style="color:#75715e"># setGeometry()设置窗口在屏幕上的位置和设置窗口本身的大小。它的前两个参数是窗口在屏幕上的x和y坐标。后两个参数是窗口本身的宽和高</span>
+        self<span style="color:#f92672">.</span>setToolTip(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;&lt;b&gt;程序&lt;/b&gt;提示&#39;</span>) 
+        <span style="color:#75715e"># 调用setToolTip()方法,该方法接受富文本格式的参数,css之类。</span>
+        QtWidgets<span style="color:#f92672">.</span>QToolTip<span style="color:#f92672">.</span>setFont(QFont(<span style="color:#e6db74">&#39;华文楷体&#39;</span>, <span style="color:#ae81ff">10</span>)) 
+        <span style="color:#75715e"># 设置字体以及字体大小</span>
+<span style="color:#75715e">#------------------------------------------------------------------------------</span>
+<span style="color:#75715e">#当我们关闭一个窗口时，在PyQt中就会触发一个QCloseEvent的事件，正常情况下会直接关闭这个窗口，</span>
+<span style="color:#75715e">#但是我们不希望这样的事情发生，所以我们需要重新定义QCloseEvent，函数名称为closeEvent不可变</span>
+<span style="color:#75715e">#--------------------------------------------------------------------------------</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">closeEvent</span>(self,event):
+        <span style="color:#75715e"># 函数名固定不可变</span>
+        reply<span style="color:#f92672">=</span>QtWidgets<span style="color:#f92672">.</span>QMessageBox<span style="color:#f92672">.</span>question(self,<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;警告&#39;</span>,<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;确认退出?&#39;</span>,QtWidgets<span style="color:#f92672">.</span>QMessageBox<span style="color:#f92672">.</span>Yes,QtWidgets<span style="color:#f92672">.</span>QMessageBox<span style="color:#f92672">.</span>No)
+        <span style="color:#75715e"># QtWidgets.QMessageBox.question(self,u&#39;弹窗名&#39;,u&#39;弹窗内容&#39;,选项1,选项2)</span>
+        <span style="color:#66d9ef">if</span> reply<span style="color:#f92672">==</span>QtWidgets<span style="color:#f92672">.</span>QMessageBox<span style="color:#f92672">.</span>Yes:
+            event<span style="color:#f92672">.</span>accept()
+            <span style="color:#75715e"># 关闭窗口</span>
+        <span style="color:#66d9ef">else</span>:
+            event<span style="color:#f92672">.</span>ignore()
+            <span style="color:#75715e"># 忽视点击X事件</span>
+
+app<span style="color:#f92672">=</span>QtWidgets<span style="color:#f92672">.</span>QApplication(sys<span style="color:#f92672">.</span>argv)
+window<span style="color:#f92672">=</span>MessageBox()
+window<span style="color:#f92672">.</span>show()
+sys<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt53%E8%BF%9B%E5%BA%A6%E6%9D%A1qprogressdialog/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt55%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE%E7%9A%84%E9%9A%90%E8%97%8F/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

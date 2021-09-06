@@ -1,6 +1,6 @@
 ---
 title: Linux(8)——linux的文件权限
-date: 2021-01-14
+date: 2020-11-20
 author: LM
 ---
 

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">PyQt5(10)——文本元件QLineEdit</a></h2>
+                <p>@LM | 2020-12-22</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1常用方法">1.常用方法</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">setText(str)  <span style="color:#75715e"># 设置普通文本</span>
+Text()  <span style="color:#75715e"># -&gt; str返回普通文本</span>
+</code></pre></div><h2 id="2使用掩码限制格式">2.使用掩码限制格式</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ipLineEdit<span style="color:#f92672">.</span>setInputMask(<span style="color:#e6db74">&#39;000.000.000.000;_&#39;</span>)
+macLineEdit<span style="color:#f92672">.</span>setInputMask(<span style="color:#e6db74">&#39;HH:HH:HH:HH:HH:HH;_&#39;</span>)
+dateLineEdit<span style="color:#f92672">.</span>setInputMask(<span style="color:#e6db74">&#39;0000-00-00&#39;</span>)
+licenseLineEdit<span style="color:#f92672">.</span>setInputMask(<span style="color:#e6db74">&#39;&gt;AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#&#39;</span>)
+
+<span style="color:#75715e">#---掩码类型------------------------------------------------------------</span>
+A    ASCII字母字符是必须输入的(A<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">、</span>a<span style="color:#f92672">-</span>z)
+a    ASCII字母字符是允许输入的,但不是必需的(A<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">、</span>a<span style="color:#f92672">-</span>z)
+N    ASCII字母字符是必须输入的(A<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">、</span>a<span style="color:#f92672">-</span>z<span style="color:#960050;background-color:#1e0010">、</span><span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+n    ASII字母字符是允许输入的,但不是必需的(A<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">、</span>a<span style="color:#f92672">-</span>z<span style="color:#960050;background-color:#1e0010">、</span><span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+X    任何字符都是必须输入的
+x    任何字符都是允许输入的,但不是必需的
+<span style="color:#ae81ff">9</span>    ASCII数字字符是必须输入的(<span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+<span style="color:#ae81ff">0</span>    ASCII数字字符是允许输入的,但不是必需的(<span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+D    ASCII数字字符是必须输入的(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+d    ASCII数字字符是允许输入的,但不是必需的(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+<span style="color:#75715e">#    ASCI数字字符或加减符号是允许输入的,但不是必需的</span>
+H    十六进制格式字符是必须输入的(A<span style="color:#f92672">-</span>F<span style="color:#960050;background-color:#1e0010">、</span>a<span style="color:#f92672">-</span>f<span style="color:#960050;background-color:#1e0010">、</span><span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+h    十六进制格式字符是允许输入的,但不是必需的(A<span style="color:#f92672">-</span>F<span style="color:#960050;background-color:#1e0010">、</span>a<span style="color:#f92672">-</span>f<span style="color:#960050;background-color:#1e0010">、</span><span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>)
+B    二进制格式字符是必须输入的(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)
+b    二进制格式字符是允许输入的,但不是必需的(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)
+<span style="color:#f92672">&gt;</span>    所有的字母字符都大写
+<span style="color:#f92672">&lt;</span>    所有的字母字符都小写
+<span style="color:#960050;background-color:#1e0010">!</span>    关闭大小写转换
+\    使用<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">转义上面列出的字符</span>
+<span style="color:#75715e">#---------------------------------------------------------------------</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt59%E8%BE%93%E5%85%A5%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BBqinputdialog/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt511%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6qtextedit/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

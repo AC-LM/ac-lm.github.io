@@ -1,6 +1,6 @@
 ---
 title: Linux(9)——Python3.6安装
-date: 2020-11-17
+date: 2020-11-22
 author: LM
 ---
 

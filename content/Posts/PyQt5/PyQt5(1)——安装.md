@@ -1,6 +1,6 @@
 ---
 title: PyQt5(1)——安装
-date: 2021-02-24
+date: 2020-12-01
 author: LM
 ---
 

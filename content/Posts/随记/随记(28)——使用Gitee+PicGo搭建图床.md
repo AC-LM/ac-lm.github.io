@@ -1,6 +1,6 @@
 ---
 title: 随记(28)——使用Gitee+PicGo搭建图床
-date: 2021-07-24
+date: 2021-07-25
 author: LM
 ---
 

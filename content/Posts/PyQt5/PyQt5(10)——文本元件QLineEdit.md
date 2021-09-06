@@ -1,6 +1,6 @@
 ---
 title: PyQt5(10)——文本元件QLineEdit
-date: 2020-12-14
+date: 2020-12-22
 author: LM
 ---
 

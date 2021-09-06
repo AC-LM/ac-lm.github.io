@@ -1,6 +1,6 @@
 ---
 title: BUG(3)——Windows下编写的shell脚本无法在Linux中运行
-date: 2020-12-02
+date: 2020-11-27
 author: LM
 ---
 

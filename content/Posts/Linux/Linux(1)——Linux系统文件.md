@@ -1,6 +1,6 @@
 ---
 title: Linux(1)——Linux系统文件
-date: 2020-10-19
+date: 2020-10-15
 author: LM
 ---
 

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(8)——linux的文件权限</a></h2>
+                <p>@LM | 2020-11-20</p>
+            </div>
+        </header>
+        <div class="content">
+            <p>文件详情</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">drwxr-x---  <span style="color:#ae81ff">2</span> root root       <span style="color:#ae81ff">37</span> Apr <span style="color:#ae81ff">18</span> 10:50 data
+-rw-r--r--  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">68549</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> fields.yml
+-rwxr-xr-x  <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">33903123</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> filebeat
+-rwxr-xr-x  <span style="color:#ae81ff">1</span> root root     <span style="color:#ae81ff">1011</span> Mar <span style="color:#ae81ff">27</span> 10:13 filebeat-docker.yml
+-rw-r--r--  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">66260</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> filebeat.reference.yml
+-rw-------  <span style="color:#ae81ff">1</span> root root     <span style="color:#ae81ff">7231</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> filebeat.yml
+drwxr-xr-x  <span style="color:#ae81ff">4</span> root root       <span style="color:#ae81ff">22</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> kibana
+-rw-r--r--  <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">13675</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> LICENSE.txt
+drwxr-xr-x <span style="color:#ae81ff">18</span> root root     <span style="color:#ae81ff">4096</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> module
+drwxr-xr-x  <span style="color:#ae81ff">2</span> root root     <span style="color:#ae81ff">4096</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> modules.d
+-rw-r--r--  <span style="color:#ae81ff">1</span> root root   <span style="color:#ae81ff">148778</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> NOTICE.txt
+-rw-r--r--  <span style="color:#ae81ff">1</span> root root      <span style="color:#ae81ff">802</span> Sep <span style="color:#ae81ff">26</span>  <span style="color:#ae81ff">2018</span> README.md
+</code></pre></div><h2 id="1文件权限drwxr-x---">1.文件权限drwxr-x&mdash;</h2>
+<p>drwxr-x&mdash; 该权限分为4个部分d、rwx、r-x、&mdash;。</p>
+<ul>
+<li><strong>d</strong>：表示文件类型</li>
+<li><strong>rwx</strong>：表示文件所有者的对该文件所拥有的权限</li>
+<li><strong>r-x</strong>：表示文件所属组对该文件所拥有的权限</li>
+<li><strong>&mdash;</strong>：表示其他用户对该文件所拥有的权限</li>
+</ul>
+<h2 id="2数字表示权限">2.数字表示权限</h2>
+<p>读(read)，写(write)，执行r(recute)简写即为(r,w,x),亦可用数字来(4,2,1)表示</p>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/852.png" alt=""></p>
+<ul>
+<li>如果某文件权限为7则代表可读(4)、可写(2)、可执行(1)，即(4+2+1=7).</li>
+<li>若权限为6(4+2)则代表可读(4)、可写(2)。</li>
+<li>若权限为5(4+1)代表可读(4)和可执行(1).</li>
+<li>若权限为3(2+1)代表可写(2)和可执行(1)。</li>
+</ul>
+<h2 id="3文件的详细信息">3.文件的详细信息</h2>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/853.png" alt=""></p>
+<p>第一个减号“-”代表的是文件类型：-：普通文件，d:目录文件，l:链接文件，b:设备文件，c:字符设备文件，p:管道文件</p>
+<p>第二个符号开始表示文件的权限，rw-r-r- 也就是分别表示所有者(属主)有读写权限，所有组(属组)有读权限，其余人也仅有读权限。</p>
+<h2 id="4授权">4.授权</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod -R <span style="color:#ae81ff">755</span>
+<span style="color:#75715e"># 该命令表示文件所有者有读写执行权限（4+2+1）、文件所属组有读执行权限（4+1）、其他人有读执行权限（4+1）</span>
+<span style="color:#75715e"># chmod 参数----------------------------------------------------</span>
+-c : 若该文件权限确实已经更改，才显示其更改动作
+-f : 若该文件权限无法被更改也不要显示错误讯息
+-v : 显示权限变更的详细资料
+-R : 对目前目录下的所有文件与子目录进行相同的权限变更
+--help : 显示辅助说明
+--version : 显示版本 
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux7yum%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux9python3.6%E5%AE%89%E8%A3%85/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

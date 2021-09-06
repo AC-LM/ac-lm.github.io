@@ -1,6 +1,6 @@
 ---
 title: Linux(21)——设置开机启动任务
-date: 2021-04-29
+date: 2021-06-01
 author: LM
 ---
 

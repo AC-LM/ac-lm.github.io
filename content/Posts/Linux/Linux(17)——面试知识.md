@@ -1,6 +1,6 @@
 ---
 title: Linux(17)——面试知识
-date: 2020-12-03
+date: 2021-05-14
 author: LM
 ---
 

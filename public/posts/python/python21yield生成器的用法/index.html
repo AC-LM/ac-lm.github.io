@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section id="menu">
+    
+    <section>
+        <h2>施工中</h2>
+    </section>
+</section>
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(21)——yield生成器的用法</a></h2>
+                <p>@LM | 2021-01-17</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1generator生成器">1.generator（生成器）</h2>
+<p>带有 yield 的函数在 Python 中被称之为 generator（生成器），而不是一个函数，这个生成器带有一个next函数，在调用 next 时函数才会执行，执行到 yield 停止，下一次的 next 开始的地方是接着上一次的 next 停止的地方执行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>():
+    print(<span style="color:#e6db74">&#34;starting...&#34;</span>)
+    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+        <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">5</span>
+        res <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span> <span style="color:#ae81ff">4</span>
+        print(<span style="color:#e6db74">&#34;res:&#34;</span>,res)
+g <span style="color:#f92672">=</span> foo()
+print(next(g))
+print(next(g))
+print(next(g))
+</code></pre></div><h2 id="2为什么需要-yield">2.为什么需要 yield</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>): <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>这个循环在运行中占用的内存会随着 range() 的参数的增大而增大，range() 会生成一个List。如果要控制内存占用，最好不要用 List</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> xrange(<span style="color:#ae81ff">1000</span>): <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>在python2中这样写则不会生成一个 1000 个元素的 List，而是在每次迭代中返回下一个数值，内存空间占用很小。因为 xrange 不返回 List，而是返回一个 iterable 对象。【iterable意思为迭代，可以理解为连续的一组数据，可以遍历的数据，包含内置的string、list、dict、tuple、set()】</p>
+<p>在 Python3 中则是 yield</p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python20%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

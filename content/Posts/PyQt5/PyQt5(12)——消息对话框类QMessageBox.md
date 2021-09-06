@@ -1,6 +1,6 @@
 ---
 title: PyQt5(12)——消息对话框类QMessageBox
-date: 2020-12-15
+date: 2020-12-24
 author: LM
 ---
 

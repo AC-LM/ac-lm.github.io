@@ -1,6 +1,6 @@
 ---
 title: PyQt5(4)——退出事件的重写
-date: 2020-12-15
+date: 2020-12-16
 author: LM
 ---
 
