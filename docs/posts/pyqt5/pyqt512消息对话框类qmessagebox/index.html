@@ -41,28 +41,28 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">PyQt5(12)——消息对话框类QMessageBox</a></h2>
-                <p>@LM | 2020-12-15</p>
+                <p>@LM | 2020-12-24</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1qmessagebox">1.QMessageBox</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">information(QWdiget parent,title,text,buttons,defaultButton) <span style="color:#75715e">#| 弹出消息对话框                    </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">information(QWdiget parent,title,text,buttons,defaultButton) <span style="color:#75715e">#| 弹出消息对话框                    </span>
 question<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text,buttons,defaultButton<span style="color:#960050;background-color:#1e0010">）</span>  <span style="color:#75715e">#| 弹出问答对话框</span>
 warning<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text,buttons,defaultButton<span style="color:#960050;background-color:#1e0010">）</span>   <span style="color:#75715e">#| 弹出警告对话框                       </span>
 critical<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text,buttons,defaultButton<span style="color:#960050;background-color:#1e0010">）</span>  <span style="color:#75715e">#| 弹出严重错误对话框                     </span>
 about<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text<span style="color:#960050;background-color:#1e0010">）</span>                           <span style="color:#75715e">#| 弹出关于对话框   </span>
 <span style="color:#75715e"># 参数------------------------------------------------------------------------------</span>
-parent<span style="color:#960050;background-color:#1e0010">：指定的父窗口控件</span>
-title<span style="color:#960050;background-color:#1e0010">：对话框标题</span>
-text<span style="color:#960050;background-color:#1e0010">：对话框文本</span>
-buttons<span style="color:#960050;background-color:#1e0010">：标准按钮，默认为</span>ok按钮<span style="color:#960050;background-color:#1e0010">，可以有多个，用</span> <span style="color:#f92672">|</span> <span style="color:#960050;background-color:#1e0010">进行分隔</span>
-defaultButton<span style="color:#960050;background-color:#1e0010">：关闭对话框默认返回的按钮</span>
+parent<span style="color:#960050;background-color:#1e0010">：</span>指定的父窗口控件
+title<span style="color:#960050;background-color:#1e0010">：</span>对话框标题
+text<span style="color:#960050;background-color:#1e0010">：</span>对话框文本
+buttons<span style="color:#960050;background-color:#1e0010">：</span>标准按钮<span style="color:#960050;background-color:#1e0010">，</span>默认为ok按钮<span style="color:#960050;background-color:#1e0010">，</span>可以有多个<span style="color:#960050;background-color:#1e0010">，</span>用 <span style="color:#f92672">|</span> 进行分隔
+defaultButton<span style="color:#960050;background-color:#1e0010">：</span>关闭对话框默认返回的按钮
 <span style="color:#75715e"># 方法------------------------------------------------------------------------------</span>
 setTitle()  <span style="color:#75715e"># 设置标题</span>
 setText()   <span style="color:#75715e"># 设置正文消息</span>
 setIcon()   <span style="color:#75715e"># 设置弹出对话框的图片                                            </span>
 </code></pre></div><h2 id="2qmessagebox的标准按钮类型">2.QMessageBox的标准按钮类型</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">QMessage<span style="color:#f92672">.</span>Ok     <span style="color:#75715e">#| 同意操作 |</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">QMessage<span style="color:#f92672">.</span>Ok     <span style="color:#75715e">#| 同意操作 |</span>
 QMessage<span style="color:#f92672">.</span>Cancel <span style="color:#75715e">#| 取消操作 |</span>
 QMessage<span style="color:#f92672">.</span>Yes    <span style="color:#75715e">#| 同意操作 |</span>
 QMessage<span style="color:#f92672">.</span>No     <span style="color:#75715e">#| 取消操作 |</span>
@@ -70,7 +70,7 @@ QMessage<span style="color:#f92672">.</span>Abort  <span style="color:#75715e">#
 QMessage<span style="color:#f92672">.</span>Retry  <span style="color:#75715e">#| 重试操作 |</span>
 QMessage<span style="color:#f92672">.</span>Ignore <span style="color:#75715e">#| 忽略操作 |</span>
 </code></pre></div><h2 id="3使用实例">3.使用实例</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#弹出消息对话框</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#弹出消息对话框</span>
 reply <span style="color:#f92672">=</span> QMessageBox<span style="color:#f92672">.</span>information(self, <span style="color:#e6db74">&#39;标题&#39;</span>,<span style="color:#e6db74">&#39;消息对话框正文&#39;</span>,QMessageBox<span style="color:#f92672">.</span>Yes <span style="color:#f92672">|</span> QMessageBox<span style="color:#f92672">.</span>No,QMessageBox<span style="color:#f92672">.</span>Yes)
 reply1 <span style="color:#f92672">=</span> QMessageBox<span style="color:#f92672">.</span>question(self, <span style="color:#e6db74">&#34;标题&#34;</span>, <span style="color:#e6db74">&#34;提问框消息正文&#34;</span>, QMessageBox<span style="color:#f92672">.</span>Yes <span style="color:#f92672">|</span> QMessageBox<span style="color:#f92672">.</span>No, QMessageBox<span style="color:#f92672">.</span>Yes)
 reply2 <span style="color:#f92672">=</span> QMessageBox<span style="color:#f92672">.</span>warning(self, <span style="color:#e6db74">&#34;标题&#34;</span>, <span style="color:#e6db74">&#34;警告框消息正文&#34;</span>, QMessageBox<span style="color:#f92672">.</span>Yes <span style="color:#f92672">|</span> QMessageBox<span style="color:#f92672">.</span>No, QMessageBox<span style="color:#f92672">.</span>Yes)
@@ -91,10 +91,10 @@ reply<span style="color:#960050;background-color:#1e0010">?</span><span style="c
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt513%E9%9D%9E%E6%A8%A1%E5%BC%8F%E6%98%BE%E7%A4%BAshow%E4%B8%8E%E6%A8%A1%E5%BC%8Fexec_/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt511%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6qtextedit/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt514%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt513%E9%9D%9E%E6%A8%A1%E5%BC%8F%E6%98%BE%E7%A4%BAshow%E4%B8%8E%E6%A8%A1%E5%BC%8Fexec_/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

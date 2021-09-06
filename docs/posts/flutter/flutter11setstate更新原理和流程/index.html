@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(11)——setState更新原理和流程</a></h2>
-                <p>@LM | 2021-04-29</p>
+                <p>@LM | 2021-05-12</p>
             </div>
         </header>
         <div class="content">
@@ -56,7 +56,7 @@
 <p>只有当我们的类是有状态类的时候才能进行状态刷新，setState也是在State（有状态类）类里。</p>
 <h2 id="mounted">mounted</h2>
 <p>调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过mounted属性来判断调用此方法是否合法。</p>
-<pre><code>if (mounted) {
+<pre tabindex="0"><code>if (mounted) {
   setState(() {});
 }
 </code></pre><h2 id="流程">流程</h2>
@@ -101,10 +101,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%BB%84%E4%BB%B6/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter10%E8%AF%BB%E5%8F%96app%E5%AE%89%E8%A3%85%E5%8C%85%E8%B5%84%E6%BA%90/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter10%E8%AF%BB%E5%8F%96app%E5%AE%89%E8%A3%85%E5%8C%85%E8%B5%84%E6%BA%90/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%BB%84%E4%BB%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

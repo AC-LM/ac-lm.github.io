@@ -6,7 +6,27 @@
     <description>Recent content in Windows10 on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/windows10/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/windows10/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows(6)——Python环境变量不生效</title>
+      <link>https://ac-lm.github.io/posts/windows10/windows6python%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88/</link>
+      <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/windows10/windows6python%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88/</guid>
+      <description>参考原文：命令窗口不能使用Python 
+ 问题 已在 Window10 上下载配置好 Python，但是在命令行 CMD 中使用 Python 命令时提示Python not found; run without arguments to install from the Microsoft Store，已确认 Python 的环境变量已配置。
+解决 环境变量的优先级问题，WindowsApp 的路径优先于 Python，调换即好。</description>
+    </item>
+    
+    <item>
+      <title>Windows(5)——应用别名</title>
+      <link>https://ac-lm.github.io/posts/windows10/windows5%E5%BA%94%E7%94%A8%E5%88%AB%E5%90%8D/</link>
+      <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/windows10/windows5%E5%BA%94%E7%94%A8%E5%88%AB%E5%90%8D/</guid>
+      <description>Road 设置—&amp;gt;应用—&amp;gt;应用和功能—&amp;gt;应用执行别名</description>
+    </item>
+    
     <item>
       <title>Windows(4)——系统安装时的esp和msr分区</title>
       <link>https://ac-lm.github.io/posts/windows10/windows4%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%97%B6%E7%9A%84esp%E5%92%8Cmsr%E5%88%86%E5%8C%BA/</link>
@@ -27,21 +47,21 @@
     </item>
     
     <item>
-      <title>Windows(1)——CMD命令</title>
-      <link>https://ac-lm.github.io/posts/windows10/windows1cmd%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/windows10/windows1cmd%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.常用的CMD命令 # 进入D盘 D: # 查看全部文件 dir # 显示 Windows 的版本 VER # 创建一个目录 MKDIR file # 清除屏幕 CLS # 帮助文档 HELP # 进入文件夹 cd file # 查看某个命令的地址 where java </description>
-    </item>
-    
-    <item>
       <title>Windows(2)——利用搜索实现批量文件移动</title>
       <link>https://ac-lm.github.io/posts/windows10/windows2%E5%88%A9%E7%94%A8%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/windows10/windows2%E5%88%A9%E7%94%A8%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8/</guid>
       <description>1.如何实现  在系统中找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定了大多数文件夹中的格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl+A选择全部，按住Ctrl+C复制全部，然后，在其他地方新建文件夹，按住Ctrl+V提取所有选择的文件到新文件中即可  </description>
+    </item>
+    
+    <item>
+      <title>Windows(1)——CMD命令</title>
+      <link>https://ac-lm.github.io/posts/windows10/windows1cmd%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/windows10/windows1cmd%E5%91%BD%E4%BB%A4/</guid>
+      <description>1.常用的CMD命令 # 进入D盘 D: # 查看全部文件 dir # 显示 Windows 的版本 VER # 创建一个目录 MKDIR file # 清除屏幕 CLS # 帮助文档 HELP # 进入文件夹 cd file # 查看某个命令的地址 where java </description>
     </item>
     
   </channel>

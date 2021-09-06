@@ -41,17 +41,17 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(19)——常用的命令</a></h2>
-                <p>@LM | 2021-01-13</p>
+                <p>@LM | 2021-05-16</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1历史记录命令">1.历史记录命令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">history -c 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">history -c 
 <span style="color:#75715e"># 参数!n（n命令编号），执行第n个命令</span>
 <span style="color:#75715e"># 参数!$ / !!（上一个命令），执行上一条命令，</span>
 <span style="color:#75715e"># 参数-c（清理），清理历史记录</span>
 </code></pre></div><h2 id="2文件查看命令">2.文件查看命令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls  <span style="color:#75715e">#查看当前全部文件</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls  <span style="color:#75715e">#查看当前全部文件</span>
 ll  <span style="color:#75715e">#以详细信息列出文件</span>
 <span style="color:#75715e">#------------------------------------------------</span>
 -a <span style="color:#75715e">#显示所有文件及目录 (. 开头的隐藏文件也会列出)</span>
@@ -62,7 +62,7 @@ ll  <span style="color:#75715e">#以详细信息列出文件</span>
 -F <span style="color:#75715e">#在列出的文件名称后加一符号；例如可执行档则加 &#34;*&#34;, 目录则加 &#34;/&#34;</span>
 -R <span style="color:#75715e">#若目录下有文件，则以下之文件亦皆依序列出</span>
 </code></pre></div><h2 id="3文件夹操作命令">3.文件夹操作命令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ..  <span style="color:#75715e">#进入父文件夹</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ..  <span style="color:#75715e">#进入父文件夹</span>
 cd ~   <span style="color:#75715e">#root</span>
 cd /   <span style="color:#75715e">#根</span>
 rm -rf xxxx  <span style="color:#75715e">#删除</span>
@@ -76,13 +76,13 @@ head -n <span style="color:#ae81ff">5</span> as.sh <span style="color:#75715e">#
 tail as.sh <span style="color:#75715e">#查看文件</span>
 tail -f as.sh <span style="color:#75715e">#不断更新最后一行，循环查看</span>
 </code></pre></div><h2 id="4链接">4.链接</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s log2013.log link2013 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s log2013.log link2013 
 <span style="color:#75715e"># 将log2013.log 链接到 link2013,输入 link2013 可访问 log2013.log</span>
 </code></pre></div><h2 id="5重定向">5.重定向</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ping baidu.com &gt;&gt; A.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ping baidu.com &gt;&gt; A.txt
 <span style="color:#75715e"># 将命令的输出重定向到文档，即将结果写入文档，&gt;不追加，&gt;&gt;追加</span>
 </code></pre></div><h2 id="6管道与搜索">6.管道与搜索</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo ABCDE | grep A
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo ABCDE | grep A
 <span style="color:#75715e"># 管道命令（|）将前一个命令的输出作为后一个命令的输入，搜索命令（grep）对输入进行搜索</span>
 </code></pre></div>
             <p style="margin-top:1em;"></p>
@@ -98,10 +98,10 @@ tail -f as.sh <span style="color:#75715e">#不断更新最后一行，循环查�
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux15tar%E8%A7%A3%E5%8E%8B/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux18chrome%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux18chrome%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

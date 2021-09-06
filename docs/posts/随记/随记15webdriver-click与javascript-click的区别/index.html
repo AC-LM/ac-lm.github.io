@@ -50,7 +50,7 @@
 </blockquote>
 <h2 id="问题出现">问题出现</h2>
 <p>在自动测试时有时候会出现无法通过 selenium WebDriver 点击命令来单击元素，完成操作，但是可以通过执行JavaScript来单击该元素来解决这个问题。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;myid&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;myid&#34;</span>)
 driver<span style="color:#f92672">.</span>execute_script(<span style="color:#e6db74">&#34;arguments[0].click();&#34;</span>, element)
 </code></pre></div><h2 id="回答">回答</h2>
 <p>这两种方法的本质区别在浏览器的操作上：</p>
@@ -95,7 +95,7 @@ driver<span style="color:#f92672">.</span>execute_script(<span style="color:#e6d
           <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B014%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E8%AF%B7%E6%B1%82cors/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B016restful-api-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(15)——tar解压</a></h2>
-                <p>@LM | 2020-12-28</p>
+                <p>@LM | 2021-04-30</p>
             </div>
         </header>
         <div class="content">
@@ -52,9 +52,9 @@
 <li><strong>压缩则是将一个大的文件通过一些压缩算法变成一个小文件</strong></li>
 </ul>
 <p>为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar 命令），然后再用压缩程序进行压缩（gzip bzip2 命令）。</p>
-<pre><code>yum install tar gzip bzip
+<pre tabindex="0"><code>yum install tar gzip bzip
 </code></pre><h2 id="2使用">2.使用</h2>
-<pre><code>tar 
+<pre tabindex="0"><code>tar 
 解包：tar xvf FileName.tar
 打包：tar cvf FileName.tar DirName
 
@@ -101,7 +101,7 @@
 解压：rar x FileName.rar
 压缩：rar a FileName.rar DirName 
 </code></pre><h2 id="3必要参数">3.必要参数</h2>
-<pre><code>-A 新增压缩文件到已存在的压缩
+<pre tabindex="0"><code>-A 新增压缩文件到已存在的压缩
 
 -B 设置区块大小
 
@@ -133,7 +133,7 @@
 
 -W 确认压缩文件的正确性
 </code></pre><h2 id="4可选参数">4.可选参数</h2>
-<pre><code>-b 设置区块数目
+<pre tabindex="0"><code>-b 设置区块数目
 
 -C 切换到指定目录
 
@@ -156,10 +156,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux12mtr%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux14%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux19%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux16%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8F%8A%E5%85%B3%E9%97%AD/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

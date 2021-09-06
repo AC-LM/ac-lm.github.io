@@ -53,7 +53,7 @@
 <h2 id="resolution">Resolution</h2>
 <p>这些因为，这些动态加载的元素是在<code>css, js</code>代码加载完后才添加的。因此当浏览器在解析<code>js</code>代码时，这些动态添加的元素并未生成，从而也无法绑定相应的事件，事件也就不会触发。</p>
 <p>通过对<code>body</code>绑定事件解决该问题</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;body&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#e6db74">&#39;.addBtn&#39;</span>, <span style="color:#66d9ef">function</span>(){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;body&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#e6db74">&#39;.addBtn&#39;</span>, <span style="color:#66d9ef">function</span>(){
     <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;new&#39;</span>)
 })
 </code></pre></div>
@@ -70,8 +70,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug17%E5%AD%97%E5%85%B8%E5%9C%A8%E9%81%8D%E5%8E%86%E6%97%B6%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9/" class="button large previous">上一页</a></li>
         
+        
+          <li><a href="https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

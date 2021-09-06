@@ -6,7 +6,25 @@
     <description>Recent content in Flutter on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter(23)——异步编程</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter23%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter23%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/</guid>
+      <description>参考原文：Flutter 异步编程：Future、Isolate 和事件循环
+ 1.Dart 是一种单线程语言 Dart 是一种单线程语言，意味着同一时刻程序只能执行一个操作，其他操作在这个操作完成后执行，只要这个操作还在执行，它就不会被其他 Dart 代码中断。依赖于 Dart 的 Flutter 也是如此。
+void myBigLoop(){ for (int i = 0; i &amp;lt; 1000000; i++){ _doSomethingSynchronously(); } } 在上述例子中，myBigLoop() 方法在执行完成前永远不会被中断，在整个方法执行期间应用将会被阻塞。
+2.运行模型 在这里需要关注的是 Dart 的代码序列器（事件循环）。
+当你启动一个 Flutter 或 Dart 应用时，应用将创建并启动一个新的线程进程 Isolate，这个线程将是整个应用的主线程。
+在主线程启动后，应用会在此初始化 2 个 FIFO（先进先出）队列，MicroTask和 Event队列，在上述操作执行完成后，才会执行main()方法，并启动事件循环。
+事件循环是一种由一个内部时钟控制的无限循环，在每个时钟周期内，如果没有其他 Dart 代码执行，则执行以下操作：
+void eventLoop(){ while (microTaskQueue.isNotEmpty){ fetchFirstMicroTaskFromQueue(); executeThisMicroTask(); return; } if (eventQueue.isNotEmpty){ fetchFirstEventFromQueue(); executeThisEventRelatedCode(); } } 可以注意到，这个操作的作用是从MicroTask和 Event队列提取出事件到循环中执行，直到两个队列中所有事件执行完成。
+MicroTask 队列 MicroTask队列用于非常简短且需要异步执行的内部动作，这些动作需要在其他事件完成之后并在将执行权送还给Event队列之前运行。
+Event 队列 大多数需要使用异步的动作都使用Event队列进行处理，如外部事件 I/O，绘图等。值得注意的是，Future 操作也通过Event队列处理。</description>
+    </item>
+    
     <item>
       <title>Flutter(22)——状态(数据)监听</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter22%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC/</link>
@@ -30,18 +48,9 @@ flutter build apk --release --target-platform android-armflutter build apk --ta
     </item>
     
     <item>
-      <title>Flutter(19)——时间</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/</link>
-      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/</guid>
-      <description>var today = DateTime.now(); print(&amp;#39;当前时间是：$today&amp;#39;); var date1 = today.millisecondsSinceEpoch; print(&amp;#39;当前时间戳：$date1&amp;#39;); var date2 = DateTime.fromMillisecondsSinceEpoch(date1); print(&amp;#39;时间戳转日期：$date2&amp;#39;); //拼接成date var dentistAppointment = new DateTime(2019, 6, 20, 17, 30,20); print(dentistAppointment); // 字符串转date DateTime date3 = DateTime.parse(&amp;#34;2019-06-20 15:32:41&amp;#34;); print(date3); // 时间比较 print(today.isBefore(date3));// 在之前 print(today.isAfter(date3)); // 在之后 print(date3.isAtSameMomentAs(date3));// 相同 print(date3.compareTo(today));// 大于返回1；等于返回0；小于返回-1。 // print(DateTime.now().toString()); // print(DateTime.now().toIso8601String()); // 时间增加 var fiftyDaysFromNow = today.add(new Duration(days: 5)); print(&amp;#39;today加5天：$fiftyDaysFromNow&amp;#39;); //时间减少 DateTime fiftyDaysAgo = today.subtract(new Duration(days: 5)); print(&amp;#39;today减5天：$fiftyDaysAgo&amp;#39;); //时间差 两个时间相差 小时数 print(&amp;#39;比较两个时间 差 小时数：${fiftyDaysFromNow.</description>
-    </item>
-    
-    <item>
       <title>Flutter(20)——读取手机文件路径</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter20%E8%AF%BB%E5%8F%96%E6%89%8B%E6%9C%BA%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/</link>
-      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/flutter/flutter20%E8%AF%BB%E5%8F%96%E6%89%8B%E6%9C%BA%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/</guid>
       <description>参考原文： 【Flutter 实战】文件系统目录 @老孟程序员 
@@ -68,9 +77,101 @@ flutter pub get 2.获取文件路径   getTemporaryDirectory
     </item>
     
     <item>
+      <title>Flutter(19)——时间</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/</guid>
+      <description>var today = DateTime.now(); print(&amp;#39;当前时间是：$today&amp;#39;); var date1 = today.millisecondsSinceEpoch; print(&amp;#39;当前时间戳：$date1&amp;#39;); var date2 = DateTime.fromMillisecondsSinceEpoch(date1); print(&amp;#39;时间戳转日期：$date2&amp;#39;); //拼接成date var dentistAppointment = new DateTime(2019, 6, 20, 17, 30,20); print(dentistAppointment); // 字符串转date DateTime date3 = DateTime.parse(&amp;#34;2019-06-20 15:32:41&amp;#34;); print(date3); // 时间比较 print(today.isBefore(date3));// 在之前 print(today.isAfter(date3)); // 在之后 print(date3.isAtSameMomentAs(date3));// 相同 print(date3.compareTo(today));// 大于返回1；等于返回0；小于返回-1。 // print(DateTime.now().toString()); // print(DateTime.now().toIso8601String()); // 时间增加 var fiftyDaysFromNow = today.add(new Duration(days: 5)); print(&amp;#39;today加5天：$fiftyDaysFromNow&amp;#39;); //时间减少 DateTime fiftyDaysAgo = today.subtract(new Duration(days: 5)); print(&amp;#39;today减5天：$fiftyDaysAgo&amp;#39;); //时间差 两个时间相差 小时数 print(&amp;#39;比较两个时间 差 小时数：${fiftyDaysFromNow.</description>
+    </item>
+    
+    <item>
+      <title>Flutter(18)——内置对话框</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter18%E5%86%85%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86/</link>
+      <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter18%E5%86%85%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86/</guid>
+      <description>参考原文：Flutter内置show @老孟Flutter 
+ showDialog showDialog 用于弹出普通Material风格的对话框，用法如下：
+showDialog( context: context, builder: (context) { return AlertDialog( ... ); } ); showCupertinoDialog showCupertinoDialog 用于弹出ios风格对话框，基本用法如下：
+showCupertinoDialog( context: context, builder: (context) { return CupertinoAlertDialog( ... ); }); showAboutDialog AboutDialog用于描述当前App信息，底部提供2个按钮：查看许可按钮和关闭按钮。AboutDialog需要和showAboutDialog配合使用，用法如下：
+showAboutDialog( context: context, applicationIcon: Image.asset( &amp;#39;images/bird.png&amp;#39;, height: 100, width: 100, ), applicationName: &amp;#39;应用程序&amp;#39;, applicationVersion: &amp;#39;1.0.0&amp;#39;, applicationLegalese: &amp;#39;copyright 老孟，一枚有态度的程序员&amp;#39;, children: &amp;lt;Widget&amp;gt;[ Container( height: 30, color: Colors.red, ), Container( height: 30, color: Colors.blue, ), Container( height: 30, color: Colors.</description>
+    </item>
+    
+    <item>
+      <title>Flutter(17)——CupertinoPicker滚轮选择器</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter17cupertinopicker%E6%BB%9A%E8%BD%AE%E9%80%89%E6%8B%A9%E5%99%A8/</link>
+      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter17cupertinopicker%E6%BB%9A%E8%BD%AE%E9%80%89%E6%8B%A9%E5%99%A8/</guid>
+      <description>组件使用 Container( height: 120, width: 100, child: CupertinoPicker( itemExtent: 27, onSelectedItemChanged: (position) {}, children: [ Text(&amp;#34;192&amp;#34;) ] ),), </description>
+    </item>
+    
+    <item>
+      <title>Flutter(16)——Fluttertoast插件弹出提示</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter16fluttertoast%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/</link>
+      <pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter16fluttertoast%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/</guid>
+      <description>1.引入插件 在 pubspec.yaml 中添加依赖:
+fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.dart&amp;#39;; RaisedButton( child: Text(&amp;#34;弹出toast&amp;#34;), onPressed: () { Fluttertoast.showToast( msg: &amp;#34;你今天真好看&amp;#34;, toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 1, backgroundColor: Colors.black45, textColor: Colors.white, fontSize: 16.0); }, ) </description>
+    </item>
+    
+    <item>
+      <title>Flutter(15)——Row子控件两端对齐</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter15row%E5%AD%90%E6%8E%A7%E4%BB%B6%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/</link>
+      <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter15row%E5%AD%90%E6%8E%A7%E4%BB%B6%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/</guid>
+      <description>1.使用spaceBetween对齐方式 new Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ new Text(&amp;#34;left&amp;#34;), new Text(&amp;#34;right&amp;#34;) ] ); 2.中间使用Expanded自动扩展 Row( children: &amp;lt;Widget&amp;gt;[ FlutterLogo(),//左对齐  Expanded(child: SizedBox()),//自动扩展挤压  FlutterLogo(),//右对齐  ], ); 3.使用Spacer自动填充 Row( children: &amp;lt;Widget&amp;gt;[ FlutterLogo(), Spacer(), FlutterLogo(), ], ); 4.使用Flexible Row( children: &amp;lt;Widget&amp;gt;[ FlutterLogo(), Flexible(fit: FlexFit.tight, child: SizedBox()), FlutterLogo(), ], ); </description>
+    </item>
+    
+    <item>
+      <title>Flutter(14)——滚动视图保存位置</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/</guid>
+      <description>参考原文：how-to-get-flutter-scrollcontroller-to-save @stackoverflow 
+ 使用AutomaticKeepAliveClientMixin保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用PageStorageKey保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#39;controllerA&amp;#39;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.</description>
+    </item>
+    
+    <item>
+      <title>Flutter(13)——真机添加网络权限</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter13%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E6%9D%83%E9%99%90/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter13%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E6%9D%83%E9%99%90/</guid>
+      <description>android 在AndroidManifest.xml中添加下列代码，注意不要放到application中.
+// android/app/src/main/AndroidManifest.xml &amp;lt;uses-permission android:name=&amp;#34;android.permission.READ_PHONE_STATE&amp;#34; /&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.INTERNET&amp;#34; /&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_NETWORK_STATE&amp;#34; /&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_WIFI_STATE&amp;#34; /&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>Flutter(12)——关闭组件</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%BB%84%E4%BB%B6/</guid>
+      <description>将当前界面pop出
+Navigator.pop(context);Navigator.of(context).pop();</description>
+    </item>
+    
+    <item>
+      <title>Flutter(11)——setState更新原理和流程</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter11setstate%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter11setstate%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/</guid>
+      <description> 参考原文：Flutter的setState更新原理和流程 @flutter开发精选 
+ Flutter的状态类  StatelessWidget：无状态类，没有状态更新，界面一经创建无法更改 StatefulWidget：有状态类，当状态改变，调用setState()方法会触发StatefulWidget的UI状态更新，自定义继承StatefulWidget的子类须重写createState()方法  只有当我们的类是有状态类的时候才能进行状态刷新，setState也是在State（有状态类）类里。
+mounted 调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过mounted属性来判断调用此方法是否合法。
+if (mounted) {setState(() {});}流程 条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  添加脏链表 _dirty = true  1.“脏”链表是待更新的链表 2.更新过后就不“脏”了 3._active=false 的时候直接返回  管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives()完成native方法的注册 最终会注册Vsync回调。 等待下一次vsync信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  更新帧信号来临从而刷新需要重构的界面  在 drawFrame 中调用 buildOwner.buildScope(renderViewElement)更新 elements  </description>
+    </item>
+    
+    <item>
       <title>Flutter(10)——读取app安装包资源</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter10%E8%AF%BB%E5%8F%96app%E5%AE%89%E8%A3%85%E5%8C%85%E8%B5%84%E6%BA%90/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/flutter/flutter10%E8%AF%BB%E5%8F%96app%E5%AE%89%E8%A3%85%E5%8C%85%E8%B5%84%E6%BA%90/</guid>
       <description>参考原文：Flutter 读取应用资源并显示 @飘香豆腐 
@@ -82,129 +183,24 @@ rootBundle.loadString(&amp;#39;assets/txt/test.txt&amp;#39;).then((data){ print(
     </item>
     
     <item>
-      <title>Flutter(11)——setState更新原理和流程</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter11setstate%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Flutter(9)——主题颜色</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/</link>
+      <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/flutter/flutter11setstate%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/</guid>
-      <description> 参考原文：Flutter的setState更新原理和流程 @flutter开发精选 
- Flutter的状态类  StatelessWidget：无状态类，没有状态更新，界面一经创建无法更改 StatefulWidget：有状态类，当状态改变，调用setState()方法会触发StatefulWidget的UI状态更新，自定义继承StatefulWidget的子类须重写createState()方法  只有当我们的类是有状态类的时候才能进行状态刷新，setState也是在State（有状态类）类里。
-mounted 调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过mounted属性来判断调用此方法是否合法。
-if (mounted) {setState(() {});}流程 条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  添加脏链表 _dirty = true  1.“脏”链表是待更新的链表 2.更新过后就不“脏”了 3._active=false 的时候直接返回  管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives()完成native方法的注册 最终会注册Vsync回调。 等待下一次vsync信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  更新帧信号来临从而刷新需要重构的界面  在 drawFrame 中调用 buildOwner.buildScope(renderViewElement)更新 elements  </description>
+      <guid>https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/</guid>
+      <description>1.primarySwatch flutter的主题（build下面的theme）中有个主题颜色（primarySwatch），该主题颜色(primarySwatch)只有以下的几个值可以选择，其他的暂不支持:
+red,pink,purple,deepPurple,indigo,blue,lightBlue,cyan,teal,green,lightGreen,lime,yellow,amber,orange,deepOrange,brown,blueGrey,2.primaryColor 如果要把顶部导航栏和状态栏的颜色修改成黑色或者白色，需要用到这个属性。
+primaryColor:Colors.white</description>
     </item>
     
     <item>
-      <title>Flutter(12)——关闭组件</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%BB%84%E4%BB%B6/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Flutter(8)——为BottomNavigationBar设置背景色</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BAbottomnavigationbar%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/</link>
+      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%BB%84%E4%BB%B6/</guid>
-      <description>将当前界面pop出
-Navigator.pop(context);Navigator.of(context).pop();</description>
-    </item>
-    
-    <item>
-      <title>Flutter(13)——真机添加网络权限</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter13%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E6%9D%83%E9%99%90/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter13%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E6%9D%83%E9%99%90/</guid>
-      <description>android 在AndroidManifest.xml中添加下列代码，注意不要放到application中.
-// android/app/src/main/AndroidManifest.xml &amp;lt;uses-permission android:name=&amp;#34;android.permission.READ_PHONE_STATE&amp;#34; /&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.INTERNET&amp;#34; /&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_NETWORK_STATE&amp;#34; /&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.ACCESS_WIFI_STATE&amp;#34; /&amp;gt; </description>
-    </item>
-    
-    <item>
-      <title>Flutter(14)——滚动视图保存位置</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/</guid>
-      <description>参考原文：how-to-get-flutter-scrollcontroller-to-save @stackoverflow 
- 使用AutomaticKeepAliveClientMixin保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用PageStorageKey保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#39;controllerA&amp;#39;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.</description>
-    </item>
-    
-    <item>
-      <title>Flutter(15)——Row子控件两端对齐</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter15row%E5%AD%90%E6%8E%A7%E4%BB%B6%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter15row%E5%AD%90%E6%8E%A7%E4%BB%B6%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/</guid>
-      <description>1.使用spaceBetween对齐方式 new Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [ new Text(&amp;#34;left&amp;#34;), new Text(&amp;#34;right&amp;#34;) ] ); 2.中间使用Expanded自动扩展 Row( children: &amp;lt;Widget&amp;gt;[ FlutterLogo(),//左对齐  Expanded(child: SizedBox()),//自动扩展挤压  FlutterLogo(),//右对齐  ], ); 3.使用Spacer自动填充 Row( children: &amp;lt;Widget&amp;gt;[ FlutterLogo(), Spacer(), FlutterLogo(), ], ); 4.使用Flexible Row( children: &amp;lt;Widget&amp;gt;[ FlutterLogo(), Flexible(fit: FlexFit.tight, child: SizedBox()), FlutterLogo(), ], ); </description>
-    </item>
-    
-    <item>
-      <title>Flutter(16)——Fluttertoast插件弹出提示</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter16fluttertoast%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter16fluttertoast%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/</guid>
-      <description>1.引入插件 在 pubspec.yaml 中添加依赖:
-fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.dart&amp;#39;; RaisedButton( child: Text(&amp;#34;弹出toast&amp;#34;), onPressed: () { Fluttertoast.showToast( msg: &amp;#34;你今天真好看&amp;#34;, toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.BOTTOM, timeInSecForIosWeb: 1, backgroundColor: Colors.black45, textColor: Colors.white, fontSize: 16.0); }, ) </description>
-    </item>
-    
-    <item>
-      <title>Flutter(17)——CupertinoPicker滚轮选择器</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter17cupertinopicker%E6%BB%9A%E8%BD%AE%E9%80%89%E6%8B%A9%E5%99%A8/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter17cupertinopicker%E6%BB%9A%E8%BD%AE%E9%80%89%E6%8B%A9%E5%99%A8/</guid>
-      <description>组件使用 Container( height: 120, width: 100, child: CupertinoPicker( itemExtent: 27, onSelectedItemChanged: (position) {}, children: [ Text(&amp;#34;192&amp;#34;) ] ),), </description>
-    </item>
-    
-    <item>
-      <title>Flutter(18)——内置对话框</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter18%E5%86%85%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter18%E5%86%85%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86/</guid>
-      <description>参考原文：Flutter内置show @老孟Flutter 
- showDialog showDialog 用于弹出普通Material风格的对话框，用法如下：
-showDialog( context: context, builder: (context) { return AlertDialog( ... ); } ); showCupertinoDialog showCupertinoDialog 用于弹出ios风格对话框，基本用法如下：
-showCupertinoDialog( context: context, builder: (context) { return CupertinoAlertDialog( ... ); }); showAboutDialog AboutDialog用于描述当前App信息，底部提供2个按钮：查看许可按钮和关闭按钮。AboutDialog需要和showAboutDialog配合使用，用法如下：
-showAboutDialog( context: context, applicationIcon: Image.asset( &amp;#39;images/bird.png&amp;#39;, height: 100, width: 100, ), applicationName: &amp;#39;应用程序&amp;#39;, applicationVersion: &amp;#39;1.0.0&amp;#39;, applicationLegalese: &amp;#39;copyright 老孟，一枚有态度的程序员&amp;#39;, children: &amp;lt;Widget&amp;gt;[ Container( height: 30, color: Colors.red, ), Container( height: 30, color: Colors.blue, ), Container( height: 30, color: Colors.</description>
-    </item>
-    
-    <item>
-      <title>Flutter(3)——下载环境配置</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter3%E4%B8%8B%E8%BD%BD%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter3%E4%B8%8B%E8%BD%BD%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
-      <description>由于Flutter默认配置的下载服务器在国外，往往会出现网络波动无法下载的情况，因此需要重新配置国内镜像，避免出现无法下载情况。在终端命令或 Windows 环境变量中增加键值
-export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn </description>
-    </item>
-    
-    <item>
-      <title>Flutter(4)——TabController两次回调</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter4tabcontroller%E4%B8%A4%E6%AC%A1%E5%9B%9E%E8%B0%83/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter4tabcontroller%E4%B8%A4%E6%AC%A1%E5%9B%9E%E8%B0%83/</guid>
-      <description>Q TabController监听在点击切换tab的时候会回调两次，左右滑动切换tab正常调用一次。
-A 点击切换tab的时候会执行一个动画效果，滑动切换的时候是没有的，在这个过程中多触发了一次Listener。</description>
-    </item>
-    
-    <item>
-      <title>Flutter(5)——网络请求错误</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter5%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter5%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF/</guid>
-      <description>参考原文：Insecure HTTP is not allowed by platform @csdn 
- 1.报错 DioError [DioErrorType.DEFAULT]: Bad state: Insecure HTTP is not allowed by platform2.原因 平台不支持不安全的 HTTP 协议，即不允许访问 HTTP 域名的地址。这是因为 IOS 和 Android 9.0 对网络请求做了一些限制，不能直接访问 Http 域名的地址。
-3.解决方案 降低SDK版本至27或27以下</description>
-    </item>
-    
-    <item>
-      <title>Flutter(6)——setState失败</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter6setstate%E5%A4%B1%E8%B4%A5/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter6setstate%E5%A4%B1%E8%B4%A5/</guid>
-      <description> 参考原文：setState() called after dispose() @Songzh
- 1.报错 ERROR:flutter/shell/common/shell.cc(181)] Dart Error: Unhandled exception: setState() called after dispose(): _ShelfState#5b9c1(lifecycle state: defunct, not mounted) 2.原因 在 Flutter 构件树被销毁后仍然执行了 setState 方法改变页面状态，当 setState 方法改变页面状态时，需要改变的页面被销毁了。使用场景为，当触发 setState 方法时从当前页面切换到其他页面。
-3.解决 在 setState 之前加一句判断，判断当前页面是否存在于构件树中。
-// mounted 为 true 表示当前页面挂在到构件树中，为 false 时未挂载当前页面 if (mounted) { setState(() { // xxxx  }) } </description>
+      <guid>https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BAbottomnavigationbar%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/</guid>
+      <description>BottomNavigationBar不能直接设置背景色，但是可以通过设置主题画布色达到相同的效果
+bottomNavigationBar: new Theme( data: Theme.of(context).copyWith( //设置背景色`BottomNavigationBar`  canvasColor: Colors.green, //设置高亮文字颜色  primaryColor: Colors.red, //设置一般文字颜色  textTheme: Theme.of(context).textTheme.copyWith(caption: new TextStyle(color: Colors.yellow))), child: new BottomNavigationBar( type: BottomNavigationBarType.fixed, currentIndex: 0, items: [ new BottomNavigationBarItem( icon: new Icon(Icons.add), title: new Text(&amp;#34;新增&amp;#34;), ), new BottomNavigationBarItem( icon: new Icon(Icons.delete), title: new Text(&amp;#34;删除&amp;#34;), ) ], ), ), </description>
     </item>
     
     <item>
@@ -219,40 +215,52 @@ import &amp;#39;package:flutter/material.dart&amp;#39;; import &amp;#39;package:
     </item>
     
     <item>
-      <title>Flutter(8)——为BottomNavigationBar设置背景色</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BAbottomnavigationbar%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Flutter(6)——setState失败</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter6setstate%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BAbottomnavigationbar%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/</guid>
-      <description>BottomNavigationBar不能直接设置背景色，但是可以通过设置主题画布色达到相同的效果
-bottomNavigationBar: new Theme( data: Theme.of(context).copyWith( //设置背景色`BottomNavigationBar`  canvasColor: Colors.green, //设置高亮文字颜色  primaryColor: Colors.red, //设置一般文字颜色  textTheme: Theme.of(context).textTheme.copyWith(caption: new TextStyle(color: Colors.yellow))), child: new BottomNavigationBar( type: BottomNavigationBarType.fixed, currentIndex: 0, items: [ new BottomNavigationBarItem( icon: new Icon(Icons.add), title: new Text(&amp;#34;新增&amp;#34;), ), new BottomNavigationBarItem( icon: new Icon(Icons.delete), title: new Text(&amp;#34;删除&amp;#34;), ) ], ), ), </description>
+      <guid>https://ac-lm.github.io/posts/flutter/flutter6setstate%E5%A4%B1%E8%B4%A5/</guid>
+      <description> 参考原文：setState() called after dispose() @Songzh
+ 1.报错 ERROR:flutter/shell/common/shell.cc(181)] Dart Error: Unhandled exception: setState() called after dispose(): _ShelfState#5b9c1(lifecycle state: defunct, not mounted) 2.原因 在 Flutter 构件树被销毁后仍然执行了 setState 方法改变页面状态，当 setState 方法改变页面状态时，需要改变的页面被销毁了。使用场景为，当触发 setState 方法时从当前页面切换到其他页面。
+3.解决 在 setState 之前加一句判断，判断当前页面是否存在于构件树中。
+// mounted 为 true 表示当前页面挂在到构件树中，为 false 时未挂载当前页面 if (mounted) { setState(() { // xxxx  }) } </description>
     </item>
     
     <item>
-      <title>Flutter(9)——主题颜色</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/</guid>
-      <description>1.primarySwatch flutter的主题（build下面的theme）中有个主题颜色（primarySwatch），该主题颜色(primarySwatch)只有以下的几个值可以选择，其他的暂不支持:
-red,pink,purple,deepPurple,indigo,blue,lightBlue,cyan,teal,green,lightGreen,lime,yellow,amber,orange,deepOrange,brown,blueGrey,2.primaryColor 如果要把顶部导航栏和状态栏的颜色修改成黑色或者白色，需要用到这个属性。
-primaryColor:Colors.white</description>
-    </item>
-    
-    <item>
-      <title>Flutter(1)——例程</title>
-      <link>https://ac-lm.github.io/posts/flutter/flutter1%E4%BE%8B%E7%A8%8B/</link>
+      <title>Flutter(5)——网络请求错误</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter5%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF/</link>
       <pubDate>Tue, 27 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/flutter/flutter1%E4%BE%8B%E7%A8%8B/</guid>
-      <description>参考原文：《Flutter实战》@wendux 
- 1.例程代码 import &amp;#39;package:flutter/material.dart&amp;#39;; void main() { runApp(MyApp()); } class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &amp;#39;Flutter Demo&amp;#39;, theme: ThemeData( primarySwatch: Colors.blue, ), home: MyHomePage(title: &amp;#39;Flutter Demo Home Page&amp;#39;), ); } } class MyHomePage extends StatefulWidget { MyHomePage({Key key, this.title}) : super(key: key); final String title; @override _MyHomePageState createState() =&amp;gt; _MyHomePageState(); } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { int _counter = 0; void _incrementCounter() { setState(() { _counter++; }); } @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.</description>
+      <guid>https://ac-lm.github.io/posts/flutter/flutter5%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF/</guid>
+      <description>参考原文：Insecure HTTP is not allowed by platform @csdn 
+ 1.报错 DioError [DioErrorType.DEFAULT]: Bad state: Insecure HTTP is not allowed by platform2.原因 平台不支持不安全的 HTTP 协议，即不允许访问 HTTP 域名的地址。这是因为 IOS 和 Android 9.0 对网络请求做了一些限制，不能直接访问 Http 域名的地址。
+3.解决方案 降低SDK版本至27或27以下</description>
+    </item>
+    
+    <item>
+      <title>Flutter(4)——TabController两次回调</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter4tabcontroller%E4%B8%A4%E6%AC%A1%E5%9B%9E%E8%B0%83/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter4tabcontroller%E4%B8%A4%E6%AC%A1%E5%9B%9E%E8%B0%83/</guid>
+      <description>Q TabController监听在点击切换tab的时候会回调两次，左右滑动切换tab正常调用一次。
+A 点击切换tab的时候会执行一个动画效果，滑动切换的时候是没有的，在这个过程中多触发了一次Listener。</description>
+    </item>
+    
+    <item>
+      <title>Flutter(3)——下载环境配置</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter3%E4%B8%8B%E8%BD%BD%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter3%E4%B8%8B%E8%BD%BD%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>由于Flutter默认配置的下载服务器在国外，往往会出现网络波动无法下载的情况，因此需要重新配置国内镜像，避免出现无法下载情况。在终端命令或 Windows 环境变量中增加键值
+export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn </description>
     </item>
     
     <item>
       <title>Flutter(2)——混合开发</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Tue, 27 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/</guid>
       <description>参考原文：《Flutter实战》@wendux 
@@ -269,6 +277,16 @@ JavaScript开发+原生渲染 React Native (简称RN)是Facebook于2015年4月�
 自绘UI+原生 在本篇中，我们看看最后一种跨平台技术：自绘UI+原生。这种技术的思路是，通过在不同平台实现一个统一接口的渲染引擎来绘制UI，而不依赖系统原生控件，所以可以做到不同平台UI的一致性。注意，自绘引擎解决的是UI的跨平台问题，如果涉及其它系统能力调用，依然要涉及原生开发。这种平台技术的优点如下：
  性能高；由于自绘引擎是直接调用系统API来绘制UI，所以性能和原生控件接近。 灵活、组件库易维护、UI外观保真度和一致性高；由于UI渲染不依赖原生控件，也就不需要根据不同平台的控件单独维护一套组件库，所以代码容易维护。由于组件库是同一套代码、同一个渲染引擎，所以在不同平台，组件显示外观可以做到高保真和高一致性；另外，由于不依赖原生控件，也就不会受原生布局系统的限制，这样布局系统会非常灵活。  不足：
  动态性不足；为了保证UI绘制性能，自绘UI系统一般都会采用AOT模式编译其发布包，所以应用发布后，不能像Hybrid和RN那些使用JavaScript（JIT）作为开发语言的框架那样动态下发代码。 开发效率低：QT使用C++作为其开发语言，而编程效率是直接会影响APP开发效率的，C++作为一门静态语言，在UI开发方面灵活性不及JavaScript这样的动态语言，另外，C++需要开发者手动去管理内存分配，没有JavaScript及Java中垃圾回收（GC）的机制。  也许你已经猜到Flutter就属于这一类跨平台技术，没错，Flutter正是实现一套自绘引擎，并拥有一套自己的UI布局系统。不过，自绘制引擎的思路并不是什么新概念，Flutter并不是第一个尝试这么做的，在它之前有一个典型的代表，即大名鼎鼎的QT。</description>
+    </item>
+    
+    <item>
+      <title>Flutter(1)——例程</title>
+      <link>https://ac-lm.github.io/posts/flutter/flutter1%E4%BE%8B%E7%A8%8B/</link>
+      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/flutter/flutter1%E4%BE%8B%E7%A8%8B/</guid>
+      <description>参考原文：《Flutter实战》@wendux 
+ 1.例程代码 import &amp;#39;package:flutter/material.dart&amp;#39;; void main() { runApp(MyApp()); } class MyApp extends StatelessWidget { @override Widget build(BuildContext context) { return MaterialApp( title: &amp;#39;Flutter Demo&amp;#39;, theme: ThemeData( primarySwatch: Colors.blue, ), home: MyHomePage(title: &amp;#39;Flutter Demo Home Page&amp;#39;), ); } } class MyHomePage extends StatefulWidget { MyHomePage({Key key, this.title}) : super(key: key); final String title; @override _MyHomePageState createState() =&amp;gt; _MyHomePageState(); } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { int _counter = 0; void _incrementCounter() { setState(() { _counter++; }); } @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.</description>
     </item>
     
   </channel>

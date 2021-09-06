@@ -65,12 +65,12 @@
 <li>有效等价类:对于程序的规格说明书是合理的,有意义的输入数据构成的集合,利用有效等价类验证程序是否实现了规格说明书中所规定的功能和性能</li>
 <li>无效等价类:根据需求说明书,不满足需求的集合</li>
 </ul>
-<pre><code>超市买水果
+<pre tabindex="0"><code>超市买水果
 有效等价类:苹果,香蕉,桃子...
 无效等价类:青菜,大米,饮料... 
 </code></pre><h3 id="b边界值">b.边界值</h3>
 <p><strong>解释</strong>：边界值分析法就是对输入或者输出的边界值进行测试的一种黑盒测试方法，通常边界值分析法是作为对等价类划分方法的补充,这种情况下,其测试用例来自等价类的边界</p>
-<pre><code>输入框长度为1-11,边界值取值:0,1,11,12
+<pre tabindex="0"><code>输入框长度为1-11,边界值取值:0,1,11,12
 运动员参赛项目为1-3项,边界值取值:0项,1项,3项,4项
 查询面页面有999行,每50行为一页,边界值取值:0行,1行,50行,51行,999行 
 </code></pre><h3 id="c因果图">c.因果图</h3>
@@ -84,7 +84,7 @@
 <li>把判定表对应到每一个测试用例</li>
 </ul>
 <p><strong>案例</strong>：</p>
-<pre><code>淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠
+<pre tabindex="0"><code>淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠
 </code></pre><p>1.对于这条业务规则,首先通过分析所有可能的输入和可能的输出,可以得到如下结果:</p>
 <ul>
 <li>输入:订单已提交,订单金额大于300,有红包</li>
@@ -109,7 +109,7 @@
 <p>4.画因果图，画判定表，得测试用例</p>
 <h3 id="d正交排列">d.正交排列</h3>
 <p><strong>解释</strong>：正交法的目的是为了减少用例数量,用尽量少的用例,覆盖输入的两两组合，正交试验设计是研究多因素多水平的一种设计方法,它是根据正交性,由实验因素的全部水平组合中挑选出部分有代表性的点进行实验,通过对这部分实验结果的分析了解全面试验的情况,找出最优的水平组合,正交试验设计是一种基于正交表的,高效率,快速,经济的试验.</p>
-<pre><code>正交排列需要掌握的基本知识:
+<pre tabindex="0"><code>正交排列需要掌握的基本知识:
 
 因素(Factor):在一项试验中,凡是考虑的变量都称为因素(变量)
 
@@ -135,7 +135,7 @@
 <li>加上你认为可疑且没有在表中出现的用例组合</li>
 </ul>
 <p><strong>案例</strong>：</p>
-<pre><code>用户注册
+<pre tabindex="0"><code>用户注册
 </code></pre><p>1.因素：姓名,邮箱,密码,确认密码,验证码</p>
 <p>2.水平：填写,不填写</p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/799.png" alt=""></p>
@@ -145,12 +145,12 @@
 <h3 id="e场景设计法">e.场景设计法</h3>
 <p><strong>解释</strong>：现在的软件几乎都是用事件触发来控制流程的,事件触发时的情景便形成了场景,而同一事件不同的触发顺序和处理结果就形成事件流,该方法可以比较生动地描绘出事件触发时的情景,有利于测试设计者设计测试用例,使测试用例更容易理解和执行</p>
 <p><strong>案例</strong>：</p>
-<pre><code>用户注册
+<pre tabindex="0"><code>用户注册
 </code></pre><p>开始—&gt;用户注册—&gt;用户阅读协议—&gt;是否同意协议—是—&gt;填写信息—&gt;发送验证信息—&gt;激活—&gt;注册成功—&gt;结束</p>
 <h3 id="f错误猜测法">f.错误猜测法</h3>
 <p><strong>解释</strong>：基于经验和直觉，找出程序中你认为会出现的错误,有针对性地设计测试用例,经验可能来自于对某项业务的测试较多,也可以来自售后用户的反馈意见,或者从故障管理库中整理出bug,整理出产品越往哪些地方越容易出现问题,问题越多的地方,潜在的bug越多</p>
 <p><strong>案例</strong>：</p>
-<pre><code>用户注册
+<pre tabindex="0"><code>用户注册
 </code></pre><ol>
 <li>校验中特殊字符空格的处理?</li>
 <li>密码校验中的大小写？</li>
@@ -287,10 +287,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B018%E4%BB%80%E4%B9%88%E6%98%AFbash-shell/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B012md5%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AFsql%E6%BC%8F%E6%B4%9E/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B014%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E8%AF%B7%E6%B1%82cors/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

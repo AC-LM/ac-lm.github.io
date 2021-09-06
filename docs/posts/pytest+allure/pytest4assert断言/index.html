@@ -54,7 +54,7 @@
 <li>assert关键字后面可以接一个表达式，只要表达式的最终结果为True，那么断言通过，用例执行成功，否则用例执行失败</li>
 </ul>
 <h2 id="2实例">2.实例</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 异常信息</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 异常信息</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>():
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">3</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_function</span>():
@@ -72,7 +72,7 @@
 <h2 id="4异常断言-pytestraises">4.异常断言 pytest.raises</h2>
 <p>在断言一些代码块或者函数时会引发意料之中的异常或者其他失败的异常，导致程序无法运行时，使用 raises 可以捕获匹配到的异常，继续让代码正常运行。</p>
 <h3 id="raises-可以捕获异常并继续后续断言代码">raises 可以捕获异常，并继续后续断言代码</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pytest
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pytest
 
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_raises</span>():
@@ -80,7 +80,7 @@
         <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>
     <span style="color:#66d9ef">assert</span> eval(<span style="color:#e6db74">&#34;1 + 2&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>
 </code></pre></div><h3 id="可以使用-match-和-raise-进行自定义异常">可以使用 match 和 raise 进行自定义异常</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pytest
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pytest
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exc</span>(x):
     <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:

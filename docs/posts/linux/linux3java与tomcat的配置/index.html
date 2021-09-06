@@ -46,11 +46,11 @@
         </header>
         <div class="content">
             <h2 id="1java配置">1.Java配置</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看内核</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看内核</span>
 arch
 uname -a
 </code></pre></div><p><a href="https://www.oracle.com/java/technologies/javase-downloads.html"> JDK 官网下载 </a>  注意跟随内核版本，ARM下ARM，x86下x86，下载源码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 删除自带的openjava</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 删除自带的openjava</span>
 rpm -qa | grep java
 yum -y remove openjava
 <span style="color:#75715e"># 配置环境变量</span>
@@ -64,7 +64,7 @@ source /etc/profile <span style="color:#75715e">#启用环境 配置后启动环
 Java -version
 </code></pre></div><h2 id="2tomcat配置">2.Tomcat配置</h2>
 <p><a href="https://tomcat.apache.org/"> Tomcat 官网下载 </a>  注意跟随内核版本，下载源码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 环境变量</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 环境变量</span>
 <span style="color:#75715e"># 建议定义在单个tomcat的启动和关闭程序，避免影响</span>
 <span style="color:#75715e"># 打开startup.sh和shutdown.sh，添加以下内容</span>
 export TOMCAT_HOME<span style="color:#f92672">=</span>/home/ams/tomcat
@@ -92,10 +92,10 @@ root       <span style="color:#ae81ff">4003</span>  0.0  0.0 <span style="color:
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux1linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux2docker%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux4%E8%BE%93%E5%87%BA%E5%88%B0%E7%A9%BA%E6%96%87%E4%BB%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

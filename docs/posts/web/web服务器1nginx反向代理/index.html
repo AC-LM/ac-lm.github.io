@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Web服务器(1)——Nginx反向代理</a></h2>
-                <p>@LM | 2020-12-02</p>
+                <p>@LM | 2020-03-02</p>
             </div>
         </header>
         <div class="content">
@@ -96,7 +96,7 @@
 </ul>
 <h2 id="4-代码解析">4. 代码解析</h2>
 <h3 id="1-全局块----配置运行nginx服务器用户组">1. 全局块&mdash;-配置运行Nginx服务器用户（组）</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">user</span> <span style="color:#e6db74">user</span> <span style="color:#e6db74">[group]</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">user</span> <span style="color:#e6db74">user</span> <span style="color:#e6db74">[group]</span>;
 <span style="color:#75715e">#user：指定可以运行Nginx服务器的用户
 </span><span style="color:#75715e">#group：可选项，可以运行Nginx服务器的用户组
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">user</span> <span style="color:#e6db74">nobody</span> <span style="color:#e6db74">nobody</span>; <span style="color:#75715e">#如果user指令不配置或者配置为nobody nobody，则默认所有用户都可以启动Nginx进程
@@ -123,14 +123,14 @@
 <span style="color:#75715e">#该指令默认为off状态，意指每个worker process 一次只能接收一个新到达的网络连接。若想让每个Nginx的worker process都有能力同时接收多个网络连接，则需要开启此配置
 </span><span style="color:#75715e"></span>
 </code></pre></div><h3 id="2events块----事件配置">2.Events块&mdash;-事件配置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">use</span> <span style="color:#e6db74">model</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">use</span> <span style="color:#e6db74">model</span>;
 <span style="color:#75715e">#事件驱动模型的选择，可选择项包括：select、poll、kqueue、epoll、rtsig
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------</span>
 <span style="color:#e6db74">worker_connections</span> <span style="color:#e6db74">number</span>;
 <span style="color:#75715e">#最大连接数的配置，number默认值为512，表示允许每一个worker process可以同时开启的最大连接数
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------</span>
 </code></pre></div><h3 id="3http全局块">3.Http全局块</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">include</span> mime.types;<span style="color:#66d9ef">default_type</span> <span style="color:#e6db74">mime-type</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">include</span> mime.types;<span style="color:#66d9ef">default_type</span> <span style="color:#e6db74">mime-type</span>;
 <span style="color:#75715e">#定义MIME-Type网络资源的媒体类型，也即前端请求的资源类型
 </span><span style="color:#75715e">#mime.types文件内容，是一个types结构，里面包含了各种浏览器能够识别的MIME类型以及对应类型的文件后缀名字
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------------</span>
@@ -150,7 +150,7 @@
 <span style="color:#e6db74">keepalive_requests</span> <span style="color:#e6db74">number</span>;
 <span style="color:#75715e">#单连接请求数上限，用于限制用户通过某一个连接向Nginx服务器发起请求的次数
 </span></code></pre></div><h3 id="4server全局块">4.Server全局块</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">listen</span> <span style="color:#e6db74">IP[:PORT]</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">listen</span> <span style="color:#e6db74">IP[:PORT]</span>;
 <span style="color:#66d9ef">listen</span> <span style="color:#e6db74">PORT</span>;
 <span style="color:#75715e">#配置监听的IP地址 或 配置监听的端口
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> 192.168.31.177:<span style="color:#ae81ff">8080</span>;   <span style="color:#75715e"># 监听具体IP和具体端口上的连接
@@ -163,7 +163,7 @@
 <span style="color:#75715e">#此时表示该虚拟主机可以接收类似域名 www1.myserver.com 等的请求而拒绝 www.myserver.com 的域名请求，所以说用正则表达式可以实现更精准的控制
 </span><span style="color:#75715e"></span><span style="color:#e6db74">server_name</span> <span style="color:#ae81ff">192</span><span style="color:#e6db74">.168.1.245</span>;
 </code></pre></div><h3 id="5location块配置">5.Location块配置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">location</span> <span style="color:#e6db74">[</span> = <span style="color:#e6db74">|</span> ~ <span style="color:#e6db74">|</span> ~<span style="color:#e6db74">*</span> <span style="color:#e6db74">|</span> <span style="color:#e6db74">^~</span> <span style="color:#e6db74">]</span> <span style="color:#e6db74">uri</span> {<span style="color:#f92672">...}</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">location</span> <span style="color:#e6db74">[</span> = <span style="color:#e6db74">|</span> ~ <span style="color:#e6db74">|</span> ~<span style="color:#e6db74">*</span> <span style="color:#e6db74">|</span> <span style="color:#e6db74">^~</span> <span style="color:#e6db74">]</span> <span style="color:#e6db74">uri</span> {<span style="color:#f92672">...}</span>;
 <span style="color:#75715e">#这里的uri分为标准uri和正则uri
 </span><span style="color:#75715e">#&#34;=&#34;：用于标准uri前，要求请求字符串与uri严格匹配，一旦匹配成功则停止
 </span><span style="color:#75715e">#&#34;~&#34;：用于正则uri前，并且区分大小写
@@ -179,7 +179,7 @@
 <span style="color:#75715e">#设置网站的默认首页
 </span><span style="color:#75715e">#file:可以包含多个用空格隔开的文件名，首先找到哪个页面，就使用哪个页面响应请求
 </span></code></pre></div><h2 id="5nginx配置ssl及http跳转到https">5.Nginx配置SSL及HTTP跳转到HTTPS</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># Nginx配置SSL并把Http跳转到Https，需修改Nginx.conf配置文件如下
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># Nginx配置SSL并把Http跳转到Https，需修改Nginx.conf配置文件如下
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">server</span> {
 
   <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
@@ -257,10 +257,8 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%911war%E6%96%87%E4%BB%B6/" class="button large previous">上一页</a></li>
         
-        
-          <li><a href="https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A83%E5%8A%A8-%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A82apache-tomcat/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

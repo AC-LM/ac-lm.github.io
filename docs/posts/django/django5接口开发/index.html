@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Django(5)——接口开发</a></h2>
-                <p>@LM | 2021-06-03</p>
+                <p>@LM | 2021-06-05</p>
             </div>
         </header>
         <div class="content">
@@ -49,11 +49,11 @@
 <p>参考链接：<a href="https://www.cnblogs.com/liudinglong/p/12333665.html"> Django Web接口开发  @全栈测试开发日记  </a></p>
 </blockquote>
 <h2 id="1在项目文件下urlspy添加接口根路径">1.在项目文件下urls.py添加接口根路径:</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#api</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#api</span>
 path(<span style="color:#e6db74">&#39;api/&#39;</span>,include(<span style="color:#e6db74">&#39;django_web.urls&#39;</span>)),
 <span style="color:#75715e"># url(r&#39;^api/&#39;,include((&#39;django_web.urls&#39;,&#39;django_web&#39;),namespace=&#39;django_web&#39;)),</span>
 </code></pre></div><h2 id="2在app应用django_web下新建urlspy添加具体接口">2.在app应用django_web下新建urls.py添加具体接口：</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.urls <span style="color:#f92672">import</span> path
 <span style="color:#f92672">from</span> django_web.views <span style="color:#f92672">import</span> views_api
  
 <span style="color:#75715e">#在django_web下创建urls.py，配置具体接口的二级目录</span>
@@ -72,7 +72,7 @@ urlpatterns <span style="color:#f92672">=</span> [
     path(<span style="color:#e6db74">&#39;user_sign/&#39;</span>,views_api<span style="color:#f92672">.</span>user_sign,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user_sign&#39;</span>),
 ]
 </code></pre></div><h2 id="3在创建接口视图函数view_apipy文件实现具体接口">3.在创建接口视图函数view_api.py文件，实现具体接口：</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
 <span style="color:#f92672">from</span> django_web.models <span style="color:#f92672">import</span> Event,Guest
 <span style="color:#f92672">from</span> django.http <span style="color:#f92672">import</span> JsonResponse
 <span style="color:#f92672">from</span> django.core.exceptions <span style="color:#f92672">import</span> ValidationError,ObjectDoesNotExist
@@ -96,16 +96,16 @@ urlpatterns <span style="color:#f92672">=</span> [
  
     <span style="color:#66d9ef">if</span> eid <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> limit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> address <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> start_time <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
         <span style="color:#75715e">#ensure_ascii 禁用ascii码</span>
-        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10021</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;参数错误&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:False})
+        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10021</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;参数错误&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:<span style="color:#66d9ef">False</span>})
  
     result <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span>eid)
     <span style="color:#66d9ef">if</span> result:
-        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10022</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会id已存在&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:False})
+        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10022</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会id已存在&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:<span style="color:#66d9ef">False</span>})
  
  
     result <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(name<span style="color:#f92672">=</span>name)
     <span style="color:#66d9ef">if</span>  result:
-        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10023</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会名称已存在&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:False})
+        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10023</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会名称已存在&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:<span style="color:#66d9ef">False</span>})
  
     <span style="color:#66d9ef">if</span> status <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
         status <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
@@ -160,7 +160,7 @@ urlpatterns <span style="color:#f92672">=</span> [
         datas <span style="color:#f92672">=</span> []
         <span style="color:#75715e"># 模糊查询：name__contains</span>
         results <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(name__contains<span style="color:#f92672">=</span>name)
-        <span style="color:#66d9ef">print</span>(results<span style="color:#f92672">.</span>first())
+        print(results<span style="color:#f92672">.</span>first())
         <span style="color:#66d9ef">if</span> results:
             <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> results:
                 event <span style="color:#f92672">=</span> {}
@@ -186,7 +186,7 @@ urlpatterns <span style="color:#f92672">=</span> [
     email <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;email&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)
  
     <span style="color:#66d9ef">if</span> eid <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> realname <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> phone <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> email <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
-        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10021</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;参数错误&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:False})
+        <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10021</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;参数错误&#39;</span>},json_dumps_params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;ensure_ascii&#39;</span>:<span style="color:#66d9ef">False</span>})
  
     result <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span>eid)
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> result:
@@ -201,8 +201,8 @@ urlpatterns <span style="color:#f92672">=</span> [
     event_limit <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(id<span style="color:#f92672">=</span>eid)<span style="color:#f92672">.</span>limit       <span style="color:#75715e"># 发布会限制人数</span>
     guest_limit <span style="color:#f92672">=</span> Guest<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(event_id<span style="color:#f92672">=</span>eid)    <span style="color:#75715e"># 发布会已添加的嘉宾数</span>
  
-    <span style="color:#66d9ef">print</span>(len(guest_limit))
-    <span style="color:#66d9ef">print</span>(event_limit)
+    print(len(guest_limit))
+    print(event_limit)
     <span style="color:#66d9ef">if</span> len(guest_limit) <span style="color:#f92672">&gt;=</span> event_limit:
         <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10024</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会人数已满&#39;</span>})
  
@@ -214,8 +214,8 @@ urlpatterns <span style="color:#f92672">=</span> [
     e_time <span style="color:#f92672">=</span> int(time<span style="color:#f92672">.</span>mktime(timeArray))
     <span style="color:#75715e">#获取当前时间(单位:秒)</span>
     n_time <span style="color:#f92672">=</span> int(time<span style="color:#f92672">.</span>time())
-    <span style="color:#66d9ef">print</span>(e_time)
-    <span style="color:#66d9ef">print</span>(n_time)
+    print(e_time)
+    print(n_time)
     <span style="color:#66d9ef">if</span> n_time <span style="color:#f92672">&gt;=</span> e_time:
         <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10025</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会已经开始了&#39;</span>})
  
@@ -225,7 +225,7 @@ urlpatterns <span style="color:#f92672">=</span> [
         <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10026</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;手机号码重复&#39;</span>})
     result2 <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span>eid)
     new_result <span style="color:#f92672">=</span> serializers<span style="color:#f92672">.</span>serialize(<span style="color:#e6db74">&#39;json&#39;</span>,result2)
-    <span style="color:#66d9ef">print</span>(result2)
+    print(result2)
     <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">200</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;成功添加嘉宾&#39;</span>,<span style="color:#e6db74">&#39;datas&#39;</span>:json<span style="color:#f92672">.</span>loads(new_result)})
  
 <span style="color:#75715e"># 查询嘉宾接口</span>
@@ -278,7 +278,7 @@ urlpatterns <span style="color:#f92672">=</span> [
         result <span style="color:#f92672">=</span> Event<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(id<span style="color:#f92672">=</span>eid)
     <span style="color:#66d9ef">except</span> Event<span style="color:#f92672">.</span>DoesNotExist:
         <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10022</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会id不存在&#39;</span>})
-    <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>status <span style="color:#f92672">is</span> False:
+    <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>status <span style="color:#f92672">is</span> <span style="color:#66d9ef">False</span>:
         <span style="color:#66d9ef">return</span>  JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10023</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;发布会未开启&#39;</span>})
  
     <span style="color:#75715e">#发布会时间</span>
@@ -304,10 +304,10 @@ urlpatterns <span style="color:#f92672">=</span> [
             <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10026</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;嘉宾不属于该发布会&#39;</span>})
  
     result <span style="color:#f92672">=</span> Guest<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(event_id<span style="color:#f92672">=</span>eid,phone<span style="color:#f92672">=</span>phone)
-    <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>sign <span style="color:#f92672">is</span> True:
+    <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>sign <span style="color:#f92672">is</span> <span style="color:#66d9ef">True</span>:
         <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">10027</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;嘉宾已签到&#39;</span>})
     <span style="color:#66d9ef">else</span>:
-        result<span style="color:#f92672">.</span>sign <span style="color:#f92672">=</span> True
+        result<span style="color:#f92672">.</span>sign <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
         result<span style="color:#f92672">.</span>save()
         <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;status&#39;</span>:<span style="color:#ae81ff">200</span>,<span style="color:#e6db74">&#39;message&#39;</span>:<span style="color:#e6db74">&#39;签到成功&#39;</span>})
 </code></pre></div><h2 id="4postman接口测试">4.Postman接口测试</h2>
@@ -326,10 +326,10 @@ urlpatterns <span style="color:#f92672">=</span> [
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django4cookie%E5%A4%84%E7%90%86/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/django/django4cookie%E5%A4%84%E7%90%86/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django6%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

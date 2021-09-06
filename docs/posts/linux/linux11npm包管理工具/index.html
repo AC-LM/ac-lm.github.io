@@ -41,14 +41,14 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(11)——npm包管理工具</a></h2>
-                <p>@LM | 2020-11-17</p>
+                <p>@LM | 2020-11-24</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1npm">1.npm</h2>
 <p>npm是一款包管理工具，允许用户从npm服务器下载别人编写的第三方包或命令行程序到本地使用。</p>
 <p>由于npm是随Node.js一起安装的，所以我们安装Node.js即可安装npm</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://cdn.npm.taobao.org/dist/node/latest-v15.x/node-v15.9.0-linux-x64.tar.gz <span style="color:#75715e">#下载源码</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://cdn.npm.taobao.org/dist/node/latest-v15.x/node-v15.9.0-linux-x64.tar.gz <span style="color:#75715e">#下载源码</span>
 tar -zxvf node-v15.9.0-linux-x64.tar.gz <span style="color:#75715e">#解压文件</span>
 vim /etc/profile <span style="color:#75715e">#编辑环境变量</span>
 <span style="color:#75715e">####</span>
@@ -58,7 +58,7 @@ source /etc/profile <span style="color:#75715e">#启用环境 配置后启动环
 node -v
 npm -v
 </code></pre></div><h2 id="2npm配置">2.npm配置</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 下载源配置</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 下载源配置</span>
 npm config set registry https://registry.npm.taobao.org
 npm config get registry
 <span style="color:#75715e"># 查看当前目录已安装插件</span>
@@ -79,10 +79,10 @@ npm install -g cnpm --registry<span style="color:#f92672">=</span>https://regist
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux6lamp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux10pip%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux10pip%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux12mtr%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

@@ -41,13 +41,13 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(9)——Python3.6安装</a></h2>
-                <p>@LM | 2020-11-17</p>
+                <p>@LM | 2020-11-22</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1前言">1.前言</h2>
 <p>Linux系统自带Python2，这是由于部分命令需要使用Python2，如yum，要使用Python3则需另外安装</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python -V <span style="color:#75715e">#查看Py版本</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python -V <span style="color:#75715e">#查看Py版本</span>
 python -m XXXX  <span style="color:#75715e">#执行终端命令，-m参数使得Python预先import你要的package或module给你，然后再执行script。</span>
 which python <span style="color:#75715e">#查看python命令是连接到那个文件</span>
 <span style="color:#75715e">####</span>
@@ -66,7 +66,7 @@ lrwxrwxrwx. <span style="color:#ae81ff">1</span> root root   <span style="color:
 <span style="color:#75715e">#可以看出python指向python2，最终指向python2.7</span>
 </code></pre></div><h2 id="2安装python36">2.安装Python3.6</h2>
 <p>【注意：高于3.6版本的安装可能不适用于这个教程】</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install zlib zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel libffi-devel gcc gcc-c++ make
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install zlib zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel libffi-devel gcc gcc-c++ make
 <span style="color:#75715e">#安装依赖，用来编译文件</span>
 <span style="color:#75715e">#下载Python3.6源码，解压，然后进入文件夹，编译到对应目录，安装</span>
 tar -xvf Python-3.6.2.tar.xz
@@ -104,10 +104,10 @@ ln -s pip3 /usr/bin/pip
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux4%E8%BE%93%E5%87%BA%E5%88%B0%E7%A9%BA%E6%96%87%E4%BB%B6/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux8linux%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux6lamp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux10pip%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

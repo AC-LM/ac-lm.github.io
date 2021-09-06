@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">随记(11)——Web网页测试的指标</a></h2>
-                <p>@LM | 2020-09-17</p>
+                <p>@LM | 2020-09-20</p>
             </div>
         </header>
         <div class="content">
@@ -80,7 +80,7 @@
 <h2 id="c容量预测">c.容量预测</h2>
 <p>对于我们设计的系统，我们在上线前肯定需要测试下能接收用户多大的访问量。即希望评估出最大的日PV到来的时候，我们的系统是否能支撑。但怎么去评估呢，难道要造一个最大日PV的情景来测试？其实根据已有的经验和数据，可以总结出了高峰QPS和日PV的关系。通过数学建模，我们发现高峰每台服务器【QPS = (( 总PV X 80% ) / ( 24 X 60 X 60 X 40%)) / 服务器数量】。其中80%和40%这2个数字是个不固定的参数，这个公式代表的意思是，<strong>在40%的时间（12小时）内产生80%总PV的QPS均值</strong>。对于不同的情景有不同的参数。</p>
 <p>这样我们就可以通过压测应用获取其高峰QPS，然后根据公式算出指定高峰QPS下的日PV，通过这样来进行容量预测。即：【日预估PV = 压测QPS X (24 X 60 X 60 X 时间百分比) / 0.8 X 机器数量】</p>
-<pre><code>1.每天300w PV 的在单台机器上，这台机器需要多少QPS？ 
+<pre tabindex="0"><code>1.每天300w PV 的在单台机器上，这台机器需要多少QPS？ 
 ( 3000000 * 0.8 ) / (86400 * 0.2 ) = 139 (QPS)
 一般需要达到139QPS。(200万PV才有100峰值QPS)
 
@@ -100,10 +100,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B08web%E8%AF%B7%E6%B1%82/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B012md5%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

@@ -41,12 +41,12 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(15)——Row子控件两端对齐</a></h2>
-                <p>@LM | 2021-04-29</p>
+                <p>@LM | 2021-05-16</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1使用spacebetween对齐方式">1.使用spaceBetween对齐方式</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">new</span> Row(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">new</span> Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
   children: [
     <span style="color:#66d9ef">new</span> Text(<span style="color:#e6db74">&#34;left&#34;</span>),
@@ -54,7 +54,7 @@
   ]
 );
 </code></pre></div><h2 id="2中间使用expanded自动扩展">2.中间使用Expanded自动扩展</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
   children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
     FlutterLogo(),<span style="color:#75715e">//左对齐
 </span><span style="color:#75715e"></span>    Expanded(child: SizedBox()),<span style="color:#75715e">//自动扩展挤压
@@ -62,7 +62,7 @@
 </span><span style="color:#75715e"></span>  ],
 );
 </code></pre></div><h2 id="3使用spacer自动填充">3.使用Spacer自动填充</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
   children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
     FlutterLogo(),
     Spacer(),
@@ -70,7 +70,7 @@
   ],
 );
 </code></pre></div><h2 id="4使用flexible">4.使用Flexible</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Row(
   children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
     FlutterLogo(),
     Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -91,10 +91,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter16fluttertoast%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E4%BF%9D%E5%AD%98%E4%BD%8D%E7%BD%AE/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter16fluttertoast%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

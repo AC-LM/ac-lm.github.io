@@ -58,16 +58,16 @@
 <li>我们平时编写文件的回车符应该确切来说叫做回车换行符</li>
 </ul>
 <p>Git 可以在你提交时自动地把回车（CR）和换行（LF）转换成换行（LF），而在检出（检查出入）代码时把换行（LF）转换成回车（CR）和换行（LF）。如果是在 Windows 系统上，把它设置成 true，这样在检出代码时，换行会被转换成回车和换行。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 提交时转换为LF，检出时转换为CRLF</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 提交时转换为LF，检出时转换为CRLF</span>
 git config --global core.autocrlf true
 </code></pre></div><p>如果使用以换行（LF）作为行结束符的 Linux 或 Mac，你不需要 Git 在检出文件时进行自动的转换。然而当一个以回车（CR）和换行（LF）作为行结束符的文件不小心被引入时，你肯定想让 Git 修正。 所以，你可以把 core.autocrlf 设置成 input 来告诉 Git 在提交时把回车和换行转换成换行，检出时不转换：（这样在 Windows 上的检出文件中会保留回车和换行，而在 Mac 和 Linux 上，以及版本库中会保留换行。）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#提交时转换为LF，检出时不转换</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#提交时转换为LF，检出时不转换</span>
 git config --global core.autocrlf input
 </code></pre></div><p>如果你是 Windows 程序员，且正在开发仅运行在 Windows 上的项目，可以设置 false 取消此功能，把回车保留在版本库中。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#提交检出均不转换</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#提交检出均不转换</span>
 git config --global core.autocrlf false
 </code></pre></div><p>你也可以在文件提交时进行safecrlf检查</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#拒绝提交包含混合换行符的文件</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#拒绝提交包含混合换行符的文件</span>
 git config --global core.safecrlf true   
 
 <span style="color:#75715e">#允许提交包含混合换行符的文件</span>
@@ -89,10 +89,10 @@ git config --global core.safecrlf warn
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug13linux%E4%B8%ADchrome%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%BC%BA%E5%B0%91%E6%9D%83%E9%99%90/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug17%E5%AD%97%E5%85%B8%E5%9C%A8%E9%81%8D%E5%8E%86%E6%97%B6%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

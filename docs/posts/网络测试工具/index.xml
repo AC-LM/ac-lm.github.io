@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Net(6)——wireshark网络抓包工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
+      <title>Net(8)——wireshark网络抓包工具</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
       <description>参考原文：Wireshark抓包使用指南@Ju5tice 
  0x01.Wireshark可以做什么  网络管理员使用Wireshark检测网络问题 网安工程师用Wireshark检查信息安全相关问题 开发者使用Wireshark为新的通信协议调试 普通用户使用Wireshark学习网络协议相关知识  0x02.Wireshark不可以做什么  Wireshark不是入侵侦测软件（Intrusion Detection Software, IDS）。对于网络上的异常流量行为，Wireshark不会产生警示或是任何提示。然而，仔细分析Wireshark截取的数据包能够帮助用户对于网络行为有更清楚的了解。 Wireshark不会对网络数据包产生内容的修改 - 它只会反映出当前流通的数据包信息。 Wireshark本身也不会提交数据包至网络上。就是说你只能查看数据包，不能修改或转发。  0x03.抓包实例 打开wireshark，主界面如下：
 双击上图的中的过滤器（捕获），开始抓包
@@ -24,48 +24,44 @@
     </item>
     
     <item>
-      <title>Net(1)——iperf 与 netperf 网络性能测量工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net1iperf-%E4%B8%8E-netperf-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <title>Net(7)——在Linux中的搭建Jmeter性能测试</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net1iperf-%E4%B8%8E-netperf-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7/</guid>
-      <description>1.iperf iperf 官网下载 
-iPerf 是一种网络性能测试工具，能对协议、定时、缓冲区等参数进行配置调整，能够测试TCP/UDP最大带宽、延迟抖动、数据包丢失等信息。
-iPerf基于Server/Client的工作模式，客户端向服务端发送一定数量的数据，服务端统计并记录带宽、延时抖动等信息。客户端将数据全部发送后，服务端会回复一个数据包给客户端，将测试数据反馈给客户端。不过，如果网络较为拥塞或者误码率较高，客户端无法收到服务端回复的数据包，则只能显示本地记录的部分测试结果，所以服务端和客户端的测试结果可能有所不同。
-# 安装 rpm -ivh xxxx.rpm # iPerf命令语法格式 iperf [-s|-c host] [options] iperf3 -s # 服务器 iperf3 -c ServerIP # 客户机 # 配置软链接 cd /usr/bin ln -s iperf3 iperf 2.netperf netperf 官网下载 
-Netperf是一种网络性能测量工具，主要用于测试TCP或UDP和Berkeley套接字接口的批量数据传输（bulk data transfer）和请求/应答（request/reponse）性能。
-Netperf工具以Client/Server方式工作，服务端是netServer，用来侦听来自客户端的连接，客户端是netperf，用来向服务发起网络测试。在客户端与服务端之间，首先建立一个控制连接，传递有关测试配置的信息，以及测试的结果。在控制连接建立并传递了测试配置信息以后，客户端与服务端之间会再建立一个测试连接，用于来回传递特殊的流量，以测试网络的性能。当netServer在服务端启动后，就可在客户端运行netperf来测试网络的性能。
-rpm -ivh xxxx.rpm netperf -V # 安装完以后，会生成两个工具：netserver 和 netperf netserver -D -p 9991 # 服务器，-D 前台运行，-p 指定端口 netperf -H host # 客户端 3.网络性能指标  网络吞吐量：单位时间内通过某个网络（信道或接口）的数据量，吞吐量受网络的带宽或者网络的额定速率限制，单位通常表示为bit/s或bps。 网络延时：一个数据包从用户的计算机发送到网站服务器，然后再立即从网站服务器返回用户计算机的来回时间。影响网络延时的主要因素是路由的跳数和网络的流量。交换机延时（Latency）是指从交换机接收到数据包到开始向目的端口复制数据包之间的时间间隔。有许多因素会影响交换机延时大小，比如转发技术等等。 抖动：用于描述包在网络中的传输延时的变化，抖动越小，说明网络质量越稳定越好。抖动是评价一个网络性能的最重要的因素。 丢包率：理想状态下是发送了多少数据包就能接收到多少数据包，但是由于信号衰减、网络质量等诸多因素的影响并不能达到理想状态，而丢包率就是指测试中所丢失的数据包数量占所发送的数据包的比率。  4.</description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
+      <description>1.Linux下的Jmeter Jmeter 官网下载 
+tar -xvf Jmeter.tgz # 注意需配置Java环境 2.配置Jmeter环境 vi /etc/profile #编辑环境 #----------------------------------------# #Jmeter environment export JMETER_HOME=/root/Jmeter export PATH=$PATH:${JMETER_HOME}/bin ####### source /etc/profile #启动环境 jmeter -v #检查是否成功运行 jmeter –n –t test.jmx –l test.jtl #执行jmeter脚本 3.jmeter命令参数 -h 帮助 -&amp;gt; 打印出有用的信息并退出 -n 非 GUI 模式 -&amp;gt; 在非 GUI 模式下运行 JMeter -t 测试文件 -&amp;gt; 要运行的 JMeter 测试脚本文件 -l 日志文件 -&amp;gt; 记录结果的文件 -r 远程执行 -&amp;gt; 启动远程服务 -H 代理主机 -&amp;gt; 设置 JMeter 使用的代理主机 -P 代理端口 -&amp;gt; 设置 JMeter 使用的代理主机的端口号 </description>
     </item>
     
     <item>
-      <title>Net(2)——Nmap端口扫描工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      <title>Net(6)——如何开始Jmeter性能测试</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</guid>
-      <description>1.Nmap Nmap中文网下载 
-Nmap是一个网络连接端扫描软件，用来扫描网上电脑开放的网络连接端。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。
-# 安装依赖 gcc -v #需要c语言编译  yum install gcc #安装编译器 yum install gcc-c++ # 安装需要c++ ----------------------------------------------------------- #下载源码后解压，进入文件夹编译 tar jxvf Nmap.tar.bz2 cd Nmap.tar.bz2 ./configure make &amp;amp;&amp;amp; make install #安装 nmap ip #扫描端口 nmap -v #如果出现nmap命令无法找到的错误 #尝试进入nmap文件内，使用./nmap ip运行程序 </description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
+      <description>1.线程组 一个性能测试请求负载是基于一个线程组完成的。一个测试计划必须有一个线程组。在测试计划下面多个线程是并行执行的，也就是说这些线程组是同时被初始化并同时执行线程组下的Sampler的。
+线程组主要包含三个参数：线程数、准备时长（Ramp-Up Period(in seconds)）、循环次数。
+ 线程数：虚拟用户数。一个虚拟用户占用一个进程或线程。设置多少虚拟用户数在这里也就是设置多少个线程数。 准备时长：设置的虚拟用户数需要多长时间全部启动。如果线程数为20 ，准备时长为10 ，那么需要10秒钟启动20个线程。也就是每秒钟启动2个线程。 循环次数：每个线程发送请求的次数。如果线程数为20 ，循环次数为100 ，那么每个线程发送100次请求。总请求数为20*100=2000 。如果勾选了“永远”，那么所有线程会一直发送请求，直到选择停止运行脚本。  2.调配器 线程组下还有调配器设置，用于设置脚本执行的开始时间、结束时间、持续时间及启动延迟时间
+ 启动时间:测试计划什么时候启动，启动延迟会覆盖它。当启动时间已过，手动运行脚本时也当前时间也会覆盖它(但启动时间页面显示不会变)。 结束时间：测试计划什么时候结束，持续时间会覆盖它。 持续时间（秒）：测试计划持续多长时间，会覆盖结束时间。 启动延迟（秒）：测试计划延迟多长时间启动，会覆盖启动时间  3.取样器 添加完成线程组后，在线程组上右键（添加&amp;mdash;&amp;gt;Sampler&amp;mdash;&amp;gt;HTTP请求）选择HTTP请求。取样器（Sampler）是与服务器进行交互的单元。一个取样器通常进行三部分的工作
+ 向服务器发送请求 记录服务器的响应数据 记录响应时间信息  4.HTTP请求 一个HTTP请求有着许多的配置参数
+ 名称：本属性用于标识一个取样器，建议使用一个有意义的名称。 注释：对于测试没有任何作用，仅用户记录用户可读的注释信息。 服务器名称或IP： HTTP请求发送的目标服务器名称或IP地址。 端口号：目标服务器的端口号，默认值为80 。 协议：向目标服务器发送HTTP请求时的协议，可以是http或者是https ，默认值为http 。 方法：发送HTTP请求的方法，可用方法包括GET、POST、HEAD、PUT、OPTIONS、TRACE、DELETE等。 Content encoding ：内容的编码方式，默认值为ISO 路径：目标URL路径（不包括服务器地址和端口） 自动重定向：如果选中该选项，当发送HTTP请求后得到的响应是302/301时，Jmeter自动重定向到新的页面。 Use keep Alive：当该选项被选中时，Jmeter和目标服务器之间使用Keep-Alive方式进行HTTP通信，默认选中。 Use multipart/from-data for HTTP POST：当发送HTTP POST 请求时，使用Use multipart/from-data方法发送，默认不选中。  5.监听器 Jmeter中使用监听器元件收集取样器记录的数据并以可视化的方式来呈现。Jmeter有各种不同的监听器类型。
+添加聚合报告，右键点击线程组，在弹的菜单（添加&amp;mdash;&amp;gt;监听器&amp;mdash;&amp;gt;聚合报告）中选择聚合报告。
+ Label：请求的名称 Samples：总共发给服务器的请求数量 Average：单个请求的平均响应时间，单位是毫秒 Median： 50%的请求的响应时间小于 90%Line： 90%的请求的响应时间小于 95%Line： 95%的请求的响应时间小于 99%Line： 99%的请求的响应时间小于 Min： 最小的响应时间 Max： 最大的响应时间 Error%： 错误率=错误的请求的数量/请求的总数 Throughput： 吞吐量即表示每秒完成的请求数 Received KB/sec： 每秒从服务器端接收到的数据量 Sent KB/Sec： 每秒从发送到服务器端的数据量  6.</description>
     </item>
     
     <item>
-      <title>Net(3)——sqlmap数据库渗透测试工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      <title>Net(5)——sqlmap使用实例</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
-      <description>1.sqlmap sqlmap官网下载 
-sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和利用SQL注入缺陷以及接管数据库服务器的过程。它配备了强大的引擎，为渗透测试提供许多基本的功能。
-#进入sqlmap源码文件夹，因为sqlmap用的是python2编写的，需要编译后使用 tar zxvf sqlmap.tar.gz cd sqlmap ./sqlmap.py #创建sqlmap命令 ln -s /root/sqlmapproject-sqlmap-7eab1bc/sqlmap.py /usr/bin/sqlmap sqlmap -h #帮助命令 2.sqlmap的语法 sqlmap命令选项被归类为目标（Target）、请求（Request）、优化、注入、检测、技巧（Techniques）、指纹、枚举等。当给sqlmap一个url的时候，它会执行如下操作
- 判断可注入的参数 判断可以用那种SQL注入技术来注入 识别出哪种数据库 根据用户选择，读取哪些数据  3.sqlmap支持的数据库 MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase 和 SAP MaxDB
-4.sqlmap支持五种不同的注入模式测试  基于布尔的盲注，即可以根据返回页面判断条件真假的注入 基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断 基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中 联合查询注入，可以使用union的情况下的注入 堆查询注入，可以同时执行多条语句的执行时的注入  5.sqlmap帮助文档翻译 ___ __H__ ___ ___[.]_____ ___ ___ {1.1.3#stable} |_ -| . [(] | .&amp;#39;| . | |___|_ [&amp;#34;]_|_|_|__,| _| |_|V |_| http://sqlmap.</description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</guid>
+      <description>1.第一步：查找注入点 sqlmap -u &amp;#39;192.168.3.59/article.php?id=1&amp;#39; #必须带上GET参数，否则sqlmap不知道如何注入 root@kali:~# sqlmap -u &amp;#39;192.168.3.59/article.php?id=1&amp;#39; ___ __H__ ___ ___[,]_____ ___ ___ {1.1.11#stable} |_ -| . [.] | .&amp;#39;| . | |___|_ [(]_|_|_|__,| _| |_|V |_| http://sqlmap.org [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user&amp;#39;s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program [*] starting at 11:30:43 [11:30:43] [INFO] resuming back-end DBMS &amp;#39;mysql&amp;#39; [11:30:43] [INFO] testing connection to the target URL sqlmap resumed the following injection point(s) from stored session: --- Parameter: id (GET) Type: boolean-based blind Title: AND boolean-based blind - WHERE or HAVING clause Payload: id=1 AND 1817=1817 Type: AND/OR time-based blind Title: MySQL &amp;gt;= 5.</description>
     </item>
     
     <item>
       <title>Net(4)——sqlmap的使用指南</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
-      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
       <description>1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
@@ -80,38 +76,42 @@ sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提�
     </item>
     
     <item>
-      <title>Net(5)——sqlmap使用实例</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</link>
-      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      <title>Net(3)——sqlmap数据库渗透测试工具</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</guid>
-      <description>1.第一步：查找注入点 sqlmap -u &amp;#39;192.168.3.59/article.php?id=1&amp;#39; #必须带上GET参数，否则sqlmap不知道如何注入 root@kali:~# sqlmap -u &amp;#39;192.168.3.59/article.php?id=1&amp;#39; ___ __H__ ___ ___[,]_____ ___ ___ {1.1.11#stable} |_ -| . [.] | .&amp;#39;| . | |___|_ [(]_|_|_|__,| _| |_|V |_| http://sqlmap.org [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user&amp;#39;s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program [*] starting at 11:30:43 [11:30:43] [INFO] resuming back-end DBMS &amp;#39;mysql&amp;#39; [11:30:43] [INFO] testing connection to the target URL sqlmap resumed the following injection point(s) from stored session: --- Parameter: id (GET) Type: boolean-based blind Title: AND boolean-based blind - WHERE or HAVING clause Payload: id=1 AND 1817=1817 Type: AND/OR time-based blind Title: MySQL &amp;gt;= 5.</description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
+      <description>1.sqlmap sqlmap官网下载 
+sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和利用SQL注入缺陷以及接管数据库服务器的过程。它配备了强大的引擎，为渗透测试提供许多基本的功能。
+#进入sqlmap源码文件夹，因为sqlmap用的是python2编写的，需要编译后使用 tar zxvf sqlmap.tar.gz cd sqlmap ./sqlmap.py #创建sqlmap命令 ln -s /root/sqlmapproject-sqlmap-7eab1bc/sqlmap.py /usr/bin/sqlmap sqlmap -h #帮助命令 2.sqlmap的语法 sqlmap命令选项被归类为目标（Target）、请求（Request）、优化、注入、检测、技巧（Techniques）、指纹、枚举等。当给sqlmap一个url的时候，它会执行如下操作
+ 判断可注入的参数 判断可以用那种SQL注入技术来注入 识别出哪种数据库 根据用户选择，读取哪些数据  3.sqlmap支持的数据库 MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase 和 SAP MaxDB
+4.sqlmap支持五种不同的注入模式测试  基于布尔的盲注，即可以根据返回页面判断条件真假的注入 基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断 基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中 联合查询注入，可以使用union的情况下的注入 堆查询注入，可以同时执行多条语句的执行时的注入  5.sqlmap帮助文档翻译 ___ __H__ ___ ___[.]_____ ___ ___ {1.1.3#stable} |_ -| . [(] | .&amp;#39;| . | |___|_ [&amp;#34;]_|_|_|__,| _| |_|V |_| http://sqlmap.</description>
     </item>
     
     <item>
-      <title>Net(8)——在Linux中的搭建Jmeter性能测试</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      <title>Net(2)——Nmap端口扫描工具</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
-      <description>1.Linux下的Jmeter Jmeter 官网下载 
-tar -xvf Jmeter.tgz # 注意需配置Java环境 2.配置Jmeter环境 vi /etc/profile #编辑环境 #----------------------------------------# #Jmeter environment export JMETER_HOME=/root/Jmeter export PATH=$PATH:${JMETER_HOME}/bin ####### source /etc/profile #启动环境 jmeter -v #检查是否成功运行 jmeter –n –t test.jmx –l test.jtl #执行jmeter脚本 3.jmeter命令参数 -h 帮助 -&amp;gt; 打印出有用的信息并退出 -n 非 GUI 模式 -&amp;gt; 在非 GUI 模式下运行 JMeter -t 测试文件 -&amp;gt; 要运行的 JMeter 测试脚本文件 -l 日志文件 -&amp;gt; 记录结果的文件 -r 远程执行 -&amp;gt; 启动远程服务 -H 代理主机 -&amp;gt; 设置 JMeter 使用的代理主机 -P 代理端口 -&amp;gt; 设置 JMeter 使用的代理主机的端口号 </description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</guid>
+      <description>1.Nmap Nmap中文网下载 
+Nmap是一个网络连接端扫描软件，用来扫描网上电脑开放的网络连接端。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。
+# 安装依赖 gcc -v #需要c语言编译  yum install gcc #安装编译器 yum install gcc-c++ # 安装需要c++ ----------------------------------------------------------- #下载源码后解压，进入文件夹编译 tar jxvf Nmap.tar.bz2 cd Nmap.tar.bz2 ./configure make &amp;amp;&amp;amp; make install #安装 nmap ip #扫描端口 nmap -v #如果出现nmap命令无法找到的错误 #尝试进入nmap文件内，使用./nmap ip运行程序 </description>
     </item>
     
     <item>
-      <title>Net(7)——如何开始Jmeter性能测试</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
+      <title>Net(1)——iperf 与 netperf 网络性能测量工具</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net1iperf-%E4%B8%8E-netperf-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
-      <description>1.线程组 一个性能测试请求负载是基于一个线程组完成的。一个测试计划必须有一个线程组。在测试计划下面多个线程是并行执行的，也就是说这些线程组是同时被初始化并同时执行线程组下的Sampler的。
-线程组主要包含三个参数：线程数、准备时长（Ramp-Up Period(in seconds)）、循环次数。
- 线程数：虚拟用户数。一个虚拟用户占用一个进程或线程。设置多少虚拟用户数在这里也就是设置多少个线程数。 准备时长：设置的虚拟用户数需要多长时间全部启动。如果线程数为20 ，准备时长为10 ，那么需要10秒钟启动20个线程。也就是每秒钟启动2个线程。 循环次数：每个线程发送请求的次数。如果线程数为20 ，循环次数为100 ，那么每个线程发送100次请求。总请求数为20*100=2000 。如果勾选了“永远”，那么所有线程会一直发送请求，直到选择停止运行脚本。  2.调配器 线程组下还有调配器设置，用于设置脚本执行的开始时间、结束时间、持续时间及启动延迟时间
- 启动时间:测试计划什么时候启动，启动延迟会覆盖它。当启动时间已过，手动运行脚本时也当前时间也会覆盖它(但启动时间页面显示不会变)。 结束时间：测试计划什么时候结束，持续时间会覆盖它。 持续时间（秒）：测试计划持续多长时间，会覆盖结束时间。 启动延迟（秒）：测试计划延迟多长时间启动，会覆盖启动时间  3.取样器 添加完成线程组后，在线程组上右键（添加&amp;mdash;&amp;gt;Sampler&amp;mdash;&amp;gt;HTTP请求）选择HTTP请求。取样器（Sampler）是与服务器进行交互的单元。一个取样器通常进行三部分的工作
- 向服务器发送请求 记录服务器的响应数据 记录响应时间信息  4.HTTP请求 一个HTTP请求有着许多的配置参数
- 名称：本属性用于标识一个取样器，建议使用一个有意义的名称。 注释：对于测试没有任何作用，仅用户记录用户可读的注释信息。 服务器名称或IP： HTTP请求发送的目标服务器名称或IP地址。 端口号：目标服务器的端口号，默认值为80 。 协议：向目标服务器发送HTTP请求时的协议，可以是http或者是https ，默认值为http 。 方法：发送HTTP请求的方法，可用方法包括GET、POST、HEAD、PUT、OPTIONS、TRACE、DELETE等。 Content encoding ：内容的编码方式，默认值为ISO 路径：目标URL路径（不包括服务器地址和端口） 自动重定向：如果选中该选项，当发送HTTP请求后得到的响应是302/301时，Jmeter自动重定向到新的页面。 Use keep Alive：当该选项被选中时，Jmeter和目标服务器之间使用Keep-Alive方式进行HTTP通信，默认选中。 Use multipart/from-data for HTTP POST：当发送HTTP POST 请求时，使用Use multipart/from-data方法发送，默认不选中。  5.监听器 Jmeter中使用监听器元件收集取样器记录的数据并以可视化的方式来呈现。Jmeter有各种不同的监听器类型。
-添加聚合报告，右键点击线程组，在弹的菜单（添加&amp;mdash;&amp;gt;监听器&amp;mdash;&amp;gt;聚合报告）中选择聚合报告。
- Label：请求的名称 Samples：总共发给服务器的请求数量 Average：单个请求的平均响应时间，单位是毫秒 Median： 50%的请求的响应时间小于 90%Line： 90%的请求的响应时间小于 95%Line： 95%的请求的响应时间小于 99%Line： 99%的请求的响应时间小于 Min： 最小的响应时间 Max： 最大的响应时间 Error%： 错误率=错误的请求的数量/请求的总数 Throughput： 吞吐量即表示每秒完成的请求数 Received KB/sec： 每秒从服务器端接收到的数据量 Sent KB/Sec： 每秒从发送到服务器端的数据量  6.</description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net1iperf-%E4%B8%8E-netperf-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7/</guid>
+      <description>1.iperf iperf 官网下载 
+iPerf 是一种网络性能测试工具，能对协议、定时、缓冲区等参数进行配置调整，能够测试TCP/UDP最大带宽、延迟抖动、数据包丢失等信息。
+iPerf基于Server/Client的工作模式，客户端向服务端发送一定数量的数据，服务端统计并记录带宽、延时抖动等信息。客户端将数据全部发送后，服务端会回复一个数据包给客户端，将测试数据反馈给客户端。不过，如果网络较为拥塞或者误码率较高，客户端无法收到服务端回复的数据包，则只能显示本地记录的部分测试结果，所以服务端和客户端的测试结果可能有所不同。
+# 安装 rpm -ivh xxxx.rpm # iPerf命令语法格式 iperf [-s|-c host] [options] iperf3 -s # 服务器 iperf3 -c ServerIP # 客户机 # 配置软链接 cd /usr/bin ln -s iperf3 iperf 2.netperf netperf 官网下载 
+Netperf是一种网络性能测量工具，主要用于测试TCP或UDP和Berkeley套接字接口的批量数据传输（bulk data transfer）和请求/应答（request/reponse）性能。
+Netperf工具以Client/Server方式工作，服务端是netServer，用来侦听来自客户端的连接，客户端是netperf，用来向服务发起网络测试。在客户端与服务端之间，首先建立一个控制连接，传递有关测试配置的信息，以及测试的结果。在控制连接建立并传递了测试配置信息以后，客户端与服务端之间会再建立一个测试连接，用于来回传递特殊的流量，以测试网络的性能。当netServer在服务端启动后，就可在客户端运行netperf来测试网络的性能。
+rpm -ivh xxxx.rpm netperf -V # 安装完以后，会生成两个工具：netserver 和 netperf netserver -D -p 9991 # 服务器，-D 前台运行，-p 指定端口 netperf -H host # 客户端 3.网络性能指标  网络吞吐量：单位时间内通过某个网络（信道或接口）的数据量，吞吐量受网络的带宽或者网络的额定速率限制，单位通常表示为bit/s或bps。 网络延时：一个数据包从用户的计算机发送到网站服务器，然后再立即从网站服务器返回用户计算机的来回时间。影响网络延时的主要因素是路由的跳数和网络的流量。交换机延时（Latency）是指从交换机接收到数据包到开始向目的端口复制数据包之间的时间间隔。有许多因素会影响交换机延时大小，比如转发技术等等。 抖动：用于描述包在网络中的传输延时的变化，抖动越小，说明网络质量越稳定越好。抖动是评价一个网络性能的最重要的因素。 丢包率：理想状态下是发送了多少数据包就能接收到多少数据包，但是由于信号衰减、网络质量等诸多因素的影响并不能达到理想状态，而丢包率就是指测试中所丢失的数据包数量占所发送的数据包的比率。  4.</description>
     </item>
     
   </channel>

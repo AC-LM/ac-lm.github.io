@@ -41,19 +41,19 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(10)——pip软件管理工具</a></h2>
-                <p>@LM | 2020-11-17</p>
+                <p>@LM | 2020-11-23</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1pip">1.pip</h2>
 <p>不同于python3自带pip软件管理工具，python2并不自带，需要自己安装</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
 <span style="color:#75715e"># pip3 wget https://bootstrap.pypa.io/get-pip.py</span>
 <span style="color:#75715e"># wget下载命令，会下载到当前目录，如报错，yum -y install wget</span>
 python get-pip.py <span style="color:#75715e">#编译</span>
 pip  -V
 </code></pre></div><h2 id="2修改pip下载源">2.修改pip下载源</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip -i https://pypi.douban.com/simple install Flask -- trusted-host pypi.douban.com <span style="color:#75715e">#手动指定</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip -i https://pypi.douban.com/simple install Flask -- trusted-host pypi.douban.com <span style="color:#75715e">#手动指定</span>
 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ <span style="color:#75715e">#环境指定</span>
 <span style="color:#75715e">###############</span>
 清华：https://pypi.tuna.tsinghua.edu.cn/simple
@@ -63,7 +63,7 @@ pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ <span st
 山东理工大学：https://pypi.sdutlinux.org/
 豆瓣：https://pypi.douban.com/simple/
 </code></pre></div><h2 id="3pip的使用">3.pip的使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip list  <span style="color:#75715e">#已安装</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip list  <span style="color:#75715e">#已安装</span>
 pip list --outdated  <span style="color:#75715e">#可更新</span>
 pip install --upgrade 包  <span style="color:#75715e">#更新</span>
 </code></pre></div>
@@ -80,10 +80,10 @@ pip install --upgrade 包  <span style="color:#75715e">#更新</span>
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux11npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux9python3.6%E5%AE%89%E8%A3%85/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux17%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux11npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

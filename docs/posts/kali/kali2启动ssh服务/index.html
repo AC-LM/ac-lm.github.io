@@ -41,16 +41,16 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Kali(2)——启动SSH服务</a></h2>
-                <p>@LM | 2021-06-09</p>
+                <p>@LM | 2021-06-08</p>
             </div>
         </header>
         <div class="content">
             <p>由于 Kali 默认未启用 SSH 服务，需要手动开启</p>
-<pre><code>systemctl start ssh
+<pre tabindex="0"><code>systemctl start ssh
 systemctl status ssh
 sudo systemctl enable ssh
 </code></pre><p>如果需要允许 Root 登录，需要进一步修改</p>
-<pre><code>vim /etc/ssh/sshd_config
+<pre tabindex="0"><code>vim /etc/ssh/sshd_config
 # 将PermitRootLogin 置为 yes
 </code></pre>
             <p style="margin-top:1em;"></p>
@@ -66,10 +66,10 @@ sudo systemctl enable ssh
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/kali/kali3%E4%BF%AE%E6%94%B9apt%E6%BA%90/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/kali/kali1%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/kali/kali1%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/kali/kali3%E4%BF%AE%E6%94%B9apt%E6%BA%90/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

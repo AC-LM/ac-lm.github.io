@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Web开发(7)——Jquery消息提示插件toastr</a></h2>
-                <p>@LM | 2021-06-03</p>
+                <p>@LM | 2021-06-04</p>
             </div>
         </header>
         <div class="content">
@@ -50,10 +50,10 @@
 </blockquote>
 <p>toastr是一个基于jQuery简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。</p>
 <h2 id="1引入toastr的jscss文件">1.引入toastr的js、css文件</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;%=path%&gt;/res/toastr/toastr.min.js&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;%=path%&gt;/res/toastr/toastr.min.js&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
 <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;%=path%&gt;/res/toastr/toastr.min.css&#34;</span><span style="color:#f92672">&gt;</span>
 </code></pre></div><h2 id="2使用">2.使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//常规消息提示，默认背景为浅蓝色  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//常规消息提示，默认背景为浅蓝色  
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">toastr</span>.<span style="color:#a6e22e">info</span>(<span style="color:#e6db74">&#34;你有新消息了!&#34;</span>);  
 
 <span style="color:#75715e">//成功消息提示，默认背景为浅绿色 
@@ -71,7 +71,7 @@
 <span style="color:#75715e">//另一种调用方法
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">toastr</span>[<span style="color:#e6db74">&#34;info&#34;</span>](<span style="color:#e6db74">&#34;你有新消息了!&#34;</span>,<span style="color:#e6db74">&#34;消息提示&#34;</span>);
 </code></pre></div><h2 id="3自定义参数">3.自定义参数</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">toastr</span>.<span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">toastr</span>.<span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {  
         <span style="color:#a6e22e">closeButton</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,  
         <span style="color:#a6e22e">debug</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,  
         <span style="color:#a6e22e">progressBar</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  
@@ -87,7 +87,7 @@
         <span style="color:#a6e22e">hideMethod</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fadeOut&#34;</span>  
     };  
 </code></pre></div><h2 id="4参数说明">4.参数说明</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">closeButton</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#66d9ef">false</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">是否显示关闭按钮</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">提示框右上角关闭按钮</span><span style="color:#960050;background-color:#1e0010">）；</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">closeButton</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#66d9ef">false</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">是否显示关闭按钮</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">提示框右上角关闭按钮</span><span style="color:#960050;background-color:#1e0010">）；</span> 
 <span style="color:#a6e22e">debug</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#66d9ef">false</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">是否为调试</span><span style="color:#960050;background-color:#1e0010">；</span> 
 <span style="color:#a6e22e">progressBar</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#66d9ef">false</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">是否显示进度条</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">设置关闭的超时时间进度条</span><span style="color:#960050;background-color:#1e0010">）；</span> 
 <span style="color:#a6e22e">positionClass</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">消息框在页面显示的位置</span>
@@ -122,10 +122,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%918%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%918%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

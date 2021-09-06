@@ -47,7 +47,7 @@
         <div class="content">
             <h2 id="1select">1.select</h2>
 <p>在HTML中 <code>&lt;select&gt;</code>标签可用于创建单选或多选菜单。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">select</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">select</span>&gt;
 &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a&#34;</span>&gt;AA&lt;/<span style="color:#f92672">option</span>&gt;
 &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b&#34;</span>&gt;BB&lt;/<span style="color:#f92672">option</span>&gt;
 &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;c&#34;</span>&gt;CC&lt;/<span style="color:#f92672">option</span>&gt;
@@ -55,7 +55,7 @@
 &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;e&#34;</span>&gt;EE&lt;/<span style="color:#f92672">option</span>&gt;
 &lt;/<span style="color:#f92672">select</span>&gt;
 </code></pre></div><h2 id="2操作">2.操作</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium.webdriver.support.select <span style="color:#f92672">import</span> Select
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium.webdriver.support.select <span style="color:#f92672">import</span> Select
 </code></pre></div><table>
 <thead>
 <tr>
@@ -115,7 +115,7 @@
 </tbody>
 </table>
 <h2 id="3使用">3.使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">select <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">select <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_name(<span style="color:#e6db74">&#39;&#39;</span>)
 <span style="color:#75715e"># 根据下标选择，从0开始</span>
 Select(select)<span style="color:#f92672">.</span>select_by_index(<span style="color:#ae81ff">1</span>)
 time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
@@ -127,10 +127,10 @@ Select(select)<span style="color:#f92672">.</span>select_by_visible_text(<span s
 time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
 <span style="color:#75715e"># 断言</span>
 select <span style="color:#f92672">=</span> Select(self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>))  <span style="color:#75715e"># 定位下拉框</span>
-<span style="color:#66d9ef">print</span>(select<span style="color:#f92672">.</span>first_selected_option<span style="color:#f92672">.</span>text)  <span style="color:#75715e"># 获取下拉框当前选中得值</span>
+print(select<span style="color:#f92672">.</span>first_selected_option<span style="color:#f92672">.</span>text)  <span style="color:#75715e"># 获取下拉框当前选中得值</span>
 select<span style="color:#f92672">.</span>select_by_value(<span style="color:#e6db74">&#39;b&#39;</span>)  <span style="color:#75715e"># 选择下拉框得另一个选项</span>
 time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">1</span>)
-<span style="color:#66d9ef">print</span>(select<span style="color:#f92672">.</span>first_selected_option<span style="color:#f92672">.</span>text)  <span style="color:#75715e"># 重新获取下拉框选择的值</span>
+print(select<span style="color:#f92672">.</span>first_selected_option<span style="color:#f92672">.</span>text)  <span style="color:#75715e"># 重新获取下拉框选择的值</span>
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>

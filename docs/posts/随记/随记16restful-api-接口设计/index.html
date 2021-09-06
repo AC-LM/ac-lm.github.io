@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">随记(16)——RESTful API接口设计</a></h2>
-                <p>@LM | 2021-01-06</p>
+                <p>@LM | 2020-12-06</p>
             </div>
         </header>
         <div class="content">
@@ -52,12 +52,12 @@
 <p>网络应用程序，分为前端和后端两个部分。当前的发展趋势，就是前端设备层出不穷（手机、平板、桌面电脑、其他专用设备&hellip;&hellip;）。因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信。这导致API构架的流行，甚至出现 API First 的设计思想。RESTful API 是目前比较成熟的一套互联网应用程序的API设计理论。</p>
 <h2 id="2api-应部署在域名下">2.API 应部署在域名下</h2>
 <p>应该尽量将API部署在专用域名之下。</p>
-<pre><code>https://api.example.com
+<pre tabindex="0"><code>https://api.example.com
 </code></pre><p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。</p>
-<pre><code>https://example.org/api/
+<pre tabindex="0"><code>https://example.org/api/
 </code></pre><h2 id="3api-版本应放在url中">3.API 版本应放在URL中</h2>
 <p>应该将API的版本号放入URL。</p>
-<pre><code>https://api.example.com/v1/
+<pre tabindex="0"><code>https://api.example.com/v1/
 </code></pre><p>另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github 采用这种做法。</p>
 <h2 id="4api-的路径">4.API 的路径</h2>
 <p>路径又称&quot;终点&quot;（endpoint），表示API的具体网址。</p>
@@ -122,7 +122,7 @@
 </ul>
 <h2 id="8错误处理error-handling">8.错误处理（Error handling）</h2>
 <p>如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。</p>
-<pre><code>{
+<pre tabindex="0"><code>{
  error: &quot;Invalid API key&quot;
 }
 </code></pre><h2 id="9返回结果">9.返回结果</h2>
@@ -149,7 +149,7 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B015webdriver-click%E4%B8%8Ejavascript-click%E7%9A%84%E5%8C%BA%E5%88%AB/" class="button large previous">上一页</a></li>
         
         
           <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B017linux%E6%9C%80%E5%A4%9A%E6%94%AF%E6%8C%81%E5%A4%9A%E5%B0%91tcp%E8%BF%9E%E6%8E%A5/" class="button large next">下一页</a></li>

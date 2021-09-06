@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(6)——setState失败</a></h2>
-                <p>@LM | 2021-04-29</p>
+                <p>@LM | 2021-04-28</p>
             </div>
         </header>
         <div class="content">
@@ -49,13 +49,13 @@
 <p>参考原文：<a href="https://www.jianshu.com/p/9e3bd870d292"> setState() called after dispose() @Songzh</a></p>
 </blockquote>
 <h2 id="1报错">1.报错</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">ERROR:flutter<span style="color:#f92672">/</span>shell<span style="color:#f92672">/</span>common<span style="color:#f92672">/</span>shell.cc(<span style="color:#ae81ff">181</span>)] Dart Error: Unhandled exception:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">ERROR:flutter<span style="color:#f92672">/</span>shell<span style="color:#f92672">/</span>common<span style="color:#f92672">/</span>shell.cc(<span style="color:#ae81ff">181</span>)] Dart Error: Unhandled exception:
 setState() called after dispose()<span style="color:#f92672">:</span> _ShelfState<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">5</span>b9c1(lifecycle state: defunct, not mounted)
 </code></pre></div><h2 id="2原因">2.原因</h2>
 <p>在 Flutter 构件树被销毁后仍然执行了 setState 方法改变页面状态，当 setState 方法改变页面状态时，需要改变的页面被销毁了。使用场景为，当触发 setState 方法时从当前页面切换到其他页面。</p>
 <h2 id="3解决">3.解决</h2>
 <p>在 setState 之前加一句判断，判断当前页面是否存在于构件树中。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// mounted 为 true 表示当前页面挂在到构件树中，为 false 时未挂载当前页面
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// mounted 为 true 表示当前页面挂在到构件树中，为 false 时未挂载当前页面
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (mounted) {
   setState(() {
   <span style="color:#75715e">// xxxx
@@ -75,10 +75,10 @@ setState() called after dispose()<span style="color:#f92672">:</span> _ShelfStat
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter7%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter5%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter5%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter7%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

@@ -47,7 +47,7 @@
         <div class="content">
             <h2 id="test-case">Test Case</h2>
 <p>一个TestCase的实例就是一个测试用例。一个完整的测试流程，包括测试前准备环境的搭建(setUp)，执行测试代码 (run)，以及测试后环境的还原(tearDown)。元测试(unit test)的本质也就在这里，一个测试用例是一个完整的测试单元，通过运行这个测试单元，可以对某一个问题进行验证。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">testcase</span>(unittest<span style="color:#f92672">.</span>TestCase):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">testcase</span>(unittest<span style="color:#f92672">.</span>TestCase):
     <span style="color:#a6e22e">@classmethod</span>
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUpClass</span>(self):
         <span style="color:#75715e"># 所有的测试方法运行前运行，整个测试过程中只执行一次。</span>
@@ -66,7 +66,7 @@
         <span style="color:#66d9ef">pass</span>
 </code></pre></div><h2 id="test-suite">Test Suite</h2>
 <p>多个测试用例集合在一起，就是TestSuite，而且TestSuite也可以嵌套TestSuite。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
     <span style="color:#75715e"># 构造TestSuite</span>
     suite <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestSuite()
     suite<span style="color:#f92672">.</span>addTest(testcase(<span style="color:#e6db74">&#34;test_01&#34;</span>))
@@ -76,7 +76,7 @@
     runner<span style="color:#f92672">.</span>run(suite)
 </code></pre></div><h2 id="test-loader">Test Loader</h2>
 <p>是用来加载TestCase到TestSuite中的，其中有几个 loadTestsFrom??() 方法，就是从各个地方寻找TestCase，创建它们的实例，然后add到TestSuite中，再返回一个TestSuite实例。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
     <span style="color:#75715e">#此用法可以同时测试多个类</span>
     suite1 <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestLoader()<span style="color:#f92672">.</span>loadTestsFromTestCase(TestCase1)
     suite2 <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>TestLoader()<span style="color:#f92672">.</span>loadTestsFromTestCase(TestCase2)
@@ -96,7 +96,7 @@
 <li>3、<strong>执行unittest.main() ，该函数会负责运行测试，它会实例化所有TestCase的子类，并运行其中所有以test打头的方法。</strong></li>
 </ul>
 <h2 id="断言">断言</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">assertEqual(a, b) <span style="color:#75715e">#  a == b</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">assertEqual(a, b) <span style="color:#75715e">#  a == b</span>
 assertNotEqual(a, b)  <span style="color:#75715e"># a != b</span>
 assertTrue(x) <span style="color:#75715e">#  bool(x) is True</span>
 assertFalse(x) <span style="color:#75715e">#  bool(x) is False</span>
@@ -109,10 +109,10 @@ assertNotIn(a, b) <span style="color:#75715e">#  a not in b</span>
 assertIsInstance(a, b) <span style="color:#75715e">#  isinstance(a, b)</span>
 assertNotIsInstance(a, b) <span style="color:#75715e">#  not isinstance(a, b)</span>
 </code></pre></div><h2 id="unittest网易邮箱登录案例">unittest网易邮箱登录案例</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
-<span style="color:#f92672">import</span> unittest from selenium 
-<span style="color:#f92672">import</span> webdriver from selenium.webdriver.support 
-<span style="color:#f92672">import</span> expected_conditions <span style="color:#f92672">as</span> EC
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> unittest <span style="color:#f92672">from</span> selenium 
+<span style="color:#f92672">import</span> webdriver <span style="color:#f92672">from</span> selenium.webdriver.support 
+<span style="color:#f92672">import</span> expected_conditions <span style="color:#66d9ef">as</span> EC
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">mailLogin</span>(unittest<span style="color:#f92672">.</span>TestCase):
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUp</span>(self):
@@ -133,9 +133,9 @@ assertNotIsInstance(a, b) <span style="color:#75715e">#  not isinstance(a, b)</s
         time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
         name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;spnUid&#39;</span>)        
         <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sanzang520@yeah.net&#39;</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
+            print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
+            print(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
             
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_login_02</span>(self):
         <span style="color:#e6db74">&#39;&#39;&#39;
@@ -149,9 +149,9 @@ assertNotIsInstance(a, b) <span style="color:#75715e">#  not isinstance(a, b)</s
         time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
         name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;spnUid&#39;</span>)        
         <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sanzang520@yeah.net&#39;</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
+            print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
+            print(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
     
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_login_03</span>(self):
         <span style="color:#e6db74">&#39;&#39;&#39;
@@ -165,9 +165,9 @@ assertNotIsInstance(a, b) <span style="color:#75715e">#  not isinstance(a, b)</s
         time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
         name <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#39;spnUid&#39;</span>)        
         <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sanzang520@yeah.net&#39;</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
+            print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)        
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
+            print(<span style="color:#e6db74">&#39;登陆失败&#39;</span>)    
             
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDown</span>(self):
         self<span style="color:#f92672">.</span>browser<span style="color:#f92672">.</span>quit()

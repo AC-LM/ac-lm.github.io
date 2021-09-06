@@ -54,13 +54,13 @@
 </ul>
 <h2 id="hashlib模块">hashlib模块</h2>
 <p>hashlib是Python提供的能使用各类hash算法的一个模块</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
     s <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256()    <span style="color:#75715e"># Get the hash algorithm.</span>
     s<span style="color:#f92672">.</span>update(<span style="color:#e6db74">&#34;jiangwei&#34;</span>)    <span style="color:#75715e"># Hash the data.</span>
     b <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>hexdigest()       <span style="color:#75715e"># Get he hash value.</span>
-    <span style="color:#66d9ef">print</span> b
+    print b
     
 <span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#ae81ff">36</span>d6824c3942c1ec34d1b5cc2f5cbe3d2c4110223bce905ddafe0592723411f0
 <span style="color:#75715e"># 它的长度是64，每个字符4位，所以总计是256位。</span>

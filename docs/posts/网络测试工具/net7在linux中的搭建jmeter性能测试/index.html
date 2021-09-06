@@ -40,17 +40,17 @@
 <div id="main">
     <header>
             <div class="title">
-                <h2 style="font-size:2em"><a href="javascript:void(0)">Net(8)——在Linux中的搭建Jmeter性能测试</a></h2>
-                <p>@LM | 2020-11-03</p>
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Net(7)——在Linux中的搭建Jmeter性能测试</a></h2>
+                <p>@LM | 2020-11-26</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1linux下的jmeter">1.Linux下的Jmeter</h2>
 <p><a href="https://jmeter.apache.org/download_jmeter.cgi"> Jmeter 官网下载 </a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -xvf Jmeter.tgz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -xvf Jmeter.tgz
 <span style="color:#75715e"># 注意需配置Java环境</span>
 </code></pre></div><h2 id="2配置jmeter环境">2.配置Jmeter环境</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/profile <span style="color:#75715e">#编辑环境</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/profile <span style="color:#75715e">#编辑环境</span>
 <span style="color:#75715e">#----------------------------------------#</span>
 <span style="color:#75715e">#Jmeter environment</span>
 export JMETER_HOME<span style="color:#f92672">=</span>/root/Jmeter
@@ -60,7 +60,7 @@ source /etc/profile <span style="color:#75715e">#启动环境</span>
 jmeter -v <span style="color:#75715e">#检查是否成功运行</span>
 jmeter –n –t test.jmx –l test.jtl <span style="color:#75715e">#执行jmeter脚本</span>
 </code></pre></div><h2 id="3jmeter命令参数">3.jmeter命令参数</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-h 帮助 -&gt; 打印出有用的信息并退出
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-h 帮助 -&gt; 打印出有用的信息并退出
 -n 非 GUI 模式 -&gt; 在非 GUI 模式下运行 JMeter
 -t 测试文件 -&gt; 要运行的 JMeter 测试脚本文件
 -l 日志文件 -&gt; 记录结果的文件
@@ -81,10 +81,10 @@ jmeter –n –t test.jmx –l test.jtl <span style="color:#75715e">#执行jmete
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

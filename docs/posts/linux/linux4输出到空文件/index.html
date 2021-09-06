@@ -62,7 +62,7 @@
 <li><strong>1 &gt;a 2&gt;a</strong> ：stdout和stderr都直接送往文件 a ，a文件会被打开两遍，由此导致stdout和stderr互相覆盖，两者互相竞争使用文件 a 的管道</li>
 <li><strong>1 &gt;a 2&gt;&amp;1</strong> ：stdout直接送往文件a ，stderr是继承了stdout的管道之后，再被送往文件a 。a文件只被打开一遍，就是stdout将其打开。只使用了一个管道stdout，但已经包括了stdout和stderr。从IO效率上来讲，1 &gt;a 2&gt;&amp;1的效率更高。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat test.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat test.sh
 <span style="color:#75715e">#test.sh中包含两个命令（t, date），其中t是一个不存在的命令，执行会报错，默认情况下，错误会输出到stderr。date则能正确执行，并且输出时间信息，默认输出到stdout</span>
 
 ./test.sh &gt; test1.log
@@ -103,10 +103,10 @@ $ cat test2.log
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux3java%E4%B8%8Etomcat%E7%9A%84%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux9python3.6%E5%AE%89%E8%A3%85/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

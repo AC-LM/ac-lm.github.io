@@ -50,9 +50,9 @@
 <p>根据二维码其不同的编码类型，版本，以及纠错级别，二维码的复杂程度会有所变化。其中版本分 1-40 个级别，版本越高，能存储的数据就越多，用公式来表示就是这样：v X 4+17 。而纠错级别又分为 L、M、Q、H，有时候你可能看到有些二维码整的花里胡哨，或者有的地方缺失了还是能被识别，这可能是这张二维码的容错级别比较高。而级别越低，纠错能力越低，但是能存储更多的数据。而这些格式信息，都可以在三个大方块的边沿定义，三个大方块作为定位的标志，然后剩下的区域就是来放数据码和纠错码。</p>
 <p>Qrcode库就是Python中二维码的处理库</p>
 <h2 id="2安装">2.安装</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install qrcode
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install qrcode
 </code></pre></div><h2 id="3使用">3.使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> qrcode
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> qrcode
 qr <span style="color:#f92672">=</span> qrcode<span style="color:#f92672">.</span>QRCode(
     version<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
     error_correction<span style="color:#f92672">=</span>qrcode<span style="color:#f92672">.</span>constants<span style="color:#f92672">.</span>ERROR_CORRECT_Q,
@@ -60,7 +60,7 @@ qr <span style="color:#f92672">=</span> qrcode<span style="color:#f92672">.</spa
     border<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,
 )
 qr<span style="color:#f92672">.</span>add_data(<span style="color:#e6db74">&#39;This is a qrcode&#39;</span>)
-qr<span style="color:#f92672">.</span>make(fit<span style="color:#f92672">=</span>True)
+qr<span style="color:#f92672">.</span>make(fit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 img<span style="color:#f92672">=</span>qr<span style="color:#f92672">.</span>make_image(fill_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>,back_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;white&#39;</span>)
 img<span style="color:#f92672">.</span>show()
 </code></pre></div>

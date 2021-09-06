@@ -49,10 +49,10 @@
 <p>python多线程一般使用threading模块，但threading模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢</p>
 <h2 id="方法一">方法一</h2>
 <p>通过自定义线程类，继承Thread类，并复写run方法，在run方法中写入执行函数的方式，并把返回值赋值给result；然后通过调用get_result 获取每个进程的返回值</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 多线程类</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 多线程类</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyThread</span>(Thread):
-    result1 <span style="color:#f92672">=</span> None
-    result2 <span style="color:#f92672">=</span> None
+    result1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+    result2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
 
     <span style="color:#66d9ef">def</span> __init__(self, func, args<span style="color:#f92672">=</span>()):
         super(MyThread, self)<span style="color:#f92672">.</span>__init__()
@@ -69,7 +69,7 @@
         <span style="color:#66d9ef">try</span>:
             <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>result1, self<span style="color:#f92672">.</span>result2
         <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>:
-            <span style="color:#66d9ef">return</span> None
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
 
 
 <span style="color:#75715e"># 多线程执行函数</span>
@@ -81,18 +81,18 @@
     <span style="color:#66d9ef">return</span> result, furl
 
 t1 <span style="color:#f92672">=</span> MyThread(Mss, args<span style="color:#f92672">=</span>(info, myDia5))
-t1<span style="color:#f92672">.</span>setDaemon(True)
+t1<span style="color:#f92672">.</span>setDaemon(<span style="color:#66d9ef">True</span>)
 t1<span style="color:#f92672">.</span>start()
 result, furl <span style="color:#f92672">=</span> t1<span style="color:#f92672">.</span>get_result()
 </code></pre></div><h2 id="方法二">方法二</h2>
 <p>通过python内置的队列Queue接收子进程的返回值，然后再从中取出</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> threading 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> threading 
 <span style="color:#f92672">import</span> Queue 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_even</span>(value, q): 
     <span style="color:#66d9ef">if</span> value <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>: 
-        q<span style="color:#f92672">.</span>put(True) 
+        q<span style="color:#f92672">.</span>put(<span style="color:#66d9ef">True</span>) 
     <span style="color:#66d9ef">else</span>: 
-        q<span style="color:#f92672">.</span>put(False) 
+        q<span style="color:#f92672">.</span>put(<span style="color:#66d9ef">False</span>) 
         
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">multithreading</span>(): 
     q <span style="color:#f92672">=</span> Queue<span style="color:#f92672">.</span>Queue() 
@@ -109,7 +109,7 @@ result, furl <span style="color:#f92672">=</span> t1<span style="color:#f92672">
     
 <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>): 
     results<span style="color:#f92672">.</span>append(q<span style="color:#f92672">.</span>get()) 
-    <span style="color:#66d9ef">print</span>(results) 
+    print(results) 
     
     multithreading() 
 </code></pre></div>

@@ -98,9 +98,9 @@
 </ul>
 <h2 id="8标准化输出">8.标准化输出：</h2>
 <h3 id="第一种标准输出">①第一种标准输出：</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;ASDDF&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(<span style="color:#e6db74">&#34;ASDDF&#34;</span>)
 </code></pre></div><h3 id="第二种标准输出使用占位符">②第二种标准输出（使用占位符）</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python</span>
 <span style="color:#75715e"># _*_ coding:utf8 _*_</span>
 <span style="color:#75715e">#author：snate</span>
 name<span style="color:#f92672">=</span>input(<span style="color:#e6db74">&#34;name：&#34;</span>)
@@ -115,11 +115,11 @@ info<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;&#
 </span><span style="color:#e6db74">    salary:</span><span style="color:#e6db74">%f</span><span style="color:#e6db74">
 </span><span style="color:#e6db74">    -------------------------------
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span> <span style="color:#f92672">%</span>(name,name,age,Job,salary)
-<span style="color:#66d9ef">print</span>(info)
+print(info)
 <span style="color:#75715e"># 其中%s是占位符，&#34;&#34;&#34; 标准输出内容&#34;&#34;&#34;，此处单引号双引号都可以。</span>
 <span style="color:#75715e"># input默认输入的是字符串，要转化成数字类型需要强转。</span>
 </code></pre></div><h3 id="第三种标准输出">③第三种标准输出</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/env python</span>
 <span style="color:#75715e"># _*_ coding:utf8 _*_</span>
 <span style="color:#75715e">#author GXW</span>
 name<span style="color:#f92672">=</span>input(<span style="color:#e6db74">&#34;name：&#34;</span>)
@@ -127,17 +127,17 @@ age<span style="color:#f92672">=</span>int(input(<span style="color:#e6db74">&#3
 job<span style="color:#f92672">=</span>input(<span style="color:#e6db74">&#34;Job:&#34;</span>)
 salary <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;salary:&#34;</span>))
 info2<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;&#39;
-</span><span style="color:#e6db74">    =================info of {_name}====================
-</span><span style="color:#e6db74">    name:{_name}
-</span><span style="color:#e6db74">    age:{_age}
-</span><span style="color:#e6db74">    job:{_job}
-</span><span style="color:#e6db74">    salary:{_salary}
+</span><span style="color:#e6db74">    =================info of </span><span style="color:#e6db74">{_name}</span><span style="color:#e6db74">====================
+</span><span style="color:#e6db74">    name:</span><span style="color:#e6db74">{_name}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    age:</span><span style="color:#e6db74">{_age}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    job:</span><span style="color:#e6db74">{_job}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    salary:</span><span style="color:#e6db74">{_salary}</span><span style="color:#e6db74">
 </span><span style="color:#e6db74">    ===================================================
 </span><span style="color:#e6db74">&#39;&#39;&#39;</span><span style="color:#f92672">.</span>format(_name<span style="color:#f92672">=</span>name,
                _age<span style="color:#f92672">=</span>age,
                _job<span style="color:#f92672">=</span>job,
                _salary<span style="color:#f92672">=</span>salary)
-<span style="color:#66d9ef">print</span>(info2)
+print(info2)
 <span style="color:#75715e"># 使用format进行标准输出，利用key的形式。.format(_name=name,_age=age,_job=job,_salary=salary)</span>
 </code></pre></div>
             <p style="margin-top:1em;"></p>

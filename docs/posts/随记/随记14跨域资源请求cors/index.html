@@ -73,7 +73,7 @@
 <p>凡是不同时满足上面两个条件，就属于非简单请求。浏览器对这两种请求的处理，是不一样的。</p>
 <h2 id="4简单请求">4.简单请求</h2>
 <p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个<code>Origin</code>字段。下面是一个例子，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">GET</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">GET</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
 Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">http://api.bob.com</span>
 Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">api.alice.com</span>
 Accept-Language<span style="color:#f92672">:</span> <span style="color:#ae81ff">en-US</span>
@@ -82,7 +82,7 @@ User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozil
 </code></pre></div><p>上面的头信息中，Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。</p>
 <p>如果Origin指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。浏览器发现，这个回应的头信息没有包含Access-Control-Allow-Origin字段（详见下文），就知道出错了，从而抛出一个错误，被XMLHttpRequest的onerror回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。</p>
 <p>如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">GET</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">GET</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
 Access-Control-Allow-Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">http://api.bob.com</span>
 Access-Control-Allow-Credentials<span style="color:#f92672">:</span> <span style="color:#ae81ff">true</span>
 Access-Control-Expose-Headers<span style="color:#f92672">:</span> <span style="color:#ae81ff">FooBar</span>
@@ -95,24 +95,24 @@ Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">tex
 </ol>
 <h2 id="5withcredentials-属性">5.withCredentials 属性</h2>
 <p>CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，一方面要服务器同意，指定Access-Control-Allow-Credentials字段。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTTP" data-lang="HTTP"><span style="color:#a6e22e">GET</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTTP" data-lang="HTTP"><span style="color:#a6e22e">GET</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
 Access-Control-Allow-Credentials<span style="color:#f92672">:</span> <span style="color:#ae81ff">true</span>
 </code></pre></div><p>另一方面，开发者必须在AJAX请求中打开withCredentials属性。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
 <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">withCredentials</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </code></pre></div><p>否则，即使服务器同意发送Cookie，浏览器也不会发送。或者，服务器要求设置Cookie，浏览器也不会处理。</p>
 <p>需要注意的是，如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
 <h2 id="6复杂请求">6.复杂请求</h2>
 <p>非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为&quot;预检&quot;请求（preflight）。浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的XMLHttpRequest请求，否则就报错。</p>
 <p>下面是一段浏览器的JavaScript脚本。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://api.alice.com/cors&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://api.alice.com/cors&#39;</span>;
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
 <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;PUT&#39;</span>, <span style="color:#a6e22e">url</span>, <span style="color:#66d9ef">true</span>);
 <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">setRequestHeader</span>(<span style="color:#e6db74">&#39;X-Custom-Header&#39;</span>, <span style="color:#e6db74">&#39;value&#39;</span>);
 <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>();
 </code></pre></div><p>上面代码中，HTTP请求的方法是PUT，并且发送一个自定义头信息X-Custom-Header。</p>
 <p>浏览器发现，这是一个非简单请求，就自动发出一个&quot;预检&quot;请求，要求服务器确认可以这样请求。下面是这个&quot;预检&quot;请求的HTTP头信息。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">OPTIONS</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">OPTIONS</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
 Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">http://api.bob.com</span>
 Access-Control-Request-Method<span style="color:#f92672">:</span> <span style="color:#ae81ff">PUT</span>
 Access-Control-Request-Headers<span style="color:#f92672">:</span> <span style="color:#ae81ff">X-Custom-Header</span>
@@ -127,7 +127,7 @@ User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozil
 <li><strong>Access-Control-Request-Headers</strong>：该字段是一个逗号分隔的字符串，指定浏览器CORS请求会额外发送的头信息字段，上例是X-Custom-Header。</li>
 </ol>
 <p>服务器收到&quot;预检&quot;请求以后，检查了Origin、Access-Control-Request-Method 和 Access-Control-Request-Headers 字段以后，确认允许跨源请求，就可以做出回应。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
 Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mon, 01 Dec 2008 01:15:39 GMT</span>
 Server<span style="color:#f92672">:</span> <span style="color:#ae81ff">Apache/2.0.61 (Unix)</span>
 Access-Control-Allow-Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">http://api.bob.com</span>
@@ -140,14 +140,14 @@ Keep-Alive<span style="color:#f92672">:</span> <span style="color:#ae81ff">timeo
 Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">Keep-Alive</span>
 Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/plain</span>
 </code></pre></div><p>上面的HTTP回应中，关键的是Access-Control-Allow-Origin字段，表示 【api.bob.com】 可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
 Access-Control-Allow-Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">*</span>
 </code></pre></div><p>如果服务器否定了&quot;预检&quot;请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHttpRequest对象的onerror回调函数捕获。控制台会打印出如下的报错信息。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
 <span style="color:#960050;background-color:#1e0010">XMLHttpRequest</span> <span style="color:#ae81ff">cannot load http://api.alice.com.</span>
 <span style="color:#960050;background-color:#1e0010">Origin</span> <span style="color:#ae81ff">http://api.bob.com is not allowed by Access-Control-Allow-Origin.</span>
 </code></pre></div><p>服务器回应的其他CORS相关字段如下。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
 Access-Control-Allow-Methods<span style="color:#f92672">:</span> <span style="color:#ae81ff">GET, POST, PUT</span>
 Access-Control-Allow-Headers<span style="color:#f92672">:</span> <span style="color:#ae81ff">X-Custom-Header</span>
 Access-Control-Allow-Credentials<span style="color:#f92672">:</span> <span style="color:#ae81ff">true</span>
@@ -160,7 +160,7 @@ Access-Control-Max-Age<span style="color:#f92672">:</span> <span style="color:#a
 </ol>
 <p>一旦服务器通过了&quot;预检&quot;请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
 <p>下面是&quot;预检&quot;请求之后，浏览器的正常CORS请求。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">PUT</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">PUT</span> /cors <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
 Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">http://api.bob.com</span>
 Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">api.alice.com</span>
 X-Custom-Header<span style="color:#f92672">:</span> <span style="color:#ae81ff">value</span>
@@ -168,7 +168,7 @@ Accept-Language<span style="color:#f92672">:</span> <span style="color:#ae81ff">
 Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">keep-alive</span>
 User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0...</span>
 </code></pre></div><p>上面头信息的<code>Origin</code>字段是浏览器自动添加的。下面是服务器正常的回应。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
 Access-Control-Allow-Origin<span style="color:#f92672">:</span> <span style="color:#ae81ff">http://api.bob.com</span>
 Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/html; charset=utf-8</span>
 </code></pre></div><p>上面头信息中，Access-Control-Allow-Origin字段是每次回应都必定包含的。</p>
@@ -186,7 +186,7 @@ Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">tex
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AFsql%E6%BC%8F%E6%B4%9E/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B013%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="button large previous">上一页</a></li>
         
         
           <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B015webdriver-click%E4%B8%8Ejavascript-click%E7%9A%84%E5%8C%BA%E5%88%AB/" class="button large next">下一页</a></li>

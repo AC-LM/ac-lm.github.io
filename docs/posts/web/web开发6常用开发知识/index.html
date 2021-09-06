@@ -46,7 +46,7 @@
         </header>
         <div class="content">
             <h2 id="1屏蔽链接">1.屏蔽链接</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">href=&#34;javascript:void(0);&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">href=&#34;javascript:void(0);&#34;
 &lt;<span style="color:#f92672">script</span>&gt;window.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;sometext&#34;</span>)&lt;/<span style="color:#f92672">script</span>&gt;
 </code></pre></div><h2 id="2min文件">2.min文件</h2>
 <p>min，Minimized的缩写，是压缩后的js或css文件。里面的功能与没有min的文件是一样的。</p>
@@ -54,7 +54,7 @@
 <p>实际压缩原理很简单，就是把原来js文件中的空格，回车符，注释全部清除。因此这种js文件通常是不可读的，因为压缩后，文件是一行写到尾。</p>
 <h2 id="3li标签间的间隔删除">3.li标签间的间隔删除</h2>
 <p>li标签间的间隔是由于：行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。可以将闭合标签写到开头</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">li</span>&gt;BAT
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">li</span>&gt;BAT
 &lt;/<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">li</span>&gt;BAT&lt;/<span style="color:#f92672">li</span>&gt;
 </code></pre></div><p>也可以通过设置 li 标签的 font-size 为 0，解决该问题。</p>
 <h2 id="4css样式覆盖">4.CSS样式覆盖</h2>
@@ -66,14 +66,14 @@
 <li>规则五：!important的样式属性不被覆盖</li>
 </ul>
 <h2 id="5页面跳转">5.页面跳转</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;网址&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;网址&#34;</span>);
 window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;网址&#34;</span>;
 <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;href&#39;</span>, <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>);
 <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;location&#39;</span>,<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>);
 <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;href&#39;</span>,<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>)
 </code></pre></div><h2 id="6js将html字符串转换成node节点">6.js将html字符串转换成node节点</h2>
 <h3 id="innerhtml">innerHTML</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createNode</span>(<span style="color:#a6e22e">txt</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createNode</span>(<span style="color:#a6e22e">txt</span>) {
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#39;child&#39;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tempNode</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
   <span style="color:#a6e22e">tempNode</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">template</span>;
@@ -83,7 +83,7 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;container&#39;</span>);
 <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">createNode</span>(<span style="color:#e6db74">&#39;hello&#39;</span>));
 </code></pre></div><h3 id="domparser">DOMParser</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDocument</span>(<span style="color:#a6e22e">txt</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDocument</span>(<span style="color:#a6e22e">txt</span>) {
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#39;child&#39;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">doc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DOMParser</span>().<span style="color:#a6e22e">parseFromString</span>(<span style="color:#a6e22e">template</span>, <span style="color:#e6db74">&#39;text/html&#39;</span>);
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.child&#39;</span>);
@@ -93,7 +93,7 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;container&#39;</span>);
 <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">createDocument</span>(<span style="color:#e6db74">&#39;hello&#39;</span>));
 </code></pre></div><h3 id="documentfragment">DocumentFragment</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDocumentFragment</span>(<span style="color:#a6e22e">txt</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDocumentFragment</span>(<span style="color:#a6e22e">txt</span>) {
   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#39;child&#39;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">frag</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createRange</span>().<span style="color:#a6e22e">createContextualFragment</span>(<span style="color:#a6e22e">template</span>);
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">frag</span>;
@@ -102,7 +102,7 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;container&#39;</span>);
 <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">createDocumentFragment</span>(<span style="color:#e6db74">&#39;hello&#39;</span>));
 </code></pre></div><h2 id="7获取当前页面url">7.获取当前页面Url</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span>;
  
 <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>; <span style="color:#75715e">/* 获取完整URL */</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>); <span style="color:#75715e">/* http://127.0.0.1:8020/Test/index.html#test?name=test */</span>
@@ -150,16 +150,16 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <h2 id="9js判断一个数组是否包含一个指定的值">9.js判断一个数组是否包含一个指定的值</h2>
 <h3 id="arrayindexofvalue">array.indexOf(value)</h3>
 <p>此方法判断数组中是否存在某个值，如果存在返回数组元素的下标，否则返回-1</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;something&#39;</span>, <span style="color:#e6db74">&#39;anything&#39;</span>, <span style="color:#e6db74">&#39;nothing&#39;</span>, <span style="color:#e6db74">&#39;anything&#39;</span>];
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;something&#39;</span>, <span style="color:#e6db74">&#39;anything&#39;</span>, <span style="color:#e6db74">&#39;nothing&#39;</span>, <span style="color:#e6db74">&#39;anything&#39;</span>];
 <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;nothing&#39;</span>);
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">index</span>) <span style="color:#75715e">//结果是2
 </span></code></pre></div><h3 id="arrayincludesvalue">array.includes(value)</h3>
 <p>此方法判断数组中是否存在某个值，如果存在返回 true，否则返回false。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">redFruits</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;strawberry&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>, <span style="color:#e6db74">&#39;cranberries&#39;</span>];
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">redFruits</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;strawberry&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>, <span style="color:#e6db74">&#39;cranberries&#39;</span>];
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">redFruits</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">fruit</span>));
 </code></pre></div><h3 id="arrayfindcallback">array.find(callback())</h3>
 <p>返回数组中满足条件的第一个元素的值，如果没有，返回undefined</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// ---------- 元素是普通字面值 ----------
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// ---------- 元素是普通字面值 ----------
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">130</span>, <span style="color:#ae81ff">44</span>];
 <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">item</span> =&gt; {
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">8</span>;
@@ -178,16 +178,16 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">结果</span><span style="color:#960050;background-color:#1e0010">：</span> Object { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nothing&#34;</span> }
 </code></pre></div><h2 id="10js强制类型转换">10.js强制类型转换</h2>
 <p>将其他数据类型转换成String类型，注意Null与Undefined无toString()方法</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">toString</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">toString</span>()
 String(<span style="color:#a6e22e">value</span>)
 </code></pre></div><p>将其他的数据类型转换为Number类型，注意对非数字字符类型会转换为NaN，Null会转换为0</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Number(<span style="color:#a6e22e">value</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Number(<span style="color:#a6e22e">value</span>)
 </code></pre></div><p>将其他的数据类型转换为Boolean类型</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Boolean(<span style="color:#a6e22e">value</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Boolean(<span style="color:#a6e22e">value</span>)
 </code></pre></div><h2 id="11js实现ctrlv粘贴图片">11.js实现ctrl+v粘贴图片</h2>
 <p>ctrl+v粘贴图片都是监听paste事件实现的，复制的数据都存在clipboardData下面。</p>
 <p>打印clipboardData.items，可以发现是一个DataTransferItem，可以使用getAsFile()的方法获取文件</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;paste&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;paste&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">event</span>);
     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">isChrome</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
     <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">clipboardData</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">originalEvent</span>) {
@@ -211,17 +211,17 @@ String(<span style="color:#a6e22e">value</span>)
 })
 </code></pre></div><p>此时就可以获取到blob对象了，这时候可以选择显示在页面上，也可以选择发送给后台</p>
 <p>使用blob对象显示</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">blobUrl</span><span style="color:#f92672">=</span><span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">createObjectURL</span>(<span style="color:#a6e22e">blob</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">blobUrl</span><span style="color:#f92672">=</span><span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">createObjectURL</span>(<span style="color:#a6e22e">blob</span>);
 document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;imgNode&#34;</span>).<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#a6e22e">blobUrl</span>;
 </code></pre></div><p>使用base64显示</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
      <span style="color:#75715e">// event.target.result 即为图片的Base64编码字符串
 </span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">base64_str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">result</span>;
      document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;imgNode&#34;</span>).<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#a6e22e">base64_str</span>;
 }
 <span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">readAsDataURL</span>(<span style="color:#a6e22e">blob</span>);
 </code></pre></div><p>生成formData上传</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
 <span style="color:#a6e22e">fd</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;the_file&#34;</span>, <span style="color:#a6e22e">blob</span>, <span style="color:#e6db74">&#39;image.png&#39;</span>);
 </code></pre></div><h2 id="12web应用性能分析工具harhttp-archive-format">12.Web应用性能分析工具HAR（HTTP Archive format）</h2>
 <p>HAR文件，是用来记录浏览器加载网页时所消耗的时间的工具。它可以记录每一个HTTP请求发出直到收到完整的HTTP响应中间所耗费的时间，可以迅速帮助我们知道是哪些HTTP请求没有得到及时的回复，从而进行更一步的排查。同时可以使用Httprunner生成业务脚本</p>
@@ -239,10 +239,10 @@ document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%917jquery%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6toastr/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%915%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9110jquery%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%B7%E6%96%B0/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%917jquery%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6toastr/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

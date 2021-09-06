@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(21)——设置开机启动任务</a></h2>
-                <p>@LM | 2021-04-29</p>
+                <p>@LM | 2021-06-01</p>
             </div>
         </header>
         <div class="content">
@@ -49,12 +49,12 @@
 <p>参考原文：<a href="https://www.jb51.net/article/176257.htm"> Linux 添加开机启动方法(服务/脚本)  @jb51 </a></p>
 </blockquote>
 <p>系统启动时按顺序加载以下的配置文件，要设置开机启动任务即修改以下部分文件</p>
-<pre><code>/etc/profile、/root/.bash_profile
+<pre tabindex="0"><code>/etc/profile、/root/.bash_profile
 /etc/bashrc、/root/.bashrc
 /etc/profile.d/*.sh、/etc/profile.d/lang.sh
 /etc/sysconfig/i18n、/etc/rc.local（/etc/rc.d/rc.local）
 </code></pre><h2 id="1修改开机启动文件etcrclocal或者etcrcdrclocal">1.修改开机启动文件：/etc/rc.local（或者/etc/rc.d/rc.local）</h2>
-<pre><code># 1.编辑rc.local文件
+<pre tabindex="0"><code># 1.编辑rc.local文件
 [root@localhost ~]# vi /etc/rc.local
  
 # 2.修改rc.local文件，在 exit 0 前面加入以下命令。保存并退出。
@@ -69,7 +69,7 @@ supervisord -c /etc/supervisor/supervisord.conf         # supervisord开机启�
 </code></pre><h2 id="2shell脚本的启动">2.shell脚本的启动</h2>
 <p>将写好的脚本（.sh文件）放到目录 /etc/profile.d/  下，系统启动后就会自动执行该目录下的所有shell脚本。</p>
 <h2 id="3通过chkconfig命令设置">3.通过chkconfig命令设置</h2>
-<pre><code># 1.将(脚本)启动文件移动到 /etc/init.d/ 或者 /etc/rc.d/init.d/ 目录下。（前者是后者的软连接）
+<pre tabindex="0"><code># 1.将(脚本)启动文件移动到 /etc/init.d/ 或者 /etc/rc.d/init.d/ 目录下。（前者是后者的软连接）
 mv /www/wwwroot/test.sh /etc/rc.d/init.d
  
 # 2.启动文件前面务必添加如下三行代码，否侧会提示chkconfig不支持。
@@ -97,7 +97,7 @@ chmod +x /etc/rc.d/init.d/test.sh
 </code></pre><h2 id="4自定义服务文件-通过systemctl管理">4.自定义服务文件, 通过Systemctl管理</h2>
 <h3 id="1写服务文件">1.写服务文件</h3>
 <p>如 nginx.service、redis.service、supervisord.service</p>
-<pre><code>[Unit]:服务的说明
+<pre tabindex="0"><code>[Unit]:服务的说明
 Description:描述服务
 After:描述服务类别
  
@@ -113,10 +113,10 @@ PrivateTmp=True     表示给服务分配独立的临时空间
 WantedBy=multi-user.target 
 </code></pre><h3 id="2文件以754的权限保存">2.文件以754的权限保存</h3>
 <p>目录路径：/usr/lib/systemd/system。如上面的supervisord.service文件放在这个目录下面。</p>
-<pre><code>[root@localhost ~]# cat /usr/lib/systemd/system/nginx.service
+<pre tabindex="0"><code>[root@localhost ~]# cat /usr/lib/systemd/system/nginx.service
 [root@localhost ~]# cat /usr/lib/systemd/system/supervisord.service
 </code></pre><h3 id="3设置开机自启动">3.设置开机自启动</h3>
-<pre><code>设置开机自启动
+<pre tabindex="0"><code>设置开机自启动
 [root@localhost ~]# systemctl enable nginx.service    
 [root@localhost ~]# systemctl enable supervisord
  
@@ -128,7 +128,7 @@ WantedBy=multi-user.target
 [root@localhost ~]# systemctl is-enabled nginx
 [root@localhost ~]# systemctl is-enabled supervisord
 </code></pre><h3 id="4服务文件示例">4.服务文件示例</h3>
-<pre><code># supervisord.service进程管理服务文件
+<pre tabindex="0"><code># supervisord.service进程管理服务文件
 [Unit]
 Description=Process Monitoring and Control Daemon  # 内容自己定义：Description=Supervisor daemon
 After=rc-local.service nss-user-lookup.target
@@ -160,8 +160,6 @@ WantedBy=multi-user.target
         
           <li><a href="https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" class="button large previous">上一页</a></li>
         
-        
-          <li><a href="https://ac-lm.github.io/posts/linux/linux14%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

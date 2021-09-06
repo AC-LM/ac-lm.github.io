@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Django(9)——CSRF中间件</a></h2>
-                <p>@LM | 2021-01-13</p>
+                <p>@LM | 2021-07-25</p>
             </div>
         </header>
         <div class="content">
@@ -50,7 +50,7 @@
 <p>在使用 POST 表单的任何模板中，如果表单用于内部 URL，请在元素内使用<code>csrf_token</code>标签，例如<code>&lt;form method=&quot;post&quot;&gt;{% csrf_token %}</code>，对于针对外部 URL 的 POST 表单，不应这样做，因为这将导致 CSRF 令牌被泄露，从而导致漏洞。</p>
 <h2 id="2异步">2.异步</h2>
 <p>对于任何 AJAX POST 请求，都需要将 CSRF 令牌作为 POST 数据传递进来，您可以获取这样的令牌。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getCookie</span>(<span style="color:#a6e22e">name</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getCookie</span>(<span style="color:#a6e22e">name</span>) {
     <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cookieValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
     <span style="color:#66d9ef">if</span> (document.<span style="color:#a6e22e">cookie</span> <span style="color:#f92672">&amp;&amp;</span> document.<span style="color:#a6e22e">cookie</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;&#39;</span>) {
         <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cookies</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;;&#39;</span>);
@@ -67,7 +67,7 @@
 }
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">csrftoken</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getCookie</span>(<span style="color:#e6db74">&#39;csrftoken&#39;</span>);
 </code></pre></div><p>最后需要在 POST 请求中设置请求头</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Request</span>(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Request</span>(
     <span style="color:#75715e">/* URL */</span>,
     {<span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {<span style="color:#e6db74">&#39;X-CSRFToken&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">csrftoken</span>}}
 );
@@ -91,8 +91,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
+          <li><a href="https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/" class="button large previous">上一页</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/" class="button large next">下一页</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/django/django10%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97auth/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

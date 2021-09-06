@@ -48,12 +48,12 @@
             <h2 id="1什么是pyautogui库">1.什么是Pyautogui库</h2>
 <p>PyAutoGUI库是Python编写的一个实现自动化鼠标和键盘操作的库。</p>
 <h2 id="2使用">2.使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pyautogui
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pyautogui
 
 screenWidth, screenHeight <span style="color:#f92672">=</span> pyautogui<span style="color:#f92672">.</span>size() <span style="color:#75715e"># 返回屏幕分辨率</span>
-<span style="color:#66d9ef">print</span>(screenWidth,screenHeight)
+print(screenWidth,screenHeight)
 currentMouseX, currentMouseY <span style="color:#f92672">=</span> pyautogui<span style="color:#f92672">.</span>position() <span style="color:#75715e"># 返回鼠标的所在位置</span>
-<span style="color:#66d9ef">print</span>(currentMouseX,currentMouseY)
+print(currentMouseX,currentMouseY)
 <span style="color:#75715e">#pyautogui.moveTo(327, 382) #移动鼠标到指定位置</span>
 <span style="color:#75715e">#pyautogui.click() # 单击</span>
 <span style="color:#75715e">#pyautogui.doubleClick() # 双击鼠标</span>

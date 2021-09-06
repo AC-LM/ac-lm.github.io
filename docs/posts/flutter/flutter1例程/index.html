@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(1)——例程</a></h2>
-                <p>@LM | 2021-04-27</p>
+                <p>@LM | 2021-04-22</p>
             </div>
         </header>
         <div class="content">
@@ -49,7 +49,7 @@
 <p>参考原文：<a href="https://book.flutterchina.club/">《Flutter实战》@wendux </a></p>
 </blockquote>
 <h2 id="1例程代码">1.例程代码</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
 
 <span style="color:#66d9ef">void</span> main() {
   runApp(MyApp());
@@ -115,7 +115,7 @@
 
 </code></pre></div><h2 id="2代码分析">2.代码分析</h2>
 <h3 id="1应用结构">1）应用结构</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
   <span style="color:#960050;background-color:#1e0010">@</span>override
   Widget build(BuildContext context) {
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> MaterialApp(
@@ -138,7 +138,7 @@
 <li>home 为 Flutter 应用的首页，它也是一个 widget。</li>
 </ul>
 <h3 id="2首页">2）首页</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHomePage</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHomePage</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
   MyHomePage({Key key, <span style="color:#66d9ef">this</span>.title}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
   <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> title;
   <span style="color:#960050;background-color:#1e0010">@</span>override
@@ -153,7 +153,7 @@
 <li>_MyHomePageState 类是 MyHomePage 类对应的状态类。和 MyApp 类不同， MyHomePage 类中并没有 build 方法，取而代之的是，build 方法被挪到了 MyHomePage 类对应的状态类中。这样做是使得类的构建和 UI 界面的构建进行分离</li>
 </ul>
 <h3 id="3界面构建">3）界面构建</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"> Widget build(BuildContext context) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"> Widget build(BuildContext context) {
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Scaffold(
       appBar: <span style="color:#66d9ef">new</span> AppBar(
         title: <span style="color:#66d9ef">new</span> Text(widget.title),
@@ -198,10 +198,8 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" class="button large previous">上一页</a></li>
         
-        
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

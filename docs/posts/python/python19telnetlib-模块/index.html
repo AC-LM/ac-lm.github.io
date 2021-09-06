@@ -46,7 +46,7 @@
         </header>
         <div class="content">
             <p>Python远程Linux模块</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> getpass
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> getpass
 <span style="color:#f92672">import</span> telnetlib
 
 HOST <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;localhost&#34;</span>
@@ -64,7 +64,7 @@ tn<span style="color:#f92672">.</span>write(user<span style="color:#f92672">.</s
 tn<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;ls</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
 tn<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;exit</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
 
-<span style="color:#66d9ef">print</span>(tn<span style="color:#f92672">.</span>read_all()<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
+print(tn<span style="color:#f92672">.</span>read_all()<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>

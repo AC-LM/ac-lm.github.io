@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">SQL(3)——修改数据</a></h2>
-                <p>@LM | 2020-09-27</p>
+                <p>@LM | 2020-09-29</p>
             </div>
         </header>
         <div class="content">
@@ -57,31 +57,31 @@
 </ul>
 <h2 id="1insert插入">1.INSERT插入</h2>
 <p>INSERT语句的基本语法是：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span> (<span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">1</span>, <span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">2</span>, ...) <span style="color:#66d9ef">VALUES</span> (<span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">1</span>, <span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">2</span>, ...);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span> (<span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">1</span>, <span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">2</span>, ...) <span style="color:#66d9ef">VALUES</span> (<span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">1</span>, <span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">2</span>, ...);
 <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> students (class_id, name, gender, score) <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;大牛&#39;</span>, <span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#ae81ff">80</span>);
 </code></pre></div><p>注意到我们并没有列出id字段，也没有列出id字段对应的值，这是因为id字段是一个自增主键，它的值可以由数据库自己推算出来。此外，如果一个字段有默认值，那么在INSERT语句中也可以不出现。</p>
 <p>要注意，字段顺序不必和数据库表的字段顺序一致，但值的顺序必须和字段顺序一致。也就是说，可以写INSERT INTO students (score, gender, name, class_id) &hellip;，但是对应的VALUES就得变成(80, &lsquo;M&rsquo;, &lsquo;大牛&rsquo;, 2)。</p>
 <p>还可以一次性添加多条记录，只需要在VALUES子句中指定多个记录值，每个记录是由(&hellip;)包含的一组值：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> students (class_id, name, gender, score) <span style="color:#66d9ef">VALUES</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> students (class_id, name, gender, score) <span style="color:#66d9ef">VALUES</span>
   (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;大宝&#39;</span>, <span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#ae81ff">87</span>),
   (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;二宝&#39;</span>, <span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#ae81ff">81</span>);
 </code></pre></div><h2 id="2update更新">2.UPDATE更新</h2>
 <p>UPDATE语句的基本语法是：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SET</span> <span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">1</span>, <span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">2</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">2</span>, ... <span style="color:#66d9ef">WHERE</span> ...;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SET</span> <span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">1</span>, <span style="color:#960050;background-color:#1e0010">字段</span><span style="color:#ae81ff">2</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">值</span><span style="color:#ae81ff">2</span>, ... <span style="color:#66d9ef">WHERE</span> ...;
 <span style="color:#66d9ef">UPDATE</span> students <span style="color:#66d9ef">SET</span> name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;大牛&#39;</span>, score<span style="color:#f92672">=</span><span style="color:#ae81ff">66</span> <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
 </code></pre></div><p>注意到UPDATE语句的WHERE条件和SELECT语句的WHERE条件其实是一样的，因此完全可以一次更新多条记录：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> students <span style="color:#66d9ef">SET</span> name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;小牛&#39;</span>, score<span style="color:#f92672">=</span><span style="color:#ae81ff">77</span> <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">5</span> <span style="color:#66d9ef">AND</span> id<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">7</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> students <span style="color:#66d9ef">SET</span> name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;小牛&#39;</span>, score<span style="color:#f92672">=</span><span style="color:#ae81ff">77</span> <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">5</span> <span style="color:#66d9ef">AND</span> id<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">7</span>;
 </code></pre></div><p>在UPDATE语句中，更新字段时可以使用表达式。例如，把所有80分以下的同学的成绩加10分：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> students <span style="color:#66d9ef">SET</span> score<span style="color:#f92672">=</span>score<span style="color:#f92672">+</span><span style="color:#ae81ff">10</span> <span style="color:#66d9ef">WHERE</span> score<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">80</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">UPDATE</span> students <span style="color:#66d9ef">SET</span> score<span style="color:#f92672">=</span>score<span style="color:#f92672">+</span><span style="color:#ae81ff">10</span> <span style="color:#66d9ef">WHERE</span> score<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">80</span>;
 </code></pre></div><p>其中，SET score=score+10就是给当前行的score字段的值加上了10。如果WHERE条件没有匹配到任何记录，UPDATE语句不会报错，也不会有任何记录被更新。当没有WHERE条件时，整个表的所有记录都会被更新</p>
 <h2 id="3delete删除">3.DELETE删除</h2>
 <p>DELETE语句的基本语法是：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">WHERE</span> ...;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">WHERE</span> ...;
 <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
 </code></pre></div><p>注意到DELETE语句的WHERE条件也是用来筛选需要删除的行，因此和UPDATE类似，DELETE语句也可以一次删除多条记录</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">5</span> <span style="color:#66d9ef">AND</span> id<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">7</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">5</span> <span style="color:#66d9ef">AND</span> id<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">7</span>;
 </code></pre></div><p>同样，要特别小心的是，和UPDATE类似，不带WHERE条件的DELETE语句会删除整个表的数据</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> students;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> students;
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>
@@ -96,10 +96,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/sql/sql4%E4%BA%8B%E5%8A%A1/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/sql/sql2%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/sql/sql2%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/sql/sql4%E4%BA%8B%E5%8A%A1/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

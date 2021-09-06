@@ -54,14 +54,14 @@
 <p>“argv”即“argument value”的简写，其是一个列表对象，存储的是在命令行调用 Python 脚本时提供的“命令行参数”。</p>
 <p>这个列表中的第一个参数是被调用的脚本名称，也就是说，调用 Python 解释器的“命令”（<code>python</code>）本身并没有被加入这个列表当中。这个地方要注意一下，因为这一点跟 C 程序的行为有所不同，C 程序读取命令行参数是从头开始的。</p>
 <p>举例来说，在当前目录下新建一个 Python 文件 test.py，其内容为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;The list of command line arguments:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, sys<span style="color:#f92672">.</span>argv)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+print(<span style="color:#e6db74">&#34;The list of command line arguments:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, sys<span style="color:#f92672">.</span>argv)
 </code></pre></div><p>在命令行运行该脚本：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ python test.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ python test.py
  The list of command line arguments:
   <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;example.py&#39;</span><span style="color:#f92672">]</span> 
 </code></pre></div><p>加上几个参数运行，可以看到参数被获取并输出</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ python test.py arg1 arg2 arg3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ python test.py arg1 arg2 arg3
  The list of command line arguments:
   <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;example.py&#39;</span>, <span style="color:#e6db74">&#39;arg1&#39;</span>, <span style="color:#e6db74">&#39;arg2&#39;</span>, <span style="color:#e6db74">&#39;arg3&#39;</span><span style="color:#f92672">]</span>
 </code></pre></div><h2 id="syspath">sys.path</h2>
@@ -69,10 +69,10 @@
 <p>该属性是一个由字符串组成的列表，其中各个元素表示的是 Python 搜索模块的路径；在程序启动期间被初始化。</p>
 <p>其中第一个元素（也就是path[0]）的值是最初调用 Python 解释器的脚本所在的绝对路径；如果是在交互式环境下查看sys.path的值，就会得到一个空字符串。</p>
 <p>命令行运行脚本：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python test.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python test.py
 The path<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span>  D:<span style="color:#ae81ff">\j</span>ustdopython<span style="color:#ae81ff">\s</span>ys_example
 </code></pre></div><p>交互式环境查看属性第一个元素：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt;&gt; sys.path<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt;&gt; sys.path<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>
 <span style="color:#e6db74">&#39;&#39;</span>
 </code></pre></div><h2 id="sysstdinsysstdoutsysstderr">sys.stdin、sys.stdout、sys.stderr</h2>
 <ul>
@@ -81,7 +81,7 @@ The path<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span
 <li>stderr：用于解释器自己的提示信息和错误信息。</li>
 </ul>
 <p>简而言之，这三个属性就是操作系统的标准输入、输出和错误流，它们返回的都是一个“文件类型”对象，支持read()、write()和flush()等操作，就像用open()方法打开的文件对象那样！</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt;&gt; import sys
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt;&gt;&gt; import sys
 &gt;&gt;&gt; s <span style="color:#f92672">=</span> sys.stdin.read<span style="color:#f92672">()</span>        <span style="color:#75715e"># 使用ctrl+d结束输入</span>
 i like python
 end
@@ -95,30 +95,30 @@ end
 <span style="color:#ae81ff">21</span>
 </code></pre></div><h2 id="sysstdout-与-print">sys.stdout 与 print()</h2>
 <p>当我们用input(&lsquo;Please input something！')时，事实上是先输出提示信息，然后捕获输入。 以下两组等价：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s <span style="color:#f92672">=</span> input<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Please input something！&#39;</span><span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s <span style="color:#f92672">=</span> input<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Please input something！&#39;</span><span style="color:#f92672">)</span>
 ----------------------------------------------------------------
 print<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Please input something！&#39;</span>,<span style="color:#f92672">)</span>  <span style="color:#75715e"># 逗号表示不换行</span>
 s <span style="color:#f92672">=</span> sys.stdin.readline<span style="color:#f92672">()[</span>:-1<span style="color:#f92672">]</span>  <span style="color:#75715e"># -1 可以抛弃输入流中的&#39;\n&#39; 换行符，自己琢磨一下为什么。</span>
 </code></pre></div><h2 id="sysstdin-与-input">sys.stdin 与 input()</h2>
 <p>当我们 print(obj) 的时候，事实上是调用了sys.stdout.write(obj+'\n&rsquo;)，将内容打印到控制台（默认是显示器），然后追加一个换行符。以下两行等价：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sys.stdout.write<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;hello&#39;</span>+<span style="color:#e6db74">&#39;\n&#39;</span><span style="color:#f92672">)</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sys.stdout.write<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;hello&#39;</span>+<span style="color:#e6db74">&#39;\n&#39;</span><span style="color:#f92672">)</span> 
 -------------------------------------------------------
 print<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;hello&#39;</span><span style="color:#f92672">)</span>
 </code></pre></div><h2 id="从控制台重定向到文件">从控制台重定向到文件</h2>
 <p>默认情况下 sys.stdout 指向控制台。如果把文件对象赋值给 sys.stdout，那么 print () 调用的就是文件对象的 write() 方法。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f_handler <span style="color:#f92672">=</span> open<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;out.log&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span><span style="color:#f92672">)</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f_handler <span style="color:#f92672">=</span> open<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;out.log&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span><span style="color:#f92672">)</span> 
 sys.stdout <span style="color:#f92672">=</span> f_handler 
 print<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;hello&#39;</span><span style="color:#f92672">)</span>
 <span style="color:#75715e"># 你无法在屏幕上看到“hello”</span>
 <span style="color:#75715e"># 因为它被写到out.log文件里了</span>
 </code></pre></div><p>如果你还想同时在控制台打印的话，最好先将原始的控制台对象引用保存下来，向文件中打印之后再恢复 sys.stdout.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">__console__ <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdout    <span style="color:#75715e"># 保存控制台</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">__console__ <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdout    <span style="color:#75715e"># 保存控制台</span>
 <span style="color:#75715e"># redirection start #       # 去干点别的，比如写到文件里</span>
 <span style="color:#f92672">...</span> 
 <span style="color:#75715e"># redirection end           # 干完别的了，恢复原来的控制台</span>
 sys<span style="color:#f92672">.</span>stdout <span style="color:#f92672">=</span> __console__
 </code></pre></div><h2 id="其他指令">其他指令</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sys<span style="color:#f92672">.</span>argv    <span style="color:#75715e">#获取命令行参数列表，第一个元素是程序本身</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sys<span style="color:#f92672">.</span>argv    <span style="color:#75715e">#获取命令行参数列表，第一个元素是程序本身</span>
 sys<span style="color:#f92672">.</span>exit(n) <span style="color:#75715e">#退出Python程序，exit(0)表示正常退出。当参数非0时，会引发一个SystemExit异常，可以在程序中捕获该异常</span>
 sys<span style="color:#f92672">.</span>version <span style="color:#75715e">#获取Python解释程器的版本信息</span>
 sys<span style="color:#f92672">.</span>maxsize <span style="color:#75715e">#最大的Int值，64位平台是2**63 - 1</span>

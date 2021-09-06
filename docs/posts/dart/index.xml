@@ -6,18 +6,7 @@
     <description>Recent content in Dart on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/dart/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Dart(8)——可变参数与命名参数</title>
-      <link>https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/</link>
-      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/</guid>
-      <description>1.可变参数 dart可变参数使用[]包含，在使用函数时可按顺序直接输入值。（PS：在新版本的Dart语言规范中，可变参数需要被赋予初值，不允许为空）
-void test(String name,[int age]){ if(age!=null){ print(&amp;#34;name:$name;age:$age&amp;#34;) }else{ print(&amp;#34;name:$name&amp;#34;) } } void main(){ test(&amp;#39;A&amp;#39;); test(&amp;#39;A&amp;#39;,15); } 2.命名参数 dart命名参数使用{}包含，在使用函数时需指定值的名字。（PS：在新版本的Dart语言规范中，命名参数需要被赋予初值，不允许为空）
-void test(String name,{int age}){ if(age!=null){ print(&amp;#34;name:$name;age:$age&amp;#34;) }else{ print(&amp;#34;name:$name&amp;#34;) } } void main(){ test(&amp;#39;A&amp;#39;); test(&amp;#39;A&amp;#39;,age: 15); } </description>
-    </item>
-    
+    <lastBuildDate>Fri, 23 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/dart/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dart(9)——随机数</title>
       <link>https://ac-lm.github.io/posts/dart/dart9%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
@@ -28,51 +17,28 @@ void test(String name,{int age}){ if(age!=null){ print(&amp;#34;name:$name;age:$
     </item>
     
     <item>
-      <title>Dart(1)——基本数据类型</title>
-      <link>https://ac-lm.github.io/posts/dart/dart1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Dart(8)——可变参数与命名参数</title>
+      <link>https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/dart/dart1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
-      <description>数字与布尔值 属性 int figureA = -93; // figureA是否为负数  print(figureA.isNegative); // figureA是否是有限的  print(figureA.isFinite); // figureA是否正无穷大或负无穷大  print(figureA.isInfinite); double figureB = 64.742; // 返回figureB的符号，-1.0:值小于0、+1.0:值大于0、-0.0/0.0/NaN:值是其本身  print(figureB.sign); // 返回figureB运行时的类型  print(figureB.runtimeType); // 返回figureB的哈希码  print(figureB.hashCode); int figureC = 13; // figureC是否为奇数  print(figureC.isOdd); // figureC是否为偶数  print(figureC.isEven); // 返回figureC所占存储位  print(figureC.bitLength); 方法 int figureA = -93; // 返回figureA的绝对值  print(figureA.abs()); // 返回figureA的字符串  print(figureA.toString()); double figureB = 64.742; // 返回figureB的整数值  print(figureB.</description>
+      <guid>https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/</guid>
+      <description>1.可变参数 dart可变参数使用[]包含，在使用函数时可按顺序直接输入值。（PS：在新版本的Dart语言规范中，可变参数需要被赋予初值，不允许为空）
+void test(String name,[int age]){ if(age!=null){ print(&amp;#34;name:$name;age:$age&amp;#34;) }else{ print(&amp;#34;name:$name&amp;#34;) } } void main(){ test(&amp;#39;A&amp;#39;); test(&amp;#39;A&amp;#39;,15); } 2.命名参数 dart命名参数使用{}包含，在使用函数时需指定值的名字。（PS：在新版本的Dart语言规范中，命名参数需要被赋予初值，不允许为空）
+void test(String name,{int age}){ if(age!=null){ print(&amp;#34;name:$name;age:$age&amp;#34;) }else{ print(&amp;#34;name:$name&amp;#34;) } } void main(){ test(&amp;#39;A&amp;#39;); test(&amp;#39;A&amp;#39;,age: 15); } </description>
     </item>
     
     <item>
-      <title>Dart(2)——正则</title>
-      <link>https://ac-lm.github.io/posts/dart/dart2%E6%AD%A3%E5%88%99/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Dart(7)——异步</title>
+      <link>https://ac-lm.github.io/posts/dart/dart7%E5%BC%82%E6%AD%A5/</link>
+      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/dart/dart2%E6%AD%A3%E5%88%99/</guid>
-      <description>1.属性 RegExp exp = new RegExp(r&amp;#34;(\w+)&amp;#34;); // 返回正则表达式的哈希码  print(exp.hashCode); // 正则表达式是否区分大小写  print(exp.isCaseSensitive); // 正则表达式是否匹配多行  print(exp.isMultiLine); // 返回源正则表达式字符串  print(exp.pattern); // 返回对象运行时的类型  print(exp.runtimeType); 2.常用方法 RegExp exp = new RegExp(r&amp;#34;(\w+)&amp;#34;); // 返回正则表达式匹配项的可迭代对象  match = exp.allMatches(&amp;#34;abc def ghi&amp;#34;) for (Match m in matches) { print(m.group(0)); } // 搜索并返回第一个匹配项，没有则返回null  print(exp.firstMatch(&amp;#34;&amp;#34;)); // 正则表达式是否找到匹配项  print(exp.hasMatch(&amp;#34;as&amp;#34;)); // 从第几个字符开始匹配正则表达式  print(exp.matchAsPrefix(&amp;#34;ab cd&amp;#34;,3)); // 返回正则表达式的第一个匹配字符串  print(exp.stringMatch(&amp;#34;abc de&amp;#34;)); // 返回正则表达式的字符串表示  print(exp.toString()); </description>
-    </item>
-    
-    <item>
-      <title>Dart(3)——文件操作</title>
-      <link>https://ac-lm.github.io/posts/dart/dart3%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/dart/dart3%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
-      <description>2021.4.29
- 参考原文：Dart 语言标准流与文件操作 @血色v残阳 
- 1.写文件 无需手动关闭文件，文件写入完成后自动关闭
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } ———————————————— Future&amp;lt;File&amp;gt; writeAsString(String contents, {FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false}) FileMode：read，write，append，writeOnly，writeOnlyAppend 需要手动关闭文件</description>
-    </item>
-    
-    <item>
-      <title>Dart(4)——睡眠</title>
-      <link>https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/</guid>
-      <description>In Async Code await Future.delayed(Duration(seconds: 1)); In Sync Code import &amp;#39;dart:io&amp;#39;; sleep(Duration(seconds:1)); </description>
-    </item>
-    
-    <item>
-      <title>Dart(5)——字典</title>
-      <link>https://ac-lm.github.io/posts/dart/dart5%E5%AD%97%E5%85%B8/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/dart/dart5%E5%AD%97%E5%85%B8/</guid>
-      <description>1.声明 a.不指定泛型 //直接赋值  var map1 = {&amp;#39;aa&amp;#39;:&amp;#39;aaa&amp;#39;,&amp;#39;bb&amp;#39;:22,&amp;#39;cc&amp;#39;:true}; Map map2 = {&amp;#39;a&amp;#39;:&amp;#39;a1&amp;#39;,&amp;#39;b&amp;#39;:&amp;#39;b1&amp;#39;}; //间接赋值  var map3 = new Map(); map3[&amp;#39;aa&amp;#39;] = &amp;#39;aaa&amp;#39;; Map map4 = new Map(); map4[&amp;#39;a&amp;#39;] = &amp;#39;aaa&amp;#39;; b.指定泛型 //直接赋值  var map1 = &amp;lt;String,String&amp;gt;{&amp;#39;aa&amp;#39;:&amp;#39;aaa&amp;#39;,&amp;#39;bb&amp;#39;:&amp;#39;22&amp;#39;,&amp;#39;cc&amp;#39;:&amp;#39;333&amp;#39;}; Map map2 = &amp;lt;String,String&amp;gt;{&amp;#39;a&amp;#39;:&amp;#39;a1&amp;#39;,&amp;#39;b&amp;#39;:&amp;#39;b1&amp;#39;,&amp;#39;c&amp;#39;:&amp;#39;c1&amp;#39;}; //间接赋值  var map3 = new Map&amp;lt;String,String&amp;gt;(); map3[&amp;#39;aa&amp;#39;] = &amp;#39;aaa&amp;#39;; Map map4 = new Map&amp;lt;String,String&amp;gt;(); map4[&amp;#39;a&amp;#39;] = &amp;#39;a1&amp;#39;; c.复制 //不使用类型操作符,从另一个map中初始化新的map，此时新的map中含有另一个map中的资源  Map map1 = {&amp;#39;a&amp;#39;:&amp;#39;a1&amp;#39;,&amp;#39;b&amp;#39;:&amp;#39;b1&amp;#39;,&amp;#39;c&amp;#39;:&amp;#39;c1&amp;#39;}; Map map2 = Map.castFrom(map1); //强制使用指定类型初始化map  Map&amp;lt;int,String&amp;gt; map3 = {1:&amp;#39;a&amp;#39;,2:&amp;#39;b&amp;#39;,3:&amp;#39;c&amp;#39;}; Map map4 = Map.</description>
+      <guid>https://ac-lm.github.io/posts/dart/dart7%E5%BC%82%E6%AD%A5/</guid>
+      <description>参考原文：Dart异步编程-future @方田 
+ 介绍 Dart是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。Dart使用Future对象表示异步操作，防止出现阻塞操作。
+// Synchronous code printDailyNewsDigest() { String news = gatherNewsReports(); // Can take a while.  print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 该代码存在一个问题函数 printDailyNewsDigest ，该函数是阻塞的，之后的代码必须等待printDailyNewsDigest 结束才能继续执行。当用户想知道自己是否中彩票，明天的天气和谁赢得比赛，都必须等待 printDailyNewsDigest 读取结束。为了程序及时响应，Dart的作者使用异步编程模型处理可能耗时的函数。这个函数返回一个Future
+什么是Future Future表示在将来某时获取一个值的方式。当一个返回Future的函数被调用的时候，做了两件事情：
+ 函数把自己放入队列和返回一个未完成的Future对象 之后当值可用时，Future带着值变成完成状态。  Async和await async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用Future接口。
+import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news = await gatherNewsReports(); print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 在这时 printDailyNewsDigest 是第一个调用的，但是最后打印的，即使只有一行内容。这是因为代码读取和打印内容是异步执行的。在这个例子中间，printDailyNewsDigest 调用 gatherNewsReports 不是阻塞的。gatherNewsReports 把自己放入队列，不会暂停代码的执行。程序打印中奖号码，天气预报和比赛分数；当 gatherNewsReports 完成收集新闻过后再打印。gatherNewsReports 需要消耗一定时间的执行完成，而不会影响功能。用户在读取新闻之前获得其他消息。</description>
     </item>
     
     <item>
@@ -85,17 +51,51 @@ import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file 
     </item>
     
     <item>
-      <title>Dart(7)——异步</title>
-      <link>https://ac-lm.github.io/posts/dart/dart7%E5%BC%82%E6%AD%A5/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Dart(5)——字典</title>
+      <link>https://ac-lm.github.io/posts/dart/dart5%E5%AD%97%E5%85%B8/</link>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/dart/dart7%E5%BC%82%E6%AD%A5/</guid>
-      <description>参考原文：Dart异步编程-future @方田 
- 介绍 Dart是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。Dart使用Future对象表示异步操作，防止出现阻塞操作。
-// Synchronous code printDailyNewsDigest() { String news = gatherNewsReports(); // Can take a while.  print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 该代码存在一个问题函数 printDailyNewsDigest ，该函数是阻塞的，之后的代码必须等待printDailyNewsDigest 结束才能继续执行。当用户想知道自己是否中彩票，明天的天气和谁赢得比赛，都必须等待 printDailyNewsDigest 读取结束。为了程序及时响应，Dart的作者使用异步编程模型处理可能耗时的函数。这个函数返回一个Future
-什么是Future Future表示在将来某时获取一个值的方式。当一个返回Future的函数被调用的时候，做了两件事情：
- 函数把自己放入队列和返回一个未完成的Future对象 之后当值可用时，Future带着值变成完成状态。  Async和await async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用Future接口。
-import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news = await gatherNewsReports(); print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 在这时 printDailyNewsDigest 是第一个调用的，但是最后打印的，即使只有一行内容。这是因为代码读取和打印内容是异步执行的。在这个例子中间，printDailyNewsDigest 调用 gatherNewsReports 不是阻塞的。gatherNewsReports 把自己放入队列，不会暂停代码的执行。程序打印中奖号码，天气预报和比赛分数；当 gatherNewsReports 完成收集新闻过后再打印。gatherNewsReports 需要消耗一定时间的执行完成，而不会影响功能。用户在读取新闻之前获得其他消息。</description>
+      <guid>https://ac-lm.github.io/posts/dart/dart5%E5%AD%97%E5%85%B8/</guid>
+      <description>1.声明 a.不指定泛型 //直接赋值  var map1 = {&amp;#39;aa&amp;#39;:&amp;#39;aaa&amp;#39;,&amp;#39;bb&amp;#39;:22,&amp;#39;cc&amp;#39;:true}; Map map2 = {&amp;#39;a&amp;#39;:&amp;#39;a1&amp;#39;,&amp;#39;b&amp;#39;:&amp;#39;b1&amp;#39;}; //间接赋值  var map3 = new Map(); map3[&amp;#39;aa&amp;#39;] = &amp;#39;aaa&amp;#39;; Map map4 = new Map(); map4[&amp;#39;a&amp;#39;] = &amp;#39;aaa&amp;#39;; b.指定泛型 //直接赋值  var map1 = &amp;lt;String,String&amp;gt;{&amp;#39;aa&amp;#39;:&amp;#39;aaa&amp;#39;,&amp;#39;bb&amp;#39;:&amp;#39;22&amp;#39;,&amp;#39;cc&amp;#39;:&amp;#39;333&amp;#39;}; Map map2 = &amp;lt;String,String&amp;gt;{&amp;#39;a&amp;#39;:&amp;#39;a1&amp;#39;,&amp;#39;b&amp;#39;:&amp;#39;b1&amp;#39;,&amp;#39;c&amp;#39;:&amp;#39;c1&amp;#39;}; //间接赋值  var map3 = new Map&amp;lt;String,String&amp;gt;(); map3[&amp;#39;aa&amp;#39;] = &amp;#39;aaa&amp;#39;; Map map4 = new Map&amp;lt;String,String&amp;gt;(); map4[&amp;#39;a&amp;#39;] = &amp;#39;a1&amp;#39;; c.复制 //不使用类型操作符,从另一个map中初始化新的map，此时新的map中含有另一个map中的资源  Map map1 = {&amp;#39;a&amp;#39;:&amp;#39;a1&amp;#39;,&amp;#39;b&amp;#39;:&amp;#39;b1&amp;#39;,&amp;#39;c&amp;#39;:&amp;#39;c1&amp;#39;}; Map map2 = Map.castFrom(map1); //强制使用指定类型初始化map  Map&amp;lt;int,String&amp;gt; map3 = {1:&amp;#39;a&amp;#39;,2:&amp;#39;b&amp;#39;,3:&amp;#39;c&amp;#39;}; Map map4 = Map.</description>
+    </item>
+    
+    <item>
+      <title>Dart(4)——睡眠</title>
+      <link>https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/</link>
+      <pubDate>Tue, 27 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/</guid>
+      <description>In Async Code await Future.delayed(Duration(seconds: 1)); In Sync Code import &amp;#39;dart:io&amp;#39;; sleep(Duration(seconds:1)); </description>
+    </item>
+    
+    <item>
+      <title>Dart(3)——文件操作</title>
+      <link>https://ac-lm.github.io/posts/dart/dart3%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/dart/dart3%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <description>2021.4.29
+ 参考原文：Dart 语言标准流与文件操作 @血色v残阳 
+ 1.写文件 无需手动关闭文件，文件写入完成后自动关闭
+import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } ———————————————— Future&amp;lt;File&amp;gt; writeAsString(String contents, {FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false}) FileMode：read，write，append，writeOnly，writeOnlyAppend 需要手动关闭文件</description>
+    </item>
+    
+    <item>
+      <title>Dart(2)——正则</title>
+      <link>https://ac-lm.github.io/posts/dart/dart2%E6%AD%A3%E5%88%99/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/dart/dart2%E6%AD%A3%E5%88%99/</guid>
+      <description>1.属性 RegExp exp = new RegExp(r&amp;#34;(\w+)&amp;#34;); // 返回正则表达式的哈希码  print(exp.hashCode); // 正则表达式是否区分大小写  print(exp.isCaseSensitive); // 正则表达式是否匹配多行  print(exp.isMultiLine); // 返回源正则表达式字符串  print(exp.pattern); // 返回对象运行时的类型  print(exp.runtimeType); 2.常用方法 RegExp exp = new RegExp(r&amp;#34;(\w+)&amp;#34;); // 返回正则表达式匹配项的可迭代对象  match = exp.allMatches(&amp;#34;abc def ghi&amp;#34;) for (Match m in matches) { print(m.group(0)); } // 搜索并返回第一个匹配项，没有则返回null  print(exp.firstMatch(&amp;#34;&amp;#34;)); // 正则表达式是否找到匹配项  print(exp.hasMatch(&amp;#34;as&amp;#34;)); // 从第几个字符开始匹配正则表达式  print(exp.matchAsPrefix(&amp;#34;ab cd&amp;#34;,3)); // 返回正则表达式的第一个匹配字符串  print(exp.stringMatch(&amp;#34;abc de&amp;#34;)); // 返回正则表达式的字符串表示  print(exp.toString()); </description>
+    </item>
+    
+    <item>
+      <title>Dart(1)——基本数据类型</title>
+      <link>https://ac-lm.github.io/posts/dart/dart1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Sat, 24 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/dart/dart1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+      <description>数字与布尔值 属性 int figureA = -93; // figureA是否为负数  print(figureA.isNegative); // figureA是否是有限的  print(figureA.isFinite); // figureA是否正无穷大或负无穷大  print(figureA.isInfinite); double figureB = 64.742; // 返回figureB的符号，-1.0:值小于0、+1.0:值大于0、-0.0/0.0/NaN:值是其本身  print(figureB.sign); // 返回figureB运行时的类型  print(figureB.runtimeType); // 返回figureB的哈希码  print(figureB.hashCode); int figureC = 13; // figureC是否为奇数  print(figureC.isOdd); // figureC是否为偶数  print(figureC.isEven); // 返回figureC所占存储位  print(figureC.bitLength); 方法 int figureA = -93; // 返回figureA的绝对值  print(figureA.abs()); // 返回figureA的字符串  print(figureA.toString()); double figureB = 64.742; // 返回figureB的整数值  print(figureB.</description>
     </item>
     
   </channel>

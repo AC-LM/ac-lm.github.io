@@ -41,12 +41,12 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Django(4)——cookie处理</a></h2>
-                <p>@LM | 2021-06-03</p>
+                <p>@LM | 2021-06-04</p>
             </div>
         </header>
         <div class="content">
             <h2 id="设置cookie">设置cookie</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 编写视图函数，进行设置</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 编写视图函数，进行设置</span>
 <span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime,timedelta
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_cookie</span>(request):
     <span style="color:#e6db74">&#34;&#34;&#34;设置cookie&#34;&#34;&#34;</span>
@@ -57,7 +57,7 @@
     response<span style="color:#f92672">.</span>set_cookie(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;tong&#39;</span>, expires<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">+</span>timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>))
     <span style="color:#66d9ef">return</span> response
 </code></pre></div><h2 id="获取cookie">获取cookie</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 视图函数中定义  get_cookie 方法</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 视图函数中定义  get_cookie 方法</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_cookie</span>(request):
     <span style="color:#e6db74">&#34;&#34;&#34;获取cookie&#34;&#34;&#34;</span>
     name <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>COOKIES[<span style="color:#e6db74">&#39;name&#39;</span>]
@@ -76,10 +76,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/django/django5%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django3%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/django/django3%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django5%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

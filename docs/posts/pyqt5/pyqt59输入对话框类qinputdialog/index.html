@@ -41,13 +41,13 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">PyQt5(9)——输入对话框类QInputDialog</a></h2>
-                <p>@LM | 2020-12-14</p>
+                <p>@LM | 2020-12-21</p>
             </div>
         </header>
         <div class="content">
             <p>QInputDialog 继承自 QDialog 提供了一种简单的对话框来获得用户的单个输入信息</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QInputDialog</span>(QDialog)
-<span style="color:#f92672">|</span> QInputDialog(QWidget parent<span style="color:#f92672">=</span>None, Qt<span style="color:#f92672">.</span>WindowFlags flags<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QInputDialog</span>(QDialog)
+<span style="color:#f92672">|</span> QInputDialog(QWidget parent<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, Qt<span style="color:#f92672">.</span>WindowFlags flags<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 </code></pre></div><p>常用以下方法获取对话框的信息</p>
 <ul>
 <li>字符串型   QInputDialog.getText</li>
@@ -56,7 +56,7 @@
 <li>下拉列表框的条目   QInputDialog.getItem</li>
 </ul>
 <h2 id="1qinputdialoggettext">1.QInputDialog.getText</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">QString getText( QWidget <span style="color:#f92672">*</span> parent, <span style="color:#75715e">#标准输入对话框的父窗口</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">QString getText( QWidget <span style="color:#f92672">*</span> parent, <span style="color:#75715e">#标准输入对话框的父窗口</span>
 
 const QString <span style="color:#f92672">&amp;</span> title, <span style="color:#75715e">#输入对话框的标题名</span>
 
@@ -70,7 +70,7 @@ Qt::WindowFlags flags <span style="color:#f92672">=</span> <span style="color:#a
 
 Qt::InputMethodHints inputMethodHints <span style="color:#f92672">=</span> Qt::ImhNone ); [static]
 </code></pre></div><h2 id="2qinputdialoggetitem">2.QInputDialog.getItem</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">QString getItem( QWidget <span style="color:#f92672">*</span> parent, <span style="color:#75715e">#标准输入对话框的父窗口</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">QString getItem( QWidget <span style="color:#f92672">*</span> parent, <span style="color:#75715e">#标准输入对话框的父窗口</span>
 
 const QString <span style="color:#f92672">&amp;</span> title, <span style="color:#75715e">#标准输入对话框的标题名</span>
 
@@ -86,7 +86,7 @@ bool <span style="color:#f92672">*</span> ok <span style="color:#f92672">=</span
 
 Qt::WindowFlags f <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ) ; [static]  <span style="color:#75715e">#用于指定标准输入对话框的哪个那妞被触发，若ok为false，则表示用户单击了Cancel（取消）按钮；</span>
 </code></pre></div><h2 id="3qinputdialoggetint">3.QInputDialog.getInt</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 int getInteger( QWidget <span style="color:#f92672">*</span> parent, <span style="color:#75715e">#父窗口</span>
 
 const QString <span style="color:#f92672">&amp;</span> title,  <span style="color:#75715e">#标题名</span>
@@ -105,7 +105,7 @@ bool <span style="color:#f92672">*</span> ok <span style="color:#f92672">=</span
 
 Qt::WindowFlags f <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ) ;
 </code></pre></div><h2 id="4qinputdialoggetdouble">4.QInputDialog.getDouble</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">double getDouble( QWidget <span style="color:#f92672">*</span> parent,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">double getDouble( QWidget <span style="color:#f92672">*</span> parent,
 
 const QString <span style="color:#f92672">&amp;</span> title,
 
@@ -123,26 +123,26 @@ bool <span style="color:#f92672">*</span> ok <span style="color:#f92672">=</span
 
 Qt::WindowFlags f <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ) ;
 </code></pre></div><h2 id="5简单使用">5.简单使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getInteger</span>(self):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getInteger</span>(self):
     i, okPressed <span style="color:#f92672">=</span> QInputDialog<span style="color:#f92672">.</span>getInt(self, <span style="color:#e6db74">&#34;Get integer&#34;</span>,<span style="color:#e6db74">&#34;Percentage:&#34;</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">1</span>)
     <span style="color:#66d9ef">if</span> okPressed:
-        <span style="color:#66d9ef">print</span>(i)
+        print(i)
  
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getDouble</span>(self):
     d, okPressed <span style="color:#f92672">=</span> QInputDialog<span style="color:#f92672">.</span>getDouble(self, <span style="color:#e6db74">&#34;Get double&#34;</span>,<span style="color:#e6db74">&#34;Value:&#34;</span>, <span style="color:#ae81ff">10.50</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>)
     <span style="color:#66d9ef">if</span> okPressed:
-        <span style="color:#66d9ef">print</span>( d)
+        print( d)
  
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getChoice</span>(self):
     items <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Red&#34;</span>,<span style="color:#e6db74">&#34;Blue&#34;</span>,<span style="color:#e6db74">&#34;Green&#34;</span>)
-    item, okPressed <span style="color:#f92672">=</span> QInputDialog<span style="color:#f92672">.</span>getItem(self, <span style="color:#e6db74">&#34;Get item&#34;</span>,<span style="color:#e6db74">&#34;Color:&#34;</span>, items, <span style="color:#ae81ff">0</span>, False)
+    item, okPressed <span style="color:#f92672">=</span> QInputDialog<span style="color:#f92672">.</span>getItem(self, <span style="color:#e6db74">&#34;Get item&#34;</span>,<span style="color:#e6db74">&#34;Color:&#34;</span>, items, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">False</span>)
     <span style="color:#66d9ef">if</span> ok <span style="color:#f92672">and</span> item:
-        <span style="color:#66d9ef">print</span>(item)
+        print(item)
  
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getText</span>(self):
     text, okPressed <span style="color:#f92672">=</span> QInputDialog<span style="color:#f92672">.</span>getText(self, <span style="color:#e6db74">&#34;Get text&#34;</span>,<span style="color:#e6db74">&#34;Your name:&#34;</span>, QLineEdit<span style="color:#f92672">.</span>Normal, <span style="color:#e6db74">&#34;&#34;</span>)
     <span style="color:#66d9ef">if</span> okPressed <span style="color:#f92672">and</span> text <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;&#39;</span>:
-        <span style="color:#66d9ef">print</span>(text)
+        print(text)
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>
@@ -157,8 +157,10 @@ Qt::WindowFlags f <span style="color:#f92672">=</span> <span style="color:#ae81f
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt58%E6%96%87%E4%BB%B6%E7%B1%BBqfiledialog/" class="button large previous">上一页</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt58%E6%96%87%E4%BB%B6%E7%B1%BBqfiledialog/" class="button large next">下一页</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/pyqt5/pyqt510%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6qlineedit/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

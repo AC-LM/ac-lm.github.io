@@ -6,7 +6,18 @@
     <description>Recent content in BUG on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/bug/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/bug/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BUG(19)——Django分页报错</title>
+      <link>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</guid>
+      <description>BUG描述 Django分页时报错
+UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: &amp;lt;class &amp;#39;sign.models.Guest&amp;#39;&amp;gt; QuerySet.paginator = Paginator(guest_list,5) 解决 这是因为Django分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
+paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp;#39;) </description>
+    </item>
+    
     <item>
       <title>BUG(18)——使用JS添加的元素无法点击</title>
       <link>https://ac-lm.github.io/posts/bug/bug18%E4%BD%BF%E7%94%A8js%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%85%83%E7%B4%A0%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB/</link>
@@ -21,41 +32,6 @@ $(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;,
     </item>
     
     <item>
-      <title>BUG(19)——Django分页报错</title>
-      <link>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</link>
-      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</guid>
-      <description>BUG描述 Django分页时报错
-UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: &amp;lt;class &amp;#39;sign.models.Guest&amp;#39;&amp;gt; QuerySet.paginator = Paginator(guest_list,5) 解决 这是因为Django分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
-paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp;#39;) </description>
-    </item>
-    
-    <item>
-      <title>BUG(6)——Wapiti报告丢失js文件问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</guid>
-      <description> 参考文献：github-wapiti-issues @Maxime Alay-Eddine 
- 问题描述 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件
-Resolution 需手动从目录wapitiCore/report_template中找到并添加
- Ok, when generating the html report it is supposed to copy the js file from wapitiCore/report_template into output directory, that is why it was missing.
- </description>
-    </item>
-    
-    <item>
-      <title>BUG(16)——xlrd模块无法打开.xlsx文件</title>
-      <link>https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/</guid>
-      <description>BUG描述 xlrd模块更新后，无法打开.xlsx文件，报错 xlrd.biffh.XLRDError: Excel xlsx file；not supported
-Resolution xlrd在更新到了2.0.1版本后只支持.xls文件，若要打开.xlsx文件需要安装旧版xlrd，执行
-pip uninstall xlrd pip install xlrd==1.2.0 </description>
-    </item>
-    
-    <item>
       <title>BUG(17)——字典在遍历时不能进行修改</title>
       <link>https://ac-lm.github.io/posts/bug/bug17%E5%AD%97%E5%85%B8%E5%9C%A8%E9%81%8D%E5%8E%86%E6%97%B6%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
@@ -64,6 +40,17 @@ pip uninstall xlrd pip install xlrd==1.2.0 </description>
       <description>BUG描述 a={&amp;#39;a&amp;#39;:1, &amp;#39;b&amp;#39;:0, &amp;#39;c&amp;#39;:1, &amp;#39;d&amp;#39;:0} for key in a.keys(): del a[key] 执行上述代码时会出现报错
 Resolution 字典在遍历时不能被修改，需要将字典转成列表或集合再进行遍历。
 a={&amp;#39;a&amp;#39;:1, &amp;#39;b&amp;#39;:0, &amp;#39;c&amp;#39;:1, &amp;#39;d&amp;#39;:0} for key in list(a.keys()): del a[key] </description>
+    </item>
+    
+    <item>
+      <title>BUG(16)——xlrd模块无法打开.xlsx文件</title>
+      <link>https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/</guid>
+      <description>BUG描述 xlrd模块更新后，无法打开.xlsx文件，报错 xlrd.biffh.XLRDError: Excel xlsx file；not supported
+Resolution xlrd在更新到了2.0.1版本后只支持.xls文件，若要打开.xlsx文件需要安装旧版xlrd，执行
+pip uninstall xlrd pip install xlrd==1.2.0 </description>
     </item>
     
     <item>
@@ -81,6 +68,17 @@ Resolution 这是因为在文本处理中，CR（CarriageReturn）/ LF（LineFee
     </item>
     
     <item>
+      <title>BUG(14)——bash命令丢失</title>
+      <link>https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</guid>
+      <description>BUG描述 在Linux shell 中执行ls命令时，报错 bash：ls command not found
+Resolution 由于环境变量PATH被错误修改，导致命令丢失
+# 命令行执行，恢复环境变量 export PATH=/bin:/usr/bin:$PATH </description>
+    </item>
+    
+    <item>
       <title>BUG(13)——Linux中Chrome无法启动缺少权限</title>
       <link>https://ac-lm.github.io/posts/bug/bug13linux%E4%B8%ADchrome%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%BC%BA%E5%B0%91%E6%9D%83%E9%99%90/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
@@ -92,24 +90,60 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以R
     </item>
     
     <item>
-      <title>BUG(14)——bash命令丢失</title>
-      <link>https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      <title>BUG(11)——gitlab-runner无权限</title>
+      <link>https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</guid>
-      <description>BUG描述 在Linux shell 中执行ls命令时，报错 bash：ls command not found
-Resolution 由于环境变量PATH被错误修改，导致命令丢失
-# 命令行执行，恢复环境变量 export PATH=/bin:/usr/bin:$PATH </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/</guid>
+      <description>Resolution 手动将gitlab-runner服务设置为 root 用户
+ps aux|grep gitlab-runner #查看当前runner用户 sudo gitlab-runner uninstall #删除gitlab-runner gitlab-runner install --working-directory /home/gitlab-runner --user root #安装并设置--user(例如我想设置为root) sudo service gitlab-runner restart #重启gitlab-runner ps aux|grep gitlab-runner #再次执行会发现--user的用户名已经更换成root了 </description>
     </item>
     
     <item>
-      <title>BUG(3)——Windows下编写的shell脚本无法在Linux中运行</title>
-      <link>https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/</link>
+      <title>BUG(12)——gitlab CI无法运行无标签工作</title>
+      <link>https://ac-lm.github.io/posts/bug/bug12gitlab-ci%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E5%B7%A5%E4%BD%9C/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug12gitlab-ci%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E5%B7%A5%E4%BD%9C/</guid>
+      <description>BUG描述 gitlab CI 无法执行没有标记标签的工作
+Resolution 在设置中勾选 Run untagged jobs
+gitlab 项目设置 -&amp;gt; CI/CD -&amp;gt; Runner，点击编辑按钮，修改 Run untagged jobs / Indicates whether this runner can pick jobs without tags</description>
+    </item>
+    
+    <item>
+      <title>BUG(10)——gitlab CI无法初始化Git版本库</title>
+      <link>https://ac-lm.github.io/posts/bug/bug10gitlab-ci%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96git%E7%89%88%E6%9C%AC%E5%BA%93/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug10gitlab-ci%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96git%E7%89%88%E6%9C%AC%E5%BA%93/</guid>
+      <description> 参考原文：fatal: git fetch-pack: expected shallow list @0neBean 
+ BUG描述 gitlab CI 报错 fatal: git fetch-pack: expected shallow list
+重新初始化现存的 Git 版本库于 /home/gitlab-runner/builds/yygZdKcz/0/root/api-adapter/.git/ fatal: git fetch-pack: expected shallow list fatal: The remote end hung up unexpectedly Resolution 这是由于 git 版本过老不支持新的API，需要升级git
+#安装源 yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm #安装git yum install git #更新git yum update git </description>
+    </item>
+    
+    <item>
+      <title>BUG(9)——AndroidCMD工具安装SDK路径无法识别问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/</guid>
+      <description>参考原文：cmdline-tools : could not determine SDK root @stackoverflow 
+ BUG描述 执行 Android cmd 工具中 sdkmanager 命令时无法找到对应路径
+Error: Could not determine SDK root. Error: Either specify it explicitly with --sdk_root= or move this package into its expected location: \cmdline-tools\latest\ Resolution Since new updates, there are some changes that are not mentioned in the documentation. After unzipping the command line tools package, the top-most directory you&amp;rsquo;ll get is cmdline-tools.
+Rename the unpacked directory from cmdline-tools to tools, and place it under $C:/Android/cmdline-tools</description>
+    </item>
+    
+    <item>
+      <title>BUG(7)——Win10锁屏问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug7win10%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/</guid>
-      <description>BUG描述 Windows下使用记事本编写shell脚本，上传到Linux系统后，无法运行，结果返回错误。
-Resolution 注意到的是，在编辑文件时，Windows系统编码中回车比Linux多一个 \r ( 即Windows下的回车会编码成【\n\r】，而Linux系统中回车是【\n】)，正因如此，Windows下编写了的shell脚本无法在Linux下运行。</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug7win10%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</guid>
+      <description>BUG描述 Windows10在锁屏时会偶尔出现不是自己设置的图片的问题，锁屏会变为默认图片。怀疑是由于用户的缓存被清理，变为了默认用户。
+Resolution Win+R 打开运行，输入%ProgramData%\Microsoft\Windows打开Win10配置文件夹，寻找到SystemData文件夹，双击打开。
+若没有权限，右键-&amp;gt;属性-&amp;gt;安全-&amp;gt;高级-&amp;gt;上面栏的所有者更改-&amp;gt;输入用户名(登陆账号名如LM)-&amp;gt;检查名称-&amp;gt;确认用户-&amp;gt;确认-&amp;gt;替换子容器和对象的所有者-&amp;gt;确定-&amp;gt;成功获取权限
+进入SystemData，发现存在形如S-1-5-18和S-1-5-21-的文件夹(为用户的锁屏配置文件)，S-1-5-18为默认配置，打开S-1-5-21-&amp;gt;ReadOnly，目录下LockScreen_W，LockScreen_B即为锁屏图片。LockScreen_B为用户设置，LockScreen_W为默认，即注销后的锁屏，更改文件内容以修改锁屏</description>
     </item>
     
     <item>
@@ -123,43 +157,39 @@ Resolution 注意网关配置的问题，查看网关是否错误，可以打开
     </item>
     
     <item>
-      <title>BUG(1)——无头浏览器导致的元素不可见</title>
-      <link>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <title>BUG(6)——Wapiti报告丢失js文件问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</guid>
-      <description>BUG描述 WebDriver在使用headless状态时，会将窗口设置为默认大小为0x0，并且处于Minimized状态，这样做会导致程序启动后部分元素无法被点击等异常
-Resolution 在启动Driver配置浏览器大小
-options.add_argument(&amp;#34;--headless&amp;#34;) options.add_argument(&amp;#39;window-size=1920x1080&amp;#39;) options.add_argument(&amp;#39;--start-maximized&amp;#39;) #警告，针对不同内核方法可能有差别，但参数一致。 </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</guid>
+      <description> 参考文献：github-wapiti-issues @Maxime Alay-Eddine 
+ 问题描述 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件
+Resolution 需手动从目录wapitiCore/report_template中找到并添加
+ Ok, when generating the html report it is supposed to copy the js file from wapitiCore/report_template into output directory, that is why it was missing.
+ </description>
     </item>
     
     <item>
-      <title>BUG(2)——Linux系统修改密码以及旧版本删除</title>
-      <link>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <title>BUG(5)——爬虫中乱码的成因及处理</title>
+      <link>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</guid>
-      <description>CentOS7进入单用户模式修改密码 在选择系统界面，按 E 进入启动配置，定位到命令 Ro ，将其改为 rw init=/sysroot/bin/sh，Ctrl+X进行重启，进入单用户模式，执行chroot /sysroot进入系统目录，输入passwd root修改密码，touch /.autorelabel执行修改
-升级后的旧版本删除 centos7开机界面出现多个选项时，前面几个选项正常启动，最后一个选项急救模式启动（系统出项问题不能正常启动时使用并修复系统），在CentOS更新后,并不会自动删除旧内核。所以在启动选项中会有多个内核选项,可以手动使用以下命令删除多余的内核:
-uname -a rpm -qa | grep kernel #查看安装内核 yum remove kernel-3.10.0-229.14.1.el7 #删除 reboot #重启 </description>
-    </item>
-    
-    <item>
-      <title>BUG(9)——AndroidCMD工具安装SDK路径无法识别问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/</guid>
-      <description>参考原文：cmdline-tools : could not determine SDK root @stackoverflow 
- BUG描述 执行 Android cmd 工具中 sdkmanager 命令时无法找到对应路径
-Error: Could not determine SDK root. Error: Either specify it explicitly with --sdk_root= or move this package into its expected location: \cmdline-tools\latest\ Resolution Since new updates, there are some changes that are not mentioned in the documentation. After unzipping the command line tools package, the top-most directory you&amp;rsquo;ll get is cmdline-tools.
-Rename the unpacked directory from cmdline-tools to tools, and place it under $C:/Android/cmdline-tools</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</guid>
+      <description>为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
+print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
+# Python使用的编解码格式 ISO-8859-1 # 实际应该使用的编解码格式 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
+乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为GBK编码的字节流，在我们抓取后，程序直接使用UTF-8进行编码并输出到文件中，此时必然会引起乱码。
+现如今主流的编码有：Unicode、ISO-8859-1、GBK2312、GBK、UTF-8 等几种。
+最早的编码是ISO-8859-1，和ASCII编码相似。ISO-8859-1属于单字节编码，最多能表示的字符范围是0-255，应用于英文环境。很明显，ISO-8859-1编码表示的字符范围很窄，无法表示中文字符。
+1981年中国人民通过对 ASCII 编码的中文扩充改造，产生了GBK2312编码，可以表示6000多个常用汉字。但汉字实在是太多了，包括繁体和各种字符，于是产生了 GBK 编码，它包括了GBK2312中的编码，同时扩充了很多。
+随着时代的发展，其他国家都像中国一样，把自己的语言进行了编码，出现了很多的编码格式。终于，有个叫 ISO 的组织看不下去了。他们一起创造了一种编码Unicode ，这种编码非常大，大到可以容纳世界上任何一个文字和标志。所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，只需要保存文件的时候，保存成 Unicode编码就可以被其他电脑正常解释。Unicode在网络传输中，出现了两个标准 UTF-8 和 UTF-16，分别每次传输 8个位和 16个位。但与之带来的问题是 UTF-8 等编码体积比较大，占电脑空间比较多，因此如果面向的使用人群绝大多是中国人的话，用GBK编码便可以了。
+什么是编码 可以这样来理解：字符串是由字符构成，字符在计算机硬件中通过二进制形式存储，这种二进制形式就是编码。如果直接使用 “字符串↔️字符↔️二进制表示（编码）” ，会增加不同类型编码之间转换的复杂性。所以引入了一个抽象层，“字符串↔️字符↔️与存储无关的表示↔️二进制表示（编码）” ，这样，可以用一种与存储无关的形式表示字符，不同的编码之间转换时可以先转换到这个抽象层，然后再转换为其他编码形式。在这里，Unicode就是 “与存储无关的表示”，UTF-8 就是 “二进制表示”。</description>
     </item>
     
     <item>
       <title>BUG(4)——Jmeter中一些常见问题</title>
       <link>https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>运行内存配置修改 if not defined HEAP ( rem See the unix startup file for the rationale of the following parameters, rem including some tuning recommendations set HEAP=-Xms5g -Xmx5g -XX:MaxMetaspaceSize=5120m ) 修改bat文件中HEAP值。HEAP=-Xms5g -Xmx5g，最小与最大运行内存，通常设为同样的值。MaxMetaspaceSize 最大堆栈 。
@@ -176,65 +206,35 @@ name：MaxUserPort，value：65534（十进制）； name：TcpTimedWaitDelay，
     </item>
     
     <item>
-      <title>BUG(5)——爬虫中乱码的成因及处理</title>
-      <link>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</link>
-      <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
+      <title>BUG(3)——Windows下编写的shell脚本无法在Linux中运行</title>
+      <link>https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</guid>
-      <description>为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
-print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
-# Python使用的编解码格式 ISO-8859-1 # 实际应该使用的编解码格式 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
-乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为GBK编码的字节流，在我们抓取后，程序直接使用UTF-8进行编码并输出到文件中，此时必然会引起乱码。
-现如今主流的编码有：Unicode、ISO-8859-1、GBK2312、GBK、UTF-8 等几种。
-最早的编码是ISO-8859-1，和ASCII编码相似。ISO-8859-1属于单字节编码，最多能表示的字符范围是0-255，应用于英文环境。很明显，ISO-8859-1编码表示的字符范围很窄，无法表示中文字符。
-1981年中国人民通过对 ASCII 编码的中文扩充改造，产生了GBK2312编码，可以表示6000多个常用汉字。但汉字实在是太多了，包括繁体和各种字符，于是产生了 GBK 编码，它包括了GBK2312中的编码，同时扩充了很多。
-随着时代的发展，其他国家都像中国一样，把自己的语言进行了编码，出现了很多的编码格式。终于，有个叫 ISO 的组织看不下去了。他们一起创造了一种编码Unicode ，这种编码非常大，大到可以容纳世界上任何一个文字和标志。所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，只需要保存文件的时候，保存成 Unicode编码就可以被其他电脑正常解释。Unicode在网络传输中，出现了两个标准 UTF-8 和 UTF-16，分别每次传输 8个位和 16个位。但与之带来的问题是 UTF-8 等编码体积比较大，占电脑空间比较多，因此如果面向的使用人群绝大多是中国人的话，用GBK编码便可以了。
-什么是编码 可以这样来理解：字符串是由字符构成，字符在计算机硬件中通过二进制形式存储，这种二进制形式就是编码。如果直接使用 “字符串↔️字符↔️二进制表示（编码）” ，会增加不同类型编码之间转换的复杂性。所以引入了一个抽象层，“字符串↔️字符↔️与存储无关的表示↔️二进制表示（编码）” ，这样，可以用一种与存储无关的形式表示字符，不同的编码之间转换时可以先转换到这个抽象层，然后再转换为其他编码形式。在这里，Unicode就是 “与存储无关的表示”，UTF-8 就是 “二进制表示”。</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/</guid>
+      <description>BUG描述 Windows下使用记事本编写shell脚本，上传到Linux系统后，无法运行，结果返回错误。
+Resolution 注意到的是，在编辑文件时，Windows系统编码中回车比Linux多一个 \r ( 即Windows下的回车会编码成【\n\r】，而Linux系统中回车是【\n】)，正因如此，Windows下编写了的shell脚本无法在Linux下运行。</description>
     </item>
     
     <item>
-      <title>BUG(11)——gitlab-runner无权限</title>
-      <link>https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
+      <title>BUG(2)——Linux系统修改密码以及旧版本删除</title>
+      <link>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/</guid>
-      <description>Resolution 手动将gitlab-runner服务设置为 root 用户
-ps aux|grep gitlab-runner #查看当前runner用户 sudo gitlab-runner uninstall #删除gitlab-runner gitlab-runner install --working-directory /home/gitlab-runner --user root #安装并设置--user(例如我想设置为root) sudo service gitlab-runner restart #重启gitlab-runner ps aux|grep gitlab-runner #再次执行会发现--user的用户名已经更换成root了 </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</guid>
+      <description>CentOS7进入单用户模式修改密码 在选择系统界面，按 E 进入启动配置，定位到命令 Ro ，将其改为 rw init=/sysroot/bin/sh，Ctrl+X进行重启，进入单用户模式，执行chroot /sysroot进入系统目录，输入passwd root修改密码，touch /.autorelabel执行修改
+升级后的旧版本删除 centos7开机界面出现多个选项时，前面几个选项正常启动，最后一个选项急救模式启动（系统出项问题不能正常启动时使用并修复系统），在CentOS更新后,并不会自动删除旧内核。所以在启动选项中会有多个内核选项,可以手动使用以下命令删除多余的内核:
+uname -a rpm -qa | grep kernel #查看安装内核 yum remove kernel-3.10.0-229.14.1.el7 #删除 reboot #重启 </description>
     </item>
     
     <item>
-      <title>BUG(12)——gitlab CI无法运行无标签工作</title>
-      <link>https://ac-lm.github.io/posts/bug/bug12gitlab-ci%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E5%B7%A5%E4%BD%9C/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
+      <title>BUG(1)——无头浏览器导致的元素不可见</title>
+      <link>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug12gitlab-ci%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E5%B7%A5%E4%BD%9C/</guid>
-      <description>BUG描述 gitlab CI 无法执行没有标记标签的工作
-Resolution 在设置中勾选 Run untagged jobs
-gitlab 项目设置 -&amp;gt; CI/CD -&amp;gt; Runner，点击编辑按钮，修改 Run untagged jobs / Indicates whether this runner can pick jobs without tags</description>
-    </item>
-    
-    <item>
-      <title>BUG(10)——gitlab CI无法初始化Git版本库</title>
-      <link>https://ac-lm.github.io/posts/bug/bug10gitlab-ci%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96git%E7%89%88%E6%9C%AC%E5%BA%93/</link>
-      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug10gitlab-ci%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96git%E7%89%88%E6%9C%AC%E5%BA%93/</guid>
-      <description> 参考原文：fatal: git fetch-pack: expected shallow list @0neBean 
- BUG描述 gitlab CI 报错 fatal: git fetch-pack: expected shallow list
-重新初始化现存的 Git 版本库于 /home/gitlab-runner/builds/yygZdKcz/0/root/api-adapter/.git/ fatal: git fetch-pack: expected shallow list fatal: The remote end hung up unexpectedly Resolution 这是由于 git 版本过老不支持新的API，需要升级git
-#安装源 yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm #安装git yum install git #更新git yum update git </description>
-    </item>
-    
-    <item>
-      <title>BUG(7)——Win10锁屏问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug7win10%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug7win10%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</guid>
-      <description>BUG描述 Windows10在锁屏时会偶尔出现不是自己设置的图片的问题，锁屏会变为默认图片。怀疑是由于用户的缓存被清理，变为了默认用户。
-Resolution Win+R 打开运行，输入%ProgramData%\Microsoft\Windows打开Win10配置文件夹，寻找到SystemData文件夹，双击打开。
-若没有权限，右键-&amp;gt;属性-&amp;gt;安全-&amp;gt;高级-&amp;gt;上面栏的所有者更改-&amp;gt;输入用户名(登陆账号名如LM)-&amp;gt;检查名称-&amp;gt;确认用户-&amp;gt;确认-&amp;gt;替换子容器和对象的所有者-&amp;gt;确定-&amp;gt;成功获取权限
-进入SystemData，发现存在形如S-1-5-18和S-1-5-21-的文件夹(为用户的锁屏配置文件)，S-1-5-18为默认配置，打开S-1-5-21-&amp;gt;ReadOnly，目录下LockScreen_W，LockScreen_B即为锁屏图片。LockScreen_B为用户设置，LockScreen_W为默认，即注销后的锁屏，更改文件内容以修改锁屏</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</guid>
+      <description>BUG描述 WebDriver在使用headless状态时，会将窗口设置为默认大小为0x0，并且处于Minimized状态，这样做会导致程序启动后部分元素无法被点击等异常
+Resolution 在启动Driver配置浏览器大小
+options.add_argument(&amp;#34;--headless&amp;#34;) options.add_argument(&amp;#39;window-size=1920x1080&amp;#39;) options.add_argument(&amp;#39;--start-maximized&amp;#39;) #警告，针对不同内核方法可能有差别，但参数一致。 </description>
     </item>
     
   </channel>

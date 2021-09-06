@@ -41,13 +41,13 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Dart(5)——字典</a></h2>
-                <p>@LM | 2021-04-29</p>
+                <p>@LM | 2021-04-28</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1声明">1.声明</h2>
 <h3 id="a不指定泛型">a.不指定泛型</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//直接赋值
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//直接赋值
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> map1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;aa&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;aaa&#39;</span>,<span style="color:#e6db74">&#39;bb&#39;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22</span>,<span style="color:#e6db74">&#39;cc&#39;</span><span style="color:#f92672">:</span><span style="color:#66d9ef">true</span>}; 
     Map map2 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;a1&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;b1&#39;</span>};  
 <span style="color:#75715e">//间接赋值
@@ -56,7 +56,7 @@
     Map map4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Map(); 
     map4[<span style="color:#e6db74">&#39;a&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;aaa&#39;</span>;
 </code></pre></div><h3 id="b指定泛型">b.指定泛型</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//直接赋值
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//直接赋值
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> map1 <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>{<span style="color:#e6db74">&#39;aa&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;aaa&#39;</span>,<span style="color:#e6db74">&#39;bb&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;22&#39;</span>,<span style="color:#e6db74">&#39;cc&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;333&#39;</span>};
     Map map2 <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>{<span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;a1&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;b1&#39;</span>,<span style="color:#e6db74">&#39;c&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;c1&#39;</span>};
     
@@ -66,7 +66,7 @@
     Map map4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>();
     map4[<span style="color:#e6db74">&#39;a&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a1&#39;</span>;
 </code></pre></div><h3 id="c复制">c.复制</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//不使用类型操作符,从另一个map中初始化新的map，此时新的map中含有另一个map中的资源
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//不使用类型操作符,从另一个map中初始化新的map，此时新的map中含有另一个map中的资源
 </span><span style="color:#75715e"></span>  Map map1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;a1&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;b1&#39;</span>,<span style="color:#e6db74">&#39;c&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;c1&#39;</span>};
   Map map2 <span style="color:#f92672">=</span> Map.castFrom(map1);
 
@@ -78,15 +78,15 @@
 <span style="color:#75715e">//这行代码也会出错，因为无法将&lt;String,String&gt;类型的map转换为&lt;int,String&gt;类型的map
 </span><span style="color:#75715e"></span>  Map map6 <span style="color:#f92672">=</span> Map.castFrom<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>(map3); <span style="color:#75715e">//正确
 </span></code></pre></div><h3 id="d创建不可变的map">d.创建不可变的Map</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Map map6 <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> {<span style="color:#e6db74">&#39;one&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;Android&#39;</span>,<span style="color:#e6db74">&#39;two&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;IOS&#39;</span>,<span style="color:#e6db74">&#39;three&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;flutter&#39;</span>};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Map map6 <span style="color:#f92672">=</span> <span style="color:#66d9ef">const</span> {<span style="color:#e6db74">&#39;one&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;Android&#39;</span>,<span style="color:#e6db74">&#39;two&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;IOS&#39;</span>,<span style="color:#e6db74">&#39;three&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;flutter&#39;</span>};
 <span style="color:#75715e">//在目标的map6创建(复制)新的不可修改map7
 </span><span style="color:#75715e"></span>Map map7 <span style="color:#f92672">=</span> Map.unmodifiable(map6);
 </code></pre></div><h3 id="e根据list所提供的key-value来创建map">e.根据list所提供的key value来创建map</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">List<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> keys <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;one&#39;</span>,<span style="color:#e6db74">&#39;two&#39;</span>]; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">List<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> keys <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;one&#39;</span>,<span style="color:#e6db74">&#39;two&#39;</span>]; 
 List<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> values <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Android&#39;</span>,<span style="color:#e6db74">&#39;IOS&#39;</span>]; 
 Map map <span style="color:#f92672">=</span> Map.fromIterables(keys, values); 
 </code></pre></div><h2 id="2属性">2.属性</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">print(map.length);        <span style="color:#75715e">//2     长度
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">print(map.length);        <span style="color:#75715e">//2     长度
 </span><span style="color:#75715e"></span>print(map.isNotEmpty);    <span style="color:#75715e">//true  是否不为空
 </span><span style="color:#75715e"></span>print(map.isEmpty);       <span style="color:#75715e">//false   是否为空  
 </span><span style="color:#75715e"></span>print(map.keys);          <span style="color:#75715e">//(a, b)  key的集合
@@ -94,11 +94,11 @@ Map map <span style="color:#f92672">=</span> Map.fromIterables(keys, values);
 </span><span style="color:#75715e"></span>print(map.entries);       <span style="color:#75715e">//(MapEntry(a: 1), MapEntry(b: 2))  map迭代的键值对集合 
 </span></code></pre></div><h2 id="3方法">3.方法</h2>
 <h3 id="a增">a.增</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map7 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map7 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>};
 <span style="color:#75715e">//新增一个key value
 </span><span style="color:#75715e"></span>map7[<span style="color:#e6db74">&#34;f&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
 </code></pre></div><h3 id="b改">b.改</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//修改一个key的value
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//修改一个key的value
 </span><span style="color:#75715e"></span>Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map8 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>};
 map8[<span style="color:#e6db74">&#34;a&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>;
 
@@ -120,7 +120,7 @@ map25.updateAll((<span style="color:#66d9ef">String</span> key,<span style="colo
    <span style="color:#66d9ef">return</span> value<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>;
 });
 </code></pre></div><h3 id="c删">c.删</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//删除一个key
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//删除一个key
 </span><span style="color:#75715e"></span>    Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map9 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>};
     map9.remove(<span style="color:#e6db74">&#34;b&#34;</span>);
 
@@ -128,7 +128,7 @@ map25.updateAll((<span style="color:#66d9ef">String</span> key,<span style="colo
 </span><span style="color:#75715e"></span>    Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map10 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>};
     map10.removeWhere((key,value)<span style="color:#f92672">=&gt;</span>(value<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">3</span>));
 </code></pre></div><h3 id="d查">d.查</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//是否包含key
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//是否包含key
 </span><span style="color:#75715e"></span>   Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map11 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>};
    print(map11.containsKey(<span style="color:#e6db74">&#34;a&#34;</span>));<span style="color:#75715e">//true   是否包含key
 </span><span style="color:#75715e"></span>   print(map11.containsKey(<span style="color:#e6db74">&#34;aa&#34;</span>));<span style="color:#75715e">//false  是否包含key
@@ -151,7 +151,7 @@ map25.updateAll((<span style="color:#66d9ef">String</span> key,<span style="colo
         map13[<span style="color:#e6db74">&#34;c&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
     });
 </code></pre></div><h3 id="e其他">e.其他</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//遍历每个元素 根据参数函数，对keyvalue做出修改，可转换成其他泛型的Map
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">//遍历每个元素 根据参数函数，对keyvalue做出修改，可转换成其他泛型的Map
 </span><span style="color:#75715e"></span>  Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map19 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>};
     Map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> map20 <span style="color:#f92672">=</span> map19.map((<span style="color:#66d9ef">String</span> key,<span style="color:#66d9ef">int</span> value){
       <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> MapEntry(value, key);
@@ -194,10 +194,10 @@ map25.updateAll((<span style="color:#66d9ef">String</span> key,<span style="colo
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%82/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%82/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

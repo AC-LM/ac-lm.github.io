@@ -6,7 +6,7 @@
     <description>Recent content in Android on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android(4)——华为进入生产模式使用无线调试</title>
       <link>https://ac-lm.github.io/posts/android/android4%E5%8D%8E%E4%B8%BA%E8%BF%9B%E5%85%A5%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</link>
@@ -29,18 +29,6 @@
     </item>
     
     <item>
-      <title>Android(1)——Android SDK的配置</title>
-      <link>https://ac-lm.github.io/posts/android/android1android-sdk%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/android/android1android-sdk%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
-      <description> 参考文档：sdkmanager @Android Studio用户指南 
- 1.配置Android SDK 下载 Android CMD 工具 sdkmanager Command line tools only
-将 Android\cmdline-tools\latest\bin\sdkmanager.bat 添加到环境变量中
-# 执行命令，安装最新的平台工具（包括 `adb` 和 `fastboot`）以及适用于 API 级别 28 的 SDK 工具 # 请确保环境变量 ANDROID_SDK_ROOT 已被设置 sdkmanager &amp;#34;platform-tools&amp;#34; &amp;#34;platforms;android-28&amp;#34; # 若要卸载软件包，只需添加 `--uninstall` 标记 sdkmanager --uninstall packages [options] sdkmanager --uninstall --package_file=package_file [options] # 以下命令列出已安装和可用的软件包 sdkmanager --list [options] \ [--channel=channel_id] // Channels: 0 (stable), 1 (beta), 2 (dev), or 3 (canary) </description>
-    </item>
-    
-    <item>
       <title>Android(2)——Adb调试</title>
       <link>https://ac-lm.github.io/posts/android/android2adb%E8%B0%83%E8%AF%95/</link>
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
@@ -49,6 +37,18 @@
       <description>参考文档：adb @Android Studio用户指南 
  1.adb的基础操作 以华为手机为例，adb 文件夹在SDK目录下 SDK\Android\platform-tools 内
 adb devices #设备 adb shell wm size #长宽 adb shell getevent -p #监听事件 adb shell #shell --&amp;gt; HWTRT-Q:/ $ getevent /dev/input/event4 #按键事件 --&amp;gt; HWTRT-Q:/ $ exit adb shell getevent /dev/input/event4 #按键事件 adb shell dumpsys #获取当前运行的服务 adb shell dumpsys battery #获取设备电池信息 adb shell dumpsys cpuinfo adb shell dumpsys meminfo # 要获取具体应用的内存信息，可加上包名 adb shell dumpsys meminfo PACKAGE_NAME # 获取某个包的信息： adb shell dumpsys package PACKAGE_NAME 2.</description>
+    </item>
+    
+    <item>
+      <title>Android(1)——Android SDK的配置</title>
+      <link>https://ac-lm.github.io/posts/android/android1android-sdk%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/android/android1android-sdk%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
+      <description> 参考文档：sdkmanager @Android Studio用户指南 
+ 1.配置Android SDK 下载 Android CMD 工具 sdkmanager Command line tools only
+将 Android\cmdline-tools\latest\bin\sdkmanager.bat 添加到环境变量中
+# 执行命令，安装最新的平台工具（包括 `adb` 和 `fastboot`）以及适用于 API 级别 28 的 SDK 工具 # 请确保环境变量 ANDROID_SDK_ROOT 已被设置 sdkmanager &amp;#34;platform-tools&amp;#34; &amp;#34;platforms;android-28&amp;#34; # 若要卸载软件包，只需添加 `--uninstall` 标记 sdkmanager --uninstall packages [options] sdkmanager --uninstall --package_file=package_file [options] # 以下命令列出已安装和可用的软件包 sdkmanager --list [options] \ [--channel=channel_id] // Channels: 0 (stable), 1 (beta), 2 (dev), or 3 (canary) </description>
     </item>
     
   </channel>

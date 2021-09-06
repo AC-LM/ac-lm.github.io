@@ -58,13 +58,13 @@
 <h3 id="2-import-的方式--绝对导入与相对导入">2. import 的方式 ？ 绝对导入与相对导入</h3>
 <h4 id="21-绝对导入">2.1 绝对导入</h4>
 <p>绝对路径要求我们必须从最顶层的文件夹开始，为每个包或每个模块提供出完整详细的导入路径</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> package1 <span style="color:#f92672">import</span> mudule1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> package1 <span style="color:#f92672">import</span> mudule1
 <span style="color:#f92672">from</span> package1.module2 <span style="color:#f92672">import</span> Fx
 <span style="color:#f92672">from</span> package2 <span style="color:#f92672">import</span> Cx
 <span style="color:#f92672">from</span> package2.subpackage1.module5 <span style="color:#f92672">import</span> Fy
 </code></pre></div><h4 id="22-相对导入">2.2 相对导入</h4>
 <p>相对导入则要求我们给出相对与当前位置，想导入资源所在的位置。另外，相对导入又分为隐式相对导入和显式相对导入两种，比如我们想在<code>package2/module3.py</code>中引用<code>module4</code>模块，我们可以这么写</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># package2/module3.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># package2/module3.py</span>
 
 <span style="color:#f92672">import</span> module4 <span style="color:#75715e"># 隐式相对导入</span>
 <span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> module4 <span style="color:#75715e"># 显式相对导入</span>
@@ -77,13 +77,13 @@
 <p>Python 会在两个地方寻找这个模块，第一是<code>sys.path</code>（通过运行代码<code>print(sys.path)</code>查看），第二个地方就是运行文件所在的目录。</p>
 <h3 id="2-加载">2 加载</h3>
 <h4 id="21-import">2.1 import</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> a
-<span style="color:#66d9ef">print</span>(type(a))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> a
+print(type(a))
 </code></pre></div><p>打印<code>&lt;class 'module'&gt;</code>，上述代码加载的是一个模块对象，使用的是另一个模块的内存，其运行逻辑如图</p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/1.jpg" alt=""></p>
 <h4 id="22-fromimport">2.2 from&hellip;..import&hellip;&hellip;</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> a <span style="color:#f92672">import</span> zx
-<span style="color:#66d9ef">print</span>(type(zx))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> a <span style="color:#f92672">import</span> zx
+print(type(zx))
 </code></pre></div><p>打印<code>&lt;class 'method'&gt;</code>，加载的是方法，直接将内容复制一份，使用自己的内存，其运行逻辑如图</p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/2.jpg" alt=""></p>
 

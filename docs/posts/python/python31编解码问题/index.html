@@ -47,35 +47,35 @@
         <div class="content">
             <h2 id="1二进制字符">1.二进制字符</h2>
 <p>在计算机中所有字符都是以二进制代码储存的，系统根据不同的编码格式，将二进制代码转换为字符显示。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\u0394</span><span style="color:#e6db74">&#34;</span>)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\U00000394</span><span style="color:#e6db74">&#34;</span>)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\N{greek capital letter delta}</span><span style="color:#e6db74">&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\u0394</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\U00000394</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\N{greek capital letter delta}</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div><h2 id="2乱码时的处理">2.乱码时的处理</h2>
 <p>当编码格式与解码格式出现冲突时就会出现乱码，而此时往往需要将报错的部分进行替换处理，使得程序整体不出错。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 不处理</span>
-<span style="color:#66d9ef">print</span>((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;strict&#34;</span>))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 不处理</span>
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;strict&#34;</span>))
 <span style="color:#75715e"># 替换为U+FFFD</span>
-<span style="color:#66d9ef">print</span>((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;replace&#34;</span>))
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;replace&#34;</span>))
 <span style="color:#75715e"># 加上反斜杠</span>
-<span style="color:#66d9ef">print</span>((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;backslashreplace&#34;</span>))
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;backslashreplace&#34;</span>))
 <span style="color:#75715e"># 直接忽略</span>
-<span style="color:#66d9ef">print</span>((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;ignore&#34;</span>))
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;ignore&#34;</span>))
 </code></pre></div><h2 id="3字符与二进制的转换">3.字符与二进制的转换</h2>
 <h3 id="二进制转换字符">二进制转换字符</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">u<span style="color:#f92672">=</span>chr(<span style="color:#ae81ff">40960</span>)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;abce&#34;</span><span style="color:#f92672">+</span>chr(<span style="color:#ae81ff">1972</span>)
-<span style="color:#66d9ef">print</span>(u)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">u<span style="color:#f92672">=</span>chr(<span style="color:#ae81ff">40960</span>)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;abce&#34;</span><span style="color:#f92672">+</span>chr(<span style="color:#ae81ff">1972</span>)
+print(u)
 u1<span style="color:#f92672">=</span>chr(<span style="color:#ae81ff">123</span>)
-<span style="color:#66d9ef">print</span>(u1)
+print(u1)
 </code></pre></div><h3 id="字符转换二进制">字符转换二进制</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">u<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;中国abc&#34;</span>
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">u<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;中国abc&#34;</span>
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
 <span style="color:#75715e"># b&#39;\xe4\xb8\xad\xe5\x9b\xbd&#39;</span>
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>))
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;ignore&#34;</span>))
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;replace&#34;</span>))
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;xmlcharrefreplace&#34;</span>))
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;backslashreplace&#34;</span>))
-<span style="color:#66d9ef">print</span>(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;namereplace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;ignore&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;replace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;xmlcharrefreplace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;backslashreplace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;namereplace&#34;</span>))
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>

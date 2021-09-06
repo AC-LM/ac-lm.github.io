@@ -41,17 +41,17 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Django(11)——setting文件</a></h2>
-                <p>@LM | 2021-07-24</p>
+                <p>@LM | 2021-07-27</p>
             </div>
         </header>
         <div class="content">
             <h2 id="1settingpy">1.<code>setting.py</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
 BASE_DIR <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(__file__)))
 <span style="color:#75715e">#引入os，os包可以对文件进行操作管理</span>
 SECRET_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^#kms19!iawj2b&amp;v3egmynpfwj8^v@2f(_1+jlw+#^vy^pg7oy&#39;</span>
 <span style="color:#75715e">#随机生成的密钥</span>
-DEBUG <span style="color:#f92672">=</span> True
+DEBUG <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 <span style="color:#75715e">#代表是调试环境</span>
 ALLOWED_HOSTS <span style="color:#f92672">=</span> []
 <span style="color:#75715e">#允许的主机路径，不填写或者ALLOWED_HOSTS = [“*”]代表允许任意主机域名，如果要指定，在里面输入，</span>
@@ -82,7 +82,7 @@ TEMPLATES <span style="color:#f92672">=</span> [
     <span style="color:#e6db74">&#39;BACKEND&#39;</span>: <span style="color:#e6db74">&#39;django.template.backends.django.DjangoTemplates&#39;</span>,
     <span style="color:#e6db74">&#39;DIRS&#39;</span>: [os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#39;templates&#39;</span>)]
     ,
-    <span style="color:#e6db74">&#39;APP_DIRS&#39;</span>: True,
+    <span style="color:#e6db74">&#39;APP_DIRS&#39;</span>: <span style="color:#66d9ef">True</span>,
     <span style="color:#e6db74">&#39;OPTIONS&#39;</span>: {
       <span style="color:#e6db74">&#39;context_processors&#39;</span>: [
         <span style="color:#e6db74">&#39;django.template.context_processors.debug&#39;</span>,
@@ -126,18 +126,18 @@ LANGUAGE_CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&
 <span style="color:#75715e">#语言 如中文: LANGUAGE_CODE = &#39;zh-hans&#39;</span>
 TIME_ZONE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UTC&#39;</span>
 <span style="color:#75715e">#时区  如中国上海时区: TIME_ZONE = &#39;Asia/Shanghai&#39;</span>
-USE_I18N <span style="color:#f92672">=</span> True
+USE_I18N <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 <span style="color:#75715e">#国际化</span>
-USE_L10N <span style="color:#f92672">=</span> True
+USE_L10N <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">如果USE_L10N设置为True，则区域设置指定的格式具有更高的优先级 
 </span><span style="color:#e6db74">admin 的时候想显示格式化时间，必须把 USE_L10N = False
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-USE_TZ <span style="color:#f92672">=</span> True
+USE_TZ <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 <span style="color:#75715e">#系统时区</span>
 LOGGING <span style="color:#f92672">=</span> {
   <span style="color:#e6db74">&#39;version&#39;</span>: <span style="color:#ae81ff">1</span>,
-  <span style="color:#e6db74">&#39;disable_existing_loggers&#39;</span>: False,
+  <span style="color:#e6db74">&#39;disable_existing_loggers&#39;</span>: <span style="color:#66d9ef">False</span>,
   <span style="color:#e6db74">&#39;handlers&#39;</span>: {
     <span style="color:#e6db74">&#39;console&#39;</span>:{
       <span style="color:#e6db74">&#39;level&#39;</span>:<span style="color:#e6db74">&#39;DEBUG&#39;</span>,
@@ -147,7 +147,7 @@ LOGGING <span style="color:#f92672">=</span> {
   <span style="color:#e6db74">&#39;loggers&#39;</span>: {
     <span style="color:#e6db74">&#39;django.db.backends&#39;</span>: {
       <span style="color:#e6db74">&#39;handlers&#39;</span>: [<span style="color:#e6db74">&#39;console&#39;</span>],
-      <span style="color:#e6db74">&#39;propagate&#39;</span>: True,
+      <span style="color:#e6db74">&#39;propagate&#39;</span>: <span style="color:#66d9ef">True</span>,
       <span style="color:#e6db74">&#39;level&#39;</span>:<span style="color:#e6db74">&#39;DEBUG&#39;</span>,
     },
   }
@@ -204,10 +204,10 @@ STATIC_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django10%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97auth/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/django/django10%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97auth/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django12404%E6%96%87%E4%BB%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

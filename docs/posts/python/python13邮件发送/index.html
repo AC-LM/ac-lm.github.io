@@ -46,7 +46,7 @@
         </header>
         <div class="content">
             <h2 id="1发送简单邮件">1.发送简单邮件</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> smtplib
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> smtplib
 <span style="color:#75715e">#发送字符串的邮件</span>
 <span style="color:#f92672">from</span> email.mime.text <span style="color:#f92672">import</span> MIMEText
 <span style="color:#75715e">#处理多种形态的邮件主体我们需要 MIMEMultipart 类</span>
@@ -86,7 +86,7 @@ smtp<span style="color:#f92672">.</span>quit()
 </code></pre></div><h2 id="2发送带附件的邮件">2.发送带附件的邮件</h2>
 <p>使用MIMEMultipart来标示这个邮件是多个部分组成的，然后attach各个部分。如果是附件，则add_header加入附件的声明。</p>
 <p>MIME有很多种类型，这个略麻烦，如果附件是图片格式，我要用MIMEImage，如果是音频，要用MIMEAudio，如果是word、excel，我都不知道该用哪种MIME类型了，得上google去查。最懒的方法就是，<strong>不管什么类型的附件，都用MIMEApplication</strong>，MIMEApplication默认子类型是application/octet-stream。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> smtplib
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> smtplib
 <span style="color:#f92672">from</span> email.mime.text <span style="color:#f92672">import</span> MIMEText
 <span style="color:#f92672">from</span> email.mime.image <span style="color:#f92672">import</span> MIMEImage
 <span style="color:#f92672">from</span> email.mime.multipart <span style="color:#f92672">import</span> MIMEMultipart
@@ -124,10 +124,10 @@ smtp<span style="color:#f92672">.</span>quit()
             server <span style="color:#f92672">=</span> smtplib<span style="color:#f92672">.</span>SMTP(<span style="color:#e6db74">&#39;smtp.163.com&#39;</span>)
             server<span style="color:#f92672">.</span>login(fromaddr,password)
             server<span style="color:#f92672">.</span>sendmail(fromaddr, toaddrs, m<span style="color:#f92672">.</span>as_string())
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;success&#39;</span>)
+            print(<span style="color:#e6db74">&#39;success&#39;</span>)
             server<span style="color:#f92672">.</span>quit()
         <span style="color:#66d9ef">except</span> smtplib<span style="color:#f92672">.</span>SMTPException <span style="color:#66d9ef">as</span> e:
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;error:&#39;</span>,e) <span style="color:#75715e">#打印错误</span>
+            print(<span style="color:#e6db74">&#39;error:&#39;</span>,e) <span style="color:#75715e">#打印错误</span>
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>

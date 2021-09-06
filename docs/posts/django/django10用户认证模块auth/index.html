@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Django(10)——用户认证模块auth</a></h2>
-                <p>@LM | 2021-07-24</p>
+                <p>@LM | 2021-07-26</p>
             </div>
         </header>
         <div class="content">
@@ -50,15 +50,15 @@
 </blockquote>
 <h2 id="1介绍">1.介绍</h2>
 <p>Django内置了强大的用户认证系统<code>auth</code>，它默认创建并使用<code>auth_user</code>表来存储用户数据。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth  <span style="color:#75715e"># 使用auth认证系统</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth  <span style="color:#75715e"># 使用auth认证系统</span>
 <span style="color:#f92672">from</span> django.contrib.auth.models <span style="color:#f92672">import</span> User  <span style="color:#75715e"># auth认证系统默认使用User表</span>
 </code></pre></div><h2 id="2authauthenticate">2.auth.authenticate()</h2>
 <p>Django提供简单的用户认证功能，如果认证成功（用户名和密码正确有效），便会返回一个<code>User</code>对象。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth
 user_obj <span style="color:#f92672">=</span> auth<span style="color:#f92672">.</span>authenticate(username<span style="color:#f92672">=</span>username,password<span style="color:#f92672">=</span>pwd)
 </code></pre></div><h2 id="3authloginrequest-user">3.auth.login(request, user)</h2>
 <p>该函数实现一个用户登录的功能，它本质上会在后端为该用户生成相关session数据。在使用<code>login(request, user_obj)</code>登录后之后，便可以通过<code>request.user</code>拿到当前登录的用户对象，否则<code>request.user</code>得到的是一个匿名用户对象。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render, HttpResponse, redirect
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render, HttpResponse, redirect
 <span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(request):
@@ -76,21 +76,21 @@ user_obj <span style="color:#f92672">=</span> auth<span style="color:#f92672">.<
     <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;login.html&#39;</span>)
 </code></pre></div><h2 id="4autologoutrequest">4.auto.logout(request)</h2>
 <p>该函数会将当前请求的session信息会全部清除。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> auth
    
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logout</span>(request):
     auth<span style="color:#f92672">.</span>logout(request)
     <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/login/&#39;</span>)
 </code></pre></div><h2 id="5login_required">5.@login_required</h2>
 <p>该装饰器可以便捷的为某个视图添加登录校验，若用户没有登录，则会跳转到默认的登录界面并传递当前访问界面的绝对路径 (登陆成功后，会重定向到该路径)。如果需要自定义登录的URL，则需要在<code>settings.py</code>文件中通过<code>LOGIN_URL = '/login/'</code>进行修改。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib.auth.decorators <span style="color:#f92672">import</span> login_required
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib.auth.decorators <span style="color:#f92672">import</span> login_required
       
 <span style="color:#a6e22e">@login_required</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
     <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;index.html&#39;</span>)
 </code></pre></div><h2 id="6create_user">6.create_user()</h2>
 <p>该函数可以创建一个新用户，注意创建时明文输入的密码会在数据库中加密存在。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib.auth.models <span style="color:#f92672">import</span> User
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib.auth.models <span style="color:#f92672">import</span> User
 user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create_user<span style="color:#960050;background-color:#1e0010">（</span>username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;用户名&#39;</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;密码&#39;</span>,email<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;邮箱&#39;</span>,<span style="color:#f92672">...</span><span style="color:#960050;background-color:#1e0010">）</span>
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reg</span>(request):
@@ -108,17 +108,17 @@ user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</spa
     <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;reg.html&#39;</span>)
 </code></pre></div><h2 id="7check_passwordraw_password">7.check_password(raw_password)</h2>
 <p>该函数可以对密码的正确与否进行检查。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ok <span style="color:#f92672">=</span> user_obj<span style="color:#f92672">.</span>check_password(<span style="color:#e6db74">&#39;密码&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ok <span style="color:#f92672">=</span> user_obj<span style="color:#f92672">.</span>check_password(<span style="color:#e6db74">&#39;密码&#39;</span>)
 <span style="color:#75715e"># 或者直接针对当前请求的user对象校验原密码是否正确：</span>
 ok <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>check_password(raw_password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;原密码&#39;</span>)
 </code></pre></div><h2 id="8is_authenticated">8.is_authenticated()</h2>
 <p>该函数可以判断用户是否通过验证。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_view</span>(request):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_view</span>(request):
   <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>is_authenticated():
     <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">?next=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (settings<span style="color:#f92672">.</span>LOGIN_URL, request<span style="color:#f92672">.</span>path))
 </code></pre></div><h2 id="9set_password">9.set_password()</h2>
 <p>该函数能实现对密码的修改，注意在不能直接的查找密码修改，这是因为在数据库中用户的密码是以加密形式存在的，<code>auth</code>的验证是先接收明文密码，在加密后进行验证，如果直接修改则明文加密后与数据库的明文密码便对接不上。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>set_password(pwd)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>set_password(pwd)
 request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>save()  <span style="color:#75715e"># 修改密码</span>
 </code></pre></div><h2 id="10扩展auto默认表">10.扩展auto默认表</h2>
 <p>由于默认的<code>auth_user</code>表字段都是固定的，如果用户需要添加别的字段，可以这样操作：</p>
@@ -126,7 +126,7 @@ request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</sp
 <li>方法一：新建另外一张表然后通过一对一和内置的auth_user表关联。</li>
 <li>方法二：通过继承内置的AbstractUser类，来定义一个自己的Model类。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">models<span style="color:#f92672">.</span>py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">models<span style="color:#f92672">.</span>py
 <span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
 <span style="color:#f92672">from</span> django.contrib.auth.models <span style="color:#f92672">import</span> AbstractUser
 
@@ -151,8 +151,10 @@ request<span style="color:#f92672">.</span>user<span style="color:#f92672">.</sp
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/django/django11setting%E6%96%87%E4%BB%B6/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django9csrf%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="button large previous">上一页</a></li>
         
+        
+          <li><a href="https://ac-lm.github.io/posts/django/django11setting%E6%96%87%E4%BB%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

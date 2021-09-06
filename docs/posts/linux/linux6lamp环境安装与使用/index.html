@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(6)——LAMP环境安装与使用</a></h2>
-                <p>@LM | 2020-11-17</p>
+                <p>@LM | 2020-11-18</p>
             </div>
         </header>
         <div class="content">
@@ -54,7 +54,7 @@
 <li>PHP、Perl或Python，脚本语言</li>
 </ul>
 <h2 id="2mariadb-数据库">2.MariaDB 数据库</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y mariadb mariadb-server  <span style="color:#75715e">#安装mariadb客户端和服务端程序</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y mariadb mariadb-server  <span style="color:#75715e">#安装mariadb客户端和服务端程序</span>
 yum groupinstall mariadb mariadb-server -y  <span style="color:#75715e">#或</span>
 systemctl start mariadb         <span style="color:#75715e">#启动程序</span>
 systemctl enable mariadb         <span style="color:#75715e">#设为开机自启动</span>
@@ -85,7 +85,7 @@ drop database lan； <span style="color:#75715e">#删除库lan</span>
 exit
 <span style="color:#75715e">#ps：如果出现无权限错误，请尝试rm -rf /var/lib/mysql/*，删除所有mysql，重新安装</span>
 </code></pre></div><h2 id="3httpd与php">3.Httpd与php</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install httpd php php-mysql php-gd <span style="color:#75715e">#安装httpd 与 php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install httpd php php-mysql php-gd <span style="color:#75715e">#安装httpd 与 php</span>
 systemctl start httpd <span style="color:#75715e">#启动httpd，请开启80端口，见Linux(2)——Docker安装与防火墙</span>
 vim /var/www/html/test.php  <span style="color:#75715e">#创建测试页面，&lt;?php phpinfo();?&gt;，处于/var/www/html/目录下html文件都可以访问</span>
 </code></pre></div>
@@ -102,10 +102,10 @@ vim /var/www/html/test.php  <span style="color:#75715e">#创建测试页面，&l
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux9python3.6%E5%AE%89%E8%A3%85/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux11npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux7yum%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

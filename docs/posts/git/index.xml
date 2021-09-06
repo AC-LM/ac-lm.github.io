@@ -6,7 +6,7 @@
     <description>Recent content in Git on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git(4)——.gitlab-ci.yml文件配置</title>
       <link>https://ac-lm.github.io/posts/git/git4.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</link>
@@ -22,6 +22,15 @@ Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认
     </item>
     
     <item>
+      <title>Git(3)——gitlab-runner安装配置</title>
+      <link>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <description>1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).</description>
+    </item>
+    
+    <item>
       <title>Git(2)——SSH配置</title>
       <link>https://ac-lm.github.io/posts/git/git2ssh-%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
@@ -29,18 +38,9 @@ Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认
       <guid>https://ac-lm.github.io/posts/git/git2ssh-%E9%85%8D%E7%BD%AE/</guid>
       <description>1.配置SSH 打开 Git 命令行工具，输入以下命令，使用邮箱创建密码对
 ssh-keygen -t rsa -b 2048 -C &amp;#34;email@example.com&amp;#34; 有此结果，在对应目录【/home/user/.ssh/id_rsa】下找到生成的公钥文件 id_rsa.pub，记事本打开，将里面的内容复制到剪贴板
-Generating public/private rsa key pair. Enter file in which to save the key (/home/user/.ssh/id_rsa): 打开新建的github或者gitlab账户，找到 SSH Keys 选项 【setting-&amp;gt;SSH keys】，将剪贴板内容粘贴到内容框中，title可以用默认的邮箱名字，最后点击add。这就代表这个用户被远程仓库所承认了
+Generating docs/private rsa key pair. Enter file in which to save the key (/home/user/.ssh/id_rsa): 打开新建的github或者gitlab账户，找到 SSH Keys 选项 【setting-&amp;gt;SSH keys】，将剪贴板内容粘贴到内容框中，title可以用默认的邮箱名字，最后点击add。这就代表这个用户被远程仓库所承认了
 选择克隆的项目，复制 SSH 克隆URL，进行克隆
 git clone + 库的地址 2.创建SSH的目的 SSH KEY的作用是来识别你的电脑，相当于人的身份证号，在你的C盘用户目录下面 (:\Users\LX) 存在一个 .ssh 目录，这个目录下有 id_rsa 和 id_rsa.pub 两个文件，这两个就是 SSH Key 的秘钥对，id_rsa 是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</description>
-    </item>
-    
-    <item>
-      <title>Git(3)——gitlab-runner安装配置</title>
-      <link>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
-      <description>1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).</description>
     </item>
     
     <item>

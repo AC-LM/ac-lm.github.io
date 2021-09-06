@@ -46,7 +46,7 @@
         </header>
         <div class="content">
             <h2 id="1命令使用">1.命令使用</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#----- generate ------------------------------</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#----- generate ------------------------------</span>
 allure generate DIR <span style="color:#f92672">-</span>o DIR <span style="color:#f92672">-</span>c DIR
 <span style="color:#75715e"># 参数：-c, --clean 在生成新的Allure报告之前，先清除该目录</span>
 <span style="color:#75715e"># 参数： -o, --report-dir, --output 指定目录生成allure报告</span>
@@ -64,17 +64,17 @@ allure serve<span style="color:#f92672">./</span>report<span style="color:#f9267
 <span style="color:#75715e"># 测试执行，在指定目录DIR生成allure报告与如果目录存在则清除目录</span>
 pytest <span style="color:#f92672">--</span>alluredir<span style="color:#f92672">=</span>DIR <span style="color:#f92672">--</span>clean<span style="color:#f92672">-</span>alluredir
 </code></pre></div><h2 id="2生成报告前台">2.生成报告(前台)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pytest --alluredir<span style="color:#f92672">=</span>/tmp/my_allure_results  <span style="color:#75715e"># 执行测试</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pytest --alluredir<span style="color:#f92672">=</span>/tmp/my_allure_results  <span style="color:#75715e"># 执行测试</span>
 allure serve /tmp/my_allure_results -p <span style="color:#ae81ff">33333</span>  <span style="color:#75715e"># 生成报告</span>
 </code></pre></div><h2 id="3生成报告后台">3.生成报告(后台)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nohup allure serve /tmp/my_allure_results -p <span style="color:#ae81ff">33333</span> &gt;/tmp/run.log 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nohup allure serve /tmp/my_allure_results -p <span style="color:#ae81ff">33333</span> &gt;/tmp/run.log 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
 ps aux | grep allure
 pkill -f allure
 <span style="color:#75715e">#-或------------------------------------------------------------</span>
 nohup allure open /tmp/result -p <span style="color:#ae81ff">33333</span> &gt;run.log 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
 allure generate /tmp/my_allure_results -o /tmp/result -c
 </code></pre></div><h2 id="4allureattach附件">4.allure.attach()附件</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 使用 allure.attach() 来插入一段自己写的HTML 和 allure.attach.file() 来导入一个已存在的HTML文件</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 使用 allure.attach() 来插入一段自己写的HTML 和 allure.attach.file() 来导入一个已存在的HTML文件</span>
 allure<span style="color:#f92672">.</span>attach(body, name, attachment_type, extension)
 allure<span style="color:#f92672">.</span>attach<span style="color:#f92672">.</span>file(source, name, attachment_type, extension)
 <span style="color:#e6db74">&#34;&#34;&#34;
@@ -85,18 +85,18 @@ allure<span style="color:#f92672">.</span>attach<span style="color:#f92672">.</s
 </span><span style="color:#e6db74">source：文件路径，相当于传一个文件
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </code></pre></div><h2 id="5allure的语法糖">5.allure的语法糖@</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@allure.feature</span>(<span style="color:#e6db74">&#39;功能名称&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>feature(<span style="color:#e6db74">&#39;功能名称&#39;</span>)
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>:
     <span style="color:#66d9ef">pass</span>
-<span style="color:#a6e22e">@allure.issue</span>(<span style="color:#e6db74">&#34;测试网站&#34;</span>) 
-<span style="color:#a6e22e">@allure.link</span>(<span style="color:#e6db74">&#34;链接&#34;</span>)
-<span style="color:#a6e22e">@allure.testcase</span>(<span style="color:#e6db74">&#34;测试ID&#34;</span>)
-<span style="color:#a6e22e">@allure.description</span>(<span style="color:#e6db74">&#34;说明&#34;</span>)
-<span style="color:#a6e22e">@allure.story</span>(<span style="color:#e6db74">&#39;子功能名称&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">@allure.title</span>(<span style="color:#e6db74">&#39;标题&#39;</span>)
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>issue(<span style="color:#e6db74">&#34;测试网站&#34;</span>) 
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>link(<span style="color:#e6db74">&#34;链接&#34;</span>)
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>testcase(<span style="color:#e6db74">&#34;测试ID&#34;</span>)
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>description(<span style="color:#e6db74">&#34;说明&#34;</span>)
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>story(<span style="color:#e6db74">&#39;子功能名称&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;标题&#39;</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Test</span>(self):
     <span style="color:#66d9ef">pass</span>
-<span style="color:#a6e22e">@allure.step</span>(<span style="color:#e6db74">&#39;步骤&#39;</span>)
-<span style="color:#a6e22e">@allure.severity</span>(<span style="color:#e6db74">&#39;级别&#39;</span>)
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>step(<span style="color:#e6db74">&#39;步骤&#39;</span>)
+<span style="color:#a6e22e">@allure</span><span style="color:#f92672">.</span>severity(<span style="color:#e6db74">&#39;级别&#39;</span>)
 <span style="color:#e6db74">&#39;&#39;&#39;严重级别
 </span><span style="color:#e6db74">Blocker级别：中断缺陷（客户端程序无响应，无法执行下一步操作）
 </span><span style="color:#e6db74">Critical级别：临界缺陷（ 功能点缺失）
@@ -105,12 +105,12 @@ allure<span style="color:#f92672">.</span>attach<span style="color:#f92672">.</s
 </span><span style="color:#e6db74">Trivial级别：轻微缺陷（必输项无提示，或者提示不规范）
 </span><span style="color:#e6db74">&#39;&#39;&#39;</span>
 </code></pre></div><h2 id="6用例的描述">6.用例的描述</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 注释即为描述</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 注释即为描述</span>
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">描述
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </code></pre></div><h2 id="7alluredynamic动态报告">7.allure.dynamic()动态报告</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">allure<span style="color:#f92672">.</span>dynamic<span style="color:#f92672">.</span>feature()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">allure<span style="color:#f92672">.</span>dynamic<span style="color:#f92672">.</span>feature()
 allure<span style="color:#f92672">.</span>dynamic<span style="color:#f92672">.</span>link()
 allure<span style="color:#f92672">.</span>dynamic<span style="color:#f92672">.</span>issue()
 allure<span style="color:#f92672">.</span>dynamic<span style="color:#f92672">.</span>testcase()
@@ -132,7 +132,7 @@ allure<span style="color:#f92672">.</span>dynamic<span style="color:#f92672">.</
         <li><a href="#top" class="button large">回到顶部</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/pytest&#43;allure/pytest2fixture/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/pytest&#43;allure/pytest1pytest-%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

@@ -41,14 +41,14 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">随记(2)——什么是CSRF</a></h2>
-                <p>@LM | 2020-09-15</p>
+                <p>@LM | 2020-09-11</p>
             </div>
         </header>
         <div class="content">
             <blockquote>
 <p>参考原文：<a href="https://zhuanlan.zhihu.com/p/22521378"> CSRF 是什么？@饥人谷若愚 </a></p>
 </blockquote>
-<h2 id="1什么是-csrf--cross-site-request-forgery--跨站请求伪造-">1.什么是 CSRF ( Cross Site Request Forgery )( 跨站请求伪造 )</h2>
+<h2 id="1什么是-csrf-跨站请求伪造">1.什么是 CSRF 跨站请求伪造</h2>
 <p>CSRF (Cross Site Request Forgery)攻击，中文名：跨站请求伪造。其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。这样，当用户在登录状态下请求这个地址时，服务端就会以为这个非法操作是用户合法的操作。</p>
 <h2 id="2如何避免">2.如何避免</h2>
 <p>在客户端防范方面：对于数据库的修改请求，全部使用 POST 提交，禁止使用 GET 请求。在服务器端防范方面：一般的做法是在表单里面添加一段隐藏的唯一的 token (请求令牌)。比如：</p>
@@ -73,10 +73,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AFkafka/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AFkafka/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

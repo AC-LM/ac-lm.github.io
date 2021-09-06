@@ -41,18 +41,18 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">BUG(5)——爬虫中乱码的成因及处理</a></h2>
-                <p>@LM | 2020-09-16</p>
+                <p>@LM | 2020-11-29</p>
             </div>
         </header>
         <div class="content">
             <h2 id="为什么会出现乱码">为什么会出现乱码</h2>
 <p>在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(res<span style="color:#f92672">.</span>encoding) 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(res<span style="color:#f92672">.</span>encoding) 
 <span style="color:#75715e"># 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式</span>
-<span style="color:#66d9ef">print</span>(res<span style="color:#f92672">.</span>apparent_encoding) 
+print(res<span style="color:#f92672">.</span>apparent_encoding) 
 <span style="color:#75715e"># 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。</span>
 </code></pre></div><p>输出结果为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Python使用的编解码格式</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Python使用的编解码格式</span>
 ISO<span style="color:#f92672">-</span><span style="color:#ae81ff">8859</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
 <span style="color:#75715e"># 实际应该使用的编解码格式</span>
 GB2312
@@ -69,29 +69,29 @@ GB2312
 <ol>
 <li>
 <p>直接指定res.encoding</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
 url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://search.51job.com&#34;</span>
 res <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
 res<span style="color:#f92672">.</span>encoding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GBK&#34;</span>
 html <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>text
-<span style="color:#66d9ef">print</span>(html)
+print(html)
 </code></pre></div></li>
 <li>
 <p>通过res.apparent_encoding属性指定</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
 url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://search.51job.com&#34;</span>
 res <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
 res<span style="color:#f92672">.</span>encoding <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>apparent_encoding
 html <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>text
-<span style="color:#66d9ef">print</span>(html)
+print(html)
 </code></pre></div></li>
 <li>
 <p>通过编码、解码的方式</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
 url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://search.51job.com&#34;</span>
 res <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
 html <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ISO-8859-1&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;GBK&#39;</span>)
-<span style="color:#66d9ef">print</span>(html)
+print(html)
 </code></pre></div></li>
 </ol>
 <p>基本思路三步走：确定源网页的编码GBK、对文本通过 ISO-8859-1 编码对源网页数据还原、统一转换解码UTF-8</p>
@@ -109,10 +109,10 @@ html <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

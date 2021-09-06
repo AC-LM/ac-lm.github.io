@@ -41,12 +41,12 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">BUG(4)——Jmeter中一些常见问题</a></h2>
-                <p>@LM | 2020-10-29</p>
+                <p>@LM | 2020-11-28</p>
             </div>
         </header>
         <div class="content">
             <h2 id="运行内存配置修改">运行内存配置修改</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> not defined HEAP <span style="color:#f92672">(</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> not defined HEAP <span style="color:#f92672">(</span>
     rem See the unix startup file <span style="color:#66d9ef">for</span> the rationale of the following parameters,
     rem including some tuning recommendations
     set HEAP<span style="color:#f92672">=</span>-Xms5g -Xmx5g -XX:MaxMetaspaceSize<span style="color:#f92672">=</span>5120m
@@ -59,9 +59,9 @@
 <p>错误：脚本报错java.net.BindException: Address already in use: connect</p>
 <p>原因：windows端口被耗尽（默认1024-5000），而且操作系统要 2~4分钟才会重新释放这些端口，所以可以增加windows的可用端口来解决。windows端口最大数为65534</p>
 <p>解决：修改操作系统注册表(cmd-regedit)，找到</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">HKEY_LOCAL_MACHINE<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\S</span>ervices<span style="color:#ae81ff">\T</span>CPIP<span style="color:#ae81ff">\P</span>arameters
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">HKEY_LOCAL_MACHINE<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\S</span>ervices<span style="color:#ae81ff">\T</span>CPIP<span style="color:#ae81ff">\P</span>arameters
 </code></pre></div><p>新建两个 DWORD值</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">name：MaxUserPort，value：65534（十进制）；
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">name：MaxUserPort，value：65534（十进制）；
 name：TcpTimedWaitDelay，value：30（十进制）；
 </code></pre></div><p>重启系统。</p>
 <p>【或设置线程组时，勾选 same user on each iteration】</p>
@@ -87,10 +87,10 @@ name：TcpTimedWaitDelay，value：30（十进制）；
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

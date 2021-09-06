@@ -69,7 +69,7 @@
 </ul>
 <h2 id="约束">约束</h2>
 <p>YAML文件定义了一系列带有约束说明的任务。这些任务都是以任务名开始并且至少要包含script部分。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">job1</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">job1</span>:
   <span style="color:#f92672">script</span>: <span style="color:#e6db74">&#34;execute-script-for-job1&#34;</span>
   
 <span style="color:#f92672">job2</span>:
@@ -77,13 +77,13 @@
 </code></pre></div><h2 id="跳过job">跳过job</h2>
 <p>如果你的 commit 信息包涵 [ci skip] 或者 [skip ci] ，不论大小写，这个 commit 将会被创建，但是 job 会被跳过</p>
 <h2 id="开始">开始</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">before_script</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">before_script</span>:
   - <span style="color:#ae81ff">echo &#34;每个job之前都会执行&#34;</span>
 </code></pre></div><h2 id="结束">结束</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">after_script</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">after_script</span>:
   - <span style="color:#ae81ff">echo &#34;每个job之后都会执行&#34;</span>
 </code></pre></div><h2 id="示例">示例</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 定义 stages（阶段）。任务将按此顺序执行。</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 定义 stages（阶段）。任务将按此顺序执行。</span>
 <span style="color:#f92672">stages</span>:
   - <span style="color:#ae81ff">build</span>
   - <span style="color:#ae81ff">test</span>
@@ -160,7 +160,7 @@
 <li><strong>after_script</strong>：after_script用来定义所有job之后运行的命令</li>
 <li><strong>stages</strong>：stages用来定义可以被job调用的stages。stages的规范允许有灵活的多级pipelines。stages中的元素顺序决定了对应job的执行顺序</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 相同stage的job可以平行执行。</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 相同stage的job可以平行执行。</span>
 <span style="color:#75715e"># 下一个stage的job会在前一个stage的job成功后开始执行。</span>
 <span style="color:#75715e"># 如果.gitlab-ci.yml中没有定义stages，那么job&#39;s stages 会默认定义为 build，test 和 deploy。</span>
 <span style="color:#75715e"># 如果一个job没有指定stage，那么这个任务会分配到test stage。</span>
@@ -168,7 +168,7 @@
 <li><strong>types</strong>：与stages同义</li>
 <li><strong>variables</strong>：变量</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">variables</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">variables</span>:
   <span style="color:#ae81ff">DATABASE_URL:&#34;postgres://postgres@postgres/my_database&#34;</span>
 </code></pre></div><ul>
 <li><strong>cache</strong>：用来指定需要在job之间缓存的文件或目录。只能使用该项目工作空间内的路径。</li>
@@ -220,7 +220,7 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/git/git2ssh-%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
         
         
     </ul>

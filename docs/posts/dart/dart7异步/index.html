@@ -41,7 +41,7 @@
     <header>
             <div class="title">
                 <h2 style="font-size:2em"><a href="javascript:void(0)">Dart(7)——异步</a></h2>
-                <p>@LM | 2021-04-29</p>
+                <p>@LM | 2021-04-30</p>
             </div>
         </header>
         <div class="content">
@@ -50,7 +50,7 @@
 </blockquote>
 <h2 id="介绍">介绍</h2>
 <p>Dart是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。Dart使用Future对象表示异步操作，防止出现阻塞操作。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// Synchronous code
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// Synchronous code
 </span><span style="color:#75715e"></span>printDailyNewsDigest() {
   <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> gatherNewsReports(); <span style="color:#75715e">// Can take a while.
 </span><span style="color:#75715e"></span>  print(news);
@@ -71,7 +71,7 @@ main() {
 </ul>
 <h2 id="async和await">Async和await</h2>
 <p>async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用Future接口。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
 
 printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
   <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> gatherNewsReports();
@@ -106,7 +106,7 @@ main() {
 </ul>
 <h2 id="错误处理">错误处理</h2>
 <p>如果在Future返回函数发生错误，你可能想捕获错误。Async函数可以用try-catch捕获错误。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
   <span style="color:#66d9ef">try</span> {
     <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> gatherNewsReports();
     print(news);
@@ -116,7 +116,7 @@ main() {
 }
 </code></pre></div><h2 id="连续执行">连续执行</h2>
 <p>你可以使用多个await表达式，保证一个await执行完成过后再执行下一个</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">main() <span style="color:#66d9ef">async</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">main() <span style="color:#66d9ef">async</span> {
   <span style="color:#66d9ef">await</span> expensiveA();
   <span style="color:#66d9ef">await</span> expensiveB();
   doSomethingWith(<span style="color:#66d9ef">await</span> expensiveC());
@@ -135,8 +135,10 @@ main() {
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
+          <li><a href="https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%82/" class="button large previous">上一页</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%82/" class="button large next">下一页</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/" class="button large next">下一页</a></li>
         
     </ul>
 </div>
