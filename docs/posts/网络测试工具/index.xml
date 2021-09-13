@@ -8,6 +8,41 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Net(10)——JMeter录制测试脚本</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</guid>
+      <description>参考原文：Apache JMeter - Apache JMeter HTTP(S) Test Script Recorder
+ 1.JMeter设置代理服务器   在工具栏中选择 Templates…
+  
+  搜索并选择 Recording 脚本录制模板
+  
+  此时出现如图完整的 Test Plan
+  
+  在 HTTP(S) Test Script Recorder 中，点击启动即可，开启 Jmeter 服务器。
+  
+  2.证书 JMeter 启动代理服务器后会在 JMETER_HOME/bin 中生成一个证书 ApacheJMeterTemporaryRootCA.crt ，用户需要安装此证书，才可使用代理服务器。
+打开任意浏览器，在设置中搜索证书，前往证书设置界面，导入证书至 受信任的根证书颁布机构。
+3.浏览器配置 打开任意浏览器，在设置中搜索代理，前往代理设置界面，配置如下内容，启动代理。
+ 地址：localhost Port：8888.  
+4.查看结果 尝试在浏览器中点击多个链接，关闭浏览器后，您可以在 Thread Group -&amp;gt; Recording Controller 中看到 JMeter 捕抓的HTTP请求内容</description>
+    </item>
+    
+    <item>
+      <title>Net(9)——JMeter构建Web测试计划</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter%E6%9E%84%E5%BB%BAweb%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter%E6%9E%84%E5%BB%BAweb%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</guid>
+      <description>参考原文：Apache JMeter - User&amp;rsquo;s Manual: Building a Web Test Plan
+ ‎在下文中，将介绍如何创建一个基本‎‎的测试计划‎‎来测试 Web 网站。您将创建五个用户，将请求发送到 JMeter 网站上的两个页面。此外，您还会告诉用户运行他们的测试两次。因此，请求总数为 （5 个用户） x （2 个请求） x （重复 2 次） = 20 个 HTTP 请求。
+1.添加用户 要执行测试计划，您要做的第一步就是添加‎‎线程组‎‎元素。线程组会告诉 JMeter 您要模拟的用户数量、用户发送请求的频率以及他们应发送的请求数量。‎
+首先选择测试计划，然后单击右键获取添加菜单，然后选择添加—&amp;gt;线程组。‎
+然后为我们的线程组提供更具描述性的名称。在名称字段中，输入 JMeter 用户。‎接下来，将用户数（称为线程）增加到 5。‎‎在下一个字段中，延时保留默认值 1 秒，此属性告诉 JMeter 在启动每个用户之间延迟多长时间。例如，如果您输入了 5 秒的 Ramp-Up ，JMeter 将在 5 秒结束时完成启动所有用户，因此，如果我们有 5 个用户和 5 秒的 Ramp-Up ，则启动用户之间的延迟将是 1 秒（5 个用户 / 5 秒 = 每秒 1 个用户）。如果将值设置为 0，则 JMeter 将立即启动所有用户。‎</description>
+    </item>
+    
+    <item>
       <title>Net(8)——wireshark网络抓包工具</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
@@ -24,7 +59,7 @@
     </item>
     
     <item>
-      <title>Net(7)——在Linux中的搭建Jmeter性能测试</title>
+      <title>Net(7)——在Linux中的搭建JMeter性能测试</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -34,19 +69,19 @@ tar -xvf Jmeter.tgz # 注意需配置Java环境 2.配置Jmeter环境 vi /etc/pro
     </item>
     
     <item>
-      <title>Net(6)——如何开始Jmeter性能测试</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
+      <title>Net(6)——JMeter性能测试工具</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8Bjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
-      <description>1.线程组 一个性能测试请求负载是基于一个线程组完成的。一个测试计划必须有一个线程组。在测试计划下面多个线程是并行执行的，也就是说这些线程组是同时被初始化并同时执行线程组下的Sampler的。
-线程组主要包含三个参数：线程数、准备时长（Ramp-Up Period(in seconds)）、循环次数。
- 线程数：虚拟用户数。一个虚拟用户占用一个进程或线程。设置多少虚拟用户数在这里也就是设置多少个线程数。 准备时长：设置的虚拟用户数需要多长时间全部启动。如果线程数为20 ，准备时长为10 ，那么需要10秒钟启动20个线程。也就是每秒钟启动2个线程。 循环次数：每个线程发送请求的次数。如果线程数为20 ，循环次数为100 ，那么每个线程发送100次请求。总请求数为20*100=2000 。如果勾选了“永远”，那么所有线程会一直发送请求，直到选择停止运行脚本。  2.调配器 线程组下还有调配器设置，用于设置脚本执行的开始时间、结束时间、持续时间及启动延迟时间
- 启动时间:测试计划什么时候启动，启动延迟会覆盖它。当启动时间已过，手动运行脚本时也当前时间也会覆盖它(但启动时间页面显示不会变)。 结束时间：测试计划什么时候结束，持续时间会覆盖它。 持续时间（秒）：测试计划持续多长时间，会覆盖结束时间。 启动延迟（秒）：测试计划延迟多长时间启动，会覆盖启动时间  3.取样器 添加完成线程组后，在线程组上右键（添加&amp;mdash;&amp;gt;Sampler&amp;mdash;&amp;gt;HTTP请求）选择HTTP请求。取样器（Sampler）是与服务器进行交互的单元。一个取样器通常进行三部分的工作
- 向服务器发送请求 记录服务器的响应数据 记录响应时间信息  4.HTTP请求 一个HTTP请求有着许多的配置参数
- 名称：本属性用于标识一个取样器，建议使用一个有意义的名称。 注释：对于测试没有任何作用，仅用户记录用户可读的注释信息。 服务器名称或IP： HTTP请求发送的目标服务器名称或IP地址。 端口号：目标服务器的端口号，默认值为80 。 协议：向目标服务器发送HTTP请求时的协议，可以是http或者是https ，默认值为http 。 方法：发送HTTP请求的方法，可用方法包括GET、POST、HEAD、PUT、OPTIONS、TRACE、DELETE等。 Content encoding ：内容的编码方式，默认值为ISO 路径：目标URL路径（不包括服务器地址和端口） 自动重定向：如果选中该选项，当发送HTTP请求后得到的响应是302/301时，Jmeter自动重定向到新的页面。 Use keep Alive：当该选项被选中时，Jmeter和目标服务器之间使用Keep-Alive方式进行HTTP通信，默认选中。 Use multipart/from-data for HTTP POST：当发送HTTP POST 请求时，使用Use multipart/from-data方法发送，默认不选中。  5.监听器 Jmeter中使用监听器元件收集取样器记录的数据并以可视化的方式来呈现。Jmeter有各种不同的监听器类型。
-添加聚合报告，右键点击线程组，在弹的菜单（添加&amp;mdash;&amp;gt;监听器&amp;mdash;&amp;gt;聚合报告）中选择聚合报告。
- Label：请求的名称 Samples：总共发给服务器的请求数量 Average：单个请求的平均响应时间，单位是毫秒 Median： 50%的请求的响应时间小于 90%Line： 90%的请求的响应时间小于 95%Line： 95%的请求的响应时间小于 99%Line： 99%的请求的响应时间小于 Min： 最小的响应时间 Max： 最大的响应时间 Error%： 错误率=错误的请求的数量/请求的总数 Throughput： 吞吐量即表示每秒完成的请求数 Received KB/sec： 每秒从服务器端接收到的数据量 Sent KB/Sec： 每秒从发送到服务器端的数据量  6.</description>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
+      <description>参考文献：JMeter 用户文档 
+ 1.Apache JMeter™ Apache JMeter™ 是一个开源的，纯 Java 编写的性能测试软件。JMeter 可以运行在任何具有合规 Java 的系统上（即有 Java 环境），下载最新的生产版本后，进入 bin 文件夹，运行 jmeter.bat （用于 Windows）或 jmeter（用于 Unix）文件启动 JMeter。
+2.如何开始 测试计划描述了 JMeter 在运行时将执行的一系列步骤。完整的测试计划将由一个或多个线程组、逻辑控制器、生成控制器、监听器、计时器、断言和配置元素（Thread Groups，logic controllers，sample generating controllers，listeners，timers，assertions and configuration elements）组成。
+2.1 添加和删除元素 通过右键单击树中的元素，并从&amp;quot;add&amp;quot; 列表中选择新元素，就可以在测试计划中添加元素。
+2.2 配置树元素 测试树中的任何元素都会在 JMeter 的右侧框架中呈现控件。这些控件允许您配置该特定测试元素的行为。元素的配置取决于元素的类型。测试树本身可以通过拖动和丢弃测试树周围的组件来操作。
+2.3 保存测试计划 我们建议您在运行之前将测试计划保存到文件中。要保存测试计划，请从文件菜单中选择 &amp;ldquo;Save&amp;rdquo; 或 &amp;ldquo;Save Test Plan As &amp;hellip;&amp;rdquo;
+JMeter 允许您保存整个测试计划树或仅保存其中的一部分。要仅保存位于测试计划树特定&amp;quot;分支&amp;quot;中的元素，请选择从该树开始&amp;quot;分支&amp;quot;的树中的测试计划元素，然后单击右鼠标按钮选择 &amp;ldquo;Save Selection As …&amp;rdquo; 或者从编辑菜单中选择 &amp;ldquo;Save Selection As …&amp;quot;。
+2.4 运行测试计划 要运行您的测试计划，请从 &amp;ldquo;Run&amp;rdquo; 菜单项中选择 &amp;ldquo;Start&amp;quot;。当 JMeter 运行时，它会在菜单栏下方的部分右侧显示一个小的绿色框。绿色框左侧的数字是活动线程 / 线程总数。这些仅适用于本地运行测试；它们不包括在使用客户端服务器模式时在远程系统上启动的任何线程。</description>
     </item>
     
     <item>
