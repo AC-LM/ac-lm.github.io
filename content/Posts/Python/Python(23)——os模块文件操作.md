@@ -11,16 +11,12 @@ author: LM
 os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）
 
 ```python
-os.listdir(path)
-# path -- 需要列出的目录路径
-# 返回指定路径下的文件和文件夹列表
-```
-
-```python
 import os, sys
 
 path = "/var/www/html/"
 dirs = os.listdir(path)
+# path -- 需要列出的目录路径
+# 返回指定路径下的文件和文件夹列表
 
 for file in dirs:
     print(file)
@@ -31,15 +27,29 @@ for file in dirs:
 os.path.exists() 方法用于判断文件夹是否存在
 
 ```python
-os.path.exists(path)
-# path -- 需要列出的目录路径
-```
-
-```python
 import os
+
 path = "/var/www/html/"
+# path -- 需要列出的目录路径
+
 if os.path.exists(path):
     pass
+```
+
+## os.path.abspath()
+
+```python
+# 获取当前文件的绝对路径
+path1 = os.path.abspath(__file__)
+print("path1:{}".format(path1))
+```
+
+## os.path.dirname()
+
+```python
+# 获取当前文件的目录
+path2 = os.path.dirname(__file__)
+print("path2:{}".format(path2))
 ```
 
 ## os.mkdir()
