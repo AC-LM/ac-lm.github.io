@@ -6,7 +6,7 @@
     <description>Recent content on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cypress(1)——安装示例</title>
       <link>https://ac-lm.github.io/posts/cypress/cypress1%E5%AE%89%E8%A3%85%E7%A4%BA%E4%BE%8B/</link>
@@ -1340,11 +1340,11 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
-      <description> 参考文档：os文档 @Python文档 
+      <description>参考文档：os文档 @Python文档 
  os.listdir() os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）
-os.listdir(path) # path -- 需要列出的目录路径 # 返回指定路径下的文件和文件夹列表 import os, sys path = &amp;#34;/var/www/html/&amp;#34; dirs = os.listdir(path) for file in dirs: print(file) os.path.exists() os.path.exists() 方法用于判断文件夹是否存在
-os.path.exists(path) # path -- 需要列出的目录路径 import os path = &amp;#34;/var/www/html/&amp;#34; if os.path.exists(path): pass os.mkdir() os.mkdir() 方法用于创建文件夹
-import os path=&amp;#34;/var/www/html/ABC&amp;#34; isExists=os.path.exists(path) if not isExists: os.mkdir(path) print(&amp;#39;创建成功&amp;#39;) else: print(&amp;#39;目录已存在&amp;#39;) </description>
+import os, sys path = &amp;#34;/var/www/html/&amp;#34; dirs = os.listdir(path) # path -- 需要列出的目录路径 # 返回指定路径下的文件和文件夹列表 for file in dirs: print(file) os.path.exists() os.path.exists() 方法用于判断文件夹是否存在
+import os path = &amp;#34;/var/www/html/&amp;#34; # path -- 需要列出的目录路径 if os.path.exists(path): pass os.path.abspath() # 获取当前文件的绝对路径 path1 = os.path.abspath(__file__) print(&amp;#34;path1:{}&amp;#34;.format(path1)) os.path.dirname() # 获取当前文件的目录 path2 = os.path.dirname(__file__) print(&amp;#34;path2:{}&amp;#34;.format(path2)) os.mkdir() os.mkdir() 方法用于创建文件夹
+import os path=&amp;#34;/var/www/html/ABC&amp;#34; isExists=os.path.exists(path) if not isExists: os.</description>
     </item>
     
     <item>

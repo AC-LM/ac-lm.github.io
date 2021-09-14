@@ -21,22 +21,18 @@
         <ul>
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
-                <form id="search" method="get" action="#">
-                    <input type="text" name="query" placeholder="施工中" disabled="disabled"/>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
             <li class="menu">
-                <a class="fa-bars" href="#menu">Menu</a>
+                
+                <a href="/posts" class="fa-bars">Post</a>
             </li>
         </ul>
     </nav>
 </header>
-<section id="menu">
-    
-    <section>
-        <h2>施工中</h2>
-    </section>
-</section>
+            
 <div id="main">
     <header>
             <div class="title">
@@ -50,24 +46,32 @@
 </blockquote>
 <h2 id="oslistdir">os.listdir()</h2>
 <p>os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">os<span style="color:#f92672">.</span>listdir(path)
-<span style="color:#75715e"># path -- 需要列出的目录路径</span>
-<span style="color:#75715e"># 返回指定路径下的文件和文件夹列表</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> sys
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> sys
 
 path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/var/www/html/&#34;</span>
 dirs <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(path)
+<span style="color:#75715e"># path -- 需要列出的目录路径</span>
+<span style="color:#75715e"># 返回指定路径下的文件和文件夹列表</span>
 
 <span style="color:#66d9ef">for</span> file <span style="color:#f92672">in</span> dirs:
     print(file)
 </code></pre></div><h2 id="ospathexists">os.path.exists()</h2>
 <p>os.path.exists() 方法用于判断文件夹是否存在</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(path)
-<span style="color:#75715e"># path -- 需要列出的目录路径</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+
 path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/var/www/html/&#34;</span>
+<span style="color:#75715e"># path -- 需要列出的目录路径</span>
+
 <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(path):
     <span style="color:#66d9ef">pass</span>
+</code></pre></div><h2 id="ospathabspath">os.path.abspath()</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 获取当前文件的绝对路径</span>
+path1 <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(__file__)
+print(<span style="color:#e6db74">&#34;path1:</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(path1))
+</code></pre></div><h2 id="ospathdirname">os.path.dirname()</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 获取当前文件的目录</span>
+path2 <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(__file__)
+print(<span style="color:#e6db74">&#34;path2:</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(path2))
 </code></pre></div><h2 id="osmkdir">os.mkdir()</h2>
 <p>os.mkdir() 方法用于创建文件夹</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os

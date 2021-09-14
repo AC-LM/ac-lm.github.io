@@ -6,6 +6,34 @@
 
 (function($) {
 
+    if(window.location.pathname === '/404.html'){
+	   query = window.location.search.substr(1)
+	   if(query){
+	       searchKey = query.replace('query=', '')
+	       // $('#404').text(decodeURI(searchKey));
+	       $('#404').text('搜索结果')
+	       $.get('/index.xml', function(data){
+	           items = data.getElementsByTagName("item");
+	           var i = 0;
+	           var node = ''
+	           while ( i < items.length) {
+	               txt = items[i].getElementsByTagName("title")[0].innerHTML + items[i].getElementsByTagName("description")[0].innerHTML;
+	               if((txt.indexOf(searchKey)) > -1){
+	                  var title = items[i].getElementsByTagName("title")[0].innerHTML;
+	                  console.log(items[i].getElementsByTagName("description")[0].innerHTML);
+	                  var link = items[i].getElementsByTagName("link")[0].innerHTML;
+	                  node = node + '<p><a href="' + link + '">' + title + '</a></p>'
+	               };
+	               i++;
+	           }
+	           div = document.createElement("div")
+	           div.innerHTML = node;
+	           $('#404content').append(div)
+	       });
+	   }
+    }
+
+
 	var	$window = $(window),
 		$body = $('body'),
 		$menu = $('#menu'),
@@ -70,8 +98,10 @@
 		$search_input
 			.on('keydown', function(event) {
 
-				if (event.keyCode == 27)
-					$search_input.blur();
+				if (event.keyCode == 27){
+				    // 27 Esc
+				    $search_input.blur();
+				}
 
 			})
 			.on('blur', function() {
