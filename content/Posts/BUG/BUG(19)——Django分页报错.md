@@ -12,7 +12,7 @@ author: LM
 UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'sign.models.Guest'> QuerySet.paginator = Paginator(guest_list,5)
 ```
 
-## 解决
+## Resolution
 
 这是因为`Django`分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
 

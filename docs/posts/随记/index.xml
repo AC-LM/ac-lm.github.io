@@ -8,6 +8,30 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>随记(36)——Electron应用程序框架</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B036electron%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B036electron%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/</guid>
+      <description>参考文档 Electron：PC 端多端融合方案  Electron 应用调试指南 
+ Electron Electron 是一个基于 Node.js 和 Chromium 的开源框架，常用于构建桌面应用，开发者可以使用 web 技术（HTML，JavaScript 和 CSS）完成整个应用的开发。许多知名桌面应用基于 Electron 实现，如 VSCode，Slack 和 GitHub Desktop 等。
+Electron 应用进程分为主进程和渲染进程，其底层实现分别对应于 Node.js 和 Chromium，和 Native 中的概念不一样的是 Electron 中主进程只有一个，而渲染进程（也就是 UI 进程） 可以有多个。主进程在后台运行，每次打开一个界面，会新开一个新的渲染进程。
+ 渲染进程： 用户看到的 web 界面就是由渲染进程绘制出来的，包括 html、css、js。 主进程：Electron 运行 package.json 中的 main.js 脚本的进程被称为主进程。在主进程中运行的脚本通过创建 web 页面来展示用户界面。一个 Electron 应用程序总是只有一个主进程。  Chromium 架构 浏览器分为单进程和多进程架构。下面先讲讲 Chrome 为代表的浏览器过去和未来。
+单进程浏览器 单进程浏览器指的是浏览器的所有功能模块都是运行在同一个进程里的，这些模块包括网络、插件、Javascript 运行环境、渲染引擎和页面等。如此复杂的功能都在一个进程内运行，所以容易导致浏览器的不稳定、不安全、不流畅。
+问题1: 不稳定 早期浏览器需要借助插件来实现类似 Web 视频、Web 游戏等各种强大的功能。但插件往往是最容易出现问题的模块。此外因为运行在浏览器进程中，所以一个插件的意外崩溃会导致整个浏览器的崩溃。除了插件之外，渲染引擎模块也是不稳定的。通常一些复杂的 Javascript 代码就有可能导致渲染引擎模块的崩溃。</description>
+    </item>
+    
+    <item>
+      <title>随记(35)——如何给hugo博客添加搜索功能</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B035%E5%A6%82%E4%BD%95%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B035%E5%A6%82%E4%BD%95%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</guid>
+      <description>参考原文：给Hugo站点添加搜索功能 - Go语言中文网
+ 实现思路  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML + items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].getElementsByTagName(&amp;#34;link&amp;#34;)[0].innerHTML; node = node + &amp;#39;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;&amp;#39; + link + &amp;#39;&amp;#34;&amp;gt;&amp;#39; + title + &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#39; }; i++; } div = document.</description>
+    </item>
+    
+    <item>
       <title>随记(34)——性能测试</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B034%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
@@ -17,7 +41,7 @@
 什么是产品的服务 这里的产品指的是 B/S（浏览器/服务器）和 C/S（客户机/服务器） 这类架构的服务器。我们的性能测试主要针对的也就是这类服务器提供的各种服务，比如搜索，提交数据，下载资源等，通常这类服务在网络上体现为一个个接口，而我们的性能测试，大部分也就是对这些接口进行测试。比如百度的搜索接口
 http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;ie=gb2312&amp;amp;rn=显示条数&amp;amp;tn=原站点
 高负载是指什么 上述我们知道产品大部分是指服务器，而服务器的高负载通常也就几个：内存，CPU，硬盘读写，网络带宽，这类计算机系统指标。要触发这些指标的高负载，并发是不错的操作之一
-如何判断系统的稳定 如何判断系统的稳定，也就是性能测试的断言。最简单的方法是在性能测试时，自己使用产品观看效果，观察产品能不能正常使用，使用的体验好不好，这些都是最直观的判断依据。或者你可以登录服务器后台，查看服务器的资源占用率，通过这来判断系统是否正常。而对于Web服务，除了上述的断言方法，还可以使用 随记(11)——Web性能测试的指标
+如何判断系统的稳定 如何判断系统的稳定，也就是性能测试的断言。最简单的方法是在性能测试时，自己使用产品观看效果，观察产品能不能正常使用，使用的体验好不好，这些都是最直观的判断依据。或者你可以登录服务器后台，查看服务器的资源占用率，通过这来判断系统是否正常。而对于Web服务，除了上述的断言方法，还可以使用 [随记(11)——Web性能测试的指标](LM (ac-lm.github.io)
 如何测试  定位服务：确定需要测试的内容，定位到最小的单位。比如需要测试系统最多支持多少人同时登录，那我们只需构造线程并发测试系统的登录接口便可以，而不需要考虑打开网页等内容。 构造高负载情况：通过各种方式在服务器端构造一个高负载的环境 断言：使用各种方法来判断系统是否处于稳定状态 编写报告：根据断言编写报告  </description>
     </item>
     

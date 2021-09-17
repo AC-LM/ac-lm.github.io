@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Linux(22)——Top命令详解</title>
+      <link>https://ac-lm.github.io/posts/linux/linux22top%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/linux/linux22top%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</guid>
+      <description>top命令的用法 top 命令常用于监控 linux 的系统状况，是常用的性能分析工具，能够实时显示系统中各个进程的资源占用情况，其使用格式如下：
+top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒。 top [-bnp] # -b：以批次的方式执行top。 -n：与-b配合使用，表示需要进行几次top命令的输出结果。 -p：指定特定的pid进程观察。 在 top 命令运行时，用户还可以输入以下按键执行相应的功能（注意区分大小写）：
+ ?：显示在top当中可以输入的命令 P：以CPU的使用资源排序显示 M：以内存的使用资源排序显示 N：以 pid 排序显示 T：由进程使用的时间累计排序显示 k：给某一个 pid 一个信号，杀死进程 r：给某个pid重新定制一个 nice 值（即优先级） q：退出top（或 Ctrl+C）  top各输出的含义 第1行 top - 05:43:27 up 4:52, 2 users, load average: 0.58, 0.41, 0.30
+   内容 含义     05:43:27 系统当前时间   up 4:52 系统运行时间，格式为时：分   2 users 当前登录用户数   load average: 0.</description>
+    </item>
+    
+    <item>
       <title>Linux(21)——设置开机启动任务</title>
       <link>https://ac-lm.github.io/posts/linux/linux21%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>

@@ -41,18 +41,26 @@
             </div>
         </header>
         <div class="content">
-            <h2 id="运行内存配置修改">运行内存配置修改</h2>
+            <h2 id="bug描述">BUG描述</h2>
+<p>运行内存配置修改</p>
+<h2 id="resolution">Resolution</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">if</span> not defined HEAP <span style="color:#f92672">(</span>
     rem See the unix startup file <span style="color:#66d9ef">for</span> the rationale of the following parameters,
     rem including some tuning recommendations
     set HEAP<span style="color:#f92672">=</span>-Xms5g -Xmx5g -XX:MaxMetaspaceSize<span style="color:#f92672">=</span>5120m
 <span style="color:#f92672">)</span>
 </code></pre></div><p>修改bat文件中HEAP值。HEAP=-Xms<strong>5g</strong> -Xmx<strong>5g</strong>，最小与最大运行内存，通常设为同样的值。MaxMetaspaceSize 最大堆栈 。</p>
-<h2 id="端口被突然关闭-socket-closed">端口被突然关闭 socket closed</h2>
+<hr>
+<h2 id="bug描述-1">BUG描述</h2>
+<p>端口被突然关闭 socket closed</p>
+<h2 id="resolution-1">Resolution</h2>
 <p>原因：发送http 请求时，Jmeter一般默认选择Use KeepAlive，保持连接协议，但其配置JMeter.properties中时间设置默认注销，即不会等待，一旦连接空闲，则断开了，因此导致报错</p>
 <p>解决：修改httpclient4.idletimeout=<!-- raw HTML omitted --> ，一般可设置成10-60s（表示连接空闲10s后才会断开），注意单位ms。</p>
-<h2 id="地址被占用-address-already-in-useconnect">地址被占用 address already in use:connect</h2>
+<hr>
+<h2 id="bug描述-2">BUG描述</h2>
+<p>地址被占用 address already in use:connect</p>
 <p>错误：脚本报错java.net.BindException: Address already in use: connect</p>
+<h2 id="resolution-2">Resolution</h2>
 <p>原因：windows端口被耗尽（默认1024-5000），而且操作系统要 2~4分钟才会重新释放这些端口，所以可以增加windows的可用端口来解决。windows端口最大数为65534</p>
 <p>解决：修改操作系统注册表(cmd-regedit)，找到</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">HKEY_LOCAL_MACHINE<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\S</span>ervices<span style="color:#ae81ff">\T</span>CPIP<span style="color:#ae81ff">\P</span>arameters
@@ -62,8 +70,10 @@ name：TcpTimedWaitDelay，value：30（十进制）；
 </code></pre></div><p>重启系统。</p>
 <p>【或设置线程组时，勾选 same user on each iteration】</p>
 <p>【或不勾选Use KeepAlive】</p>
-<h2 id="每个用户使用一个线程-same-user-on-each-iteration">每个用户使用一个线程 Same user on each iteration</h2>
-<p>每个迭代使用相同线程</p>
+<hr>
+<h2 id="bug描述-3">BUG描述</h2>
+<p>每个用户使用一个线程 Same user on each iteration，每个迭代使用相同线程</p>
+<h2 id="resolution-3">Resolution</h2>
 <p>性能测试时需要设置N个线程数，然后循环M次，以此来模拟真实同时N多个用户使用被测系统。在现实中，这N个用户应该都是相互独立，互不关联的。而我们用jmeter设置N个线程数，循环M次，目的就是想模拟这样N个互不关联的用户使用被测系统，但jmeter做性能测试时，使用多线程循环迭代多次，并不是我们理想中的真实场景，jmeter会使用以创建的旧进程重新发送请求以节省资源。</p>
 <p>在jmeter5.2版本的线程组设置中，新增了一个复选配置项：Same user on each iteration（默认为勾选），同时，在cookie管理器、缓存管理器、授权管理器的配置选项中，也都增加了一个复选配置项：Use Thread Group configuration to control clearing：</p>
 <p>1、在线程组配置时，要去掉默认的Same user on each iteration 的勾选；</p>

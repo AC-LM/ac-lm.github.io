@@ -41,9 +41,14 @@
             </div>
         </header>
         <div class="content">
-            <h2 id="centos7进入单用户模式修改密码">CentOS7进入单用户模式修改密码</h2>
+            <h2 id="bug描述">BUG描述</h2>
+<p>CentOS7进入单用户模式修改密码</p>
+<h2 id="resolution">Resolution</h2>
 <p>在选择系统界面，按 <code>E</code> 进入启动配置，定位到命令 <code>Ro</code> ，将其改为 <code>rw init=/sysroot/bin/sh</code>，<code>Ctrl+X</code>进行重启，进入单用户模式，执行<code>chroot /sysroot</code>进入系统目录，输入<code>passwd root</code>修改密码，<code>touch /.autorelabel</code>执行修改</p>
-<h2 id="升级后的旧版本删除">升级后的旧版本删除</h2>
+<hr>
+<h2 id="bug描述-1">BUG描述</h2>
+<p>升级后的旧版本删除</p>
+<h2 id="resolution-1">Resolution</h2>
 <p>centos7开机界面出现多个选项时，前面几个选项正常启动，最后一个选项急救模式启动（系统出项问题不能正常启动时使用并修复系统），在CentOS更新后,并不会自动删除旧内核。所以在启动选项中会有多个内核选项,可以手动使用以下命令删除多余的内核:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uname -a
 rpm -qa | grep kernel  <span style="color:#75715e">#查看安装内核</span>

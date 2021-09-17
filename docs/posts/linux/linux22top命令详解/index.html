@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            <li class="menu">
+                
+                <a href="/posts" class="fa-bars">Post</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(22)——Top命令详解</a></h2>
+                <p>@LM | 2021-09-17</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="top命令的用法">top命令的用法</h2>
+<p>top 命令常用于监控 linux 的系统状况，是常用的性能分析工具，能够实时显示系统中各个进程的资源占用情况，其使用格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">top <span style="color:#f92672">[</span>-d number<span style="color:#f92672">]</span>  <span style="color:#75715e"># -d：top命令显示的页面更新一次的间隔,单位秒。</span>
+top <span style="color:#f92672">[</span>-bnp<span style="color:#f92672">]</span>  <span style="color:#75715e"># -b：以批次的方式执行top。 -n：与-b配合使用，表示需要进行几次top命令的输出结果。 -p：指定特定的pid进程观察。</span>
+</code></pre></div><p>在 top 命令运行时，用户还可以输入以下按键执行相应的功能（注意区分大小写）：</p>
+<ul>
+<li>?：显示在top当中可以输入的命令</li>
+<li>P：以CPU的使用资源排序显示</li>
+<li>M：以内存的使用资源排序显示</li>
+<li>N：以 pid 排序显示</li>
+<li>T：由进程使用的时间累计排序显示</li>
+<li>k：给某一个 pid 一个信号，杀死进程</li>
+<li>r：给某个pid重新定制一个 nice 值（即优先级）</li>
+<li>q：退出top（或 Ctrl+C）</li>
+</ul>
+<h2 id="top各输出的含义">top各输出的含义</h2>
+<h3 id="第1行">第1行</h3>
+<p><code>top - 05:43:27 up 4:52, 2 users, load average: 0.58, 0.41, 0.30</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>05:43:27</td>
+<td>系统当前时间</td>
+</tr>
+<tr>
+<td>up 4:52</td>
+<td>系统运行时间，格式为时：分</td>
+</tr>
+<tr>
+<td>2 users</td>
+<td>当前登录用户数</td>
+</tr>
+<tr>
+<td>load average: 0.58, 0.41, 0.30</td>
+<td>系统负载，即任务队列的平均长度。 三个数值分别为 1分钟、5分钟、15分钟前到现在的平均值。如果这个数除以逻辑CPU的数量，结果高于5的时候就表明系统在超负荷运转。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="第2行">第2行</h3>
+<p><code>Tasks: 746 total,   1 running, 745 sleeping,   0 stopped,   0 zombie</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tasks</td>
+<td>任务队列信息</td>
+</tr>
+<tr>
+<td>total</td>
+<td>总</td>
+</tr>
+<tr>
+<td>running</td>
+<td>运行中</td>
+</tr>
+<tr>
+<td>sleeping</td>
+<td>睡眠</td>
+</tr>
+<tr>
+<td>stopped</td>
+<td>停止</td>
+</tr>
+<tr>
+<td>zombie</td>
+<td>僵尸进程</td>
+</tr>
+</tbody>
+</table>
+<h3 id="第3行">第3行</h3>
+<p><code>%Cpu(s): 37.0 us, 3.7 sy, 0.0 ni, 59.3 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0 st</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%Cpu(s)</td>
+<td>CPU信息，(s)表示不止一个，多个CPU</td>
+</tr>
+<tr>
+<td>us</td>
+<td>用户空间占用CPU百分比</td>
+</tr>
+<tr>
+<td>sy</td>
+<td>内核空间占用CPU百分比</td>
+</tr>
+<tr>
+<td>ni</td>
+<td>用户进程空间内改变过优先级的进程占用CPU百分比</td>
+</tr>
+<tr>
+<td>id</td>
+<td>空闲CPU百分比</td>
+</tr>
+<tr>
+<td>wa</td>
+<td>等待输入输出的CPU时间百分比</td>
+</tr>
+<tr>
+<td>hi</td>
+<td>硬中断（Hardware IRQ）占用CPU的百分比</td>
+</tr>
+<tr>
+<td>si</td>
+<td>软中断（Software Interrupts）占用CPU的百分比</td>
+</tr>
+<tr>
+<td>st</td>
+<td>系统花费百分之多少时间等待真正的cpu资源。该参量常用于虚拟化系统上，在正常情况下虚拟机的st最好为0，这表明你的虚拟机得到了所有必要的cpu资源，在使用时不用等待。如果这个值为50，则表明你的虚拟机在运行时有一半时间在等待CPU，存在其他虚拟机与你竞争资源。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="第4行">第4行</h3>
+<p><code>KiB Mem :  7990288 total,  3173076 free,  2748968 used,  2068244 buff/cache</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KiB Mem</td>
+<td>物理内存信息</td>
+</tr>
+<tr>
+<td>total</td>
+<td>物理内存总量</td>
+</tr>
+<tr>
+<td>free</td>
+<td>使用的物理内存总量</td>
+</tr>
+<tr>
+<td>used</td>
+<td>空闲内存总量</td>
+</tr>
+<tr>
+<td>buff/cache</td>
+<td>用作内核缓存的内存量</td>
+</tr>
+</tbody>
+</table>
+<h3 id="第5行">第5行</h3>
+<p><code>KiB Swap:  8257532 total,  8257532 free,        0 used.  4615016 avail Mem</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KiB Swap</td>
+<td>硬盘交换内存、虚拟内存</td>
+</tr>
+<tr>
+<td>total</td>
+<td>总量</td>
+</tr>
+<tr>
+<td>free</td>
+<td>空闲</td>
+</tr>
+<tr>
+<td>used</td>
+<td>使用</td>
+</tr>
+<tr>
+<td>avail Mem</td>
+<td>可用于进程下一次分配的内存数量</td>
+</tr>
+</tbody>
+</table>
+<p>PS：计算可用内存数公式： 第四行的 free + 第四行的 buffers + 第五行的 avail Mem</p>
+<h2 id="top进程信息">top进程信息</h2>
+<p><code>PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PID</td>
+<td>进程id</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>进程所有者</td>
+</tr>
+<tr>
+<td>PR</td>
+<td>优先级</td>
+</tr>
+<tr>
+<td>NI</td>
+<td>nice 值，负值表示高优先级，正值表示低优先级</td>
+</tr>
+<tr>
+<td>VIRT</td>
+<td>进程使用的虚拟内存总量，单位kb，VIRT=SWAP+RES</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>进程使用的、未被换出的物理内存大小，单位kb，RES=CODE+DATA</td>
+</tr>
+<tr>
+<td>SHR</td>
+<td>共享内存大小，单位kb</td>
+</tr>
+<tr>
+<td>S</td>
+<td>进程状态，D=不可中断的睡眠状态，R=运行，S=睡眠，T=跟踪/停止，Z=僵尸进程</td>
+</tr>
+<tr>
+<td>%CPU</td>
+<td>进程使用的CPU时间占用百分比</td>
+</tr>
+<tr>
+<td>%MEM</td>
+<td>进程使用的物理内存百分比</td>
+</tr>
+<tr>
+<td>TIME+</td>
+<td>进程运行时间</td>
+</tr>
+<tr>
+<td>COMMAND</td>
+<td>命令名/命令行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他">其他</h2>
+<h3 id="监控每个逻辑cpu的状况">监控每个逻辑CPU的状况</h3>
+<pre tabindex="0"><code>在top基本视图中按 1
+</code></pre><h3 id="高亮显示当前运行进程">高亮显示当前运行进程</h3>
+<pre tabindex="0"><code>按 b
+按 y
+</code></pre><h3 id="显示完整命令">显示完整命令</h3>
+<pre tabindex="0"><code>按 c
+</code></pre><h3 id="切换显示cpu">切换显示CPU</h3>
+<pre tabindex="0"><code>按t
+</code></pre><h3 id="按cpu使用率从大到小排序">按CPU使用率从大到小排序</h3>
+<pre tabindex="0"><code>按P
+</code></pre><h3 id="切换显示memory">切换显示Memory</h3>
+<pre tabindex="0"><code>按m
+</code></pre><h3 id="按memory占用率从大到小排序">按Memory占用率从大到小排序</h3>
+<pre tabindex="0"><code>按M
+</code></pre><h3 id="按累计运行时间time从大到小排序">按累计运行时间Time从大到小排序</h3>
+<pre tabindex="0"><code>按T
+</code></pre><h3 id="高亮cpu列">高亮CPU列</h3>
+<pre tabindex="0"><code>按x 
+</code></pre><h3 id="彩色高亮显示">彩色高亮显示</h3>
+<pre tabindex="0"><code>按z
+按shift+z 可以调配色方案
+</code></pre><h3 id="向右或左改变排序列">向右或左改变排序列</h3>
+<pre tabindex="0"><code>shift + &gt;或shift + &lt;
+</code></pre><h3 id="忽略闲置和僵死进程">忽略闲置和僵死进程</h3>
+<pre tabindex="0"><code>按i 
+</code></pre><h3 id="杀掉进程">杀掉进程</h3>
+<pre tabindex="0"><code>按k，输入PID
+</code></pre><h3 id="改变内存的显示单位默认为kb">改变内存的显示单位，默认为KB</h3>
+<pre tabindex="0"><code>按e （针对列表）
+按E （针对头部统计信息）
+</code></pre>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux21%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/" class="button large previous">上一页</a></li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

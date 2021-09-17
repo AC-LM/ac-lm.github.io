@@ -6,7 +6,7 @@ author: LM
 
 > 参考文献：[ github-wapiti-issues @Maxime Alay-Eddine ](https://github.com/wapiti-scanner/wapiti/issues/86)
 
-## 问题描述
+## BUG描述
 
 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件
 

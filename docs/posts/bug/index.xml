@@ -8,13 +8,39 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/bug/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>BUG(21)——Linux缺少OpenSSL</title>
+      <link>https://ac-lm.github.io/posts/bug/bug21linux%E7%BC%BA%E5%B0%91openssl/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug21linux%E7%BC%BA%E5%B0%91openssl/</guid>
+      <description>BUG描述 在Linux编译某些软件时，会出现报错
+fatal error: openssl/ssl.h: No such file or directory centos
+Resolution 这是缺少 OpenSSL 导致的，重新安装即可
+要在Debian、Ubuntu或者其他衍生版上安装OpenSSL：
+sudo apt-get install libssl-dev 要在 Fedora，CentOS 或者 RHEL 上安装OpenSSL开发包：
+sudo yum install openssl-devel 安装完后，尝试重新编译程序。
+ </description>
+    </item>
+    
+    <item>
+      <title>BUG(20)——Request模块Url编码问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug20request%E6%A8%A1%E5%9D%97url%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug20request%E6%A8%A1%E5%9D%97url%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
+      <description>BUG描述 Python 中用户使用 Requests 库发送 Http 请求时，请求的所有参数都会被进行 Url 编码。此时容易出现由于 Url 编码后参数异常的情况，特别是中文字符，最终导致 Http 请求失败。
+Resolution 用户可以将参数提前进行编码传递，以避免 Requests 库对参数的编码
+payload1 = &amp;#39;{ABC}&amp;#39; # String data = payload1.encode(&amp;#39;utf-8&amp;#39;) # b&amp;#39;{ABC}&amp;#39; 转换后的 UTF-8 编码 response = requests.request(&amp;#34;POST&amp;#34;, url, data=data) </description>
+    </item>
+    
+    <item>
       <title>BUG(19)——Django分页报错</title>
       <link>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</guid>
       <description>BUG描述 Django分页时报错
-UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: &amp;lt;class &amp;#39;sign.models.Guest&amp;#39;&amp;gt; QuerySet.paginator = Paginator(guest_list,5) 解决 这是因为Django分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
+UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: &amp;lt;class &amp;#39;sign.models.Guest&amp;#39;&amp;gt; QuerySet.paginator = Paginator(guest_list,5) Resolution 这是因为Django分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
 paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp;#39;) </description>
     </item>
     
@@ -163,7 +189,7 @@ Resolution 注意网关配置的问题，查看网关是否错误，可以打开
       
       <guid>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</guid>
       <description> 参考文献：github-wapiti-issues @Maxime Alay-Eddine 
- 问题描述 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件
+ BUG描述 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件
 Resolution 需手动从目录wapitiCore/report_template中找到并添加
  Ok, when generating the html report it is supposed to copy the js file from wapitiCore/report_template into output directory, that is why it was missing.
  </description>
@@ -175,7 +201,7 @@ Resolution 需手动从目录wapitiCore/report_template中找到并添加
       <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</guid>
-      <description>为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
+      <description>Resolution 为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
 print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
 # Python使用的编解码格式 ISO-8859-1 # 实际应该使用的编解码格式 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
 乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为GBK编码的字节流，在我们抓取后，程序直接使用UTF-8进行编码并输出到文件中，此时必然会引起乱码。
@@ -192,17 +218,18 @@ print(res.encoding) # 查看网页返回的字符集类型，其值是从 header
       <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
-      <description>运行内存配置修改 if not defined HEAP ( rem See the unix startup file for the rationale of the following parameters, rem including some tuning recommendations set HEAP=-Xms5g -Xmx5g -XX:MaxMetaspaceSize=5120m ) 修改bat文件中HEAP值。HEAP=-Xms5g -Xmx5g，最小与最大运行内存，通常设为同样的值。MaxMetaspaceSize 最大堆栈 。
-端口被突然关闭 socket closed 原因：发送http 请求时，Jmeter一般默认选择Use KeepAlive，保持连接协议，但其配置JMeter.properties中时间设置默认注销，即不会等待，一旦连接空闲，则断开了，因此导致报错
+      <description>BUG描述 运行内存配置修改
+Resolution if not defined HEAP ( rem See the unix startup file for the rationale of the following parameters, rem including some tuning recommendations set HEAP=-Xms5g -Xmx5g -XX:MaxMetaspaceSize=5120m ) 修改bat文件中HEAP值。HEAP=-Xms5g -Xmx5g，最小与最大运行内存，通常设为同样的值。MaxMetaspaceSize 最大堆栈 。
+ BUG描述 端口被突然关闭 socket closed
+Resolution 原因：发送http 请求时，Jmeter一般默认选择Use KeepAlive，保持连接协议，但其配置JMeter.properties中时间设置默认注销，即不会等待，一旦连接空闲，则断开了，因此导致报错
 解决：修改httpclient4.idletimeout=，一般可设置成10-60s（表示连接空闲10s后才会断开），注意单位ms。
-地址被占用 address already in use:connect 错误：脚本报错java.net.BindException: Address already in use: connect
-原因：windows端口被耗尽（默认1024-5000），而且操作系统要 2~4分钟才会重新释放这些端口，所以可以增加windows的可用端口来解决。windows端口最大数为65534
+ BUG描述 地址被占用 address already in use:connect
+错误：脚本报错java.net.BindException: Address already in use: connect
+Resolution 原因：windows端口被耗尽（默认1024-5000），而且操作系统要 2~4分钟才会重新释放这些端口，所以可以增加windows的可用端口来解决。windows端口最大数为65534
 解决：修改操作系统注册表(cmd-regedit)，找到
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP\Parameters 新建两个 DWORD值
 name：MaxUserPort，value：65534（十进制）； name：TcpTimedWaitDelay，value：30（十进制）； 重启系统。
-【或设置线程组时，勾选 same user on each iteration】
-【或不勾选Use KeepAlive】
-每个用户使用一个线程 Same user on each iteration 每个迭代使用相同线程</description>
+【或设置线程组时，勾选 same user on each iteration】</description>
     </item>
     
     <item>
@@ -221,8 +248,10 @@ Resolution 注意到的是，在编辑文件时，Windows系统编码中回车�
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</guid>
-      <description>CentOS7进入单用户模式修改密码 在选择系统界面，按 E 进入启动配置，定位到命令 Ro ，将其改为 rw init=/sysroot/bin/sh，Ctrl+X进行重启，进入单用户模式，执行chroot /sysroot进入系统目录，输入passwd root修改密码，touch /.autorelabel执行修改
-升级后的旧版本删除 centos7开机界面出现多个选项时，前面几个选项正常启动，最后一个选项急救模式启动（系统出项问题不能正常启动时使用并修复系统），在CentOS更新后,并不会自动删除旧内核。所以在启动选项中会有多个内核选项,可以手动使用以下命令删除多余的内核:
+      <description>BUG描述 CentOS7进入单用户模式修改密码
+Resolution 在选择系统界面，按 E 进入启动配置，定位到命令 Ro ，将其改为 rw init=/sysroot/bin/sh，Ctrl+X进行重启，进入单用户模式，执行chroot /sysroot进入系统目录，输入passwd root修改密码，touch /.autorelabel执行修改
+ BUG描述 升级后的旧版本删除
+Resolution centos7开机界面出现多个选项时，前面几个选项正常启动，最后一个选项急救模式启动（系统出项问题不能正常启动时使用并修复系统），在CentOS更新后,并不会自动删除旧内核。所以在启动选项中会有多个内核选项,可以手动使用以下命令删除多余的内核:
 uname -a rpm -qa | grep kernel #查看安装内核 yum remove kernel-3.10.0-229.14.1.el7 #删除 reboot #重启 </description>
     </item>
     

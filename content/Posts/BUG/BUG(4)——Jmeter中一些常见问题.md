@@ -4,7 +4,11 @@ date: 2020-11-28
 author: LM
 ---
 
-## 运行内存配置修改
+## BUG描述
+
+运行内存配置修改
+
+## Resolution
 
 ```shell
 if not defined HEAP (
@@ -16,16 +20,27 @@ if not defined HEAP (
 
 修改bat文件中HEAP值。HEAP=-Xms**5g** -Xmx**5g**，最小与最大运行内存，通常设为同样的值。MaxMetaspaceSize 最大堆栈 。
 
-## 端口被突然关闭 socket closed
+------
+
+## BUG描述
+
+端口被突然关闭 socket closed
+
+## Resolution
 
 原因：发送http 请求时，Jmeter一般默认选择Use KeepAlive，保持连接协议，但其配置JMeter.properties中时间设置默认注销，即不会等待，一旦连接空闲，则断开了，因此导致报错
 
-
 解决：修改httpclient4.idletimeout=<time in ms> ，一般可设置成10-60s（表示连接空闲10s后才会断开），注意单位ms。
 
-## 地址被占用 address already in use:connect
+------
+
+## BUG描述
+
+地址被占用 address already in use:connect
 
 错误：脚本报错java.net.BindException: Address already in use: connect
+
+## Resolution
 
 原因：windows端口被耗尽（默认1024-5000），而且操作系统要 2~4分钟才会重新释放这些端口，所以可以增加windows的可用端口来解决。windows端口最大数为65534
 
@@ -48,9 +63,13 @@ name：TcpTimedWaitDelay，value：30（十进制）；
 
 【或不勾选Use KeepAlive】
 
-## 每个用户使用一个线程 Same user on each iteration
+------
 
-每个迭代使用相同线程
+## BUG描述
+
+每个用户使用一个线程 Same user on each iteration，每个迭代使用相同线程
+
+## Resolution
 
 性能测试时需要设置N个线程数，然后循环M次，以此来模拟真实同时N多个用户使用被测系统。在现实中，这N个用户应该都是相互独立，互不关联的。而我们用jmeter设置N个线程数，循环M次，目的就是想模拟这样N个互不关联的用户使用被测系统，但jmeter做性能测试时，使用多线程循环迭代多次，并不是我们理想中的真实场景，jmeter会使用以创建的旧进程重新发送请求以节省资源。
 
