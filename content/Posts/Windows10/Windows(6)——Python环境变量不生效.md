@@ -15,5 +15,3 @@ author: LM
 环境变量的优先级问题，WindowsApp 的路径优先于 Python，调换即好。
 
 ![](https://gitee.com/LM-J/drawingbed/raw/master/img/20210826113848.png)
-
-![image-20210826114111766](C:\Users\LM\AppData\Roaming\Typora\typora-user-images\image-20210826114111766.png)
