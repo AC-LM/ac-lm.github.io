@@ -1,10 +1,8 @@
 ---
-title: BUG(22)——Cypress出现应用代码的错误
+title: BUG(22)——Cypress 出现应用代码的错误
 date: 2021-09-18
 author: LM
 ---
-
-> 参考原文：https://www.cnblogs.com/sap-jerry/p/14713564.html
 
 ## BUG描述
 
@@ -22,4 +20,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
 ```
+
+> 参考原文：https://www.cnblogs.com/sap-jerry/p/14713564.html
 

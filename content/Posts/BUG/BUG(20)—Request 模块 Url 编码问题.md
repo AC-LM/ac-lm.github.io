@@ -1,10 +1,10 @@
 ---
-title: BUG(20)——Request模块Url编码问题
+title: BUG(20)——Request 模块 Url 编码问题
 date: 2021-09-16
 author: LM
 ---
 
-## BUG描述
+## BUG 描述
 
 Python 中用户使用 Requests 库发送 Http 请求时，请求的所有参数都会被进行 Url 编码。此时容易出现由于 Url 编码后参数异常的情况，特别是**中文字符**，最终导致 Http 请求失败。
 

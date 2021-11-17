@@ -4,7 +4,7 @@ date: 2021-03-31
 author: LM
 ---
 
-## BUG描述
+## BUG 描述
 
 ```python
 a={'a':1, 'b':0, 'c':1, 'd':0}

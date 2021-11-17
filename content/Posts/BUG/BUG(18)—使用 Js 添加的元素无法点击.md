@@ -1,12 +1,10 @@
 ---
-title: BUG(18)——使用JS添加的元素无法点击
+title: BUG(18)——使用 Js 添加的元素无法点击
 date: 2021-07-23
 author: LM
 ---
 
-> 参考原文：[ js添加HTML元素时出现的无效的点击事件 @wttwuhn ](https://juejin.cn/post/6844903703896391687)
-
-## BUG描述
+## BUG 描述
 
 在使用`append()`添加元素后，该元素的点击事件无法被监听生效
 
@@ -21,4 +19,6 @@ $("body").on("click", '.addBtn', function(){
     alert('new')
 })
 ```
+
+> 参考原文：[ js添加HTML元素时出现的无效的点击事件 @wttwuhn ](https://juejin.cn/post/6844903703896391687)
 
