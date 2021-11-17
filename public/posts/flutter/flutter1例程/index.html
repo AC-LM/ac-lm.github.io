@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            <li class="menu">
+                
+                <a href="/posts" class="fa-bars">Post</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(1)——例程</a></h2>
+                <p>@LM | 2021-04-22</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://book.flutterchina.club/">《Flutter实战》@wendux </a></p>
+</blockquote>
+<h2 id="1例程代码">1.例程代码</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+
+<span style="color:#66d9ef">void</span> main() {
+  runApp(MyApp());
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> MaterialApp(
+      title: <span style="color:#e6db74">&#39;Flutter Demo&#39;</span>,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: <span style="color:#e6db74">&#39;Flutter Demo Home Page&#39;</span>),
+    );
+  }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHomePage</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+  MyHomePage({Key key, <span style="color:#66d9ef">this</span>.title}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> title;
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  _MyHomePageState createState() <span style="color:#f92672">=&gt;</span> _MyHomePageState();
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_MyHomePageState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>MyHomePage<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">int</span> _counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+  <span style="color:#66d9ef">void</span> _incrementCounter() {
+    setState(() {
+      _counter<span style="color:#f92672">++</span>;
+    });
+  }
+
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+            Text(
+              <span style="color:#e6db74">&#39;You have pushed the button this many times:&#39;</span>,
+            ),
+            Text(
+              <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$</span>_counter<span style="color:#e6db74">&#39;</span>,
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: <span style="color:#e6db74">&#39;Increment&#39;</span>,
+        child: Icon(Icons.add),
+      ), 
+    );
+  }
+}
+
+</code></pre></div><h2 id="2代码分析">2.代码分析</h2>
+<h3 id="1应用结构">1）应用结构</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> MaterialApp(
+      <span style="color:#75715e">//应用名称  
+</span><span style="color:#75715e"></span>      title: <span style="color:#e6db74">&#39;Flutter Demo&#39;</span>, 
+      theme: <span style="color:#66d9ef">new</span> ThemeData(
+        <span style="color:#75715e">//蓝色主题  
+</span><span style="color:#75715e"></span>        primarySwatch: Colors.blue,
+      ),
+      <span style="color:#75715e">//应用首页路由  
+</span><span style="color:#75715e"></span>      home: <span style="color:#66d9ef">new</span> MyHomePage(title: <span style="color:#e6db74">&#39;Flutter Demo Home Page&#39;</span>),
+    );
+  }
+}
+</code></pre></div><ul>
+<li>MyApp类代表Flutter应用，它继承自 StatelessWidget 类。</li>
+<li>在Flutter中，大多数东西都是以 widget 的形式提供，包括对齐(alignment)、填充(padding)和布局(layout)等。</li>
+<li>Flutter 在构建页面时，会调用组件的 build 方法，widget 的主要工作是提供一个 build() 方法来描述如何构建UI界面（通常是通过组合、拼装其它基础widget）。</li>
+<li>MaterialApp 是 Material 库中提供的 Flutter APP 框架，通过它可以设置应用的名称、主题、语言、首页及路由列表等。MaterialApp 也是一个 widget。</li>
+<li>home 为 Flutter 应用的首页，它也是一个 widget。</li>
+</ul>
+<h3 id="2首页">2）首页</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHomePage</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
+  MyHomePage({Key key, <span style="color:#66d9ef">this</span>.title}) <span style="color:#f92672">:</span> <span style="color:#66d9ef">super</span>(key: key);
+  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">String</span> title;
+  <span style="color:#960050;background-color:#1e0010">@</span>override
+  _MyHomePageState createState() <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">new</span> _MyHomePageState();
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_MyHomePageState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>MyHomePage<span style="color:#f92672">&gt;</span> {
+ ...
+}
+</code></pre></div><ul>
+<li>MyHomePage 是 Flutter 应用的首页，它继承自StatefulWidget类，表示它是一个有状态的组件。</li>
+<li>_MyHomePageState 类是 MyHomePage 类对应的状态类。和 MyApp 类不同， MyHomePage 类中并没有 build 方法，取而代之的是，build 方法被挪到了 MyHomePage 类对应的状态类中。这样做是使得类的构建和 UI 界面的构建进行分离</li>
+</ul>
+<h3 id="3界面构建">3）界面构建</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"> Widget build(BuildContext context) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Scaffold(
+      appBar: <span style="color:#66d9ef">new</span> AppBar(
+        title: <span style="color:#66d9ef">new</span> Text(widget.title),
+      ),
+      body: <span style="color:#66d9ef">new</span> Center(
+        child: <span style="color:#66d9ef">new</span> Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span>[
+            <span style="color:#66d9ef">new</span> Text(
+              <span style="color:#e6db74">&#39;You have pushed the button this many times:&#39;</span>,
+            ),
+            <span style="color:#66d9ef">new</span> Text(
+              <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">$</span>_counter<span style="color:#e6db74">&#39;</span>,
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: <span style="color:#66d9ef">new</span> FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: <span style="color:#e6db74">&#39;Increment&#39;</span>,
+        child: <span style="color:#66d9ef">new</span> Icon(Icons.add),
+      ),
+    );
+  }
+</code></pre></div><ul>
+<li>Scaffold 是 Material 库中提供的页面脚手架，它提供了默认的导航栏、标题和包含主屏幕widget树的body属性。</li>
+<li>body 的组件树中包含了一个 Center 组件，Center 可以将其子组件树对齐到屏幕中心。此例中， Center 子组件是一个 Column 组件，Column 的作用是将其所有子组件沿屏幕垂直方向依次排列； 此例中 Column 子组件是两个 Text，第一个Text 显示固定文本 “You have pushed the button this many times:”，第二个 Text 显示 _counter 状态的数值。</li>
+<li>floatingActionButton 是出现在页面右下角的带“+”的悬浮按钮，它的 onPressed 属性接受一个回调函数，代表它被点击后的处理器，本例中将 _incrementCounter 方法作为其处理函数。</li>
+</ul>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/z1/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

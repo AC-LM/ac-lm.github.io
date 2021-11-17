@@ -3,19 +3,19 @@
 
 name = "X"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
-description = ""
-homepage = "http://example.com/"
+licenselink = "https://opensource.org/licenses/Apache-2.0"
+description = "simple example"
+homepage = "http://ac-lm.github.io"
 tags = []
 features = []
 min_version = "0.41.0"
 
 [author]
   name = "LM"
-  homepage = ""
+  homepage = "http://ac-lm.github.io"
 
 # If porting an existing theme
 [original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "HTML5 UP"
+  homepage = "http://html5up.net/"
+  repo = "https://opensource.org/licenses/Apache-2.0"

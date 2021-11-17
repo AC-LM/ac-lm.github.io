@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            <li class="menu">
+                
+                <a href="/posts" class="fa-bars">Post</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)"></a></h2>
+                <p>@LM | 0001-01-01</p>
+            </div>
+        </header>
+        <div class="content">
+            <p>[lscpu中的 socket、core、thread的意义 | Whosemario的家](<a href="http://whosemario.github.io/2016/05/20/lscpu-cmd/#:~:text=Thread">http://whosemario.github.io/2016/05/20/lscpu-cmd/#:~:text=Thread</a> (s) per core%3A 2 Core (s) per,什么是Socket. Socket就是主板上插CPU的槽的数量. 什么是Core. Core就是平时说的核，双核、四核等，就是每个CPU上的核数. 什么是Thread. thread就是每个core上的硬件线程数，即超线程. 对操作系统来说，其逻辑CPU的数量就是Socket<em>Core</em>Thread. 参考资料.)</p>
+<p>Linux上如下指令可以查看CPU的信息</p>
+<pre tabindex="0"><code>&gt; lscpu
+</code></pre><p>在我们线上机器上的结果如下：</p>
+<pre tabindex="0"><code>Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                32
+On-line CPU(s) list:   0-31
+Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 62
+Model name:            Intel(R) Xeon(R) CPU E5-2640 v2 @ 2.00GHz
+Stepping:              4
+CPU MHz:               1320.468
+CPU max MHz:           2500.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4000.99
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              20480K
+NUMA node0 CPU(s):     0-7,16-23
+NUMA node1 CPU(s):     8-15,24-31
+</code></pre><p>上面的信息，有几个比较有意思：</p>
+<pre tabindex="0"><code>Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             2
+</code></pre><h5 id="什么是socket">什么是Socket</h5>
+<p>Socket就是主板上插CPU的槽的数量</p>
+<h5 id="什么是core">什么是Core</h5>
+<p>Core就是平时说的核，双核、四核等，就是每个CPU上的核数</p>
+<h5 id="什么是thread">什么是Thread</h5>
+<p>thread就是每个core上的硬件线程数，即超线程</p>
+<p>对操作系统来说，其逻辑CPU的数量就是Socket<em>Core</em>Thread</p>
+<h3 id="参考资料">参考资料</h3>
+<p>[1] <a href="http://diego.assencio.com/?index=614d73283d49e939ebfb648cfb86819d">Getting CPU architecture information with lscpu</a>
+[2] <a href="http://blog.chinaunix.net/uid-20940095-id-3596134.html">处理器三个概念理解及延伸（socket，core，thread，SMT，CMP，SMP）</a></p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/shell/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux1linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

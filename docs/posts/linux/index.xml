@@ -1,241 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on AC-LM &#39;s blog</title>
-    <link>https://ac-lm.github.io/posts/linux/</link>
-    <description>Recent content in Linux on AC-LM &#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux(22)——Top命令详解</title>
-      <link>https://ac-lm.github.io/posts/linux/linux22top%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link>
-      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux22top%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</guid>
-      <description>top命令的用法 top 命令常用于监控 linux 的系统状况，是常用的性能分析工具，能够实时显示系统中各个进程的资源占用情况，其使用格式如下：
-top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒。 top [-bnp] # -b：以批次的方式执行top。 -n：与-b配合使用，表示需要进行几次top命令的输出结果。 -p：指定特定的pid进程观察。 在 top 命令运行时，用户还可以输入以下按键执行相应的功能（注意区分大小写）：
- ?：显示在top当中可以输入的命令 P：以CPU的使用资源排序显示 M：以内存的使用资源排序显示 N：以 pid 排序显示 T：由进程使用的时间累计排序显示 k：给某一个 pid 一个信号，杀死进程 r：给某个pid重新定制一个 nice 值（即优先级） q：退出top（或 Ctrl+C）  top各输出的含义 第1行 top - 05:43:27 up 4:52, 2 users, load average: 0.58, 0.41, 0.30
-   内容 含义     05:43:27 系统当前时间   up 4:52 系统运行时间，格式为时：分   2 users 当前登录用户数   load average: 0.</description>
-    </item>
-    
-    <item>
-      <title>Linux(21)——设置开机启动任务</title>
-      <link>https://ac-lm.github.io/posts/linux/linux21%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux21%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/</guid>
-      <description>参考原文：Linux 添加开机启动方法(服务/脚本) @jb51 
- 系统启动时按顺序加载以下的配置文件，要设置开机启动任务即修改以下部分文件
-/etc/profile、/root/.bash_profile/etc/bashrc、/root/.bashrc/etc/profile.d/*.sh、/etc/profile.d/lang.sh/etc/sysconfig/i18n、/etc/rc.local（/etc/rc.d/rc.local）1.修改开机启动文件：/etc/rc.local（或者/etc/rc.d/rc.local） # 1.编辑rc.local文件[root@localhost ~]# vi /etc/rc.local# 2.修改rc.local文件，在 exit 0 前面加入以下命令。保存并退出。/etc/init.d/mysqld start # mysql开机启动/etc/init.d/nginx start # nginx开机启动supervisord -c /etc/supervisor/supervisord.conf # supervisord开机启动/bin/bash /server/scripts/test.sh &amp;gt;/dev/null 2&amp;gt;/dev/null# 3.最后修改rc.local文件的执行权限[root@localhost ~]# chmod +x /etc/rc.local[root@localhost ~]# chmod 755 /etc/rc.local2.shell脚本的启动 将写好的脚本（.sh文件）放到目录 /etc/profile.d/ 下，系统启动后就会自动执行该目录下的所有shell脚本。
-3.通过chkconfig命令设置 # 1.将(脚本)启动文件移动到 /etc/init.d/ 或者 /etc/rc.d/init.d/ 目录下。（前者是后者的软连接）mv /www/wwwroot/test.sh /etc/rc.d/init.d# 2.启动文件前面务必添加如下三行代码，否侧会提示chkconfig不支持。#!/bin/sh 告诉系统使用的shell,所以的shell脚本都是这样#chkconfig: 35 20 80 分别代表运行级别，启动优先权，关闭优先权，此行代码必须#description: http server 自己随便发挥！！！，此行代码必须/bin/echo $(/bin/date +%F_%T) &amp;gt;&amp;gt; /tmp/test.</description>
-    </item>
-    
-    <item>
-      <title>Linux(20)——通过配置文件修改docker容器端口映射</title>
-      <link>https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link>
-      <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</guid>
-      <description>1.找到docker的配置文件 使用 docker ps -a 命令找到要修改容器的 CONTAINER ID
-运行 docker inspect 【CONTAINER ID】 | grep Id 命令，根据容器ID找到文件ID
-执行 cd /var/lib/docker/containers 命令进入docker容器文件夹，找到与 文件ID 相同的目录
-2.修改docker的配置文件 停止 docker 引擎服务，systemctl stop docker 或者 service docker stop
-进入对应 文件ID 所在目录，修改 hostconfig.json 两个文件
-把8080映照到80，重启服务systemctl start docker
-【PS】或修改 vi config.v2.json，找到 ExposedPorts 和 Ports 对应项，还是仿照原先的内容添加自己所需要的端口映射</description>
-    </item>
-    
-    <item>
-      <title>Linux(19)——常用的命令</title>
-      <link>https://ac-lm.github.io/posts/linux/linux19%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux19%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.历史记录命令 history -c # 参数!n（n命令编号），执行第n个命令 # 参数!$ / !!（上一个命令），执行上一条命令， # 参数-c（清理），清理历史记录 2.文件查看命令 ls #查看当前全部文件 ll #以详细信息列出文件 #------------------------------------------------ -a #显示所有文件及目录 (. 开头的隐藏文件也会列出) -l #除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出 -r #将文件以相反次序显示(原定依英文字母次序) -t #将文件依建立时间之先后次序列出 -A #同 -a ，但不列出 &amp;#34;.&amp;#34; (目前目录) 及 &amp;#34;..&amp;#34; (父目录) -F #在列出的文件名称后加一符号；例如可执行档则加 &amp;#34;*&amp;#34;, 目录则加 &amp;#34;/&amp;#34; -R #若目录下有文件，则以下之文件亦皆依序列出 3.文件夹操作命令 cd .. #进入父文件夹 cd ~ #root cd / #根 rm -rf xxxx #删除 vi test.txt #编辑 vim test.txt #编辑 chmod 4755 filename #Root权限 chmod -R 4755 filename #对全部文件加权限 chown root KI.</description>
-    </item>
-    
-    <item>
-      <title>Linux(18)——Chrome的安装配置</title>
-      <link>https://ac-lm.github.io/posts/linux/linux18chrome%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux18chrome%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
-      <description>1.Chrome 安装 # 下载------------------------------------------- wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm # 安装依赖------------------------------------------------------------- yum install libX11 libXcursor libXdamage libXext libXcomposite libXi libXrandr gtk3 libappindicator-gtk3 xdg-utils libXScrnSaver liberation-fonts # 执行安装-------------------------------------------------------------------- rpm -ivh google-chrome-stable_current_x86_64.rpm # 检验版本 google-chrome --version 2.chromedriver配置使用 # 前往 https://npm.taobao.org/mirrors/chromedriver/ 下载对应的 WebDriver # 建议将 WebDriver 上传到路径 /usr/local/bin 以添加到环境中，这样在编写脚本时不需要指定路径 # 参数配置---------------------------------------------------------- class webs(unittest.TestCase): def setUp(self): options = ChromeOptions() options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以Root权限运行 options.add_argument(&amp;#39;--headless&amp;#39;) # 必须添加这两个参数，否则会出现权限不够的问题 self.browser = Chrome(options=options) # WebDriver已添加到环境中 </description>
-    </item>
-    
-    <item>
-      <title>Linux(17)——面试知识</title>
-      <link>https://ac-lm.github.io/posts/linux/linux17%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux17%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</guid>
-      <description>1.解释下什么是GPL,GNU,自由软件？ GPL：（通用公共许可证）：一种授权，任何人有权取得、修改、重新发布自由软件的权力。GNU:(革奴计划)：目标是创建一套完全自由、开放的的操作系统。自由软件：是一种可以不受限制地自由使用、复制、研究、修改和分发的软件。主要许可证有GPL和BSD许可证两种。2.linux系统里，buffer和cache如何区分？ buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。3.描述Linux运行级别0-6的各自含义 0：关机模式1：单用户模式&amp;lt;==破解root密码2：无网络支持的多用户模式3：有网络支持的多用户模式（文本模式，工作中最常用的模式）4：保留，未使用5：有网络支持的X-windows支持多用户模式（桌面）6: 重新引导系统，即重启4.描述Linux系统从开机到登陆界面的启动过程 ⑴开机BIOS自检，加载硬盘。⑵读取MBR,MBR引导。⑶grub引导菜单(Boot Loader)。⑷加载内核kernel。⑸启动init进程，依据inittab文件设定运行级别⑹init进程，执行rc.sysinit文件。⑺启动内核模块，执行不同级别的脚本程序。⑻执行/etc/rc.d/rc.local⑼启动mingetty，进入系统登陆界面。5.描述Linux下软链接和硬链接的区别 在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。①默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。②硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，③ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。④删除软链接文件，对源文件和硬链接文件无任何影响。⑤删除文件的硬链接文件，对源文件及软链接文件无任何影响。⑥删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。⑦同时删除源文件及其硬链接文件，整个文件才会被真正的删除。⑧很多硬件设备的快照功能，使用的就是类似硬链接的原理。⑨软链接可以跨文件系统，硬链接不可以跨文件系统。6.shell脚本中“$?”标记的用途是什么? 在写一个shell脚本时，如果你想要检查前一命令是否执行成功，在if条件中使用“$?”可以来检查前一命令的结束状态。简单的例子如下：root@localhost:~# ls /usr/bin/root@localhost:~# echo $?0如果结束状态是0，说明前一个命令执行成功。root@localhost:~# ls /usr/bin/sharels: cannot access /usr/bin/share: No such file or directoryroot@localhost:~# echo $?2如果结束状态不是0，说明命令执行失败。7.</description>
-    </item>
-    
-    <item>
-      <title>Linux(16)——后台程序的运行及关闭</title>
-      <link>https://ac-lm.github.io/posts/linux/linux16%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8F%8A%E5%85%B3%E9%97%AD/</link>
-      <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux16%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8F%8A%E5%85%B3%E9%97%AD/</guid>
-      <description>1.实现后台执行程序 #后台执行程序 nohup python test.py &amp;gt; run.log 2&amp;gt;&amp;amp;1 &amp;amp; #查看后台程序 ps aux |grep &amp;#34;test.sh&amp;#34; # a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分 ps -ef |grep &amp;#34;test.sh&amp;#34; # -e显示所有进程。-f全格式。 # 关闭后台程序kill 1001 kill -9 1001 #-9表示强制关闭 # 根据名称删除 pkill -f Chrome # kill 对应的是 PID # pkill 对应的是COMMAND 2.linux后台运行命令nohup和&amp;amp;的区别  &amp;amp;：表示程序在后台运行，当执行./a.out &amp;amp; 的时候，即使你使用ctrl+C，a.out照样运行（因为对SIGINT信号免疫）。但是要注意，如果你直接关掉shell，那么，a.out进程会停止关闭。可见，&amp;amp;的后台并不硬（因为对SIGHUP信号不免疫）。 nohup：表示的是忽略SIGHUP信号，所以当运行nohup ./a.out时，关闭shell，a.out还是在运行（对SIGHUP信号免疫）。但是，如果直接在shell中使用Ctrl+C，那么，a.out进程会停止关闭（因为对SIGINT信号不免疫）  所以， &amp;amp;和nohup两者并没有直接关系， 要让进程真正不受shell中Ctrl+C和shell关闭的影响，最好是使用命令 nohua ./a.out &amp;amp;</description>
-    </item>
-    
-    <item>
-      <title>Linux(15)——tar解压</title>
-      <link>https://ac-lm.github.io/posts/linux/linux15tar%E8%A7%A3%E5%8E%8B/</link>
-      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux15tar%E8%A7%A3%E5%8E%8B/</guid>
-      <description>tar命令可以为linux的文件和目录创建档案。利用tar，可以为某一特定文件创建档案（备份文件），也可以在档案中改变文件，或者向档案中加入新的文件。利用tar命令，可以把一大堆的文件和目录全部打包成一个文件，这对于备份文件或将几个文件组合成为一个文件以便于网络传输是非常有用的。
-1.打包和压缩  打包是指将一大堆文件或目录变成一个总的文件 压缩则是将一个大的文件通过一些压缩算法变成一个小文件  为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar 命令），然后再用压缩程序进行压缩（gzip bzip2 命令）。
-yum install tar gzip bzip2.使用 tar 解包：tar xvf FileName.tar打包：tar cvf FileName.tar DirName.gz解压1：gunzip FileName.gz解压2：gzip -d FileName.gz压缩：gzip FileName.tar.gz 和 .tgz解压：tar zxvf FileName.tar.gz压缩：tar zcvf FileName.tar.gz DirName.bz2解压1：bzip2 -d FileName.bz2解压2：bunzip2 FileName.bz2压缩： bzip2 -z FileName.tar.bz2 .tar.xz解压：tar jxvf FileName.tar.bz2压缩：tar jcvf FileName.tar.bz2 DirName.bz解压1：bzip2 -d FileName.bz解压2：bunzip2 FileName.bz压缩：未知.tar.bz解压：tar jxvf FileName.</description>
-    </item>
-    
-    <item>
-      <title>Linux(14)——系统监控与环境配置</title>
-      <link>https://ac-lm.github.io/posts/linux/linux14%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux14%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
-      <description>1.top – 进程活动监控命令 top 命令会显示 Linux 的进程。它提供了一个运行中系统的实时动态视图，即实际的进程活动。默认情况下，它显示在服务器上运行的 CPU 占用率最高的任务，并且每五秒更新一次。
-t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源的利用率对进程进行排序，有助于快速识别系统中性能不佳的任务。f	进入 top 的交互式配置屏幕，用于根据特定的需求而设置 top 的显示。o	交互式地调整 top 每一列的顺序。r	调整优先级（renice）k	杀掉进程（kill）z	切换彩色或黑白模式2.w – 找出登录用户 w 命令 显示了当前登录在该系统上的用户及其进程。
-# w username# w vivek3.uptime – 系统运行时间 uptime 命令可以用来查看服务器运行了多长时间：当前时间、已运行的时间、当前登录的用户连接数，以及过去 1 分钟、5 分钟和 15 分钟的系统负载平均值，1 可以被认为是最佳负载值。
-4.ps – 显示系统进程 ps 命令显示当前运行的进程。
-# ps -A |显示所有的进程# ps -Al |显示长输出格式# ps -AlF |显示完整输出格式（它将显示传递给进程的命令行参数）# ps -AlFH |显示线程（轻量级进程（LWP）和线程的数量（NLWP））# ps -AlLm |在进程后显示线程# ps ax# ps axu |显示系统上所有的进程# pstree |显示进程树# ps -U vivek -u vivek u |显示指定用户（如 vivek）运行的进程# # ps -C lighttpd -o pid= |显示某进程（如 lighttpd）的 PID# ps -p 55977 -o comm= |显示指定 PID（如 55977）的进程名称# ps -auxf | sort -nr -k 4 | head -10 |找出占用内存资源最多的前10个进程# ps -auxf | sort -nr -k 3 | head -10 |找出占用CPU资源最多的前10个进程5.</description>
-    </item>
-    
-    <item>
-      <title>Linux(13)——rpm软件管理工具</title>
-      <link>https://ac-lm.github.io/posts/linux/linux13rpm%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux13rpm%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
-      <description>在 Linux 操作系统下，几乎所有的软件都可以通过 rpm 进行安装、卸载及管理等操作。rpm 的全称为Redhat Package Manager ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。
-1.安装 rpm -i example.rpm #安装 example.rpm 包； rpm -iv example.rpm #安装 example.rpm 包并在安装过程中显示正在安装的文件信息； rpm -ivh example.rpm #安装 example.rpm 包并在安装过程中显示正在安装的文件信息及安装进度 2.删除 rpm -e example #注意：软件包名是example，而不是rpm文件名&amp;#34;example.rpm&amp;#34; 3.升级 rpm -Uvh example.rpm #注意：rpm会自动卸载相应软件包的老版本。如果老版本软件的配置文件与新版本的不兼容，rpm会自动将其保存为另外一个文件，用户会看到下面的信息：saving /etc/example.conf as /etc/example.conf.rpmsave，用户就可以自己手工去更改相应的配置文件 #注意：如果用户要安装老版本的软件，会看到下面的出错信息：error:example.rpm cannot be installed，强行安装要使用-oldpackage参数。 4.查询 rpm -qa | grep clickhouse #用户可以用 rpm -q 在rpm的数据库中查询相应的软件，rpm会给出软件包的名称，版本，发布版本号 ----- 可用参数 --------------------------------------------- -a #查询目前系统安装的所有软件包。 -f 文件名 #查询包括该文件的软件包。 -F #同-f参数，只是输入是标准输入（例如 find /usr/bin | rpm -qF) -q 软件包名 #查询该软件包 -Q #同-p参数，只是输入是标准输入（例如 find /mnt/cdrom/RedHat/RPMS | rpm -qQ) -i #显示软件包的名称，描述，发行，大小，编译日期，安装日期，开发人员等信息。 -l #显示软件包包含的文件 -s #显示软件包包含的文件目前的状态，只有两种状态：normal和missing -d #显示软件包中的文档（如man,info,README等） -c #显示软件包中的配置文件，这些文件一般是安装后需要用户手工修改的，例如：sendmail.</description>
-    </item>
-    
-    <item>
-      <title>Linux(12)——MTR链路测试工具</title>
-      <link>https://ac-lm.github.io/posts/linux/linux12mtr%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux12mtr%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
-      <description>当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过MTR等工具进行链路测试来判断问题来源。
-MTR  MTR（My traceroute）是几乎所有Linux发行版本预装的网络测试工具，此工具也有对应的Windows版本，名称为WinMTR。 MTR工具将ping和traceroute命令的功能并入了同一个工具中，实现更强大的功能。 Linux版本的mtr命令默认发送ICMP数据包进行链路探测。可以通过“-u”参数来指定使用UDP数据包用于探测。 相对于traceroute命令只会做一次链路跟踪测试，mtr命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，mtr命令能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。  MTR的使用 mtr 192.168.1.243默认配置下，返回结果中各数据列的说明如下。
- 第一列（Host）：节点IP地址和域名。如前面所示，按n键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数“-c”指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  </description>
-    </item>
-    
-    <item>
-      <title>Linux(11)——npm包管理工具</title>
-      <link>https://ac-lm.github.io/posts/linux/linux11npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux11npm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
-      <description>1.npm npm是一款包管理工具，允许用户从npm服务器下载别人编写的第三方包或命令行程序到本地使用。
-由于npm是随Node.js一起安装的，所以我们安装Node.js即可安装npm
-wget https://cdn.npm.taobao.org/dist/node/latest-v15.x/node-v15.9.0-linux-x64.tar.gz #下载源码 tar -zxvf node-v15.9.0-linux-x64.tar.gz #解压文件 vim /etc/profile #编辑环境变量 #### export PATH=$PATH:/opt/node-v15.9.0/bin #### source /etc/profile #启用环境 配置后启动环境，若配置环境后无法使用，需运行此命令 node -v npm -v 2.npm配置 # 下载源配置 npm config set registry https://registry.npm.taobao.org npm config get registry # 查看当前目录已安装插件 npm list # 安装cnpm，淘宝团队做的国内镜像npm npm install -g cnpm --registry=https://registry.npm.taobao.org </description>
-    </item>
-    
-    <item>
-      <title>Linux(10)——pip软件管理工具</title>
-      <link>https://ac-lm.github.io/posts/linux/linux10pip%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux10pip%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
-      <description>1.pip 不同于python3自带pip软件管理工具，python2并不自带，需要自己安装
-wget https://bootstrap.pypa.io/pip/2.7/get-pip.py # pip3 wget https://bootstrap.pypa.io/get-pip.py # wget下载命令，会下载到当前目录，如报错，yum -y install wget python get-pip.py #编译 pip -V 2.修改pip下载源 pip -i https://pypi.douban.com/simple install Flask -- trusted-host pypi.douban.com #手动指定 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ #环境指定 ############### 清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：https://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 华中理工大学：https://pypi.hustunique.com/ 山东理工大学：https://pypi.sdutlinux.org/ 豆瓣：https://pypi.douban.com/simple/ 3.pip的使用 pip list #已安装 pip list --outdated #可更新 pip install --upgrade 包 #更新 </description>
-    </item>
-    
-    <item>
-      <title>Linux(9)——Python3.6安装</title>
-      <link>https://ac-lm.github.io/posts/linux/linux9python3.6%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux9python3.6%E5%AE%89%E8%A3%85/</guid>
-      <description>1.前言 Linux系统自带Python2，这是由于部分命令需要使用Python2，如yum，要使用Python3则需另外安装
-python -V #查看Py版本 python -m XXXX #执行终端命令，-m参数使得Python预先import你要的package或module给你，然后再执行script。 which python #查看python命令是连接到那个文件 #### /usr/bin/python #### cd /usr/bin/ #进入bin文件夹 ll python* #列出包含python字段的文件 #### lrwxrwxrwx. 1 root root 16 11月 17 11:42 python -&amp;gt; /usr/bin/python2 lrwxrwxrwx. 1 root root 9 11月 13 11:01 python2 -&amp;gt; python2.7 -rwxr-xr-x. 1 root root 7144 10月 14 22:46 python2.7 -rwxr-xr-x. 1 root root 1835 10月 14 22:45 python2.7-config lrwxrwxrwx. 1 root root 16 11月 16 17:40 python2-config -&amp;gt; python2.</description>
-    </item>
-    
-    <item>
-      <title>Linux(8)——linux的文件权限</title>
-      <link>https://ac-lm.github.io/posts/linux/linux8linux%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/</link>
-      <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux8linux%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/</guid>
-      <description>文件详情
-drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 2018 fields.yml -rwxr-xr-x 1 root root 33903123 Sep 26 2018 filebeat -rwxr-xr-x 1 root root 1011 Mar 27 10:13 filebeat-docker.yml -rw-r--r-- 1 root root 66260 Sep 26 2018 filebeat.reference.yml -rw------- 1 root root 7231 Sep 26 2018 filebeat.yml drwxr-xr-x 4 root root 22 Sep 26 2018 kibana -rw-r--r-- 1 root root 13675 Sep 26 2018 LICENSE.</description>
-    </item>
-    
-    <item>
-      <title>Linux(7)——yum软件管理工具</title>
-      <link>https://ac-lm.github.io/posts/linux/linux7yum%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux7yum%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
-      <description>1.yum # 新建一个目录用来保存yum安装包  mkdir install # 进入文件夹并输入命令 cd install wget http://yum.baseurl.org/download/3.2/yum-3.2.28.tar.gz # 解压 tar -xvf yum-3.2.28.tar.gz # 重点：解压后先不着急安装，手动创建一个yum的conf文件，不然会报找不到文件的错 yum.cli:Config Error: Error accessing file for config file:///etc/ # touch /etc/yum.conf # 进入yum目录，脚本安装 cd yum-3.2.28 ./yummain.py install yum # 期间会提示安装新版本，y回车即可 2.使用 yum -y remove xxxx #卸载 yum -y install xxxxx #安装 </description>
-    </item>
-    
-    <item>
-      <title>Linux(6)——LAMP环境安装与使用</title>
-      <link>https://ac-lm.github.io/posts/linux/linux6lamp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux6lamp%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
-      <description>1.什么是LAMP环境 LAMP是指一组通常一起使用来运行动态网站或者服务器的自由软件名称首字母缩写：
- Linux，操作系统 Apache，网页服务器 MariaDB或MySQL，数据库管理系统（或者数据库服务器） PHP、Perl或Python，脚本语言  2.MariaDB 数据库 yum -y mariadb mariadb-server #安装mariadb客户端和服务端程序 yum groupinstall mariadb mariadb-server -y #或 systemctl start mariadb #启动程序 systemctl enable mariadb #设为开机自启动 mysql_secure_installation #直接执行初始化命令，会弹出交互配置信息 ##交互信息## Enter current password for root (enter for none):#初次进入密码为空，直接回车 New password: #输入要为root用户设置的数据库密码。 Re-enter new password: #重复再输入一次密码。 Remove anonymous users? [Y/n] y #删除匿名帐号 Disallow root login remotely? [Y/n] n #是否禁止root用户从远程登录，安全起见应禁止，这里为做实验方便这里不禁止。 Remove test database and access to it? [Y/n] y #是否删除test数据库，想留着也随意 Reload privilege tables now?</description>
-    </item>
-    
-    <item>
-      <title>Linux(5)——常用快捷键</title>
-      <link>https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
-      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>快捷键  Tab ：实现自动补全参数（双击列出全部可能参数） Ctrl-R：搜索命令行历史记录（按下按键之后，输入关键字搜索，重复按下会向后查找匹配项，按下 Enter 会执行当前匹配的命令，而按下右方向键会将匹配项放入当前行中，不会直接执行，以便做出修改） Ctrl-W ：剪切，删除光标前的一个单词 Ctrl-U和Ctrl-K ：剪切，U删除光标前的所有字符，K光标后的所有字符 Ctrl-Y：粘贴Ctrl-W、Ctrl-U和Ctrl-K删除的字符 Alt-B 和 Alt-F ：以单词为单位移动光标，B向前，F向后 Ctrl-A 和Ctrl-E：A将光标移至行首， B将光标移至行尾 Ctrl-L ：清屏 Ctrl-C：中断终端正在执行的任务并开启一个新的一行 Ctrl-Z：暂停在终端运行的任务，使用fg命令可以使暂停恢复 Ctrl+D：退出，如果是切换过来的用户，则执行这个命令回退到原用户 Ctrl+S：锁定终端，使之任何人无法输入 Ctrl+Q：解锁Ctrl+S的锁定状态 !! ：执行上一条命令 !pw：执行以pw开头的命令，这里的pw可以换成任何已经执行过的字符 !pw:p：打印以pw开头的命令，但不执行  </description>
-    </item>
-    
-    <item>
-      <title>Linux(4)——输出到空文件</title>
-      <link>https://ac-lm.github.io/posts/linux/linux4%E8%BE%93%E5%87%BA%E5%88%B0%E7%A9%BA%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux4%E8%BE%93%E5%87%BA%E5%88%B0%E7%A9%BA%E6%96%87%E4%BB%B6/</guid>
-      <description>1.文件 /dev/null 代表空设备文件，垃圾箱一类的文件，类似于文件 /dev/zero（这个文件只会输出0）
-2.语句 1 &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 的含义 在shell中，每个进程都和三个系统文件相关联：标准输入stdin，标准输出stdout、标准错误stderr，三个系统文件的文件描述符分别为0，1，2
- 1 &amp;gt; /dev/null ： 表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，说白了就是不显示任何信息。 2&amp;gt;&amp;amp;1 ：表示标准错误输出重定向到（等同于）标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。 &amp;gt; ：代表重定向到哪里，例如：echo &amp;ldquo;123&amp;rdquo; &amp;gt; /home/123.txt 1 ：表示 stdout 标准输出，系统默认值是1，所以&amp;quot;&amp;gt;/dev/null&amp;quot;等同于&amp;quot;1&amp;gt;/dev/null&amp;quot; 2 ：表示 stderr 标准错误 &amp;amp; ：表示等同于的意思，2&amp;gt;&amp;amp;1，表示2的输出重定向等同于1  3.实例分析  1 &amp;gt;a 2&amp;gt;a ：stdout和stderr都直接送往文件 a ，a文件会被打开两遍，由此导致stdout和stderr互相覆盖，两者互相竞争使用文件 a 的管道 1 &amp;gt;a 2&amp;gt;&amp;amp;1 ：stdout直接送往文件a ，stderr是继承了stdout的管道之后，再被送往文件a 。a文件只被打开一遍，就是stdout将其打开。只使用了一个管道stdout，但已经包括了stdout和stderr。从IO效率上来讲，1 &amp;gt;a 2&amp;gt;&amp;amp;1的效率更高。  $ cat test.sh #test.sh中包含两个命令（t, date），其中t是一个不存在的命令，执行会报错，默认情况下，错误会输出到stderr。date则能正确执行，并且输出时间信息，默认输出到stdout ./test.sh &amp;gt; test1.log #./test.sh: line 1: t: command not found $ cat test1.</description>
-    </item>
-    
-    <item>
-      <title>Linux(3)——Java与Tomcat的配置</title>
-      <link>https://ac-lm.github.io/posts/linux/linux3java%E4%B8%8Etomcat%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux3java%E4%B8%8Etomcat%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
-      <description>1.Java配置 # 查看内核 arch uname -a JDK 官网下载  注意跟随内核版本，ARM下ARM，x86下x86，下载源码
-# 删除自带的openjava rpm -qa | grep java yum -y remove openjava # 配置环境变量 vim /etc/profile #编辑vi # 添加以下内容 # This is Java: JAVA_HOME=/home/ams/jdk PATH=$PATH:${JAVA_HOME}/bin export JAVA_HOME PATH source /etc/profile #启用环境 配置后启动环境，若配置环境后无法使用Java，需运行此命令 Java -version 2.Tomcat配置 Tomcat 官网下载  注意跟随内核版本，下载源码
-# 环境变量 # 建议定义在单个tomcat的启动和关闭程序，避免影响 # 打开startup.sh和shutdown.sh，添加以下内容 export TOMCAT_HOME=/home/ams/tomcat export CATALINA_HOME=/home/ams/tomcat export PATH=$PATH:/home/ams/tomcat/bin #-------------------------------------- /bin/bash startup.sh #运行tomcat ps -ef | grep tomcat #是否安装tomcat root 3905 13.</description>
-    </item>
-    
-    <item>
-      <title>Linux(2)——Docker与防火墙</title>
-      <link>https://ac-lm.github.io/posts/linux/linux2docker%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</link>
-      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux2docker%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
-      <description>1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.</description>
-    </item>
-    
-    <item>
-      <title>Linux(1)——Linux系统文件</title>
-      <link>https://ac-lm.github.io/posts/linux/linux1linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/linux/linux1linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/</guid>
-      <description>&amp;mdash;&amp;mdash;&amp;ndash;基于发行版本 CentOS-7 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
-1.Linux的镜像分类  CentOS-7.0-x86_64-DVD-1503-01.iso : 标准安装版 CentOS-7.0-x86_64-NetInstall-1503-01.iso : 网络安装镜像 CentOS-7.0-x86_64-Everything-1503-01.iso: 对完整版安装盘的软件进行补充，集成所有软件 CentOS-7.0-x86_64-GnomeLive-1503-01.iso: GNOME 桌面版 CentOS-7.0-x86_64-KdeLive-1503-01.iso: KDE 桌面版 CentOS-7.0-x86_64-livecd-1503-01.iso : 光盘上运行的系统，类拟于 WindowsPE CentOS-7.0-x86_64-minimal-1503-01.iso : 精简版，自带的软件最少  2.Linux系统目录  /bin：bin 是 Binaries（二进制文件）的缩写，这个目录存放着最经常使用的命令。 /boot：这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。 **/dev **：dev 是 Device（设备）的缩写，该目录存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。 /etc：etc 是 Etcetera 这个目录用来存放所有的系统管理所需要的配置文件和子目录。 /home：用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的 /lib：lib 是 Library（库）的缩写，这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。 /lost+found：这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。 /media：linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。 /mnt：系统提供给用户临时挂载别的文件系统的目录，我们可以将光驱挂载在 /mnt/ 上，然后进入该目录查看光驱里的内容 /opt：opt 是 optional（可选）的缩写，这是给主机额外安装软件所摆放的目录。默认是空的。 /proc：proc 是 Processes（进程）的缩写，/proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。这个目录的内容不在硬盘上而是在内存里，目的管理内存空间！ /root：该目录为系统管理员，也称作超级权限者的用户主目录。 /sbin：是 Superuser Binaries（超级用户的二进制文件）的缩写，这里存放的是系统管理员使用的系统管理程序。 /selinux：这个目录是 Redhat / CentOS 所特有的目录，selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放 selinux 相关的文件的。 /srv：该目录存放一些服务启动之后需要提取的数据。 /sys：sys 文件系统集成了下面 3 种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。该文件系统是内核设备树的一个直观反映。当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。 /tmp：tmp 是 temporary（临时）的缩写，这个目录是用来存放一些临时文件的。 /usr：usr 是 unix shared resources（共享资源）的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。 /usr/bin：系统用户使用的应用程序。 /usr/sbin：超级用户使用的比较高级的管理程序和系统守护程序。 /usr/src：内核源代码默认的放置目录。 /var：var 是 variable（变量）的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的文件放在这个目录下。包括各种日志文件。 /run：是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。  避免修改  /etc：配置目录。 /var：日志目录。 /bin，/sbin，/usr/bin，/usr/sbin：这是系统预设的执行文件的放置目录，比如 ls 就是在 /bin/ls 目录下的。  </description>
-    </item>
-    
-  </channel>
-</rss>

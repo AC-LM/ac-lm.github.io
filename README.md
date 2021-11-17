@@ -1,3 +1,8 @@
-# ac-lm.github.io
+# ac-lm.github.io! My blog!!!╰(*°▽°*)╯
 
-# blog!!!╰(*°▽°*)╯
+## To Do
+
+- [ ] Run `hugo` to build the blog
+- [ ] Rename the file `public` to `docs`
+- [ ] Push to `Github`
+- [ ] Visit http://ac-lm.github.io
