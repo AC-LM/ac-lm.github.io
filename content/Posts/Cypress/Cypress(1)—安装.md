@@ -1,12 +1,20 @@
 ---
-title: Cypress(1)——安装示例
+title: Cypress(1)——安装
 date: 2021-09-10
 author: LM
 ---
 
 ## Cypress
 
-需要环境 `node.js`，安装 > [Node.js (nodejs.org)](https://nodejs.org/zh-cn/)
+Cypress 是使用现代 JavaScript 框架构建的前端测试工具。
+
+## 环境
+
+`node.js`，安装 > [Node.js (nodejs.org)](https://nodejs.org/zh-cn/)
+
+## 安装
+
+下载 [Cypress](https://docs.cypress.io/)，执行下列命令安装 
 
 ```shell
 cd /your/project/path

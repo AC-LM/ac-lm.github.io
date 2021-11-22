@@ -4,10 +4,6 @@ date: 2021-04-26
 author: LM
 ---
 
-2021.4.29
-
-> 参考原文：[ Dart 语言标准流与文件操作 @血色v残阳 ](https://blog.csdn.net/yingshukun/article/details/100866655)
-
 ## 1.写文件
 
 无需手动关闭文件，文件写入完成后自动关闭
@@ -77,7 +73,7 @@ readAsLines
 readAsLinesSync
 ```
 
-## 3.其它
+## 3.文件存在判断
 
 ```dart
 import 'dart:io';
@@ -101,7 +97,11 @@ void main() async{
   // 获取文件 size
   print(await file.length());
 }
-————————————————
+```
+
+## 4.目录存在判断
+
+```dart
 import 'dart:io';
 
 void main() async{
@@ -134,3 +134,4 @@ void main() async{
 }
 ```
 
+> 参考原文：[ Dart 语言标准流与文件操作 @血色v残阳 ](https://blog.csdn.net/yingshukun/article/details/100866655)

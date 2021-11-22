@@ -4,13 +4,13 @@ date: 2021-04-27
 author: LM
 ---
 
-## In Async Code
+## In Async Code (异步)
 
 ```dart
 await Future.delayed(Duration(seconds: 1));
 ```
 
-## In Sync Code
+## In Sync Code (同步)
 
 ```dart
 import 'dart:io';

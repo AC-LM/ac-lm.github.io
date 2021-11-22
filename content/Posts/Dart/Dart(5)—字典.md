@@ -36,28 +36,29 @@ author: LM
 ### c.复制
 
 ```dart
-//不使用类型操作符,从另一个map中初始化新的map，此时新的map中含有另一个map中的资源
-  Map map1 = {'a':'a1','b':'b1','c':'c1'};
-  Map map2 = Map.castFrom(map1);
+// 不使用类型操作符,从另一个map中初始化新的map，此时新的map中含有另一个map中的资源
+    Map map1 = {'a':'a1','b':'b1','c':'c1'};
+    Map map2 = Map.castFrom(map1);
 
-//强制使用指定类型初始化map
-  Map<int,String> map3 = {1:'a',2:'b',3:'c'};
-  Map map4 = Map.castFrom<num,String>(map3);
-//这行代码会出错，主要原因是testMap是<dynamic,dynamic>类型的，但是这里需要的是<int,String>类型的map
-  Map map5 = Map.castFrom<String,String>(map3);
-//这行代码也会出错，因为无法将<String,String>类型的map转换为<int,String>类型的map
-  Map map6 = Map.castFrom<int,String>(map3); //正确
+// 强制使用指定类型初始化map
+    Map<int,String> map3 = {1:'a',2:'b',3:'c'};
+    Map map4 = Map.castFrom<num,String>(map3);
+    
+// 这行代码会出错，主要原因是testMap是<dynamic,dynamic>类型的，但是这里需要的是<int,String>类型的map
+    Map map5 = Map.castFrom<String,String>(map3);
+    
+// 这行代码也会出错，因为无法将<String,String>类型的map转换为<int,String>类型的map
+    Map map6 = Map.castFrom<int,String>(map3); // 正确
 ```
 
-### d.创建不可变的Map
+### d.创建不可变的 map
 
 ```dart
 Map map6 = const {'one':'Android','two':'IOS','three':'flutter'};
-//在目标的map6创建(复制)新的不可修改map7
 Map map7 = Map.unmodifiable(map6);
 ```
 
-### e.根据list所提供的key value来创建map
+### e.根据 list 所提供的 key value 来创建 map
 
 ```dart
 List<String> keys = ['one','two']; 
@@ -82,24 +83,24 @@ print(map.entries);       //(MapEntry(a: 1), MapEntry(b: 2))  map迭代的键值
 
 ```dart
 Map<String,int> map7 = {"a":1,"b":2,"c":3,"d":4,"e":5};
-//新增一个key value
+// 新增一个key value
 map7["f"] = 6;
 ```
 
 ### b.改
 
 ```dart
-//修改一个key的value
+// 修改一个key的value
 Map<String,int> map8 = {"a":1,"b":2,"c":3,"d":4,"e":5};
 map8["a"] = 11;
 
-//对指定的key的value做出修改
+// 对指定的key的value做出修改
 Map<String,int> map23 = {"a":1,"b":2,"c":3};
 int result3 = map23.update("a", (value)=>(value*2));
 int result4 = map23.update("d", (value)=>(value*2));
 int result4 = map23.update("d", (value)=>(value*2),ifAbsent: ()=>(10));
 
-//根据参数函数的规则，批量修改map
+// 根据参数函数的规则，批量修改map
 Map<String,int> map24 = {"a":1,"b":2,"c":3};
 map24.updateAll((String key,int value){
    return value*2;
@@ -115,11 +116,11 @@ map25.updateAll((String key,int value){
 ### c.删
 
 ```dart
-//删除一个key
+// 删除一个key
     Map<String,int> map9 = {"a":1,"b":2,"c":3,"d":4,"e":5};
     map9.remove("b");
 
-//根据条件批量删除
+// 根据条件批量删除
     Map<String,int> map10 = {"a":1,"b":2,"c":3,"d":4,"e":5};
     map10.removeWhere((key,value)=>(value>3));
 ```
@@ -127,23 +128,23 @@ map25.updateAll((String key,int value){
 ### d.查
 
 ```dart
-//是否包含key
+// 是否包含key
    Map<String,int> map11 = {"a":1,"b":2,"c":3,"d":4,"e":5};
    print(map11.containsKey("a"));//true   是否包含key
    print(map11.containsKey("aa"));//false  是否包含key
    
-//是否包含value值
+// 是否包含value值
    Map<String,int> map17 = {"a":1,"b":2,"c":3};
    print(map17.containsValue(1));//true
    print(map17.containsValue(4));//false
    
-//遍历
+// 遍历
     Map<String,int> map12 = {"a":1,"b":2,"c":3,"d":4,"e":5};
     map12.forEach((String key,int value){
         print("$key  $value");
     });
     
- //遍历时修改value值，PS:遍历时，新增或删除key，都会报错
+// 遍历时修改value值，PS:遍历时，新增或删除key，都会报错
      Map<String,int> map13 = {"a":1,"b":2,"c":3};
     map13.forEach((String key,int value){
     print("$key  $value");
@@ -154,32 +155,32 @@ map25.updateAll((String key,int value){
 ### e.其他
 
 ```dart
-//遍历每个元素 根据参数函数，对keyvalue做出修改，可转换成其他泛型的Map
+// 遍历每个元素 根据参数函数，对keyvalue做出修改，可转换成其他泛型的Map
   Map<String,int> map19 = {"a":1,"b":2,"c":3};
     Map<int,String> map20 = map19.map((String key,int value){
       return new MapEntry(value, key);
     });
 
-//清空map
+// 清空map
    Map<String,int> map15 = {"a":1,"b":2,"c":3};
    map15.clear();
 
-//整体合并另一个map 泛型要一致
+// 整体合并另一个map 泛型要一致
    Map<String,int> map16 = {"a":1,"b":2,"c":3};
    Map<String,int> other = {"a":1,"c":4,"d":7};
    map16.addAll(other);//key相同时value值后者覆盖前者，前者不存在时则添加进来
 
-//合并两个map 如果key有重复，被合并的map的value覆盖前者
+// 合并两个map 如果key有重复，被合并的map的value覆盖前者
     Map<String,int> map26 = {"a":1,"b":2,"c":3};
     Map<String,int> map27 = {"a":1,"b":4,"d":3,"e":5};
     map26.addEntries(map27.entries);
 
-//存在key就获取值，不存在则添加到map 然后返回值
+// 存在key就获取值，不存在则添加到map 然后返回值
     Map<String,int> map18 = {"a":1,"b":2,"c":3};
     int result = map18.putIfAbsent("a", ()=>(2));//存在
     int result2 = map18.putIfAbsent("d", ()=>(2));//不存在
 
-//泛型类型提升为其父祖类
+// 泛型类型提升为其父祖类
     Map<String,int> map21 = {"a":1,"b":2,"c":3};
     Map<Object,Object> map22 = map21.cast();
     map22["d"]=33;
