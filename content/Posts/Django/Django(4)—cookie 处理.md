@@ -4,7 +4,7 @@ date: 2021-06-04
 author: LM
 ---
 
-## 设置cookie
+## 1.设置 cookie
 
 ```python
 # 编写视图函数，进行设置
@@ -19,7 +19,7 @@ def set_cookie(request):
     return response
 ```
 
-## 获取cookie
+## 2.获取cookie
 
 ```python
 # 视图函数中定义  get_cookie 方法

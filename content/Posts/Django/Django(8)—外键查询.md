@@ -4,7 +4,7 @@ date: 2021-07-24
 author: LM
 ---
 
-> 参考原文：[ Django 外键查询 @尛刀石 ](https://blog.csdn.net/qq_43102443/article/details/108270653)
+## 1.查询示例
 
 ```python
 class Publish(models.Model):
@@ -33,9 +33,7 @@ class Book(models.Model):
         return self.bname
 ```
 
-## 1.一对多
-
-### a.通过类属性查询
+## 2.通过类属性查询
 
 ```python
 # get方法的到的结果是一个对应类的对象
@@ -49,7 +47,7 @@ pub = Publish.objects.get(id=1)
 pub.book_set.all()
 ```
 
-### b.通过双下划线查询
+## 3.通过双下划线查询
 
 ```python
 # 通过出版社的相关信息进行查询某一本书
@@ -68,19 +66,10 @@ Book.objects.filter(id=1).values('publish__pname')
 Book.objects.filter(id=1).values_list('publish__pname')
 
 # 通过出版社的相关信息进行查询某一本书
- Publish.objects.filter(id=1).values('book__bname')
- Publish.objects.filter(id=1).values_list('book__bname')
+Publish.objects.filter(id=1).values('book__bname')
+Publish.objects.filter(id=1).values_list('book__bname')
 ```
 
-## 2.多对多
 
-```python
-# 通过作者的相关信息查询其某一本书(返回的内部是Book的对象的查询集）
-Book.objects.filter(author__id=1)
-Author.objects.filter(id=1).values('book')
-
-# 查询某一本书对应的作者有哪些(返回的内部是Author的对象的查询集）
-Author.objects.filter(book__id=1)
-Book.objects.filter(id=1).values('author')
-```
+> 参考原文：[ Django 外键查询 @尛刀石 ](https://blog.csdn.net/qq_43102443/article/details/108270653)
 

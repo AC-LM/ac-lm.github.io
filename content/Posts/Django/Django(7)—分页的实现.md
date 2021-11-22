@@ -6,7 +6,7 @@ author: LM
 
 ## 1.Paginator
 
-### 官方示例：`view.py`
+### view.py
 
 ```python
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -30,7 +30,7 @@ def listing(request):
 
 ```
 
-### 官方示例：`html`
+### Example.html
 
 ```html
 {% for contact in contacts %}

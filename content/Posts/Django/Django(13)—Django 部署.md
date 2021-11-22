@@ -1,10 +1,10 @@
 ---
-title: Django(13)——Django部署
+title: Django(13)——Django 部署
 date: 2021-08-27
 author: LM
 ---
 
-## 1.配置uwsgi
+## 1.配置 uwsgi
 
 - 安装：`pip install uwsgi`
 - 测试：`uwsgi --http-socket :80 --file test.py`
@@ -44,7 +44,7 @@ daemonize=uwsgi.log
 - 重载：`uwsgi --reload uwsgi.pid`
 - 停止：`uwsgi --stop uwsgi.pid`
 
-## 2.配置Django
+## 2.配置 Django
 
 - 测试：`python manage.py runserver 0.0.0.0:8000`，访问宿主机 IP:8000
 - 配置：`setting.py`，`DEBUG=False`，`ALLOWED_HOSTS=['*']`

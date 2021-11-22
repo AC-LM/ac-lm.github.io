@@ -1,12 +1,12 @@
 ---
-title: Django(12)——404文件
+title: Django(12)——404 文件
 date: 2021-08-26
 author: LM
 ---
 
 ## Django的404
 
-Django 能自动的寻找 404文件，在路径错误时自动跳转，需要注意的是，当 DEBUG = True 时，系统不会调用 404 文件。
+Django 能自动的寻找 404 文件，在路径错误时自动跳转，需要注意的是，当 DEBUG = True 时，系统不会调用 404 文件。
 
 ```html
 <!DOCTYPE html>

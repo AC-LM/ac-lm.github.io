@@ -4,5 +4,5 @@ date: 2021-08-27
 author: LM
 ---
 
-记录着Python网络框架Django的相关知识，属于Web后端开发内容
+记录着 Python Web 网页框架 Django 的相关知识
 

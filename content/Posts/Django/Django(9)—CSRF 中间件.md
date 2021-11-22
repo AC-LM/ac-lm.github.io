@@ -4,13 +4,13 @@ date: 2021-07-25
 author: LM
 ---
 
-## 1.CSRF中间件
+## 1.CSRF 中间件
 
-CSRF中间件`django.middleware.csrf.CsrfViewMiddleware`默认在`setting.py`设置中激活。
+CSRF 中间件`django.middleware.csrf.CsrfViewMiddleware`默认在`setting.py`设置中激活。
 
 在使用 POST 表单的任何模板中，如果表单用于内部 URL，请在元素内使用`csrf_token`标签，例如`<form method="post">{% csrf_token %}`，对于针对外部 URL 的 POST 表单，不应这样做，因为这将导致 CSRF 令牌被泄露，从而导致漏洞。
 
-## 2.异步
+## 2.异步 POST 带 CSRF 令牌传递
 
 对于任何 AJAX POST 请求，都需要将 CSRF 令牌作为 POST 数据传递进来，您可以获取这样的令牌。
 
