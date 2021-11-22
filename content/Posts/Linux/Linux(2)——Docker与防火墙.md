@@ -36,9 +36,9 @@ docker exec id commend
 
 ```bash
 vi /etc/firewalld/zones #查看配置文件
-firewall-cmd --zone=public --add-port=8080/tcp --permanent #开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）
-firewall-cmd --zone=public --remove-port=8080/tcp --permanent #关闭8080/tcp端口
-firewall-cmd --zone=public --query-port=80/tcp #查看端口状态
+firewall-cmd --zone=docs --add-port=8080/tcp --permanent #开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）
+firewall-cmd --zone=docs --remove-port=8080/tcp --permanent #关闭8080/tcp端口
+firewall-cmd --zone=docs --query-port=80/tcp #查看端口状态
 firewall-cmd --reload #重启防火墙
 firewall-cmd --completely-reload
 firewall-cmd --list-all #列出防火墙所以规则
