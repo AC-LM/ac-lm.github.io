@@ -4,14 +4,14 @@ date: 2021-06-09
 author: LM
 ---
 
-## 备份源
+## 1.备份源
 
 ```
 cd /etc/apt
 cp sources.list sources.list.bak
 ```
 
-## 编辑文件
+## 2.编辑文件
 
 模仿 deb http://............... main contrib nin-free 修改
 

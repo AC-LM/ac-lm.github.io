@@ -4,7 +4,7 @@ date: 2021-08-27
 author: LM
 ---
 
-## 配置
+## 1.改变颜色
 
 1. 在设置中搜索`workbench.colorCustomizations`
 2. 点击编辑`setting.json`

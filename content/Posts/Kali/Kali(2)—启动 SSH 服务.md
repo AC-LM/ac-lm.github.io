@@ -1,8 +1,10 @@
 ---
-title: Kali(2)——启动SSH服务
+title: Kali(2)——启动 SSH 服务
 date: 2021-06-08
 author: LM
 ---
+
+## 1.配置
 
 由于 Kali 默认未启用 SSH 服务，需要手动开启
 

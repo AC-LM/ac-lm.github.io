@@ -1,5 +1,5 @@
 ---
-title: VSCode(3)——无法运行系统脚本
+title: VSCode(3)——系统禁止运行脚本
 date: 2021-09-16
 author: LM
 ---
