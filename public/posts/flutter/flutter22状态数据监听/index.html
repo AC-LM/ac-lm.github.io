@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(22)——状态(数据)监听</a></h2>
+                <p>@LM | 2021-07-23</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1valuelistenablebuilder">1.ValueListenableBuilder</h2>
+<p>该<code>Widget</code>配合<code>ValueNotifier</code>可以实现对数据的监听</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">/// 定义 ValueNotifier 这里传递的数据类型为 String
+</span><span style="color:#75715e"></span>ValueNotifier<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> _testValueNotifier <span style="color:#f92672">=</span> ValueNotifier<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+<span style="color:#75715e">/// 定义数据变化后监听的 Widget
+</span><span style="color:#75715e"></span>Widget buildValueListenableBuilder() {
+  <span style="color:#66d9ef">return</span> ValueListenableBuilder(
+    <span style="color:#75715e">/// 数据发生变化时回调,变化的布局
+</span><span style="color:#75715e"></span>    builder: (context, value, child) {
+        <span style="color:#66d9ef">if</span>(value <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>){
+          <span style="color:#66d9ef">return</span> Text(<span style="color:#e6db74">&#39;空&#39;</span>);
+        }<span style="color:#66d9ef">else</span>{
+          <span style="color:#66d9ef">return</span> Text(value);
+        }
+    },
+    <span style="color:#75715e">/// 监听的数据
+</span><span style="color:#75715e"></span>    valueListenable: _testValueNotifier,
+  );
+}
+<span style="color:#75715e">/// 数据变化
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">void</span> testFunction() {
+   <span style="color:#75715e">/// 赋值更新
+</span><span style="color:#75715e"></span>   _testValueNotifier.value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;传递的测试数据&#39;</span>;
+ }
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter21apk-%E7%98%A6%E8%BA%AB/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter23%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Git(3)——gitlab-runner 安装配置</a></h2>
+                <p>@LM | 2021-01-07</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1linux-注册-gitlab-runner">1.Linux 注册 gitlab-runner</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gitlab-runner register
+Runtime platform                                    arch<span style="color:#f92672">=</span>amd64 os<span style="color:#f92672">=</span>linux pid<span style="color:#f92672">=</span><span style="color:#ae81ff">3639</span> revision<span style="color:#f92672">=</span>943fc252 version<span style="color:#f92672">=</span>13.7.0
+Running in system-mode.
+
+Enter the GitLab instance URL <span style="color:#f92672">(</span><span style="color:#66d9ef">for</span> example, https://gitlab.com/<span style="color:#f92672">)</span>:
+<span style="color:#75715e"># http://gitlab.hison.net/</span>
+Enter the registration token:
+<span style="color:#75715e"># WDKcwQGUoXRC-NR3rUns</span>
+Enter a description <span style="color:#66d9ef">for</span> the runner:
+<span style="color:#75715e"># </span>
+Enter the tags <span style="color:#66d9ef">for</span> the runner:
+<span style="color:#75715e"># </span>
+Enter the runner executor:
+<span style="color:#75715e"># shell</span>
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
+<span style="color:#75715e"># 文档</span>
+sudo gitlab-runner register
+Enter your GitLab instance URL <span style="color:#f92672">(</span>also known as the gitlab-ci coordinator URL<span style="color:#f92672">)</span>.
+token Enter the token you obtained to register the runner.
+Enter a description <span style="color:#66d9ef">for</span> the runner. You can change this value later in the GitLab user interface.
+Enter the tags associated with the runner, separated by commas. You can change this value later in the GitLab user interface.
+Provide the runner executor. For most use cases, enter docker.
+If you entered docker as your executor, you’ll be asked <span style="color:#66d9ef">for</span> the default image to be used <span style="color:#66d9ef">for</span> projects that <span style="color:#66d9ef">do</span> not define one in .gitlab-ci.yml.
+</code></pre></div><h2 id="2linux-安装-gitlab-runner-请确保-git-最新">2.Linux 安装 gitlab-runner （请确保 Git 最新）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#Install GitLab Runner using the official GitLab repositories</span>
+curl -L <span style="color:#e6db74">&#34;https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh&#34;</span> | sudo bash
+export GITLAB_RUNNER_DISABLE_SKEL<span style="color:#f92672">=</span>true; sudo -E yum install gitlab-runner
+<span style="color:#75715e">#https://docs.gitlab.com/runner/install/linux-repository.html</span>
+</code></pre></div><h2 id="3linux-gitlab-runner-命令">3.Linux gitlab-runner 命令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># https://docs.gitlab.com/runner/commands/README.html</span>
+gitlab-runner --debug &lt;command&gt;
+sudo gitlab-runner run
+gitlab-runner install
+gitlab-runner uninstall
+gitlab-runner start <span style="color:#75715e"># 后台运行</span>
+gitlab-runner stop
+gitlab-runner restart
+gitlab-runner status
+</code></pre></div><h2 id="4运行">4.运行</h2>
+<p>在启动后，可以通过 gitlab-runner 在Linux系统上运行脚本，编写 .gitlab-ci.yml 文件来布置任务。</p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/git/git2ssh-%E9%85%8D%E7%BD%AE/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/git/git4.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

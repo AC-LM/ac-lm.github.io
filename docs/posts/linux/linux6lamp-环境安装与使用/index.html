@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(6)——LAMP 环境安装与使用</a></h2>
+                <p>@LM | 2020-11-18</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1什么是lamp环境">1.什么是LAMP环境</h2>
+<p>LAMP是指一组通常一起使用来运行动态网站或者服务器的自由软件名称首字母缩写：</p>
+<ul>
+<li>Linux，操作系统</li>
+<li>Apache，网页服务器</li>
+<li>MariaDB或MySQL，数据库管理系统（或者数据库服务器）</li>
+<li>PHP、Perl或Python，脚本语言</li>
+</ul>
+<h2 id="2mariadb-数据库">2.MariaDB 数据库</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y mariadb mariadb-server  <span style="color:#75715e">#安装mariadb客户端和服务端程序</span>
+yum groupinstall mariadb mariadb-server -y  <span style="color:#75715e">#或</span>
+systemctl start mariadb         <span style="color:#75715e">#启动程序</span>
+systemctl enable mariadb         <span style="color:#75715e">#设为开机自启动</span>
+mysql_secure_installation         <span style="color:#75715e">#直接执行初始化命令，会弹出交互配置信息</span>
+<span style="color:#75715e">##交互信息##</span>
+Enter current password <span style="color:#66d9ef">for</span> root <span style="color:#f92672">(</span>enter <span style="color:#66d9ef">for</span> none<span style="color:#f92672">)</span>:#初次进入密码为空，直接回车
+New password:                <span style="color:#75715e">#输入要为root用户设置的数据库密码。</span>
+Re-enter new password:            <span style="color:#75715e">#重复再输入一次密码。</span>
+Remove anonymous users? <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span> y      <span style="color:#75715e">#删除匿名帐号</span>
+Disallow root login remotely? <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span> n <span style="color:#75715e">#是否禁止root用户从远程登录，安全起见应禁止，这里为做实验方便这里不禁止。</span>
+Remove test database and access to it? <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span> y  <span style="color:#75715e">#是否删除test数据库，想留着也随意</span>
+Reload privilege tables now? <span style="color:#f92672">[</span>Y/n<span style="color:#f92672">]</span> y  <span style="color:#75715e">#刷新授权表，让初始化后的设定立即生效mariadb中命令都要以&#34;;&#34; 结尾，表示命令输入完毕</span>
+<span style="color:#75715e">##交互结束##</span>
+mysql -uroot -p123456  <span style="color:#75715e">#登录</span>
+show databases;  <span style="color:#75715e">#显示当前已有的数据库</span>
+show tables;   <span style="color:#75715e">#显示当前数据库中的表单</span>
+desc user;     <span style="color:#75715e">#查看user表的数据结构</span>
+<span style="color:#66d9ef">select</span> * from user;   <span style="color:#75715e">#查询mysql库下的user表中的所有</span>
+create database lan;      <span style="color:#75715e">#创建库</span>
+create table Linux （         <span style="color:#75715e">#创建表格</span>
+           username varchar（50） not null，  <span style="color:#75715e">#字段名称 字段长度50 不能为空</span>
+           password  varchar（50） not null，
+           age  varchar（4） ）；
+insert into Linux values <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;we&#39;</span>,<span style="color:#e6db74">&#39;123&#39;</span>,<span style="color:#e6db74">&#39;23&#39;</span><span style="color:#f92672">)</span>;  <span style="color:#75715e">#在Linux表格中插入信息</span>
+use 数据库; <span style="color:#75715e">#使用数据库</span>
+drop table Linux；#删除表格Linux
+drop database lan； <span style="color:#75715e">#删除库lan</span>
+exit
+<span style="color:#75715e">#ps：如果出现无权限错误，请尝试rm -rf /var/lib/mysql/*，删除所有mysql，重新安装</span>
+</code></pre></div><h2 id="3httpd与php">3.Httpd与php</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install httpd php php-mysql php-gd <span style="color:#75715e">#安装httpd 与 php</span>
+systemctl start httpd <span style="color:#75715e">#启动httpd，请开启80端口，见Linux(2)——Docker安装与防火墙</span>
+vim /var/www/html/test.php  <span style="color:#75715e">#创建测试页面，&lt;?php phpinfo();?&gt;，处于/var/www/html/目录下html文件都可以访问</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux7yum-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(31)——编解码问题</a></h2>
+                <p>@LM | 2021-07-23</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1二进制字符">1.二进制字符</h2>
+<p>在计算机中所有字符都是以二进制代码储存的，系统根据不同的编码格式，将二进制代码转换为字符显示。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\u0394</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\U00000394</span><span style="color:#e6db74">&#34;</span>)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\N{greek capital letter delta}</span><span style="color:#e6db74">&#34;</span>)
+</code></pre></div><h2 id="2乱码时的处理">2.乱码时的处理</h2>
+<p>当编码格式与解码格式出现冲突时就会出现乱码，而此时往往需要将报错的部分进行替换处理，使得程序整体不出错。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 不处理</span>
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;strict&#34;</span>))
+<span style="color:#75715e"># 替换为U+FFFD</span>
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;replace&#34;</span>))
+<span style="color:#75715e"># 加上反斜杠</span>
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;backslashreplace&#34;</span>))
+<span style="color:#75715e"># 直接忽略</span>
+print((<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x80</span><span style="color:#e6db74">abc&#34;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>,<span style="color:#e6db74">&#34;ignore&#34;</span>))
+</code></pre></div><h2 id="3字符与二进制的转换">3.字符与二进制的转换</h2>
+<h3 id="a二进制转换字符">a.二进制转换字符</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">u<span style="color:#f92672">=</span>chr(<span style="color:#ae81ff">40960</span>)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;abce&#34;</span><span style="color:#f92672">+</span>chr(<span style="color:#ae81ff">1972</span>)
+print(u)
+u1<span style="color:#f92672">=</span>chr(<span style="color:#ae81ff">123</span>)
+print(u1)
+</code></pre></div><h3 id="b字符转换二进制">b.字符转换二进制</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">u<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;中国abc&#34;</span>
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
+<span style="color:#75715e"># b&#39;\xe4\xb8\xad\xe5\x9b\xbd&#39;</span>
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;ignore&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;replace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;xmlcharrefreplace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;backslashreplace&#34;</span>))
+print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;ascii&#34;</span>,<span style="color:#e6db74">&#34;namereplace&#34;</span>))
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python30import/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python32selenium-%E4%B8%8B%E6%8B%89%E6%A1%86-select-%E5%A4%84%E7%90%86/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

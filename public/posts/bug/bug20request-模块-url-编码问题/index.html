@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">BUG(20)——Request 模块 Url 编码问题</a></h2>
+                <p>@LM | 2021-09-16</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="bug-描述">BUG 描述</h2>
+<p>Python 中用户使用 Requests 库发送 Http 请求时，请求的所有参数都会被进行 Url 编码。此时容易出现由于 Url 编码后参数异常的情况，特别是<strong>中文字符</strong>，最终导致 Http 请求失败。</p>
+<h2 id="resolution">Resolution</h2>
+<p>用户可以将参数提前进行编码传递，以避免 Requests 库对参数的编码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">payload1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{ABC}</span><span style="color:#e6db74">&#39;</span>
+<span style="color:#75715e"># String</span>
+data <span style="color:#f92672">=</span> payload1<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+<span style="color:#75715e"># b&#39;{ABC}&#39; 转换后的 UTF-8 编码</span>
+response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>request(<span style="color:#e6db74">&#34;POST&#34;</span>, url, data<span style="color:#f92672">=</span>data)
+</code></pre></div><h2 id="复现">复现</h2>
+<pre tabindex="0"><code>def import_school():
+    api = 'http://192.168.1.240/base/school'
+    school_name = ['第一中学', '第二中学', '实验中学']
+    jurisdiction = ['荔湾区', '越秀区', '海珠区', '天河区', '白云区', '黄埔区', '番禺区', '花都区', '南沙区', '从化区', '增城区']
+    county_number = [440103, 440104, 440105, 440106, 440111, 440112, 440113, 440114, 440115, 440117, 440118]
+    print(len(jurisdiction))
+    print(len(county_number))
+    did = &quot;440104002&quot;
+    area_id = 3
+    data = {&quot;name&quot;: &quot;越秀第二中学&quot;,
+            &quot;is_famous&quot;: 2,
+            &quot;school_number&quot;: 440104,
+            &quot;principal&quot;: &quot;&quot;,
+            &quot;telephone&quot;: &quot;&quot;,
+            &quot;address&quot;: &quot;&quot;,
+            &quot;email&quot;: &quot;&quot;,
+            &quot;logo_url&quot;: &quot;&quot;,
+            &quot;icon_url&quot;: &quot;&quot;,
+            &quot;official_website&quot;: &quot;&quot;,
+            &quot;org_web_path&quot;: did,
+            &quot;area_id&quot;: area_id,
+            &quot;user_name&quot;: did,
+            &quot;account&quot;: did,
+            &quot;password&quot;: &quot;7c4a8d09ca3762af61e59520943dc26494f8941b&quot;}
+    response = requests.request(&quot;POST&quot;, api, data=data, headers=headers).json()
+    print(response)
+
+
+if __name__ == &quot;__main__&quot;:
+    import_school()
+</code></pre><p>运行</p>
+<pre tabindex="0"><code>{'info': {'message': '非法参数', 'detail': &quot;invalid character 'a' in literal null (expecting 'u')&quot;}, 'status': 10002}
+</code></pre><p>调试，检查response，找到request体，查看body参数内容</p>
+<pre tabindex="0"><code>name=%E8%B6%8A%E7%A7%80%E7%AC%AC%E4%BA%8C%E4%B8%AD%E5%AD%A6&amp;is_famous=2&amp;school_number=440104&amp;principal=&amp;telephone=&amp;address=&amp;email=&amp;logo_url=&amp;icon_url=&amp;official_website=&amp;org_web_path=440104002&amp;area_id=3&amp;user_name=440104002&amp;account=440104002&amp;password=7c4a8d09ca3762af61e59520943dc26494f8941b
+</code></pre>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/bug/bug19django-%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/bug/bug21linux-%E7%BC%BA%E5%B0%91-openssl/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

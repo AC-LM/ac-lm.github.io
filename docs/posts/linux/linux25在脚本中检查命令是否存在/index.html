@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(25)——在脚本中检查命令是否存在</a></h2>
+                <p>@LM | 2021-11-18</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p><a href="https://stackoverflow.com/questions/592620/how-can-i-check-if-a-program-exists-from-a-bash-script"> check if a program exists from a Bash script? @Stack Overflow </a></p>
+</blockquote>
+<h2 id="1answer">1.Answer</h2>
+<p>你可以使用<code>command -v</code>来检查特定命令是否存在，在 Bash 脚本中使用以下代码检查</p>
+<pre tabindex="0"><code>if ! command -v &lt;the_command&gt; &amp;&gt; /dev/null
+then
+    echo &quot;&lt;the_command&gt; could not be found&quot;
+    exit
+fi
+</code></pre><p>在一些特别的环境中，还可以使用<code>hash</code>，<code>type</code>来进行检查</p>
+<pre tabindex="0"><code>hash &lt;the_command&gt; # For regular commands. Or...
+type &lt;the_command&gt; # To check built-ins and keywords
+</code></pre><h2 id="2explanation">2.Explanation</h2>
+<p>请避免使用<code>which</code>。在许多操作系统中<code>which</code>不会设置退出状态，其不会返回<strong>否</strong>。意味着如果<code>if which foo</code>不会返回<code>foo</code>不存在，总会报告<code>foo</code>存在。此外，<code>which</code>还会将输出更改或将结果挂载在包管理器中。</p>
+<p>因此请尽量避免使用<code>which</code>，请改用以下方法。</p>
+<pre tabindex="0"><code>$ command -v foo &gt;/dev/null 2&gt;&amp;1 || { echo &gt;&amp;2 &quot;I require foo but it's not installed.  Aborting.&quot;; exit 1; }
+$ type foo &gt;/dev/null 2&gt;&amp;1 || { echo &gt;&amp;2 &quot;I require foo but it's not installed.  Aborting.&quot;; exit 1; }
+$ hash foo 2&gt;/dev/null || { echo &gt;&amp;2 &quot;I require foo but it's not installed.  Aborting.&quot;; exit 1; }
+</code></pre><p>请将结果输出到空<code>2&gt;/dev/null</code>，以避免程序出错。</p>
+<p>一个简单的函数示例如下，如果命令存在则运行，否则返回 <code>gdate date</code></p>
+<pre tabindex="0"><code>gnudate() {
+    if hash gdate 2&gt;/dev/null; then
+        gdate &quot;$@&quot;
+    else
+        date &quot;$@&quot;
+    fi
+}
+</code></pre>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux24lscpu/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux26linux-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

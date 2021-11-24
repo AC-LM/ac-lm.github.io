@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(26)——正则的相关</a></h2>
+                <p>@LM | 2021-07-23</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1完全匹配">1.完全匹配</h2>
+<p><code>[\s\S]*</code>：完全通配，\s 是指空白，包括空格，换行，Tab等所有的空白，而 \S 刚好相反，表示字符，这样一正一反下来，就表示所有。</p>
+<p><code>[]</code>：表示在它里面包含的单个字符不限顺序的出现。</p>
+<h2 id="2除换行n外匹配">2.除换行<code>\n</code>外匹配</h2>
+<p><code>(.*)</code>：通配符<code>.</code>是不会匹配换行的，当出现换行时匹配便会终止。</p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B025%E7%BD%97%E6%8A%80-m170-%E6%8B%86%E8%A7%A3/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B027%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

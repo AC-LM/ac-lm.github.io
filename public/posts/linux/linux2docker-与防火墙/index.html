@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(2)——Docker 与防火墙</a></h2>
+                <p>@LM | 2020-10-16</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1docker操作">1.docker操作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsb_release -a <span style="color:#75715e">#查看版本信息，需安装</span>
+uname -r <span style="color:#75715e">#查看内核信息</span>
+yum list installed | grep docker <span style="color:#75715e">#查找docker是否安装</span>
+yum -y install docker  <span style="color:#75715e">#下载安装docker</span>
+systemctl start docker <span style="color:#75715e">#运行docker</span>
+systemctl status docker <span style="color:#75715e">#查看docker状态</span>
+systemctl enable docker  <span style="color:#75715e">#自启动docker</span>
+docker version <span style="color:#75715e">#docker版本</span>
+docker ps -a <span style="color:#75715e">#查看docker安装的服务</span>
+docker start services <span style="color:#75715e">#docker运行服务</span>
+docker rm -f name <span style="color:#75715e">#强制删除</span>
+docker exec service_ip ping <span style="color:#75715e">#联网查看</span>
+docker exec -it id /bin/bash <span style="color:#75715e">#进入容器 </span>
+docker rename gallant_swartz python3.9 <span style="color:#75715e">#重命名</span>
+docker images
+docker rmi image
+docker export a9ad7f0cb1ad &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/itestserver.tar
+exit <span style="color:#75715e">#退出</span>
+docker stop <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 停用全部运行中的容器</span>
+docker rm <span style="color:#66d9ef">$(</span>docker ps -aq<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 删除全部容器 </span>
+docker cp testtomcat：/usr/local/tomcat/webapps/test/js/test.js /opt
+docker run --name python3.9 --privileged<span style="color:#f92672">=</span>true -v /root/pythonScript:/pythonScript -it python /bin/bash
+docker exec id commend
+</code></pre></div><h2 id="2防火墙操作">2.防火墙操作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/firewalld/zones <span style="color:#75715e">#查看配置文件</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --add-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e">#开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --remove-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e">#关闭8080/tcp端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --query-port<span style="color:#f92672">=</span>80/tcp <span style="color:#75715e">#查看端口状态</span>
+firewall-cmd --reload <span style="color:#75715e">#重启防火墙</span>
+firewall-cmd --completely-reload
+firewall-cmd --list-all <span style="color:#75715e">#列出防火墙所以规则</span>
+firewall-cmd --list-ports <span style="color:#75715e">#列出防火墙开放的端口</span>
+firewall-cmd --version <span style="color:#75715e">#查看版本： </span>
+firewall-cmd --help
+firewall-cmd --state
+<span style="color:#75715e">#-------------------------------------------------------</span>
+systemctl stop firewalld <span style="color:#75715e">#关闭防火墙</span>
+systemctl start firewalld <span style="color:#75715e">#开启防火墙</span>
+systemctl status firewalld <span style="color:#75715e">#防火墙状态</span>
+systemctl stop firewalld <span style="color:#75715e">#停止</span>
+systemctl disable firewalld <span style="color:#75715e">#开机禁用</span>
+systemctl enable firewalld <span style="color:#75715e">#开机启动</span>
+yum install firewalld <span style="color:#75715e">#安装</span>
+<span style="color:#75715e">#--------------------------------------------------------------</span>
+firewall-cmd --panic-on <span style="color:#75715e">#拒绝所有包：</span>
+firewall-cmd --panic-off <span style="color:#75715e">#取消拒绝状态： </span>
+firewall-cmd --query-panic <span style="color:#75715e">#查看是否拒绝： </span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --add-port<span style="color:#f92672">=</span>40000-45000/tcp --permanent <span style="color:#75715e">#批量开放端口，打开从40000到45000之间的所有端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --list-ports <span style="color:#75715e">#查看系统所有开放的端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --remove-port<span style="color:#f92672">=</span>40000-45000/tcp --permanent <span style="color:#75715e">#批量关闭端口，关闭从40000到45000之间的所有端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>work --add-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e">#添加服务</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>work --query-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e">#查看服务</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>work --remove-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e">#删除服务</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux1linux-%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux3java-%E4%B8%8E-tomcat-%E7%9A%84%E9%85%8D%E7%BD%AE/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

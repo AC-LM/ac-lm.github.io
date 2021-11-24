@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Docker(4)——备份和恢复</a></h2>
+                <p>@LM | 2021-08-26</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1docker-容器的导出备份">1.docker 容器的导出备份</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker export -o 容器导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span> 容器ID或容器名称
+docker export -o <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/newtomcat.tar mytomcat
+-----------------------------------------------------
+docker export 容器ID或容器名称 &gt; 容器导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span> 
+docker export mytomcat &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/newtomcat.tar 
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+注释：
+<span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>是docker支持的获取当前目录路径的方法，与linux的pwd类似
+<span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/newtomcat.tar 表示在当前目录下生成一个newtomcat.tar压缩文件
+</code></pre></div><h2 id="2docker-容器的导入恢复">2.docker 容器的导入恢复</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker import 容器导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span> 新镜像名称<span style="color:#f92672">[</span>:版本号<span style="color:#f92672">]</span>
+docker import <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/newtomcat.tar newtomcat:v1.0
+------------------------------------------------------
+docker import /URL 新镜像名称<span style="color:#f92672">[</span>:版本号<span style="color:#f92672">]</span>
+docker import http://example.com/exampleimage.tgz example/imagerepo
+</code></pre></div><h2 id="3docker-镜像的导出备份">3.docker 镜像的导出备份</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker save -o 镜像导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span> 镜像ID或镜像名称<span style="color:#f92672">[</span>:版本号<span style="color:#f92672">]</span>
+docker save -o <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/mytomcat.tar newtomcat:v1.0
+----------------------------------------------------------------------
+docker save 镜像ID或镜像名称<span style="color:#f92672">[</span>:版本号<span style="color:#f92672">]</span> &gt; 镜像导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span>
+docker save newtomcat:v1.0 &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/mytomcat.tar 
+</code></pre></div><h2 id="4docker-镜像的导入恢复">4.docker 镜像的导入恢复</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker load -i 镜像导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span>
+docker load -i <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/mytomcat.tar
+--------------------------------------------------------------------
+docker load &lt; 镜像导出文件<span style="color:#f92672">(</span>格式为tar压缩文件<span style="color:#f92672">)</span>
+docker load &lt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/mytomcat.tar
+</code></pre></div><h2 id="5提交新镜像">5.提交新镜像</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker commit <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> CONTAINER <span style="color:#f92672">[</span>REPOSITORY<span style="color:#f92672">[</span>:TAG<span style="color:#f92672">]]</span>
+docker commit -a <span style="color:#e6db74">&#34;runoob.com&#34;</span> -m <span style="color:#e6db74">&#34;my apache&#34;</span> a404c6c174a2  mymysql:v1 
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/docker/docker3%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/docker/docker5docker-%E7%BD%91%E7%BB%9C/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

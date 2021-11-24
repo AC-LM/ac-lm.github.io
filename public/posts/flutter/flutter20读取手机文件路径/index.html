@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(20)——读取手机文件路径</a></h2>
+                <p>@LM | 2021-06-05</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文： <a href="https://www.jianshu.com/p/2eafae001f55">【Flutter 实战】文件系统目录  @老孟程序员 </a></p>
+</blockquote>
+<h2 id="1添加依赖">1.添加依赖</h2>
+<p>在项目的 <code>pubspec.yaml</code> 文件中添加依赖：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">dependencies</span>:
+     <span style="color:#f92672">path_provider</span>: <span style="color:#ae81ff">^1.6.14</span>
+</code></pre></div><p>执行命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">flutter pub get
+</code></pre></div><h2 id="2获取文件路径">2.获取文件路径</h2>
+<ul>
+<li>
+<p>getTemporaryDirectory</p>
+<p>临时目录，适用于下载的缓存文件，此目录随时可以清除，此目录为应用程序私有目录，其他应用程序无法访问此目录。</p>
+</li>
+<li>
+<p>getApplicationSupportDirectory</p>
+<p>应用程序可以在其中放置应用程序支持文件的目录的路径。</p>
+</li>
+<li>
+<p>getLibraryDirectory</p>
+<p>应用程序可以在其中存储持久性文件，备份文件以及对用户不可见的文件的目录路径，例如storage.sqlite.db。</p>
+</li>
+<li>
+<p>getApplicationDocumentsDirectory</p>
+<p>应用程序可能在其中放置用户生成的数据或应用程序无法重新创建的数据的目录路径。</p>
+</li>
+<li>
+<p>getExternalStorageDirectory</p>
+<p>应用程序可以访问顶级存储的目录的路径。由于此功能仅在Android上可用，因此应在发出此函数调用之前确定当前操作系统。</p>
+</li>
+<li>
+<p>getExternalCacheDirectories</p>
+<p>存储特定于应用程序的外部缓存数据的目录的路径。 这些路径通常位于外部存储（如单独的分区或SD卡）上。 电话可能具有多个可用的存储目录。</p>
+</li>
+<li>
+<p>getExternalStorageDirectories</p>
+<p>可以存储应用程序特定数据的目录的路径。 这些路径通常位于外部存储（如单独的分区或SD卡）上。</p>
+</li>
+<li>
+<p>getDownloadsDirectory</p>
+<p>存储下载文件的目录的路径，这通常仅与台式机操作系统有关。</p>
+</li>
+</ul>
+<h2 id="3android-文件存储">3.Android 文件存储</h2>
+<p>Android 文件存储分为内部存储和外部存储。</p>
+<h3 id="a内部存储">a.内部存储</h3>
+<p>用于保存应用的私有文件，其他应用无法访问这些数据，创建的文件在此应用的包名目录下，没有 root 权限 的手机无法在手机的 文件管理 应用中看到此目录，不过可以通过 Android Studio 工具查看，路径为：data/data/包名。包名下具体的目录结构为：</p>
+<ul>
+<li>cache 目录：对应 getTemporaryDirectory 方法，用于缓存文件，此目录随时可能被系统清除。</li>
+<li>files 目录：对应 getApplicationSupportDirectory 方法。</li>
+<li>code_cache：此目录存储 Flutter 相关代码和资源。</li>
+<li>shared_prefs： SharePreferences 的默认路径。</li>
+<li>app_flutter：对应 getApplicationDocumentsDirectory方法。</li>
+<li>app_flutter/dbName：使用 sqlite 的默认路径，sqlite 也可以指定位置。</li>
+</ul>
+<p>内部存储的特点：</p>
+<ul>
+<li>安全性，其他应用无法访问这些数据。</li>
+<li>当应用卸载的时候，这些数据也会被删除，避免垃圾文件。</li>
+<li>不需要申请额外权限。</li>
+<li>存储的空间有限，此目录数据随时可能被系统清除，也可以通过 设置 中的 清除数据 可以清除此目录数据。</li>
+<li>国内特色，不同手机厂商对此目录做了不同的限制，比如总体大小限制、单个应用程序所占空间大小限制、清除数据策略不同等。</li>
+</ul>
+<h3 id="b外部存储">b.外部存储</h3>
+<p>外部存储可以通过手机的 文件管理 应用查看。这里面有一个特殊的目录：Android/data/包名。和内部存储目录非常相似，一个包名代表一个应用程序：</p>
+<ul>
+<li>cache：缓存目录，对应 getExternalCacheDirectories 方法。</li>
+<li>files：对应 getExternalStorageDirectories 方法。</li>
+</ul>
+<p>此目录的特点：</p>
+<ul>
+<li>当应用卸载的时候，这些数据也会被删除，避免垃圾文件。</li>
+<li>不需要申请额外权限。</li>
+<li>空间大且不会被系统清除，通过 设置 中的 清除数据 可以清除此目录数据。</li>
+<li>用户可以直接对文件进行删除、导入操作。</li>
+</ul>
+<h2 id="c总结">c.总结</h2>
+<ul>
+<li>SharePreferences 和 sqlite  数据建议存放在内部存储，插件已经帮我们完成了，无需手动处理。</li>
+<li>严格保密的数据，比如用户数据，建议存放在内部存储，对应 getApplicationSupportDirectory 方法。</li>
+<li>其余所有的数据建议存放 Android/data/包名/ ，对应 getExternalCacheDirectories 和 getExternalStorageDirectories 方法。</li>
+</ul>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter21apk-%E7%98%A6%E8%BA%AB/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

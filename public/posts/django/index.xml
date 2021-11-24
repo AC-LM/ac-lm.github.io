@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on AC-LM &#39;s blog</title>
+    <link>https://ac-lm.github.io/posts/django/</link>
+    <description>Recent content in Django on AC-LM &#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/django/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django(13)——Django 部署</title>
+      <link>https://ac-lm.github.io/posts/django/django13django-%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django13django-%E9%83%A8%E7%BD%B2/</guid>
+      <description>1.配置 uwsgi  安装：pip install uwsgi 测试：uwsgi --http-socket :80 --file test.py  # test.py def application(env, start_response): start_response(&amp;#39;200 OK&amp;#39;, [(&amp;#39;Content-Type&amp;#39;,&amp;#39;text/html&amp;#39;)]) return [b&amp;#34;Hello World&amp;#34;]  配置文件：uwsgi.ini  [uwsgi] # 使用nginx连接时使用 # socket=0.0.0.0:8000 # 直接做web服务器, python manage.py runserver ip:port http=0.0.0.0:8000 # 路径为 0.0.0.0，表本地，使用127.0.0.1可能会无法从外网访问 # 项目目录 chdir=/home/mayanan/bj18/dailyfresh # 项目中wsgi.py文件的目录，相对于项目目录 wsgi-file=dailyfresh/wsgi.py # 指定启动的工作进程数 processes=4 # 指定工作进程中的线程数 threads=2 master=True # 保存启动后，主进程的pid pidfile=uwsgi.pid # 设置uwsgi后台运行, uwsgi.log保存日志信息 daemonize=uwsgi.log  启动：uwsgi --ini uwsgi.ini，uwsgi 通过 ini 文件启动后会在相同目录下生成一个 pid 文件，包含主进程的进程号 重载：uwsgi --reload uwsgi.</description>
+    </item>
+    
+    <item>
+      <title>Django(12)——404 文件</title>
+      <link>https://ac-lm.github.io/posts/django/django12404-%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django12404-%E6%96%87%E4%BB%B6/</guid>
+      <description>Django的404 Django 能自动的寻找 404 文件，在路径错误时自动跳转，需要注意的是，当 DEBUG = True 时，系统不会调用 404 文件。
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;404页面找不着了x&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;Error:404,页面找不到了&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;{{ request_path }}&amp;lt;/h2&amp;gt; &amp;lt;hr&amp;gt; &amp;lt;p&amp;gt;404页面名字不允许改变，必须为404.html，且必须放到/templates根目录下&amp;lt;/p&amp;gt; &amp;lt;hr&amp;gt; &amp;lt;a&amp;gt;500,400页面也类似&amp;lt;/a&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>Django(11)——setting 文件</title>
+      <link>https://ac-lm.github.io/posts/django/django11setting-%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django11setting-%E6%96%87%E4%BB%B6/</guid>
+      <description>1.setting.py 配置文件  BASE_DIR：即为项目所在目录，__file__可以获得当前文件的路径。 SECRET_KEY：一个特殊的 Django 安装的密钥，每当使用Django-admin startproject时会自动生成一个。 DUBUG：默认值为 FALSE，当选择 TRUE 时，当我们的项目出错时可以使我们看到出错信息，但是为了防止被用户看到或者他人攻击，在项目上线后应改为 FALSE。 ALLOWED_HOSTS：默认值是一个空列表，列表中的值为哪些域名可以访问我们的 Django 项目。 INSTALLED_APPS：安装的 APP 列表，Django 为我们默认添加了一些自带的项目，每个新创建的 APP 都要加入这个列表才可以被使用。 MIDDLEWARE：这是将要使用的中间件列表。 ROOT_URLCONF：表示根 URLconf 的完整 Python 导入路径。 TEMPLATES：模板文件配置。 WSGI_APPLICATION：配置 Django 项目的 WSGI 服务路径。 DATABASES：Django 的数据库设置，Django 默认的是 sqlite3 数据库。ENGINE 是选择对应我们选择的数据库的引擎，NAME 是数据库名称，HOST 是连接数据库所要用到的主机，还有 PORT 选择端口等许多选项。 AUTH_PASSWORD_VALIDATORS：用于检查用户密码强度的验证器列表，在为空的情况下就接受任意强度的用户密码。 LANGUAGE_CODE：Django 项目的语言代码，默认值为 en-us，值 zh-hans 汉语。 TIME_ZONE：时区，默认值是 UTC。当 USE_TZ 为 TRUE 时，无论 TZ 设置为何值 Django 都会使用系统默认的时区，例如要使用上海的时区则需将 USE_TZ=FALSE，TIME_ZONE=&amp;lsquo;Asia/Shanghai&amp;rsquo;。 USE_I18N：国际化，Django 允许开发者指定要翻译的字符串，也可以让访问者进行语言选择。 USE_L10N：是否选择启用数据的本地化。 USE_TZ：如果开启了 Time Zone 功能，则所有的存储和内部处理，甚至包括直接 print 显示全都是UTC的。只有通过模板进行表单输入/渲染输出的时候，才会执行 UTC 本地时间的转换。 STATIC_URL：静态目录的所有文件，存放 css，js 等文件。 STATICFILES_DIRS：static 文件的路径。 MEDIA_URL：与 STATIC_URL 类似，存放用户上传的文件。  2.</description>
+    </item>
+    
+    <item>
+      <title>Django(10)——auth 用户认证模块</title>
+      <link>https://ac-lm.github.io/posts/django/django10auth-%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django10auth-%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97/</guid>
+      <description>1.介绍 Django 内置了强大的用户认证系统auth，它默认创建并使用auth_user表来存储用户数据。
+from django.contrib import auth # 使用auth认证系统 from django.contrib.auth.models import User # auth认证系统默认使用User表 2.auth.authenticate() Django 提供简单的用户认证功能，如果认证成功（用户名和密码正确有效），便会返回一个User对象。
+from django.contrib import auth user_obj = auth.authenticate(username=username,password=pwd) 3.auth.login(request, user) 该函数实现一个用户登录的功能，它本质上会在后端为该用户生成相关 session 数据。在使用login(request, user_obj)登录后之后，便可以通过request.user拿到当前登录的用户对象，否则request.user得到的是一个匿名用户对象。
+from django.shortcuts import render, HttpResponse, redirect from django.contrib import auth def login(request): if request.method == &amp;#34;POST&amp;#34;: username = request.POST.get(&amp;#39;username&amp;#39;) pwd = request.POST.get(&amp;#39;password&amp;#39;) # 调用auth模块的认证方法，判断用户名和密码是否正确，正确返回一个user_obj user_obj = auth.authenticate(username=username, password=pwd) if user_obj: # 登录成功,设置Session数据 auth.login(request, user_obj) return HttpResponse(&amp;#39;登录成功&amp;#39;) else: return render(request, &amp;#39;login.</description>
+    </item>
+    
+    <item>
+      <title>Django(9)——CSRF中间件</title>
+      <link>https://ac-lm.github.io/posts/django/django9csrf-%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django9csrf-%E4%B8%AD%E9%97%B4%E4%BB%B6/</guid>
+      <description>1.CSRF 中间件 CSRF 中间件django.middleware.csrf.CsrfViewMiddleware默认在setting.py设置中激活。
+在使用 POST 表单的任何模板中，如果表单用于内部 URL，请在元素内使用csrf_token标签，例如&amp;lt;form method=&amp;quot;post&amp;quot;&amp;gt;{% csrf_token %}，对于针对外部 URL 的 POST 表单，不应这样做，因为这将导致 CSRF 令牌被泄露，从而导致漏洞。
+2.异步 POST 带 CSRF 令牌传递 对于任何 AJAX POST 请求，都需要将 CSRF 令牌作为 POST 数据传递进来，您可以获取这样的令牌。
+function getCookie(name) { let cookieValue = null; if (document.cookie &amp;amp;&amp;amp; document.cookie !== &amp;#39;&amp;#39;) { const cookies = document.cookie.split(&amp;#39;;&amp;#39;); for (let i = 0; i &amp;lt; cookies.length; i++) { const cookie = cookies[i].trim(); // Does this cookie string begin with the name we want?</description>
+    </item>
+    
+    <item>
+      <title>Django(8)——外键查询</title>
+      <link>https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/</guid>
+      <description>1.查询示例 class Publish(models.Model): id = models.AutoField(primary_key=True, auto_created=True) pname = models.CharField(max_length=40) city = models.CharField(max_length=50) def __str__(self): return self.pname class Author(models.Model): id = models.AutoField(primary_key=True, auto_created=True) aname = models.CharField(max_length=10) def __str__(self): return self.aname class Book(models.Model): id = models.AutoField(primary_key=True, auto_created=True) bname = models.CharField(max_length=30) price = models.IntegerField() publish = models.ForeignKey(Publish, on_delete=models.CASCADE) author = models.ManyToManyField(Author) def __str__(self): return self.bname 2.通过类属性查询 # get方法的到的结果是一个对应类的对象 # 查询某本书的出版社名字 book = Book.objects.get(id=1) book.publish.pname # 查询某出版社下面有多少本书 # 此处的book是Book这张表的表名的小写（必须是小写）加上_set pub = Publish.objects.get(id=1) pub.book_set.all() 3.</description>
+    </item>
+    
+    <item>
+      <title>Django(7)——分页的实现</title>
+      <link>https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <description>1.Paginator view.py from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger from django.shortcuts import render def listing(request): contact_list = Contacts.objects.all() paginator = Paginator(contact_list, 25) # Show 25 contacts per page page = request.GET.get(&amp;#39;page&amp;#39;) try: contacts = paginator.page(page) except PageNotAnInteger: # If page is not an integer, deliver first page. contacts = paginator.page(1) except EmptyPage: # If page is out of range (e.g. 9999), deliver last page of results. contacts = paginator.page(paginator.num_pages) return render(request, &amp;#39;list.</description>
+    </item>
+    
+    <item>
+      <title>Django(6)——Bash 命令</title>
+      <link>https://ac-lm.github.io/posts/django/django6bash-%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django6bash-%E5%91%BD%E4%BB%A4/</guid>
+      <description>1.安装 pip install django python -m django --version 2.配置项目 django-admin startproject 项目名称 python manage.py startapp 应用名称 3.启动服务器 python manage.py runserver python manage.py runserver 8080 python manage.py runserver 0.0.0.0:8000 4.初始化数据库 python manage.py makemigrations 应用名称 #记录改动 python manage.py migrate #创建表 python manage.py createsuperuser </description>
+    </item>
+    
+    <item>
+      <title>Django(5)——接口开发</title>
+      <link>https://ac-lm.github.io/posts/django/django5%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django5%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/</guid>
+      <description>1.在项目文件下 urls.py 添加接口根路径: # api path(&amp;#39;api/&amp;#39;,include(&amp;#39;django_web.urls&amp;#39;)), # url(r&amp;#39;^api/&amp;#39;,include((&amp;#39;django_web.urls&amp;#39;,&amp;#39;django_web&amp;#39;),namespace=&amp;#39;django_web&amp;#39;)), 2.在 app 应用 django_web 下新建 urls.py 添加具体接口： from django.urls import path from django_web.views import views_api # 在 django_web 下创建 urls.py，配置具体接口的二级目录 urlpatterns = [ # guest system interface: # ex : /api/add_event/ path(&amp;#39;add_event/&amp;#39;,views_api.add_event,name=&amp;#39;add_event&amp;#39;), # ex : /api/get_event_list/ path(&amp;#39;get_event_list/&amp;#39;,views_api.get_event_list,name=&amp;#39;get_event_list&amp;#39;), # ex: /api/add_guest/ path(&amp;#39;add_guest/&amp;#39;,views_api.add_guest,name=&amp;#39;add_guest&amp;#39;), # ex: /api/get_guest_list/ path(&amp;#39;get_guest_list/&amp;#39;,views_api.get_guest_list,name=&amp;#39;get_guest_list&amp;#39;), # ex: /api/user_sign/ path(&amp;#39;user_sign/&amp;#39;,views_api.user_sign,name=&amp;#39;user_sign&amp;#39;), ] 3.在创建接口视图函数 view_api.py 文件，实现具体接口： from django_web.models import Event, Guest from django.http import JsonResponse from django.</description>
+    </item>
+    
+    <item>
+      <title>Django(4)——cookie处理</title>
+      <link>https://ac-lm.github.io/posts/django/django4cookie-%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django4cookie-%E5%A4%84%E7%90%86/</guid>
+      <description>1.设置 cookie # 编写视图函数，进行设置 from datetime import datetime,timedelta def set_cookie(request): &amp;#34;&amp;#34;&amp;#34;设置cookie&amp;#34;&amp;#34;&amp;#34; response = HttpResponse(&amp;#34;设置cookie&amp;#34;) &amp;#39;&amp;#39;&amp;#39; max_age 设置过期时间，单位是秒 &amp;#39;&amp;#39;&amp;#39; # response.set_cookie(&amp;#39;name&amp;#39;, &amp;#39;tong&amp;#39;, max_age=14 * 24 * 3600) &amp;#39;&amp;#39;&amp;#39; expires 设置过期时间，是从现在的时间开始到那个时间结束 &amp;#39;&amp;#39;&amp;#39; response.set_cookie(&amp;#39;name&amp;#39;, &amp;#39;tong&amp;#39;, expires=datetime.now()+timedelta(days=14)) return response 2.获取cookie # 视图函数中定义 get_cookie 方法 def get_cookie(request): &amp;#34;&amp;#34;&amp;#34;获取cookie&amp;#34;&amp;#34;&amp;#34; name = request.COOKIES[&amp;#39;name&amp;#39;] return HttpResponse(name) </description>
+    </item>
+    
+    <item>
+      <title>Django(3)——设置当前时间</title>
+      <link>https://ac-lm.github.io/posts/django/django3%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django3%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/</guid>
+      <description>1.时间字段 在 model 中，有 DateTimeField、DateField 和 TimeField 三种类型可以用来创建日期字段，其值分别对应着 datetime()、date()、time() 三种对象。
+2.属性 DateTimeField.auto_now 这个参数的默认值为 false，设置为 true 时，能够在保存该字段时，将其值设置为当前时间，并且每次修改 model，都会自动更新。因此这个参数在需要存储“最后修改时间”的场景下，十分方便。需要注意的是，设置该参数为 true 时，并不简单地意味着字段的默认值为当前时间，而是指字段会被“强制”更新到当前时间，你无法程序中手动为字段赋值；如果使用 django 再带的 admin 管理器，那么该字段在 admin 中是只读的。
+DateTimeField.auto_now_add 这个参数的默认值也为 false，设置为 true 时，会在 model 对象第一次被创建时，将字段的值设置为创建时的时间，以后修改对象时，字段的值不会再更新。该属性通常被用在存储“创建时间”的场景下。与 auto_now 类似，auto_now_add 也具有强制性，一旦被设置为 true，就无法在程序中手动为字段赋值，在 admin 中字段也会成为只读的。
+3.如何将创建时间设置为“默认当前”并且可修改 那么问题来了。实际场景中，往往既希望在对象的创建时间默认被设置为当前值，又希望能在日后修改它。怎么实现这种需求呢？
+django 中所有的 model 字段都拥有一个 default 参数，用来给字段设置默认值。可以用 default=timezone.now 来替换 auto_now=True 或 auto_now_add=True。timezone.now 对应着 django.utils.timezone.now()，因此需要写成类似下面的形式：
+from django.db import models import django.utils.timezone as timezone class Doc(models.Model): add_date = models.DateTimeField(&amp;#39;保存日期&amp;#39;,default = timezone.now) mod_date = models.</description>
+    </item>
+    
+    <item>
+      <title>Django(2)——HTML 模板</title>
+      <link>https://ac-lm.github.io/posts/django/django2html-%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django2html-%E6%A8%A1%E6%9D%BF/</guid>
+      <description>1.遍历字典 在模版中要遍历字典 dict ，一般使用如下代码实现
+{% for key,value in param.items %} {{ key }} {{ value }} {% endfor %} </description>
+    </item>
+    
+    <item>
+      <title>Django(1)——Models</title>
+      <link>https://ac-lm.github.io/posts/django/django1models/</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django1models/</guid>
+      <description>1.模型的基本概念 Django 中每个模型都是一个 Python 类，这些类继承自 django.db.models.Model。模型类的每个属性都相当于一个数据库的字段。
+from django.db import models class Person(models.Model): first_name = models.CharField(max_length=30) last_name = models.CharField(max_length=30) 上述代码相当于使用数据库语言创建一个 Person 表单，有两个字段 first_name 与 last_name
+CREATE TABLE myapp_person ( &amp;#34;id&amp;#34; serial NOT NULL PRIMARY KEY, &amp;#34;first_name&amp;#34; varchar(30) NOT NULL, &amp;#34;last_name&amp;#34; varchar(30) NOT NULL ); 2.使用模型 在定义模型后，你需要告诉 Django 将使用这些模型。通过编辑你的设置文件 setting.py，改变 INSTALLED_APPS 设置来添加包含你 models.py 的模块的名称来实现这一点。
+INSTALLED_APPS = [ #... &amp;#39;myapp&amp;#39;, # 模块名 #... ] 3.字段 a.字段类型 略
+b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据库字段的大小。 null：如果是 True，Django 会将空置的值存储为 NULL。默认是 False。 blank ：如果是 True，这个字段是空白的。默认是 False。注意，这与 null 不同的是，null 与数据库相关，而 blank 则是与验证相关的。如果一个字段有 blank=True ，表单验证就允许输入空值。如果一个字段有 blank=False ，则需要字段。 choices：2元组的可迭代，例如，列表或元组的元素选择。 default：字段的默认值。 unique：如果是真的，这个字段必须在整个表中是唯一的。 related_nam：使用外键时调用的名字。  c.</description>
+    </item>
+    
+  </channel>
+</rss>

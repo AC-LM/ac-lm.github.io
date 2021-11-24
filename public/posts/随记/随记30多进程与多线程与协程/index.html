@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(30)——多进程与多线程与协程</a></h2>
+                <p>@LM | 2021-08-04</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://blog.csdn.net/qq_43279936/article/details/88047004"> 多进程，多线程，协程的理解_@qq_43279936 </a></p>
+</blockquote>
+<h2 id="1什么是进程什么是线程">1.什么是进程？什么是线程？</h2>
+<ul>
+<li>
+<p>进程是表示资源分配的基本单位，是调度运行的基本单位。当用户运行自己的程序时，系统就创建一个进程，并为它分配包括内存空间、磁盘空间、I/O设备等资源。然后，把该进程放入进程的就绪队列中等待被系统执行。当该进程被系统的进程调度程序选中后，系统会为它分配CPU以及其它资源，运行该进程。</p>
+</li>
+<li>
+<p>线程是进程中执行运算的最小单位，如果把进程理解为在逻辑上操作系统所完成的任务，那么线程表示完成该任务的许多可能的子任务之一。线程与进程的包含关系如下图所示。</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/20210803193900.png" alt=""></p>
+<h2 id="2多进程和多线程的区别">2.多进程和多线程的区别？</h2>
+<h3 id="a数据共享同步">a.数据共享、同步</h3>
+<ul>
+<li>多进程：不共享数据，数据交换需要用IPC(进程间通信)，数据因此同步简单</li>
+<li>多线程：共享进程数据，数据处理交换方便，数据因此同步复杂</li>
+</ul>
+<h3 id="b内存cpu">b.内存、CPU</h3>
+<ul>
+<li>多进程：占用内存多，切换复杂，CPU利用率低</li>
+<li>多线程：占用内存少，切换简单，CPU利用率高</li>
+</ul>
+<h3 id="c创建销毁切换">c.创建销毁、切换</h3>
+<ul>
+<li>多进程：创建销毁、切换复杂，速度慢</li>
+<li>多线程：创建销毁、切换简单，速度快</li>
+</ul>
+<h3 id="d编程调试">d.编程、调试</h3>
+<ul>
+<li>多进程：编程简单，调试简单</li>
+<li>多线程：编程复杂，调试复杂</li>
+</ul>
+<h3 id="e可靠性">e.可靠性</h3>
+<ul>
+<li>多进程：进程间互不影响，一个进程挂了，程序也不会整个挂掉</li>
+<li>多线程：线程影响着进程，一个线程挂掉，将导致整个进程挂掉</li>
+</ul>
+<h2 id="3进程间或线程间的通信方式">3.进程间或线程间的通信方式</h2>
+<ul>
+<li>进程：管道， 信号量， 信号， 消息队列， 共享内存， 套接字</li>
+<li>线程：锁机制（互斥锁、条件变量、读写锁），信号量机制(Semaphore)，信号机制(Signal)</li>
+</ul>
+<h2 id="4什么是协程">4.什么是协程</h2>
+<p>协程(Coroutine)，又称微线程，纤程，是<strong>单线程语言中用来模拟多线程</strong>的一种方式。协程的作用，是在执行部分耗时长的函数时，可以先中断执行，去处理其他耗时短的函数，等到空闲时再继续执行该耗时长的函数，最终使得这一整个过程看上去像多线程。</p>
+<h2 id="5协程优势">5.协程优势</h2>
+<ul>
+<li>执行效率极高，因为子程序切换(函数)不是线程切换，仅仅是函数的切换，没有切换线程的开销。所以与多线程相比，线程的数量越多，协程性能的优势越明显。</li>
+<li>不需要多线程的锁机制，因为是单线程，所以不存在同时写变量冲突，在控制共享资源时也不需要加锁，因此执行效率高很多。</li>
+</ul>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml-%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8-%E6%96%87%E4%BB%B6/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

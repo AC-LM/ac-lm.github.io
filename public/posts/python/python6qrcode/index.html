@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(6)——Qrcode</a></h2>
+                <p>@LM | 2020-09-29</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1什么是二维码">1.什么是二维码</h2>
+<p>二维码其实可以看成是一种数据的加密，在这里面的数据，可以通过某种编码，转化成黑白不同的点，然后按顺序排列其中。当我们去识别二维码的时候，其实就是把这些数据转化回来。</p>
+<p>根据二维码其不同的编码类型，版本，以及纠错级别，二维码的复杂程度会有所变化。其中版本分 1-40 个级别，版本越高，能存储的数据就越多，用公式来表示就是这样：v X 4+17 。而纠错级别又分为 L、M、Q、H，有时候你可能看到有些二维码整的花里胡哨，或者有的地方缺失了还是能被识别，这可能是这张二维码的容错级别比较高。而级别越低，纠错能力越低，但是能存储更多的数据。而这些格式信息，都可以在三个大方块的边沿定义，三个大方块作为定位的标志，然后剩下的区域就是来放数据码和纠错码。</p>
+<p>Qrcode 就是 Python 中二维码的处理库</p>
+<h2 id="2安装">2.安装</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install qrcode
+</code></pre></div><h2 id="3使用">3.使用</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> qrcode
+qr <span style="color:#f92672">=</span> qrcode<span style="color:#f92672">.</span>QRCode(
+    version<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+    error_correction<span style="color:#f92672">=</span>qrcode<span style="color:#f92672">.</span>constants<span style="color:#f92672">.</span>ERROR_CORRECT_Q,
+    box_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>,
+    border<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,
+)
+qr<span style="color:#f92672">.</span>add_data(<span style="color:#e6db74">&#39;This is a qrcode&#39;</span>)
+qr<span style="color:#f92672">.</span>make(fit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+img<span style="color:#f92672">=</span>qr<span style="color:#f92672">.</span>make_image(fill_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>,back_color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;white&#39;</span>)
+img<span style="color:#f92672">.</span>show()
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python5pyautogui/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python7unittest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

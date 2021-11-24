@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(11)——多线程的使用</a></h2>
+                <p>@LM | 2020-12-13</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/fnng/p/3670789.html"> python 多线程  @虫师 </a></p>
+</blockquote>
+<h2 id="1单线程">1.单线程</h2>
+<p>在好些年前操作系统处理问题都是单任务的，我想做听音乐和看电影两件事儿，那么一定要先排一下顺序。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
+<span style="color:#f92672">import</span> threading
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> ctime,sleep
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">music</span>(func):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+        print <span style="color:#e6db74">&#34;I was listening to </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">. </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>(func,ctime())
+        sleep(<span style="color:#ae81ff">1</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">move</span>(func):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+        print <span style="color:#e6db74">&#34;I was at the </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">! </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>(func,ctime())
+        sleep(<span style="color:#ae81ff">5</span>)
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    music(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;爱情买卖&#39;</span>)
+    move(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;阿凡达&#39;</span>)
+
+    print <span style="color:#e6db74">&#34;all over </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>ctime()
+</code></pre></div><p>我们先听了一首音乐，通过for循环来控制音乐的播放了两次，每首音乐播放需要1秒钟，sleep()来控制音乐播放的时长。接着我们又看了一场电影，每一场电影需要5秒钟，因为太好看了，所以我也通过for循环看两遍。在整个休闲娱乐活动结束后，我通过</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print <span style="color:#e6db74">&#34;all over </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>ctime()
+</code></pre></div><p>看了一下当前时间，差不多该睡觉了</p>
+<p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">========================</span> RESTART <span style="color:#f92672">================================</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">48</span>:<span style="color:#ae81ff">59</span> <span style="color:#ae81ff">2014</span>
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">00</span> <span style="color:#ae81ff">2014</span>
+I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">01</span> <span style="color:#ae81ff">2014</span>
+I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">06</span> <span style="color:#ae81ff">2014</span>
+all over Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">11</span> <span style="color:#ae81ff">2014</span>
+</code></pre></div><h2 id="2多线程">2.多线程</h2>
+<p>科技在发展，时代在进步，我们的CPU也越来越快，能支持同时干多个活；于是，操作系统就进入了多任务时代。我们听着音乐吃着火锅的不在是梦想。</p>
+<p>Python提供了两个模块来实现多线程 thread 和 threading ，thread 有一些缺点，在 threading 得到了弥补，所以我们直接学习 threading 就可以了。</p>
+<p>引入threadring来同时播放音乐和视频</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
+<span style="color:#f92672">import</span> threading
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> ctime,sleep
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">music</span>(func):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+        print <span style="color:#e6db74">&#34;I was listening to </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">. </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>(func,ctime())
+        sleep(<span style="color:#ae81ff">1</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">move</span>(func):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+        print <span style="color:#e6db74">&#34;I was at the </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">! </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>(func,ctime())
+        sleep(<span style="color:#ae81ff">5</span>)
+
+threads <span style="color:#f92672">=</span> []
+t1 <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>music,args<span style="color:#f92672">=</span>(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;爱情买卖&#39;</span>,))
+threads<span style="color:#f92672">.</span>append(t1)
+t2 <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>move,args<span style="color:#f92672">=</span>(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;阿凡达&#39;</span>,))
+threads<span style="color:#f92672">.</span>append(t2)
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> threads:
+        t<span style="color:#f92672">.</span>setDaemon(<span style="color:#66d9ef">True</span>)
+        t<span style="color:#f92672">.</span>start()
+
+    print <span style="color:#e6db74">&#34;all over </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>ctime()
+</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">threads <span style="color:#f92672">=</span> [ ]
+t1 <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>music,args<span style="color:#f92672">=</span>(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;爱情买卖&#39;</span>,))
+threads<span style="color:#f92672">.</span>append(t1)
+
+<span style="color:#75715e">#创建了threads数组，创建线程t1,使用threading.Thread()方法,在这个方法中调用music方法target=music，args方法对music进行传参。 把创建好的线程t1装到threads数组中。</span>
+</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> threads:
+    t<span style="color:#f92672">.</span>setDaemon(<span style="color:#66d9ef">True</span>)
+    t<span style="color:#f92672">.</span>start()
+<span style="color:#75715e"># 最后通过for循环遍历数组。（数组被装载了t1和t2两个线程）</span>
+setDaemon()
+<span style="color:#75715e"># setDaemon(True)将线程声明为守护线程，必须在start()方法调用之前设置，如果不设置为守护线程程序会被无限挂起。子线程启动后，父线程也继续执行下去，当父线程执行完最后一条语句print &#34;all over %s&#34; %ctime()后，没有等待子线程，直接就退出了，同时子线程也一同结束</span>
+start()
+<span style="color:#75715e">#开始线程活动</span>
+</code></pre></div><p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">=========================</span> RESTART <span style="color:#f92672">================================</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">51</span>:<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">2014</span> I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">51</span>:<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">2014</span>  all over Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">51</span>:<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">2014</span>
+</code></pre></div><p>　　从执行结果来看，子线程（muisc 、move ）和主线程（print &ldquo;all over %s&rdquo; %ctime()）都是同一时间启动，但由于主线程执行完结束，所以导致子线程也终止。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> threads:
+        t<span style="color:#f92672">.</span>setDaemon(<span style="color:#66d9ef">True</span>)
+        t<span style="color:#f92672">.</span>start()
+    
+    t<span style="color:#f92672">.</span>join()
+
+    print <span style="color:#e6db74">&#34;all over </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>ctime()
+<span style="color:#75715e"># 我们只对上面的程序加了个join()方法，用于等待线程终止。join（）的作用是，在子线程完成运行之前，这个子线程的父线程将一直被阻塞。</span>
+<span style="color:#75715e"># 注意:  join()方法的位置是在for循环外的，也就是说必须等待for循环里的两个进程都结束后，才去执行主进程。</span>
+</code></pre></div><p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">=========================</span> RESTART <span style="color:#f92672">================================</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">11</span> <span style="color:#ae81ff">2014</span>  I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">11</span> <span style="color:#ae81ff">2014</span>
+
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">12</span> <span style="color:#ae81ff">2014</span>
+I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">16</span> <span style="color:#ae81ff">2014</span>
+all over Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">21</span> <span style="color:#ae81ff">2014</span>
+</code></pre></div><p>从执行结果可看到，music 和move 是同时启动的。开始时间4分11秒，直到调用主进程为4分22秒，总耗时为10秒。从单线程时减少了2秒，我们可以把music的sleep()的时间调整为4秒。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">======================</span> RESTART <span style="color:#f92672">================================</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> 
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">27</span> <span style="color:#ae81ff">2014</span>I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">27</span> <span style="color:#ae81ff">2014</span>
+
+I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">31</span> <span style="color:#ae81ff">2014</span>
+I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">32</span> <span style="color:#ae81ff">2014</span>
+all over Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">13</span>:<span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">37</span> <span style="color:#ae81ff">2014</span>
+</code></pre></div><p>子线程启动11分27秒，主线程运行11分37秒。虽然music每首歌曲从1秒延长到了4 ，但通多程线的方式运行脚本，总的时间没变化。</p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84-super-%E5%88%9D%E5%A7%8B%E5%8C%96/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python12%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Linux(9)——Python3.6 安装</a></h2>
+                <p>@LM | 2020-11-22</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1前言">1.前言</h2>
+<p>Linux 系统自带 Python2，这是由于部分命令需要使用 Python2，如 yum，要使用 Python3 则需另外安装。（本文使用的是 CentOS7 ，其他发行版大同小异）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python -V <span style="color:#75715e">#查看Py版本</span>
+python -m XXXX  <span style="color:#75715e">#执行终端命令，-m参数使得Python预先import你要的package或module给你，然后再执行script。</span>
+which python <span style="color:#75715e">#查看python命令是连接到那个文件</span>
+<span style="color:#75715e">####</span>
+/usr/bin/python
+<span style="color:#75715e">####</span>
+cd /usr/bin/ <span style="color:#75715e">#进入bin文件夹</span>
+ll python*  <span style="color:#75715e">#列出包含python字段的文件</span>
+<span style="color:#75715e">####</span>
+lrwxrwxrwx. <span style="color:#ae81ff">1</span> root root   <span style="color:#ae81ff">16</span> 11月 <span style="color:#ae81ff">17</span> 11:42 python -&gt; /usr/bin/python2
+lrwxrwxrwx. <span style="color:#ae81ff">1</span> root root    <span style="color:#ae81ff">9</span> 11月 <span style="color:#ae81ff">13</span> 11:01 python2 -&gt; python2.7
+-rwxr-xr-x. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">7144</span> 10月 <span style="color:#ae81ff">14</span> 22:46 python2.7
+-rwxr-xr-x. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1835</span> 10月 <span style="color:#ae81ff">14</span> 22:45 python2.7-config
+lrwxrwxrwx. <span style="color:#ae81ff">1</span> root root   <span style="color:#ae81ff">16</span> 11月 <span style="color:#ae81ff">16</span> 17:40 python2-config -&gt; python2.7-config
+lrwxrwxrwx. <span style="color:#ae81ff">1</span> root root   <span style="color:#ae81ff">14</span> 11月 <span style="color:#ae81ff">16</span> 17:40 python-config -&gt; python2-config
+<span style="color:#75715e">####</span>
+<span style="color:#75715e"># 可以看出python指向python2，最终指向python2.7</span>
+</code></pre></div><h2 id="2编译安装-python">2.编译安装 Python</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install zlib zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel libffi-devel gcc-c++
+<span style="color:#75715e"># 安装软件依赖以编译文件（可选）</span>
+yum -y install gcc-c++ openssl-devel libffi-devel bzip2-devel
+<span style="color:#75715e"># 安装软件依赖以编译文件（必须有）</span>
+<span style="color:#75715e"># 下载 Python 源码，解压，然后进入文件夹，编译到对应目录，安装</span>
+wget http://npm.taobao.org/mirrors/python/3.9.0/Python-3.9.0.tgz
+tar -zxvf Python-3.9.0.tgz
+cd Python-3.9.0 <span style="color:#f92672">||</span> <span style="color:#f92672">{</span> echo <span style="color:#e6db74">&#34;Failure&#34;</span>; exit 1; <span style="color:#f92672">}</span>
+./configure --prefix<span style="color:#f92672">=</span>/usr/local/python3
+make <span style="color:#f92672">&amp;&amp;</span> make install
+<span style="color:#75715e"># 编译安装后，使用 ln 进行软链接</span>
+ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+<span style="color:#75715e"># 配置 pip 源</span>
+pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+<span style="color:#75715e"># 使用</span>
+python3 -V
+pip3 -V
+</code></pre></div><h2 id="3其他">3.其他</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 若要将 python 命令指向 python3，可以先删除原链接再重新指向。但这里不推荐这样做，因为 Linux 的部分包需要使用 python2</span>
+rm /usr/bin/python
+ln -s python3 /usr/bin/python
+<span style="color:#75715e"># 如需切换回 python2</span>
+ln -s python2 /usr/bin/python
+<span style="color:#75715e"># pip</span>
+cd /usr/bin
+mv pip pip.bak <span style="color:#75715e">#备份</span>
+ln -s pip3 /usr/bin/pip
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux8linux-%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/linux/linux10pip-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

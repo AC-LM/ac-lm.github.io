@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(10)——子类的 super 初始化</a></h2>
+                <p>@LM | 2020-12-12</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1使用场景">1.使用场景</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">mywindow</span>(QtWidgets<span style="color:#f92672">.</span>QMainWindow, Ui_MainWindow):
+    <span style="color:#66d9ef">def</span> __init__(self):
+        super(mywindow, self)<span style="color:#f92672">.</span>__init__()
+        self<span style="color:#f92672">.</span>setupUi(self)
+<span style="color:#75715e"># 寻找 mywindow 的父类 QtWidgets.QMainWindow 中的 __init__()，进行对 mywindow 的初始化</span>
+</code></pre></div><h2 id="2解析">2.解析</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># python 中的 super(Net, self).__init__() 其执行时</span>
+<span style="color:#75715e"># 首先找到 Net 的父类（比如是类 NNet），然后把类 Net 的对象 self 转换为类 NNet 的对象，然后“被转换”的类 NNet 对象调用自己的 init函数</span>
+</code></pre></div><p>这是对继承自父类的属性进行初始化，使用父类的初始化方法来初始化继承的属性。</p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python9%E5%BC%82%E5%B8%B8%E4%BF%A1%E6%81%AF%E6%89%93%E5%8D%B0/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python11%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

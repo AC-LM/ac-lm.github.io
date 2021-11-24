@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(10)——读取 app 安装包资源</a></h2>
+                <p>@LM | 2021-05-11</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://zhuanlan.zhihu.com/p/243259521"> Flutter 读取应用资源并显示  @飘香豆腐 </a></p>
+</blockquote>
+<h2 id="1资源加载">1.资源加载</h2>
+<p>在 flutter 中，如果需要加载资源的话，需要在 pubspec.yaml 指定 APP 所需要的资源。这样的话，指定的每个 Asset （资源）都会被打包在 APP 中，并且在 APP 运行时可以访问到这些资源。</p>
+<p>最常见的 Asset 类型就是图片，指定图片资源后即可以在 APP 页面使用图片控件加载资源了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># pubspec.yaml</span>
+<span style="color:#f92672">flutter</span>:
+    <span style="color:#f92672">assets</span>:
+        - <span style="color:#ae81ff">assets/images/logo.png</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// lib/main.dart
+</span><span style="color:#75715e"></span>Image.asset(<span style="color:#e6db74">&#39;assets/images/logo.png&#39;</span>)
+</code></pre></div><h2 id="2使用-rootbundle-对象访问资源">2.使用 rootBundle 对象访问资源</h2>
+<p>APP 还可以通过引入 services 包使用 rootBundle 对象来访问资源。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/services.dart&#39;</span>;
+</code></pre></div><p>比如访问文件 test.txt，txt 文件内容是 测试文字，可以使用 rootBundle 对象的 loadString 方法。当然，前提也是需要在 pubspec.yaml 中指定资源才能访问的到。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">rootBundle.loadString(<span style="color:#e6db74">&#39;assets/txt/test.txt&#39;</span>).then((data){
+    print(data);
+});
+
+<span style="color:#75715e">// 测试文字
+</span></code></pre></div><p>因为 loadString() 返回的是 Future，所以需要用 then() 接受返回的 String 类型的数据。Future 类似于 ES6 中的 Promise，当异步任务执行完成后会把结果返回给 then()。</p>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter11setstate-%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

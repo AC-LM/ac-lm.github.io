@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(26)——深复制与浅复制</a></h2>
+                <p>@LM | 2021-03-28</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/wilber2013/p/4645353.html"> 图解Python深拷贝和浅拷贝  @田小计划  </a></p>
+</blockquote>
+<h2 id="1对象赋值">1.对象赋值</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">will <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Will&#34;</span>, <span style="color:#ae81ff">28</span>, [<span style="color:#e6db74">&#34;Python&#34;</span>, <span style="color:#e6db74">&#34;C#&#34;</span>, <span style="color:#e6db74">&#34;JavaScript&#34;</span>]]
+wilber <span style="color:#f92672">=</span> will
+print id(will)
+print will
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> will]
+print id(wilber)
+print wilber
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> wilber]
+
+will[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Wilber&#34;</span>
+will[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;CSS&#34;</span>)
+print id(will)
+print will
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> will]
+print id(wilber)
+print wilber
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> wilber]
+</code></pre></div><p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/38.png" alt=""></p>
+<h3 id="代码分析">代码分析</h3>
+<ul>
+<li>首先，创建了一个名为will的变量，这个变量指向一个list对象，从第一张图中可以看到所有对象的地址（每次运行，结果可能不同）</li>
+<li>然后，通过will变量对wilber变量进行赋值，那么wilber变量将指向will变量对应的对象（内存地址），也就是说&quot;wilber is will&quot;，&ldquo;wilber[i] is will[i]&quot;，可以理解为，Python中，对象的赋值都是进行对象引用（内存地址）传递</li>
+<li>第三张图中，由于will和wilber指向同一个对象，所以对will的任何修改都会体现在wilber上，这里需要注意的一点是，str是不可变类型，所以当修改的时候会替换旧的对象，产生一个新的地址39758496</li>
+</ul>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/39.png" alt=""></p>
+<h2 id="2浅拷贝">2.浅拷贝</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> copy
+
+will <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Will&#34;</span>, <span style="color:#ae81ff">28</span>, [<span style="color:#e6db74">&#34;Python&#34;</span>, <span style="color:#e6db74">&#34;C#&#34;</span>, <span style="color:#e6db74">&#34;JavaScript&#34;</span>]]
+wilber <span style="color:#f92672">=</span> copy<span style="color:#f92672">.</span>copy(will)
+
+print id(will)
+print will
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> will]
+print id(wilber)
+print wilber
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> wilber]
+will[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Wilber&#34;</span>
+will[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;CSS&#34;</span>)
+print id(will)
+print will
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> will]
+print id(wilber)
+print wilber
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> wilber]
+</code></pre></div><p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/40.png" alt=""></p>
+<h3 id="代码分析-1">代码分析</h3>
+<ul>
+<li>首先，依然使用一个will变量，指向一个list类型的对象</li>
+<li>然后，通过copy模块里面的浅拷贝函数copy()，对will指向的对象进行浅拷贝，然后浅拷贝生成的新对象赋值给wilber变量，浅拷贝会创建一个新的对象，这个例子中**&ldquo;wilber is not will&rdquo;**，但是，对于对象中的元素，浅拷贝就只会使用原始元素的引用（内存地址），**也就是说&quot;wilber[i] is will[i]&quot;**</li>
+<li>当对will进行修改的时候，由于list的第一个元素是不可变类型，所以will对应的list的第一个元素会使用一个新的对象39758496，但是list的第三个元素是一个可不类型，修改操作不会产生新的对象，所以will的修改结果会相应的反应到wilber上</li>
+</ul>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/41.png" alt=""></p>
+<h3 id="浅拷贝的操作">浅拷贝的操作</h3>
+<ul>
+<li>使用切片[:]操作</li>
+<li>使用工厂函数（如list/dir/set）</li>
+<li>使用copy模块中的copy()函数</li>
+</ul>
+<h2 id="3深拷贝">3.深拷贝</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> copy
+will <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Will&#34;</span>, <span style="color:#ae81ff">28</span>, [<span style="color:#e6db74">&#34;Python&#34;</span>, <span style="color:#e6db74">&#34;C#&#34;</span>, <span style="color:#e6db74">&#34;JavaScript&#34;</span>]]
+wilber <span style="color:#f92672">=</span> copy<span style="color:#f92672">.</span>deepcopy(will)
+
+print id(will)
+print will
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> will]
+print id(wilber)
+print wilber
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> wilber]
+
+will[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Wilber&#34;</span>
+will[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;CSS&#34;</span>)
+print id(will)
+print will
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> will]
+print id(wilber)
+print wilber
+print [id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> wilber]
+</code></pre></div><p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/42.png" alt=""></p>
+<h3 id="代码分析-2">代码分析</h3>
+<ul>
+<li>首先，同样使用一个will变量，指向一个list类型的对象</li>
+<li>然后，通过copy模块里面的深拷贝函数deepcopy()，对will指向的对象进行深拷贝，然后深拷贝生成的新对象赋值给wilber变量，跟浅拷贝类似，深拷贝也会创建一个新的对象，这个例子中**&ldquo;wilber is not will&rdquo;**，但是，对于对象中的元素，深拷贝都会重新生成一份（有特殊情况，下面会说明），而不是简单的使用原始元素的引用（内存地址），例子中will的第三个元素指向39737304，而wilber的第三个元素是一个全新的对象39773088，也就是说，**&ldquo;wilber[2] is not will[2]&quot;**</li>
+<li>当对will进行修改的时候，由于list的第一个元素是不可变类型，所以will对应的list的第一个元素会使用一个新的对象39758496，但是list的第三个元素是一个可不类型，修改操作不会产生新的对象，但是由于&quot;wilber[2] is not will[2]&quot;，所以will的修改不会影响wilber</li>
+</ul>
+<p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/43.png" alt=""></p>
+<h2 id="4特殊情况">4.特殊情况</h2>
+<ul>
+<li>对于非容器类型（如数字、字符串、和其他&rsquo;原子&rsquo;类型的对象）没有拷贝这一说，也就是说，对于这些类型，&ldquo;obj is copy.copy(obj)&rdquo; 、&ldquo;obj is copy.deepcopy(obj)&rdquo;</li>
+<li>如果元祖变量只包含原子类型对象，则不能深拷贝</li>
+</ul>
+
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python27random-%E6%A8%A1%E5%9D%97/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

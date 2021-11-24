@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(19)——telnetlib 模块</a></h2>
+                <p>@LM | 2021-01-15</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="telnetlib">telnetlib</h2>
+<p>Python 远程 Linux 模块</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> getpass
+<span style="color:#f92672">import</span> telnetlib
+
+HOST <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;localhost&#34;</span>
+user <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Enter your remote account: &#34;</span>)
+password <span style="color:#f92672">=</span> getpass<span style="color:#f92672">.</span>getpass()
+
+tn <span style="color:#f92672">=</span> telnetlib<span style="color:#f92672">.</span>Telnet(HOST)
+
+tn<span style="color:#f92672">.</span>read_until(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;login: &#34;</span>)
+tn<span style="color:#f92672">.</span>write(user<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+<span style="color:#66d9ef">if</span> password:
+    tn<span style="color:#f92672">.</span>read_until(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Password: &#34;</span>)
+    tn<span style="color:#f92672">.</span>write(password<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+
+tn<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;ls</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+tn<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;exit</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+
+print(tn<span style="color:#f92672">.</span>read_all()<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8C-linux-%E5%91%BD%E4%BB%A4/" class="button large previous">上一页</a></li>
+        
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python20web-localstrorage-%E4%BF%AE%E6%94%B9/" class="button large next">下一页</a></li>
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>
