@@ -1,5 +1,5 @@
 ---
-title: Android(2)——Adb 调试
+title: Android(2)—Adb 调试
 date: 2020-09-22
 author: LM
 ---

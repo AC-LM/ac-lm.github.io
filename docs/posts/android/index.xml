@@ -18,7 +18,7 @@
     </item>
     
     <item>
-      <title>Android(3)——APK Analyzer</title>
+      <title>Android(3)—APK Analyzer</title>
       <link>https://ac-lm.github.io/posts/android/android3apk-analyzer/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -32,7 +32,7 @@ APK Analyzer 可以在 Android Studio 顶端菜单栏中的 Build 找到。
     </item>
     
     <item>
-      <title>Android(2)——Adb 调试</title>
+      <title>Android(2)—Adb 调试</title>
       <link>https://ac-lm.github.io/posts/android/android2adb-%E8%B0%83%E8%AF%95/</link>
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -42,7 +42,7 @@ APK Analyzer 可以在 Android Studio 顶端菜单栏中的 Build 找到。
     </item>
     
     <item>
-      <title>Android(1)——不使用 Android Studio 配置 Android SDK</title>
+      <title>Android(1)—不使用 Android Studio 配置 Android SDK</title>
       <link>https://ac-lm.github.io/posts/android/android1%E4%B8%8D%E4%BD%BF%E7%94%A8-android-studio-%E9%85%8D%E7%BD%AE-android-sdk/</link>
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
       

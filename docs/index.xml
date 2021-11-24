@@ -54,6 +54,21 @@ a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴
     </item>
     
     <item>
+      <title>随记(38)——Socket.IO</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</guid>
+      <description>Introduction @Socket.IO 
+ 1.工作原理 Socket.IO 是 Websocket 的一个实现，其分为服务器（node.js）和客户端（浏览器、node.js或其他编程语言）。服务器与客户端之间的双向通道使用 Websocket 连接建立，并使用 HTTP 长轮询作为回退。
+Socket.IO 代码库分为两个不同的层：
+ 低级管道：我们称之为 Engine.IO，作为 Socket.IO 的内部发动机 高级别 API： Socket.IO 本身  2.Engine.IO Engine.IO 负责建立服务器和客户端之间的低级连接。它处理：
+ 各种数据运输和升级机制 断开检测  a.运输 目前有两个已实现的运输：
+ HTTP 长轮询 Websocket  b.握手 在 Engine.IO 连接的开始，服务器会发送一些信息：
+{ &amp;#34;sid&amp;#34;: &amp;#34;FSDjX-WRwSA4zTZMALqx&amp;#34;, &amp;#34;upgrades&amp;#34;: [&amp;#34;websocket&amp;#34;], &amp;#34;pingInterval&amp;#34;: 25000, &amp;#34;pingTimeout&amp;#34;: 20000 }  sid 是会话的 ID，它必须包含在所有后续 HTTP 请求中的查询参数中 upgrades 包含由服务器支持的所有链接列表 pingInterval 与 pingTimeout 的值用于心跳机制，以检查连接状态  c.升级机制 默认情况下，客户端会先与 HTTP 长轮询传输建立连接。</description>
+    </item>
+    
+    <item>
       <title>Docker(5)——Docker 网络</title>
       <link>https://ac-lm.github.io/posts/docker/docker5docker-%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
@@ -122,6 +137,17 @@ service network restart ping 114.114.114.114 2.安装 net-tools，使用 ifconfi
       <description>1.Executable path has been deprecated please pass in a Service object in Selenium Python 使用 Selenium 时，程序正常运行，但出现 DeprecationWarning 警告的类型错误。这是由于版本更新时，所使用的方法过时的原因，表示该函数在当前版本被重构，还可以传入参数，但是在之后的某个版本会被删除.
 查询当前版本重构后的函数，是之前的 executable_path 被重构到了 Service 函数里
 from selenium import webdriver from selenium.webdriver.chrome.service import Service s = Service(r&amp;#34;D:\Software\webdrivers\chromedriver.exe&amp;#34;) driver = webdriver.Chrome(service=s) driver.get(&amp;#39;https://www.baidu.com&amp;#39;) driver.close() </description>
+    </item>
+    
+    <item>
+      <title>随记(37)——Websocket</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</guid>
+      <description>1.Websocket 简介 Websocket 被定义为服务器和客户端之间的双向通信，这意味着双方同时进行通信和交换数据。
+Websocket 的关键点是真正的并发性和性能优化，从而产生响应更快，更丰富的 Web 应用程序。
+Websocket 的 URL 为 ws://example.com:8000/chat.php</description>
     </item>
     
     <item>
@@ -285,32 +311,6 @@ Electron 应用进程分为主进程和渲染进程，其底层实现分别对�
  渲染进程： 用户看到的 web 界面就是由渲染进程绘制出来的，包括 html、css、js。 主进程：Electron 运行 package.json 中的 main.js 脚本的进程被称为主进程。在主进程中运行的脚本通过创建 web 页面来展示用户界面。一个 Electron 应用程序总是只有一个主进程。  Chromium 架构 浏览器分为单进程和多进程架构。下面先讲讲 Chrome 为代表的浏览器过去和未来。
 单进程浏览器 单进程浏览器指的是浏览器的所有功能模块都是运行在同一个进程里的，这些模块包括网络、插件、Javascript 运行环境、渲染引擎和页面等。如此复杂的功能都在一个进程内运行，所以容易导致浏览器的不稳定、不安全、不流畅。
 问题1: 不稳定 早期浏览器需要借助插件来实现类似 Web 视频、Web 游戏等各种强大的功能。但插件往往是最容易出现问题的模块。此外因为运行在浏览器进程中，所以一个插件的意外崩溃会导致整个浏览器的崩溃。除了插件之外，渲染引擎模块也是不稳定的。通常一些复杂的 Javascript 代码就有可能导致渲染引擎模块的崩溃。</description>
-    </item>
-    
-    <item>
-      <title>随记(37)——Websocket</title>
-      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</link>
-      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</guid>
-      <description>1.Websocket 简介 Websocket 被定义为服务器和客户端之间的双向通信，这意味着双方同时进行通信和交换数据。
-Websocket 的关键点是真正的并发性和性能优化，从而产生响应更快，更丰富的 Web 应用程序。
-Websocket 的 URL 为 ws://example.com:8000/chat.php</description>
-    </item>
-    
-    <item>
-      <title>随记(38)——Socket.IO</title>
-      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</link>
-      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</guid>
-      <description>Introduction @Socket.IO 
- 1.工作原理 Socket.IO 是 Websocket 的一个实现，其分为服务器（node.js）和客户端（浏览器、node.js或其他编程语言）。服务器与客户端之间的双向通道使用 Websocket 连接建立，并使用 HTTP 长轮询作为回退。
-Socket.IO 代码库分为两个不同的层：
- 低级管道：我们称之为 Engine.IO，作为 Socket.IO 的内部发动机 高级别 API： Socket.IO 本身  2.Engine.IO Engine.IO 负责建立服务器和客户端之间的低级连接。它处理：
- 各种数据运输和升级机制 断开检测  a.运输 目前有两个已实现的运输：
- HTTP 长轮询 Websocket  b.握手 在 Engine.IO 连接的开始，服务器会发送一些信息：
-{ &amp;#34;sid&amp;#34;: &amp;#34;FSDjX-WRwSA4zTZMALqx&amp;#34;, &amp;#34;upgrades&amp;#34;: [&amp;#34;websocket&amp;#34;], &amp;#34;pingInterval&amp;#34;: 25000, &amp;#34;pingTimeout&amp;#34;: 20000 }  sid 是会话的 ID，它必须包含在所有后续 HTTP 请求中的查询参数中 upgrades 包含由服务器支持的所有链接列表 pingInterval 与 pingTimeout 的值用于心跳机制，以检查连接状态  c.升级机制 默认情况下，客户端会先与 HTTP 长轮询传输建立连接。</description>
     </item>
     
     <item>
@@ -878,7 +878,7 @@ void test(String name,{int age}){ if(age!=null){ print(&amp;#34;name:$name;age:$
     </item>
     
     <item>
-      <title>Android(3)——APK Analyzer</title>
+      <title>Android(3)—APK Analyzer</title>
       <link>https://ac-lm.github.io/posts/android/android3apk-analyzer/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -2461,7 +2461,7 @@ Resolution 原因：发送请求时，Jmeter 一般默认选择 Use KeepAlive，
     </item>
     
     <item>
-      <title>BUG(3)——Windows 下 shell 脚本无法在 Linux 运行</title>
+      <title>BUG(3)—Windows 下 shell 脚本无法在 Linux 运行</title>
       <link>https://ac-lm.github.io/posts/bug/bug3windows-%E4%B8%8B-shell-%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8-linux-%E8%BF%90%E8%A1%8C/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2471,7 +2471,7 @@ Resolution 这是由于 Windows 系统编码与 Linux 系统编码不同导致�
     </item>
     
     <item>
-      <title>BUG(2)——Linux 修改密码以及旧版本删除</title>
+      <title>BUG(2)—Linux 修改密码以及旧版本删除</title>
       <link>https://ac-lm.github.io/posts/bug/bug2linux-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2494,7 +2494,7 @@ tar -xvf Jmeter.tgz # 注意需配置Java环境 2.配置Jmeter环境 vi /etc/pro
     </item>
     
     <item>
-      <title>BUG(1)——无头浏览器导致的元素不可见</title>
+      <title>BUG(1)—无头浏览器导致的元素不可见</title>
       <link>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2861,7 +2861,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>Android(2)——Adb 调试</title>
+      <title>Android(2)—Adb 调试</title>
       <link>https://ac-lm.github.io/posts/android/android2adb-%E8%B0%83%E8%AF%95/</link>
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2871,7 +2871,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>Android(1)——不使用 Android Studio 配置 Android SDK</title>
+      <title>Android(1)—不使用 Android Studio 配置 Android SDK</title>
       <link>https://ac-lm.github.io/posts/android/android1%E4%B8%8D%E4%BD%BF%E7%94%A8-android-studio-%E9%85%8D%E7%BD%AE-android-sdk/</link>
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
       

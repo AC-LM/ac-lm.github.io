@@ -1,5 +1,5 @@
 ---
-title: BUG(2)——Linux 修改密码以及旧版本删除
+title: BUG(2)—Linux 修改密码以及旧版本删除
 date: 2020-11-26
 author: LM
 ---
