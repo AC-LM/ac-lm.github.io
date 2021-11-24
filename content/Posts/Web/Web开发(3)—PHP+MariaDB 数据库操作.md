@@ -1,5 +1,5 @@
 ---
-title: Web开发(3)——PHP+MariaDB数据库操作
+title: Web开发(3)——PHP+MariaDB 数据库操作
 date: 2020-12-04
 author: LM
 ---

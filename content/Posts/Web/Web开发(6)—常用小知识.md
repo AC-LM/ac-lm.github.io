@@ -1,5 +1,5 @@
 ---
-title: Web开发(6)——常用开发知识
+title: Web开发(6)——常用小知识
 date: 2021-06-03
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Net(7)——在Linux中的搭建JMeter性能测试
+title: Net(7)——在 Linux 中的搭建 JMeter 性能测试
 date: 2020-11-26
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Web开发(4)——JS实现页面跳转
+title: Web开发(4)——JS 实现页面跳转
 date: 2020-12-05
 author: LM
 ---

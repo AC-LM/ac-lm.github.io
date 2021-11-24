@@ -1,10 +1,10 @@
 ---
-title: Web开发(2)——PHP实例
+title: Web开发(2)——PHP 实例
 date: 2020-12-03
 author: LM
 ---
 
-## 1.PHP信息页
+## 1.PHP 信息页
 
 ```php
 <?php phpinfo();?>

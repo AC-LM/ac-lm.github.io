@@ -1,5 +1,5 @@
 ---
-title: Web开发(10)——jQuery实现界面刷新
+title: Web开发(10)——jQuery 实现界面刷新
 date: 2021-07-23
 author: LM
 ---

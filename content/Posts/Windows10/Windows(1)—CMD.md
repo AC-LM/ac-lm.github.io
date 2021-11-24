@@ -1,5 +1,5 @@
 ---
-title: Windows(1)——CMD命令
+title: Windows(1)——CMD
 date: 2021-01-10
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Web开发(1)——War文件
+title: Web开发(1)——War 文件
 date: 2020-10-30
 author: LM
 ---
@@ -10,7 +10,7 @@ War包一般是在进行Web开发时，一个网站Project下的所有源码的�
 
 War包可以放在Tomcat下的webapps或者word目录下，随着tomcat服务器的启动，它可以自动被解压。
 
-## 2.扩展  | Jar、war、EAR的区别
+## 2.扩展 | Jar、war、EAR 的区别
 
 Jar、war、EAR、在文件结构上，三者并没有什么不同，它们都采用zip或jar档案文件压缩格式。但是它们的使用目的有所区别：    
 
