@@ -1,10 +1,14 @@
 ---
-title: Net(8)——wireshark网络抓包工具
+title: Net(8)——Wireshark网络抓包工具
 date: 2021-06-21
 author: LM
 ---
 
 > 参考原文：[ Wireshark抓包使用指南@Ju5tice ](https://zhuanlan.zhihu.com/p/82498482)
+
+## 0x00.Wireshark
+
+WireShark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是抓取网络封包，并尽可能显示出最为详细的网络封包资料。WireShark 抓包是根据 TCP/IP 五层协议来的，也就是物理层、数据链路层、网络层、传输层、应用层。
 
 ## 0x01.Wireshark可以做什么
 
