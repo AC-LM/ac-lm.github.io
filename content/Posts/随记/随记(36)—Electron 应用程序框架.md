@@ -1,5 +1,5 @@
 ---
-title: 随记(36)——Electron应用程序框架
+title: 随记(36)—Electron应用程序框架
 date: 2021-09-17
 author: LM
 ---

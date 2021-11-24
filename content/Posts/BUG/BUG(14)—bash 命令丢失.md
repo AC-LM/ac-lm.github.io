@@ -1,5 +1,5 @@
 ---
-title: BUG(14)——bash 命令丢失
+title: BUG(14)—bash 命令丢失
 date: 2021-01-14
 author: LM
 ---

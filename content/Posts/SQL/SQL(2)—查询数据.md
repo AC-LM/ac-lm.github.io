@@ -1,5 +1,5 @@
 ---
-title: SQL(2)——查询数据
+title: SQL(2)—查询数据
 date: 2020-09-28
 author: LM
 ---

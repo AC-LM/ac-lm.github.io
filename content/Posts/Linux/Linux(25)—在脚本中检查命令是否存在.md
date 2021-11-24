@@ -1,5 +1,5 @@
 ---
-title: Linux(25)——在脚本中检查命令是否存在
+title: Linux(25)—在脚本中检查命令是否存在
 date: 2021-11-18
 author: LM
 ---

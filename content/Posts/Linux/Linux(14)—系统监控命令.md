@@ -1,5 +1,5 @@
 ---
-title: Linux(14)——系统监控命令
+title: Linux(14)—系统监控命令
 date: 2021-04-29
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Linux(1)——Linux 系统文件
+title: Linux(1)—Linux 系统文件
 date: 2020-10-15
 author: LM
 ---

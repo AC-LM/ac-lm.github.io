@@ -1,5 +1,5 @@
 ---
-title: 随记(17)——Linux最多支持多少TCP连接
+title: 随记(17)—Linux最多支持多少TCP连接
 date: 2020-12-08
 author: LM
 ---

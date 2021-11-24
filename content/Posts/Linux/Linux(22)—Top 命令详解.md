@@ -1,5 +1,5 @@
 ---
-title: Linux(22)——Top 命令详解
+title: Linux(22)—Top 命令详解
 date: 2021-09-17
 author: LM
 ---
@@ -217,5 +217,4 @@ shift + >或shift + <
 ```
 -p: 监控特定的PID
 ```
-
 

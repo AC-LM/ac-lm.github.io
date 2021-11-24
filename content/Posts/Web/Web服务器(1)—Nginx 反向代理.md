@@ -1,5 +1,5 @@
 ---
-title: Web服务器(1)——Nginx 反向代理
+title: Web服务器(1)—Nginx 反向代理
 date: 2020-03-02
 author: LM
 ---

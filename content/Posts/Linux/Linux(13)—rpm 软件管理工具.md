@@ -1,5 +1,5 @@
 ---
-title: Linux(13)——rpm 软件管理工具
+title: Linux(13)—rpm 软件管理工具
 date: 2020-12-04
 author: LM
 ---

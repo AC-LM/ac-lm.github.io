@@ -1,5 +1,5 @@
 ---
-title: BUG(21)——Linux 缺少 OpenSSL
+title: BUG(21)—Linux 缺少 OpenSSL
 date: 2021-09-17
 author: LM
 ---

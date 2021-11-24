@@ -1,5 +1,5 @@
 ---
-title: Python(10)——子类的 super 初始化
+title: Python(10)—子类的 super 初始化
 date: 2020-12-12
 author: LM
 ---

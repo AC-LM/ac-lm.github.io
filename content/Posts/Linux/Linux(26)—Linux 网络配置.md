@@ -1,5 +1,5 @@
 ---
-title: Linux(26)——Linux 网络配置
+title: Linux(26)—Linux 网络配置
 date: 2021-11-22
 author: LM
 ---

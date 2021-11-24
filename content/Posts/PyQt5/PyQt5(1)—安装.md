@@ -1,5 +1,5 @@
 ---
-title: PyQt5(1)——安装
+title: PyQt5(1)—安装
 date: 2020-12-01
 author: LM
 ---

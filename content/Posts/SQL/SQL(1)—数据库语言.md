@@ -1,5 +1,5 @@
 ---
-title: SQL(1)——数据库语言
+title: SQL(1)—数据库语言
 date: 2020-09-27
 author: LM
 ---

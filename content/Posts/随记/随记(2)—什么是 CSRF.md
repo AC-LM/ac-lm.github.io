@@ -1,5 +1,5 @@
 ---
-title: 随记(2)——什么是CSRF
+title: 随记(2)—什么是CSRF
 date: 2020-09-11
 author: LM
 ---

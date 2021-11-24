@@ -1,5 +1,5 @@
 ---
-title: Linux(3)——Java 与 Tomcat 的配置
+title: Linux(3)—Java 与 Tomcat 的配置
 date: 2020-10-22
 author: LM
 ---

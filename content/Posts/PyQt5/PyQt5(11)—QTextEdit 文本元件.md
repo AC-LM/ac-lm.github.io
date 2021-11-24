@@ -1,5 +1,5 @@
 ---
-title: PyQt5(11)——QTextEdit 文本元件
+title: PyQt5(11)—QTextEdit 文本元件
 date: 2020-12-23
 author: LM
 ---

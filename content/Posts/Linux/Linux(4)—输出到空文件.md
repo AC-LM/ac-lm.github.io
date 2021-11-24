@@ -1,5 +1,5 @@
 ---
-title: Linux(4)——输出到空文件
+title: Linux(4)—输出到空文件
 date: 2020-11-16
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: 随记(29)——Xml可扩展标记语言
+title: 随记(29)—Xml可扩展标记语言
 date: 2021-08-03
 author: LM
 ---

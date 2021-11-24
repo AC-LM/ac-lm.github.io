@@ -1,5 +1,5 @@
 ---
-title: PyQt5(3)——QProgressDialog 进度条
+title: PyQt5(3)—QProgressDialog 进度条
 date: 2020-12-15
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Python(34)——随机生成中文字符名字
+title: Python(34)—随机生成中文字符名字
 date: 2021-09-16
 author: LM
 ---
@@ -84,7 +84,6 @@ def create_name():
         name = name + second_name()
     return first_name()+name
 ```
-
 
 
 

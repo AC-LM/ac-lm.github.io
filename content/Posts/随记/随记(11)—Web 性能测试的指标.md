@@ -1,5 +1,5 @@
 ---
-title: 随记(11)——Web性能测试的指标
+title: 随记(11)—Web性能测试的指标
 date: 2020-09-20
 author: LM
 ---

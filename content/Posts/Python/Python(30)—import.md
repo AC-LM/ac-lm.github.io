@@ -1,5 +1,5 @@
 ---
-title: Python(30)——import
+title: Python(30)—import
 date: 2021-06-04
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Django(12)——404 文件
+title: Django(12)—404 文件
 date: 2021-08-26
 author: LM
 ---

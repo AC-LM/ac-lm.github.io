@@ -1,5 +1,5 @@
 ---
-title: Python(41)——matplotlib 绘图
+title: Python(41)—matplotlib 绘图
 date: 2021-11-23
 author: LM
 ---

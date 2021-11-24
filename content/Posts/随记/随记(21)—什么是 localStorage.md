@@ -1,5 +1,5 @@
 ---
-title: 随记(21)——什么是localStorage
+title: 随记(21)—什么是localStorage
 date: 2021-03-26
 author: LM
 ---

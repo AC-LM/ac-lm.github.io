@@ -1,5 +1,5 @@
 ---
-title: Linux(18)——Chrome 的安装配置
+title: Linux(18)—Chrome 的安装配置
 date: 2021-05-15
 author: LM
 ---

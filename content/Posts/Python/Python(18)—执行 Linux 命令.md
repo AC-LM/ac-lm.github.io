@@ -1,5 +1,5 @@
 ---
-title: Python(18)——执行 Linux 命令
+title: Python(18)—执行 Linux 命令
 date: 2021-01-14
 author: LM
 ---

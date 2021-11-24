@@ -1,5 +1,5 @@
 ---
-title: Python(17)——Python面试知识
+title: Python(17)—Python面试知识
 date: 2021-01-13
 author: LM
 ---

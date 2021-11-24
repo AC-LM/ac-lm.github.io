@@ -1,5 +1,5 @@
 ---
-title: SQL(4)——事务
+title: SQL(4)—事务
 date: 2020-09-30
 author: LM
 ---

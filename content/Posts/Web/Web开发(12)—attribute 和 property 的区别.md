@@ -1,5 +1,5 @@
 ---
-title: Web开发(12)——attribute 和 property 的区别
+title: Web开发(12)—attribute 和 property 的区别
 date: 2021-07-25
 author: LM
 ---

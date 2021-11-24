@@ -1,5 +1,5 @@
 ---
-title: BUG(9)——AndroidCMD 工具安装 SDK 路径无法识别
+title: BUG(9)—AndroidCMD 工具安装 SDK 路径无法识别
 date: 2020-12-03
 author: LM
 ---

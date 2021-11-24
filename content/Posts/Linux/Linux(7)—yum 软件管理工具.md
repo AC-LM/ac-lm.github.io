@@ -1,5 +1,5 @@
 ---
-title: Linux(7)——yum 软件管理工具
+title: Linux(7)—yum 软件管理工具
 date: 2020-11-19
 author: LM
 ---

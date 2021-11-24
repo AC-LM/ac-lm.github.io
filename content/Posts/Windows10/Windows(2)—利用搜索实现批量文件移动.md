@@ -1,5 +1,5 @@
 ---
-title: Windows(2)——利用搜索实现批量文件移动
+title: Windows(2)—利用搜索实现批量文件移动
 date: 2021-01-13
 author: LM
 ---

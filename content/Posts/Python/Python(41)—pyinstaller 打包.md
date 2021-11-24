@@ -1,5 +1,5 @@
 ---
-title: Python(41)——pyinstaller 打包
+title: Python(41)—pyinstaller 打包
 date: 2021-11-22
 author: LM
 ---

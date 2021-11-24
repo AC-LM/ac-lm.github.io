@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>随记(38)——Socket.IO</title>
+      <title>随记(38)—Socket.IO</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</link>
       <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -23,7 +23,7 @@ Socket.IO 代码库分为两个不同的层：
     </item>
     
     <item>
-      <title>随记(37)——Websocket</title>
+      <title>随记(37)—Websocket</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -34,7 +34,7 @@ Websocket 的 URL 为 ws://example.com:8000/chat.php</description>
     </item>
     
     <item>
-      <title>随记(36)——Electron应用程序框架</title>
+      <title>随记(36)—Electron应用程序框架</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B036electron-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -48,7 +48,7 @@ Electron 应用进程分为主进程和渲染进程，其底层实现分别对�
     </item>
     
     <item>
-      <title>随记(35)——如何给hugo博客添加搜索功能</title>
+      <title>随记(35)—如何给hugo博客添加搜索功能</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B035%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -58,7 +58,7 @@ Electron 应用进程分为主进程和渲染进程，其底层实现分别对�
     </item>
     
     <item>
-      <title>随记(34)——性能测试</title>
+      <title>随记(34)—性能测试</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B034%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -72,7 +72,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>随记(33)——网页截长图</title>
+      <title>随记(33)—网页截长图</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B033%E7%BD%91%E9%A1%B5%E6%88%AA%E9%95%BF%E5%9B%BE/</link>
       <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -81,7 +81,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>随记(32)——URL编码</title>
+      <title>随记(32)—URL编码</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B032url-%E7%BC%96%E7%A0%81/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -93,7 +93,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>随记(31)——M3U8文件</title>
+      <title>随记(31)—M3U8文件</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -106,7 +106,7 @@ M3U8 就是 M3U 的 UTF-8 格式文件</description>
     </item>
     
     <item>
-      <title>随记(30)——多进程与多线程与协程</title>
+      <title>随记(30)—多进程与多线程与协程</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B030%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
       <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -119,7 +119,7 @@ M3U8 就是 M3U 的 UTF-8 格式文件</description>
     </item>
     
     <item>
-      <title>随记(29)——Xml可扩展标记语言</title>
+      <title>随记(29)—Xml可扩展标记语言</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml-%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</link>
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -134,7 +134,7 @@ XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一�
     </item>
     
     <item>
-      <title>随记(28)——使用Gitee&#43;PicGo搭建图床</title>
+      <title>随记(28)—使用Gitee&#43;PicGo搭建图床</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B028%E4%BD%BF%E7%94%A8-gitee&#43;picgo-%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -151,7 +151,7 @@ PS：注意插件的安装需要环境由node.js，nodejs.org
     </item>
     
     <item>
-      <title>随记(27)——用例设计</title>
+      <title>随记(27)—用例设计</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B027%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -162,7 +162,7 @@ PS：注意插件的安装需要环境由node.js，nodejs.org
     </item>
     
     <item>
-      <title>随记(26)——正则的相关</title>
+      <title>随记(26)—正则的相关</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B026%E6%AD%A3%E5%88%99%E7%9A%84%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -173,7 +173,7 @@ PS：注意插件的安装需要环境由node.js，nodejs.org
     </item>
     
     <item>
-      <title>随记(25)——罗技M170拆解</title>
+      <title>随记(25)—罗技M170拆解</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B025%E7%BD%97%E6%8A%80-m170-%E6%8B%86%E8%A7%A3/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -183,7 +183,7 @@ PS：注意插件的安装需要环境由node.js，nodejs.org
     </item>
     
     <item>
-      <title>随记(24)——音视频开发</title>
+      <title>随记(24)—音视频开发</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B024%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -199,7 +199,7 @@ PS：注意插件的安装需要环境由node.js，nodejs.org
     </item>
     
     <item>
-      <title>随记(23)——XSS攻击</title>
+      <title>随记(23)—XSS攻击</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B023xss-%E6%94%BB%E5%87%BB/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -215,7 +215,7 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
-      <title>随记(22)——视频推流与拉流</title>
+      <title>随记(22)—视频推流与拉流</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B022%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E4%B8%8E%E6%8B%89%E6%B5%81/</link>
       <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -226,7 +226,7 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
-      <title>随记(21)——什么是localStorage</title>
+      <title>随记(21)—什么是localStorage</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B021%E4%BB%80%E4%B9%88%E6%98%AF-localstorage/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -236,7 +236,7 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
-      <title>随记(20)——目录的简单表示</title>
+      <title>随记(20)—目录的简单表示</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -245,7 +245,7 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
-      <title>随记(19)——什么是SQL漏洞</title>
+      <title>随记(19)—什么是SQL漏洞</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -257,7 +257,7 @@ SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;&amp
     </item>
     
     <item>
-      <title>随记(18)——什么是Bash Shell</title>
+      <title>随记(18)—什么是Bash Shell</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B018%E4%BB%80%E4%B9%88%E6%98%AF-bash-shell/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -273,7 +273,7 @@ Shell是操作系统最外面的一层，是文字操作系统与外部最主要
     </item>
     
     <item>
-      <title>随记(17)——Linux最多支持多少TCP连接</title>
+      <title>随记(17)—Linux最多支持多少TCP连接</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B017linux-%E6%9C%80%E5%A4%9A%E6%94%AF%E6%8C%81%E5%A4%9A%E5%B0%91-tcp-%E8%BF%9E%E6%8E%A5/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -294,7 +294,7 @@ $ cat /proc/meminfoMemTotal: 3922956 kBMemFree: 96652 kBMemAvailable: 6448 kB
     </item>
     
     <item>
-      <title>随记(16)——RESTful API接口设计</title>
+      <title>随记(16)—RESTful API接口设计</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B016restful-api-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -315,7 +315,7 @@ https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息
     </item>
     
     <item>
-      <title>随记(15)——WebDriver click与JavaScript click的区别</title>
+      <title>随记(15)—WebDriver click与JavaScript click的区别</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B015webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -328,7 +328,7 @@ element = driver.find_element_by_id(&amp;#34;myid&amp;#34;) driver.execute_scrip
     </item>
     
     <item>
-      <title>随记(14)——跨域资源请求 CORS</title>
+      <title>随记(14)—跨域资源请求 CORS</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B014%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E8%AF%B7%E6%B1%82-cors/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -348,7 +348,7 @@ GET /cors HTTP/1.1 Access-Control-Allow-Origin: http://api.bob.com Access-Contro
     </item>
     
     <item>
-      <title>随记(13)——测试用例的设计</title>
+      <title>随记(13)—测试用例的设计</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B013%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -371,7 +371,7 @@ d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量�
     </item>
     
     <item>
-      <title>随记(12)——MD5加密与耦合</title>
+      <title>随记(12)—MD5加密与耦合</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B012md5-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</link>
       <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -383,7 +383,7 @@ d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量�
     </item>
     
     <item>
-      <title>随记(11)——Web性能测试的指标</title>
+      <title>随记(11)—Web性能测试的指标</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B011web-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -400,7 +400,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记(10)——并发和并行</title>
+      <title>随记(10)—并发和并行</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -411,7 +411,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记(9)——响应时间的组成</title>
+      <title>随记(9)—响应时间的组成</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B09%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -427,7 +427,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记(8)——Web请求</title>
+      <title>随记(8)—Web请求</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B08web-%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -441,7 +441,7 @@ Session是保存在服务器上用来记录用户状态的机制。客户端浏�
     </item>
     
     <item>
-      <title>随记(7)——为什么要做接口测试</title>
+      <title>随记(7)—为什么要做接口测试</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B07%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -466,7 +466,7 @@ Session是保存在服务器上用来记录用户状态的机制。客户端浏�
     </item>
     
     <item>
-      <title>随记(6)——渗透的思路</title>
+      <title>随记(6)—渗透的思路</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B06%E6%B8%97%E9%80%8F%E7%9A%84%E6%80%9D%E8%B7%AF/</link>
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -489,7 +489,7 @@ PORT STATE SERVICE1/tcp open tcpmux3/tcp open compressnet4/tcp open unknown6
     </item>
     
     <item>
-      <title>随记(5)——什么是接口</title>
+      <title>随记(5)—什么是接口</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B05%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -503,7 +503,7 @@ PORT STATE SERVICE1/tcp open tcpmux3/tcp open compressnet4/tcp open unknown6
     </item>
     
     <item>
-      <title>随记(4)——如何提高吞吐量</title>
+      <title>随记(4)—如何提高吞吐量</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B04%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/</link>
       <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -523,7 +523,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>随记(3)——排序算法</title>
+      <title>随记(3)—排序算法</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -536,7 +536,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>随记(2)——什么是CSRF</title>
+      <title>随记(2)—什么是CSRF</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B02%E4%BB%80%E4%B9%88%E6%98%AF-csrf/</link>
       <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -548,7 +548,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>随记(1)——什么是 Kafka</title>
+      <title>随记(1)—什么是 Kafka</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AF-kafka/</link>
       <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
       

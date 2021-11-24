@@ -1,5 +1,5 @@
 ---
-title: Linux(17)——Linux 常识
+title: Linux(17)—Linux 常识
 date: 2021-05-14
 author: LM
 ---

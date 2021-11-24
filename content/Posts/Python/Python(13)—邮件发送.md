@@ -1,5 +1,5 @@
 ---
-title: Python(13)——邮件发送
+title: Python(13)—邮件发送
 date: 2020-12-15
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: BUG(8)——SSH无法连接虚拟机Linux系统
+title: BUG(8)—SSH无法连接虚拟机Linux系统
 date: 2020-12-02
 author: LM
 ---

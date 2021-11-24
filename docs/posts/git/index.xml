@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git(4)——.gitlab-ci.yml 文件配置</title>
+      <title>Git(4)—.gitlab-ci.yml 文件配置</title>
       <link>https://ac-lm.github.io/posts/git/git4.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>Git(3)——gitlab-runner 安装配置</title>
+      <title>Git(3)—gitlab-runner 安装配置</title>
       <link>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -31,7 +31,7 @@
     </item>
     
     <item>
-      <title>Git(2)——SSH 配置</title>
+      <title>Git(2)—SSH 配置</title>
       <link>https://ac-lm.github.io/posts/git/git2ssh-%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -44,7 +44,7 @@ git clone + 库的地址 2.创建SSH的目的 SSH KEY 的作用是来识别你�
     </item>
     
     <item>
-      <title>Git(1)——Git 版本管理工具</title>
+      <title>Git(1)—Git 版本管理工具</title>
       <link>https://ac-lm.github.io/posts/git/git1git-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       

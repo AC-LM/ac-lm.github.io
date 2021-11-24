@@ -1,5 +1,5 @@
 ---
-title: Python(25)——切片
+title: Python(25)—切片
 date: 2021-03-27
 author: LM
 ---

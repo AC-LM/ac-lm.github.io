@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 30 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SQL(4)——事务</title>
+      <title>SQL(4)—事务</title>
       <link>https://ac-lm.github.io/posts/sql/sql4%E4%BA%8B%E5%8A%A1/</link>
       <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -24,7 +24,7 @@ BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts
     </item>
     
     <item>
-      <title>SQL(3)——修改数据</title>
+      <title>SQL(3)—修改数据</title>
       <link>https://ac-lm.github.io/posts/sql/sql3%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -41,7 +41,7 @@ UPDATE &amp;lt;表名&amp;gt; SET 字段1=值1, 字段2=值2, .</description>
     </item>
     
     <item>
-      <title>SQL(2)——查询数据</title>
+      <title>SQL(2)—查询数据</title>
       <link>https://ac-lm.github.io/posts/sql/sql2%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -58,7 +58,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>SQL(1)——数据库语言</title>
+      <title>SQL(1)—数据库语言</title>
       <link>https://ac-lm.github.io/posts/sql/sql1%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       

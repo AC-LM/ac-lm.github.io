@@ -1,5 +1,5 @@
 ---
-title: 随记(23)——XSS攻击
+title: 随记(23)—XSS攻击
 date: 2021-03-30
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: PyQt5(2)——焦点控制
+title: PyQt5(2)—焦点控制
 date: 2020-12-14
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Python(39)——Selenium executable_path 警告
+title: Python(39)—Selenium executable_path 警告
 date: 2021-11-20
 author: LM
 ---

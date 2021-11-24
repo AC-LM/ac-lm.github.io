@@ -1,5 +1,5 @@
 ---
-title: BUG(4)——Jmeter 的一些问题
+title: BUG(4)—Jmeter 的一些问题
 date: 2020-11-28
 author: LM
 ---

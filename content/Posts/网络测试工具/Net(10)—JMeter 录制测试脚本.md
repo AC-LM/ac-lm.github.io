@@ -1,5 +1,5 @@
 ---
-title: Net(10)——JMeter录制测试脚本
+title: Net(10)—JMeter录制测试脚本
 date: 2021-09-10
 author: LM
 ---

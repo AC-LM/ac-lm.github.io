@@ -1,5 +1,5 @@
 ---
-title: Linux(16)——后台程序的运行及关闭
+title: Linux(16)—后台程序的运行及关闭
 date: 2021-05-13
 author: LM
 ---

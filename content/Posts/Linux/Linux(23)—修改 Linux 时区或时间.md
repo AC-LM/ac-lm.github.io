@@ -1,5 +1,5 @@
 ---
-title: Linux(23)——修改 Linux 时区或时间
+title: Linux(23)—修改 Linux 时区或时间
 date: 2021-09-18
 author: LM
 ---

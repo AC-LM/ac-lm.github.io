@@ -1,5 +1,5 @@
 ---
-title: 随记(14)——跨域资源请求 CORS
+title: 随记(14)—跨域资源请求 CORS
 date: 2020-11-30
 author: LM
 ---

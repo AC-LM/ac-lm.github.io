@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Linux(26)——Linux 网络配置</title>
+      <title>Linux(26)—Linux 网络配置</title>
       <link>https://ac-lm.github.io/posts/linux/linux26linux-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -19,7 +19,7 @@ service network restart ping 114.114.114.114 2.安装 net-tools，使用 ifconfi
     </item>
     
     <item>
-      <title>Linux(25)——在脚本中检查命令是否存在</title>
+      <title>Linux(25)—在脚本中检查命令是否存在</title>
       <link>https://ac-lm.github.io/posts/linux/linux25%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E6%A3%80%E6%9F%A5%E5%91%BD%E4%BB%A4%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/</link>
       <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -33,7 +33,7 @@ $ command -v foo &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 || { echo &amp;gt;&amp;am
     </item>
     
     <item>
-      <title>Linux(24)——lscpu</title>
+      <title>Linux(24)—lscpu</title>
       <link>https://ac-lm.github.io/posts/linux/linux24lscpu/</link>
       <pubDate>Mon, 15 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -45,7 +45,7 @@ Architecture: x86_64 CPU op-mode(s): 32-bit, 64-bit Byte Order: Little Endian CP
     </item>
     
     <item>
-      <title>Linux(23)——修改 Linux 时区或时间</title>
+      <title>Linux(23)—修改 Linux 时区或时间</title>
       <link>https://ac-lm.github.io/posts/linux/linux23%E4%BF%AE%E6%94%B9-linux-%E6%97%B6%E5%8C%BA%E6%88%96%E6%97%B6%E9%97%B4/</link>
       <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -54,7 +54,7 @@ Architecture: x86_64 CPU op-mode(s): 32-bit, 64-bit Byte Order: Little Endian CP
     </item>
     
     <item>
-      <title>Linux(22)——Top 命令详解</title>
+      <title>Linux(22)—Top 命令详解</title>
       <link>https://ac-lm.github.io/posts/linux/linux22top-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -66,7 +66,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(21)——设置开机启动任务</title>
+      <title>Linux(21)—设置开机启动任务</title>
       <link>https://ac-lm.github.io/posts/linux/linux21%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -78,7 +78,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(20)——通过配置文件修改 docker 容器端口映射</title>
+      <title>Linux(20)—通过配置文件修改 docker 容器端口映射</title>
       <link>https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9-docker-%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link>
       <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
       
@@ -93,7 +93,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(19)——常用的命令</title>
+      <title>Linux(19)—常用的命令</title>
       <link>https://ac-lm.github.io/posts/linux/linux19%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
@@ -102,7 +102,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(18)——Chrome 的安装配置</title>
+      <title>Linux(18)—Chrome 的安装配置</title>
       <link>https://ac-lm.github.io/posts/linux/linux18chrome-%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
       
@@ -111,7 +111,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(17)——Linux 常识</title>
+      <title>Linux(17)—Linux 常识</title>
       <link>https://ac-lm.github.io/posts/linux/linux17linux-%E5%B8%B8%E8%AF%86/</link>
       <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
       
@@ -120,7 +120,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(16)——后台程序的运行及关闭</title>
+      <title>Linux(16)—后台程序的运行及关闭</title>
       <link>https://ac-lm.github.io/posts/linux/linux16%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8F%8A%E5%85%B3%E9%97%AD/</link>
       <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
       
@@ -129,7 +129,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Linux(15)——tar解压</title>
+      <title>Linux(15)—tar解压</title>
       <link>https://ac-lm.github.io/posts/linux/linux15tar-%E8%A7%A3%E5%8E%8B/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -140,7 +140,7 @@ yum install tar gzip bzip2.使用 tar 解包：tar xvf FileName.tar打包：ta
     </item>
     
     <item>
-      <title>Linux(14)——系统监控命令</title>
+      <title>Linux(14)—系统监控命令</title>
       <link>https://ac-lm.github.io/posts/linux/linux14%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -153,7 +153,7 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
     </item>
     
     <item>
-      <title>Linux(13)——rpm 软件管理工具</title>
+      <title>Linux(13)—rpm 软件管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux13rpm-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -163,7 +163,7 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
     </item>
     
     <item>
-      <title>Linux(12)——MTR 链路测试工具</title>
+      <title>Linux(12)—MTR 链路测试工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux12mtr-%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -174,7 +174,7 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
     </item>
     
     <item>
-      <title>Linux(11)——npm 包管理工具</title>
+      <title>Linux(11)—npm 包管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux11npm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -185,7 +185,7 @@ wget https://cdn.npm.taobao.org/dist/node/latest-v15.x/node-v15.9.0-linux-x64.ta
     </item>
     
     <item>
-      <title>Linux(10)——pip 软件管理工具</title>
+      <title>Linux(10)—pip 软件管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux10pip-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -197,7 +197,7 @@ wget https://bootstrap.pypa.io/pip/2.7/get-pip.py # pip3 wget https://bootstrap.
     </item>
     
     <item>
-      <title>Linux(9)——Python3.6 安装</title>
+      <title>Linux(9)—Python3.6 安装</title>
       <link>https://ac-lm.github.io/posts/linux/linux9python3.6-%E5%AE%89%E8%A3%85/</link>
       <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -207,7 +207,7 @@ python -V #查看Py版本 python -m XXXX #执行终端命令，-m参数使得Pyt
     </item>
     
     <item>
-      <title>Linux(8)——linux 的文件权限</title>
+      <title>Linux(8)—linux 的文件权限</title>
       <link>https://ac-lm.github.io/posts/linux/linux8linux-%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/</link>
       <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -217,7 +217,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(7)——yum 软件管理工具</title>
+      <title>Linux(7)—yum 软件管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux7yum-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -226,7 +226,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(6)——LAMP 环境安装与使用</title>
+      <title>Linux(6)—LAMP 环境安装与使用</title>
       <link>https://ac-lm.github.io/posts/linux/linux6lamp-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -236,7 +236,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(5)——常用快捷键</title>
+      <title>Linux(5)—常用快捷键</title>
       <link>https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -245,7 +245,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(4)——输出到空文件</title>
+      <title>Linux(4)—输出到空文件</title>
       <link>https://ac-lm.github.io/posts/linux/linux4%E8%BE%93%E5%87%BA%E5%88%B0%E7%A9%BA%E6%96%87%E4%BB%B6/</link>
       <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -256,7 +256,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(3)——Java 与 Tomcat 的配置</title>
+      <title>Linux(3)—Java 与 Tomcat 的配置</title>
       <link>https://ac-lm.github.io/posts/linux/linux3java-%E4%B8%8E-tomcat-%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -267,7 +267,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(2)——Docker 与防火墙</title>
+      <title>Linux(2)—Docker 与防火墙</title>
       <link>https://ac-lm.github.io/posts/linux/linux2docker-%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -276,7 +276,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(1)——Linux 系统文件</title>
+      <title>Linux(1)—Linux 系统文件</title>
       <link>https://ac-lm.github.io/posts/linux/linux1linux-%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       

@@ -1,5 +1,5 @@
 ---
-title: Python(41)——callable
+title: Python(41)—callable
 date: 2021-11-25
 author: LM
 ---

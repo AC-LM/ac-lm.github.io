@@ -1,5 +1,5 @@
 ---
-title: Windows(5)——应用别名
+title: Windows(5)—应用别名
 date: 2021-08-26
 author: LM
 ---

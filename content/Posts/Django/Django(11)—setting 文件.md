@@ -1,5 +1,5 @@
 ---
-title: Django(11)——setting 文件
+title: Django(11)—setting 文件
 date: 2021-07-27
 author: LM
 ---

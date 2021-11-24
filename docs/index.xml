@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Python(41)——matplotlib 的 backend</title>
+      <title>Python(41)—matplotlib 的 backend</title>
       <link>https://ac-lm.github.io/posts/python/python43matplotlib-%E7%9A%84-backend/</link>
       <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@ backend : WXAgg # use wxpython with antigrain (agg) rendering 其中的 WXAgg �
     </item>
     
     <item>
-      <title>Net(11)——Wireshark 指标</title>
+      <title>Net(11)—Wireshark 指标</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net11wireshark-%E6%8C%87%E6%A0%87/</link>
       <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -41,7 +41,7 @@ g.PSH 推送比特，当发送端PSH=1时，接收端应尽快交付给应用进
     </item>
     
     <item>
-      <title>Python(41)——matplotlib 绘图</title>
+      <title>Python(41)—matplotlib 绘图</title>
       <link>https://ac-lm.github.io/posts/python/python42matplotlib-%E7%BB%98%E5%9B%BE/</link>
       <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -54,7 +54,7 @@ a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴
     </item>
     
     <item>
-      <title>随记(38)——Socket.IO</title>
+      <title>随记(38)—Socket.IO</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</link>
       <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -69,7 +69,7 @@ Socket.IO 代码库分为两个不同的层：
     </item>
     
     <item>
-      <title>Docker(5)——Docker 网络</title>
+      <title>Docker(5)—Docker 网络</title>
       <link>https://ac-lm.github.io/posts/docker/docker5docker-%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -84,7 +84,7 @@ Docker 在本地主机和容器内分别创建一个虚拟接口，并让它们�
     </item>
     
     <item>
-      <title>Flutter(24)——常亮屏幕</title>
+      <title>Flutter(24)—常亮屏幕</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter24%E5%B8%B8%E4%BA%AE%E5%B1%8F%E5%B9%95/</link>
       <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -95,7 +95,7 @@ Docker 在本地主机和容器内分别创建一个虚拟接口，并让它们�
     </item>
     
     <item>
-      <title>Linux(26)——Linux 网络配置</title>
+      <title>Linux(26)—Linux 网络配置</title>
       <link>https://ac-lm.github.io/posts/linux/linux26linux-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -106,7 +106,7 @@ service network restart ping 114.114.114.114 2.安装 net-tools，使用 ifconfi
     </item>
     
     <item>
-      <title>Python(41)——pyinstaller 打包</title>
+      <title>Python(41)—pyinstaller 打包</title>
       <link>https://ac-lm.github.io/posts/python/python41pyinstaller-%E6%89%93%E5%8C%85/</link>
       <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -117,7 +117,7 @@ service network restart ping 114.114.114.114 2.安装 net-tools，使用 ifconfi
     </item>
     
     <item>
-      <title>Python(40)——获取当前文件路径</title>
+      <title>Python(40)—获取当前文件路径</title>
       <link>https://ac-lm.github.io/posts/python/python40%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -129,7 +129,7 @@ service network restart ping 114.114.114.114 2.安装 net-tools，使用 ifconfi
     </item>
     
     <item>
-      <title>Python(39)——Selenium executable_path 警告</title>
+      <title>Python(39)—Selenium executable_path 警告</title>
       <link>https://ac-lm.github.io/posts/python/python39selenium-executable_path-%E8%AD%A6%E5%91%8A/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -140,7 +140,7 @@ from selenium import webdriver from selenium.webdriver.chrome.service import Ser
     </item>
     
     <item>
-      <title>随记(37)——Websocket</title>
+      <title>随记(37)—Websocket</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B037websocket/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -151,7 +151,7 @@ Websocket 的 URL 为 ws://example.com:8000/chat.php</description>
     </item>
     
     <item>
-      <title>Python(38)——MultipartEncoder 上传文件</title>
+      <title>Python(38)—MultipartEncoder 上传文件</title>
       <link>https://ac-lm.github.io/posts/python/python38multipartencoder-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -164,7 +164,7 @@ import requests from requests_toolbelt import MultipartEncoder upload_url = &amp
     </item>
     
     <item>
-      <title>Linux(25)——在脚本中检查命令是否存在</title>
+      <title>Linux(25)—在脚本中检查命令是否存在</title>
       <link>https://ac-lm.github.io/posts/linux/linux25%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E6%A3%80%E6%9F%A5%E5%91%BD%E4%BB%A4%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/</link>
       <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -178,7 +178,7 @@ $ command -v foo &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 || { echo &amp;gt;&amp;am
     </item>
     
     <item>
-      <title>Python(37)——#noqa</title>
+      <title>Python(37)—#noqa</title>
       <link>https://ac-lm.github.io/posts/python/python37#noqa/</link>
       <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -188,7 +188,7 @@ import Nothing #noqa </description>
     </item>
     
     <item>
-      <title>BUG(23)——Linux 报错 no C compiler found in $PATH</title>
+      <title>BUG(23)—Linux 报错 no C compiler found in $PATH</title>
       <link>https://ac-lm.github.io/posts/bug/bug23linux-%E6%8A%A5%E9%94%99-no-c-compiler-found-in-path/</link>
       <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -202,7 +202,7 @@ g++ 也能编译 C 源代码，只不过把会把它当成 C++ 源代码。后�
     </item>
     
     <item>
-      <title>Linux(24)——lscpu</title>
+      <title>Linux(24)—lscpu</title>
       <link>https://ac-lm.github.io/posts/linux/linux24lscpu/</link>
       <pubDate>Mon, 15 Nov 2021 00:00:00 +0000</pubDate>
       
@@ -214,7 +214,7 @@ Architecture: x86_64 CPU op-mode(s): 32-bit, 64-bit Byte Order: Little Endian CP
     </item>
     
     <item>
-      <title>BUG(22)——Cypress 出现应用代码的错误</title>
+      <title>BUG(22)—Cypress 出现应用代码的错误</title>
       <link>https://ac-lm.github.io/posts/bug/bug22cypress-%E5%87%BA%E7%8E%B0%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E9%94%99%E8%AF%AF/</link>
       <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -226,7 +226,7 @@ Cypress.on(&amp;#39;uncaught:exception&amp;#39;, (err, runnable) =&amp;gt; { // 
     </item>
     
     <item>
-      <title>Linux(23)——修改 Linux 时区或时间</title>
+      <title>Linux(23)—修改 Linux 时区或时间</title>
       <link>https://ac-lm.github.io/posts/linux/linux23%E4%BF%AE%E6%94%B9-linux-%E6%97%B6%E5%8C%BA%E6%88%96%E6%97%B6%E9%97%B4/</link>
       <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -235,7 +235,7 @@ Cypress.on(&amp;#39;uncaught:exception&amp;#39;, (err, runnable) =&amp;gt; { // 
     </item>
     
     <item>
-      <title>Python(36)——文件写入读取</title>
+      <title>Python(36)—文件写入读取</title>
       <link>https://ac-lm.github.io/posts/python/python36%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E8%AF%BB%E5%8F%96/</link>
       <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -252,7 +252,7 @@ with open(&#39;/path/to/file&#39;, &#39;r&#39;) as f: print(f.read()) 2.读取�
     </item>
     
     <item>
-      <title>BUG(21)——Linux 缺少 OpenSSL</title>
+      <title>BUG(21)—Linux 缺少 OpenSSL</title>
       <link>https://ac-lm.github.io/posts/bug/bug21linux-%E7%BC%BA%E5%B0%91-openssl/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -266,7 +266,7 @@ sudo yum install openssl-devel 安装完后，尝试重新编译程序</descript
     </item>
     
     <item>
-      <title>Linux(22)——Top 命令详解</title>
+      <title>Linux(22)—Top 命令详解</title>
       <link>https://ac-lm.github.io/posts/linux/linux22top-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -278,7 +278,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Python(35)——使用 selenium 自动化 Electron</title>
+      <title>Python(35)—使用 selenium 自动化 Electron</title>
       <link>https://ac-lm.github.io/posts/python/python35%E4%BD%BF%E7%94%A8-selenium-%E8%87%AA%E5%8A%A8%E5%8C%96-electron/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -288,7 +288,7 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
     </item>
     
     <item>
-      <title>Web开发(15)——ES6-ES12的开发技巧</title>
+      <title>Web开发(15)—ES6-ES12的开发技巧</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9115es6-es12-%E7%9A%84%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -300,7 +300,7 @@ x = 5; // 变量 x 设置为 5 console.log(x)； var x; // 声明 x 实际上，
     </item>
     
     <item>
-      <title>随记(36)——Electron应用程序框架</title>
+      <title>随记(36)—Electron应用程序框架</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B036electron-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -314,7 +314,7 @@ Electron 应用进程分为主进程和渲染进程，其底层实现分别对�
     </item>
     
     <item>
-      <title>BUG(20)——Request 模块 Url 编码问题</title>
+      <title>BUG(20)—Request 模块 Url 编码问题</title>
       <link>https://ac-lm.github.io/posts/bug/bug20request-%E6%A8%A1%E5%9D%97-url-%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -325,7 +325,7 @@ payload1 = &amp;#39;{ABC}&amp;#39; # String data = payload1.encode(&amp;#39;utf-
     </item>
     
     <item>
-      <title>Python(34)——随机生成中文字符名字</title>
+      <title>Python(34)—随机生成中文字符名字</title>
       <link>https://ac-lm.github.io/posts/python/python34%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6%E5%90%8D%E5%AD%97/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -336,7 +336,7 @@ import random def GBK2312(): head = random.randint(0xb0, 0xf7) body = random.ran
     </item>
     
     <item>
-      <title>VSCode(3)——系统禁止运行脚本</title>
+      <title>VSCode(3)—系统禁止运行脚本</title>
       <link>https://ac-lm.github.io/posts/ide/vscode3%E7%B3%BB%E7%BB%9F%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -346,7 +346,7 @@ import random def GBK2312(): head = random.randint(0xb0, 0xf7) body = random.ran
     </item>
     
     <item>
-      <title>Web开发(14)——JavaScript 的 Url 编解码</title>
+      <title>Web开发(14)—JavaScript 的 Url 编解码</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9114javascript-%E7%9A%84-url-%E7%BC%96%E8%A7%A3%E7%A0%81/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -358,7 +358,7 @@ console.log(encodeURIComponent(&amp;#39;http://baidu.com?hello=您好&amp;amp;wo
     </item>
     
     <item>
-      <title>随记(35)——如何给hugo博客添加搜索功能</title>
+      <title>随记(35)—如何给hugo博客添加搜索功能</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B035%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -368,7 +368,7 @@ console.log(encodeURIComponent(&amp;#39;http://baidu.com?hello=您好&amp;amp;wo
     </item>
     
     <item>
-      <title>Cypress(1)——安装</title>
+      <title>Cypress(1)—安装</title>
       <link>https://ac-lm.github.io/posts/cypress/cypress1%E5%AE%89%E8%A3%85/</link>
       <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -380,7 +380,7 @@ cd /your/project/path npm install cypress --save-dev # 将 cypress 工程依赖�
     </item>
     
     <item>
-      <title>Net(10)——JMeter录制测试脚本</title>
+      <title>Net(10)—JMeter录制测试脚本</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter-%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -402,7 +402,7 @@ cd /your/project/path npm install cypress --save-dev # 将 cypress 工程依赖�
     </item>
     
     <item>
-      <title>随记(34)——性能测试</title>
+      <title>随记(34)—性能测试</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B034%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -416,7 +416,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>Net(9)——JMeter构建Web测试计划</title>
+      <title>Net(9)—JMeter构建Web测试计划</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter-%E6%9E%84%E5%BB%BA-web-%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -429,7 +429,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>Django(13)——Django 部署</title>
+      <title>Django(13)—Django 部署</title>
       <link>https://ac-lm.github.io/posts/django/django13django-%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -438,7 +438,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>VSCode(2)——底部状态栏</title>
+      <title>VSCode(2)—底部状态栏</title>
       <link>https://ac-lm.github.io/posts/ide/vscode2%E5%BA%95%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/</link>
       <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -447,7 +447,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>Windows(6)——Python 环境变量不生效</title>
+      <title>Windows(6)—Python 环境变量不生效</title>
       <link>https://ac-lm.github.io/posts/windows10/windows6python-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88/</link>
       <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -458,7 +458,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>随记(33)——网页截长图</title>
+      <title>随记(33)—网页截长图</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B033%E7%BD%91%E9%A1%B5%E6%88%AA%E9%95%BF%E5%9B%BE/</link>
       <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -467,7 +467,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>Django(12)——404 文件</title>
+      <title>Django(12)—404 文件</title>
       <link>https://ac-lm.github.io/posts/django/django12404-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -477,7 +477,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>Docker(4)——备份和恢复</title>
+      <title>Docker(4)—备份和恢复</title>
       <link>https://ac-lm.github.io/posts/docker/docker4%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -486,7 +486,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>VSCode(1)——Django 项目</title>
+      <title>VSCode(1)—Django 项目</title>
       <link>https://ac-lm.github.io/posts/ide/vscode1django-%E9%A1%B9%E7%9B%AE/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -496,7 +496,7 @@ http://www.baidu.com/s?wd=关键字&amp;amp;cl=类型&amp;amp;pn=页码&amp;amp;
     </item>
     
     <item>
-      <title>Web开发(13)——控制台输出</title>
+      <title>Web开发(13)—控制台输出</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9113%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -507,7 +507,7 @@ console.log(&#39;%d年%d月%d日&#39;,2011,3,26); console.log(&#39;圆周率是%
     </item>
     
     <item>
-      <title>Windows(5)——应用别名</title>
+      <title>Windows(5)—应用别名</title>
       <link>https://ac-lm.github.io/posts/windows10/windows5%E5%BA%94%E7%94%A8%E5%88%AB%E5%90%8D/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -516,7 +516,7 @@ console.log(&#39;%d年%d月%d日&#39;,2011,3,26); console.log(&#39;圆周率是%
     </item>
     
     <item>
-      <title>随记(32)——URL编码</title>
+      <title>随记(32)—URL编码</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B032url-%E7%BC%96%E7%A0%81/</link>
       <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -528,7 +528,7 @@ console.log(&#39;%d年%d月%d日&#39;,2011,3,26); console.log(&#39;圆周率是%
     </item>
     
     <item>
-      <title>Flutter(23)——异步编程</title>
+      <title>Flutter(23)—异步编程</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter23%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -546,7 +546,7 @@ b.Event 队列 大多数需要使用异步的动作都使用Event队列进行处
     </item>
     
     <item>
-      <title>Docker(3)——设置国内镜像源</title>
+      <title>Docker(3)—设置国内镜像源</title>
       <link>https://ac-lm.github.io/posts/docker/docker3%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -556,7 +556,7 @@ b.Event 队列 大多数需要使用异步的动作都使用Event队列进行处
     </item>
     
     <item>
-      <title>Docker(2)——后台运行</title>
+      <title>Docker(2)—后台运行</title>
       <link>https://ac-lm.github.io/posts/docker/docker2%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/</link>
       <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -566,7 +566,7 @@ b.Event 队列 大多数需要使用异步的动作都使用Event队列进行处
     </item>
     
     <item>
-      <title>Docker(1)——Bash 命令</title>
+      <title>Docker(1)—Bash 命令</title>
       <link>https://ac-lm.github.io/posts/docker/docker1bash-%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -575,7 +575,7 @@ b.Event 队列 大多数需要使用异步的动作都使用Event队列进行处
     </item>
     
     <item>
-      <title>随记(31)——M3U8文件</title>
+      <title>随记(31)—M3U8文件</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B031m3u8-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -588,7 +588,7 @@ M3U8 就是 M3U 的 UTF-8 格式文件</description>
     </item>
     
     <item>
-      <title>随记(30)——多进程与多线程与协程</title>
+      <title>随记(30)—多进程与多线程与协程</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B030%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8B/</link>
       <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -611,7 +611,7 @@ M3U8 就是 M3U 的 UTF-8 格式文件</description>
     </item>
     
     <item>
-      <title>随记(29)——Xml可扩展标记语言</title>
+      <title>随记(29)—Xml可扩展标记语言</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B029xml-%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</link>
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -626,7 +626,7 @@ XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一�
     </item>
     
     <item>
-      <title>Python(33)——selenium expected_conditions 的使用</title>
+      <title>Python(33)—selenium expected_conditions 的使用</title>
       <link>https://ac-lm.github.io/posts/python/python33selenium-expected_conditions-%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -637,7 +637,7 @@ XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一�
     </item>
     
     <item>
-      <title>Python(32)——selenium 下拉框( select )的处理</title>
+      <title>Python(32)—selenium 下拉框( select )的处理</title>
       <link>https://ac-lm.github.io/posts/python/python32selenium-%E4%B8%8B%E6%8B%89%E6%A1%86-select-%E5%A4%84%E7%90%86/</link>
       <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -647,7 +647,7 @@ XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一�
     </item>
     
     <item>
-      <title>Django(11)——setting 文件</title>
+      <title>Django(11)—setting 文件</title>
       <link>https://ac-lm.github.io/posts/django/django11setting-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -656,7 +656,7 @@ XML文档有且只有一个根元素  标准格式的 XML 文档有且仅有一�
     </item>
     
     <item>
-      <title>Django(10)——auth 用户认证模块</title>
+      <title>Django(10)—auth 用户认证模块</title>
       <link>https://ac-lm.github.io/posts/django/django10auth-%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -668,7 +668,7 @@ from django.shortcuts import render, HttpResponse, redirect from django.contrib 
     </item>
     
     <item>
-      <title>Django(9)——CSRF中间件</title>
+      <title>Django(9)—CSRF中间件</title>
       <link>https://ac-lm.github.io/posts/django/django9csrf-%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -680,7 +680,7 @@ function getCookie(name) { let cookieValue = null; if (document.cookie &amp;amp;
     </item>
     
     <item>
-      <title>Web开发(12)——attribute 和 property 的区别</title>
+      <title>Web开发(12)—attribute 和 property 的区别</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9112attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -697,7 +697,7 @@ var id = div1.id; var className = div1.className; var childNodes = div1.childNod
     </item>
     
     <item>
-      <title>随记(28)——使用Gitee&#43;PicGo搭建图床</title>
+      <title>随记(28)—使用Gitee&#43;PicGo搭建图床</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B028%E4%BD%BF%E7%94%A8-gitee&#43;picgo-%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -714,7 +714,7 @@ PS：注意插件的安装需要环境由node.js，nodejs.org
     </item>
     
     <item>
-      <title>BUG(19)——Django 分页报错</title>
+      <title>BUG(19)—Django 分页报错</title>
       <link>https://ac-lm.github.io/posts/bug/bug19django-%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -725,7 +725,7 @@ paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp
     </item>
     
     <item>
-      <title>Django(8)——外键查询</title>
+      <title>Django(8)—外键查询</title>
       <link>https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -734,7 +734,7 @@ paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp
     </item>
     
     <item>
-      <title>Web开发(11)——异步POST</title>
+      <title>Web开发(11)—异步POST</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9111%E5%BC%82%E6%AD%A5-post/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -743,7 +743,7 @@ paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp
     </item>
     
     <item>
-      <title>随记(27)——用例设计</title>
+      <title>随记(27)—用例设计</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B027%E7%94%A8%E4%BE%8B%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -754,7 +754,7 @@ paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp
     </item>
     
     <item>
-      <title>BUG(18)——使用 Js 添加的元素无法点击</title>
+      <title>BUG(18)—使用 Js 添加的元素无法点击</title>
       <link>https://ac-lm.github.io/posts/bug/bug18%E4%BD%BF%E7%94%A8-js-%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%85%83%E7%B4%A0%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -767,7 +767,7 @@ $(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;,
     </item>
     
     <item>
-      <title>Dart(9)——随机数</title>
+      <title>Dart(9)—随机数</title>
       <link>https://ac-lm.github.io/posts/dart/dart9%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -776,7 +776,7 @@ $(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;,
     </item>
     
     <item>
-      <title>Django(7)——分页的实现</title>
+      <title>Django(7)—分页的实现</title>
       <link>https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -785,7 +785,7 @@ $(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;,
     </item>
     
     <item>
-      <title>Flutter(22)——状态(数据)监听</title>
+      <title>Flutter(22)—状态(数据)监听</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter22%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -795,7 +795,7 @@ $(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;,
     </item>
     
     <item>
-      <title>Pytest(5)——数据参数化</title>
+      <title>Pytest(5)—数据参数化</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest5%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E5%8C%96/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -810,7 +810,7 @@ indirect：是否作为函数执行
     </item>
     
     <item>
-      <title>Python(31)——编解码问题</title>
+      <title>Python(31)—编解码问题</title>
       <link>https://ac-lm.github.io/posts/python/python31%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -821,7 +821,7 @@ print(&amp;#34;\u0394&amp;#34;) print(&amp;#34;\U00000394&amp;#34;) print(&amp;#
     </item>
     
     <item>
-      <title>Web开发(10)——jQuery 实现界面刷新</title>
+      <title>Web开发(10)—jQuery 实现界面刷新</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9110jquery-%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%B7%E6%96%B0/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -831,7 +831,7 @@ $(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用locati
     </item>
     
     <item>
-      <title>随记(26)——正则的相关</title>
+      <title>随记(26)—正则的相关</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B026%E6%AD%A3%E5%88%99%E7%9A%84%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -842,7 +842,7 @@ $(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用locati
     </item>
     
     <item>
-      <title>Dart(8)——可变参数与命名参数</title>
+      <title>Dart(8)—可变参数与命名参数</title>
       <link>https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/</link>
       <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -853,7 +853,7 @@ void test(String name,{int age}){ if(age!=null){ print(&amp;#34;name:$name;age:$
     </item>
     
     <item>
-      <title>Net(8)——Wireshark网络抓包工具</title>
+      <title>Net(8)—Wireshark网络抓包工具</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark-%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -869,7 +869,7 @@ void test(String name,{int age}){ if(age!=null){ print(&amp;#34;name:$name;age:$
     </item>
     
     <item>
-      <title>Django(6)——Bash 命令</title>
+      <title>Django(6)—Bash 命令</title>
       <link>https://ac-lm.github.io/posts/django/django6bash-%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -892,7 +892,7 @@ APK Analyzer 可以在 Android Studio 顶端菜单栏中的 Build 找到。
     </item>
     
     <item>
-      <title>Flutter(21)——apk 瘦身</title>
+      <title>Flutter(21)—apk 瘦身</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter21apk-%E7%98%A6%E8%BA%AB/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -904,7 +904,7 @@ flutter build apk --release --target-platform android-armflutter build apk --ta
     </item>
     
     <item>
-      <title>Kali(3)——修改apt源</title>
+      <title>Kali(3)—修改apt源</title>
       <link>https://ac-lm.github.io/posts/kali/kali3%E4%BF%AE%E6%94%B9-apt-%E6%BA%90/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -914,7 +914,7 @@ flutter build apk --release --target-platform android-armflutter build apk --ta
     </item>
     
     <item>
-      <title>Kali(2)——启动 SSH 服务</title>
+      <title>Kali(2)—启动 SSH 服务</title>
       <link>https://ac-lm.github.io/posts/kali/kali2%E5%90%AF%E5%8A%A8-ssh-%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -925,7 +925,7 @@ vim /etc/ssh/sshd_config# 将PermitRootLogin 置为 yes</description>
     </item>
     
     <item>
-      <title>Kali(1)——修改系统语言</title>
+      <title>Kali(1)—修改系统语言</title>
       <link>https://ac-lm.github.io/posts/kali/kali1%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E8%AF%AD%E8%A8%80/</link>
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -935,7 +935,7 @@ dpkg-reconfigure locales找到 en_US.UTF-8 UTF-8选项空格取消，继续下�
     </item>
     
     <item>
-      <title>Web开发(9)——下拉表单插件 bootstrap-select</title>
+      <title>Web开发(9)—下拉表单插件 bootstrap-select</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%919%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6-bootstrap-select/</link>
       <pubDate>Sun, 06 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -950,7 +950,7 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
     </item>
     
     <item>
-      <title>Django(5)——接口开发</title>
+      <title>Django(5)—接口开发</title>
       <link>https://ac-lm.github.io/posts/django/django5%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/</link>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -959,7 +959,7 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
     </item>
     
     <item>
-      <title>Flutter(20)——读取手机文件路径</title>
+      <title>Flutter(20)—读取手机文件路径</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter20%E8%AF%BB%E5%8F%96%E6%89%8B%E6%9C%BA%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -988,7 +988,7 @@ a.内部存储 用于保存应用的私有文件，其他应用无法访问这�
     </item>
     
     <item>
-      <title>Web开发(8)——定位点击位置</title>
+      <title>Web开发(8)—定位点击位置</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%918%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/</link>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -997,7 +997,7 @@ a.内部存储 用于保存应用的私有文件，其他应用无法访问这�
     </item>
     
     <item>
-      <title>Django(4)——cookie处理</title>
+      <title>Django(4)—cookie处理</title>
       <link>https://ac-lm.github.io/posts/django/django4cookie-%E5%A4%84%E7%90%86/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1006,7 +1006,7 @@ a.内部存储 用于保存应用的私有文件，其他应用无法访问这�
     </item>
     
     <item>
-      <title>Flutter(19)——时间</title>
+      <title>Flutter(19)—时间</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1015,7 +1015,7 @@ a.内部存储 用于保存应用的私有文件，其他应用无法访问这�
     </item>
     
     <item>
-      <title>Python(30)——import</title>
+      <title>Python(30)—import</title>
       <link>https://ac-lm.github.io/posts/python/python30import/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1029,7 +1029,7 @@ from package1 import mudule1 from package1.module2 import Fx from package2 impor
     </item>
     
     <item>
-      <title>Web开发(7)——Jquery 消息提示插件 toastr</title>
+      <title>Web开发(7)—Jquery 消息提示插件 toastr</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%917jquery-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6-toastr/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1040,7 +1040,7 @@ from package1 import mudule1 from package1.module2 import Fx from package2 impor
     </item>
     
     <item>
-      <title>Django(3)——设置当前时间</title>
+      <title>Django(3)—设置当前时间</title>
       <link>https://ac-lm.github.io/posts/django/django3%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1054,7 +1054,7 @@ from django.db import models import django.utils.timezone as timezone class Doc(
     </item>
     
     <item>
-      <title>Python(29)——__init__ 文件</title>
+      <title>Python(29)—__init__ 文件</title>
       <link>https://ac-lm.github.io/posts/python/python29__init__-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1065,7 +1065,7 @@ __all__ = [&amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;
     </item>
     
     <item>
-      <title>Web开发(6)——常用小知识</title>
+      <title>Web开发(6)—常用小知识</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%B0%8F%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1079,7 +1079,7 @@ js或css文件一般都是从服务器上下载到本地浏览器上解释执行
     </item>
     
     <item>
-      <title>Django(2)——HTML 模板</title>
+      <title>Django(2)—HTML 模板</title>
       <link>https://ac-lm.github.io/posts/django/django2html-%E6%A8%A1%E6%9D%BF/</link>
       <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1089,7 +1089,7 @@ js或css文件一般都是从服务器上下载到本地浏览器上解释执行
     </item>
     
     <item>
-      <title>Django(1)——Models</title>
+      <title>Django(1)—Models</title>
       <link>https://ac-lm.github.io/posts/django/django1models/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1102,7 +1102,7 @@ b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据
     </item>
     
     <item>
-      <title>Linux(21)——设置开机启动任务</title>
+      <title>Linux(21)—设置开机启动任务</title>
       <link>https://ac-lm.github.io/posts/linux/linux21%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -1114,7 +1114,7 @@ b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据
     </item>
     
     <item>
-      <title>Linux(20)——通过配置文件修改 docker 容器端口映射</title>
+      <title>Linux(20)—通过配置文件修改 docker 容器端口映射</title>
       <link>https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9-docker-%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link>
       <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
       
@@ -1129,7 +1129,7 @@ b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据
     </item>
     
     <item>
-      <title>Flutter(18)——内置对话框</title>
+      <title>Flutter(18)—内置对话框</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter18%E5%86%85%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86/</link>
       <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
       
@@ -1142,7 +1142,7 @@ showAboutDialog( context: context, applicationIcon: Image.asset( &amp;#39;images
     </item>
     
     <item>
-      <title>Flutter(17)——CupertinoPicker 滚轮选择器</title>
+      <title>Flutter(17)—CupertinoPicker 滚轮选择器</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter17cupertinopicker-%E6%BB%9A%E8%BD%AE%E9%80%89%E6%8B%A9%E5%99%A8/</link>
       <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
       
@@ -1151,7 +1151,7 @@ showAboutDialog( context: context, applicationIcon: Image.asset( &amp;#39;images
     </item>
     
     <item>
-      <title>Flutter(16)——Fluttertoast 插件弹出提示</title>
+      <title>Flutter(16)—Fluttertoast 插件弹出提示</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter16fluttertoast-%E6%8F%92%E4%BB%B6%E5%BC%B9%E5%87%BA%E6%8F%90%E7%A4%BA/</link>
       <pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate>
       
@@ -1161,7 +1161,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Flutter(15)——Row 子控件两端对齐</title>
+      <title>Flutter(15)—Row 子控件两端对齐</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter15row-%E5%AD%90%E6%8E%A7%E4%BB%B6%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
@@ -1170,7 +1170,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Linux(19)——常用的命令</title>
+      <title>Linux(19)—常用的命令</title>
       <link>https://ac-lm.github.io/posts/linux/linux19%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
@@ -1179,7 +1179,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Flutter(14)——滚动视图的位置保存</title>
+      <title>Flutter(14)—滚动视图的位置保存</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter14%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BF%9D%E5%AD%98/</link>
       <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
       
@@ -1189,7 +1189,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Linux(18)——Chrome 的安装配置</title>
+      <title>Linux(18)—Chrome 的安装配置</title>
       <link>https://ac-lm.github.io/posts/linux/linux18chrome-%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
       
@@ -1198,7 +1198,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Flutter(13)——真机添加网络权限</title>
+      <title>Flutter(13)—真机添加网络权限</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter13%E7%9C%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E6%9D%83%E9%99%90/</link>
       <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
       
@@ -1208,7 +1208,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Linux(17)——Linux 常识</title>
+      <title>Linux(17)—Linux 常识</title>
       <link>https://ac-lm.github.io/posts/linux/linux17linux-%E5%B8%B8%E8%AF%86/</link>
       <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
       
@@ -1217,7 +1217,7 @@ fluttertoast: ^4.0.1 2.使用 import &amp;#39;package:fluttertoast/fluttertoast.
     </item>
     
     <item>
-      <title>Flutter(12)——关闭界面</title>
+      <title>Flutter(12)—关闭界面</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter12%E5%85%B3%E9%97%AD%E7%95%8C%E9%9D%A2/</link>
       <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
       
@@ -1227,7 +1227,7 @@ Navigator.pop(context);Navigator.of(context).pop();</description>
     </item>
     
     <item>
-      <title>Linux(16)——后台程序的运行及关闭</title>
+      <title>Linux(16)—后台程序的运行及关闭</title>
       <link>https://ac-lm.github.io/posts/linux/linux16%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8F%8A%E5%85%B3%E9%97%AD/</link>
       <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
       
@@ -1236,7 +1236,7 @@ Navigator.pop(context);Navigator.of(context).pop();</description>
     </item>
     
     <item>
-      <title>Flutter(11)——setState更新原理和流程</title>
+      <title>Flutter(11)—setState更新原理和流程</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter11setstate-%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
       
@@ -1247,7 +1247,7 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
     </item>
     
     <item>
-      <title>Flutter(10)——读取 app 安装包资源</title>
+      <title>Flutter(10)—读取 app 安装包资源</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter10%E8%AF%BB%E5%8F%96-app-%E5%AE%89%E8%A3%85%E5%8C%85%E8%B5%84%E6%BA%90/</link>
       <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
       
@@ -1261,7 +1261,7 @@ rootBundle.loadString(&amp;#39;assets/txt/test.txt&amp;#39;).then((data){ print(
     </item>
     
     <item>
-      <title>Flutter(9)——主题颜色</title>
+      <title>Flutter(9)—主题颜色</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/</link>
       <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
       
@@ -1272,7 +1272,7 @@ primaryColor:Colors.white</description>
     </item>
     
     <item>
-      <title>Dart(7)——异步</title>
+      <title>Dart(7)—异步</title>
       <link>https://ac-lm.github.io/posts/dart/dart7%E5%BC%82%E6%AD%A5/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1285,7 +1285,7 @@ import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news 
     </item>
     
     <item>
-      <title>Flutter(8)——为BottomNavigationBar设置背景色</title>
+      <title>Flutter(8)—为BottomNavigationBar设置背景色</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BA-bottomnavigationbar-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1295,7 +1295,7 @@ bottomNavigationBar: new Theme( data: Theme.of(context).copyWith( //设置背景
     </item>
     
     <item>
-      <title>Linux(15)——tar解压</title>
+      <title>Linux(15)—tar解压</title>
       <link>https://ac-lm.github.io/posts/linux/linux15tar-%E8%A7%A3%E5%8E%8B/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1306,7 +1306,7 @@ yum install tar gzip bzip2.使用 tar 解包：tar xvf FileName.tar打包：ta
     </item>
     
     <item>
-      <title>随记(25)——罗技M170拆解</title>
+      <title>随记(25)—罗技M170拆解</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B025%E7%BD%97%E6%8A%80-m170-%E6%8B%86%E8%A7%A3/</link>
       <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1316,7 +1316,7 @@ yum install tar gzip bzip2.使用 tar 解包：tar xvf FileName.tar打包：ta
     </item>
     
     <item>
-      <title>Dart(6)——函数形参</title>
+      <title>Dart(6)—函数形参</title>
       <link>https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%BD%A2%E5%8F%82/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1325,7 +1325,7 @@ yum install tar gzip bzip2.使用 tar 解包：tar xvf FileName.tar打包：ta
     </item>
     
     <item>
-      <title>Flutter(7)——加载动画</title>
+      <title>Flutter(7)—加载动画</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter7%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1336,7 +1336,7 @@ import &amp;#39;package:flutter/material.dart&amp;#39;; import &amp;#39;package:
     </item>
     
     <item>
-      <title>Linux(14)——系统监控命令</title>
+      <title>Linux(14)—系统监控命令</title>
       <link>https://ac-lm.github.io/posts/linux/linux14%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1349,7 +1349,7 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
     </item>
     
     <item>
-      <title>随记(24)——音视频开发</title>
+      <title>随记(24)—音视频开发</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B024%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1365,7 +1365,7 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
     </item>
     
     <item>
-      <title>Dart(5)——字典</title>
+      <title>Dart(5)—字典</title>
       <link>https://ac-lm.github.io/posts/dart/dart5%E5%AD%97%E5%85%B8/</link>
       <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1386,7 +1386,7 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
     </item>
     
     <item>
-      <title>Dart(4)——睡眠</title>
+      <title>Dart(4)—睡眠</title>
       <link>https://ac-lm.github.io/posts/dart/dart4%E7%9D%A1%E7%9C%A0/</link>
       <pubDate>Tue, 27 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1431,7 +1431,7 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
     </item>
     
     <item>
-      <title>Dart(3)——文件操作</title>
+      <title>Dart(3)—文件操作</title>
       <link>https://ac-lm.github.io/posts/dart/dart3%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1442,7 +1442,7 @@ import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file 
     </item>
     
     <item>
-      <title>Flutter(4)——TabController 的两次回调</title>
+      <title>Flutter(4)—TabController 的两次回调</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter4tabcontroller-%E7%9A%84%E4%B8%A4%E6%AC%A1%E5%9B%9E%E8%B0%83/</link>
       <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1452,7 +1452,7 @@ import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file 
     </item>
     
     <item>
-      <title>Dart(2)——正则</title>
+      <title>Dart(2)—正则</title>
       <link>https://ac-lm.github.io/posts/dart/dart2%E6%AD%A3%E5%88%99/</link>
       <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1461,7 +1461,7 @@ import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file 
     </item>
     
     <item>
-      <title>Flutter(3)——下载环境配置</title>
+      <title>Flutter(3)—下载环境配置</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter3%E4%B8%8B%E8%BD%BD%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1471,7 +1471,7 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=
     </item>
     
     <item>
-      <title>Dart(1)——基本数据类型</title>
+      <title>Dart(1)—基本数据类型</title>
       <link>https://ac-lm.github.io/posts/dart/dart1%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
       <pubDate>Sat, 24 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1480,7 +1480,7 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=
     </item>
     
     <item>
-      <title>Flutter(2)——混合开发</title>
+      <title>Flutter(2)—混合开发</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/</link>
       <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1502,7 +1502,7 @@ c.自绘UI+原生 在本篇中，我们看看最后一种跨平台技术：自�
     </item>
     
     <item>
-      <title>Flutter(1)——例程</title>
+      <title>Flutter(1)—例程</title>
       <link>https://ac-lm.github.io/posts/flutter/flutter1%E4%BE%8B%E7%A8%8B/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -1512,7 +1512,7 @@ c.自绘UI+原生 在本篇中，我们看看最后一种跨平台技术：自�
     </item>
     
     <item>
-      <title>BUG(17)——字典在遍历时不能进行修改</title>
+      <title>BUG(17)—字典在遍历时不能进行修改</title>
       <link>https://ac-lm.github.io/posts/bug/bug17%E5%AD%97%E5%85%B8%E5%9C%A8%E9%81%8D%E5%8E%86%E6%97%B6%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1541,7 +1541,7 @@ Google发布的过程虽然快，但也并不像想象中如牛仔一般的鲁�
     </item>
     
     <item>
-      <title>Python(28)——hashlib模块</title>
+      <title>Python(28)—hashlib模块</title>
       <link>https://ac-lm.github.io/posts/python/python28hashlib-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1552,7 +1552,7 @@ import hashlib if __name__ == &amp;#34;__main__&amp;#34;: s = hashlib.sha256() #
     </item>
     
     <item>
-      <title>Windows(4)——系统安装时的 esp 和 msr 分区</title>
+      <title>Windows(4)—系统安装时的 esp 和 msr 分区</title>
       <link>https://ac-lm.github.io/posts/windows10/windows4%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%97%B6%E7%9A%84-esp-%E5%92%8C-msr-%E5%88%86%E5%8C%BA/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1562,7 +1562,7 @@ import hashlib if __name__ == &amp;#34;__main__&amp;#34;: s = hashlib.sha256() #
     </item>
     
     <item>
-      <title>BUG(16)——xlrd 模块无法打开 .xlsx 文件</title>
+      <title>BUG(16)—xlrd 模块无法打开 .xlsx 文件</title>
       <link>https://ac-lm.github.io/posts/bug/bug16xlrd-%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80-.xlsx-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1597,7 +1597,7 @@ Google的组织汇报架构被划分为不同的专注领域（Focus Areas）。
     </item>
     
     <item>
-      <title>Windows(3)——执行系统自检</title>
+      <title>Windows(3)—执行系统自检</title>
       <link>https://ac-lm.github.io/posts/windows10/windows3%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1606,7 +1606,7 @@ Google的组织汇报架构被划分为不同的专注领域（Focus Areas）。
     </item>
     
     <item>
-      <title>随记(23)——XSS攻击</title>
+      <title>随记(23)—XSS攻击</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B023xss-%E6%94%BB%E5%87%BB/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1622,7 +1622,7 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
-      <title>Python(27)——random 模块</title>
+      <title>Python(27)—random 模块</title>
       <link>https://ac-lm.github.io/posts/python/python27random-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1637,7 +1637,7 @@ rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = 
     </item>
     
     <item>
-      <title>随记(22)——视频推流与拉流</title>
+      <title>随记(22)—视频推流与拉流</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B022%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E4%B8%8E%E6%8B%89%E6%B5%81/</link>
       <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1648,7 +1648,7 @@ rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = 
     </item>
     
     <item>
-      <title>Python(26)——深复制与浅复制</title>
+      <title>Python(26)—深复制与浅复制</title>
       <link>https://ac-lm.github.io/posts/python/python26%E6%B7%B1%E5%A4%8D%E5%88%B6%E4%B8%8E%E6%B5%85%E5%A4%8D%E5%88%B6/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1658,7 +1658,7 @@ rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = 
     </item>
     
     <item>
-      <title>Python(25)——切片</title>
+      <title>Python(25)—切片</title>
       <link>https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/</link>
       <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1671,7 +1671,7 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
     </item>
     
     <item>
-      <title>Python(24)——获取 input 输入的文本值</title>
+      <title>Python(24)—获取 input 输入的文本值</title>
       <link>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1680,7 +1680,7 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
     </item>
     
     <item>
-      <title>随记(21)——什么是localStorage</title>
+      <title>随记(21)—什么是localStorage</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B021%E4%BB%80%E4%B9%88%E6%98%AF-localstorage/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1690,7 +1690,7 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
     </item>
     
     <item>
-      <title>Python(23)——os 模块文件操作</title>
+      <title>Python(23)—os 模块文件操作</title>
       <link>https://ac-lm.github.io/posts/python/python23os-%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1703,7 +1703,7 @@ import os path=&amp;#34;/var/www/html/ABC&amp;#34; isExists=os.path.exists(path)
     </item>
     
     <item>
-      <title>Python(22)——sys 模块</title>
+      <title>Python(22)—sys 模块</title>
       <link>https://ac-lm.github.io/posts/python/python22sys-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -1719,7 +1719,7 @@ $ python test.py arg1 arg2 arg3 The list of command line arguments: [&amp;#39;ex
     </item>
     
     <item>
-      <title>Pytest(4)——assert 断言</title>
+      <title>Pytest(4)—assert 断言</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest4assert-%E6%96%AD%E8%A8%80/</link>
       <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1729,7 +1729,7 @@ $ python test.py arg1 arg2 arg3 The list of command line arguments: [&amp;#39;ex
     </item>
     
     <item>
-      <title>Python(21)——yield 生成器的用法</title>
+      <title>Python(21)—yield 生成器的用法</title>
       <link>https://ac-lm.github.io/posts/python/python21yield-%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</link>
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1741,7 +1741,7 @@ for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个
     </item>
     
     <item>
-      <title>Pytest(3)——fixture 实现 setup 和 teardown</title>
+      <title>Pytest(3)—fixture 实现 setup 和 teardown</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest3fixture-%E5%AE%9E%E7%8E%B0-setup-%E5%92%8C-teardown/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1752,7 +1752,7 @@ for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个
     </item>
     
     <item>
-      <title>Python(20)——Web LocalStorage 修改</title>
+      <title>Python(20)—Web LocalStorage 修改</title>
       <link>https://ac-lm.github.io/posts/python/python20web-localstrorage-%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1763,7 +1763,7 @@ for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个
     </item>
     
     <item>
-      <title>BUG(15)——git 提示 LF will be replaced by CRLF</title>
+      <title>BUG(15)—git 提示 LF will be replaced by CRLF</title>
       <link>https://ac-lm.github.io/posts/bug/bug15git-%E6%8F%90%E7%A4%BA-lf-will-be-replaced-by-crlf/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1776,7 +1776,7 @@ Resolution 这是因为在文本处理中，CR（CarriageReturn）/ LF（LineFee
     </item>
     
     <item>
-      <title>Pytest(2)——fixture</title>
+      <title>Pytest(2)—fixture</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest2fixture/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1789,7 +1789,7 @@ Resolution 这是因为在文本处理中，CR（CarriageReturn）/ LF（LineFee
     </item>
     
     <item>
-      <title>Python(19)——telnetlib 模块</title>
+      <title>Python(19)—telnetlib 模块</title>
       <link>https://ac-lm.github.io/posts/python/python19telnetlib-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1799,7 +1799,7 @@ import getpass import telnetlib HOST = &amp;#34;localhost&amp;#34; user = input(
     </item>
     
     <item>
-      <title>BUG(14)——bash 命令丢失</title>
+      <title>BUG(14)—bash 命令丢失</title>
       <link>https://ac-lm.github.io/posts/bug/bug14bash-%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1810,7 +1810,7 @@ Resolution 由于环境变量 PATH 被错误修改，导致命令丢失
     </item>
     
     <item>
-      <title>Pytest(1)——Pytest 测试框架</title>
+      <title>Pytest(1)—Pytest 测试框架</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest1pytest-%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1819,7 +1819,7 @@ Resolution 由于环境变量 PATH 被错误修改，导致命令丢失
     </item>
     
     <item>
-      <title>Python(18)——执行 Linux 命令</title>
+      <title>Python(18)—执行 Linux 命令</title>
       <link>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8C-linux-%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1830,7 +1830,7 @@ Resolution 由于环境变量 PATH 被错误修改，导致命令丢失
     </item>
     
     <item>
-      <title>BUG(13)——Linux中Chrome无法启动缺少权限</title>
+      <title>BUG(13)—Linux中Chrome无法启动缺少权限</title>
       <link>https://ac-lm.github.io/posts/bug/bug13linux-%E4%B8%AD-chrome-%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1842,7 +1842,7 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 
     </item>
     
     <item>
-      <title>Git(4)——.gitlab-ci.yml 文件配置</title>
+      <title>Git(4)—.gitlab-ci.yml 文件配置</title>
       <link>https://ac-lm.github.io/posts/git/git4.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1856,7 +1856,7 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 
     </item>
     
     <item>
-      <title>Python(17)——Python面试知识</title>
+      <title>Python(17)—Python面试知识</title>
       <link>https://ac-lm.github.io/posts/python/python17python-%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1866,7 +1866,7 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 
     </item>
     
     <item>
-      <title>Windows(2)——利用搜索实现批量文件移动</title>
+      <title>Windows(2)—利用搜索实现批量文件移动</title>
       <link>https://ac-lm.github.io/posts/windows10/windows2%E5%88%A9%E7%94%A8%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1875,7 +1875,7 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 
     </item>
     
     <item>
-      <title>Windows(1)——CMD</title>
+      <title>Windows(1)—CMD</title>
       <link>https://ac-lm.github.io/posts/windows10/windows1cmd/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1884,7 +1884,7 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 
     </item>
     
     <item>
-      <title>Git(3)——gitlab-runner 安装配置</title>
+      <title>Git(3)—gitlab-runner 安装配置</title>
       <link>https://ac-lm.github.io/posts/git/git3gitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1893,7 +1893,7 @@ options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 
     </item>
     
     <item>
-      <title>BUG(11)——gitlab-runner无权限</title>
+      <title>BUG(11)—gitlab-runner无权限</title>
       <link>https://ac-lm.github.io/posts/bug/bug11gitlab-runner-%E6%97%A0%E6%9D%83%E9%99%90/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1903,7 +1903,7 @@ ps aux|grep gitlab-runner # 查看当前 runner 用户 sudo gitlab-runner uninst
     </item>
     
     <item>
-      <title>BUG(12)——gitlab CI 无法运行无标签的工作</title>
+      <title>BUG(12)—gitlab CI 无法运行无标签的工作</title>
       <link>https://ac-lm.github.io/posts/bug/bug12gitlab-ci-%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B7%A5%E4%BD%9C/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1914,7 +1914,7 @@ gitlab 项目设置 -&amp;gt; CI/CD -&amp;gt; Runner，点击编辑按钮，修�
     </item>
     
     <item>
-      <title>Git(2)——SSH 配置</title>
+      <title>Git(2)—SSH 配置</title>
       <link>https://ac-lm.github.io/posts/git/git2ssh-%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1927,7 +1927,7 @@ git clone + 库的地址 2.创建SSH的目的 SSH KEY 的作用是来识别你�
     </item>
     
     <item>
-      <title>Python(16)——ddt 模块</title>
+      <title>Python(16)—ddt 模块</title>
       <link>https://ac-lm.github.io/posts/python/python16ddt-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1941,7 +1941,7 @@ file_data：会从json或yaml中加载数据
     </item>
     
     <item>
-      <title>allure(1)——测试报告生成</title>
+      <title>allure(1)—测试报告生成</title>
       <link>https://ac-lm.github.io/posts/pytest&#43;allure/allure1%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1950,7 +1950,7 @@ file_data：会从json或yaml中加载数据
     </item>
     
     <item>
-      <title>BUG(10)——gitlab CI 无法初始化 Git 版本库</title>
+      <title>BUG(10)—gitlab CI 无法初始化 Git 版本库</title>
       <link>https://ac-lm.github.io/posts/bug/bug10gitlab-ci-%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96-git-%E7%89%88%E6%9C%AC%E5%BA%93/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1962,7 +1962,7 @@ fatal: git fetch-pack: expected shallow list fatal: The remote end hung up unexp
     </item>
     
     <item>
-      <title>Git(1)——Git 版本管理工具</title>
+      <title>Git(1)—Git 版本管理工具</title>
       <link>https://ac-lm.github.io/posts/git/git1git-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1974,7 +1974,7 @@ fatal: git fetch-pack: expected shallow list fatal: The remote end hung up unexp
     </item>
     
     <item>
-      <title>Python(15)——装饰器</title>
+      <title>Python(15)—装饰器</title>
       <link>https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -1989,7 +1989,7 @@ def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis 
     </item>
     
     <item>
-      <title>Python(14)——获取当前页面URL</title>
+      <title>Python(14)—获取当前页面URL</title>
       <link>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2-url/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -2000,7 +2000,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>PyQt5(14)——程序的启动</title>
+      <title>PyQt5(14)—程序的启动</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt514%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2010,7 +2010,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>PyQt5(13)——非模式显示 show 与模式 exec_</title>
+      <title>PyQt5(13)—非模式显示 show 与模式 exec_</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt513%E9%9D%9E%E6%A8%A1%E5%BC%8F%E6%98%BE%E7%A4%BA-show-%E4%B8%8E%E6%A8%A1%E5%BC%8F-exec_/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2021,7 +2021,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>PyQt5(12)——QMessageBox 消息对话框类</title>
+      <title>PyQt5(12)—QMessageBox 消息对话框类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt512qmessagebox-%E6%B6%88%E6%81%AF%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2030,7 +2030,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>PyQt5(11)——QTextEdit 文本元件</title>
+      <title>PyQt5(11)—QTextEdit 文本元件</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt511qtextedit-%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2039,7 +2039,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>Web开发(5)——实现摄像头开启</title>
+      <title>Web开发(5)—实现摄像头开启</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%915%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2048,7 +2048,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>随记(20)——目录的简单表示</title>
+      <title>随记(20)—目录的简单表示</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2057,7 +2057,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>PyQt5(10)——QLineEdit 文本元件</title>
+      <title>PyQt5(10)—QLineEdit 文本元件</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt510qlineedit-%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2066,7 +2066,7 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
     </item>
     
     <item>
-      <title>PyQt5(9)——QInputDialog 输入对话框类</title>
+      <title>PyQt5(9)—QInputDialog 输入对话框类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt59qinputdialog-%E8%BE%93%E5%85%A5%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/</link>
       <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2077,7 +2077,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>PyQt5(8)——QFileDialog 文件类</title>
+      <title>PyQt5(8)—QFileDialog 文件类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt58qfiledialog-%E6%96%87%E4%BB%B6%E7%B1%BB/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2086,7 +2086,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>PyQt5(7)——QDialog 消息提示类</title>
+      <title>PyQt5(7)—QDialog 消息提示类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt57qdialog-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E7%B1%BB/</link>
       <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2096,7 +2096,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>PyQt5(6)——信号和槽</title>
+      <title>PyQt5(6)—信号和槽</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt56%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD/</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2109,7 +2109,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(5)——最大最小关闭按钮的隐藏</title>
+      <title>PyQt5(5)—最大最小关闭按钮的隐藏</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt55%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE%E7%9A%84%E9%9A%90%E8%97%8F/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2118,7 +2118,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(4)——退出事件的重写</title>
+      <title>PyQt5(4)—退出事件的重写</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt54%E9%80%80%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%87%8D%E5%86%99/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2127,7 +2127,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(3)——QProgressDialog 进度条</title>
+      <title>PyQt5(3)—QProgressDialog 进度条</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt53qprogressdialog-%E8%BF%9B%E5%BA%A6%E6%9D%A1/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2139,7 +2139,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>Python(13)——邮件发送</title>
+      <title>Python(13)—邮件发送</title>
       <link>https://ac-lm.github.io/posts/python/python13%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2148,7 +2148,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(2)——焦点控制</title>
+      <title>PyQt5(2)—焦点控制</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt52%E7%84%A6%E7%82%B9%E6%8E%A7%E5%88%B6/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2157,7 +2157,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>Python(12)——多线程的返回值</title>
+      <title>Python(12)—多线程的返回值</title>
       <link>https://ac-lm.github.io/posts/python/python12%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2168,7 +2168,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>Python(11)——多线程的使用</title>
+      <title>Python(11)—多线程的使用</title>
       <link>https://ac-lm.github.io/posts/python/python11%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2182,7 +2182,7 @@ print &amp;#34;all over %s&amp;#34; %ctime() 看了一下当前时间，差不�
     </item>
     
     <item>
-      <title>Python(10)——子类的 super 初始化</title>
+      <title>Python(10)—子类的 super 初始化</title>
       <link>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84-super-%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
       <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2191,7 +2191,7 @@ print &amp;#34;all over %s&amp;#34; %ctime() 看了一下当前时间，差不�
     </item>
     
     <item>
-      <title>Python(9)——异常信息打印</title>
+      <title>Python(9)—异常信息打印</title>
       <link>https://ac-lm.github.io/posts/python/python9%E5%BC%82%E5%B8%B8%E4%BF%A1%E6%81%AF%E6%89%93%E5%8D%B0/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2203,7 +2203,7 @@ Traceback (most recent call last): File &amp;#34;c:\Users\Administrator\Desktop\
     </item>
     
     <item>
-      <title>随记(19)——什么是SQL漏洞</title>
+      <title>随记(19)—什么是SQL漏洞</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2215,7 +2215,7 @@ SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;&amp
     </item>
     
     <item>
-      <title>Python(8)——字典取值</title>
+      <title>Python(8)—字典取值</title>
       <link>https://ac-lm.github.io/posts/python/python8%E5%AD%97%E5%85%B8%E5%8F%96%E5%80%BC/</link>
       <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2224,7 +2224,7 @@ SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;&amp
     </item>
     
     <item>
-      <title>随记(18)——什么是Bash Shell</title>
+      <title>随记(18)—什么是Bash Shell</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B018%E4%BB%80%E4%B9%88%E6%98%AF-bash-shell/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2240,7 +2240,7 @@ Shell是操作系统最外面的一层，是文字操作系统与外部最主要
     </item>
     
     <item>
-      <title>随记(17)——Linux最多支持多少TCP连接</title>
+      <title>随记(17)—Linux最多支持多少TCP连接</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B017linux-%E6%9C%80%E5%A4%9A%E6%94%AF%E6%8C%81%E5%A4%9A%E5%B0%91-tcp-%E8%BF%9E%E6%8E%A5/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2261,7 +2261,7 @@ $ cat /proc/meminfoMemTotal: 3922956 kBMemFree: 96652 kBMemAvailable: 6448 kB
     </item>
     
     <item>
-      <title>随记(16)——RESTful API接口设计</title>
+      <title>随记(16)—RESTful API接口设计</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B016restful-api-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2282,7 +2282,7 @@ https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息
     </item>
     
     <item>
-      <title>Web开发(4)——JS 实现页面跳转</title>
+      <title>Web开发(4)—JS 实现页面跳转</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%914js-%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2291,7 +2291,7 @@ https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息
     </item>
     
     <item>
-      <title>Linux(13)——rpm 软件管理工具</title>
+      <title>Linux(13)—rpm 软件管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux13rpm-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2301,7 +2301,7 @@ https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息
     </item>
     
     <item>
-      <title>Web开发(3)——PHP&#43;MariaDB 数据库操作</title>
+      <title>Web开发(3)—PHP&#43;MariaDB 数据库操作</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%913php&#43;mariadb-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2310,7 +2310,7 @@ https://api.example.com/v1/另一种做法是，将版本号放在HTTP头信息
     </item>
     
     <item>
-      <title>BUG(9)——AndroidCMD 工具安装 SDK 路径无法识别</title>
+      <title>BUG(9)—AndroidCMD 工具安装 SDK 路径无法识别</title>
       <link>https://ac-lm.github.io/posts/bug/bug9androidcmd-%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85-sdk-%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB/</link>
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2321,7 +2321,7 @@ Rename the unpacked directory from cmdline-tools to tools, and place it under $C
     </item>
     
     <item>
-      <title>Linux(12)——MTR 链路测试工具</title>
+      <title>Linux(12)—MTR 链路测试工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux12mtr-%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2332,7 +2332,7 @@ Rename the unpacked directory from cmdline-tools to tools, and place it under $C
     </item>
     
     <item>
-      <title>Web开发(2)——PHP 实例</title>
+      <title>Web开发(2)—PHP 实例</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%912php-%E5%AE%9E%E4%BE%8B/</link>
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2341,7 +2341,7 @@ Rename the unpacked directory from cmdline-tools to tools, and place it under $C
     </item>
     
     <item>
-      <title>BUG(7)——Win10 锁屏问题</title>
+      <title>BUG(7)—Win10 锁屏问题</title>
       <link>https://ac-lm.github.io/posts/bug/bug7win10-%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2353,7 +2353,7 @@ Resolution Win+R 打开运行，输入%ProgramData%\Microsoft\Windows打开 Win1
     </item>
     
     <item>
-      <title>BUG(8)——SSH无法连接虚拟机Linux系统</title>
+      <title>BUG(8)—SSH无法连接虚拟机Linux系统</title>
       <link>https://ac-lm.github.io/posts/bug/bug8ssh-%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA-linux/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2363,7 +2363,7 @@ Resolution 注意网关配置的问题，查看网关是否错误，可以打开
     </item>
     
     <item>
-      <title>PyQt5(1)——安装</title>
+      <title>PyQt5(1)—安装</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt51%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2373,7 +2373,7 @@ pip install PyQt5 pip install PyQt5-tools QTdesigner 路径：Lib\site-packages\
     </item>
     
     <item>
-      <title>随记(15)——WebDriver click与JavaScript click的区别</title>
+      <title>随记(15)—WebDriver click与JavaScript click的区别</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B015webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -2386,7 +2386,7 @@ element = driver.find_element_by_id(&amp;#34;myid&amp;#34;) driver.execute_scrip
     </item>
     
     <item>
-      <title>BUG(6)——Wapiti 报告丢失 js 文件</title>
+      <title>BUG(6)—Wapiti 报告丢失 js 文件</title>
       <link>https://ac-lm.github.io/posts/bug/bug6wapiti-%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1-js-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2399,7 +2399,7 @@ Resolution 需手动从目录 wapitiCore/report_template 中找到并添加
     </item>
     
     <item>
-      <title>Python(7)——unittest 单元测试框架</title>
+      <title>Python(7)—unittest 单元测试框架</title>
       <link>https://ac-lm.github.io/posts/python/python7unittest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2411,7 +2411,7 @@ if __name__ == &amp;#34;__main__&amp;#34;: #此用法可以同时测试多个类
     </item>
     
     <item>
-      <title>随记(14)——跨域资源请求 CORS</title>
+      <title>随记(14)—跨域资源请求 CORS</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B014%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E8%AF%B7%E6%B1%82-cors/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2431,7 +2431,7 @@ GET /cors HTTP/1.1 Access-Control-Allow-Origin: http://api.bob.com Access-Contro
     </item>
     
     <item>
-      <title>BUG(5)——爬虫中乱码的成因及处理</title>
+      <title>BUG(5)—爬虫中乱码的成因及处理</title>
       <link>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</link>
       <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2446,7 +2446,7 @@ print(res.encoding) # 查看网页返回的字符集类型，其值是从 header
     </item>
     
     <item>
-      <title>BUG(4)——Jmeter 的一些问题</title>
+      <title>BUG(4)—Jmeter 的一些问题</title>
       <link>https://ac-lm.github.io/posts/bug/bug4jmeter-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2484,7 +2484,7 @@ Resolution uname -a rpm -qa | grep kernel # 查看安装内核 yum remove kernel
     </item>
     
     <item>
-      <title>Net(7)——在 Linux 中的搭建 JMeter 性能测试</title>
+      <title>Net(7)—在 Linux 中的搭建 JMeter 性能测试</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8-linux-%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BA-jmeter-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2505,7 +2505,7 @@ options.add_argument(&amp;#34;--headless&amp;#34;) options.add_argument(&amp;#39
     </item>
     
     <item>
-      <title>Net(6)——JMeter性能测试工具</title>
+      <title>Net(6)—JMeter性能测试工具</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2521,7 +2521,7 @@ JMeter 允许您保存整个测试计划树或仅保存其中的一部分。要�
     </item>
     
     <item>
-      <title>Linux(11)——npm 包管理工具</title>
+      <title>Linux(11)—npm 包管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux11npm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2532,7 +2532,7 @@ wget https://cdn.npm.taobao.org/dist/node/latest-v15.x/node-v15.9.0-linux-x64.ta
     </item>
     
     <item>
-      <title>Linux(10)——pip 软件管理工具</title>
+      <title>Linux(10)—pip 软件管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux10pip-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2544,7 +2544,7 @@ wget https://bootstrap.pypa.io/pip/2.7/get-pip.py # pip3 wget https://bootstrap.
     </item>
     
     <item>
-      <title>Linux(9)——Python3.6 安装</title>
+      <title>Linux(9)—Python3.6 安装</title>
       <link>https://ac-lm.github.io/posts/linux/linux9python3.6-%E5%AE%89%E8%A3%85/</link>
       <pubDate>Sun, 22 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2554,7 +2554,7 @@ python -V #查看Py版本 python -m XXXX #执行终端命令，-m参数使得Pyt
     </item>
     
     <item>
-      <title>Net(5)——sqlmap使用实例</title>
+      <title>Net(5)—sqlmap使用实例</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap-%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2563,7 +2563,7 @@ python -V #查看Py版本 python -m XXXX #执行终端命令，-m参数使得Pyt
     </item>
     
     <item>
-      <title>Linux(8)——linux 的文件权限</title>
+      <title>Linux(8)—linux 的文件权限</title>
       <link>https://ac-lm.github.io/posts/linux/linux8linux-%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/</link>
       <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2573,7 +2573,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Linux(7)——yum 软件管理工具</title>
+      <title>Linux(7)—yum 软件管理工具</title>
       <link>https://ac-lm.github.io/posts/linux/linux7yum-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2582,7 +2582,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
     </item>
     
     <item>
-      <title>Net(4)——sqlmap 使用指南</title>
+      <title>Net(4)—sqlmap 使用指南</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2599,7 +2599,7 @@ sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提�
     </item>
     
     <item>
-      <title>计算机网络(2)——子网掩码</title>
+      <title>计算机网络(2)—子网掩码</title>
       <link>https://ac-lm.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/</link>
       <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2612,7 +2612,7 @@ sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提�
     </item>
     
     <item>
-      <title>Linux(6)——LAMP 环境安装与使用</title>
+      <title>Linux(6)—LAMP 环境安装与使用</title>
       <link>https://ac-lm.github.io/posts/linux/linux6lamp-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2622,7 +2622,7 @@ sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提�
     </item>
     
     <item>
-      <title>Net(3)——sqlmap数据库渗透测试工具</title>
+      <title>Net(3)—sqlmap数据库渗透测试工具</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2635,7 +2635,7 @@ sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和�
     </item>
     
     <item>
-      <title>计算机网络(1)——什么是 IP</title>
+      <title>计算机网络(1)—什么是 IP</title>
       <link>https://ac-lm.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1%E4%BB%80%E4%B9%88%E6%98%AF-ip/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2645,7 +2645,7 @@ sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和�
     </item>
     
     <item>
-      <title>Linux(5)——常用快捷键</title>
+      <title>Linux(5)—常用快捷键</title>
       <link>https://ac-lm.github.io/posts/linux/linux5%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2654,7 +2654,7 @@ sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和�
     </item>
     
     <item>
-      <title>Net(2)——Nmap端口扫描工具</title>
+      <title>Net(2)—Nmap端口扫描工具</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2665,7 +2665,7 @@ Nmap是一个网络连接端扫描软件，用来扫描网上电脑开放的网�
     </item>
     
     <item>
-      <title>Linux(4)——输出到空文件</title>
+      <title>Linux(4)—输出到空文件</title>
       <link>https://ac-lm.github.io/posts/linux/linux4%E8%BE%93%E5%87%BA%E5%88%B0%E7%A9%BA%E6%96%87%E4%BB%B6/</link>
       <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2676,7 +2676,7 @@ Nmap是一个网络连接端扫描软件，用来扫描网上电脑开放的网�
     </item>
     
     <item>
-      <title>Net(1)——iperf 与 netperf 网络性能测量工具</title>
+      <title>Net(1)—iperf 与 netperf 网络性能测量工具</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net1iperf-%E4%B8%8E-netperf-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -2691,7 +2691,7 @@ rpm -ivh xxxx.rpm netperf -V # 安装完以后，会生成两个工具：netserv
     </item>
     
     <item>
-      <title>Web开发(1)——War 文件</title>
+      <title>Web开发(1)—War 文件</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%911war-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -2703,7 +2703,7 @@ War包可以放在Tomcat下的webapps或者word目录下，随着tomcat服务器
     </item>
     
     <item>
-      <title>随记(13)——测试用例的设计</title>
+      <title>随记(13)—测试用例的设计</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B013%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -2726,7 +2726,7 @@ d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量�
     </item>
     
     <item>
-      <title>Linux(3)——Java 与 Tomcat 的配置</title>
+      <title>Linux(3)—Java 与 Tomcat 的配置</title>
       <link>https://ac-lm.github.io/posts/linux/linux3java-%E4%B8%8E-tomcat-%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -2737,7 +2737,7 @@ d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量�
     </item>
     
     <item>
-      <title>Linux(2)——Docker 与防火墙</title>
+      <title>Linux(2)—Docker 与防火墙</title>
       <link>https://ac-lm.github.io/posts/linux/linux2docker-%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</link>
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -2746,7 +2746,7 @@ d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量�
     </item>
     
     <item>
-      <title>Linux(1)——Linux 系统文件</title>
+      <title>Linux(1)—Linux 系统文件</title>
       <link>https://ac-lm.github.io/posts/linux/linux1linux-%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -2756,7 +2756,7 @@ d.正交排列 解释：正交法的目的是为了减少用例数量,用尽量�
     </item>
     
     <item>
-      <title>SQL(4)——事务</title>
+      <title>SQL(4)—事务</title>
       <link>https://ac-lm.github.io/posts/sql/sql4%E4%BA%8B%E5%8A%A1/</link>
       <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2772,7 +2772,7 @@ BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts
     </item>
     
     <item>
-      <title>Python(6)——Qrcode</title>
+      <title>Python(6)—Qrcode</title>
       <link>https://ac-lm.github.io/posts/python/python6qrcode/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2784,7 +2784,7 @@ Qrcode 就是 Python 中二维码的处理库
     </item>
     
     <item>
-      <title>SQL(3)——修改数据</title>
+      <title>SQL(3)—修改数据</title>
       <link>https://ac-lm.github.io/posts/sql/sql3%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2801,7 +2801,7 @@ UPDATE &amp;lt;表名&amp;gt; SET 字段1=值1, 字段2=值2, .</description>
     </item>
     
     <item>
-      <title>SQL(2)——查询数据</title>
+      <title>SQL(2)—查询数据</title>
       <link>https://ac-lm.github.io/posts/sql/sql2%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2818,7 +2818,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>SQL(1)——数据库语言</title>
+      <title>SQL(1)—数据库语言</title>
       <link>https://ac-lm.github.io/posts/sql/sql1%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2839,7 +2839,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>Python(5)——Pyautogui</title>
+      <title>Python(5)—Pyautogui</title>
       <link>https://ac-lm.github.io/posts/python/python5pyautogui/</link>
       <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2849,7 +2849,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>随记(12)——MD5加密与耦合</title>
+      <title>随记(12)—MD5加密与耦合</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B012md5-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</link>
       <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2887,7 +2887,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
     </item>
     
     <item>
-      <title>随记(11)——Web性能测试的指标</title>
+      <title>随记(11)—Web性能测试的指标</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B011web-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2904,7 +2904,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记(10)——并发和并行</title>
+      <title>随记(10)—并发和并行</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B010%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2915,7 +2915,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>Python(4)——Requests</title>
+      <title>Python(4)—Requests</title>
       <link>https://ac-lm.github.io/posts/python/python4requests/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2925,7 +2925,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记(9)——响应时间的组成</title>
+      <title>随记(9)—响应时间的组成</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B09%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2941,7 +2941,7 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记(8)——Web请求</title>
+      <title>随记(8)—Web请求</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B08web-%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2955,7 +2955,7 @@ Session是保存在服务器上用来记录用户状态的机制。客户端浏�
     </item>
     
     <item>
-      <title>Python(3)——xlrd</title>
+      <title>Python(3)—xlrd</title>
       <link>https://ac-lm.github.io/posts/python/python3xlrd/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2966,7 +2966,7 @@ a.获取工作表 table = data.sheets()[0] #通过索引顺序获取 table = dat
     </item>
     
     <item>
-      <title>Web服务器(4)——Nginx解决乱码</title>
+      <title>Web服务器(4)—Nginx解决乱码</title>
       <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A84nginx-%E8%A7%A3%E5%86%B3%E4%B9%B1%E7%A0%81/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -2977,7 +2977,7 @@ upstream you.example.com { server 127.0.0.1:8081; } server { listen 80; server_n
     </item>
     
     <item>
-      <title>随记(7)——为什么要做接口测试</title>
+      <title>随记(7)—为什么要做接口测试</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B07%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3002,7 +3002,7 @@ upstream you.example.com { server 127.0.0.1:8081; } server { listen 80; server_n
     </item>
     
     <item>
-      <title>Python(2)——程序的入口</title>
+      <title>Python(2)—程序的入口</title>
       <link>https://ac-lm.github.io/posts/python/python2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3/</link>
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3014,7 +3014,7 @@ if __name__==&#39;__main__&#39;:2.语义解释 __name__是 python 的内置属�
     </item>
     
     <item>
-      <title>随记(6)——渗透的思路</title>
+      <title>随记(6)—渗透的思路</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B06%E6%B8%97%E9%80%8F%E7%9A%84%E6%80%9D%E8%B7%AF/</link>
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3037,7 +3037,7 @@ PORT STATE SERVICE1/tcp open tcpmux3/tcp open compressnet4/tcp open unknown6
     </item>
     
     <item>
-      <title>随记(5)——什么是接口</title>
+      <title>随记(5)—什么是接口</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B05%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3051,7 +3051,7 @@ PORT STATE SERVICE1/tcp open tcpmux3/tcp open compressnet4/tcp open unknown6
     </item>
     
     <item>
-      <title>随记(4)——如何提高吞吐量</title>
+      <title>随记(4)—如何提高吞吐量</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B04%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/</link>
       <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3071,7 +3071,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>随记(3)——排序算法</title>
+      <title>随记(3)—排序算法</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B03%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3084,7 +3084,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>随记(2)——什么是CSRF</title>
+      <title>随记(2)—什么是CSRF</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B02%E4%BB%80%E4%B9%88%E6%98%AF-csrf/</link>
       <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3096,7 +3096,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>随记(1)——什么是 Kafka</title>
+      <title>随记(1)—什么是 Kafka</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B01%E4%BB%80%E4%B9%88%E6%98%AF-kafka/</link>
       <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -3113,7 +3113,7 @@ PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要�
     </item>
     
     <item>
-      <title>Python(1)——Selenium</title>
+      <title>Python(1)—Selenium</title>
       <link>https://ac-lm.github.io/posts/python/python1selenium/</link>
       <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
       
@@ -3126,7 +3126,7 @@ input id=&amp;quot;kw&amp;quot; class=&amp;quot;s_ipt&amp;quot; name=&amp;quot;w
     </item>
     
     <item>
-      <title>Web服务器(3)——动-静态网页</title>
+      <title>Web服务器(3)—动-静态网页</title>
       <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A83%E5%8A%A8-%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       
@@ -3135,7 +3135,7 @@ input id=&amp;quot;kw&amp;quot; class=&amp;quot;s_ipt&amp;quot; name=&amp;quot;w
     </item>
     
     <item>
-      <title>Web服务器(2)——Apache &amp; Tomcat</title>
+      <title>Web服务器(2)—Apache &amp; Tomcat</title>
       <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A82apache-tomcat/</link>
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
@@ -3144,7 +3144,7 @@ input id=&amp;quot;kw&amp;quot; class=&amp;quot;s_ipt&amp;quot; name=&amp;quot;w
     </item>
     
     <item>
-      <title>Web服务器(1)——Nginx 反向代理</title>
+      <title>Web服务器(1)—Nginx 反向代理</title>
       <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A81nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
       

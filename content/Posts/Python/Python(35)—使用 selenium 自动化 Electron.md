@@ -1,5 +1,5 @@
 ---
-title: Python(35)——使用 selenium 自动化 Electron
+title: Python(35)—使用 selenium 自动化 Electron
 date: 2021-09-17
 author: LM
 ---

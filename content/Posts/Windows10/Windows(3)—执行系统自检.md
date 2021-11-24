@@ -1,5 +1,5 @@
 ---
-title: Windows(3)——执行系统自检
+title: Windows(3)—执行系统自检
 date: 2021-03-30
 author: LM
 ---

@@ -1,5 +1,5 @@
 ---
-title: Python(24)——获取 input 输入的文本值
+title: Python(24)—获取 input 输入的文本值
 date: 2021-03-26
 author: LM
 ---

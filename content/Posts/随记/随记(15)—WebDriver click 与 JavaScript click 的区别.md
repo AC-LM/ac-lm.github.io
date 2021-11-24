@@ -1,5 +1,5 @@
 ---
-title: 随记(15)——WebDriver click与JavaScript click的区别
+title: 随记(15)—WebDriver click与JavaScript click的区别
 date: 2020-12-01
 author: LM
 ---

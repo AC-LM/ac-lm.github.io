@@ -1,5 +1,5 @@
 ---
-title: Windows(6)——Python 环境变量不生效
+title: Windows(6)—Python 环境变量不生效
 date: 2021-08-27
 author: LM
 ---

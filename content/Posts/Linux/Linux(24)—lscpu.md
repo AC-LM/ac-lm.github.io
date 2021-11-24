@@ -1,5 +1,5 @@
 ---
-title: Linux(24)——lscpu
+title: Linux(24)—lscpu
 date: 2021-11-15
 author: LM
 ---

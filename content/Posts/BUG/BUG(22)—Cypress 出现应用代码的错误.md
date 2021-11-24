@@ -1,5 +1,5 @@
 ---
-title: BUG(22)——Cypress 出现应用代码的错误
+title: BUG(22)—Cypress 出现应用代码的错误
 date: 2021-09-18
 author: LM
 ---

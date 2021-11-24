@@ -1,5 +1,5 @@
 ---
-title: PyQt5(5)——最大最小关闭按钮的隐藏
+title: PyQt5(5)—最大最小关闭按钮的隐藏
 date: 2020-12-17
 author: LM
 ---

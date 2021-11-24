@@ -1,5 +1,5 @@
 ---
-title: Python(20)——Web LocalStorage 修改
+title: Python(20)—Web LocalStorage 修改
 date: 2021-01-16
 author: LM
 ---

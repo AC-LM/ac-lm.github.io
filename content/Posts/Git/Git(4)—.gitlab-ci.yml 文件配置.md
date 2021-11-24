@@ -1,5 +1,5 @@
 ---
-title: Git(4)——.gitlab-ci.yml 文件配置
+title: Git(4)—.gitlab-ci.yml 文件配置
 date: 2021-01-13
 author: LM
 ---

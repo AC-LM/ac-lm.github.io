@@ -1,5 +1,5 @@
 ---
-title: Python(14)——获取当前页面URL
+title: Python(14)—获取当前页面URL
 date: 2021-01-04
 author: LM
 ---

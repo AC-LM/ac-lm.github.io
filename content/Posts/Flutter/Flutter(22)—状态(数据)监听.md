@@ -1,5 +1,5 @@
 ---
-title: Flutter(22)——状态(数据)监听
+title: Flutter(22)—状态(数据)监听
 date: 2021-07-23
 author: LM
 ---

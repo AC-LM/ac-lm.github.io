@@ -1,5 +1,5 @@
 ---
-title: Python(16)——ddt 模块
+title: Python(16)—ddt 模块
 date: 2021-01-06
 author: LM
 ---

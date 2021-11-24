@@ -1,5 +1,5 @@
 ---
-title: allure(1)——测试报告生成
+title: allure(1)—测试报告生成
 date: 2021-01-05
 author: LM
 ---

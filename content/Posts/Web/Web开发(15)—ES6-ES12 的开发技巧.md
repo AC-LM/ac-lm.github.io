@@ -1,5 +1,5 @@
 ---
-title: Web开发(15)——ES6-ES12的开发技巧
+title: Web开发(15)—ES6-ES12的开发技巧
 date: 2021-09-17
 author: LM
 ---

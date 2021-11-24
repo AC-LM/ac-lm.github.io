@@ -1,5 +1,5 @@
 ---
-title: Web开发(13)——控制台输出
+title: Web开发(13)—控制台输出
 date: 2021-08-26
 author: LM
 ---

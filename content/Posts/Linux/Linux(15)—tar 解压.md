@@ -1,5 +1,5 @@
 ---
-title: Linux(15)——tar解压
+title: Linux(15)—tar解压
 date: 2021-04-30
 author: LM
 ---

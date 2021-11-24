@@ -1,5 +1,5 @@
 ---
-title: BUG(13)——Linux中Chrome无法启动缺少权限
+title: BUG(13)—Linux中Chrome无法启动缺少权限
 date: 2021-01-13
 author: LM
 ---

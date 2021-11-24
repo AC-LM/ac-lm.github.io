@@ -1,5 +1,5 @@
 ---
-title: Pytest(2)——fixture
+title: Pytest(2)—fixture
 date: 2021-01-15
 author: LM
 ---

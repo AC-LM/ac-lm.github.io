@@ -1,5 +1,5 @@
 ---
-title: Linux(12)——MTR 链路测试工具
+title: Linux(12)—MTR 链路测试工具
 date: 2020-12-03
 author: LM
 ---

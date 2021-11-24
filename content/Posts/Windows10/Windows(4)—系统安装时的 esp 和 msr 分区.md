@@ -1,5 +1,5 @@
 ---
-title: Windows(4)——系统安装时的 esp 和 msr 分区
+title: Windows(4)—系统安装时的 esp 和 msr 分区
 date: 2021-03-31
 author: LM
 ---

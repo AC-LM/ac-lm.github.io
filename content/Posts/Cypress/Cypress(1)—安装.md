@@ -1,5 +1,5 @@
 ---
-title: Cypress(1)——安装
+title: Cypress(1)—安装
 date: 2021-09-10
 author: LM
 ---

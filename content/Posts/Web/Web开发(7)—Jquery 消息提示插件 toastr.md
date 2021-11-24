@@ -1,5 +1,5 @@
 ---
-title: Web开发(7)——Jquery 消息提示插件 toastr
+title: Web开发(7)—Jquery 消息提示插件 toastr
 date: 2021-06-04
 author: LM
 ---

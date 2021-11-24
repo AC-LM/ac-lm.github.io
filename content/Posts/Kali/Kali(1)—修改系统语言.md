@@ -1,5 +1,5 @@
 ---
-title: Kali(1)——修改系统语言
+title: Kali(1)—修改系统语言
 date: 2021-06-07
 author: LM
 ---

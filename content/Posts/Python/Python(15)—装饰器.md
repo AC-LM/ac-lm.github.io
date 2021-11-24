@@ -1,5 +1,5 @@
 ---
-title: Python(15)——装饰器
+title: Python(15)—装饰器
 date: 2021-01-05
 author: LM
 ---

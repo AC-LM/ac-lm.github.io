@@ -1,5 +1,5 @@
 ---
-title: Python(12)——多线程的返回值
+title: Python(12)—多线程的返回值
 date: 2020-12-14
 author: LM
 ---

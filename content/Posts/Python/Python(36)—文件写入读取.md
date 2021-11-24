@@ -1,5 +1,5 @@
 ---
-title: Python(36)——文件写入读取
+title: Python(36)—文件写入读取
 date: 2021-09-18
 author: LM
 ---

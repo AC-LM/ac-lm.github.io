@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/pyqt5/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PyQt5(14)——程序的启动</title>
+      <title>PyQt5(14)—程序的启动</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt514%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -18,7 +18,7 @@
     </item>
     
     <item>
-      <title>PyQt5(13)——非模式显示 show 与模式 exec_</title>
+      <title>PyQt5(13)—非模式显示 show 与模式 exec_</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt513%E9%9D%9E%E6%A8%A1%E5%BC%8F%E6%98%BE%E7%A4%BA-show-%E4%B8%8E%E6%A8%A1%E5%BC%8F-exec_/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -29,7 +29,7 @@
     </item>
     
     <item>
-      <title>PyQt5(12)——QMessageBox 消息对话框类</title>
+      <title>PyQt5(12)—QMessageBox 消息对话框类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt512qmessagebox-%E6%B6%88%E6%81%AF%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -38,7 +38,7 @@
     </item>
     
     <item>
-      <title>PyQt5(11)——QTextEdit 文本元件</title>
+      <title>PyQt5(11)—QTextEdit 文本元件</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt511qtextedit-%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -47,7 +47,7 @@
     </item>
     
     <item>
-      <title>PyQt5(10)——QLineEdit 文本元件</title>
+      <title>PyQt5(10)—QLineEdit 文本元件</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt510qlineedit-%E6%96%87%E6%9C%AC%E5%85%83%E4%BB%B6/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -56,7 +56,7 @@
     </item>
     
     <item>
-      <title>PyQt5(9)——QInputDialog 输入对话框类</title>
+      <title>PyQt5(9)—QInputDialog 输入对话框类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt59qinputdialog-%E8%BE%93%E5%85%A5%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/</link>
       <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -67,7 +67,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>PyQt5(8)——QFileDialog 文件类</title>
+      <title>PyQt5(8)—QFileDialog 文件类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt58qfiledialog-%E6%96%87%E4%BB%B6%E7%B1%BB/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -76,7 +76,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>PyQt5(7)——QDialog 消息提示类</title>
+      <title>PyQt5(7)—QDialog 消息提示类</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt57qdialog-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E7%B1%BB/</link>
       <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -86,7 +86,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
     </item>
     
     <item>
-      <title>PyQt5(6)——信号和槽</title>
+      <title>PyQt5(6)—信号和槽</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt56%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD/</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -99,7 +99,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(5)——最大最小关闭按钮的隐藏</title>
+      <title>PyQt5(5)—最大最小关闭按钮的隐藏</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt55%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE%E7%9A%84%E9%9A%90%E8%97%8F/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -108,7 +108,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(4)——退出事件的重写</title>
+      <title>PyQt5(4)—退出事件的重写</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt54%E9%80%80%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%87%8D%E5%86%99/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -117,7 +117,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(3)——QProgressDialog 进度条</title>
+      <title>PyQt5(3)—QProgressDialog 进度条</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt53qprogressdialog-%E8%BF%9B%E5%BA%A6%E6%9D%A1/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -129,7 +129,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(2)——焦点控制</title>
+      <title>PyQt5(2)—焦点控制</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt52%E7%84%A6%E7%82%B9%E6%8E%A7%E5%88%B6/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -138,7 +138,7 @@ bool QObject::connect( const QObject * sender, const char * signal, const QObjec
     </item>
     
     <item>
-      <title>PyQt5(1)——安装</title>
+      <title>PyQt5(1)—安装</title>
       <link>https://ac-lm.github.io/posts/pyqt5/pyqt51%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       

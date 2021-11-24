@@ -1,5 +1,5 @@
 ---
-title: Pytest(5)——数据参数化
+title: Pytest(5)—数据参数化
 date: 2021-07-23
 author: LM
 ---

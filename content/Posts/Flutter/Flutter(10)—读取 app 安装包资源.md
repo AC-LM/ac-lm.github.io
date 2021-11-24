@@ -1,5 +1,5 @@
 ---
-title: Flutter(10)——读取 app 安装包资源
+title: Flutter(10)—读取 app 安装包资源
 date: 2021-05-11
 author: LM
 ---

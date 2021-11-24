@@ -1,5 +1,5 @@
 ---
-title: Web服务器(4)——Nginx解决乱码
+title: Web服务器(4)—Nginx解决乱码
 date: 2020-09-16
 author: LM
 ---

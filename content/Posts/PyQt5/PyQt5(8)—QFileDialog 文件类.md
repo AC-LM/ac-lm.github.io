@@ -1,5 +1,5 @@
 ---
-title: PyQt5(8)——QFileDialog 文件类
+title: PyQt5(8)—QFileDialog 文件类
 date: 2020-12-20
 author: LM
 ---

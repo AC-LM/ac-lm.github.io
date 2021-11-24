@@ -1,5 +1,5 @@
 ---
-title: Python(8)——字典取值
+title: Python(8)—字典取值
 date: 2020-12-10
 author: LM
 ---

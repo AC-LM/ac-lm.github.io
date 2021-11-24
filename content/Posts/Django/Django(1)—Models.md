@@ -1,5 +1,5 @@
 ---
-title: Django(1)——Models
+title: Django(1)—Models
 date: 2021-06-01
 author: LM
 ---
