@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -127,9 +124,9 @@
   }
 }
 </code></pre></div><ul>
-<li>MyApp类代表Flutter应用，它继承自 StatelessWidget 类。</li>
-<li>在Flutter中，大多数东西都是以 widget 的形式提供，包括对齐(alignment)、填充(padding)和布局(layout)等。</li>
-<li>Flutter 在构建页面时，会调用组件的 build 方法，widget 的主要工作是提供一个 build() 方法来描述如何构建UI界面（通常是通过组合、拼装其它基础widget）。</li>
+<li>MyApp 类代表 Flutter 应用，它继承自 StatelessWidget 类。</li>
+<li>在 Flutter 中，大多数东西都是以 widget 的形式提供，包括对齐(alignment)、填充(padding)和布局(layout)等。</li>
+<li>Flutter 在构建页面时，会调用组件的 build 方法，widget 的主要工作是提供一个 build() 方法来描述如何构建 UI 界面（通常是通过组合、拼装其它基础 widget）。</li>
 <li>MaterialApp 是 Material 库中提供的 Flutter APP 框架，通过它可以设置应用的名称、主题、语言、首页及路由列表等。MaterialApp 也是一个 widget。</li>
 <li>home 为 Flutter 应用的首页，它也是一个 widget。</li>
 </ul>
@@ -145,7 +142,7 @@
  ...
 }
 </code></pre></div><ul>
-<li>MyHomePage 是 Flutter 应用的首页，它继承自StatefulWidget类，表示它是一个有状态的组件。</li>
+<li>MyHomePage 是 Flutter 应用的首页，它继承自 StatefulWidget 类，表示它是一个有状态的组件。</li>
 <li>_MyHomePageState 类是 MyHomePage 类对应的状态类。和 MyApp 类不同， MyHomePage 类中并没有 build 方法，取而代之的是，build 方法被挪到了 MyHomePage 类对应的状态类中。这样做是使得类的构建和 UI 界面的构建进行分离</li>
 </ul>
 <h3 id="3界面构建">3）界面构建</h3>
@@ -176,7 +173,7 @@
     );
   }
 </code></pre></div><ul>
-<li>Scaffold 是 Material 库中提供的页面脚手架，它提供了默认的导航栏、标题和包含主屏幕widget树的body属性。</li>
+<li>Scaffold 是 Material 库中提供的页面脚手架，它提供了默认的导航栏、标题和包含主屏幕 widget 树的 body 属性。</li>
 <li>body 的组件树中包含了一个 Center 组件，Center 可以将其子组件树对齐到屏幕中心。此例中， Center 子组件是一个 Column 组件，Column 的作用是将其所有子组件沿屏幕垂直方向依次排列； 此例中 Column 子组件是两个 Text，第一个Text 显示固定文本 “You have pushed the button this many times:”，第二个 Text 显示 _counter 状态的数值。</li>
 <li>floatingActionButton 是出现在页面右下角的带“+”的悬浮按钮，它的 onPressed 属性接受一个回调函数，代表它被点击后的处理器，本例中将 _incrementCounter 方法作为其处理函数。</li>
 </ul>
@@ -193,8 +190,6 @@
     
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
-        
-          <li><a href="https://ac-lm.github.io/posts/flutter/z1/" class="button large previous">上一页</a></li>
         
         
           <li><a href="https://ac-lm.github.io/posts/flutter/flutter2%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" class="button large next">下一页</a></li>

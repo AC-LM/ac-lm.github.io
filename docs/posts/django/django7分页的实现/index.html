@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -42,7 +39,7 @@
         </header>
         <div class="content">
             <h2 id="1paginator">1.Paginator</h2>
-<h3 id="官方示例viewpy">官方示例：<code>view.py</code></h3>
+<h3 id="viewpy">view.py</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.core.paginator <span style="color:#f92672">import</span> Paginator, EmptyPage, PageNotAnInteger
 <span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render
  
@@ -62,7 +59,7 @@
  
     <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;list.html&#39;</span>, {<span style="color:#e6db74">&#39;contacts&#39;</span>: contacts})
 
-</code></pre></div><h3 id="官方示例html">官方示例：<code>html</code></h3>
+</code></pre></div><h3 id="examplehtml">Example.html</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{% for contact in contacts %}
     {# Each &#34;contact&#34; is a Contact model object. #}
     {{ contact.full_name|upper }}&lt;<span style="color:#f92672">br</span> /&gt;
@@ -98,7 +95,7 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/django/django6%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django6bash-%E5%91%BD%E4%BB%A4/" class="button large previous">上一页</a></li>
         
         
           <li><a href="https://ac-lm.github.io/posts/django/django8%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/" class="button large next">下一页</a></li>

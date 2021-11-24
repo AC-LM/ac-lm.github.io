@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -44,12 +41,13 @@
             <blockquote>
 <p>参考原文：<a href="https://www.jb51.net/article/176257.htm"> Linux 添加开机启动方法(服务/脚本)  @jb51 </a></p>
 </blockquote>
+<h2 id="1系统启动文件">1.系统启动文件</h2>
 <p>系统启动时按顺序加载以下的配置文件，要设置开机启动任务即修改以下部分文件</p>
 <pre tabindex="0"><code>/etc/profile、/root/.bash_profile
 /etc/bashrc、/root/.bashrc
 /etc/profile.d/*.sh、/etc/profile.d/lang.sh
 /etc/sysconfig/i18n、/etc/rc.local（/etc/rc.d/rc.local）
-</code></pre><h2 id="1修改开机启动文件etcrclocal或者etcrcdrclocal">1.修改开机启动文件：/etc/rc.local（或者/etc/rc.d/rc.local）</h2>
+</code></pre><h2 id="2修改开机启动文件etcrclocal或者etcrcdrclocal">2.修改开机启动文件：/etc/rc.local（或者/etc/rc.d/rc.local）</h2>
 <pre tabindex="0"><code># 1.编辑rc.local文件
 [root@localhost ~]# vi /etc/rc.local
  
@@ -62,9 +60,9 @@ supervisord -c /etc/supervisor/supervisord.conf         # supervisord开机启�
 # 3.最后修改rc.local文件的执行权限
 [root@localhost ~]# chmod +x /etc/rc.local
 [root@localhost ~]# chmod 755 /etc/rc.local
-</code></pre><h2 id="2shell脚本的启动">2.shell脚本的启动</h2>
+</code></pre><h2 id="3shell脚本的启动">3.shell脚本的启动</h2>
 <p>将写好的脚本（.sh文件）放到目录 /etc/profile.d/  下，系统启动后就会自动执行该目录下的所有shell脚本。</p>
-<h2 id="3通过chkconfig命令设置">3.通过chkconfig命令设置</h2>
+<h2 id="4通过chkconfig命令设置">4.通过chkconfig命令设置</h2>
 <pre tabindex="0"><code># 1.将(脚本)启动文件移动到 /etc/init.d/ 或者 /etc/rc.d/init.d/ 目录下。（前者是后者的软连接）
 mv /www/wwwroot/test.sh /etc/rc.d/init.d
  
@@ -90,7 +88,7 @@ chmod +x /etc/rc.d/init.d/test.sh
  
 # 7.查看chkconfig管理
 [root@localhost ~]# chkconfig --list test.sh
-</code></pre><h2 id="4自定义服务文件-通过systemctl管理">4.自定义服务文件, 通过Systemctl管理</h2>
+</code></pre><h2 id="5自定义服务文件-通过systemctl管理">5.自定义服务文件, 通过Systemctl管理</h2>
 <h3 id="1写服务文件">1.写服务文件</h3>
 <p>如 nginx.service、redis.service、supervisord.service</p>
 <pre tabindex="0"><code>[Unit]:服务的说明
@@ -154,10 +152,10 @@ WantedBy=multi-user.target
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux20%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9-docker-%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/linux/linux22top%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/linux/linux22top-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

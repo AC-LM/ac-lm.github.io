@@ -8,30 +8,118 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 30 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Python(41)——matplotlib 的 backend</title>
+      <link>https://ac-lm.github.io/posts/python/python43matplotlib-%E7%9A%84-backend/</link>
+      <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python43matplotlib-%E7%9A%84-backend/</guid>
+      <description>matplotlib的backend浅析 @王云峰 
+ 1.matplotlib 的 backend 浅析 在服务器使用matplotlib的时候，可能是因为没有装图形化和显示相关的包的原因，总是会出现backend相关的错误。
+在 matplotlib 中，frontend 就是我们写的代码，而 backend 就是负责显示我们代码所写图形的底层代码。因为不同使用环境下硬件情况不同，所以后端是跟具体的硬件和显示条件相关的。
+2.backend 的类别 backend 又分为两类，一类是 interface backend，又叫做 interactive backend，这一类是表示跟显示到屏幕相关的后端；另一类是 hardcopy backend，又叫做 non-interactive backend，这一类是写入到文件相关的后端。
+non-interactive backend
+interactive backend
+import matplotlib matplotlib.rcsetup.interactive_bk # 获取 interactive backend matplotlib.rcsetup.non_interactive_bk # 获取 non-interactive backend matplotlib.rcsetup.all_backends # 获取 所有 backend 3.设置 backend 在代码中，有 4 种方式可以来设置 matplotlib 的 backend，而且下列中越后面的设置方式，优先级越高，后面的设置会覆盖前面的设置。
+a.通过设置 matplotlibrc 的配置文件来设置 注意 matplotlibrc 文件不一定在你的工程目录下，可以通过如下命令来获取其存放位置:
+import matplotlib matplotlib.get_configdir() u&amp;#39;/home/yunfeng/.config/matplotlib&amp;#39; 得到配置文件路径后，打开这个文件，写入如下一行来设置 backend:
+backend : WXAgg # use wxpython with antigrain (agg) rendering 其中的 WXAgg 可以换成任意的你的系统支持的 backend 类型。 注意：backend 不区分大小写</description>
+    </item>
+    
+    <item>
+      <title>Python(41)——matplotlib 绘图</title>
+      <link>https://ac-lm.github.io/posts/python/python42matplotlib-%E7%BB%98%E5%9B%BE/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python42matplotlib-%E7%BB%98%E5%9B%BE/</guid>
+      <description>Python绘图与可视化 @小杜同学的嘚啵嘚 
+ 1.使用 Matplotlib 进行绘图 所谓“一图胜千言”，我们很多时候需要通过可视化的方式查看、分析数据，我们可以导入 Matplotlib 包，并通过 Pyplot 对 Matplotlib 进行操作来绘图
+安装：pip install matplotlib
+import matplotlib.pyplot as plt # 约定俗成的写法 plt # 首先定义两个函数（正弦&amp;amp;余弦） import numpy as np X=np.linspace(-np.pi,np.pi,256,endpoint=True) # -π，to+π 的 256 个值 C,S=np.cos(X),np.sin(X) plt.plot(X,C) plt.plot(X,S) plt.show() 2.绘图命令的基本架构及其属性设置 上面的例子我们可以看出，几乎所有的属性和绘图的框架我们都选用默认设置。其作图时先要定义一个画布，此处的画布就是 Figure，然后再把其他素材“画”到该 Figure 上。
+a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如‘b--’表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.ylabel(&amp;#34;Volt&amp;#34;) plt.title(&amp;#34;PyPlot First Example&amp;#34;) &amp;#39;&amp;#39;&amp;#39; 使用关键字参数可以指定所绘制的曲线的各种属性： label：给曲线指定一个标签名称，此标签将在图标中显示。如果标签字符串的前后都有字符&amp;#39;$&amp;#39;，则Matplotlib会使用其内嵌的LaTex引擎将其显示为数学公式 color：指定曲线的颜色。颜色可以用如下方法表示 英文单词 以‘#’字符开头的3个16进制数，如‘#ff0000’表示红色。 以0~1的RGB表示，如（1.</description>
+    </item>
+    
+    <item>
+      <title>Python(41)——pyinstaller 打包</title>
+      <link>https://ac-lm.github.io/posts/python/python41pyinstaller-%E6%89%93%E5%8C%85/</link>
+      <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python41pyinstaller-%E6%89%93%E5%8C%85/</guid>
+      <description> PyInstaller Manual @PyInstaller 4.6 documentation 
+ pyinstaller pyinstaller 是 Python 的一个打包可执行文件的打包工具。其会根据平台不同进行打包，在 Windows 上打包 Windows 应用，在 Linux 上打包 Linux 的，不能交叉打包
+# pyinstaller -F (单个可执行文件) 程序源 -n 程序名 -w(去掉控制台窗口，这在GUI界面时非常有用) -i 图标.ico” pyinstaller -F test1/Demo_Test1_Python.py </description>
+    </item>
+    
+    <item>
+      <title>Python(40)——获取当前文件路径</title>
+      <link>https://ac-lm.github.io/posts/python/python40%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python40%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84/</guid>
+      <description>1.sys.path[0] 获取文件当前工作目录路径（绝对路径）
+2.__file__ 获得文件所在的路径（由系统决定是否是全名）
+3.os.path.abspath(__ file __) 获得文件所在的路径（绝对路径）
+4.os.path.split(os.path.realpath(__ file __)) 将文件路径名称分成头和尾一对，生成二元元组（文件目录，文件名）</description>
+    </item>
+    
+    <item>
+      <title>Python(39)——Selenium executable_path 警告</title>
+      <link>https://ac-lm.github.io/posts/python/python39selenium-executable_path-%E8%AD%A6%E5%91%8A/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python39selenium-executable_path-%E8%AD%A6%E5%91%8A/</guid>
+      <description>1.Executable path has been deprecated please pass in a Service object in Selenium Python 使用 Selenium 时，程序正常运行，但出现 DeprecationWarning 警告的类型错误。这是由于版本更新时，所使用的方法过时的原因，表示该函数在当前版本被重构，还可以传入参数，但是在之后的某个版本会被删除.
+查询当前版本重构后的函数，是之前的 executable_path 被重构到了 Service 函数里
+from selenium import webdriver from selenium.webdriver.chrome.service import Service s = Service(r&amp;#34;D:\Software\webdrivers\chromedriver.exe&amp;#34;) driver = webdriver.Chrome(service=s) driver.get(&amp;#39;https://www.baidu.com&amp;#39;) driver.close() </description>
+    </item>
+    
+    <item>
+      <title>Python(38)——MultipartEncoder 上传文件</title>
+      <link>https://ac-lm.github.io/posts/python/python38multipartencoder-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python38multipartencoder-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/</guid>
+      <description>上传文件模块 MultipartEncoder @山猪打不过家猪 
+ 1.上传文件模块 MultipartEncoder MultipartEncoder 是使用于上传文件的一个模块，其包含在模块 requests_toolbelt 中
+pip install requests_toolbelt 官方提供了上传文件时 MultipartEncoder 的示例用法
+from requests_toolbelt import MultipartEncoder encoder = MultipartEncoder({ &amp;#39;field&amp;#39;: (&amp;#39;file_name&amp;#39;, b&amp;#39;{&amp;#34;a&amp;#34;: &amp;#34;b&amp;#34;}&amp;#39;, &amp;#39;application/json&amp;#39;, {&amp;#39;X-My-Header&amp;#39;: &amp;#39;my-value&amp;#39;}) }) # field：服务端约定的上传文件字段名。一般用到的是file，需要和服务端沟通获取 # file_name: 文件名。一般可以任意写，服务端大多是拿到文件后自己再次命名 # b&amp;#39;{&amp;#34;a&amp;#34;:&amp;#34;b&amp;#34;}&amp;#39;：文件内容，以二进制代码存在。例：open(&amp;#39;/your/file/path&amp;#39;, &amp;#39;rb&amp;#39;) # &amp;#39;application/json&amp;#39;：文件的MimeType。不同文件类型需要对应不同的 MimeType # {&amp;#39;X-My-Header&amp;#39;: &amp;#39;my-value&amp;#39;}：其他内容，可不传。 payload = { &amp;#39;file&amp;#39;: (&amp;#39;upload.pdf&amp;#39;, open(&amp;#39;sync_test.pdf&amp;#39;, &amp;#39;rb&amp;#39;), &amp;#39;application/pdf&amp;#39;) } m = MultipartEncoder(payload) 参照官方给予的示例代码，我们可以仿照仿照出下列代码
+import requests from requests_toolbelt import MultipartEncoder upload_url = &amp;#39;https://your/upload/url&amp;#39; payload = { &amp;#39;file&amp;#39;: (&amp;#39;upload.</description>
+    </item>
+    
+    <item>
+      <title>Python(37)——#noqa</title>
+      <link>https://ac-lm.github.io/posts/python/python37#noqa/</link>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/python/python37#noqa/</guid>
+      <description>#noqas 将 #noqa 添加到一行表示 IDE 的 linter 代码质量检查程序不应该检查此行，该代码可能生成的任何警告都将被忽略。
+import Nothing #noqa </description>
+    </item>
+    
+    <item>
       <title>Python(36)——文件写入读取</title>
       <link>https://ac-lm.github.io/posts/python/python36%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E8%AF%BB%E5%8F%96/</link>
       <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python36%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E8%AF%BB%E5%8F%96/</guid>
-      <description>只读模式打开文件 打开一个文件用 open() 方法，open()会返回一个可迭代的文件对象：
+      <description>1.只读模式打开文件 打开一个文件用 open() 方法，open()会返回一个可迭代的文件对象：
 &amp;gt;&amp;gt;&amp;gt; f = open(&#39;test.txt&#39;, &#39;r&#39;) r 表示是文本文件，rb 是二进制文件，函数默认值就是 r
 如果文件不存在，open()函数就会抛出一个 IOError 的错误，并且给出错误码和详细的信息告诉你文件不存在：
 &amp;gt;&amp;gt;&amp;gt; f=open(&#39;test.txt&#39;, &#39;r&#39;) Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; FileNotFoundError: [Errno 2] No such file or directory: &#39;test.txt&#39; 文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的
 &amp;gt;&amp;gt;&amp;gt; f.close() 由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，Python 引入了with语句来自动帮我们调用close()方法：
-with open(&#39;/path/to/file&#39;, &#39;r&#39;) as f: print(f.read()) 读取文件 python 文件对象提供了三个读方法： read()、readline()、readlines()，每种方法可以接受一个变量以限制每次读取的数据量。
+with open(&#39;/path/to/file&#39;, &#39;r&#39;) as f: print(f.read()) 2.读取文件 python 文件对象提供了三个读方法： read()、readline()、readlines()，每种方法可以接受一个变量以限制每次读取的数据量。
  read()会读取整个文件，并将文件内容放到一个字符串变量中。注意，如果文件大于可用内存，则程序可能会报错，因此，为了保险起见，可以通过调用read(size)方法，指定每次最多读取 size 个字节的内容。 readlines() 会读取整个文件，像read()一样，但是readlines()会自动将文件内容分析成一个行的列表，该列表可以进行迭代。 readline()每次只读取一行，并将结果放入一个字符串变量中。  PS：上述三种方法都会把每行末尾的\n也一并读取。
-写入模式打开文件 写文件和读文件是一样的，唯一区别是调用open()函数时，需要传入标识符&#39;w&#39;或者&#39;wb&#39;表示写文本文件或写二进制文件：
+3.写入模式打开文件 写文件和读文件是一样的，唯一区别是调用open()函数时，需要传入标识符&#39;w&#39;或者&#39;wb&#39;表示写文本文件或写二进制文件：
 &amp;gt;&amp;gt;&amp;gt; f = open(&#39;test.txt&#39;, &#39;w&#39;) # 若是&#39;wb&#39;就表示写二进制文件 &amp;gt;&amp;gt;&amp;gt; f.</description>
     </item>
     
     <item>
-      <title>Python(35)——使用selenium自动化Electron软件</title>
-      <link>https://ac-lm.github.io/posts/python/python35%E4%BD%BF%E7%94%A8selenium%E8%87%AA%E5%8A%A8%E5%8C%96electron%E8%BD%AF%E4%BB%B6/</link>
+      <title>Python(35)——使用 selenium 自动化 Electron</title>
+      <link>https://ac-lm.github.io/posts/python/python35%E4%BD%BF%E7%94%A8-selenium-%E8%87%AA%E5%8A%A8%E5%8C%96-electron/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python35%E4%BD%BF%E7%94%A8selenium%E8%87%AA%E5%8A%A8%E5%8C%96electron%E8%BD%AF%E4%BB%B6/</guid>
-      <description>原理 Electron 是一个基于 Node.js 和 Chromium 的开源框架，由于 Chromium 是谷歌浏览器的内核，因此我们可以把 Electron 看做是一个特别的浏览器。既然是浏览器，那显然可以使用 webdriver 对其进行控制，在 Python 中通过 selenium 实现对 Electron 的自动化测试。
-实现 from selenium import webdriver options = webdriver.ChromeOptions() options.binary_location = &amp;#34;/Applications/Electron.app/Contents/MacOS/Electron&amp;#34; driver = webdriver.Chrome(options=options, executable_path=&amp;#39;chromedriver.exe&amp;#39;) # t = driver.find_elements_by_css_selector(&amp;#34;.el-input__inner&amp;#34;) # t[0].send_keys(&amp;#39;123456&amp;#39;) # t[1].send_keys(&amp;#39;123456&amp;#39;) # sleep(3) # driver.find_element_by_css_selector(&amp;#34;.submit-item button&amp;#34;).click() driver.quit() </description>
+      <guid>https://ac-lm.github.io/posts/python/python35%E4%BD%BF%E7%94%A8-selenium-%E8%87%AA%E5%8A%A8%E5%8C%96-electron/</guid>
+      <description>1.原理 Electron 是一个基于 Node.js 和 Chromium 的开源框架，由于 Chromium 是谷歌浏览器的内核，因此我们可以把 Electron 看做是一个特别的浏览器。既然是浏览器，那显然可以使用 webdriver 对其进行控制，在 Python 中通过 selenium 实现对 Electron 的自动化测试。
+2.实现 from selenium import webdriver options = webdriver.ChromeOptions() options.binary_location = &amp;#34;/Applications/Electron.app/Contents/MacOS/Electron&amp;#34; driver = webdriver.Chrome(options=options, executable_path=&amp;#39;chromedriver.exe&amp;#39;) # t = driver.find_elements_by_css_selector(&amp;#34;.el-input__inner&amp;#34;) # t[0].send_keys(&amp;#39;123456&amp;#39;) # t[1].send_keys(&amp;#39;123456&amp;#39;) # sleep(3) # driver.find_element_by_css_selector(&amp;#34;.submit-item button&amp;#34;).click() driver.quit() </description>
     </item>
     
     <item>
@@ -40,28 +128,28 @@ with open(&#39;/path/to/file&#39;, &#39;r&#39;) as f: print(f.read()) 读取文�
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python34%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6%E5%90%8D%E5%AD%97/</guid>
-      <description>如何生成中文字符 1.Unicode 编码 在 Unicode 编码中，汉字的范围是（ 0x4E00，9FBF），因此我们可以从中取值生成中文字符。需要注意的是，Unicode 编码中收录了 2 万多个汉字，其中包含很多生僻的繁体字。
+      <description>一.如何生成中文字符 1.Unicode 编码 在 Unicode 编码中，汉字的范围是（ 0x4E00，9FBF），因此我们可以从中取值生成中文字符。需要注意的是，Unicode 编码中收录了 2 万多个汉字，其中包含很多生僻的繁体字。
 import random def Unicode(): val = random.randint(0x4e00, 0x9fbf) return chr(val) 2.GBK2312 GBK2312 对字符的编码采用的是两个字节相组合，中文字符第一个字节的范围是（ 0xB0-0xF7 ），第二个字节的范围是（ 0xA1- 0xFE），GBK2312 收录了 6 千多常用汉字。
 import random def GBK2312(): head = random.randint(0xb0, 0xf7) body = random.randint(0xa1, 0xf9) # 在head区号为55的那一块最后5个汉字是乱码,为了方便缩减下范围 val = f&amp;#39;{head:x}{body:x}&amp;#39; str = bytes.fromhex(val).decode(&amp;#39;gb2312&amp;#39;) return str 3.自行生成字典 def second_name(): # 随机取名字典 second_name_list = [ &amp;#39;秀&amp;#39;, &amp;#39;娟&amp;#39;, &amp;#39;英&amp;#39;, &amp;#39;华&amp;#39;, &amp;#39;慧&amp;#39;, &amp;#39;巧&amp;#39;, &amp;#39;美&amp;#39;, &amp;#39;娜&amp;#39;, &amp;#39;静&amp;#39;, &amp;#39;淑&amp;#39;, &amp;#39;惠&amp;#39;, &amp;#39;珠&amp;#39;, &amp;#39;翠&amp;#39;, &amp;#39;雅&amp;#39;, &amp;#39;芝&amp;#39;, &amp;#39;玉&amp;#39;, &amp;#39;萍&amp;#39;, &amp;#39;红&amp;#39;, &amp;#39;娥&amp;#39;, &amp;#39;玲&amp;#39;, &amp;#39;芬&amp;#39;, &amp;#39;芳&amp;#39;, &amp;#39;燕&amp;#39;, &amp;#39;彩&amp;#39;, &amp;#39;春&amp;#39;, &amp;#39;菊&amp;#39;, &amp;#39;兰&amp;#39;, &amp;#39;凤&amp;#39;, &amp;#39;洁&amp;#39;, &amp;#39;梅&amp;#39;, &amp;#39;琳&amp;#39;, &amp;#39;素&amp;#39;, &amp;#39;云&amp;#39;, &amp;#39;莲&amp;#39;, &amp;#39;真&amp;#39;, &amp;#39;环&amp;#39;, &amp;#39;雪&amp;#39;, &amp;#39;荣&amp;#39;, &amp;#39;爱&amp;#39;, &amp;#39;畅&amp;#39;, &amp;#39;霞&amp;#39;, &amp;#39;香&amp;#39;, &amp;#39;月&amp;#39;, &amp;#39;莺&amp;#39;, &amp;#39;媛&amp;#39;, &amp;#39;艳&amp;#39;, &amp;#39;瑞&amp;#39;, &amp;#39;凡&amp;#39;, &amp;#39;佳&amp;#39;, &amp;#39;嘉&amp;#39;, &amp;#39;琼&amp;#39;, &amp;#39;勤&amp;#39;, &amp;#39;珍&amp;#39;, &amp;#39;贞&amp;#39;, &amp;#39;莉&amp;#39;, &amp;#39;桂&amp;#39;, &amp;#39;娣&amp;#39;, &amp;#39;叶&amp;#39;, &amp;#39;璧&amp;#39;, &amp;#39;璐&amp;#39;, &amp;#39;娅&amp;#39;, &amp;#39;琦&amp;#39;, &amp;#39;晶&amp;#39;, &amp;#39;妍&amp;#39;, &amp;#39;茜&amp;#39;, &amp;#39;秋&amp;#39;, &amp;#39;珊&amp;#39;, &amp;#39;莎&amp;#39;, &amp;#39;锦&amp;#39;, &amp;#39;黛&amp;#39;, &amp;#39;青&amp;#39;, &amp;#39;倩&amp;#39;, &amp;#39;婷&amp;#39;, &amp;#39;姣&amp;#39;, &amp;#39;婉&amp;#39;, &amp;#39;娴&amp;#39;, &amp;#39;瑾&amp;#39;, &amp;#39;颖&amp;#39;, &amp;#39;露&amp;#39;, &amp;#39;瑶&amp;#39;, &amp;#39;怡&amp;#39;, &amp;#39;婵&amp;#39;, &amp;#39;雁&amp;#39;, &amp;#39;蓓&amp;#39;, &amp;#39;纨&amp;#39;, &amp;#39;仪&amp;#39;, &amp;#39;荷&amp;#39;, &amp;#39;丹&amp;#39;, &amp;#39;蓉&amp;#39;, &amp;#39;眉&amp;#39;, &amp;#39;君&amp;#39;, &amp;#39;琴&amp;#39;, &amp;#39;蕊&amp;#39;, &amp;#39;薇&amp;#39;, &amp;#39;菁&amp;#39;, &amp;#39;梦&amp;#39;, &amp;#39;岚&amp;#39;, &amp;#39;苑&amp;#39;, &amp;#39;婕&amp;#39;, &amp;#39;馨&amp;#39;, &amp;#39;瑗&amp;#39;, &amp;#39;琰&amp;#39;, &amp;#39;韵&amp;#39;, &amp;#39;融&amp;#39;, &amp;#39;园&amp;#39;, &amp;#39;艺&amp;#39;, &amp;#39;咏&amp;#39;, &amp;#39;卿&amp;#39;, &amp;#39;聪&amp;#39;, &amp;#39;澜&amp;#39;, &amp;#39;纯&amp;#39;, &amp;#39;毓&amp;#39;, &amp;#39;悦&amp;#39;, &amp;#39;昭&amp;#39;, &amp;#39;冰&amp;#39;, &amp;#39;爽&amp;#39;, &amp;#39;琬&amp;#39;, &amp;#39;茗&amp;#39;, &amp;#39;羽&amp;#39;, &amp;#39;希&amp;#39;, &amp;#39;宁&amp;#39;, &amp;#39;欣&amp;#39;, &amp;#39;飘&amp;#39;, &amp;#39;育&amp;#39;, &amp;#39;滢&amp;#39;, &amp;#39;馥&amp;#39;, &amp;#39;筠&amp;#39;, &amp;#39;柔&amp;#39;, &amp;#39;竹&amp;#39;, &amp;#39;霭&amp;#39;, &amp;#39;凝&amp;#39;, &amp;#39;晓&amp;#39;, &amp;#39;欢&amp;#39;, &amp;#39;霄&amp;#39;, &amp;#39;枫&amp;#39;, &amp;#39;芸&amp;#39;, &amp;#39;菲&amp;#39;, &amp;#39;寒&amp;#39;, &amp;#39;伊&amp;#39;, &amp;#39;亚&amp;#39;, &amp;#39;宜&amp;#39;, &amp;#39;可&amp;#39;, &amp;#39;姬&amp;#39;, &amp;#39;舒&amp;#39;, &amp;#39;影&amp;#39;, &amp;#39;荔&amp;#39;, &amp;#39;枝&amp;#39;, &amp;#39;思&amp;#39;, &amp;#39;丽&amp;#39;, &amp;#39;伟&amp;#39;, &amp;#39;刚&amp;#39;, &amp;#39;勇&amp;#39;, &amp;#39;毅&amp;#39;, &amp;#39;俊&amp;#39;, &amp;#39;峰&amp;#39;, &amp;#39;强&amp;#39;, &amp;#39;军&amp;#39;, &amp;#39;平&amp;#39;, &amp;#39;保&amp;#39;, &amp;#39;东&amp;#39;, &amp;#39;文&amp;#39;, &amp;#39;辉&amp;#39;, &amp;#39;力&amp;#39;, &amp;#39;明&amp;#39;, &amp;#39;永&amp;#39;, &amp;#39;健&amp;#39;, &amp;#39;世&amp;#39;, &amp;#39;广&amp;#39;, &amp;#39;志&amp;#39;, &amp;#39;义&amp;#39;, &amp;#39;兴&amp;#39;, &amp;#39;良&amp;#39;, &amp;#39;海&amp;#39;, &amp;#39;山&amp;#39;, &amp;#39;仁&amp;#39;, &amp;#39;波&amp;#39;, &amp;#39;宁&amp;#39;, &amp;#39;贵&amp;#39;, &amp;#39;福&amp;#39;, &amp;#39;生&amp;#39;, &amp;#39;龙&amp;#39;, &amp;#39;元&amp;#39;, &amp;#39;全&amp;#39;, &amp;#39;国&amp;#39;, &amp;#39;胜&amp;#39;, &amp;#39;学&amp;#39;, &amp;#39;祥&amp;#39;, &amp;#39;才&amp;#39;, &amp;#39;发&amp;#39;, &amp;#39;武&amp;#39;, &amp;#39;新&amp;#39;, &amp;#39;利&amp;#39;, &amp;#39;清&amp;#39;, &amp;#39;飞&amp;#39;, &amp;#39;彬&amp;#39;, &amp;#39;富&amp;#39;, &amp;#39;顺&amp;#39;, &amp;#39;信&amp;#39;, &amp;#39;子&amp;#39;, &amp;#39;杰&amp;#39;, &amp;#39;涛&amp;#39;, &amp;#39;昌&amp;#39;, &amp;#39;成&amp;#39;, &amp;#39;康&amp;#39;, &amp;#39;星&amp;#39;, &amp;#39;光&amp;#39;, &amp;#39;天&amp;#39;, &amp;#39;达&amp;#39;, &amp;#39;安&amp;#39;, &amp;#39;岩&amp;#39;, &amp;#39;中&amp;#39;, &amp;#39;茂&amp;#39;, &amp;#39;进&amp;#39;, &amp;#39;林&amp;#39;, &amp;#39;有&amp;#39;, &amp;#39;坚&amp;#39;, &amp;#39;和&amp;#39;, &amp;#39;彪&amp;#39;, &amp;#39;博&amp;#39;, &amp;#39;诚&amp;#39;, &amp;#39;先&amp;#39;, &amp;#39;敬&amp;#39;, &amp;#39;震&amp;#39;, &amp;#39;振&amp;#39;, &amp;#39;壮&amp;#39;, &amp;#39;会&amp;#39;, &amp;#39;思&amp;#39;, &amp;#39;群&amp;#39;, &amp;#39;豪&amp;#39;, &amp;#39;心&amp;#39;, &amp;#39;邦&amp;#39;, &amp;#39;承&amp;#39;, &amp;#39;乐&amp;#39;, &amp;#39;绍&amp;#39;, &amp;#39;功&amp;#39;, &amp;#39;松&amp;#39;, &amp;#39;善&amp;#39;, &amp;#39;厚&amp;#39;, &amp;#39;庆&amp;#39;, &amp;#39;磊&amp;#39;, &amp;#39;民&amp;#39;, &amp;#39;友&amp;#39;, &amp;#39;裕&amp;#39;, &amp;#39;河&amp;#39;, &amp;#39;哲&amp;#39;, &amp;#39;江&amp;#39;, &amp;#39;超&amp;#39;, &amp;#39;浩&amp;#39;, &amp;#39;亮&amp;#39;, &amp;#39;政&amp;#39;, &amp;#39;谦&amp;#39;, &amp;#39;亨&amp;#39;, &amp;#39;奇&amp;#39;, &amp;#39;固&amp;#39;, &amp;#39;之&amp;#39;, &amp;#39;轮&amp;#39;, &amp;#39;翰&amp;#39;, &amp;#39;朗&amp;#39;, &amp;#39;伯&amp;#39;, &amp;#39;宏&amp;#39;, &amp;#39;言&amp;#39;, &amp;#39;若&amp;#39;, &amp;#39;鸣&amp;#39;, &amp;#39;朋&amp;#39;, &amp;#39;斌&amp;#39;, &amp;#39;梁&amp;#39;, &amp;#39;栋&amp;#39;, &amp;#39;维&amp;#39;, &amp;#39;启&amp;#39;, &amp;#39;克&amp;#39;, &amp;#39;伦&amp;#39;, &amp;#39;翔&amp;#39;, &amp;#39;旭&amp;#39;, &amp;#39;鹏&amp;#39;, &amp;#39;泽&amp;#39;, &amp;#39;晨&amp;#39;, &amp;#39;辰&amp;#39;, &amp;#39;士&amp;#39;, &amp;#39;以&amp;#39;, &amp;#39;建&amp;#39;, &amp;#39;家&amp;#39;, &amp;#39;致&amp;#39;, &amp;#39;树&amp;#39;, &amp;#39;炎&amp;#39;, &amp;#39;德&amp;#39;, &amp;#39;行&amp;#39;, &amp;#39;时&amp;#39;, &amp;#39;泰&amp;#39;, &amp;#39;盛&amp;#39;, &amp;#39;雄&amp;#39;, &amp;#39;琛&amp;#39;, &amp;#39;钧&amp;#39;, &amp;#39;冠&amp;#39;, &amp;#39;策&amp;#39;, &amp;#39;腾&amp;#39;, &amp;#39;楠&amp;#39;, &amp;#39;榕&amp;#39;, &amp;#39;风&amp;#39;, &amp;#39;航&amp;#39;, &amp;#39;弘&amp;#39;, ] number = random.</description>
     </item>
     
     <item>
       <title>Python(33)——selenium expected_conditions 的使用</title>
-      <link>https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/</link>
+      <link>https://ac-lm.github.io/posts/python/python33selenium-expected_conditions-%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python33selenium%E4%B8%AD%E7%9A%84expected_conditions%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python33selenium-expected_conditions-%E4%BD%BF%E7%94%A8/</guid>
       <description>参考原文：selenium expected conditions 使用实例 @乙醇 
  1.support.expected_conditions Expected Conditions 是 selenium 提供的断言工具，通常使用场景有2种
  直接在断言中使用 与 WebDriverWait 配合使用，动态等待页面上元素出现或者消失  2.方法    函数名 描述     title_contains 判断当前页面的 title 是否包含预期字符串   title_is 判断当前页面的 title 是否精确等于预期   presence_of_element_located 判断某个元素是否被加到了 DOM 树里，并不代表该元素一定可见   visibility_of_element_located 判断某个元素是否可见，可见代表元素非隐藏，并且元素的宽和高都不等于 0   presence_of_all_elements_located 判断是否至少有 1 个元素存在于 DOM 树中   text_to_be_present_in_element 判断某个元素中的 text 是否包含了预期的字符串   text_to_be_present_in_element_value 判断某个元素中的 value 属性是否包含了预期的字符串   frame_to_be_available_and_switch_to_it 判断该 frame 是否可以切换进去，如果可以则返回 True 并切换进去，否则返回 False   invisibility_of_element_located 判断某个元素中是否不存在于 DOM 树或不可见   element_to_be_clickable 判断某个元素中是否可见并且是 enable 可操作的   staleness_of 判断某个元素是否从 DOM 树中移除   element_to_be_selected 判断某个元素是否被选中了，一般用在下拉列表   element_located_selection_state_to_be 判断某个元素的选中状态是否符合预期   alert_is_present 判断页面上是否存在 alert    3.</description>
     </item>
     
     <item>
-      <title>Python(32)——selenium下拉框(select)的处理</title>
-      <link>https://ac-lm.github.io/posts/python/python32selenium%E4%B8%8B%E6%8B%89%E6%A1%86select%E5%A4%84%E7%90%86/</link>
+      <title>Python(32)——selenium 下拉框( select )的处理</title>
+      <link>https://ac-lm.github.io/posts/python/python32selenium-%E4%B8%8B%E6%8B%89%E6%A1%86-select-%E5%A4%84%E7%90%86/</link>
       <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python32selenium%E4%B8%8B%E6%8B%89%E6%A1%86select%E5%A4%84%E7%90%86/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python32selenium-%E4%B8%8B%E6%8B%89%E6%A1%86-select-%E5%A4%84%E7%90%86/</guid>
       <description>1.select 在HTML中 &amp;lt;select&amp;gt;标签可用于创建单选或多选菜单。
 &amp;lt;select&amp;gt; &amp;lt;option value=&amp;#34;a&amp;#34;&amp;gt;AA&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;b&amp;#34;&amp;gt;BB&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;c&amp;#34;&amp;gt;CC&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;d&amp;#34;&amp;gt;DD&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;e&amp;#34;&amp;gt;EE&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 2.操作 from selenium.webdriver.support.select import Select    方法 说明     select_by_index() 通过索引定位   select_by_value() 通过value值定位   select_by_visible_text() 通过文本值定位   deselect_all() 取消所有选项   deselect_by_index() 取消对应index选项   deselect_by_value() 取消对应value选项   deselect_by_visible_text() 取消对应文本选项   first_selected_option() 返回第一个选项   all_selected_options() 返回所有的选项   options() 返回所以的选择项   all_selected_options() 返回所以已选中的选择项   first_selected_option() 返回选中的第一个选择项    3.</description>
     </item>
@@ -74,7 +162,7 @@ import random def GBK2312(): head = random.randint(0xb0, 0xf7) body = random.ran
       <guid>https://ac-lm.github.io/posts/python/python31%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
       <description>1.二进制字符 在计算机中所有字符都是以二进制代码储存的，系统根据不同的编码格式，将二进制代码转换为字符显示。
 print(&amp;#34;\u0394&amp;#34;) print(&amp;#34;\U00000394&amp;#34;) print(&amp;#34;\N{greek capital letter delta}&amp;#34;) 2.乱码时的处理 当编码格式与解码格式出现冲突时就会出现乱码，而此时往往需要将报错的部分进行替换处理，使得程序整体不出错。
-# 不处理 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;strict&amp;#34;)) # 替换为U+FFFD print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;replace&amp;#34;)) # 加上反斜杠 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) # 直接忽略 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;ignore&amp;#34;)) 3.字符与二进制的转换 二进制转换字符 u=chr(40960)+&amp;#34;abce&amp;#34;+chr(1972) print(u) u1=chr(123) print(u1) 字符转换二进制 u=&amp;#34;中国abc&amp;#34; print(u.encode(&amp;#34;utf-8&amp;#34;)) # b&amp;#39;\xe4\xb8\xad\xe5\x9b\xbd&amp;#39; print(u.encode(&amp;#34;ascii&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;ignore&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;replace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;xmlcharrefreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;namereplace&amp;#34;)) </description>
+# 不处理 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;strict&amp;#34;)) # 替换为U+FFFD print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;replace&amp;#34;)) # 加上反斜杠 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) # 直接忽略 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;ignore&amp;#34;)) 3.字符与二进制的转换 a.二进制转换字符 u=chr(40960)+&amp;#34;abce&amp;#34;+chr(1972) print(u) u1=chr(123) print(u1) b.字符转换二进制 u=&amp;#34;中国abc&amp;#34; print(u.encode(&amp;#34;utf-8&amp;#34;)) # b&amp;#39;\xe4\xb8\xad\xe5\x9b\xbd&amp;#39; print(u.encode(&amp;#34;ascii&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;ignore&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;replace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;xmlcharrefreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;namereplace&amp;#34;)) </description>
     </item>
     
     <item>
@@ -92,39 +180,39 @@ from package1 import mudule1 from package1.module2 import Fx from package2 impor
     </item>
     
     <item>
-      <title>Python(29)——__init__文件</title>
-      <link>https://ac-lm.github.io/posts/python/python29__init__%E6%96%87%E4%BB%B6/</link>
+      <title>Python(29)——__init__ 文件</title>
+      <link>https://ac-lm.github.io/posts/python/python29__init__-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python29__init__%E6%96%87%E4%BB%B6/</guid>
-      <description>1 作用  标识该目录是一个 python 的模块包（module package）。 初始化导入操作，当使用 import 导入该目录时，会执行 __init__.py 里面的代码。  在__init__.py 里面加一个 print(&amp;quot;You have imported mypackage&amp;quot;)，如果执行了该文件就会输出，很显然，__init__.py 会在包被导入时执行。
-# 文件构造 └── mypackage ├── __init__.py ├── subpackage_1 │ ├── test11.py │ └── test12.py ├── subpackage_2 │ ├── test21.py │ └── test22.py └── subpackage_3 ├── test31.py └── test32.py &amp;gt;&amp;gt;&amp;gt; import mypackage You have imported mypackage 2 from &amp;hellip;.. import * 这里使用到了__all__变量，__all__关联了一个模块列表，当执行 from &amp;hellip;.. import * 时，就会导入列表中的模块。可以将 __init__.py 增加一个__all__变量。
+      <guid>https://ac-lm.github.io/posts/python/python29__init__-%E6%96%87%E4%BB%B6/</guid>
+      <description>1.作用  标识该目录是一个 python 的模块包（module package）。 初始化导入操作，当使用 import 导入该目录时，会执行 __init__.py 里面的代码。  在__init__.py 里面加一个 print(&amp;quot;You have imported mypackage&amp;quot;)，如果执行了该文件就会输出，很显然，__init__.py 会在包被导入时执行。
+# 文件构造 └── mypackage ├── __init__.py ├── subpackage_1 │ ├── test11.py │ └── test12.py ├── subpackage_2 │ ├── test21.py │ └── test22.py └── subpackage_3 ├── test31.py └── test32.py &amp;gt;&amp;gt;&amp;gt; import mypackage You have imported mypackage 2.from &amp;hellip;.. import * 这里使用到了__all__变量，__all__关联了一个模块列表，当执行 from &amp;hellip;.. import * 时，就会导入列表中的模块。可以将 __init__.py 增加一个__all__变量。
 __all__ = [&amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;gt;&amp;gt;&amp;gt; from mypackage import * &amp;gt;&amp;gt;&amp;gt; dir() [&amp;#39;__builtins__&amp;#39;, &amp;#39;__doc__&amp;#39;, &amp;#39;__loader__&amp;#39;, &amp;#39;__name__&amp;#39;, &amp;#39;__package__&amp;#39;, &amp;#39;__spec__&amp;#39;, &amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; dir(subpackage_1) [&amp;#39;__doc__&amp;#39;, &amp;#39;__loader__&amp;#39;, &amp;#39;__name__&amp;#39;, &amp;#39;__package__&amp;#39;, &amp;#39;__path__&amp;#39;, &amp;#39;__spec__&amp;#39;] 显然导入了__all__变量的内容，但需要注意的是，此时子目录的中的模块没有导入，即不会导入test*等文件。</description>
     </item>
     
     <item>
       <title>Python(28)——hashlib模块</title>
-      <link>https://ac-lm.github.io/posts/python/python28hashlib%E6%A8%A1%E5%9D%97/</link>
+      <link>https://ac-lm.github.io/posts/python/python28hashlib-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python28hashlib%E6%A8%A1%E5%9D%97/</guid>
-      <description>SHA256 SHA256 的全称是Secure Hash Algorithm 256，一种常用的加密算法，是SHA-2族算法中的一个，其它的还是SHA222、SHA512等。
- Secure的意思是指算法的输入输出一一对应，且是不可逆的（即只有编码而没有解码） Hash Algorithm指的是散列算法，散列算法指的是将一个任意长度的输入数据转换成固定长度的输出 256是输出结果的位数，这个输出结果又被称为Hash值或者摘要  hashlib模块 hashlib是Python提供的能使用各类hash算法的一个模块
+      <guid>https://ac-lm.github.io/posts/python/python28hashlib-%E6%A8%A1%E5%9D%97/</guid>
+      <description>1.SHA256 SHA256 的全称是Secure Hash Algorithm 256，一种常用的加密算法，是SHA-2族算法中的一个，其它的还是SHA222、SHA512等。
+ Secure的意思是指算法的输入输出一一对应，且是不可逆的（即只有编码而没有解码） Hash Algorithm指的是散列算法，散列算法指的是将一个任意长度的输入数据转换成固定长度的输出 256是输出结果的位数，这个输出结果又被称为Hash值或者摘要  2.hashlib模块 hashlib是Python提供的能使用各类hash算法的一个模块
 import hashlib if __name__ == &amp;#34;__main__&amp;#34;: s = hashlib.sha256() # Get the hash algorithm. s.update(&amp;#34;jiangwei&amp;#34;) # Hash the data. b = s.hexdigest() # Get he hash value. print b &amp;gt;&amp;gt;&amp;gt;36d6824c3942c1ec34d1b5cc2f5cbe3d2c4110223bce905ddafe0592723411f0 # 它的长度是64，每个字符4位，所以总计是256位。 &amp;gt;&amp;gt;&amp;gt;s = hashlib.sha512() # Get the hash algorithm. &amp;gt;&amp;gt;&amp;gt;3ee15fe269635e2c05d7e965d97d82b95fefcdf7f937cb14e117d235a440b9e173d90f3c669a5dce21d6b8a20ff2376172d171d0c9d9b1f2670d39aefaab7a10 # 可以得到512位的摘要 </description>
     </item>
     
     <item>
-      <title>Python(27)——random模块</title>
-      <link>https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/</link>
+      <title>Python(27)——random 模块</title>
+      <link>https://ac-lm.github.io/posts/python/python27random-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python27random%E6%A8%A1%E5%9D%97/</guid>
-      <description>random.randrange(a, b, c) 返回给定范围 [a, b) 内的随机整数，不包括b，第三个参数为步长，只能返回该范围内特定的数，比如该例子中[1,4,7,…,97]
-&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100)68&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100,3)16random.randint(a, b) 返回 [1,100] 范围内的随机数整数，包括100，第三个参数同random.randrange()用法一样
-&amp;gt;&amp;gt;&amp;gt; random.randint(1,100)17random.random() 返回[0, 1)范围内随机浮点数，不包括1
-&amp;gt;&amp;gt;&amp;gt; random.random()0.41385723239524297random.choice() 在给定容器中随机选择一个元素
-rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = choice(rand)random.sample(a) 在给定容器中随记选择特定数量元素
-&amp;gt;&amp;gt;&amp;gt; random.sample(&amp;quot;abcde&amp;quot;,2)[&#39;e&#39;, &#39;b&#39;] random.shuffle() 随机打乱传入的容器(容器必须是可变对象)
+      <guid>https://ac-lm.github.io/posts/python/python27random-%E6%A8%A1%E5%9D%97/</guid>
+      <description>1.random.randrange(a, b, c) 返回给定范围 [a, b) 内的随机整数，不包括b，第三个参数为步长，只能返回该范围内特定的数，比如该例子中[1,4,7,…,97]
+&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100)68&amp;gt;&amp;gt;&amp;gt; random.randrange(1,100,3)162.random.randint(a, b) 返回 [1,100] 范围内的随机数整数，包括100，第三个参数同random.randrange()用法一样
+&amp;gt;&amp;gt;&amp;gt; random.randint(1,100)173.random.random() 返回 [0, 1) 范围内随机浮点数，不包括1
+&amp;gt;&amp;gt;&amp;gt; random.random()0.413857232395242974.random.choice() 在给定容器中随机选择一个元素
+rand = [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]temp = choice(rand)5.random.sample(a) 在给定容器中随记选择特定数量元素
+&amp;gt;&amp;gt;&amp;gt; random.sample(&amp;quot;abcde&amp;quot;,2)[&#39;e&#39;, &#39;b&#39;] 6.random.shuffle() 随机打乱传入的容器(容器必须是可变对象)
 &amp;gt;&amp;gt;&amp;gt; l = [1,2,3,4]&amp;gt;&amp;gt;&amp;gt; random.shuffle(l)&amp;gt;&amp;gt;&amp;gt; l[1, 3, 2, 4]</description>
     </item>
     
@@ -152,49 +240,49 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
     </item>
     
     <item>
-      <title>Python(24)——获取input输入的文本值</title>
-      <link>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</link>
+      <title>Python(24)——获取 input 输入的文本值</title>
+      <link>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96input%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</guid>
-      <description>get_attribute(‘value’)获取输入的文本值 inputContext1 = driver.find_element_by_xpath(&amp;#39;//input&amp;#39;).get_attribute(&amp;#39;value&amp;#39;) 通过执行JS操作来获取输入的文本值 inputContext2 = &amp;#34;return document.getElementsByClassName(&amp;#39;ivu-input&amp;#39;)[0].value&amp;#34; driver.execute_script(inputContext2) get_attribute(‘textContent’)获取元素的文本值 logoContext1 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).get_attribute(&amp;#39;textContent&amp;#39;) 通过text来获取文本值 logoContext2 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).text 通过执行JS操作来获取输入的文本值 logoContext3 = &amp;#34;return document.getElementsByTagName(&amp;#39;span&amp;#39;)[0].innerText&amp;#34; </description>
+      <guid>https://ac-lm.github.io/posts/python/python24%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/</guid>
+      <description>1.get_attribute(‘value’)获取输入的文本值 inputContext1 = driver.find_element_by_xpath(&amp;#39;//input&amp;#39;).get_attribute(&amp;#39;value&amp;#39;) 2.通过执行JS操作来获取输入的文本值 inputContext2 = &amp;#34;return document.getElementsByClassName(&amp;#39;ivu-input&amp;#39;)[0].value&amp;#34; driver.execute_script(inputContext2) 3.get_attribute(‘textContent’)获取元素的文本值 logoContext1 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).get_attribute(&amp;#39;textContent&amp;#39;) 4.通过text来获取文本值 logoContext2 = driver.find_element_by_xpath(&amp;#39;//div[@class=&amp;#34;logo&amp;#34;]/span&amp;#39;).text 5.通过执行JS操作来获取输入的文本值 logoContext3 = &amp;#34;return document.getElementsByTagName(&amp;#39;span&amp;#39;)[0].innerText&amp;#34; </description>
     </item>
     
     <item>
-      <title>Python(23)——os模块文件操作</title>
-      <link>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
+      <title>Python(23)——os 模块文件操作</title>
+      <link>https://ac-lm.github.io/posts/python/python23os-%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python23os%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python23os-%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
       <description>参考文档：os文档 @Python文档 
- os.listdir() os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）
-import os, sys path = &amp;#34;/var/www/html/&amp;#34; dirs = os.listdir(path) # path -- 需要列出的目录路径 # 返回指定路径下的文件和文件夹列表 for file in dirs: print(file) os.path.exists() os.path.exists() 方法用于判断文件夹是否存在
-import os path = &amp;#34;/var/www/html/&amp;#34; # path -- 需要列出的目录路径 if os.path.exists(path): pass os.path.abspath() # 获取当前文件的绝对路径 path1 = os.path.abspath(__file__) print(&amp;#34;path1:{}&amp;#34;.format(path1)) os.path.dirname() # 获取当前文件的目录 path2 = os.path.dirname(__file__) print(&amp;#34;path2:{}&amp;#34;.format(path2)) os.mkdir() os.mkdir() 方法用于创建文件夹
+ 1.os.listdir() os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。它不包括隐藏文件如（. 或 .. 开头的文件）
+import os, sys path = &amp;#34;/var/www/html/&amp;#34; dirs = os.listdir(path) # path -- 需要列出的目录路径 # 返回指定路径下的文件和文件夹列表 for file in dirs: print(file) 2.os.path.exists() os.path.exists() 方法用于判断文件夹是否存在
+import os path = &amp;#34;/var/www/html/&amp;#34; # path -- 需要列出的目录路径 if os.path.exists(path): pass 3.os.path.abspath() # 获取当前文件的绝对路径 path1 = os.path.abspath(__file__) print(&amp;#34;path1:{}&amp;#34;.format(path1)) 4.os.path.dirname() # 获取当前文件的目录 path2 = os.path.dirname(__file__) print(&amp;#34;path2:{}&amp;#34;.format(path2)) 5.os.mkdir() os.mkdir() 方法用于创建文件夹
 import os path=&amp;#34;/var/www/html/ABC&amp;#34; isExists=os.path.exists(path) if not isExists: os.</description>
     </item>
     
     <item>
-      <title>Python(22)——sys模块</title>
-      <link>https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/</link>
+      <title>Python(22)——sys 模块</title>
+      <link>https://ac-lm.github.io/posts/python/python22sys-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python22sys%E6%A8%A1%E5%9D%97/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python22sys-%E6%A8%A1%E5%9D%97/</guid>
       <description>参考原文：Python sys 模块详解 @轩辕御龙 
- 什么是sys模块 “sys”即“system”，即“系统”。sys模块为用户提供了一些接口，用于访问 Python 解释器自身使用和维护的变量，同时模块中还提供了一部分函数，可以与解释器进行比较深度的交互。但需要注意的是sys模块针对的是与Python解释器相关的变量和方法，不是主机操作系统。
-sys.argv “argv”即“argument value”的简写，其是一个列表对象，存储的是在命令行调用 Python 脚本时提供的“命令行参数”。
+ 1.什么是 sys 模块 “sys”即“system”，即“系统”。sys模块为用户提供了一些接口，用于访问 Python 解释器自身使用和维护的变量，同时模块中还提供了一部分函数，可以与解释器进行比较深度的交互。但需要注意的是sys模块针对的是与Python解释器相关的变量和方法，不是主机操作系统。
+2.sys.argv “argv”即“argument value”的简写，其是一个列表对象，存储的是在命令行调用 Python 脚本时提供的“命令行参数”。
 这个列表中的第一个参数是被调用的脚本名称，也就是说，调用 Python 解释器的“命令”（python）本身并没有被加入这个列表当中。这个地方要注意一下，因为这一点跟 C 程序的行为有所不同，C 程序读取命令行参数是从头开始的。
 举例来说，在当前目录下新建一个 Python 文件 test.py，其内容为：
 import sys print(&amp;#34;The list of command line arguments:\n&amp;#34;, sys.argv) 在命令行运行该脚本：
 $ python test.py The list of command line arguments: [&amp;#39;example.py&amp;#39;] 加上几个参数运行，可以看到参数被获取并输出
-$ python test.py arg1 arg2 arg3 The list of command line arguments: [&amp;#39;example.py&amp;#39;, &amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;arg3&amp;#39;] sys.path A list of strings that specifies the search path for modules.</description>
+$ python test.py arg1 arg2 arg3 The list of command line arguments: [&amp;#39;example.py&amp;#39;, &amp;#39;arg1&amp;#39;, &amp;#39;arg2&amp;#39;, &amp;#39;arg3&amp;#39;] 3.sys.path A list of strings that specifies the search path for modules.</description>
     </item>
     
     <item>
-      <title>Python(21)——yield生成器的用法</title>
-      <link>https://ac-lm.github.io/posts/python/python21yield%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</link>
+      <title>Python(21)——yield 生成器的用法</title>
+      <link>https://ac-lm.github.io/posts/python/python21yield-%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</link>
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python21yield%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python21yield-%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/</guid>
       <description>1.generator（生成器） 带有 yield 的函数在 Python 中被称之为 generator（生成器），而不是一个函数，这个生成器带有一个next函数，在调用 next 时函数才会执行，执行到 yield 停止，下一次的 next 开始的地方是接着上一次的 next 停止的地方执行。
 def foo(): print(&amp;#34;starting...&amp;#34;) while True: yield 5 res = yield 4 print(&amp;#34;res:&amp;#34;,res) g = foo() print(next(g)) print(next(g)) print(next(g)) 2.为什么需要 yield for i in range(1000): pass 这个循环在运行中占用的内存会随着 range() 的参数的增大而增大，range() 会生成一个List。如果要控制内存占用，最好不要用 List
 for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个元素的 List，而是在每次迭代中返回下一个数值，内存空间占用很小。因为 xrange 不返回 List，而是返回一个 iterable 对象。【iterable意思为迭代，可以理解为连续的一组数据，可以遍历的数据，包含内置的string、list、dict、tuple、set()】
@@ -202,43 +290,43 @@ for i in xrange(1000): pass 在python2中这样写则不会生成一个 1000 个
     </item>
     
     <item>
-      <title>Python(20)——模拟登录</title>
-      <link>https://ac-lm.github.io/posts/python/python20%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/</link>
+      <title>Python(20)——Web LocalStorage 修改</title>
+      <link>https://ac-lm.github.io/posts/python/python20web-localstrorage-%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python20%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python20web-localstrorage-%E4%BF%AE%E6%94%B9/</guid>
       <description>1.目标 修改 LocalStorage 和 SessionStorage 中的 token
 2.实现 使用 JavaScript 进行获取 token 和修改 token 的操作
 1.设置localStorage Storage.set = function(name, val) { localStorage.setItem(name, val); } 2.获取localStorage Storage.get = function(name) { return localStorage.getItem(name); } 3.调用函数 Storage.set(&amp;#34;status&amp;#34;, &amp;#34;OK&amp;#34;); Storage.set(&amp;#34;quit&amp;#34;, &amp;#34;...&amp;#34;); console.log(Storage.get(&amp;#34;status&amp;#34;)); </description>
     </item>
     
     <item>
-      <title>Python(19)——telnetlib模块</title>
+      <title>Python(19)——telnetlib 模块</title>
       <link>https://ac-lm.github.io/posts/python/python19telnetlib-%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python19telnetlib-%E6%A8%A1%E5%9D%97/</guid>
-      <description>Python远程Linux模块
+      <description>telnetlib Python 远程 Linux 模块
 import getpass import telnetlib HOST = &amp;#34;localhost&amp;#34; user = input(&amp;#34;Enter your remote account: &amp;#34;) password = getpass.getpass() tn = telnetlib.Telnet(HOST) tn.read_until(b&amp;#34;login: &amp;#34;) tn.write(user.encode(&amp;#39;ascii&amp;#39;) + b&amp;#34;\n&amp;#34;) if password: tn.read_until(b&amp;#34;Password: &amp;#34;) tn.write(password.encode(&amp;#39;ascii&amp;#39;) + b&amp;#34;\n&amp;#34;) tn.write(b&amp;#34;ls\n&amp;#34;) tn.write(b&amp;#34;exit\n&amp;#34;) print(tn.read_all().decode(&amp;#39;ascii&amp;#39;)) </description>
     </item>
     
     <item>
-      <title>Python(18)——执行Linux命令</title>
-      <link>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</link>
+      <title>Python(18)——执行 Linux 命令</title>
+      <link>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8C-linux-%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.subprocess模块 根据Python官方文档说明，subprocess模块用于取代下面这些模块。推荐使用
-&amp;gt;&amp;gt;&amp;gt; from subprocess import call &amp;gt;&amp;gt;&amp;gt; call([&amp;#34;ls&amp;#34;, &amp;#34;-l&amp;#34;]) 2.os模块的system方法 system方法会创建子进程运行外部程序，方法只返回外部程序的运行结果。这个方法比较适用于外部程序没有输出结果的情况。
-&amp;gt;&amp;gt;&amp;gt; import os &amp;gt;&amp;gt;&amp;gt; os.system(&amp;#34;echo \&amp;#34;Hello World\&amp;#34;&amp;#34;) # 直接使用os.system调用一个echo命令  Hello World ——————&amp;gt; 打印命令结果 0 ——————&amp;gt; What&amp;#39;s this ? 返回值？  &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log\&amp;#34;&amp;#34;) # 使用val接收返回值  -rw-r--r-- 1 root root 6030829 Dec 31 15:14 log ——————&amp;gt; 此时只打印了命令结果 &amp;gt;&amp;gt;&amp;gt; print val 0 ——————&amp;gt; 注意，此时命令正常运行时，返回值是0 &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log1\&amp;#34;&amp;#34;) &amp;gt;&amp;gt;&amp;gt; print val 256 ——————&amp;gt; 使用os.</description>
+      <guid>https://ac-lm.github.io/posts/python/python18%E6%89%A7%E8%A1%8C-linux-%E5%91%BD%E4%BB%A4/</guid>
+      <description>1.subprocess 模块 根据 Python 官方文档说明，subprocess模块用于取代下面这些模块。推荐使用
+&amp;gt;&amp;gt;&amp;gt; from subprocess import call &amp;gt;&amp;gt;&amp;gt; call([&amp;#34;ls&amp;#34;, &amp;#34;-l&amp;#34;]) 2.os 模块的 system 方法 system方法会创建子进程运行外部程序，方法只返回外部程序的运行结果。这个方法比较适用于外部程序没有输出结果的情况。
+&amp;gt;&amp;gt;&amp;gt; import os &amp;gt;&amp;gt;&amp;gt; os.system(&amp;#34;echo \&amp;#34;Hello World\&amp;#34;&amp;#34;) # 直接使用os.system调用一个echo命令  Hello World ——————&amp;gt; 打印命令结果 0 ——————&amp;gt; What&amp;#39;s this ? 返回值？  &amp;gt;&amp;gt;&amp;gt; val = os.system(&amp;#34;ls -al | grep \&amp;#34;log\&amp;#34;&amp;#34;) # 使用val接收返回值  -rw-r--r-- 1 root root 6030829 Dec 31 15:14 log ——————&amp;gt; 此时只打印了命令结果 &amp;gt;&amp;gt;&amp;gt; print val 0 ——————&amp;gt; 注意，此时命令正常运行时，返回值是0 &amp;gt;&amp;gt;&amp;gt; val = os.</description>
     </item>
     
     <item>
       <title>Python(17)——Python面试知识</title>
-      <link>https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</link>
+      <link>https://ac-lm.github.io/posts/python/python17python-%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python17python%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python17python-%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/</guid>
       <description>1.语言的分类 ①编译型语言和解释性语言 编译型语言是指在程序执行之前，有一个单独的编译过程，将程序翻译成机器语言，以后执行这个程序的时候，就不用再进行翻译了。解释型语言是指是在运行的时候将程序翻译成机器语言，所以运行速度相对于编译型语言要慢。C/C++ 等都是编译型语言，而Java，C#等都是解释型语言。虽然Java程序在运行之前也有一个编译过程，但是并不是将程序编译成机器语言，而是将它编译成字节码（可以理解为一个中间语言）。在运行的时候，由JVM将字节码再翻译成机器语言。
 ②动态语言和静态语言  动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型。如python和ruby等。 静态类型语言：它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型。如C/C++,java,C#等。  ③强类型定义语言和弱类型定义语言  强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了,如python。 弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。如VScript。  2.python的优点  ①Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。 ②开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。 ③高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节 ④可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行 ⑤可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C++编写，然后在你的Python程序中使用它们 ⑥可嵌入性————你可以把Python嵌入你的C/C++程序，从而向你的程序用户提供脚本功能。  3.python的缺点  ①速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。 ②代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。 ③线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是计算机程序设计语言解释器用于同步线程的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。  4.在编写Python程序时，/usr/bin/python和/usr/bin/env python的区别？  #!/usr/bin/python是告诉操作系统执行这个脚本的时候，调用/usr/bin下的python解释器 #!/usr/bin/env python这种用法是为了防止操作系统用户没有将python装在默认的/usr/bin路径里。当系统看到这一行的时候，首先会到env设置里查找python的安装路径，再调用对应路径下的解释器程序完成操作。 #!/usr/bin/python相当于写死了python路径 #!/usr/bin/env python会去环境设置寻找python目录,推荐这种写法  5.变量  ①变量名只能是字母、数字或下划线的任意组合 ②变量名的第一个字符不能是数字 ③以下关键字不能声明为变量名 [&amp;lsquo;and&amp;rsquo;, &amp;lsquo;as&amp;rsquo;, &amp;lsquo;assert&amp;rsquo;, &amp;lsquo;break&amp;rsquo;, &amp;lsquo;class&amp;rsquo;, &amp;lsquo;continue&amp;rsquo;, &amp;lsquo;def&amp;rsquo;, &amp;lsquo;del&amp;rsquo;, &amp;lsquo;elif&amp;rsquo;, &amp;lsquo;else&amp;rsquo;, &amp;lsquo;except&amp;rsquo;, &amp;lsquo;exec&amp;rsquo;, &amp;lsquo;finally&amp;rsquo;, &amp;lsquo;for&amp;rsquo;, &amp;lsquo;from&amp;rsquo;, &amp;lsquo;global&amp;rsquo;, &amp;lsquo;if&amp;rsquo;, &amp;lsquo;import&amp;rsquo;, &amp;lsquo;in&amp;rsquo;, &amp;lsquo;is&amp;rsquo;, &amp;lsquo;lambda&amp;rsquo;, &amp;lsquo;not&amp;rsquo;, &amp;lsquo;or&amp;rsquo;, &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;print&amp;rsquo;, &amp;lsquo;raise&amp;rsquo;, &amp;lsquo;return&amp;rsquo;, &amp;lsquo;try&amp;rsquo;, &amp;lsquo;while&amp;rsquo;, &amp;lsquo;with&amp;rsquo;, &amp;lsquo;yield&amp;rsquo;] ④变量名要见名之义。  6.</description>
     </item>
@@ -263,21 +351,21 @@ file_data：会从json或yaml中加载数据
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
-      <description>1.什么是装饰器 装饰器本质上是一个Python函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。它经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等场景。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量与函数功能本身无关的雷同代码并继续重用。概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能。
+      <description>1.什么是装饰器 装饰器本质上是一个 Python 函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。它经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等场景。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量与函数功能本身无关的雷同代码并继续重用。概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能。
 2.举例说明 def foo(): print(&amp;#39;I am foo&amp;#39;) 现在有一个新的需求，希望可以记录下函数的执行日志，于是在代码中添加日志代码：
 def foo(): print(&amp;#39;I am foo&amp;#39;) logging.info(&amp;#39;foo is running&amp;#39;) bar()、bar2()也有类似的需求，怎么做？再写一个logging在bar函数里？这样就造成大量雷同的代码，为了减少重复写代码，我们可以这样做，重新定义一个函数：专门处理日志 ，日志处理完之后再执行真正的业务代码
 def use_logging(func): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) func() def bar(): print(&amp;#39;I am bar&amp;#39;) use_logging(bar) 逻辑上不难理解， 但是这样的话，我们每次都要将一个函数作为参数传递给use_logging函数。而且这种方式已经破坏了原有的代码逻辑结构，之前执行业务逻辑时，执行运行bar()，但是现在不得不改成use_logging(bar)。那么有没有更好的方式的呢？当然有，答案就是装饰器。
 def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) return func(*args, **kwargs) return wrapper def bar(): print(&amp;#39;i am bar&amp;#39;) bar = use_logging(bar) bar() 函数use_logging就是装饰器，它把执行真正业务方法的func包裹在函数里面，看起来像bar被use_logging装饰了。在这个例子中，函数进入和退出时 ，被称为一个横切面(Aspect)，这种编程方式被称为面向切面的编程(Aspect-Oriented Programming)。
 @符号是装饰器的语法糖，在定义函数的时候使用，避免再一次赋值操作
-def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.__name__) return func(*args) return wrapper @use_logging def foo(): print(&amp;#39;I am foo&amp;#39;) @use_logging def bar(): print(&amp;#39;I am bar&amp;#39;) bar() 如上所示，这样我们就可以省去bar = use_logging(bar)这一句了，直接调用bar()即可得到想要的结果。如果我们有其他的类似函数，我们可以继续调用装饰器来修饰函数，而不用重复修改函数或者增加新的封装。这样，我们就提高了程序的可重复利用性，并增加了程序的可读性。装饰器在Python使用如此方便都要归因于Python的函数能像普通的对象一样能作为参数传递给其他函数，可以被赋值给其他变量，可以作为返回值，可以被定义在另外一个函数内。</description>
+def use_logging(func): def wrapper(*args, **kwargs): logging.warn(&amp;#34;%sis running&amp;#34; % func.</description>
     </item>
     
     <item>
       <title>Python(14)——获取当前页面URL</title>
-      <link>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url/</link>
+      <link>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2-url/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2-url/</guid>
       <description>1.直接获取 driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) print(driver.current_url) driver.quit() 2.问题 当浏览器新开页面后 current_url() 获取的还是原页面URL，这是因为浏览器还没有定位到新开的页面
 3.解决 添加定位页面代码之后再使用current_url获取地址
 driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # 跳转到新页面 driver.find_element_by_link_text(&amp;#39;新闻&amp;#39;).click() #切换当前页面标签 driver.switch_to.window(driver.window_handles[1]) print(driver.current_url) driver.quit() </description>
@@ -298,8 +386,8 @@ driver=webdriver.Chrome() driver.get(&amp;#39;http:/www.baidu.com&amp;#39;) # �
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python12%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC/</guid>
-      <description>问题 python多线程一般使用threading模块，但threading模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢
-方法一 通过自定义线程类，继承Thread类，并复写run方法，在run方法中写入执行函数的方式，并把返回值赋值给result；然后通过调用get_result 获取每个进程的返回值
+      <description>1.问题 python 多线程一般使用 threading 模块，但 threading 模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢
+2.方法一 通过自定义线程类，继承Thread类，并复写run方法，在run方法中写入执行函数的方式，并把返回值赋值给result；然后通过调用get_result 获取每个进程的返回值
 # 多线程类 class MyThread(Thread): result1 = None result2 = None def __init__(self, func, args=()): super(MyThread, self).__init__() self.func = func self.args = args def run(self): self.result1, self.result2 = self.func(*self.args) # 在执行函数的同时，把结果赋值给result, # 然后通过get_result函数获取返回的结果 def get_result(self): # noinspection PyBroadException try: return self.result1, self.result2 except Exception: return None # 多线程执行函数 def Mss(info, window): result, furl = api_test(info, baseurl) sleep(0.5) # 等待，否则由于子进程过快，主进程未开启进度条，而执行进度条关闭命令导致矛盾 window.close() return result, furl t1 = MyThread(Mss, args=(info, myDia5)) t1.</description>
     </item>
     
@@ -318,12 +406,12 @@ print &amp;#34;all over %s&amp;#34; %ctime() 看了一下当前时间，差不�
     </item>
     
     <item>
-      <title>Python(10)——子类的super初始化</title>
-      <link>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <title>Python(10)——子类的 super 初始化</title>
+      <link>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84-super-%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
       <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84super%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
-      <description>1.使用场景 class mywindow(QtWidgets.QMainWindow, Ui_MainWindow): def __init__(self): super(mywindow, self).__init__() self.setupUi(self) # 寻找mywindow的父类QtWidgets.QMainWindow中的__init__()，进行对mywindow的初始化 2.解析 # python中的super(Net, self).__init__() 其执行时 # 首先找到Net的父类（比如是类NNet），然后把类Net的对象self转换为类NNet的对象，然后“被转换”的类NNet对象调用自己的init函数 这是对继承自父类的属性进行初始化，使用父类的初始化方法来初始化继承的属性。</description>
+      <guid>https://ac-lm.github.io/posts/python/python10%E5%AD%90%E7%B1%BB%E7%9A%84-super-%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <description>1.使用场景 class mywindow(QtWidgets.QMainWindow, Ui_MainWindow): def __init__(self): super(mywindow, self).__init__() self.setupUi(self) # 寻找 mywindow 的父类 QtWidgets.QMainWindow 中的 __init__()，进行对 mywindow 的初始化 2.解析 # python 中的 super(Net, self).__init__() 其执行时 # 首先找到 Net 的父类（比如是类 NNet），然后把类 Net 的对象 self 转换为类 NNet 的对象，然后“被转换”的类 NNet 对象调用自己的 init函数 这是对继承自父类的属性进行初始化，使用父类的初始化方法来初始化继承的属性。</description>
     </item>
     
     <item>
@@ -348,58 +436,58 @@ Traceback (most recent call last): File &amp;#34;c:\Users\Administrator\Desktop\
     </item>
     
     <item>
-      <title>Python(7)——unittest单元测试框架</title>
-      <link>https://ac-lm.github.io/posts/python/python7unittest%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</link>
+      <title>Python(7)——unittest 单元测试框架</title>
+      <link>https://ac-lm.github.io/posts/python/python7unittest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python7unittest%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</guid>
-      <description>Test Case 一个TestCase的实例就是一个测试用例。一个完整的测试流程，包括测试前准备环境的搭建(setUp)，执行测试代码 (run)，以及测试后环境的还原(tearDown)。元测试(unit test)的本质也就在这里，一个测试用例是一个完整的测试单元，通过运行这个测试单元，可以对某一个问题进行验证。
-class testcase(unittest.TestCase): @classmethod def setUpClass(self): # 所有的测试方法运行前运行，整个测试过程中只执行一次。 pass def setUp(self): # 每个测试方法运行前运行，一条用例执行一次，若N次用例就执行N次。 pass def tearDown(self)： # 每个测试方法运行结束后运行,一条用例执行一次，若N次用例就执行N次。 @classmethod def tearDownClass(self)： # 所有的测试方法运行结束后运行，整个测试过程中只执行一次。 pass def test_01(self): # 测试用例 pass Test Suite 多个测试用例集合在一起，就是TestSuite，而且TestSuite也可以嵌套TestSuite。
-if __name__ == &amp;#34;__main__&amp;#34;: # 构造TestSuite suite = unittest.TestSuite() suite.addTest(testcase(&amp;#34;test_01&amp;#34;)) suite.addTest(testcase(&amp;#34;test_02&amp;#34;)) # 执行测试 runner = unittest.TextTestRunner() runner.run(suite) Test Loader 是用来加载TestCase到TestSuite中的，其中有几个 loadTestsFrom??() 方法，就是从各个地方寻找TestCase，创建它们的实例，然后add到TestSuite中，再返回一个TestSuite实例。
-if __name__ == &amp;#34;__main__&amp;#34;: #此用法可以同时测试多个类 suite1 = unittest.TestLoader().loadTestsFromTestCase(TestCase1) suite2 = unittest.TestLoader().loadTestsFromTestCase(TestCase2) suite = unittest.</description>
+      <guid>https://ac-lm.github.io/posts/python/python7unittest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</guid>
+      <description>1.Test Case 一个 TestCase 的实例就是一个测试用例。一个完整的测试流程，包括测试前准备环境的搭建(setUp)，执行测试代码 (run)，以及测试后环境的还原(tearDown)。元测试(unit test)的本质也就在这里，一个测试用例是一个完整的测试单元，通过运行这个测试单元，可以对某一个问题进行验证。
+class testcase(unittest.TestCase): @classmethod def setUpClass(self): # 所有的测试方法运行前运行，整个测试过程中只执行一次。 pass def setUp(self): # 每个测试方法运行前运行，一条用例执行一次，若N次用例就执行N次。 pass def tearDown(self)： # 每个测试方法运行结束后运行,一条用例执行一次，若N次用例就执行N次。 @classmethod def tearDownClass(self)： # 所有的测试方法运行结束后运行，整个测试过程中只执行一次。 pass def test_01(self): # 测试用例 pass 2.Test Suite 多个测试用例集合在一起，就是TestSuite，而且TestSuite也可以嵌套TestSuite。
+if __name__ == &amp;#34;__main__&amp;#34;: # 构造TestSuite suite = unittest.TestSuite() suite.addTest(testcase(&amp;#34;test_01&amp;#34;)) suite.addTest(testcase(&amp;#34;test_02&amp;#34;)) # 执行测试 runner = unittest.TextTestRunner() runner.run(suite) 3.Test Loader 是用来加载TestCase到TestSuite中的，其中有几个 loadTestsFrom??() 方法，就是从各个地方寻找TestCase，创建它们的实例，然后add到TestSuite中，再返回一个TestSuite实例。
+if __name__ == &amp;#34;__main__&amp;#34;: #此用法可以同时测试多个类 suite1 = unittest.TestLoader().loadTestsFromTestCase(TestCase1) suite2 = unittest.</description>
     </item>
     
     <item>
-      <title>Python(6)——Qrcode库</title>
-      <link>https://ac-lm.github.io/posts/python/python6qrcode%E5%BA%93/</link>
+      <title>Python(6)——Qrcode</title>
+      <link>https://ac-lm.github.io/posts/python/python6qrcode/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python6qrcode%E5%BA%93/</guid>
+      <guid>https://ac-lm.github.io/posts/python/python6qrcode/</guid>
       <description>1.什么是二维码 二维码其实可以看成是一种数据的加密，在这里面的数据，可以通过某种编码，转化成黑白不同的点，然后按顺序排列其中。当我们去识别二维码的时候，其实就是把这些数据转化回来。
 根据二维码其不同的编码类型，版本，以及纠错级别，二维码的复杂程度会有所变化。其中版本分 1-40 个级别，版本越高，能存储的数据就越多，用公式来表示就是这样：v X 4+17 。而纠错级别又分为 L、M、Q、H，有时候你可能看到有些二维码整的花里胡哨，或者有的地方缺失了还是能被识别，这可能是这张二维码的容错级别比较高。而级别越低，纠错能力越低，但是能存储更多的数据。而这些格式信息，都可以在三个大方块的边沿定义，三个大方块作为定位的标志，然后剩下的区域就是来放数据码和纠错码。
-Qrcode库就是Python中二维码的处理库
+Qrcode 就是 Python 中二维码的处理库
 2.安装 pip install qrcode 3.使用 import qrcode qr = qrcode.QRCode( version=3, error_correction=qrcode.constants.ERROR_CORRECT_Q, box_size=10, border=4, ) qr.add_data(&amp;#39;This is a qrcode&amp;#39;) qr.make(fit=True) img=qr.make_image(fill_color=&amp;#39;black&amp;#39;,back_color=&amp;#39;white&amp;#39;) img.show() </description>
     </item>
     
     <item>
-      <title>Python(5)——Pyautogui库</title>
-      <link>https://ac-lm.github.io/posts/python/python5pyautogui%E5%BA%93/</link>
+      <title>Python(5)——Pyautogui</title>
+      <link>https://ac-lm.github.io/posts/python/python5pyautogui/</link>
       <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python5pyautogui%E5%BA%93/</guid>
-      <description>1.什么是Pyautogui库 PyAutoGUI库是Python编写的一个实现自动化鼠标和键盘操作的库。
+      <guid>https://ac-lm.github.io/posts/python/python5pyautogui/</guid>
+      <description>1.什么是 Pyautogui PyAutoGUI 是 Python 编写的一个实现自动化鼠标和键盘操作的库。
 2.使用 import pyautogui screenWidth, screenHeight = pyautogui.size() # 返回屏幕分辨率 print(screenWidth,screenHeight) currentMouseX, currentMouseY = pyautogui.position() # 返回鼠标的所在位置 print(currentMouseX,currentMouseY) #pyautogui.moveTo(327, 382) #移动鼠标到指定位置 #pyautogui.click() # 单击 #pyautogui.doubleClick() # 双击鼠标 </description>
     </item>
     
     <item>
-      <title>Python(4)——Requests库</title>
-      <link>https://ac-lm.github.io/posts/python/python4requests%E5%BA%93/</link>
+      <title>Python(4)——Requests</title>
+      <link>https://ac-lm.github.io/posts/python/python4requests/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python4requests%E5%BA%93/</guid>
-      <description>1.什么是Requests库 Requests库是一个基于urllib编写的HTTP库，相比urllib库，Requests库更加方便，能轻易的实现各种HTTP测试需求。Requests库经常被用来进行接口测试以及爬虫
+      <guid>https://ac-lm.github.io/posts/python/python4requests/</guid>
+      <description>1.什么是 Requests Requests 是一个基于 urllib 编写的HTTP库，相比 urllib 库，Requests 库更加方便，能轻易的实现各种 HTTP 测试需求。Requests 库经常被用来进行接口测试以及爬虫
 2.request()函数的参数 | 参数 | 解释 | --------------- | ------------------------------------------------------------ | method | 请求方法，比如get、options、head、post、put、patch、delete| url | 请求的url | params | 请求携带的params | data | 请求body中的data | json | 请求body中的json格式的data | headers | 请求携带的headers | cookies | 请求携带的cookies | files | 上传文件时使用 | auth | 身份认证时使用 | timeout | 设置请求的超时时间，可以设置连接超时和读取超时 | allow_redirects | 是否允许重定向，默认True，即允许重定向 | proxies | 设置请求的代理，支持http代理以及socks代理（需要安装第三方库&amp;quot;pip install requests[socks]&amp;quot;） | verify | 用于https请求时的ssl证书验证，默认是开启的，如果不需要则设置为False即可 | stream | 是否立即下载响应内容，默认是False，即立即下载响应内容 | cert | 用于指定本地文件用作客户端证书 3.</description>
     </item>
     
     <item>
-      <title>Python(3)——xlrd库</title>
-      <link>https://ac-lm.github.io/posts/python/python3xlrd%E5%BA%93/</link>
+      <title>Python(3)——xlrd</title>
+      <link>https://ac-lm.github.io/posts/python/python3xlrd/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python3xlrd%E5%BA%93/</guid>
-      <description>1.什么是xlrd库 python中操作Excel表格主要用到xlrd和xlwt这两个库，xlrd库提供读取功能，xlwt库提供写入功能，但python中不存在对Excel表格进行修改的库。（注意在版本1.3.0中，这两个库不再支持xlsx格式的表格文件，如要使用请指定版本1.2.0）
-2.安装 pip install xlrd==1.2.0 3.使用 import xlrd data = xlrd.open_workbook(filename) #文件名以及路径 导入和打开文档后，必须先定位到sheet，才能进行下一步操作，程序只有在获取对应的sheet之后，才能进行对行和列以及单元格的操作
-a.获取工作表 table = data.sheets()[0] #通过索引顺序获取 table = data.sheet_by_index(sheet_indx) #通过索引顺序获取 table = data.sheet_by_name(sheet_name) #通过名称获取 names = data.sheet_names() #返回book中所有工作表的名字 data.sheet_loaded(sheet_name or indx) # 检查某个sheet是否导入完毕 b.对行的操作 nrows = table.nrows #获取该sheet中的有效行数 table.row(rowx) #返回由该行中所有的单元格对象组成的列表 table.row_slice(rowx) #返回由该列中所有的单元格对象组成的列表 table.row_types(rowx, start_colx=0, end_colx=None) #返回由该行中所有单元格的数据类型组成的列表 table.row_values(rowx, start_colx=0, end_colx=None) #返回由该行中所有单元格的数据组成的列表 table.row_len(rowx) #返回该列的有效单元格长度 b.对列的操作 ncols = table.ncols #获取列表的有效列数 table.col(colx, start_rowx=0, end_rowx=None) #返回由该列中所有的单元格对象组成的列表 table.col_slice(colx, start_rowx=0, end_rowx=None) #返回由该列中所有的单元格对象组成的列表 table.col_types(colx, start_rowx=0, end_rowx=None) #返回由该列中所有单元格的数据类型组成的列表 table.</description>
+      <guid>https://ac-lm.github.io/posts/python/python3xlrd/</guid>
+      <description>1.什么是xlrd库 python 中操作 Excel 表格主要用到 xlrd 和 xlwt 这两个库，xlrd 库提供读取功能，xlwt 库提供写入功能，但 python 中不存在对 Excel 表格进行修改的库。（注意在版本1.3.0中，这两个库不再支持 xlsx 格式的表格文件，如要使用请指定版本1.2.0）
+2.安装 pip install xlrd==1.2.0 3.使用 import xlrd data = xlrd.open_workbook(filename) #文件名以及路径 导入和打开文档后，必须先定位到 sheet，才能进行下一步操作，程序只有在获取对应的 sheet 之后，才能进行对行和列以及单元格的操作
+a.获取工作表 table = data.sheets()[0] #通过索引顺序获取 table = data.sheet_by_index(sheet_indx) #通过索引顺序获取 table = data.sheet_by_name(sheet_name) #通过名称获取 names = data.sheet_names() #返回book中所有工作表的名字 data.sheet_loaded(sheet_name or indx) # 检查某个sheet是否导入完毕 b.对行的操作 nrows = table.nrows #获取该sheet中的有效行数 table.row(rowx) #返回由该行中所有的单元格对象组成的列表 table.row_slice(rowx) #返回由该列中所有的单元格对象组成的列表 table.row_types(rowx, start_colx=0, end_colx=None) #返回由该行中所有单元格的数据类型组成的列表 table.row_values(rowx, start_colx=0, end_colx=None) #返回由该行中所有单元格的数据组成的列表 table.</description>
     </item>
     
     <item>
@@ -408,187 +496,23 @@ a.获取工作表 table = data.sheets()[0] #通过索引顺序获取 table = dat
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/python/python2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3/</guid>
-      <description>1.前言 我们都知道C或者Java程序运行必然有主程序入口main函数，而python却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现C那样的主程序入口main函数，我们可以使用以下的判断
-if __name__==&#39;__main__&#39;:2.语义解释 __name__是python的内置属性，属于系统全局变量，每一个py文件都有一个属于自己的__name__
- 如果py文件作为模块被导入(import)，那么__name__就是该py文件的文件名(也称模块名) 如果py文件直接运行时，那么__name__默认等于字符串main  也就是当一个py文件作为启动文件时，该文件的内置属性__name__等于__main__，而作为导入模块时，该模块的__name__等于文件名(也称模块名字)，我们对__name__进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)
-3.作用  作为启动py文件的main函数入口 一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测bug或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得  </description>
+      <description>1.前言 我们都知道 C 或者 Java 程序运行必然有主程序入口 main 函数，而 python 却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现 C 那样的主程序入口 main 函数，我们可以使用以下的判断
+if __name__==&#39;__main__&#39;:2.语义解释 __name__是 python 的内置属性，属于系统全局变量，每一个 py 文件都有一个属于自己的__name__
+ 如果 py 文件作为模块被导入(import)，那么__name__就是该 py 文件的文件名(也称模块名) 如果 py 文件直接运行时，那么__name__默认等于字符串 main  也就是当一个 py 文件作为启动文件时，该文件的内置属性__name__等于__main__，而作为导入模块时，该模块的__name__等于文件名(也称模块名字)，我们对__name__进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)
+3.作用  作为启动 py 文件的 main 函数入口 一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测 bug 或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得  </description>
     </item>
     
     <item>
-      <title>Python(1)——Selenium库</title>
-      <link>https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/</link>
+      <title>Python(1)——Selenium</title>
+      <link>https://ac-lm.github.io/posts/python/python1selenium/</link>
       <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/python/python1selenium%E5%BA%93/</guid>
-      <description>1.什么Selenium Selenium是一个用于测试网站的自动化测试工具，支持各种浏览器，如Chrome、Firefox、Edge等。
+      <guid>https://ac-lm.github.io/posts/python/python1selenium/</guid>
+      <description>1.什么 Selenium Selenium是一个用于测试网站的自动化测试工具，支持各种浏览器，如Chrome、Firefox、Edge等。
 2.安装 pip install Selenium3.使用前提 Selenium的使用是基于浏览器驱动webdriver来启动与操作网页的，因此想要正常的进行Selenium自动化测试就必须获取对应浏览器的webdriver驱动文件。同时在环境变量中配置Path的属性，令其指向放置webdriver驱动文件的文件夹，或在程序中指定webdriver驱动文件的位置
-4.Selenium的定位方法 |元素 | 定位一个元素 | 含义 |-------------------| --------------------------------- | -------------------|id | find_element_by_id | 通过元素id定位 |name | find_element_by_name | 通过元素name定位 |xpath | find_element_by_xpath | 通过xpath表达式定位 |link_texr | find_element_by_link_text | 通过完整超链接定位 |partial_link_text | find_element_by_partial_link_text | 通过部分链接定位 |tag_name | find_element_by_tag_name | 通过标签定位 |class_name | find_element_by_class_name | 通过类名进行定位 |css_selector | find_elements_by_css_selector | 通过css选择器进行定位 对象的定位是自动化测试的核心，要想操作一个对象，首先应该识别这个对象。一个对象就像一个人一样，他会有各种的特征（属性），我们可以通过这个属性找到这对象。以百度搜索的输入框为例，有以下属性（F12查看）
+4.Selenium 的定位方法 |元素 | 定位一个元素 | 含义 |-------------------| --------------------------------- | -------------------|id | find_element_by_id | 通过元素id定位 |name | find_element_by_name | 通过元素name定位 |xpath | find_element_by_xpath | 通过xpath表达式定位 |link_texr | find_element_by_link_text | 通过完整超链接定位 |partial_link_text | find_element_by_partial_link_text | 通过部分链接定位 |tag_name | find_element_by_tag_name | 通过标签定位 |class_name | find_element_by_class_name | 通过类名进行定位 |css_selector | find_elements_by_css_selector | 通过css选择器进行定位 对象的定位是自动化测试的核心，要想操作一个对象，首先应该识别这个对象。一个对象就像一个人一样，他会有各种的特征（属性），我们可以通过这个属性找到这对象。以百度搜索的输入框为例，有以下属性（F12查看）
 input id=&amp;quot;kw&amp;quot; class=&amp;quot;s_ipt&amp;quot; name=&amp;quot;wd&amp;quot; value=&amp;quot;&amp;quot; maxlength=&amp;quot;255&amp;quot; autocomplete=&amp;quot;off&amp;quot;我们可以这样来定位属性（这里请注意CSS和xpath，本文中不做深入探讨，但是最常用的定位方式）
-通过id方式定位：browser.find_element_by_id(&amp;quot;kw&amp;quot;)通过name方式定位：browser.find_element_by_name(&amp;quot;wd&amp;quot;)通过tag name方式定位：browser.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z/</guid>
-      <description>matplotlib的backend浅析  matplotlib的backend浅析 - 云+社区 - 腾讯云 (tencent.com)
- 在服务器使用matplotlib的时候，可能是因为没有装图形化和显示相关的包的原因，总是会出现backend相关的错误。所以我调查了下matplotlib中的backend的含义，以及如何处理相关的错误。
-matplotlib中的backend matplotlib中，frontend就是我们写的python代码，而backend就是负责显示我们代码所写图形的底层代码。因为不同使用环境下硬件情况不同，所以后端是跟具体的硬件和显示条件相关的。
-backend的类别 backend又分为两类，一类是interface backend，又叫做interactive backend，这一类是表示跟显示到屏幕相关的后端；另一类是hardcopy backend，又叫做non-interactive backend，这一类是写入到文件相关的后端。下面两图分别是non-interactive backend和interactive backend的具体值：
-import matplotlib matplotlib.rcsetup.interactive_bk # 获取 interactive backend matplotlib.rcsetup.non_interactive_bk # 获取 non-interactive backend matplotlib.rcsetup.all_backends # 获取 所有 backend 设置backend 有4种方式可以来设置matplotlib的backend，而且下列越后面的设置方式，优先级越高，也就是后面的设置会覆盖前面的设置。
-1. 通过设置matplotlibrc的配置文件来设置 注意matplotlibrc文件不一定在你的家目录下，可以通过如下命令来获取其存放位置:
-import matplotlib matplotlib.get_configdir() u&amp;#39;/home/yunfeng/.config/matplotlib&amp;#39; 得到配置文件路径后，打开这个文件，写入如下一行来设置backend:
-backend : WXAgg # use wxpython with antigrain (agg) rendering 其中WXAgg可以换成任意的你的系统支持的backend类型。 注意：在backend的名字中是不区分大小写的，所以**Qt4Agg**和**qt4agg**是等价的。
-2. 通过MPLBACKEND环境变量来设置backend 下面两种方式都可以:
-## 方式1. 先export MPLBACKEND在执行python文件 $ export MPLBACKEN=&amp;#39;Agg&amp;#39; $ python works.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z1/</guid>
-      <description>pyinstaller 打包会根据平台不同进行打包，在Windows上打包Windows应用，在Linux上打包LInux的，不能交叉打包
-PyInstaller Manual — PyInstaller 4.6 documentation
- “pyinstaller -F(单个可执行文件) 程序源 -n 程序名 -w(去掉控制台窗口，这在GUI界面时非常有用) -i 图标.ico” “pyinstaller -F test1/Demo_Test1_Python.py” </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z10/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z10/</guid>
-      <description>上传文件模块MultipartEncoder - 简书 (jianshu.com)
-上传文件模块MultipartEncoder 安装 pip install requests_toolbelt 官方给我们提供的上传文件示例用法： from requests_toolbelt import MultipartEncoder encoder = MultipartEncoder({ &#39;field&#39;: (&#39;file_name&#39;, b&#39;{&amp;quot;a&amp;quot;: &amp;quot;b&amp;quot;}&#39;, &#39;application/json&#39;, {&#39;X-My-Header&#39;: &#39;my-value&#39;}) }) field：服务端约定的上传文件字段名。一般用到的是file，需要和服务端沟通获取。 file_name: 文件名。一般可以任意写，服务端大多是拿到文件后自己再次命名。 b&#39;{&amp;quot;a&amp;quot;:&amp;quot;b&amp;quot;}&#39;：文件内容。例：open(&#39;/your/file/path&#39;, &#39;rb&#39;) &#39;application/json&#39;：文件的MimeType。不同文件类型对应的MimeType可以到这里查询。 {&#39;X-My-Header&#39;: &#39;my-value&#39;}：其他内容，可不传。 payload = { &#39;file&#39;: (&#39;upload.pdf&#39;, open(&#39;sync_test.pdf&#39;, &#39;rb&#39;), &#39;application/pdf&#39;) } m = MultipartEncoder(payload) 实例 import requests from requests_toolbelt import MultipartEncoder upload_url = &#39;https://your/upload/url&#39; payload = { &#39;file&#39;: (&#39;upload.pdf&#39;, open(&#39;sync_test.pdf&#39;, &#39;rb&#39;), &#39;application/pdf&#39;) } m = MultipartEncoder(payload) headers = { &amp;quot;Content-Type&amp;quot;: m.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z11/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z11/</guid>
-      <description>python 中的callable概念 python 中的callable概念 - 知乎 (zhihu.com)
-1. 是类还是函数 几乎所有的教程都告诉你int()是python的内置函数，然而当你看到int的定义，发现它竟然是类
-class int(object): pass 不只是int(),还有float()， bool()， str()，很多你以为是函数但实际上却是类，但是呢，当你使用它们时完全察觉不出它们有什么不同，本文不是要和你讨论类和函数，而是要讨论学习callable
-2. 什么是callable 一个可callable的对象是指可以被调用执行的对象，并且可以传入参数， 用另一个简单的描述方式，只要可以在一个对象的后面使用小括号来执行代码，那么这个对象就是callable对象，下面列举callable对象的种类
- 函数 类 类里的函数 实现了__call__方法的实例对象  2.1 函数 def test(): print(&amp;#39;ok&amp;#39;) print(callable(test)) # True test() # ok 函数是python里的一等公民，函数是可调用对象，使用callable函数可以证明这一点
-2.2 类 class Stu(object): def __init__(self, name): self.name = name print(callable(Stu)) # True print(Stu(&amp;#39;小明&amp;#39;).name) # 小明 在其他编程语言里，类与函数可以说是两个完全不搭的东西，但在python里，都是可调用对象
-2.3 类里的方法 类里的方法也是用def定义的，本质上也是函数
-from inspect import isfunction, ismethod class Stu(object): def __init__(self, name): self.name = name def run(self): print(&amp;#39;{name}is running&amp;#39;.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z2/</guid>
-      <description>Python绘图与可视化 - 小杜同学的嘚啵嘚 - 博客园 (cnblogs.com)
-所谓“一图胜千言”，我们很多时候需要通过可视化的方式查看、分析数据，虽然Pandas中也有一些绘图操作，但是相比较而言，Matplotlib在绘图显示效果方面更加出色。Python为Matplotlib提供了一个方便的接口，我们可以通过Pyplot对Matplotlib进行操作，多数情况下，Pyplot的命令与MATLAB有些相似。
-导入Matplotlib包进行简单的操作（此处需要安装pip install matplotlib）：
-import matplotlib.pyplot as plt#约定俗成的写法plt #首先定义两个函数（正弦&amp;amp;余弦） import numpy as np X=np.linspace(-np.pi,np.pi,256,endpoint=True)#-π to+π的256个值 C,S=np.cos(X),np.sin(X) plt.plot(X,C) plt.plot(X,S) #在ipython的交互环境中需要这句话才能显示出来 plt.show() 绘图命令的基本架构及其属性设置
- 上面的例子我们可以看出，几乎所有的属性和绘图的框架我们都选用默认设置。现在我们来看Pyplot绘图的基本框架是什么，用过Photoshop的人都知道，作图时先要定义一个画布，此处的画布就是Figure，然后再把其他素材“画”到该Figure上。
-1）在Figure上创建子plot，并设置属性
-x=np.linspace(0,10,1000)#X轴数据 y1=np.sin(x)#Y轴数据 y2=np.cos(x**2)#Y轴数据 x**2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;quot;$sin(x)$&amp;quot;,color=&amp;quot;red&amp;quot;,linewidth=2)#将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;quot;b--&amp;quot;,label=&amp;quot;$cos(x^2)$&amp;quot;) #指定曲线的颜色和线性，如‘b--’表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;quot;Time(s)&amp;quot;) plt.ylabel(&amp;quot;Volt&amp;quot;) plt.title(&amp;quot;PyPlot First Example&amp;quot;) &#39;&#39;&#39; 使用关键字参数可以指定所绘制的曲线的各种属性： label：给曲线指定一个标签名称，此标签将在图标中显示。如果标签字符串的前后都有字符&#39;$&#39;，则Matplotlib会使用其内嵌的LaTex引擎将其显示为数学公式 color：指定曲线的颜色。颜色可以用如下方法表示 英文单词 以‘#’字符开头的3个16进制数，如‘#ff0000’表示红色。 以0~1的RGB表示，如（1.0,0.0,0.0）也表示红色。 linewidth：指定权限的宽度，可以不是整数，也可以使用缩写形式的参数名lw。 &#39;&#39;&#39; plt.ylim(-1.5,1.5) plt.legend()#显示左下角的图例 plt.show() 2）在Figure上创建多个子plot
-如果需要绘制多幅图表的话，可以给Figure传递一个整数参数指定图表的序号，如果所指定序号的绘图对象已经存在的话，将不创建新的对象，而只是让它成为当前绘图对象。
-fig1=plt.figure(2) plt.subplot(211) #subplot(211)把绘图区域等分为2行*1列共两个区域，然后在区域1（上区域）中创建一个轴对象 plt.subplot(212)#在区域2（下区域）创建一个轴对象 plt.show() 我们还可以通过命令再次拆分这些块（相当于Word中拆分单元格操作）
-f1=plt.figure(5)#弹出对话框时的标题，如果显示的形式为弹出对话框的话 plt.subplot(221) plt.subplot(222) plt.subplot(212) plt.subplots_adjust(left=0.08,right=0.95,wspace=0.25,hspace=0.45) # subplots_adjust的操作时类似于网页css格式化中的边距处理，左边距离多少？ # 右边距离多少？这取决于你需要绘制的大小和各个模块之间的间距 plt.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z3/</guid>
-      <description>psutil documentation — psutil 5.8.1 documentation
-psutil 系统监控</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z4/</guid>
-      <description>Introduction | Socket.IO
-工作原理 Socket.IO 服务器（节点.js）和 Socket.IO 客户端（浏览器、节点.js或其他编程语言）之间的双向通道尽可能使用Web 插座连接建立，并将使用 HTTP 长轮询作为回退。
-Socket.IO 代码库分为两个不同的层：
- 低级管道：我们称之为 Engine.IO，发动机内部 Socket.IO 高级别 API： Socket.IO 本身  Engine.IO# Engine.IO 负责建立服务器和客户端之间的低级连接。它处理：
- 各种运输和升级机制 断开检测  源代码可在此处找到：
- 服务器：https://github.com/socketio/engine.io 客户：https://github.com/socketio/engine.io-client 解析器：https://github.com/socketio/engine.io-parser 协议描述： https://github.com/socketio/engine.io-protocol  运输# 目前有两个已实现的运输：
- 赫特普长波 网络套接头  赫特普长波# HTTP 长投票传输（也简称为&amp;quot;投票&amp;quot;）由连续的 HTTP 请求组成：
- 从服务器接收数据的长期请求GET 短运行请求，用于向服务器发送数据POST  由于运输的性质，连续发射可以串联，并在同一 HTTP 请求范围内发送。
-网络套接头# Web插座传输由Web 插座连接组成，它提供了服务器和客户端之间的双向和低延迟通信通道。
-由于运输的性质，每个发射是发送到自己的Web插座框架（有些发射甚至可能导致两个不同的网络插座帧，更多的信息在这里）。
-握手# 在 Engine.IO 连接的开始，服务器会发送一些信息：
-{ &amp;#34;sid&amp;#34;: &amp;#34;FSDjX-WRwSA4zTZMALqx&amp;#34;, &amp;#34;upgrades&amp;#34;: [&amp;#34;websocket&amp;#34;], &amp;#34;pingInterval&amp;#34;: 25000, &amp;#34;pingTimeout&amp;#34;: 20000} 复制</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z6/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z6/</guid>
-      <description>Websocket简介 - Websocket教程™ (yiibai.com)</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z7/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z7/</guid>
-      <description>\2. sys.path[0]
-获取文件当前工作目录路径（绝对路径）
-sys.argv[0]|获得模块所在的路径（由系统决定是否是全名）
-若显示调用python指令，如python demo.py，会得到绝对路径;
-若直接执行脚本，如./demo.py，会得到相对路径。
-\3. __ file __
-获得文件所在的路径（由系统决定是否是全名）
-若显示执行Python，会得到绝对路径;
-若按相对路径来直接执行脚本./pyws/path_demo.py，会得到相对路径。
-\4. os.path.abspath(__ file __)
-获得文件所在的路径（绝对路径）
-\6. os.path.split(os.path.realpath(__ file __))
-将文件路径名称分成头和尾一对，生成二元元组。（文件目录，文件名）
-https://docs.python.org/2/library/os.path.html#os.path.split</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z8/</guid>
-      <description>将#noqa添加到一行表示linter(一个自动检查代码质量的程序)不应该检查此行.代码可能生成的任何警告都将被忽略.
-那条线可能有一些“看起来很糟糕”的东西,但开发商理解并打算出于某种原因它在那里.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/python/z9/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/python/z9/</guid>
-      <description>Executable path has been deprecated please pass in a Service object in Selenium Python 出现 DeprecationWarning 警告的类型错误：该类型的警告大多属于版本更新时，所使用的方法过时的原因，他在当前版本被重构，还可以传入参数，但是在之后的某个版本会被删除.
-查询当前版本重构后的函数，是之前的 executable_path 被重构到了 Service 函数里
-from selenium import webdriver from selenium.webdriver.chrome.service import Service s = Service(r&amp;quot;D:\Software\webdrivers\chromedriver.exe&amp;quot;) driver = webdriver.Chrome(service=s) driver.get(&#39;https://www.baidu.com&#39;) driver.close() </description>
+通过id方式定位：browser.find_element_by_id(&amp;quot;kw&amp;quot;)通过name方式定位：browser.</description>
     </item>
     
   </channel>

@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -36,7 +33,7 @@
 <div id="main">
     <header>
             <div class="title">
-                <h2 style="font-size:2em"><a href="javascript:void(0)">Git(4)——.gitlab-ci.yml文件配置</a></h2>
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Git(4)——.gitlab-ci.yml 文件配置</a></h2>
                 <p>@LM | 2021-01-13</p>
             </div>
         </header>
@@ -44,41 +41,41 @@
             <blockquote>
 <p>参考原文：<a href="https://blog.51cto.com/7072753/2457095"> .gitlab-ci.yml语法  @hellojinni  </a></p>
 </blockquote>
-<h2 id="gitlab-ciyml-文件">.gitlab-ci.yml 文件</h2>
+<h2 id="1gitlab-ciyml-文件">1.<code>.gitlab-ci.yml</code> 文件</h2>
 <p>GitLab CI 使用 YAML文件(.gitlab-ci.yml) 来管理项目配置，用来配置 CI 在你的项目中做哪些操作，这个文件位于仓库的根目录。</p>
 <p>当有新内容 push 到仓库，或者有代码合并后， GitLab 会查找是否有 .gitlab-ci.yml 文件，如果文件存在， Runners 将会根据该文件的内容开始 build 本次 commit 。</p>
 <p>.gitlab-ci.yml 使用 YAML 语法， 你需要格外注意缩进格式，要用空格来缩进，不能用 tabs 来缩进。</p>
-<h2 id="stages">Stages</h2>
+<h2 id="2stages">2.Stages</h2>
 <p>Stages 表示构建阶段，说白了就是上面提到的流程。默认有3个 stages ： build , test , deploy 。我们可以在一次 Pipeline 中定义多个 Stages ，这些 Stages 会有以下特点：</p>
 <ul>
 <li>所有 Stages 会按照顺序运行，即当一个 Stage 完成后，下一个 Stage 才会开始</li>
 <li>只有当所有 Stages 完成后，该构建任务 (Pipeline) 才会成功</li>
 <li>如果任何一个 Stage 失败，那么后面的 Stages 不会执行，该构建任务 (Pipeline) 失败</li>
 </ul>
-<h2 id="jobs">Jobs</h2>
-<p>Jobs 表示构建工作，表示某个 Stage 里面执行的工作。我们可以在 Stages 里面定义多个 Jobs ，Jobs 是由Runners接管并且由服务器中runner执行。这些 Jobs 会有以下特点：</p>
+<h2 id="3jobs">3.Jobs</h2>
+<p>Jobs 表示构建工作，表示某个 Stage 里面执行的工作。我们可以在 Stages 里面定义多个 Jobs ，Jobs 是由 Runners 接管并且由服务器中 runner 执行。这些 Jobs 会有以下特点：</p>
 <ul>
 <li>每一个 Jobs 的执行过程都是独立运行的</li>
 <li>相同 Stage 中的 Jobs 会并行执行</li>
 <li>相同 Stage 中的 Jobs 都执行成功时，该 Stage 才会成功</li>
 <li>如果任何一个 Job 失败，那么该 Stage 失败，即该构建任务 (Pipeline) 失败</li>
 </ul>
-<h2 id="约束">约束</h2>
-<p>YAML文件定义了一系列带有约束说明的任务。这些任务都是以任务名开始并且至少要包含script部分。</p>
+<h2 id="4约束">4.约束</h2>
+<p>YAML 文件定义了一系列带有约束说明的任务。这些任务都是以任务名开始并且至少要包含 script 部分。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">job1</span>:
   <span style="color:#f92672">script</span>: <span style="color:#e6db74">&#34;execute-script-for-job1&#34;</span>
   
 <span style="color:#f92672">job2</span>:
   <span style="color:#f92672">script</span>: <span style="color:#e6db74">&#34;execute-script-for-job2&#34;</span>
-</code></pre></div><h2 id="跳过job">跳过job</h2>
-<p>如果你的 commit 信息包涵 [ci skip] 或者 [skip ci] ，不论大小写，这个 commit 将会被创建，但是 job 会被跳过</p>
-<h2 id="开始">开始</h2>
+</code></pre></div><h2 id="5跳过job">5.跳过job</h2>
+<p>如果你的 commit 信息包涵 ci skip 或者 skip ci ，不论大小写，这个 commit 将会被创建，但是 job 会被跳过</p>
+<h2 id="6开始">6.开始</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">before_script</span>:
   - <span style="color:#ae81ff">echo &#34;每个job之前都会执行&#34;</span>
-</code></pre></div><h2 id="结束">结束</h2>
+</code></pre></div><h2 id="7结束">7.结束</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">after_script</span>:
   - <span style="color:#ae81ff">echo &#34;每个job之后都会执行&#34;</span>
-</code></pre></div><h2 id="示例">示例</h2>
+</code></pre></div><h2 id="8示例">8.示例</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 定义 stages（阶段）。任务将按此顺序执行。</span>
 <span style="color:#f92672">stages</span>:
   - <span style="color:#ae81ff">build</span>
@@ -148,8 +145,8 @@
     - <span style="color:#ae81ff">node_modules/</span>
     - <span style="color:#ae81ff">dist/</span>
     
-</code></pre></div><h2 id="保留字段">保留字段</h2>
-<p>这些保留字段不能被定义为job名称</p>
+</code></pre></div><h2 id="9保留字段">9.保留字段</h2>
+<p>这些保留字段不能被定义为 job 名称</p>
 <ul>
 <li><strong>image和services</strong>：这两个关键字允许使用一个自定义的Docker镜像和一系列的服务，并且可以用于整个job周期</li>
 <li><strong>before_script</strong>：before_script 用来定义所有job之前运行的命令</li>
@@ -171,37 +168,37 @@
 <li><strong>Jobs</strong>：工作</li>
 <li><strong>script</strong>：脚本</li>
 </ul>
-<h2 id="only-and-except">only and except</h2>
-<p>only和except是两个参数用分支策略来限制jobs构建：</p>
+<h2 id="10only-and-except">10.only and except</h2>
+<p>only 和 except 是两个参数用分支策略来限制jobs构建：</p>
 <ul>
-<li>only定义哪些分支和标签的git项目将会被job执行。</li>
-<li>except定义哪些分支和标签的git项目将不会被job执行。</li>
+<li>only 定义哪些分支和标签的 git 项目将会被 job 执行。</li>
+<li>except 定义哪些分支和标签的 git 项目将不会被 job 执行。</li>
 </ul>
-<p>下面是refs策略的使用规则：</p>
+<p>下面是 refs 策略的使用规则：</p>
 <ul>
-<li>only和except可同时使用。如果only和except在一个job配置中同时存在，则以only为准，跳过except(从下面示例中得出)。</li>
-<li>only和except可以使用正则表达式。</li>
-<li>only和except允许使用特殊的关键字：branches，tags和triggers。</li>
-<li>only和except允许使用指定仓库地址但不是forks的仓库。</li>
+<li>only 和 except 可同时使用。如果 only 和 except 在一个 job 配置中同时存在，则以 only 为准，跳过 except。</li>
+<li>only 和 except 可以使用正则表达式。</li>
+<li>only 和 except 允许使用特殊的关键字：branches，tags和triggers。</li>
+<li>only 和 except 允许使用指定仓库地址但不是 forks 的仓库。</li>
 </ul>
-<h2 id="tags">tags</h2>
-<p>tags可以从允许运行此项目的所有Runners中选择特定的Runners来执行jobs。</p>
-<p>在注册Runner的过程中，我们可以设置Runner的标签，比如ruby，postgres，development。</p>
-<p>tags可通过tags来指定特殊的Runners来运行jobs。</p>
-<h2 id="allow_failure">allow_failure</h2>
-<p>allow_failure可以用于当你想设置一个job失败的之后并不影响后续的CI组件的时候。失败的jobs不会影响到commit状态。</p>
-<p>当开启了允许job失败，所有的intents和purposes里的pipeline都是成功/绿色，但是也会有一个&quot;CI build passed with warnings&quot;信息显示在merge request或commit或job page。这被允许失败的作业使用，但是如果失败表示其他地方应采取其他（手动）步骤。</p>
-<h2 id="when">when</h2>
+<h2 id="11tags">11.tags</h2>
+<p>tags 可以从允许运行此项目的所有 Runners 中选择特定的 Runners 来执行 jobs。</p>
+<p>在注册 Runner 的过程中，我们可以设置 Runner 的标签，比如 ruby，postgres，development。</p>
+<p>tags 可通过 tags 来指定特殊的 Runners 来运行 jobs。</p>
+<h2 id="12allow_failure">12.allow_failure</h2>
+<p>allow_failure 可以用于当你想设置一个 job 失败的之后并不影响后续的 CI 组件的时候。失败的 jobs 不会影响到 commit 状态。</p>
+<p>当开启了允许 job 失败，所有的 intents 和 purposes 里的 pipeline 都是成功/绿色，但是也会有一个&quot;CI build passed with warnings&quot;信息显示在 merge request 或 commit 或 job page。这被允许失败的作业使用，但是如果失败表示其他地方应采取其他（手动）步骤。</p>
+<h2 id="13when">13.when</h2>
 <p>when is used to implement jobs that are run in case of failure or despite the failure.</p>
-<p>when可以设置以下值：</p>
+<p>when 可以设置以下值：</p>
 <ul>
-<li>on_success - 只有前面stages的所有工作成功时才执行。 这是默认值。</li>
-<li>on_failure - 当前面stages中任意一个jobs失败后执行。</li>
-<li>always - 无论前面stages中jobs状态如何都执行。</li>
+<li>on_success - 只有前面 stages 的所有工作成功时才执行。 这是默认值。</li>
+<li>on_failure - 当前面 stages 中任意一个 jobs 失败后执行。</li>
+<li>always - 无论前面 stages 中 jobs 状态如何都执行。</li>
 <li>manual- 手动执行(GitLab8.10增加)。更多请查看手动操作。</li>
 </ul>
-<h2 id="manual-actions">Manual actions</h2>
-<p>手动操作指令是不自动执行的特殊类型的job；它们必须要人为启动。手动操作指令可以从pipeline，build，environment和deployment视图中启动。</p>
+<h2 id="14manual-actions">14.Manual actions</h2>
+<p>手动操作指令是不自动执行的特殊类型的 job；它们必须要人为启动。手动操作指令可以从 pipeline，build，environment 和 deployment 视图中启动。</p>
 
             <p style="margin-top:1em;"></p>
         </div>

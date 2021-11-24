@@ -8,65 +8,78 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/bug/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>BUG(22)——Cypress出现应用代码的错误</title>
-      <link>https://ac-lm.github.io/posts/bug/bug22cypress%E5%87%BA%E7%8E%B0%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E9%94%99%E8%AF%AF/</link>
-      <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
+      <title>BUG(23)——Linux 报错 no C compiler found in $PATH</title>
+      <link>https://ac-lm.github.io/posts/bug/bug23linux-%E6%8A%A5%E9%94%99-no-c-compiler-found-in-path/</link>
+      <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug22cypress%E5%87%BA%E7%8E%B0%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E9%94%99%E8%AF%AF/</guid>
-      <description> 参考原文：https://www.cnblogs.com/sap-jerry/p/14713564.html
- BUG描述 在我们使用 Cypress 进行自动化时，有时网页自身的 JavaScript 会出现报错，此时 Cypress 也会捕抓这个异常，但这个异常并不是 Cypress 引起的，而我们也不需要这个异常。
-Resolution 我们可以在脚本开头添加以下代码，屏蔽这类异常
-Cypress.on(&amp;#39;uncaught:exception&amp;#39;, (err, runnable) =&amp;gt; { // returning false here prevents Cypress from  // failing the test  console.log(&amp;#39;Jerry errors!&amp;#39;); return false }) </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug23linux-%E6%8A%A5%E9%94%99-no-c-compiler-found-in-path/</guid>
+      <description>BUG 描述 在 Linux 编译某些程序时，出现报错
+configure: error: no acceptable C compiler found in $PATH
+Resolution Linux 缺少合适的编译器
+yum install gcc-c++ gcc 为 GNU Compiler Collection 的缩写，可以编译 C 和 C++ 源代码等，它是 GNU 开发的 C 和 C++ 以及其他很多种语言的编译器（最早的时候只能编译 C，后来很快进化成一个编译多种语言的集合，如 Fortran、Pascal、Objective-C、Java、Ada、 Go 等。）
+gcc 在编译 C++ 源代码的阶段，只能编译 C++ 源文件，而不能自动和 C++ 程序使用的库链接（编译过程分为编译、链接两个阶段，源程序文件被编译成目标文件，多个目标文件连同库被链接成一个最终的可执行文件，可执行文件被加载到内存中运行）。因此，通常使用 g++ 命令来完成 C++ 程序的编译和连接，该程序会自动调用 gcc 实现编译。
+g++ 也能编译 C 源代码，只不过把会把它当成 C++ 源代码。后缀为 .c 的源文件，gcc 把它当作是 C 程序，而 g++ 把它当作是 c++ 程序，后缀为 .cpp 的，两者都会认为是 c++ 程序。注意，虽然 c++ 是 c 的超集，但是两者对语法的要求是有区别的。</description>
     </item>
     
     <item>
-      <title>BUG(21)——Linux缺少OpenSSL</title>
-      <link>https://ac-lm.github.io/posts/bug/bug21linux%E7%BC%BA%E5%B0%91openssl/</link>
-      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      <title>BUG(22)——Cypress 出现应用代码的错误</title>
+      <link>https://ac-lm.github.io/posts/bug/bug22cypress-%E5%87%BA%E7%8E%B0%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug21linux%E7%BC%BA%E5%B0%91openssl/</guid>
-      <description>BUG描述 在Linux编译某些软件时，会出现报错
-fatal error: openssl/ssl.h: No such file or directory centos
-Resolution 这是缺少 OpenSSL 导致的，重新安装即可
-要在Debian、Ubuntu或者其他衍生版上安装OpenSSL：
-sudo apt-get install libssl-dev 要在 Fedora，CentOS 或者 RHEL 上安装OpenSSL开发包：
-sudo yum install openssl-devel 安装完后，尝试重新编译程序。
+      <guid>https://ac-lm.github.io/posts/bug/bug22cypress-%E5%87%BA%E7%8E%B0%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E7%9A%84%E9%94%99%E8%AF%AF/</guid>
+      <description>BUG描述 在我们使用 Cypress 进行自动化时，有时网页自身的 JavaScript 会出现报错，此时 Cypress 也会捕抓这个异常，但这个异常并不是 Cypress 引起的，而我们也不需要这个异常。
+Resolution 我们可以在脚本开头添加以下代码，屏蔽这类异常
+Cypress.on(&amp;#39;uncaught:exception&amp;#39;, (err, runnable) =&amp;gt; { // returning false here prevents Cypress from  // failing the test  console.log(&amp;#39;Jerry errors!&amp;#39;); return false })  参考原文：https://www.cnblogs.com/sap-jerry/p/14713564.html
  </description>
     </item>
     
     <item>
-      <title>BUG(20)——Request模块Url编码问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug20request%E6%A8%A1%E5%9D%97url%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</link>
+      <title>BUG(21)——Linux 缺少 OpenSSL</title>
+      <link>https://ac-lm.github.io/posts/bug/bug21linux-%E7%BC%BA%E5%B0%91-openssl/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/bug/bug21linux-%E7%BC%BA%E5%B0%91-openssl/</guid>
+      <description>BUG描述 在 Linux 编译某些软件时，会出现报错
+fatal error: openssl/ssl.h: No such file or directory centos
+Resolution 这是缺少 OpenSSL 导致的，重新安装即可
+要在 Debian、Ubuntu 或者其他衍生版上安装 OpenSSL：
+sudo apt-get install libssl-dev 要在 Fedora，CentOS 或者 RHEL 上安装 OpenSSL：
+sudo yum install openssl-devel 安装完后，尝试重新编译程序</description>
+    </item>
+    
+    <item>
+      <title>BUG(20)——Request 模块 Url 编码问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug20request-%E6%A8%A1%E5%9D%97-url-%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug20request%E6%A8%A1%E5%9D%97url%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
-      <description>BUG描述 Python 中用户使用 Requests 库发送 Http 请求时，请求的所有参数都会被进行 Url 编码。此时容易出现由于 Url 编码后参数异常的情况，特别是中文字符，最终导致 Http 请求失败。
+      <guid>https://ac-lm.github.io/posts/bug/bug20request-%E6%A8%A1%E5%9D%97-url-%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
+      <description>BUG 描述 Python 中用户使用 Requests 库发送 Http 请求时，请求的所有参数都会被进行 Url 编码。此时容易出现由于 Url 编码后参数异常的情况，特别是中文字符，最终导致 Http 请求失败。
 Resolution 用户可以将参数提前进行编码传递，以避免 Requests 库对参数的编码
 payload1 = &amp;#39;{ABC}&amp;#39; # String data = payload1.encode(&amp;#39;utf-8&amp;#39;) # b&amp;#39;{ABC}&amp;#39; 转换后的 UTF-8 编码 response = requests.request(&amp;#34;POST&amp;#34;, url, data=data) 复现 def import_school(): api = &#39;http://192.168.1.240/base/school&#39; school_name = [&#39;第一中学&#39;, &#39;第二中学&#39;, &#39;实验中学&#39;] jurisdiction = [&#39;荔湾区&#39;, &#39;越秀区&#39;, &#39;海珠区&#39;, &#39;天河区&#39;, &#39;白云区&#39;, &#39;黄埔区&#39;, &#39;番禺区&#39;, &#39;花都区&#39;, &#39;南沙区&#39;, &#39;从化区&#39;, &#39;增城区&#39;] county_number = [440103, 440104, 440105, 440106, 440111, 440112, 440113, 440114, 440115, 440117, 440118] print(len(jurisdiction)) print(len(county_number)) did = &amp;quot;440104002&amp;quot; area_id = 3 data = {&amp;quot;name&amp;quot;: &amp;quot;越秀第二中学&amp;quot;, &amp;quot;is_famous&amp;quot;: 2, &amp;quot;school_number&amp;quot;: 440104, &amp;quot;principal&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;telephone&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;address&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;email&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;logo_url&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;icon_url&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;official_website&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;org_web_path&amp;quot;: did, &amp;quot;area_id&amp;quot;: area_id, &amp;quot;user_name&amp;quot;: did, &amp;quot;account&amp;quot;: did, &amp;quot;password&amp;quot;: &amp;quot;7c4a8d09ca3762af61e59520943dc26494f8941b&amp;quot;} response = requests.</description>
     </item>
     
     <item>
-      <title>BUG(19)——Django分页报错</title>
-      <link>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</link>
+      <title>BUG(19)——Django 分页报错</title>
+      <link>https://ac-lm.github.io/posts/bug/bug19django-%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug19django%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</guid>
-      <description>BUG描述 Django分页时报错
-UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: &amp;lt;class &amp;#39;sign.models.Guest&amp;#39;&amp;gt; QuerySet.paginator = Paginator(guest_list,5) Resolution 这是因为Django分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
+      <guid>https://ac-lm.github.io/posts/bug/bug19django-%E5%88%86%E9%A1%B5%E6%8A%A5%E9%94%99/</guid>
+      <description>BUG 描述 Django 分页时报错
+UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: &amp;lt;class &amp;#39;sign.models.Guest&amp;#39;&amp;gt; QuerySet.paginator = Paginator(guest_list,5) Resolution 这是因为 Django 分页是依照排序进行的，而未排序时进行分页便会发生该报错。定位分页依据的数据，对该数据进行排序
 paginator = Paginator(gList, 5) gList = G.objects.all().order_by(&amp;#39;id&amp;#39;) </description>
     </item>
     
     <item>
-      <title>BUG(18)——使用JS添加的元素无法点击</title>
-      <link>https://ac-lm.github.io/posts/bug/bug18%E4%BD%BF%E7%94%A8js%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%85%83%E7%B4%A0%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB/</link>
+      <title>BUG(18)——使用 Js 添加的元素无法点击</title>
+      <link>https://ac-lm.github.io/posts/bug/bug18%E4%BD%BF%E7%94%A8-js-%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%85%83%E7%B4%A0%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug18%E4%BD%BF%E7%94%A8js%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%85%83%E7%B4%A0%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB/</guid>
-      <description> 参考原文：js添加HTML元素时出现的无效的点击事件 @wttwuhn 
- BUG描述 在使用append()添加元素后，该元素的点击事件无法被监听生效
+      <guid>https://ac-lm.github.io/posts/bug/bug18%E4%BD%BF%E7%94%A8-js-%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%85%83%E7%B4%A0%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB/</guid>
+      <description>BUG 描述 在使用append()添加元素后，该元素的点击事件无法被监听生效
 Resolution 这些因为，这些动态加载的元素是在css, js代码加载完后才添加的。因此当浏览器在解析js代码时，这些动态添加的元素并未生成，从而也无法绑定相应的事件，事件也就不会触发。
 通过对body绑定事件解决该问题
-$(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;, function(){ alert(&amp;#39;new&amp;#39;) }) </description>
+$(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;, function(){ alert(&amp;#39;new&amp;#39;) })  参考原文：js添加HTML元素时出现的无效的点击事件 @wttwuhn 
+ </description>
     </item>
     
     <item>
@@ -75,135 +88,134 @@ $(&amp;#34;body&amp;#34;).on(&amp;#34;click&amp;#34;, &amp;#39;.addBtn&amp;#39;,
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug17%E5%AD%97%E5%85%B8%E5%9C%A8%E9%81%8D%E5%8E%86%E6%97%B6%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9/</guid>
-      <description>BUG描述 a={&amp;#39;a&amp;#39;:1, &amp;#39;b&amp;#39;:0, &amp;#39;c&amp;#39;:1, &amp;#39;d&amp;#39;:0} for key in a.keys(): del a[key] 执行上述代码时会出现报错
+      <description>BUG 描述 a={&amp;#39;a&amp;#39;:1, &amp;#39;b&amp;#39;:0, &amp;#39;c&amp;#39;:1, &amp;#39;d&amp;#39;:0} for key in a.keys(): del a[key] 执行上述代码时会出现报错
 Resolution 字典在遍历时不能被修改，需要将字典转成列表或集合再进行遍历。
 a={&amp;#39;a&amp;#39;:1, &amp;#39;b&amp;#39;:0, &amp;#39;c&amp;#39;:1, &amp;#39;d&amp;#39;:0} for key in list(a.keys()): del a[key] </description>
     </item>
     
     <item>
-      <title>BUG(16)——xlrd模块无法打开.xlsx文件</title>
-      <link>https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/</link>
+      <title>BUG(16)——xlrd 模块无法打开 .xlsx 文件</title>
+      <link>https://ac-lm.github.io/posts/bug/bug16xlrd-%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80-.xlsx-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug16xlrd%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80.xlsx%E6%96%87%E4%BB%B6/</guid>
-      <description>BUG描述 xlrd模块更新后，无法打开.xlsx文件，报错 xlrd.biffh.XLRDError: Excel xlsx file；not supported
-Resolution xlrd在更新到了2.0.1版本后只支持.xls文件，若要打开.xlsx文件需要安装旧版xlrd，执行
+      <guid>https://ac-lm.github.io/posts/bug/bug16xlrd-%E6%A8%A1%E5%9D%97%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80-.xlsx-%E6%96%87%E4%BB%B6/</guid>
+      <description>BUG 描述 xlrd 模块更新后，无法打开 .xlsx 文件，报错 xlrd.biffh.XLRDError: Excel xlsx file；not supported
+Resolution xlrd 在更新到了2.0.1版本后只支持 .xls 文件，若要打开 .xlsx 文件需要安装旧版 xlrd，执行
 pip uninstall xlrd pip install xlrd==1.2.0 </description>
     </item>
     
     <item>
-      <title>BUG(15)——git提示LF will be replaced by CRLF</title>
-      <link>https://ac-lm.github.io/posts/bug/bug15git%E6%8F%90%E7%A4%BAlf-will-be-replaced-by-crlf/</link>
+      <title>BUG(15)——git 提示 LF will be replaced by CRLF</title>
+      <link>https://ac-lm.github.io/posts/bug/bug15git-%E6%8F%90%E7%A4%BA-lf-will-be-replaced-by-crlf/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug15git%E6%8F%90%E7%A4%BAlf-will-be-replaced-by-crlf/</guid>
-      <description>BUG描述 在windows平台下使用 git add，git deploy 文件时经常出现“warning: LF will be replaced by CRLF” 的提示
+      <guid>https://ac-lm.github.io/posts/bug/bug15git-%E6%8F%90%E7%A4%BA-lf-will-be-replaced-by-crlf/</guid>
+      <description>BUG 描述 在 windows 平台下使用 git add，git deploy 文件时经常出现warning: LF will be replaced by CRLF的提示
 Resolution 这是因为在文本处理中，CR（CarriageReturn）/ LF（LineFeed）是不同操作系统上使用的换行符，当我们在 Windows 上的编辑器打开文件时，编辑器会把行尾的换行（LF）字符转换成回车（CR）和换行（LF），或在用户按下 Enter 键时，插入回车（CR）和换行（LF）两个字符。
-在linux下，命令 unix2dos 可以把linux文件格式转换成windows文件格式，命令 dos2unix 可以把windows格式转换成linux文件格式。
- Dos和Windows平台： 使用回车（CR）和换行（LF）两个字符来结束一行，回车+换行(CR+LF)，即（\r\n） Mac 和 Linux平台：只使用换行（LF）一个字符来结束一行，即(\n) 回车符就是回到一行的开头，用符号r表示，十进制ASCII代码是13，十六进制代码为0x0D 换行符就是另起一行，用n符号表示，ASCII代码是10，十六制为0x0A 我们平时编写文件的回车符应该确切来说叫做回车换行符  Git 可以在你提交时自动地把回车（CR）和换行（LF）转换成换行（LF），而在检出（检查出入）代码时把换行（LF）转换成回车（CR）和换行（LF）。如果是在 Windows 系统上，把它设置成 true，这样在检出代码时，换行会被转换成回车和换行。
-# 提交时转换为LF，检出时转换为CRLF git config --global core.autocrlf true 如果使用以换行（LF）作为行结束符的 Linux 或 Mac，你不需要 Git 在检出文件时进行自动的转换。然而当一个以回车（CR）和换行（LF）作为行结束符的文件不小心被引入时，你肯定想让 Git 修正。 所以，你可以把 core.autocrlf 设置成 input 来告诉 Git 在提交时把回车和换行转换成换行，检出时不转换：（这样在 Windows 上的检出文件中会保留回车和换行，而在 Mac 和 Linux 上，以及版本库中会保留换行。）
-#提交时转换为LF，检出时不转换 git config --global core.</description>
+在 Linux 下，命令 unix2dos 可以把 Linux 文件格式转换成 Windows 文件格式，命令 dos2unix 可以把 Windows 格式转换成 Linux 文件格式。
+ Dos 和 Windows 平台： 使用回车（CR）和换行（LF）两个字符来结束一行，回车+换行(CR+LF)，即（\r\n） Mac 和 Linux 平台：只使用换行（LF）一个字符来结束一行，即(\n) 回车符就是回到一行的开头，用符号 r 表示，十进制 ASCII 代码是 13，十六进制代码为 0x0D 换行符就是另起一行，用 n 符号表示，ASCII 代码是 10，十六制为 0x0A 我们平时编写文件的回车符应该确切来说叫做回车换行符  Git 可以在你提交时自动地把回车（CR）和换行（LF）转换成换行（LF），而在检出（检查出入）代码时把换行（LF）转换成回车（CR）和换行（LF）。如果是在 Windows 系统上，把它设置成 true，这样在检出代码时，换行会被转换成回车和换行。
+# 提交时转换为LF，检出时转换为CRLF git config --global core.</description>
     </item>
     
     <item>
-      <title>BUG(14)——bash命令丢失</title>
-      <link>https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</link>
+      <title>BUG(14)——bash 命令丢失</title>
+      <link>https://ac-lm.github.io/posts/bug/bug14bash-%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug14bash%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</guid>
-      <description>BUG描述 在Linux shell 中执行ls命令时，报错 bash：ls command not found
-Resolution 由于环境变量PATH被错误修改，导致命令丢失
+      <guid>https://ac-lm.github.io/posts/bug/bug14bash-%E5%91%BD%E4%BB%A4%E4%B8%A2%E5%A4%B1/</guid>
+      <description>BUG 描述 在 Linux shell 中执行 ls 命令时，报错 bash：ls command not found
+Resolution 由于环境变量 PATH 被错误修改，导致命令丢失
 # 命令行执行，恢复环境变量 export PATH=/bin:/usr/bin:$PATH </description>
     </item>
     
     <item>
       <title>BUG(13)——Linux中Chrome无法启动缺少权限</title>
-      <link>https://ac-lm.github.io/posts/bug/bug13linux%E4%B8%ADchrome%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%BC%BA%E5%B0%91%E6%9D%83%E9%99%90/</link>
+      <link>https://ac-lm.github.io/posts/bug/bug13linux-%E4%B8%AD-chrome-%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug13linux%E4%B8%ADchrome%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%BC%BA%E5%B0%91%E6%9D%83%E9%99%90/</guid>
-      <description>BUG描述 linux下Python脚本selenium无法启动Chrome，报错unknown error: DevToolsActivePort file doesn&amp;rsquo;t exist
-Resolution Chrome在Linux下权限不足，需要添加以下属性以Root运行
-options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以Root权限运行 </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug13linux-%E4%B8%AD-chrome-%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/</guid>
+      <description>BUG 描述 linux 下 Python 脚本 selenium 无法启动 Chrome，报错
+unknown error: DevToolsActivePort file doesn&#39;t exist
+Resolution Chrome 在 Linux 下权限不足，需要添加以下属性以 Root 运行
+options.add_argument(&amp;#39;--no-sandbox&amp;#39;) # 不在沙盒运行，以 Root 权限运行 </description>
     </item>
     
     <item>
       <title>BUG(11)——gitlab-runner无权限</title>
-      <link>https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/</link>
+      <link>https://ac-lm.github.io/posts/bug/bug11gitlab-runner-%E6%97%A0%E6%9D%83%E9%99%90/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug11gitlab-runner%E6%97%A0%E6%9D%83%E9%99%90/</guid>
-      <description>Resolution 手动将gitlab-runner服务设置为 root 用户
-ps aux|grep gitlab-runner #查看当前runner用户 sudo gitlab-runner uninstall #删除gitlab-runner gitlab-runner install --working-directory /home/gitlab-runner --user root #安装并设置--user(例如我想设置为root) sudo service gitlab-runner restart #重启gitlab-runner ps aux|grep gitlab-runner #再次执行会发现--user的用户名已经更换成root了 </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug11gitlab-runner-%E6%97%A0%E6%9D%83%E9%99%90/</guid>
+      <description>Resolution 需要手动将 gitlab-runner 服务设置为 root 用户
+ps aux|grep gitlab-runner # 查看当前 runner 用户 sudo gitlab-runner uninstall # 删除 gitlab-runner gitlab-runner install --working-directory /home/gitlab-runner --user root # 设置 root 用户 sudo service gitlab-runner restart # 重启gitlab-runner ps aux|grep gitlab-runner # 再次执行会发现 --user 的用户名已经更换成root了 </description>
     </item>
     
     <item>
-      <title>BUG(12)——gitlab CI无法运行无标签工作</title>
-      <link>https://ac-lm.github.io/posts/bug/bug12gitlab-ci%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E5%B7%A5%E4%BD%9C/</link>
+      <title>BUG(12)——gitlab CI 无法运行无标签的工作</title>
+      <link>https://ac-lm.github.io/posts/bug/bug12gitlab-ci-%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B7%A5%E4%BD%9C/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug12gitlab-ci%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E5%B7%A5%E4%BD%9C/</guid>
-      <description>BUG描述 gitlab CI 无法执行没有标记标签的工作
+      <guid>https://ac-lm.github.io/posts/bug/bug12gitlab-ci-%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E6%97%A0%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B7%A5%E4%BD%9C/</guid>
+      <description>BUG 描述 gitlab CI 无法执行没有标记标签的工作
 Resolution 在设置中勾选 Run untagged jobs
 gitlab 项目设置 -&amp;gt; CI/CD -&amp;gt; Runner，点击编辑按钮，修改 Run untagged jobs / Indicates whether this runner can pick jobs without tags</description>
     </item>
     
     <item>
-      <title>BUG(10)——gitlab CI无法初始化Git版本库</title>
-      <link>https://ac-lm.github.io/posts/bug/bug10gitlab-ci%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96git%E7%89%88%E6%9C%AC%E5%BA%93/</link>
+      <title>BUG(10)——gitlab CI 无法初始化 Git 版本库</title>
+      <link>https://ac-lm.github.io/posts/bug/bug10gitlab-ci-%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96-git-%E7%89%88%E6%9C%AC%E5%BA%93/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug10gitlab-ci%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96git%E7%89%88%E6%9C%AC%E5%BA%93/</guid>
-      <description> 参考原文：fatal: git fetch-pack: expected shallow list @0neBean 
- BUG描述 gitlab CI 报错 fatal: git fetch-pack: expected shallow list
-重新初始化现存的 Git 版本库于 /home/gitlab-runner/builds/yygZdKcz/0/root/api-adapter/.git/ fatal: git fetch-pack: expected shallow list fatal: The remote end hung up unexpectedly Resolution 这是由于 git 版本过老不支持新的API，需要升级git
-#安装源 yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm #安装git yum install git #更新git yum update git </description>
+      <guid>https://ac-lm.github.io/posts/bug/bug10gitlab-ci-%E6%97%A0%E6%B3%95%E5%88%9D%E5%A7%8B%E5%8C%96-git-%E7%89%88%E6%9C%AC%E5%BA%93/</guid>
+      <description>BUG描述 gitlab CI 报错
+fatal: git fetch-pack: expected shallow list fatal: The remote end hung up unexpectedly Resolution 这是由于 git 版本过老不支持新的 API，需要升级 git
+#安装源 yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm #安装git yum install git #更新git yum update git  参考原文：fatal: git fetch-pack: expected shallow list @0neBean 
+ </description>
     </item>
     
     <item>
-      <title>BUG(9)——AndroidCMD工具安装SDK路径无法识别问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/</link>
+      <title>BUG(9)——AndroidCMD 工具安装 SDK 路径无法识别</title>
+      <link>https://ac-lm.github.io/posts/bug/bug9androidcmd-%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85-sdk-%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB/</link>
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug9androidcmd%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85sdk%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98/</guid>
-      <description>参考原文：cmdline-tools : could not determine SDK root @stackoverflow 
- BUG描述 执行 Android cmd 工具中 sdkmanager 命令时无法找到对应路径
+      <guid>https://ac-lm.github.io/posts/bug/bug9androidcmd-%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85-sdk-%E8%B7%AF%E5%BE%84%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB/</guid>
+      <description>BUG 描述 执行 Android cmd 工具 sdkmanager 命令时无法找到对应路径
 Error: Could not determine SDK root. Error: Either specify it explicitly with --sdk_root= or move this package into its expected location: \cmdline-tools\latest\ Resolution Since new updates, there are some changes that are not mentioned in the documentation. After unzipping the command line tools package, the top-most directory you&amp;rsquo;ll get is cmdline-tools.
 Rename the unpacked directory from cmdline-tools to tools, and place it under $C:/Android/cmdline-tools</description>
     </item>
     
     <item>
-      <title>BUG(7)——Win10锁屏问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug7win10%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</link>
+      <title>BUG(7)——Win10 锁屏问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug7win10-%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug7win10%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</guid>
-      <description>BUG描述 Windows10在锁屏时会偶尔出现不是自己设置的图片的问题，锁屏会变为默认图片。怀疑是由于用户的缓存被清理，变为了默认用户。
-Resolution Win+R 打开运行，输入%ProgramData%\Microsoft\Windows打开Win10配置文件夹，寻找到SystemData文件夹，双击打开。
+      <guid>https://ac-lm.github.io/posts/bug/bug7win10-%E9%94%81%E5%B1%8F%E9%97%AE%E9%A2%98/</guid>
+      <description>BUG描述 Windows10 在锁屏时会偶尔出现不是自己设置的图片的问题，锁屏会变为默认图片。怀疑是由于用户的缓存被清理，启动时变为了默认用户。
+Resolution Win+R 打开运行，输入%ProgramData%\Microsoft\Windows打开 Win10 配置文件夹，寻找到SystemData文件夹，双击打开。
 若没有权限，右键-&amp;gt;属性-&amp;gt;安全-&amp;gt;高级-&amp;gt;上面栏的所有者更改-&amp;gt;输入用户名(登陆账号名如LM)-&amp;gt;检查名称-&amp;gt;确认用户-&amp;gt;确认-&amp;gt;替换子容器和对象的所有者-&amp;gt;确定-&amp;gt;成功获取权限
 进入SystemData，发现存在形如S-1-5-18和S-1-5-21-的文件夹(为用户的锁屏配置文件)，S-1-5-18为默认配置，打开S-1-5-21-&amp;gt;ReadOnly，目录下LockScreen_W，LockScreen_B即为锁屏图片。LockScreen_B为用户设置，LockScreen_W为默认，即注销后的锁屏，更改文件内容以修改锁屏</description>
     </item>
     
     <item>
       <title>BUG(8)——SSH无法连接虚拟机Linux系统</title>
-      <link>https://ac-lm.github.io/posts/bug/bug8ssh%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BAlinux%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://ac-lm.github.io/posts/bug/bug8ssh-%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA-linux/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug8ssh%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BAlinux%E7%B3%BB%E7%BB%9F/</guid>
-      <description>BUG描述 无法使用 SSH 连接虚拟机，使用Ping指令，能从虚拟机中Ping通主机，但不能从外部主机Ping通虚拟机。
+      <guid>https://ac-lm.github.io/posts/bug/bug8ssh-%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA-linux/</guid>
+      <description>BUG描述 无法使用 SSH 连接虚拟机，使用 Ping 指令，能从虚拟机中 Ping 通主机，但不能从外部主机 Ping 通虚拟机。
 Resolution 注意网关配置的问题，查看网关是否错误，可以打开网络适配器，右键虚拟网卡，诊断，重置网卡，重新配置网关。</description>
     </item>
     
     <item>
-      <title>BUG(6)——Wapiti报告丢失js文件问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</link>
+      <title>BUG(6)——Wapiti 报告丢失 js 文件</title>
+      <link>https://ac-lm.github.io/posts/bug/bug6wapiti-%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1-js-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug6wapiti%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1js%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/</guid>
-      <description> 参考文献：github-wapiti-issues @Maxime Alay-Eddine 
- BUG描述 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP报告缺少js文件
-Resolution 需手动从目录wapitiCore/report_template中找到并添加
+      <guid>https://ac-lm.github.io/posts/bug/bug6wapiti-%E6%8A%A5%E5%91%8A%E4%B8%A2%E5%A4%B1-js-%E6%96%87%E4%BB%B6/</guid>
+      <description>BUG描述 在 wapiti 的 3.0.4 版本中：HTTP request and cURL command hidden on html report，HTTP 报告缺少 js 文件
+Resolution 需手动从目录 wapitiCore/report_template 中找到并添加
  Ok, when generating the html report it is supposed to copy the js file from wapitiCore/report_template into output directory, that is why it was missing.
+  参考文献：github-wapiti-issues @Maxime Alay-Eddine 
  </description>
     </item>
     
@@ -213,81 +225,62 @@ Resolution 需手动从目录wapitiCore/report_template中找到并添加
       <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/bug/bug5%E7%88%AC%E8%99%AB%E4%B8%AD%E4%B9%B1%E7%A0%81%E7%9A%84%E6%88%90%E5%9B%A0%E5%8F%8A%E5%A4%84%E7%90%86/</guid>
-      <description>Resolution 为什么会出现乱码 在使用Python爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，显然会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
-print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果为：
-# Python使用的编解码格式 ISO-8859-1 # 实际应该使用的编解码格式 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
-乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为GBK编码的字节流，在我们抓取后，程序直接使用UTF-8进行编码并输出到文件中，此时必然会引起乱码。
+      <description>为什么会出现乱码 在使用 Python 爬虫时，有些网站获取的数据会出现乱码，这是由于 Requests 模块会基于 HTTP 头对响应的编码作出有根据的推测。当获取到响应结果的文本(text属性)后，Requests 会使用其推测的文本进行编码。当编码出现错误时，就会出现乱码。此时我们可以使用以下这两个方法查看响应文本的编解码类型。
+print(res.encoding) # 查看网页返回的字符集类型，其值是从 header 中的 charset 字段中提取的编码方式，若 header 中没有 charset 字段则默认为 ISO-8859-1 编码模式，是默认使用的编码格式 print(res.apparent_encoding) # 自动判断字符集类型，apparent_encoding 会从网页的内容中分析网页编码的方式，所以 apparent_encoding 比 encoding 更加准确。当网页出现乱码时可以把 apparent_encoding 的编码格式赋值给 encoding。 输出结果
+# Python 使用的编解码格式 ISO-8859-1 # 实际应该使用的编解码格式 GB2312 可以发现 Requests 推测的文本编码 ISO 与源网页编码 GBK 不一致
+乱码怎么出现的 当源网页编码和爬取下来后的编码转换不一致时，程序就会出现乱码。比如源网页为 GBK 编码的字节流，在我们抓取后，程序直接使用 UTF-8 进行编码并输出到文件中，此时必然会引起乱码。
 现如今主流的编码有：Unicode、ISO-8859-1、GBK2312、GBK、UTF-8 等几种。
-最早的编码是ISO-8859-1，和ASCII编码相似。ISO-8859-1属于单字节编码，最多能表示的字符范围是0-255，应用于英文环境。很明显，ISO-8859-1编码表示的字符范围很窄，无法表示中文字符。
-1981年中国人民通过对 ASCII 编码的中文扩充改造，产生了GBK2312编码，可以表示6000多个常用汉字。但汉字实在是太多了，包括繁体和各种字符，于是产生了 GBK 编码，它包括了GBK2312中的编码，同时扩充了很多。
-随着时代的发展，其他国家都像中国一样，把自己的语言进行了编码，出现了很多的编码格式。终于，有个叫 ISO 的组织看不下去了。他们一起创造了一种编码Unicode ，这种编码非常大，大到可以容纳世界上任何一个文字和标志。所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，只需要保存文件的时候，保存成 Unicode编码就可以被其他电脑正常解释。Unicode在网络传输中，出现了两个标准 UTF-8 和 UTF-16，分别每次传输 8个位和 16个位。但与之带来的问题是 UTF-8 等编码体积比较大，占电脑空间比较多，因此如果面向的使用人群绝大多是中国人的话，用GBK编码便可以了。
-什么是编码 可以这样来理解：字符串是由字符构成，字符在计算机硬件中通过二进制形式存储，这种二进制形式就是编码。如果直接使用 “字符串↔️字符↔️二进制表示（编码）” ，会增加不同类型编码之间转换的复杂性。所以引入了一个抽象层，“字符串↔️字符↔️与存储无关的表示↔️二进制表示（编码）” ，这样，可以用一种与存储无关的形式表示字符，不同的编码之间转换时可以先转换到这个抽象层，然后再转换为其他编码形式。在这里，Unicode就是 “与存储无关的表示”，UTF-8 就是 “二进制表示”。</description>
+最早的编码是 ISO-8859-1，和 ASCII 编码相似。ISO-8859-1 属于单字节编码，最多能表示的字符范围是 0-255，应用于英文环境。很明显，ISO-8859-1 编码表示的字符范围很窄，无法表示中文字符。
+1981年中国人民通过对 ASCII 编码的中文扩充改造，产生了 GBK2312 编码，可以表示 6000 多个常用汉字。但汉字实在是太多了，包括繁体和各种字符，于是产生了 GBK 编码，它包括了 GBK2312 中的编码，同时扩充了很多。</description>
     </item>
     
     <item>
-      <title>BUG(4)——Jmeter中一些常见问题</title>
-      <link>https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <title>BUG(4)——Jmeter 的一些问题</title>
+      <link>https://ac-lm.github.io/posts/bug/bug4jmeter-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 28 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug4jmeter%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
-      <description>BUG描述 运行内存配置修改
-Resolution if not defined HEAP ( rem See the unix startup file for the rationale of the following parameters, rem including some tuning recommendations set HEAP=-Xms5g -Xmx5g -XX:MaxMetaspaceSize=5120m ) 修改bat文件中HEAP值。HEAP=-Xms5g -Xmx5g，最小与最大运行内存，通常设为同样的值。MaxMetaspaceSize 最大堆栈 。
- BUG描述 端口被突然关闭 socket closed
-Resolution 原因：发送http 请求时，Jmeter一般默认选择Use KeepAlive，保持连接协议，但其配置JMeter.properties中时间设置默认注销，即不会等待，一旦连接空闲，则断开了，因此导致报错
-解决：修改httpclient4.idletimeout=，一般可设置成10-60s（表示连接空闲10s后才会断开），注意单位ms。
- BUG描述 地址被占用 address already in use:connect
-错误：脚本报错java.net.BindException: Address already in use: connect
-Resolution 原因：windows端口被耗尽（默认1024-5000），而且操作系统要 2~4分钟才会重新释放这些端口，所以可以增加windows的可用端口来解决。windows端口最大数为65534
-解决：修改操作系统注册表(cmd-regedit)，找到
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP\Parameters 新建两个 DWORD值
-name：MaxUserPort，value：65534（十进制）； name：TcpTimedWaitDelay，value：30（十进制）； 重启系统。
-【或设置线程组时，勾选 same user on each iteration】</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug4jmeter-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</guid>
+      <description>BUG 描述 运行内存配置修改
+Resolution if not defined HEAP ( rem See the unix startup file for the rationale of the following parameters, rem including some tuning recommendations set HEAP=-Xms5g -Xmx5g -XX:MaxMetaspaceSize=5120m ) 修改 bat 文件中 HEAP 值。HEAP=-Xms**5g** -Xmx**5g**，最小与最大运行内存。MaxMetaspaceSize，最大堆栈 。
+ BUG 描述 端口被突然关闭 socket closed
+Resolution 原因：发送请求时，Jmeter 一般默认选择 Use KeepAlive，即保持连接协议，但由于 JMeter.properties 中时间设置默认注销，即不会等待，因此一旦连接空闲，就会断开，从而导致报错
+解决：修改 httpclient4.idletimeout=&amp;lt;time in ms&amp;gt; ，一般可设置成 1000-6000ms（表示连接空闲10s后才会断开）。
+ BUG 描述 地址被占用 address already in use:connect
+错误：java.net.BindException: Address already in use: connect</description>
     </item>
     
     <item>
-      <title>BUG(3)——Windows下编写的shell脚本无法在Linux中运行</title>
-      <link>https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/</link>
+      <title>BUG(3)——Windows 下 shell 脚本无法在 Linux 运行</title>
+      <link>https://ac-lm.github.io/posts/bug/bug3windows-%E4%B8%8B-shell-%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8-linux-%E8%BF%90%E8%A1%8C/</link>
       <pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug3windows%E4%B8%8B%E7%BC%96%E5%86%99%E7%9A%84shell%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C/</guid>
-      <description>BUG描述 Windows下使用记事本编写shell脚本，上传到Linux系统后，无法运行，结果返回错误。
-Resolution 注意到的是，在编辑文件时，Windows系统编码中回车比Linux多一个 \r ( 即Windows下的回车会编码成【\n\r】，而Linux系统中回车是【\n】)，正因如此，Windows下编写了的shell脚本无法在Linux下运行。</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug3windows-%E4%B8%8B-shell-%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E5%9C%A8-linux-%E8%BF%90%E8%A1%8C/</guid>
+      <description>BUG 描述 Windows 下使用记事本编写的 shell 脚本，在上传到 Linux 系统后，无法运行，结果返回错误。
+Resolution 这是由于 Windows 系统编码与 Linux 系统编码不同导致的，Windows 系统编码中回车会编码成 \n\r，而 Linux 系统中回车则是 \n，正因如此，Windows 下编写的 shell 脚本无法在 Linux 下运行。</description>
     </item>
     
     <item>
-      <title>BUG(2)——Linux系统修改密码以及旧版本删除</title>
-      <link>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</link>
+      <title>BUG(2)——Linux 修改密码以及旧版本删除</title>
+      <link>https://ac-lm.github.io/posts/bug/bug2linux-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug2linux%E7%B3%BB%E7%BB%9F%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</guid>
-      <description>BUG描述 CentOS7进入单用户模式修改密码
+      <guid>https://ac-lm.github.io/posts/bug/bug2linux-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E6%97%A7%E7%89%88%E6%9C%AC%E5%88%A0%E9%99%A4/</guid>
+      <description>BUG 描述 CentOS7 进入单用户模式修改密码
 Resolution 在选择系统界面，按 E 进入启动配置，定位到命令 Ro ，将其改为 rw init=/sysroot/bin/sh，Ctrl+X进行重启，进入单用户模式，执行chroot /sysroot进入系统目录，输入passwd root修改密码，touch /.autorelabel执行修改
- BUG描述 升级后的旧版本删除
-Resolution centos7开机界面出现多个选项时，前面几个选项正常启动，最后一个选项急救模式启动（系统出项问题不能正常启动时使用并修复系统），在CentOS更新后,并不会自动删除旧内核。所以在启动选项中会有多个内核选项,可以手动使用以下命令删除多余的内核:
-uname -a rpm -qa | grep kernel #查看安装内核 yum remove kernel-3.10.0-229.14.1.el7 #删除 reboot #重启 </description>
+ BUG 描述 centos7 开机界面有时会出现多个选项，这是由于更新导致的。列表中前几个选项为系统旧版本，最后为急救模式启动。
+在 CentOS 中，系统更新后并不会自动删除旧内核，因此启动选项中会有多个内核的选项，用户可以手动进行删除。
+Resolution uname -a rpm -qa | grep kernel # 查看安装内核 yum remove kernel-3.10.0-229.14.1.el7 # 删除 reboot # 重启 </description>
     </item>
     
     <item>
       <title>BUG(1)——无头浏览器导致的元素不可见</title>
-      <link>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</link>
+      <link>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</guid>
-      <description>BUG描述 WebDriver在使用headless状态时，会将窗口设置为默认大小为0x0，并且处于Minimized状态，这样做会导致程序启动后部分元素无法被点击等异常
-Resolution 在启动Driver配置浏览器大小
-options.add_argument(&amp;#34;--headless&amp;#34;) options.add_argument(&amp;#39;window-size=1920x1080&amp;#39;) options.add_argument(&amp;#39;--start-maximized&amp;#39;) #警告，针对不同内核方法可能有差别，但参数一致。 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://ac-lm.github.io/posts/bug/bug23%E7%BC%96%E8%AF%91%E5%A4%B1%E8%B4%A5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/bug/bug23%E7%BC%96%E8%AF%91%E5%A4%B1%E8%B4%A5/</guid>
-      <description>configure: error: no acceptable C compiler found in $PATH
-缺少合适的编译器
-yum install gcc-c++
-gcc为GNU Compiler Collection的缩写，可以编译C和C++源代码等，它是GNU开发的C和C++以及其他很多种语言的编译器（最早的时候只能编译C，后来很快进化成一个编译多种语言的集合，如Fortran、Pascal、Objective-C、Java、Ada、 Go等。） gcc在编译C++源代码的阶段，只能编译C++源文件，而不能自动和C++程序使用的库链接（编译过程分为编译、链接两个阶段，源程序文件被编译成目标文件，多个目标文件连同库被链接成一个最终的可执行文件，可执行文件被加载到内存中运行）。因此，通常使用g++命令来完成C++程序的编译和连接，该程序会自动调用 gcc 实现编译。 g++也能编译C源代码，只不过把会把它当成C++源代码。后缀为.c的源文件，gcc把它当作是C程序，而g++把它当作是c++程序；后缀为.cpp的，两者都会认为是c++程序。注意，虽然c++是c的超集，但是两者对语法的要求是有区别的。</description>
+      <guid>https://ac-lm.github.io/posts/bug/bug1%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%BC%E8%87%B4%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E5%8F%AF%E8%A7%81/</guid>
+      <description>BUG 描述 WebDriver 在使用 headless 时，默认会将窗口设置为 0x0，并且处于 Minimized 状态。这样会导致程序启动后，部分元素由于没有打印而无法被点击的异常
+Resolution 在启动 WebDriver 时先配置浏览器大小
+options.add_argument(&amp;#34;--headless&amp;#34;) options.add_argument(&amp;#39;window-size=1920x1080&amp;#39;) options.add_argument(&amp;#39;--start-maximized&amp;#39;) # 警告，针对不同内核方法可能有差别，但参数一致。 </description>
     </item>
     
   </channel>

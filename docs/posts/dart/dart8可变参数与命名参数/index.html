@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -42,7 +39,7 @@
         </header>
         <div class="content">
             <h2 id="1可变参数">1.可变参数</h2>
-<p><code>dart</code>可变参数使用<code>[]</code>包含，在使用函数时可按顺序直接输入值。（PS：在新版本的Dart语言规范中，可变参数需要被赋予初值，不允许为空）</p>
+<p><code>dart</code> 的可变参数使用 <code>[]</code> 包含，在使用函数时可按顺序直接输入值。（PS：在新版本的Dart语言规范中，可变参数需要被赋予初值，不允许为空）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">void</span> test(<span style="color:#66d9ef">String</span> name,[<span style="color:#66d9ef">int</span> age]){
     <span style="color:#66d9ef">if</span>(age<span style="color:#f92672">!=</span><span style="color:#66d9ef">null</span>){
         print(<span style="color:#e6db74">&#34;name:</span><span style="color:#e6db74">$</span>name<span style="color:#e6db74">;age:</span><span style="color:#e6db74">$</span>age<span style="color:#e6db74">&#34;</span>)
@@ -55,7 +52,7 @@
     test(<span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#ae81ff">15</span>);
 }
 </code></pre></div><h2 id="2命名参数">2.命名参数</h2>
-<p><code>dart</code>命名参数使用<code>{}</code>包含，在使用函数时需指定值的名字。（PS：在新版本的Dart语言规范中，命名参数需要被赋予初值，不允许为空）</p>
+<p><code>dart</code> 的命名参数使用 <code>{}</code> 包含，在使用函数时需指定值的名字。（PS：在新版本的Dart语言规范中，命名参数需要被赋予初值，不允许为空）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">void</span> test(<span style="color:#66d9ef">String</span> name,{<span style="color:#66d9ef">int</span> age}){
     <span style="color:#66d9ef">if</span>(age<span style="color:#f92672">!=</span><span style="color:#66d9ef">null</span>){
         print(<span style="color:#e6db74">&#34;name:</span><span style="color:#e6db74">$</span>name<span style="color:#e6db74">;age:</span><span style="color:#e6db74">$</span>age<span style="color:#e6db74">&#34;</span>)

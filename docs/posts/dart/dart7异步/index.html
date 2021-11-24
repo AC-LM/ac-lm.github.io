@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -41,11 +38,8 @@
             </div>
         </header>
         <div class="content">
-            <blockquote>
-<p>参考原文：<a href="https://www.cnblogs.com/hygblog/p/9078608.html"> Dart异步编程-future  @方田 </a></p>
-</blockquote>
-<h2 id="介绍">介绍</h2>
-<p>Dart是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。Dart使用Future对象表示异步操作，防止出现阻塞操作。</p>
+            <h2 id="dart---单线程语言">Dart - 单线程语言</h2>
+<p>Dart 是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。为了避免此类情况出现，Dart 使用 Future 对象表示异步操作。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// Synchronous code
 </span><span style="color:#75715e"></span>printDailyNewsDigest() {
   <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> gatherNewsReports(); <span style="color:#75715e">// Can take a while.
@@ -58,15 +52,15 @@ main() {
   printWeatherForecast();
   printBaseballScore();
 }
-</code></pre></div><p>该代码存在一个问题函数 printDailyNewsDigest ，该函数是阻塞的，之后的代码必须等待printDailyNewsDigest 结束才能继续执行。当用户想知道自己是否中彩票，明天的天气和谁赢得比赛，都必须等待 printDailyNewsDigest 读取结束。为了程序及时响应，Dart的作者使用异步编程模型处理可能耗时的函数。这个函数返回一个Future</p>
-<h2 id="什么是future">什么是Future</h2>
-<p>Future表示在将来某时获取一个值的方式。当一个返回Future的函数被调用的时候，做了两件事情：</p>
+</code></pre></div><p>在上述示例代码中，存在一个问题函数 printDailyNewsDigest，该函数是阻塞的，在这之后的代码都必须等待 printDailyNewsDigest 结束才能继续执行。因此为了程序能及时响应，Dart 的作者使用异步编程模型 Future 处理可能耗时的函数。</p>
+<h2 id="什么是-future">什么是 Future</h2>
+<p>Future 表示在将来某时获取一个值的方式。当一个返回 Future 的函数被调用的时候，程序做了两件事情：</p>
 <ul>
-<li>函数把自己放入队列和返回一个未完成的Future对象</li>
-<li>之后当值可用时，Future带着值变成完成状态。</li>
+<li>函数把自己放入队列和返回一个未完成的 Future 对象</li>
+<li>当值可用时，Future 带着值变成完成状态。</li>
 </ul>
-<h2 id="async和await">Async和await</h2>
-<p>async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用Future接口。</p>
+<h2 id="async-和-await">async 和 await</h2>
+<p>async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用 Future 接口。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
 
 printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
@@ -80,28 +74,29 @@ main() {
   printWeatherForecast();
   printBaseballScore();
 }
-</code></pre></div><p>在这时 printDailyNewsDigest 是第一个调用的，但是最后打印的，即使只有一行内容。这是因为代码读取和打印内容是异步执行的。在这个例子中间，printDailyNewsDigest 调用 gatherNewsReports 不是阻塞的。gatherNewsReports 把自己放入队列，不会暂停代码的执行。程序打印中奖号码，天气预报和比赛分数；当 gatherNewsReports 完成收集新闻过后再打印。gatherNewsReports 需要消耗一定时间的执行完成，而不会影响功能。用户在读取新闻之前获得其他消息。</p>
+</code></pre></div><p>如上述示例代码，在这时 printDailyNewsDigest 虽然是第一个调用的，但是最后打印的。这是因为代码读取和打印内容是异步执行的。</p>
+<p>在这个例子中，printDailyNewsDigest 调用 gatherNewsReports 并不会阻塞程序。gatherNewsReports 会把自己放入队列，返回一个 Future 让程序正常执行下去，在 gatherNewsReports 完成收集新闻过后程序再来进行打印。</p>
 <p>下面的图展示代码的执行流程。每一个数字对应着相应的步骤</p>
 <p><img src="https://gitee.com/LM-J/drawingbed/raw/master/img/56.png" alt=""></p>
 <ul>
 <li>开始程序执行</li>
-<li>main函数调用printDailyNewsDigest，因为它被标记为async,所有在该函数任何代码被执行之前立即返回一个Future。</li>
+<li>main 函数调用 printDailyNewsDigest，因为它被标记为 async，所有在该函数任何代码被执行之前立即返回一个 Future</li>
 <li>剩下的打印执行。因为它们是同步的。所有只有当一个打印函数执行完成过后才能执行下一个打印函数。例如：中奖号码在天气预报执行打印。</li>
-<li>函数printDailyNewsDigest函数体开始执行</li>
-<li>在到达await之后，调用gatherNewsReports，程序暂停，等待gatherNewsReports返回的Future完成。</li>
-<li>当Future完成，printDailyNewsDigest继续执行，打印新闻。</li>
-<li>当printDailyNewsDigest执行完成过后，最开始的Future返回完成，程序退出。</li>
-<li>PS：如果async函数没有明确指定返回值，返回的null值的Future</li>
+<li>函数 printDailyNewsDigest 函数体开始执行</li>
+<li>在到达 await 之后，调用 gatherNewsReports，程序暂停，等待 gatherNewsReports 返回的 Future 完成。</li>
+<li>当 Future 完成，printDailyNewsDigest 继续执行，打印新闻。</li>
+<li>当 printDailyNewsDigest 执行完成过后，最开始的 Future 返回完成，程序退出。</li>
+<li>PS：如果 async 函数没有明确指定返回值，返回的 null 值的 Future</li>
 </ul>
 <p>总结</p>
 <ul>
-<li>await 必须在async方法中使用。</li>
-<li>async方法中在await前面的代码会立即同步执行，直到碰到await。</li>
-<li>await的作用是等待所标记的方法获取返回结果。当代码跑到await时，程序其他部分立即停止，直到标记方法执行完成</li>
-<li>当代码执行到await，程序会立即返回一个future。</li>
+<li>await 必须在 async 方法中使用。</li>
+<li>async 方法中在 await 前面的代码会立即同步执行，直到碰到 await。</li>
+<li>await 的作用是等待所标记的方法获取返回结果。当代码跑到 await 时，程序其他部分立即停止，直到标记方法执行完成</li>
+<li>当代码执行到 await，程序会立即返回一个 future。</li>
 </ul>
 <h2 id="错误处理">错误处理</h2>
-<p>如果在Future返回函数发生错误，你可能想捕获错误。Async函数可以用try-catch捕获错误。</p>
+<p>如果在 Future 返回时发生错误，你可能想捕获错误。async 函数可以用 try-catch 捕获错误。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
   <span style="color:#66d9ef">try</span> {
     <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> gatherNewsReports();
@@ -111,13 +106,16 @@ main() {
 </span><span style="color:#75715e"></span>  }
 }
 </code></pre></div><h2 id="连续执行">连续执行</h2>
-<p>你可以使用多个await表达式，保证一个await执行完成过后再执行下一个</p>
+<p>你可以使用多个 await 表达式，保证一个 await 执行完成过后再执行下一个</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">main() <span style="color:#66d9ef">async</span> {
   <span style="color:#66d9ef">await</span> expensiveA();
   <span style="color:#66d9ef">await</span> expensiveB();
   doSomethingWith(<span style="color:#66d9ef">await</span> expensiveC());
 }
-</code></pre></div>
+</code></pre></div><blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/hygblog/p/9078608.html"> Dart异步编程-future  @方田 </a></p>
+</blockquote>
+
             <p style="margin-top:1em;"></p>
         </div>
         <footer>
@@ -131,7 +129,7 @@ main() {
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%82/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/dart/dart6%E5%87%BD%E6%95%B0%E5%BD%A2%E5%8F%82/" class="button large previous">上一页</a></li>
         
         
           <li><a href="https://ac-lm.github.io/posts/dart/dart8%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0/" class="button large next">下一页</a></li>

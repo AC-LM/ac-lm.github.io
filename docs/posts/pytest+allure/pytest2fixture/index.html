@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -42,13 +39,13 @@
         </header>
         <div class="content">
             <p>fixture是pytest提供给测试环境初始化与清理的一个函数，通过语法糖@pytest.fixture()，测试用例会在测试开始前与测试结束后自动的执行@pytest.fixture()标记的函数，完成测试环境的初始化与清理。</p>
-<h2 id="1fixture的优势">1.fixture的优势</h2>
+<h2 id="1fixture-的优势">1.fixture 的优势</h2>
 <ul>
 <li>1.有独立的命名，并通过声明它们从测试函数、模块、类或整个项目中的使用来激活。</li>
 <li>2.按模块化的方式实现，每个fixture都可以互相调用。</li>
 <li>3.fixture的范围从简单的单元测试到复杂的功能测试，可以对fixture配置参数，或者跨函数function，类class，模块module或整个测试session范围。</li>
 </ul>
-<h2 id="2fixture当做参数传入">2.fixture当做参数传入</h2>
+<h2 id="2fixture-当做参数传入">2.fixture 当做参数传入</h2>
 <p>定义fixture跟定义普通函数差不多，唯一区别就是在函数上加个装饰器@pytest.fixture()，fixture命名不要以test开头，跟用例区分开。fixture是有返回值得，没有返回值默认为None。用例调用fixture的返回值，直接就是把fixture的函数名称当做变量名称。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture()
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">K</span>():
@@ -56,7 +53,7 @@
     <span style="color:#66d9ef">return</span> a
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test2</span>(K):
     <span style="color:#66d9ef">assert</span> test1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;leo&#39;</span>
-</code></pre></div><h2 id="3使用多个fixture">3.使用多个fixture</h2>
+</code></pre></div><h2 id="3使用多个-fixture">3.使用多个 fixture</h2>
 <p>如果用例需要用到多个fixture的返回数据，fixture也可以返回一个元祖，list或字典，然后从里面取出对应数据。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture()
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test1</span>():
@@ -71,7 +68,7 @@
     <span style="color:#66d9ef">assert</span> u <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;leo&#39;</span>
     <span style="color:#66d9ef">assert</span> p <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;123456&#39;</span>
     print(<span style="color:#e6db74">&#39;元祖形式正确&#39;</span>)
-</code></pre></div><h2 id="4fixture的作用范围">4.fixture的作用范围</h2>
+</code></pre></div><h2 id="4fixture-的作用范围">4.fixture 的作用范围</h2>
 <p>fixture里面有个scope参数可以控制fixture的作用范围：session&gt;module&gt;class&gt;function</p>
 <ul>
 <li>function：每一个函数或方法都会调用</li>
@@ -79,7 +76,7 @@
 <li>module：每一个.py文件调用一次，该文件内又有多个function和class</li>
 <li>session：是多个文件调用一次，可以跨.py文件调用，每个.py文件就是module</li>
 </ul>
-<h2 id="5fixture的参数">5.fixture的参数</h2>
+<h2 id="5fixture-的参数">5.fixture 的参数</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fixture<span style="color:#960050;background-color:#1e0010">（</span>scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;function&#39;</span><span style="color:#960050;background-color:#1e0010">，</span>params<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span><span style="color:#960050;background-color:#1e0010">，</span>autouse<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span><span style="color:#960050;background-color:#1e0010">，</span>ids<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span><span style="color:#960050;background-color:#1e0010">，</span>name<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span><span style="color:#960050;background-color:#1e0010">）</span>
 </code></pre></div><ul>
 <li>scope：有四个级别参数&quot;function&quot;（默认），&ldquo;class&rdquo;，&ldquo;module&rdquo;，&ldquo;session&rdquo;</li>
@@ -88,8 +85,8 @@
 <li>ids：每个字符串id的列表，每个字符串对应于params这样他们就是测试ID的一部分。如果没有提供ID它们将从params自动生成</li>
 <li>name：fixture的名称。这默认为装饰函数的名称。</li>
 </ul>
-<h2 id="6调用fixture的三种方法">6.调用fixture的三种方法</h2>
-<h3 id="1函数或类里面方法直接传fixture的函数参数名称">1.函数或类里面方法直接传fixture的函数参数名称</h3>
+<h2 id="6调用-fixture-的三种方法">6.调用 fixture 的三种方法</h2>
+<h3 id="1函数或类里面方法直接传-fixture-的函数参数名称">1.函数或类里面方法直接传 fixture 的函数参数名称</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture()
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test1</span>():
     print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">开始执行function&#39;</span>)
@@ -100,7 +97,7 @@
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestCase</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_b</span>(self, test1):
         print(<span style="color:#e6db74">&#39;---用例b执行&#39;</span>)
-</code></pre></div><h3 id="2使用装饰器pytestmarkusefixtures修饰需要运行的用例">2.使用装饰器@pytest.mark.usefixtures()修饰需要运行的用例</h3>
+</code></pre></div><h3 id="2使用装饰器-pytestmarkusefixtures-修饰需要运行的用例">2.使用装饰器 @pytest.mark.usefixtures() 修饰需要运行的用例</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture()
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test1</span>():
     print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">开始执行function&#39;</span>)
@@ -124,7 +121,7 @@
 
 <span style="color:#75715e"># 如果fixture有返回值，那么usefixture就无法获取到返回值，这个是装饰器usefixture与用例直接传fixture参数的区别。</span>
 <span style="color:#75715e"># 当fixture需要用到return出来的参数时，只能讲参数名称直接当参数传入，不需要用到return出来的参数时，两种方式都可以。</span>
-</code></pre></div><h3 id="3fixture自动使用autousetrue">3.fixture自动使用autouse=True</h3>
+</code></pre></div><h3 id="3fixture-自动使用-autousetrue">3.fixture 自动使用 autouse=True</h3>
 <p>当用例很多的时候，每次都传这个参数，会很麻烦。fixture里面有个参数autouse，默认是False没开启的，可以设置为True开启自动使用fixture功能，这样用例就不用每次都去传参了。将autouse设置为True，自动调用fixture功能</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture(scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;module&#39;</span>, autouse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test1</span>():
@@ -146,7 +143,7 @@
           <li><a href="https://ac-lm.github.io/posts/pytest&#43;allure/pytest1pytest-%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/pytest&#43;allure/pytest3fixture%E5%AE%9E%E7%8E%B0setup%E5%92%8Cteardown/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/pytest&#43;allure/pytest3fixture-%E5%AE%9E%E7%8E%B0-setup-%E5%92%8C-teardown/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

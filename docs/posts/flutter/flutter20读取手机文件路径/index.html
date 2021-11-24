@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -85,9 +82,9 @@
 <p>存储下载文件的目录的路径，这通常仅与台式机操作系统有关。</p>
 </li>
 </ul>
-<h2 id="android-文件存储">Android 文件存储</h2>
+<h2 id="3android-文件存储">3.Android 文件存储</h2>
 <p>Android 文件存储分为内部存储和外部存储。</p>
-<h3 id="内部存储">内部存储</h3>
+<h3 id="a内部存储">a.内部存储</h3>
 <p>用于保存应用的私有文件，其他应用无法访问这些数据，创建的文件在此应用的包名目录下，没有 root 权限 的手机无法在手机的 文件管理 应用中看到此目录，不过可以通过 Android Studio 工具查看，路径为：data/data/包名。包名下具体的目录结构为：</p>
 <ul>
 <li>cache 目录：对应 getTemporaryDirectory 方法，用于缓存文件，此目录随时可能被系统清除。</li>
@@ -105,7 +102,7 @@
 <li>存储的空间有限，此目录数据随时可能被系统清除，也可以通过 设置 中的 清除数据 可以清除此目录数据。</li>
 <li>国内特色，不同手机厂商对此目录做了不同的限制，比如总体大小限制、单个应用程序所占空间大小限制、清除数据策略不同等。</li>
 </ul>
-<h3 id="外部存储">外部存储</h3>
+<h3 id="b外部存储">b.外部存储</h3>
 <p>外部存储可以通过手机的 文件管理 应用查看。这里面有一个特殊的目录：Android/data/包名。和内部存储目录非常相似，一个包名代表一个应用程序：</p>
 <ul>
 <li>cache：缓存目录，对应 getExternalCacheDirectories 方法。</li>
@@ -118,7 +115,7 @@
 <li>空间大且不会被系统清除，通过 设置 中的 清除数据 可以清除此目录数据。</li>
 <li>用户可以直接对文件进行删除、导入操作。</li>
 </ul>
-<h2 id="总结">总结</h2>
+<h2 id="c总结">c.总结</h2>
 <ul>
 <li>SharePreferences 和 sqlite  数据建议存放在内部存储，插件已经帮我们完成了，无需手动处理。</li>
 <li>严格保密的数据，比如用户数据，建议存放在内部存储，对应 getApplicationSupportDirectory 方法。</li>
@@ -141,7 +138,7 @@
           <li><a href="https://ac-lm.github.io/posts/flutter/flutter19%E6%97%B6%E9%97%B4/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter21apk%E7%98%A6%E8%BA%AB/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter21apk-%E7%98%A6%E8%BA%AB/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -41,9 +38,7 @@
             </div>
         </header>
         <div class="content">
-            <blockquote>
-<p>参考原文：<a href="https://blog.csdn.net/qq_43102443/article/details/108270653"> Django 外键查询 @尛刀石 </a></p>
-</blockquote>
+            <h2 id="1查询示例">1.查询示例</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Publish</span>(models<span style="color:#f92672">.</span>Model):
     id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>AutoField(primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, auto_created<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
     pname <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">40</span>)
@@ -68,8 +63,7 @@
 
     <span style="color:#66d9ef">def</span> __str__(self):
         <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>bname
-</code></pre></div><h2 id="1一对多">1.一对多</h2>
-<h3 id="a通过类属性查询">a.通过类属性查询</h3>
+</code></pre></div><h2 id="2通过类属性查询">2.通过类属性查询</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># get方法的到的结果是一个对应类的对象</span>
 <span style="color:#75715e"># 查询某本书的出版社名字</span>
 book <span style="color:#f92672">=</span> Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
@@ -79,7 +73,7 @@ book<span style="color:#f92672">.</span>publish<span style="color:#f92672">.</sp
 <span style="color:#75715e"># 此处的book是Book这张表的表名的小写（必须是小写）加上_set</span>
 pub <span style="color:#f92672">=</span> Publish<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
 pub<span style="color:#f92672">.</span>book_set<span style="color:#f92672">.</span>all()
-</code></pre></div><h3 id="b通过双下划线查询">b.通过双下划线查询</h3>
+</code></pre></div><h2 id="3通过双下划线查询">3.通过双下划线查询</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 通过出版社的相关信息进行查询某一本书</span>
 Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(publish__city<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;北京&#39;</span>)
 Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(publish__id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
@@ -96,17 +90,12 @@ Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</sp
 Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;publish__pname&#39;</span>)
 
 <span style="color:#75715e"># 通过出版社的相关信息进行查询某一本书</span>
- Publish<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values(<span style="color:#e6db74">&#39;book__bname&#39;</span>)
- Publish<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;book__bname&#39;</span>)
-</code></pre></div><h2 id="2多对多">2.多对多</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 通过作者的相关信息查询其某一本书(返回的内部是Book的对象的查询集）</span>
-Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(author__id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-Author<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values(<span style="color:#e6db74">&#39;book&#39;</span>)
+Publish<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values(<span style="color:#e6db74">&#39;book__bname&#39;</span>)
+Publish<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;book__bname&#39;</span>)
+</code></pre></div><blockquote>
+<p>参考原文：<a href="https://blog.csdn.net/qq_43102443/article/details/108270653"> Django 外键查询 @尛刀石 </a></p>
+</blockquote>
 
-<span style="color:#75715e"># 查询某一本书对应的作者有哪些(返回的内部是Author的对象的查询集）</span>
-Author<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(book__id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values(<span style="color:#e6db74">&#39;author&#39;</span>)
-</code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>
         <footer>
@@ -123,7 +112,7 @@ Book<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</sp
           <li><a href="https://ac-lm.github.io/posts/django/django7%E5%88%86%E9%A1%B5%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/django/django9csrf%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/django/django9csrf-%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

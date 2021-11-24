@@ -8,11 +8,26 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Net(11)——Wireshark 指标</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net11wireshark-%E6%8C%87%E6%A0%87/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net11wireshark-%E6%8C%87%E6%A0%87/</guid>
+      <description>1.WireShark 出现的常见提示 a.TCP Out_of_Order 一般来说是网络拥塞，导致顺序包抵达时间不同，延时太长，或者包丢失，需要重新组合数据单元，因为他们可能是由不同的路径到达你的电脑上面。
+b.TCP Retransmission 超时引发的数据重传。
+c.TCP dup ack XXX#X 重复应答 # 前的报文，表示报文到哪个序号丢失，# 后面的是表示第几次丢失。
+d.tcp previous segment not captured 报文没有捕捉到，出现报文的丢失。
+e.SYN 同步比特，建立连接。
+f.ACK 确认比特，置1表示这是一个确认的TCP包，0则不是。
+g.PSH 推送比特，当发送端PSH=1时，接收端应尽快交付给应用进程。</description>
+    </item>
+    
+    <item>
       <title>Net(10)——JMeter录制测试脚本</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter-%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net10jmeter-%E5%BD%95%E5%88%B6%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</guid>
       <description>参考原文：Apache JMeter - Apache JMeter HTTP(S) Test Script Recorder
  1.JMeter设置代理服务器   在工具栏中选择 Templates…
   
@@ -31,10 +46,10 @@
     
     <item>
       <title>Net(9)——JMeter构建Web测试计划</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter%E6%9E%84%E5%BB%BAweb%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</link>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter-%E6%9E%84%E5%BB%BA-web-%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter%E6%9E%84%E5%BB%BAweb%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net9jmeter-%E6%9E%84%E5%BB%BA-web-%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/</guid>
       <description>参考原文：Apache JMeter - User&amp;rsquo;s Manual: Building a Web Test Plan
  ‎在下文中，将介绍如何创建一个基本‎‎的测试计划‎‎来测试 Web 网站。您将创建五个用户，将请求发送到 JMeter 网站上的两个页面。此外，您还会告诉用户运行他们的测试两次。因此，请求总数为 （5 个用户） x （2 个请求） x （重复 2 次） = 20 个 HTTP 请求。
 1.添加用户 要执行测试计划，您要做的第一步就是添加‎‎线程组‎‎元素。线程组会告诉 JMeter 您要模拟的用户数量、用户发送请求的频率以及他们应发送的请求数量。‎
@@ -43,37 +58,37 @@
     </item>
     
     <item>
-      <title>Net(8)——wireshark网络抓包工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
+      <title>Net(8)——Wireshark网络抓包工具</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark-%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net8wireshark-%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
       <description>参考原文：Wireshark抓包使用指南@Ju5tice 
- 0x01.Wireshark可以做什么  网络管理员使用Wireshark检测网络问题 网安工程师用Wireshark检查信息安全相关问题 开发者使用Wireshark为新的通信协议调试 普通用户使用Wireshark学习网络协议相关知识  0x02.Wireshark不可以做什么  Wireshark不是入侵侦测软件（Intrusion Detection Software, IDS）。对于网络上的异常流量行为，Wireshark不会产生警示或是任何提示。然而，仔细分析Wireshark截取的数据包能够帮助用户对于网络行为有更清楚的了解。 Wireshark不会对网络数据包产生内容的修改 - 它只会反映出当前流通的数据包信息。 Wireshark本身也不会提交数据包至网络上。就是说你只能查看数据包，不能修改或转发。  0x03.抓包实例 打开wireshark，主界面如下：
+ 0x00.Wireshark WireShark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是抓取网络封包，并尽可能显示出最为详细的网络封包资料。WireShark 抓包是根据 TCP/IP 五层协议来的，也就是物理层、数据链路层、网络层、传输层、应用层。
+0x01.Wireshark可以做什么  网络管理员使用Wireshark检测网络问题 网安工程师用Wireshark检查信息安全相关问题 开发者使用Wireshark为新的通信协议调试 普通用户使用Wireshark学习网络协议相关知识  0x02.Wireshark不可以做什么  Wireshark不是入侵侦测软件（Intrusion Detection Software, IDS）。对于网络上的异常流量行为，Wireshark不会产生警示或是任何提示。然而，仔细分析Wireshark截取的数据包能够帮助用户对于网络行为有更清楚的了解。 Wireshark不会对网络数据包产生内容的修改 - 它只会反映出当前流通的数据包信息。 Wireshark本身也不会提交数据包至网络上。就是说你只能查看数据包，不能修改或转发。  0x03.抓包实例 打开wireshark，主界面如下：
 双击上图的中的过滤器（捕获），开始抓包
 打开 cmd 窗口，执行 ping 命令。工作中的 wireshark 将抓取到相关数据包，在过滤栏设置过滤条件以避免其他无用数据包影响分析，比如：ip.addr == 185.199.111.153 and icmp 表示只显示ICPM协议且源主机IP或者目的主机IP为185.199.111.153的数据包。说明：协议名称icmp要小写
 0x04.数据包详细信息  Frame: 物理层的数据帧概况 Ethernet II: 数据链路层以太网帧头部信息 Internet Protocol Version 4: 互联网层IP包头部信息 Transmission Control Protocol: 传输层T的数据段头部信息，此处是TCP Hypertext Transfer Protocol: 应用层的信息，此处是HTTP协议  0x05.TCP包的具体内容 从下图可以看到wireshark捕获到的TCP包中的每个字段。
 0x06.抓包（捕获）过滤器语法和实例 抓包过滤器有如：类型Type（host、net、port）、方向Dir（src、dst）、协议Proto（ether、ip、tcp、udp、http、icmp、ftp等）、逻辑运算符（&amp;amp;&amp;amp; 与、|| 或、！非）等的分类
-（1）协议过滤 直接在过滤框中输入协议名即可。 tcp，只显示TCP协议的数据包列表 ；http，只查看HTTP协议的数据包列表 ；icmp，只显示ICMP协议的数据包列表
-（2）IP过滤 host 192.</description>
+（1）协议过滤 直接在过滤框中输入协议名即可。 tcp，只显示TCP协议的数据包列表 ；http，只查看HTTP协议的数据包列表 ；icmp，只显示ICMP协议的数据包列表</description>
     </item>
     
     <item>
-      <title>Net(7)——在Linux中的搭建JMeter性能测试</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
+      <title>Net(7)——在 Linux 中的搭建 JMeter 性能测试</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8-linux-%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BA-jmeter-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8linux%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BAjmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net7%E5%9C%A8-linux-%E4%B8%AD%E7%9A%84%E6%90%AD%E5%BB%BA-jmeter-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</guid>
       <description>1.Linux下的Jmeter Jmeter 官网下载 
 tar -xvf Jmeter.tgz # 注意需配置Java环境 2.配置Jmeter环境 vi /etc/profile #编辑环境 #----------------------------------------# #Jmeter environment export JMETER_HOME=/root/Jmeter export PATH=$PATH:${JMETER_HOME}/bin ####### source /etc/profile #启动环境 jmeter -v #检查是否成功运行 jmeter –n –t test.jmx –l test.jtl #执行jmeter脚本 3.jmeter命令参数 -h 帮助 -&amp;gt; 打印出有用的信息并退出 -n 非 GUI 模式 -&amp;gt; 在非 GUI 模式下运行 JMeter -t 测试文件 -&amp;gt; 要运行的 JMeter 测试脚本文件 -l 日志文件 -&amp;gt; 记录结果的文件 -r 远程执行 -&amp;gt; 启动远程服务 -H 代理主机 -&amp;gt; 设置 JMeter 使用的代理主机 -P 代理端口 -&amp;gt; 设置 JMeter 使用的代理主机的端口号 </description>
     </item>
     
     <item>
       <title>Net(6)——JMeter性能测试工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net6jmeter-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
       <description>参考文献：JMeter 用户文档 
  1.Apache JMeter™ Apache JMeter™ 是一个开源的，纯 Java 编写的性能测试软件。JMeter 可以运行在任何具有合规 Java 的系统上（即有 Java 环境），下载最新的生产版本后，进入 bin 文件夹，运行 jmeter.bat （用于 Windows）或 jmeter（用于 Unix）文件启动 JMeter。
 2.如何开始 测试计划描述了 JMeter 在运行时将执行的一系列步骤。完整的测试计划将由一个或多个线程组、逻辑控制器、生成控制器、监听器、计时器、断言和配置元素（Thread Groups，logic controllers，sample generating controllers，listeners，timers，assertions and configuration elements）组成。
@@ -86,19 +101,19 @@ JMeter 允许您保存整个测试计划树或仅保存其中的一部分。要�
     
     <item>
       <title>Net(5)——sqlmap使用实例</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</link>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap-%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net5sqlmap-%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</guid>
       <description>1.第一步：查找注入点 sqlmap -u &amp;#39;192.168.3.59/article.php?id=1&amp;#39; #必须带上GET参数，否则sqlmap不知道如何注入 root@kali:~# sqlmap -u &amp;#39;192.168.3.59/article.php?id=1&amp;#39; ___ __H__ ___ ___[,]_____ ___ ___ {1.1.11#stable} |_ -| . [.] | .&amp;#39;| . | |___|_ [(]_|_|_|__,| _| |_|V |_| http://sqlmap.org [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user&amp;#39;s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program [*] starting at 11:30:43 [11:30:43] [INFO] resuming back-end DBMS &amp;#39;mysql&amp;#39; [11:30:43] [INFO] testing connection to the target URL sqlmap resumed the following injection point(s) from stored session: --- Parameter: id (GET) Type: boolean-based blind Title: AND boolean-based blind - WHERE or HAVING clause Payload: id=1 AND 1817=1817 Type: AND/OR time-based blind Title: MySQL &amp;gt;= 5.</description>
     </item>
     
     <item>
-      <title>Net(4)——sqlmap的使用指南</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <title>Net(4)——sqlmap 使用指南</title>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net4sqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
       <description>1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
 sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
 &amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
@@ -112,10 +127,10 @@ sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提�
     
     <item>
       <title>Net(3)——sqlmap数据库渗透测试工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net3sqlmap-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
       <description>1.sqlmap sqlmap官网下载 
 sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和利用SQL注入缺陷以及接管数据库服务器的过程。它配备了强大的引擎，为渗透测试提供许多基本的功能。
 #进入sqlmap源码文件夹，因为sqlmap用的是python2编写的，需要编译后使用 tar zxvf sqlmap.tar.gz cd sqlmap ./sqlmap.py #创建sqlmap命令 ln -s /root/sqlmapproject-sqlmap-7eab1bc/sqlmap.py /usr/bin/sqlmap sqlmap -h #帮助命令 2.sqlmap的语法 sqlmap命令选项被归类为目标（Target）、请求（Request）、优化、注入、检测、技巧（Techniques）、指纹、枚举等。当给sqlmap一个url的时候，它会执行如下操作
@@ -125,10 +140,10 @@ sqlmap是一个开源的数据库渗透测试工具，它自动化了检测和�
     
     <item>
       <title>Net(2)——Nmap端口扫描工具</title>
-      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</link>
+      <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/net2nmap-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/</guid>
       <description>1.Nmap Nmap中文网下载 
 Nmap是一个网络连接端扫描软件，用来扫描网上电脑开放的网络连接端。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。
 # 安装依赖 gcc -v #需要c语言编译  yum install gcc #安装编译器 yum install gcc-c++ # 安装需要c++ ----------------------------------------------------------- #下载源码后解压，进入文件夹编译 tar jxvf Nmap.tar.bz2 cd Nmap.tar.bz2 ./configure make &amp;amp;&amp;amp; make install #安装 nmap ip #扫描端口 nmap -v #如果出现nmap命令无法找到的错误 #尝试进入nmap文件内，使用./nmap ip运行程序 </description>

@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -70,9 +67,9 @@
     }
 }
 </code></pre></div><p>可以注意到，这个操作的作用是从<code>MicroTask</code>和 <code>Event</code>队列提取出事件到循环中执行，直到两个队列中所有事件执行完成。</p>
-<h3 id="microtask-队列">MicroTask 队列</h3>
+<h3 id="amicrotask-队列">a.MicroTask 队列</h3>
 <p><code>MicroTask</code>队列用于非常简短且需要异步执行的内部动作，这些动作需要在其他事件完成之后并在将执行权送还给<code>Event</code>队列之前运行。</p>
-<h3 id="event-队列">Event 队列</h3>
+<h3 id="bevent-队列">b.Event 队列</h3>
 <p>大多数需要使用异步的动作都使用<code>Event</code>队列进行处理，如外部事件 I/O，绘图等。值得注意的是，Future 操作也通过<code>Event</code>队列处理。</p>
 <h2 id="3future">3.Future</h2>
 <p>Future 是一个异步执行并且在未来的某一个时刻完成（或失败）的任务。Future 并非并行执行，而是遵循事件循环处理事件的顺序规则执行。当你实例化一个 Future 时，应用会执行以下操作：</p>
@@ -115,11 +112,11 @@ Future is complete
 <p>这是 Dart 异步代码的同步实现。注意到的是，async 并非并行执行，也是遵循事件循环处理事件的顺序规则执行。</p>
 <h2 id="5多线程伪">5.多线程（伪）</h2>
 <p>如何在 Flutter 中如何并行运行代码，这里我们可以使用 Isolate。</p>
-<h3 id="isolate-是什么">Isolate 是什么？</h3>
+<h3 id="aisolate-是什么">a.Isolate 是什么？</h3>
 <p>Isolate 是 Dart 中的 线程。然而，它与常规「线程」的实现存在较大差异，Isolate 在 Flutter 中并不共享内存，不同 Isolate 之间通过消息进行通信，实际上 Isolate 更新进程。</p>
-<h3 id="每个-isolate-都有自己的事件循环">每个 Isolate 都有自己的事件循环</h3>
+<h3 id="b每个-isolate-都有自己的事件循环">b.每个 Isolate 都有自己的事件循环</h3>
 <p>每个 Isolate 都拥有自己的事件循环及队列。这意味着在一个 Isolate 中运行的代码与另外一个 Isolate 不会存在任何关联。</p>
-<h3 id="启动-isolate">启动 Isolate</h3>
+<h3 id="c启动-isolate">c.启动 Isolate</h3>
 <h4 id="创建并握手">创建并握手</h4>
 <p>由于Isolate 不共享任何内存并通过消息进行交互，因此，我们需要在调用者与 isolate 间建立通信。每个 Isolate 都暴露一个将消息传递给 Isolate 的被称为 SendPort 的端口，调用者和 isolate 需要互相知道彼此的端口才能进行通信。需要注意的是约束 isolate 的入口必须是顶级函数或静态方法。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// 新的 isolate 端口
@@ -282,6 +279,8 @@ Future is complete
         
           <li><a href="https://ac-lm.github.io/posts/flutter/flutter22%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC/" class="button large previous">上一页</a></li>
         
+        
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter24%E5%B8%B8%E4%BA%AE%E5%B1%8F%E5%B9%95/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

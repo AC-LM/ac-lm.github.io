@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -41,36 +38,43 @@
             </div>
         </header>
         <div class="content">
-            <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">var</span> today <span style="color:#f92672">=</span> DateTime.now();
+            <h2 id="1时间">1.时间</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">var</span> today <span style="color:#f92672">=</span> DateTime.now();
 print(<span style="color:#e6db74">&#39;当前时间是：</span><span style="color:#e6db74">$</span>today<span style="color:#e6db74">&#39;</span>);
+
 <span style="color:#66d9ef">var</span> date1 <span style="color:#f92672">=</span> today.millisecondsSinceEpoch;
 print(<span style="color:#e6db74">&#39;当前时间戳：</span><span style="color:#e6db74">$</span>date1<span style="color:#e6db74">&#39;</span>);
+
 <span style="color:#66d9ef">var</span> date2 <span style="color:#f92672">=</span> DateTime.fromMillisecondsSinceEpoch(date1);
 print(<span style="color:#e6db74">&#39;时间戳转日期：</span><span style="color:#e6db74">$</span>date2<span style="color:#e6db74">&#39;</span>);
-<span style="color:#75715e">//拼接成date
+
+<span style="color:#75715e">// 拼接成 date
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> dentistAppointment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DateTime(<span style="color:#ae81ff">2019</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">20</span>);
 print(dentistAppointment);
-<span style="color:#75715e">// 字符串转date
+
+<span style="color:#75715e">// 字符串转 date
 </span><span style="color:#75715e"></span>DateTime date3 <span style="color:#f92672">=</span> DateTime.parse(<span style="color:#e6db74">&#34;2019-06-20 15:32:41&#34;</span>);
 print(date3);
+
 <span style="color:#75715e">// 时间比较
 </span><span style="color:#75715e"></span>print(today.isBefore(date3));<span style="color:#75715e">// 在之前
 </span><span style="color:#75715e"></span>print(today.isAfter(date3)); <span style="color:#75715e">// 在之后
 </span><span style="color:#75715e"></span>print(date3.isAtSameMomentAs(date3));<span style="color:#75715e">// 相同
-</span><span style="color:#75715e"></span>print(date3.compareTo(today));<span style="color:#75715e">// 大于返回1；等于返回0；小于返回-1。
-</span><span style="color:#75715e">// print(DateTime.now().toString());
-</span><span style="color:#75715e">// print(DateTime.now().toIso8601String());
-</span><span style="color:#75715e">// 时间增加
+</span><span style="color:#75715e"></span>print(date3.compareTo(today));<span style="color:#75715e">// 大于返回1；等于返回0；小于返回-1
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 时间增加
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> fiftyDaysFromNow <span style="color:#f92672">=</span> today.add(<span style="color:#66d9ef">new</span> Duration(days: <span style="color:#ae81ff">5</span>));
 print(<span style="color:#e6db74">&#39;today加5天：</span><span style="color:#e6db74">$</span>fiftyDaysFromNow<span style="color:#e6db74">&#39;</span>);
-<span style="color:#75715e">//时间减少
+
+<span style="color:#75715e">// 时间减少
 </span><span style="color:#75715e"></span>DateTime fiftyDaysAgo <span style="color:#f92672">=</span> today.subtract(<span style="color:#66d9ef">new</span> Duration(days: <span style="color:#ae81ff">5</span>));
 print(<span style="color:#e6db74">&#39;today减5天：</span><span style="color:#e6db74">$</span>fiftyDaysAgo<span style="color:#e6db74">&#39;</span>);
-<span style="color:#75715e">//时间差   两个时间相差 小时数
-</span><span style="color:#75715e"></span>print(<span style="color:#e6db74">&#39;比较两个时间 差 小时数：</span><span style="color:#e6db74">${</span>fiftyDaysFromNow.difference(fiftyDaysAgo)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
+
+<span style="color:#75715e">// 时间差，两个时间相差，小时数
+</span><span style="color:#75715e"></span>print(<span style="color:#e6db74">&#39;比较两个时间差，小时数：</span><span style="color:#e6db74">${</span>fiftyDaysFromNow.difference(fiftyDaysAgo)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
 print(<span style="color:#e6db74">&#39;本地时区简码：</span><span style="color:#e6db74">${</span>today.timeZoneName<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
 print(<span style="color:#e6db74">&#39;返回UTC与本地时差 小时数：</span><span style="color:#e6db74">${</span>today.timeZoneOffset<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);
-print(<span style="color:#e6db74">&#39;获取年月日：</span><span style="color:#e6db74">${</span>today.year<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);<span style="color:#75715e">//month、day、hour、minute、second、millisecond、microsecond
+print(<span style="color:#e6db74">&#39;获取年月日：</span><span style="color:#e6db74">${</span>today.year<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);<span style="color:#75715e">// month、day、hour、minute、second、millisecond、microsecond
 </span><span style="color:#75715e"></span>print(<span style="color:#e6db74">&#39;星期：</span><span style="color:#e6db74">${</span>today.weekday<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>);<span style="color:#75715e">// 返回星期几
 </span></code></pre></div>
             <p style="margin-top:1em;"></p>

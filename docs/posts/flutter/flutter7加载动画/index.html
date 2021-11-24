@@ -25,10 +25,7 @@
                     <input type="text" name="query" placeholder="请输入关键字"/>
                 </form>
             </li>
-            <li class="menu">
-                
-                <a href="/posts" class="fa-bars">Post</a>
-            </li>
+            
         </ul>
     </nav>
 </header>
@@ -36,7 +33,7 @@
 <div id="main">
     <header>
             <div class="title">
-                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(7)——加载动画的实现</a></h2>
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Flutter(7)——加载动画</a></h2>
                 <p>@LM | 2021-04-29</p>
             </div>
         </header>
@@ -44,8 +41,8 @@
             <blockquote>
 <p>参考原文：<a href="https://juejin.cn/post/6844903744656637960"> Flutter做一个加载动画  @limhGeek </a></p>
 </blockquote>
-<h2 id="根据情况返回不同布局">根据情况返回不同布局</h2>
-<p>在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，_childLayout()方法</p>
+<h2 id="1根据情况返回不同布局">1.根据情况返回不同布局</h2>
+<p>在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，<code>_childLayout()</code>方法</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
 <span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_loading/Toast.dart&#39;</span>;
 
@@ -90,8 +87,8 @@
   }
 
 }
-</code></pre></div><h2 id="使用stack层叠布局">使用Stack层叠布局</h2>
-<p>在原本布局上面叠加一层半透明背景，显示一个进度条。层叠布局至少有两个控件，自定义一个控件叫ProgressDialog，这个控件接收两个必传参数：子布局child，是否显示加载进度：loading</p>
+</code></pre></div><h2 id="2使用stack层叠布局">2.使用Stack层叠布局</h2>
+<p>在原本布局上面叠加一层半透明背景，显示一个进度条。层叠布局至少有两个控件，自定义一个控件叫<code>ProgressDialog</code>，这个控件接收两个必传参数：子布局<code>child</code>，是否显示加载进度<code>loading</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProgressDialog</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
@@ -118,8 +115,8 @@
     );
   }
 }
-</code></pre></div><h2 id="绘制透明效果">绘制透明效果</h2>
-<p>使用控件Opacity</p>
+</code></pre></div><h2 id="3绘制透明效果">3.绘制透明效果</h2>
+<p>使用控件<code>Opacity</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProgressDialog</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
   <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> loading;
   <span style="color:#66d9ef">final</span> Widget child;
@@ -167,10 +164,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter6setstate%E5%A4%B1%E8%B4%A5/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter6setstate-%E7%94%9F%E5%91%BD%E5%BE%AA%E7%8E%AF/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BAbottomnavigationbar%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/flutter/flutter8%E4%B8%BA-bottomnavigationbar-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/" class="button large next">下一页</a></li>
         
     </ul>
 </div>
