@@ -20,8 +20,8 @@ google-chrome --version
 ## 2.chromedriver配置使用
 
 ```python
-# 前往 https://npm.taobao.org/mirrors/chromedriver/ 下载对应的 WebDriver
-# 建议将 WebDriver 上传到路径 /usr/local/bin 以添加到环境中，这样在编写脚本时不需要指定路径
+# 前往 https://npm.taobao.org/mirrors/chromedriver/ 下载对应的 A-WebDriver
+# 建议将 A-WebDriver 上传到路径 /usr/local/bin 以添加到环境中，这样在编写脚本时不需要指定路径
 # 参数配置----------------------------------------------------------
 class webs(unittest.TestCase):
     def setUp(self):
