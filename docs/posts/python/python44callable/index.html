@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(41)—callable</a></h2>
+                <p>@LM | 2021-11-25</p>
+            </div>
+        </header>
+        <div class="content">
+            <blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/191419441"> python 中的 callable 概念 @知乎</a></p>
+</blockquote>
+<h2 id="1什么是-callable">1.什么是 callable</h2>
+<p>一个可 callable 的对象是指可以被调用执行的对象，并且可以传入参数。用另一个简单的描述方式是，只要可以在一个对象的后面使用小括号来执行代码，那么这个对象就是 callable 对象，下面列举 callable 对象的种类</p>
+<ol>
+<li>函数</li>
+<li>类</li>
+<li>类里的函数</li>
+<li>实现了 <code>__call__</code> 方法的实例对象</li>
+</ol>
+<h3 id="a函数">a.函数</h3>
+<p>函数是 python 里的一等公民，函数是可调用对象，使用 callable 函数可以证明这一点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>():
+    print(<span style="color:#e6db74">&#39;ok&#39;</span>)
+
+print(callable(test))   <span style="color:#75715e"># True</span>
+test()  <span style="color:#75715e"># ok</span>
+</code></pre></div><h3 id="b类">b.类</h3>
+<p>在其他编程语言里，类与函数可以说是两个完全不搭的东西，但在 python 里，都是可调用对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stu</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self, name):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+
+
+print(callable(Stu))     <span style="color:#75715e"># True</span>
+print(Stu(<span style="color:#e6db74">&#39;小明&#39;</span>)<span style="color:#f92672">.</span>name)   <span style="color:#75715e"># 小明</span>
+</code></pre></div><h3 id="c类里的方法">c.类里的方法</h3>
+<p>类里的方法也是用 def 定义的，本质上也是函数。使用 isfunction 函数可以判断一个对象是否是函数，run 方法也是可调用对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">from</span> inspect <span style="color:#f92672">import</span> isfunction, ismethod
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stu</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self, name):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+        print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{name}</span><span style="color:#e6db74"> is running&#39;</span><span style="color:#f92672">.</span>format(name<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>name))
+
+print(isfunction(Stu<span style="color:#f92672">.</span>run))     <span style="color:#75715e"># True</span>
+stu <span style="color:#f92672">=</span> Stu(<span style="color:#e6db74">&#34;小明&#34;</span>)
+stu<span style="color:#f92672">.</span>run()        <span style="color:#75715e"># 小明 is running</span>
+</code></pre></div><h3 id="d实现了__call__方法的实例对象">d.实现了<code>__call__</code>方法的实例对象</h3>
+<p>当你执行 stu() 时，与调用一个函数有着完全一致的体验，如果不告诉你 stu 是一个类的实例对象，你还以为 stu 就是一个函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stu</span>(object):
+
+    <span style="color:#66d9ef">def</span> __init__(self, name):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+
+    <span style="color:#66d9ef">def</span> __call__(self, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        self<span style="color:#f92672">.</span>run()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+        print(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{name}</span><span style="color:#e6db74"> is running&#39;</span><span style="color:#f92672">.</span>format(name<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>name))
+
+stu <span style="color:#f92672">=</span> Stu(<span style="color:#e6db74">&#39;小明&#39;</span>)
+print(callable(stu))    <span style="color:#75715e"># True</span>
+stu()                   <span style="color:#75715e"># 小明 is running</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/python/python43matplotlib-%E7%9A%84-backend/" class="button large previous">上一页</a></li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

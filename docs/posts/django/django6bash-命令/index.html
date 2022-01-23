@@ -52,6 +52,10 @@ python manage<span style="color:#f92672">.</span>py runserver <span style="color
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python manage<span style="color:#f92672">.</span>py makemigrations 应用名称 <span style="color:#75715e">#记录改动</span>
 python manage<span style="color:#f92672">.</span>py migrate <span style="color:#75715e">#创建表</span>
 python manage<span style="color:#f92672">.</span>py createsuperuser
+</code></pre></div><h2 id="5创建用户">5.创建用户</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python manage<span style="color:#f92672">.</span>py shell
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> django.contrib.auth.models <span style="color:#f92672">import</span> User
+<span style="color:#f92672">&gt;&gt;&gt;</span> user<span style="color:#f92672">=</span>User<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create_user(username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user1&#39;</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;12345678&#39;</span>)
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>

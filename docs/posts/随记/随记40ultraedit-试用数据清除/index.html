@@ -33,27 +33,20 @@
 <div id="main">
     <header>
             <div class="title">
-                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(2)—程序的入口</a></h2>
-                <p>@LM | 2020-09-15</p>
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(39)—yaml 的锚点与引用</a></h2>
+                <p>@LM | 2022-01-22</p>
             </div>
         </header>
         <div class="content">
-            <h2 id="1前言">1.前言</h2>
-<p>我们都知道 C 或者 Java 程序运行必然有主程序入口 main 函数，而 python 却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现 C 那样的主程序入口 main 函数，我们可以使用以下的判断</p>
-<pre tabindex="0"><code>if __name__=='__main__':
-</code></pre><h2 id="2语义解释">2.语义解释</h2>
-<p><code>__name__</code>是 python 的内置属性，属于系统全局变量，每一个 py 文件都有一个属于自己的<code>__name__</code></p>
-<ul>
-<li>如果 py 文件作为模块被导入，那么<code>__name__</code>就是该 py 文件的文件名(也称模块名)</li>
-<li>如果 py 文件直接运行时，那么<code>__name__</code>默认等于字符串 main</li>
-</ul>
-<p>也就是当一个 py 文件作为启动文件时，该文件的内置属性<code>__name__</code>等于<code>__main__</code>，而作为导入模块时，该模块的<code>__name__</code>等于文件名(也称模块名字)，我们对<code>__name__</code>进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)</p>
-<h2 id="3作用">3.作用</h2>
-<ul>
-<li>作为启动 py 文件的 main 函数入口</li>
-<li>一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测 bug 或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得</li>
-</ul>
-
+            <h2 id="1版本2820092">1.版本：28.20.0.92</h2>
+<h3 id="a清理注册表键值">a.清理注册表键值</h3>
+<pre tabindex="0"><code>HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{9b4c79e8-d476-48e1-ad17-2253d0531ebb}
+HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{bf2611c5-cf99-4e19-be15-83e593688709}
+HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{c0bf323d-faa8-4b16-bdc9-92c6acb76dc1}
+</code></pre><h3 id="b存储文件">b.存储文件</h3>
+<pre tabindex="0"><code>%userprofile%\AppData\Roaming\IDMComp\UltraEdit\license\uedit32_v.spl
+%ProgramData%\IDMComp\UltraEdit\license\uedit32.spl
+</code></pre>
             <p style="margin-top:1em;"></p>
         </div>
         <footer>
@@ -67,10 +60,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/python/python1selenium/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/python/python3xlrd/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B039yaml-%E7%9A%84%E9%94%9A%E7%82%B9%E4%B8%8E%E5%BC%95%E7%94%A8/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

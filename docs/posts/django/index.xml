@@ -8,6 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/django/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Django(14)—Django 文件上传</title>
+      <link>https://ac-lm.github.io/posts/django/django14%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/django/django14%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</guid>
+      <description>1.实现过程  获取文件二进制数据 通过接口传递 写入服务器保存  2.获取文件二进制数据 &amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;，使用 type=&amp;quot;file&amp;quot; 的 input 元素使得用户可以选择一个或多个文件打开。附加属性：accept, capture, files, multiple
+a.accept accept 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;docpicker&amp;#34; accept=&amp;#34;.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document&amp;#34;&amp;gt; 唯一文件类型说明符可使用如下格式：.jpg .pdf；一个不带扩展名的 MIME 类型字符串；字符串 audio/*， 表示任何音频文件；字符串 video/*，表示任何视频文件；字符串 image/*，表示任何图片文件
+b.capture capture 属性是一个字符串，当 input 打开的内容是图片或视频时，则它指定了使用哪个摄像头去捕获这些数据
+c.files FileList 对象为每个已选择的文件。如果 multiple 属性没有指定，则这个列表只有一个成员
+可以通过const numFiles = files.length;来获取 FileList 列表的长度，可以像数组一样简单地访问文件列表来检索各个 File 对象
+for (let i = 0, numFiles = files.length; i &amp;lt; numFiles; i++) { const file = files[i]; // ... } d.</description>
+    </item>
+    
+    <item>
       <title>Django(13)—Django 部署</title>
       <link>https://ac-lm.github.io/posts/django/django13django-%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Fri, 27 Aug 2021 00:00:00 +0000</pubDate>
@@ -83,7 +98,7 @@ function getCookie(name) { let cookieValue = null; if (document.cookie &amp;amp;
       <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/django/django6bash-%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.安装 pip install django python -m django --version 2.配置项目 django-admin startproject 项目名称 python manage.py startapp 应用名称 3.启动服务器 python manage.py runserver python manage.py runserver 8080 python manage.py runserver 0.0.0.0:8000 4.初始化数据库 python manage.py makemigrations 应用名称 #记录改动 python manage.py migrate #创建表 python manage.py createsuperuser </description>
+      <description>1.安装 pip install django python -m django --version 2.配置项目 django-admin startproject 项目名称 python manage.py startapp 应用名称 3.启动服务器 python manage.py runserver python manage.py runserver 8080 python manage.py runserver 0.0.0.0:8000 4.初始化数据库 python manage.py makemigrations 应用名称 #记录改动 python manage.py migrate #创建表 python manage.py createsuperuser 5.创建用户 python manage.py shell &amp;gt;&amp;gt;&amp;gt; from django.contrib.auth.models import User &amp;gt;&amp;gt;&amp;gt; user=User.objects.create_user(username=&amp;#39;user1&amp;#39;,password=&amp;#39;12345678&amp;#39;) </description>
     </item>
     
     <item>

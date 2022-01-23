@@ -39,9 +39,9 @@
         </header>
         <div class="content">
             <h2 id="1问题">1.问题</h2>
-<p>python 多线程一般使用 threading 模块，但 threading 模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢</p>
+<p><code>python</code> 多线程一般使用 <code>threading</code> 模块，但 <code>threading</code> 模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢</p>
 <h2 id="2方法一">2.方法一</h2>
-<p>通过自定义线程类，继承Thread类，并复写run方法，在run方法中写入执行函数的方式，并把返回值赋值给result；然后通过调用get_result 获取每个进程的返回值</p>
+<p>通过自定义线程类，继承<code>Thread</code>类，并复写<code>run</code>方法，在<code>run</code>方法中写入执行函数的方式，并把返回值赋值给<code>result</code>，然后通过调用<code>get_result</code>获取每个进程的返回值</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 多线程类</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyThread</span>(Thread):
     result1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
@@ -78,7 +78,7 @@ t1<span style="color:#f92672">.</span>setDaemon(<span style="color:#66d9ef">True
 t1<span style="color:#f92672">.</span>start()
 result, furl <span style="color:#f92672">=</span> t1<span style="color:#f92672">.</span>get_result()
 </code></pre></div><h2 id="3方法二">3.方法二</h2>
-<p>通过python内置的队列Queue接收子进程的返回值，然后再从中取出</p>
+<p>通过<code>python</code>内置的队列<code>Queue</code>接收子进程的返回值，然后再从中取出</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> threading 
 <span style="color:#f92672">import</span> Queue 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_even</span>(value, q): 

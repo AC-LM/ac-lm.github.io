@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+
+<html><head>
+    <title>LM</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" href="/images/Infinite.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head><body class="is-preload" id="top">
+        
+
+        <div id="wrapper">
+<header id="header">
+    <h1><a href="/" style="font-size: 1.2em">LM' s Note</a></h1>
+    <nav class="links">
+        <ul>
+            <li><a href="/posts" style="font-size: 0.9em"><strong>Posts</strong></a></li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" action="/404.html">
+                    <input type="text" name="query" placeholder="请输入关键字"/>
+                </form>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+            
+<div id="main">
+    <header>
+            <div class="title">
+                <h2 style="font-size:2em"><a href="javascript:void(0)">随记(39)—yaml 的锚点与引用</a></h2>
+                <p>@LM | 2022-01-22</p>
+            </div>
+        </header>
+        <div class="content">
+            <h2 id="1yaml-的锚点--与引用-">1.yaml 的锚点 &amp; 与引用 *</h2>
+<h3 id="a通过--合并内容">a.通过 &laquo; 合并内容</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">user</span>:
+	<span style="color:#f92672">host</span>: <span style="color:#ae81ff">127.0.0.1</span>
+	<span style="color:#f92672">db</span>: <span style="color:#ae81ff">8</span>
+<span style="color:#f92672">book</span>:
+	<span style="color:#f92672">host</span>: <span style="color:#ae81ff">127.0.0.1</span>
+	<span style="color:#f92672">db</span>: <span style="color:#ae81ff">9</span>
+</code></pre></div><p>使用锚点和引用配置后</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">localhost</span>: <span style="color:#75715e">&amp;localhost1</span>
+	<span style="color:#f92672">host</span>: <span style="color:#ae81ff">127.0.0.1</span>
+<span style="color:#f92672">user</span>:
+	<span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*localhost1</span>
+	<span style="color:#f92672">db</span>: <span style="color:#ae81ff">8</span>
+<span style="color:#f92672">book</span>:
+	<span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*localhost1</span>
+	<span style="color:#f92672">db</span>: <span style="color:#ae81ff">9</span>
+</code></pre></div><p>其中，<code>&amp;</code>表示将<code>localhost1</code>作为<code>localhost</code>的别名，<code>&lt;&lt;</code>表示将<code>localhost1</code>代表的<code>map</code>合并入当前<code>map</code>数据</p>
+<h3 id="b通过--引用数据">b.通过 * 引用数据</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">localhost</span>: 
+	<span style="color:#f92672">host</span>: <span style="color:#75715e">&amp;host</span> <span style="color:#ae81ff">127.0.0.1</span>
+<span style="color:#f92672">user</span>:
+	<span style="color:#f92672">host</span>: <span style="color:#75715e">*host</span>
+	<span style="color:#f92672">db</span>: <span style="color:#ae81ff">8</span>	
+<span style="color:#f92672">book</span>:
+	<span style="color:#f92672">host</span>: <span style="color:#75715e">*host</span>
+	<span style="color:#f92672">db</span>: <span style="color:#ae81ff">9</span>
+</code></pre></div>
+            <p style="margin-top:1em;"></p>
+        </div>
+        <footer>
+            <p class="post-copyright-license" style="margin-top:1em; margin-bottom:1em">
+                <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                                            rel="noopener" target="_blank"><i
+                    class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。
+            </p>
+        </footer>
+    
+    <ul class="actions pagination" style="margin-bottom:5px; float:right">
+        <li><a href="#top" class="button large">回到顶部</a></li>
+        
+          <li><a href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B040ultraedit-%E8%AF%95%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B8%85%E9%99%A4/" class="button large previous">上一页</a></li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script></body>
+</html>

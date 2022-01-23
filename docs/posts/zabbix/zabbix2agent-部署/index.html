@@ -33,27 +33,36 @@
 <div id="main">
     <header>
             <div class="title">
-                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(2)—程序的入口</a></h2>
-                <p>@LM | 2020-09-15</p>
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Zabbix(2)—Agent 部署</a></h2>
+                <p>@LM | 2022-01-21</p>
             </div>
         </header>
         <div class="content">
-            <h2 id="1前言">1.前言</h2>
-<p>我们都知道 C 或者 Java 程序运行必然有主程序入口 main 函数，而 python 却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现 C 那样的主程序入口 main 函数，我们可以使用以下的判断</p>
-<pre tabindex="0"><code>if __name__=='__main__':
-</code></pre><h2 id="2语义解释">2.语义解释</h2>
-<p><code>__name__</code>是 python 的内置属性，属于系统全局变量，每一个 py 文件都有一个属于自己的<code>__name__</code></p>
-<ul>
-<li>如果 py 文件作为模块被导入，那么<code>__name__</code>就是该 py 文件的文件名(也称模块名)</li>
-<li>如果 py 文件直接运行时，那么<code>__name__</code>默认等于字符串 main</li>
-</ul>
-<p>也就是当一个 py 文件作为启动文件时，该文件的内置属性<code>__name__</code>等于<code>__main__</code>，而作为导入模块时，该模块的<code>__name__</code>等于文件名(也称模块名字)，我们对<code>__name__</code>进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)</p>
-<h2 id="3作用">3.作用</h2>
-<ul>
-<li>作为启动 py 文件的 main 函数入口</li>
-<li>一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测 bug 或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得</li>
-</ul>
-
+            <blockquote>
+<p>参考：<a href="https://www.zabbix.com/cn/download">下载Zabbix</a></p>
+</blockquote>
+<h2 id="1部署环境-centos7">1.部署（环境 CentOS7）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rpm -Uvh https://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm
+yum clean all
+yum install zabbix-agent
+systemctl restart zabbix-agent
+systemctl enable zabbix-agent
+</code></pre></div><h2 id="2检查">2.检查</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 服务监听</span>
+netstat -lntup|grep <span style="color:#ae81ff">10050</span>
+<span style="color:#75715e"># 配置文件</span>
+vim /etc/zabbix/zabbix_agentd.conf
+grep <span style="color:#e6db74">&#34;^[a-Z]&#34;</span> /etc/zabbix/zabbix_agentd.conf
+<span style="color:#75715e"># 日志</span>
+tail -f /var/log/zabbix/zabbix_agentd.log
+</code></pre></div><h2 id="3部署环境-windows">3.部署（环境 Windows）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 安装
+zabbix_agentd.exe -c zabbix_agentd.win.conf -i
+# 启动
+zabbix_agentd.exe -s
+# 卸载
+zabbix_agentd.exe -d
+</code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>
         <footer>
@@ -67,10 +76,10 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/python/python1selenium/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/zabbix/zabbix1docker-%E9%83%A8%E7%BD%B2/" class="button large previous">上一页</a></li>
         
         
-          <li><a href="https://ac-lm.github.io/posts/python/python3xlrd/" class="button large next">下一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/zabbix/zabbix3%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

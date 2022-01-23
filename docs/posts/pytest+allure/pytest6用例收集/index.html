@@ -33,26 +33,18 @@
 <div id="main">
     <header>
             <div class="title">
-                <h2 style="font-size:2em"><a href="javascript:void(0)">Python(2)—程序的入口</a></h2>
-                <p>@LM | 2020-09-15</p>
+                <h2 style="font-size:2em"><a href="javascript:void(0)">Pytest(6)—用例收集</a></h2>
+                <p>@LM | 2022-01-07</p>
             </div>
         </header>
         <div class="content">
-            <h2 id="1前言">1.前言</h2>
-<p>我们都知道 C 或者 Java 程序运行必然有主程序入口 main 函数，而 python 却不同，即便没有主程序入口，程序一样可以自上而下对代码块依次运行，如果要实现 C 那样的主程序入口 main 函数，我们可以使用以下的判断</p>
-<pre tabindex="0"><code>if __name__=='__main__':
-</code></pre><h2 id="2语义解释">2.语义解释</h2>
-<p><code>__name__</code>是 python 的内置属性，属于系统全局变量，每一个 py 文件都有一个属于自己的<code>__name__</code></p>
-<ul>
-<li>如果 py 文件作为模块被导入，那么<code>__name__</code>就是该 py 文件的文件名(也称模块名)</li>
-<li>如果 py 文件直接运行时，那么<code>__name__</code>默认等于字符串 main</li>
-</ul>
-<p>也就是当一个 py 文件作为启动文件时，该文件的内置属性<code>__name__</code>等于<code>__main__</code>，而作为导入模块时，该模块的<code>__name__</code>等于文件名(也称模块名字)，我们对<code>__name__</code>进行判断，就可以仅执行启动文件的程序，而不会执行导入模块的程序(函数与类除外，这类归于调用)</p>
-<h2 id="3作用">3.作用</h2>
-<ul>
-<li>作为启动 py 文件的 main 函数入口</li>
-<li>一个项目中必然会包含多个模块文件，每个模块文件在写完代码之后会做一些简单的测试用于检测 bug 或者对自己的函数调用写一个简单的示例，而恰到好处的是，编写这样一个入口函数既不会影响你测试代码，也不会影响别人调用你的接口函数，一举多得</li>
-</ul>
+            <blockquote>
+<p>参考原文：<a href="https://www.cnblogs.com/jaxon-chen/p/13204625.html"> 用例收集规则 @jaxon-chen </a></p>
+</blockquote>
+<h2 id="1默认执行顺序">1.默认执行顺序</h2>
+<p>pytest 默认执行顺序是按照 case 在代码中的顺序位置先后执行的。case 的收集默认从当前运行目录开始查找文件，该查找为递归查找，子目录中的文件也会被查找。pytest 能且仅能查找符合命名规则的 py 文件，默认规则是以<code>test _</code>开头或者以<code>test</code>结尾的 py 文件。</p>
+<h2 id="2指定查找">2.指定查找</h2>
+<p>使用同目录下的<code>pytest.ini</code>或<code>conftest.py</code>来改变搜索顺序。当在配置文件中指定目录后，pytest 就会从该目录中开始查找测试用例文件。<code>testpaths = ./scripts</code></p>
 
             <p style="margin-top:1em;"></p>
         </div>
@@ -67,10 +59,8 @@
     <ul class="actions pagination" style="margin-bottom:5px; float:right">
         <li><a href="#top" class="button large">回到顶部</a></li>
         
-          <li><a href="https://ac-lm.github.io/posts/python/python1selenium/" class="button large previous">上一页</a></li>
+          <li><a href="https://ac-lm.github.io/posts/pytest&#43;allure/pytest5%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E5%8C%96/" class="button large previous">上一页</a></li>
         
-        
-          <li><a href="https://ac-lm.github.io/posts/python/python3xlrd/" class="button large next">下一页</a></li>
         
     </ul>
 </div>

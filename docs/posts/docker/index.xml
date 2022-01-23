@@ -57,7 +57,7 @@ Docker 在本地主机和容器内分别创建一个虚拟接口，并让它们�
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/docker/docker1bash-%E5%91%BD%E4%BB%A4/</guid>
-      <description>1.运行 docker docker version # 查看docker版本 systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker 2.查看容器 docker ps -a # 查看容器，包括未运行 docker ps # 查看容易，正在运行的 docker rm name # 删除 docker rm -f name # 强制删除 docker rm $(docker ps -aq) # 删除全部容器  docker inspect -f {{&amp;#34;.NetworkSettings.IPAddress&amp;#34;}} python3.9 3.启动容器 docker run --name python3.9 --privileged=true -v /root/pythonScript:/pythonScript -it python /bin/bash # name 名字，privileged 权限，-v 挂载目录，-it 以shell模式 docker rename gallant_swartz python3.</description>
+      <description>1.运行 docker docker version # 查看docker版本 systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker 2.查看容器 docker ps -a # 查看容器，包括未运行 docker ps # 查看容易，正在运行的 docker rm name # 删除 docker rm -f name # 强制删除 docker rm $(docker ps -aq) # 删除全部容器  3.启动容器 docker run --name python3.9 --privileged=true -v /root/pythonScript:/pythonScript -it python /bin/bash # name 名字，privileged 权限，-v 挂载目录，-it 以shell模式 # -p 宿主机:容器 docker rename gallant_swartz python3.</description>
     </item>
     
   </channel>

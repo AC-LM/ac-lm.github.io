@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 26 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Web开发(16)—获取节点</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9116%E8%8E%B7%E5%8F%96%E5%AD%90%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9116%E8%8E%B7%E5%8F%96%E5%AD%90%E8%8A%82%E7%82%B9/</guid>
+      <description>1.获取子节点 a.通过获取 dom 方式直接获取子节点 var a = document.getElementById(&amp;#34;test&amp;#34;).getElementsByTagName(&amp;#34;div&amp;#34;); b. 通过 childNodes 获取子节点 var b =document.getElementById(&amp;#34;test&amp;#34;).childNodes; c.通过 children 来获取子节点 var getFirstChild = document.getElementById(&amp;#34;test&amp;#34;).children[0]; 2.获取父节点 a.parentNode获取父节点 var p = document.getElementById(&amp;#34;test&amp;#34;).parentNode; 3.获取兄弟节点 a.通过获取父亲节点再获取子节点来获取兄弟节点 var brother1 = document.getElementById(&amp;#34;test&amp;#34;).parentNode.children[1]; b.获取上一个兄弟节点 var brother2 = document.getElementById(&amp;#34;test&amp;#34;).previousElementSibling; c.获取下一个兄弟节点 var brother4 = document.getElementById(&amp;#34;test&amp;#34;).nextElementSibling; </description>
+    </item>
+    
+    <item>
       <title>Web开发(15)—ES6-ES12的开发技巧</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9115es6-es12-%E7%9A%84%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>

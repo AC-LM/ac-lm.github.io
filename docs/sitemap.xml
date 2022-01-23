@@ -3,10 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ac-lm.github.io/</loc>
-    <lastmod>2021-11-24T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/django/django14%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</loc>
+    <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ac-lm.github.io/posts/</loc>
-    <lastmod>2021-11-24T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%9116%E8%8E%B7%E5%8F%96%E5%AD%90%E8%8A%82%E7%82%B9/</loc>
+    <lastmod>2022-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/zabbix/zabbix3%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2022-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B039yaml-%E7%9A%84%E9%94%9A%E7%82%B9%E4%B8%8E%E5%BC%95%E7%94%A8/</loc>
+    <lastmod>2022-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B040ultraedit-%E8%AF%95%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B8%85%E9%99%A4/</loc>
+    <lastmod>2022-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/zabbix/zabbix2agent-%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2022-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/linux/linux28%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%9F%A5/</loc>
+    <lastmod>2022-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/zabbix/</loc>
+    <lastmod>2022-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/zabbix/zabbix1docker-%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2022-01-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/linux/linux27%E5%9B%BA%E5%AE%9A-ip/</loc>
+    <lastmod>2022-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/pytest&#43;allure/pytest6%E7%94%A8%E4%BE%8B%E6%94%B6%E9%9B%86/</loc>
+    <lastmod>2022-01-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ac-lm.github.io/posts/python/python44callable/</loc>
+    <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ac-lm.github.io/posts/python/python43matplotlib-%E7%9A%84-backend/</loc>
     <lastmod>2021-11-24T00:00:00+00:00</lastmod>
@@ -26,7 +62,7 @@
     <loc>https://ac-lm.github.io/posts/flutter/flutter24%E5%B8%B8%E4%BA%AE%E5%B1%8F%E5%B9%95/</loc>
     <lastmod>2021-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ac-lm.github.io/posts/linux/linux26linux-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://ac-lm.github.io/posts/linux/linux26linux-%E5%90%AF%E5%8A%A8%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-11-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ac-lm.github.io/posts/python/python41pyinstaller-%E6%89%93%E5%8C%85/</loc>
