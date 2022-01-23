@@ -8,6 +8,26 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>随记(39)—yaml 的锚点与引用</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B039yaml-%E7%9A%84%E9%94%9A%E7%82%B9%E4%B8%8E%E5%BC%95%E7%94%A8/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B039yaml-%E7%9A%84%E9%94%9A%E7%82%B9%E4%B8%8E%E5%BC%95%E7%94%A8/</guid>
+      <description>1.yaml 的锚点 &amp;amp; 与引用 * a.通过 &amp;laquo; 合并内容 user: host: 127.0.0.1 db: 8 book: host: 127.0.0.1 db: 9 使用锚点和引用配置后
+localhost: &amp;amp;localhost1 host: 127.0.0.1 user: &amp;lt;&amp;lt;: *localhost1 db: 8 book: &amp;lt;&amp;lt;: *localhost1 db: 9 其中，&amp;amp;表示将localhost1作为localhost的别名，&amp;lt;&amp;lt;表示将localhost1代表的map合并入当前map数据
+b.通过 * 引用数据 localhost: host: &amp;amp;host 127.0.0.1 user: host: *host db: 8	book: host: *host db: 9 </description>
+    </item>
+    
+    <item>
+      <title>随记(39)—yaml 的锚点与引用</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B040ultraedit-%E8%AF%95%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B8%85%E9%99%A4/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B040ultraedit-%E8%AF%95%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B8%85%E9%99%A4/</guid>
+      <description>1.版本：28.20.0.92 a.清理注册表键值 HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{9b4c79e8-d476-48e1-ad17-2253d0531ebb} HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{bf2611c5-cf99-4e19-be15-83e593688709} HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{c0bf323d-faa8-4b16-bdc9-92c6acb76dc1} b.存储文件 %userprofile%\AppData\Roaming\IDMComp\UltraEdit\license\uedit32_v.spl %ProgramData%\IDMComp\UltraEdit\license\uedit32.spl </description>
+    </item>
+    
+    <item>
       <title>随记(38)—Socket.IO</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B038socket.io/</link>
       <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>

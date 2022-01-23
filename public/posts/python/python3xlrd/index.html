@@ -44,32 +44,31 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install xlrd<span style="color:#f92672">==</span><span style="color:#ae81ff">1.2.0</span>
 </code></pre></div><h2 id="3使用">3.使用</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> xlrd
-data <span style="color:#f92672">=</span> xlrd<span style="color:#f92672">.</span>open_workbook(filename)  <span style="color:#75715e">#文件名以及路径</span>
+data <span style="color:#f92672">=</span> xlrd<span style="color:#f92672">.</span>open_workbook(filename)  <span style="color:#75715e"># 文件名以及路径</span>
 </code></pre></div><p>导入和打开文档后，必须先定位到 sheet，才能进行下一步操作，程序只有在获取对应的 sheet 之后，才能进行对行和列以及单元格的操作</p>
 <h3 id="a获取工作表">a.获取工作表</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheets()[<span style="color:#ae81ff">0</span>]          <span style="color:#75715e">#通过索引顺序获取</span>
-table <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheet_by_index(sheet_indx)  <span style="color:#75715e">#通过索引顺序获取</span>
-table <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheet_by_name(sheet_name) <span style="color:#75715e">#通过名称获取</span>
-names <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheet_names()    <span style="color:#75715e">#返回book中所有工作表的名字</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheets()[<span style="color:#ae81ff">0</span>]          <span style="color:#75715e"># 通过索引顺序获取</span>
+table <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheet_by_index(sheet_indx)  <span style="color:#75715e"># 通过索引顺序获取</span>
+table <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheet_by_name(sheet_name) <span style="color:#75715e"># 通过名称获取</span>
+names <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>sheet_names()    <span style="color:#75715e"># 返回 book 中所有工作表的名字</span>
 data<span style="color:#f92672">.</span>sheet_loaded(sheet_name <span style="color:#f92672">or</span> indx)   <span style="color:#75715e"># 检查某个sheet是否导入完毕</span>
 </code></pre></div><h3 id="b对行的操作">b.对行的操作</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nrows <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>nrows  <span style="color:#75715e">#获取该sheet中的有效行数</span>
-table<span style="color:#f92672">.</span>row(rowx)  <span style="color:#75715e">#返回由该行中所有的单元格对象组成的列表</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nrows <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>nrows  <span style="color:#75715e"># 获取该sheet中的有效行数</span>
+table<span style="color:#f92672">.</span>row(rowx)  <span style="color:#75715e"># 返回由该行中所有的单元格对象组成的列表</span>
 table<span style="color:#f92672">.</span>row_slice(rowx)  <span style="color:#75715e">#返回由该列中所有的单元格对象组成的列表</span>
-table<span style="color:#f92672">.</span>row_types(rowx, start_colx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_colx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)    <span style="color:#75715e">#返回由该行中所有单元格的数据类型组成的列表</span>
-table<span style="color:#f92672">.</span>row_values(rowx, start_colx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_colx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)   <span style="color:#75715e">#返回由该行中所有单元格的数据组成的列表</span>
-table<span style="color:#f92672">.</span>row_len(rowx) <span style="color:#75715e">#返回该列的有效单元格长度</span>
+table<span style="color:#f92672">.</span>row_types(rowx, start_colx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_colx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)    <span style="color:#75715e"># 返回由该行中所有单元格的数据类型组成的列表</span>
+table<span style="color:#f92672">.</span>row_values(rowx, start_colx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_colx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)   <span style="color:#75715e"># 返回由该行中所有单元格的数据组成的列表</span>
+table<span style="color:#f92672">.</span>row_len(rowx) <span style="color:#75715e"># 返回该列的有效单元格长度</span>
 </code></pre></div><h3 id="c对列的操作">c.对列的操作</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ncols <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>ncols   <span style="color:#75715e">#获取列表的有效列数</span>
-table<span style="color:#f92672">.</span>col(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)  <span style="color:#75715e">#返回由该列中所有的单元格对象组成的列表</span>
-table<span style="color:#f92672">.</span>col_slice(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)  <span style="color:#75715e">#返回由该列中所有的单元格对象组成的列表</span>
-table<span style="color:#f92672">.</span>col_types(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)    <span style="color:#75715e">#返回由该列中所有单元格的数据类型组成的列表</span>
-table<span style="color:#f92672">.</span>col_values(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)   <span style="color:#75715e">#返回由该列中所有单元格的数据组成的列表</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ncols <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>ncols   <span style="color:#75715e"># 获取列表的有效列数</span>
+table<span style="color:#f92672">.</span>col(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)  <span style="color:#75715e"># 返回由该列中所有的单元格对象组成的列表</span>
+table<span style="color:#f92672">.</span>col_slice(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)  <span style="color:#75715e"># 返回由该列中所有的单元格对象组成的列表</span>
+table<span style="color:#f92672">.</span>col_types(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)    <span style="color:#75715e"># 返回由该列中所有单元格的数据类型组成的列表</span>
+table<span style="color:#f92672">.</span>col_values(colx, start_rowx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, end_rowx<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)   <span style="color:#75715e"># 返回由该列中所有单元格的数据组成的列表</span>
 </code></pre></div><h3 id="d对单元格的操作">d.对单元格的操作</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table<span style="color:#f92672">.</span>cell(rowx,colx)   <span style="color:#75715e">#返回单元格对象</span>
-table<span style="color:#f92672">.</span>cell_type(rowx,colx)    <span style="color:#75715e">#返回单元格中的数据类型</span>
-table<span style="color:#f92672">.</span>cell_value(rowx,colx)   <span style="color:#75715e">#返回单元格中的数据</span>
-table<span style="color:#f92672">.</span>cell_xf_index(rowx, colx)   <span style="color:#75715e"># ??</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table<span style="color:#f92672">.</span>cell(rowx,colx)   <span style="color:#75715e"># 返回单元格对象</span>
+table<span style="color:#f92672">.</span>cell_type(rowx,colx)    <span style="color:#75715e"># 返回单元格中的数据类型</span>
+table<span style="color:#f92672">.</span>cell_value(rowx,colx)   <span style="color:#75715e"># 返回单元格中的数据</span>
 </code></pre></div>
             <p style="margin-top:1em;"></p>
         </div>

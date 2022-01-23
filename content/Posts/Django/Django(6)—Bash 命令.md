@@ -34,3 +34,11 @@ python manage.py migrate #创建表
 python manage.py createsuperuser
 ```
 
+## 5.创建用户
+
+```python
+python manage.py shell
+>>> from django.contrib.auth.models import User
+>>> user=User.objects.create_user(username='user1',password='12345678')
+```
+

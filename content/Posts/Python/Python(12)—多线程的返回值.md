@@ -6,11 +6,11 @@ author: LM
 
 ## 1.问题
 
-python 多线程一般使用 threading 模块，但 threading 模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢
+`python` 多线程一般使用 `threading` 模块，但 `threading` 模块有个问题，无法直接返回线程里面运行的结果，那如果需要线程返回值那如何处理呢
 
 ## 2.方法一
 
-通过自定义线程类，继承Thread类，并复写run方法，在run方法中写入执行函数的方式，并把返回值赋值给result；然后通过调用get_result 获取每个进程的返回值
+通过自定义线程类，继承`Thread`类，并复写`run`方法，在`run`方法中写入执行函数的方式，并把返回值赋值给`result`，然后通过调用`get_result`获取每个进程的返回值
 
 ```python
 # 多线程类
@@ -52,7 +52,7 @@ result, furl = t1.get_result()
 
 ## 3.方法二
 
-通过python内置的队列Queue接收子进程的返回值，然后再从中取出
+通过`python`内置的队列`Queue`接收子进程的返回值，然后再从中取出
 
 ```python
 import threading 
