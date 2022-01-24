@@ -4,9 +4,9 @@ date: 2022-01-24
 author: LM
 ---
 
-## 1.on_delete
+## 1.使用模式
 
-在 Django 的数据库模型中，外键等关联字段必须有 on_delete 属性，该属性允许取如下的值
+在 Django 的数据库模型中，外键等关联字段必须有 `on_delete` 属性，该属性允许取如下的值
 
 ```python
 on_delete=None,               # 删除关联表中的数据时,当前表与其关联的field的行为
@@ -21,4 +21,3 @@ on_delete=models.SET,         # 删除关联数据,
 # a. 与之关联的值设置为指定值,设置：models.SET(值)
 # b. 与之关联的值设置为可执行对象的返回值,设置：models.SET(可执行对象)
 ```
-
