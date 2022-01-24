@@ -2,6 +2,7 @@
 title: Linux(24)—lscpu
 date: 2021-11-15
 author: LM
+tags: ["Linux"]
 ---
 
 > [ lscpu 中 socket、core、thread 的意义 @Whosemario的家](http://whosemario.github.io/2016/05/20/lscpu-cmd)

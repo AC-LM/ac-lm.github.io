@@ -2,6 +2,7 @@
 title: Net(10)—JMeter录制测试脚本
 date: 2021-09-10
 author: LM
+tags: ["网络测试"]
 ---
 
 > 参考原文：[Apache JMeter - Apache JMeter HTTP(S) Test Script Recorder](https://jmeter.apache.org/usermanual/jmeter_proxy_step_by_step.html)

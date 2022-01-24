@@ -2,6 +2,7 @@
 title: PyQt5(7)—QDialog 消息提示类
 date: 2020-12-19
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.QDialog的子类

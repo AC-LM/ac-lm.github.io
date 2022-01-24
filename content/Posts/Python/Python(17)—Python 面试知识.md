@@ -2,6 +2,7 @@
 title: Python(17)—Python面试知识
 date: 2021-01-13
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.语言的分类

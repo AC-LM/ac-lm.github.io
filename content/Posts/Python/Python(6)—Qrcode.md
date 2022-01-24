@@ -2,6 +2,7 @@
 title: Python(6)—Qrcode
 date: 2020-09-29
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.什么是二维码

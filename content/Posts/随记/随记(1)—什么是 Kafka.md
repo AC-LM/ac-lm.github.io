@@ -2,6 +2,7 @@
 title: 随记(1)—什么是 Kafka
 date: 2020-09-10
 author: LM
+tags: ["随记"]
 ---
 
 > 参考原文：[ Kafka 初识  @暮良文王 ](https://www.cnblogs.com/liangmingshen/p/11031426.html)

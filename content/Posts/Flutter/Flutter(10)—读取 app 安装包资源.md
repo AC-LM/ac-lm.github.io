@@ -2,6 +2,7 @@
 title: Flutter(10)—读取 app 安装包资源
 date: 2021-05-11
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ Flutter 读取应用资源并显示  @飘香豆腐 ](https://zhuanlan.zhihu.com/p/243259521)

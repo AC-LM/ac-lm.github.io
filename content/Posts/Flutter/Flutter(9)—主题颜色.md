@@ -2,6 +2,7 @@
 title: Flutter(9)—主题颜色
 date: 2021-05-10
 author: LM
+tags: ["Flutter"]
 ---
 
 ## 1.primarySwatch

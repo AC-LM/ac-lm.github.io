@@ -2,6 +2,7 @@
 title: Django(6)—Bash 命令
 date: 2021-06-15
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.安装

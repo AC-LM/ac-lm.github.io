@@ -2,6 +2,7 @@
 title: Python(38)—MultipartEncoder 上传文件
 date: 2021-11-19
 author: LM
+tags: ["Python"]
 ---
 
 > [ 上传文件模块 MultipartEncoder @山猪打不过家猪 ](https://www.jianshu.com/p/9738e53a7db3)

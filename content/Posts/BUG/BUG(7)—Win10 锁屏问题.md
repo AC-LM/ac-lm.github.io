@@ -2,6 +2,7 @@
 title: BUG(7)—Win10 锁屏问题
 date: 2020-12-02
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG描述

@@ -2,6 +2,7 @@
 title: Web服务器(1)—Nginx 反向代理
 date: 2020-03-02
 author: LM
+tags: ["Web", "服务器"]
 ---
 
 ## 1.什么是正向代理与反向代理

@@ -2,6 +2,7 @@
 title: BUG(6)—Wapiti 报告丢失 js 文件
 date: 2020-11-30
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG描述

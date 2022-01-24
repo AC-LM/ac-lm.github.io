@@ -2,6 +2,7 @@
 title: 随记(35)—如何给hugo博客添加搜索功能
 date: 2021-09-16
 author: LM
+tags: ["随记"]
 ---
 
 > 参考原文：[给Hugo站点添加搜索功能 - Go语言中文网](https://studygolang.com/articles/27141?fr=sidebar)

@@ -2,6 +2,7 @@
 title: SQL(4)—事务
 date: 2020-09-30
 author: LM
+tags: ["Mysql"]
 ---
 
 > 参考原文：[ SQL教程 @廖雪峰 ](https://www.liaoxuefeng.com/wiki/1177760294764384)

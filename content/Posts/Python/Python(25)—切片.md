@@ -2,6 +2,7 @@
 title: Python(25)—切片
 date: 2021-03-27
 author: LM
+tags: ["Python"]
 ---
 
 > 参考原文：[ 彻底搞懂Python切片操作  @马尔代夫Maldives ](https://www.jianshu.com/p/15715d6f4dad)

@@ -2,6 +2,7 @@
 title: Flutter(14)—滚动视图的位置保存
 date: 2021-05-15
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ how-to-get-flutter-scrollcontroller-to-save @stackoverflow ](https://stackoverflow.com/questions/60292911/how-to-get-flutter-scrollcontroller-to-save-position-of-listview-builder-when)

@@ -2,6 +2,7 @@
 title: BUG(21)—Linux 缺少 OpenSSL
 date: 2021-09-17
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG描述

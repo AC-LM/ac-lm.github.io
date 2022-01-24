@@ -2,6 +2,7 @@
 title: Windows(6)—Python 环境变量不生效
 date: 2021-08-27
 author: LM
+tags: ["Windows"]
 ---
 
 > 参考原文：[ 命令窗口不能使用Python ](https://zhuanlan.zhihu.com/p/380716375)

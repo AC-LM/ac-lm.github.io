@@ -2,6 +2,7 @@
 title: Python(24)—获取 input 输入的文本值
 date: 2021-03-26
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.get_attribute(‘value’)获取输入的文本值

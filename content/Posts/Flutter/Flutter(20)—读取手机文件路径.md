@@ -2,6 +2,7 @@
 title: Flutter(20)—读取手机文件路径
 date: 2021-06-05
 author: LM
+tags: ["Flutter"]
 ---
 
 >参考原文： [【Flutter 实战】文件系统目录  @老孟程序员 ](https://www.jianshu.com/p/2eafae001f55)

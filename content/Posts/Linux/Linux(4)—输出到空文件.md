@@ -2,6 +2,7 @@
 title: Linux(4)—输出到空文件
 date: 2020-11-16
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.文件 /dev/null 

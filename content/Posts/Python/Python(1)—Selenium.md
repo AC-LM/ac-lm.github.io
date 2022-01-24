@@ -2,6 +2,7 @@
 title: Python(1)—Selenium
 date: 2020-06-22
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.什么 Selenium

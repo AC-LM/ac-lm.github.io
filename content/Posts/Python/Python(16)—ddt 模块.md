@@ -2,6 +2,7 @@
 title: Python(16)—ddt 模块
 date: 2021-01-06
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.简介

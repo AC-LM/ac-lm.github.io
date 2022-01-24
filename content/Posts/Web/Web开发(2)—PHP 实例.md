@@ -2,6 +2,7 @@
 title: Web开发(2)—PHP 实例
 date: 2020-12-03
 author: LM
+tags: ["Web", "服务器"]
 ---
 
 ## 1.PHP 信息页

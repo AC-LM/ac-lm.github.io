@@ -2,6 +2,7 @@
 title: Net(7)—在 Linux 中的搭建 JMeter 性能测试
 date: 2020-11-26
 author: LM
+tags: ["网络测试"]
 ---
 
 ## 1.Linux下的Jmeter

@@ -2,6 +2,7 @@
 title: Pytest(5)—数据参数化
 date: 2021-07-23
 author: LM
+tags: ["Pytest"]
 ---
 
 > 参考原文：[ 参数化@pytest.mark.parametrize @小菠萝测试笔记  ](https://www.cnblogs.com/poloyy/p/12675457.html)

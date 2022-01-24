@@ -2,6 +2,7 @@
 title: Python(4)—Requests
 date: 2020-09-18
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.什么是 Requests 

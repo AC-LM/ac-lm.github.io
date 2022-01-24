@@ -2,6 +2,7 @@
 title: Pytest(4)—assert 断言
 date: 2021-01-31
 author: LM
+tags: ["Pytest"]
 ---
 
 > 参考原文：[  assert断言详细使用  @小菠萝测试笔记 ](https://www.cnblogs.com/poloyy/p/12641778.html)

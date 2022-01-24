@@ -2,6 +2,7 @@
 title: 随记(39)—yaml 的锚点与引用
 date: 2022-01-22
 author: LM
+tags: ["随记"]
 ---
 
 ## 1.yaml 的锚点 & 与引用 *

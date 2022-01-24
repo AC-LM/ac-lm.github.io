@@ -2,6 +2,7 @@
 title: Django(8)—外键查询
 date: 2021-07-24
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.查询示例

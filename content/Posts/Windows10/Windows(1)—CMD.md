@@ -2,6 +2,7 @@
 title: Windows(1)—CMD
 date: 2021-01-10
 author: LM
+tags: ["Windows"]
 ---
 
 ## 常用的CMD命令

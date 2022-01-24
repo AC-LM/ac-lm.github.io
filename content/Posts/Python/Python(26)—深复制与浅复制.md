@@ -2,6 +2,7 @@
 title: Python(26)—深复制与浅复制
 date: 2021-03-28
 author: LM
+tags: ["Python"]
 ---
 
 > 参考原文：[ 图解Python深拷贝和浅拷贝  @田小计划  ](https://www.cnblogs.com/wilber2013/p/4645353.html)

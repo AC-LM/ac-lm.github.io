@@ -2,6 +2,7 @@
 title: Kali(3)—修改apt源
 date: 2021-06-09
 author: LM
+tags: ["Kail"]
 ---
 
 ## 1.备份源

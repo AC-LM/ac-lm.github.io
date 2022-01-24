@@ -2,6 +2,7 @@
 title: 随记(18)—什么是Bash Shell
 date: 2020-12-09
 author: LM
+tags: ["随记"]
 ---
 
 ## 1.什么是Bash

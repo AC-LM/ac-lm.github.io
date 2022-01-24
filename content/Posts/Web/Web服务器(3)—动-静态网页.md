@@ -2,6 +2,7 @@
 title: Web服务器(3)—动-静态网页
 date: 2020-03-04
 author: LM
+tags: ["Web"]
 ---
 
 ## 1.静态网页

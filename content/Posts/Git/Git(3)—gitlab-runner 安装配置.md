@@ -2,6 +2,7 @@
 title: Git(3)—gitlab-runner 安装配置
 date: 2021-01-07
 author: LM
+tags: ["Git"]
 ---
 
 ## 1.Linux 注册 gitlab-runner

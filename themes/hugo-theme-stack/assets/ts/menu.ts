@@ -80,4 +80,16 @@ export default function () {
             toggleMenu.classList.toggle('is-active');
         });
     }
+
+    const backButton = document.getElementById('menu-Back');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            let url = window.location.pathname;
+            let flag = url.split('/');
+            let length = flag.length;
+            flag.splice(length-2, 2)
+            window.location.href=flag.join('/');
+        });
+    }
+
 }

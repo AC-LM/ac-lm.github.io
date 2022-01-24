@@ -2,6 +2,7 @@
 title: Python(2)—程序的入口
 date: 2020-09-15
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.前言

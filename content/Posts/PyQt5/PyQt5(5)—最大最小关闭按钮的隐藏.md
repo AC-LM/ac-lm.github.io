@@ -2,6 +2,7 @@
 title: PyQt5(5)—最大最小关闭按钮的隐藏
 date: 2020-12-17
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.示例代码

@@ -2,6 +2,7 @@
 title: Python(23)—os 模块文件操作
 date: 2021-03-25
 author: LM
+tags: ["Python"]
 ---
 
 > 参考文档：[ os文档  @Python文档  ](https://docs.python.org/zh-cn/3/library/os.html)

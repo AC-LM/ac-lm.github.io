@@ -1,6 +1,6 @@
 ---
 title: Zabbix(3)—监控模式
-date: 2022-01-22
+date: 2022-01-20
 author: LM
 tags: ["Zabbix"]
 ---

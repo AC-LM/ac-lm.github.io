@@ -2,6 +2,7 @@
 title: Web开发(9)—下拉表单插件 bootstrap-select
 date: 2021-06-06
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 > 参考文献：[ github.com-bootstrap-select @silviomoreto ](https://github.com/silviomoreto/bootstrap-select)  & [ blogs @懒得安分](https://www.cnblogs.com/landeanfen/p/7457283.html)

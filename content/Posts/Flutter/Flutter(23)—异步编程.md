@@ -2,6 +2,7 @@
 title: Flutter(23)—异步编程
 date: 2021-08-25
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[Flutter 异步编程：Future、Isolate 和事件循环](https://www.jianshu.com/p/0aefa62372c6)

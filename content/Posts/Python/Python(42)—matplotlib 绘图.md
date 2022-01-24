@@ -2,6 +2,7 @@
 title: Python(41)—matplotlib 绘图
 date: 2021-11-23
 author: LM
+tags: ["Python"]
 ---
 
 > [ Python绘图与可视化 @小杜同学的嘚啵嘚 ](https://www.cnblogs.com/dudududu/p/9149762.html)

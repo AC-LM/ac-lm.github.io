@@ -2,6 +2,7 @@
 title: Python(19)—telnetlib 模块
 date: 2021-01-15
 author: LM
+tags: ["Python"]
 ---
 
 ## telnetlib

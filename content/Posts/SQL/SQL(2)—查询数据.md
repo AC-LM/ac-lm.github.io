@@ -2,6 +2,7 @@
 title: SQL(2)—查询数据
 date: 2020-09-28
 author: LM
+tags: ["Mysql"]
 ---
 
 > 参考原文：[ SQL教程 @廖雪峰 ](https://www.liaoxuefeng.com/wiki/1177760294764384)

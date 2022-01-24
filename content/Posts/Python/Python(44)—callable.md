@@ -2,6 +2,7 @@
 title: Python(41)—callable
 date: 2021-11-25
 author: LM
+tags: ["Python"]
 ---
 
 > [ python 中的 callable 概念 @知乎](https://zhuanlan.zhihu.com/p/191419441)

@@ -2,6 +2,7 @@
 title: Python(40)—获取当前文件路径
 date: 2021-11-21
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.`sys.path[0]`

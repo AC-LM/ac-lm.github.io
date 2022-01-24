@@ -2,6 +2,7 @@
 title: Flutter(24)—常亮屏幕
 date: 2021-11-22
 author: LM
+tags: ["Flutter"]
 ---
 
 > [ 使用 Wakelock 控制屏幕常亮 @简忆博客 ](https://www.tpxhm.com/fdetail/349.html)

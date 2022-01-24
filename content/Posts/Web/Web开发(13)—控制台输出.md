@@ -2,6 +2,7 @@
 title: Web开发(13)—控制台输出
 date: 2021-08-26
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.清空控制台

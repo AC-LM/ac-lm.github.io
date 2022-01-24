@@ -2,6 +2,7 @@
 title: BUG(23)—Linux 报错 no C compiler found in $PATH
 date: 2021-11-17
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG 描述

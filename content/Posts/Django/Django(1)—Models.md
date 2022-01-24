@@ -2,6 +2,7 @@
 title: Django(1)—Models
 date: 2021-06-01
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.模型的基本概念

@@ -2,6 +2,7 @@
 title: Kali(2)—启动 SSH 服务
 date: 2021-06-08
 author: LM
+tags: ["Kail"]
 ---
 
 ## 1.配置

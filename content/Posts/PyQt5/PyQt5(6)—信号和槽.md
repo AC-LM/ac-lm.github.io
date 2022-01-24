@@ -2,6 +2,7 @@
 title: PyQt5(6)—信号和槽
 date: 2020-12-18
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.概述

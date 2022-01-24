@@ -2,6 +2,7 @@
 title: Web开发(19)—上传进度获取
 date: 2022-01-25
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.Javascript 的 XMLHttpRequest:progress 事件

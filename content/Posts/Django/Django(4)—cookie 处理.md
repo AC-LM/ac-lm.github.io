@@ -2,6 +2,7 @@
 title: Django(4)—cookie处理
 date: 2021-06-04
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.设置 cookie

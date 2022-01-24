@@ -2,6 +2,7 @@
 title: Python(18)—执行 Linux 命令
 date: 2021-01-14
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.subprocess 模块

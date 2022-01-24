@@ -2,6 +2,7 @@
 title: Python(30)—import
 date: 2021-06-04
 author: LM
+tags: ["Python"]
 ---
 
 > 参考：[ Python中import的用法  @门书生 ](https://zhuanlan.zhihu.com/p/63143493) &  [ 聊聊Python Import System？@没有50CM手臂 ](https://zhuanlan.zhihu.com/p/348559778)

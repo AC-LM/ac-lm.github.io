@@ -2,6 +2,7 @@
 title: Linux(25)—在脚本中检查命令是否存在
 date: 2021-11-18
 author: LM
+tags: ["Linux"]
 ---
 
 > [ check if a program exists from a Bash script? @Stack Overflow ](https://stackoverflow.com/questions/592620/how-can-i-check-if-a-program-exists-from-a-bash-script)

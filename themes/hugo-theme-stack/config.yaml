@@ -47,7 +47,7 @@ params:
 
     article:
         math: false
-        toc: true
+        toc: false
         readingTime: false
         license:
             enabled: true
@@ -134,7 +134,7 @@ params:
             limit: 5
 
         tagCloud:
-            limit: 10
+            limit: 99
 
     opengraph:
         twitter:
@@ -168,6 +168,15 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
     main:
+        - identifier: back
+          name: Back
+          url: '#'
+          weight: -100
+          params:
+              ### For demonstration purpose, the home link will be open in a new tab
+              newTab: false
+              icon: back
+
         - identifier: home
           name: Home
           url: /

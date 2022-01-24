@@ -2,6 +2,7 @@
 title: Linux(23)—修改 Linux 时区或时间
 date: 2021-09-18
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.查看和修改Linux的时区

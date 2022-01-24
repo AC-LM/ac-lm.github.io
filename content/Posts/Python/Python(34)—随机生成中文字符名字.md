@@ -2,6 +2,7 @@
 title: Python(34)—随机生成中文字符名字
 date: 2021-09-16
 author: LM
+tags: ["Python"]
 ---
 
 ## 一.如何生成中文字符

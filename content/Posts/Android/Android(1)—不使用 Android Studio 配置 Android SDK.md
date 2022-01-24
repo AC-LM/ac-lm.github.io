@@ -2,6 +2,7 @@
 title: Android(1)—不使用 Android Studio 配置 Android SDK
 date: 2020-09-21
 author: LM
+tags: ["Android"]
 ---
 
 ## 1.环境

@@ -2,6 +2,7 @@
 title: Django(14)—Django 文件上传
 date: 2022-01-23
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.实现过程

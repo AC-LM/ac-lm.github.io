@@ -2,6 +2,7 @@
 title: Python(22)—sys 模块
 date: 2021-03-24
 author: LM
+tags: ["Python"]
 ---
 
 > 参考原文：[ Python sys 模块详解   @轩辕御龙  ](https://zhuanlan.zhihu.com/p/150835014)

@@ -2,6 +2,7 @@
 title: BUG(1)—无头浏览器导致的元素不可见
 date: 2020-11-25
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG 描述

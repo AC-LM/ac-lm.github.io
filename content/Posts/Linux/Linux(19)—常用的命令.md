@@ -2,6 +2,7 @@
 title: Linux(19)—常用的命令
 date: 2021-05-16
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.历史记录命令

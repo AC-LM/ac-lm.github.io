@@ -2,6 +2,7 @@
 title: PyQt5(11)—QTextEdit 文本元件
 date: 2020-12-23
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.占位文本的使用

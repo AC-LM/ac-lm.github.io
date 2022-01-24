@@ -2,6 +2,7 @@
 title: PyQt5(9)—QInputDialog 输入对话框类
 date: 2020-12-21
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.简介

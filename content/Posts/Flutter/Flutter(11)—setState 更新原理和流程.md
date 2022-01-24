@@ -2,6 +2,7 @@
 title: Flutter(11)—setState更新原理和流程
 date: 2021-05-12
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ Flutter的setState更新原理和流程 @flutter开发精选 ](https://zhuanlan.zhihu.com/p/271803637)

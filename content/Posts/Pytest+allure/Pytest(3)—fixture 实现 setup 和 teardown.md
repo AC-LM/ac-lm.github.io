@@ -2,6 +2,7 @@
 title: Pytest(3)—fixture 实现 setup 和 teardown
 date: 2021-01-16
 author: LM
+tags: ["Pytest"]
 ---
 
 ## 1.setup 与 fixture 的启动顺序

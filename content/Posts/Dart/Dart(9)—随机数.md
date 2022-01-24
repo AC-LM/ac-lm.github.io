@@ -2,6 +2,7 @@
 title: Dart(9)—随机数
 date: 2021-07-23
 author: LM
+tags: ["Dart"]
 ---
 
 ## 1.随机数

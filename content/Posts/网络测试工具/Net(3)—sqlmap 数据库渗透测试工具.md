@@ -2,6 +2,7 @@
 title: Net(3)—sqlmap数据库渗透测试工具
 date: 2020-11-18
 author: LM
+tags: ["网络测试"]
 ---
 
 ## 1.sqlmap

@@ -2,6 +2,7 @@
 title: Python(39)—Selenium executable_path 警告
 date: 2021-11-20
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.Executable path has been deprecated please pass in a Service object in Selenium Python

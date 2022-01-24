@@ -2,6 +2,7 @@
 title: Pytest(6)—用例收集
 date: 2022-01-07
 author: LM
+tags: ["Pytest"]
 ---
 
 > 参考原文：[ 用例收集规则 @jaxon-chen ](https://www.cnblogs.com/jaxon-chen/p/13204625.html)

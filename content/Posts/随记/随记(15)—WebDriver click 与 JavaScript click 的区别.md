@@ -2,6 +2,7 @@
 title: 随记(15)—WebDriver click与JavaScript click的区别
 date: 2020-12-01
 author: LM
+tags: ["随记"]
 ---
 
 > 原文参考：[ webdriver-click-vs-javascript-click @stackoverflow ](https://stackoverflow.com/questions/34562061/webdriver-click-vs-javascript-click)

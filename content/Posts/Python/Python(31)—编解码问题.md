@@ -2,6 +2,7 @@
 title: Python(31)—编解码问题
 date: 2021-07-23
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.二进制字符

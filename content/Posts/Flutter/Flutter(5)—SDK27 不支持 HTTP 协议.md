@@ -2,6 +2,7 @@
 title: Flutter(5)—SDK27 不支持 HTTP 协议
 date: 2021-04-27
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ Insecure HTTP is not allowed by platform @csdn ](https://blog.csdn.net/weixin_44137575/article/details/109045633)

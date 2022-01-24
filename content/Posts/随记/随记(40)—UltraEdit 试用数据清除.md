@@ -1,7 +1,8 @@
 ---
-title: 随记(39)—yaml 的锚点与引用
+title: 随记(40)—UltraEdit 试用数据清除
 date: 2022-01-22
 author: LM
+tags: ["随记"]
 ---
 
 ## 1.版本：28.20.0.92

@@ -2,6 +2,7 @@
 title: Linux(1)—Linux 系统文件
 date: 2020-10-15
 author: LM
+tags: ["Linux"]
 ---
 
 -------- 基于发行版本 CentOS-7 --------------

@@ -2,6 +2,7 @@
 title: Python(9)—异常信息打印
 date: 2020-12-11
 author: LM
+tags: ["Python"]
 ---
 
 ## 1. 直接打印错误

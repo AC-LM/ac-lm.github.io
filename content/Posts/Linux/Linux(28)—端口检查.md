@@ -2,6 +2,7 @@
 title: Linux(28)—端口检查
 date: 2022-01-20
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.使用 lsof 检查

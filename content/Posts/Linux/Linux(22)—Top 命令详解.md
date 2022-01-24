@@ -2,6 +2,7 @@
 title: Linux(22)—Top 命令详解
 date: 2021-09-17
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.top 命令的用法

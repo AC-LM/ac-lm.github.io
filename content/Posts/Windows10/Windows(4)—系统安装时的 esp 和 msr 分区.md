@@ -2,6 +2,7 @@
 title: Windows(4)—系统安装时的 esp 和 msr 分区
 date: 2021-03-31
 author: LM
+tags: ["Windows"]
 ---
 
 **硬盘在安装系统前需要进行格式化和分区，而两个分区必须分配在最开始**

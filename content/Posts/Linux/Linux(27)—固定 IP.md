@@ -2,6 +2,7 @@
 title: Linux(27)—固定 IP
 date: 2022-01-16
 author: LM
+tags: ["Linux"]
 ---
 
 > 参考原文：[ Linux - 配置固定的ip地址 ](https://zhuanlan.zhihu.com/p/54512739)

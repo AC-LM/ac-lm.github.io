@@ -2,6 +2,7 @@
 title: Net(5)—sqlmap使用实例
 date: 2020-11-21
 author: LM
+tags: ["网络测试"]
 ---
 
 ## 1.第一步：查找注入点

@@ -2,6 +2,7 @@
 title: Python(15)—装饰器
 date: 2021-01-05
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.什么是装饰器

@@ -1,6 +1,6 @@
 ---
 title: Zabbix(2)—Agent 部署
-date: 2022-01-21
+date: 2022-01-20
 author: LM
 tags: ["Zabbix"]
 ---

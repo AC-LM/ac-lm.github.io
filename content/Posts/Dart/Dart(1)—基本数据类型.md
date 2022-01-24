@@ -2,6 +2,7 @@
 title: Dart(1)—基本数据类型
 date: 2021-04-24
 author: LM
+tags: ["Dart"]
 ---
 
 ## 1.数字与布尔值

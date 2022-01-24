@@ -2,6 +2,7 @@
 title: allure(1)—测试报告生成
 date: 2021-01-05
 author: LM
+tags: ["Pytest"]
 ---
 
 ## 1.命令使用

@@ -2,6 +2,7 @@
 title: PyQt5(3)—QProgressDialog 进度条
 date: 2020-12-15
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.QProgressDialog

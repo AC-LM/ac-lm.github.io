@@ -2,6 +2,7 @@
 title: Linux(13)—rpm 软件管理工具
 date: 2020-12-04
 author: LM
+tags: ["Linux"]
 ---
 
 在 Linux 操作系统下，几乎所有的软件都可以通过 rpm 进行安装、卸载及管理等操作。rpm 的全称为Redhat Package Manager ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。

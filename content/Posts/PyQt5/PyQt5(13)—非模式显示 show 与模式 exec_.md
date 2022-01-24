@@ -2,6 +2,7 @@
 title: PyQt5(13)—非模式显示 show 与模式 exec_
 date: 2020-12-25
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.非模式显示 show()

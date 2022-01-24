@@ -2,6 +2,7 @@
 title: Django(13)—Django 部署
 date: 2021-08-27
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.配置 uwsgi

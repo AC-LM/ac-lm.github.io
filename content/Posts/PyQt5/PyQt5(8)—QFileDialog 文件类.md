@@ -2,6 +2,7 @@
 title: PyQt5(8)—QFileDialog 文件类
 date: 2020-12-20
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.调用文件对话框获取文件信息

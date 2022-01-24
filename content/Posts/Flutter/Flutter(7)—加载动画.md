@@ -2,6 +2,7 @@
 title: Flutter(7)—加载动画
 date: 2021-04-29
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ Flutter做一个加载动画  @limhGeek ](https://juejin.cn/post/6844903744656637960)

@@ -2,6 +2,7 @@
 title: Docker(3)—设置国内镜像源
 date: 2021-08-18
 author: LM
+tags: ["Docker"]
 ---
 
 ## 修改配置文件

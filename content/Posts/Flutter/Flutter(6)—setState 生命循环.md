@@ -2,6 +2,7 @@
 title: Flutter(6)—setState 生命循环
 date: 2021-04-28
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ setState() called after dispose() @Songzh](https://www.jianshu.com/p/9e3bd870d292)

@@ -2,6 +2,7 @@
 title: Web开发(12)—attribute 和 property 的区别
 date: 2021-07-25
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 > 参考原文：[ JS中attribute和property的区别  @L_mj ](https://www.cnblogs.com/lmjZone/p/8760232.html)

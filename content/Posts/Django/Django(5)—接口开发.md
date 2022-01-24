@@ -2,6 +2,7 @@
 title: Django(5)—接口开发
 date: 2021-06-05
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.在项目文件下 urls.py 添加接口根路径:

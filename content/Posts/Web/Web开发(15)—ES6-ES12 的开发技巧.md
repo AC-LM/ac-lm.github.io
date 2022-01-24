@@ -2,6 +2,7 @@
 title: Web开发(15)—ES6-ES12的开发技巧
 date: 2021-09-17
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 > 参考原文：[ ES6-ES12的开发技巧 @Sunshine_Lin ](https://juejin.cn/post/6995334897065787422)

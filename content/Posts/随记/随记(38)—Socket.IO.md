@@ -2,6 +2,7 @@
 title: 随记(38)—Socket.IO
 date: 2021-11-23
 author: LM
+tags: ["随记"]
 ---
 
 > [ Introduction @Socket.IO ](https://socket.io/docs/v4/how-it-works/)

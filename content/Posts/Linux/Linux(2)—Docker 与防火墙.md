@@ -2,6 +2,7 @@
 title: Linux(2)—Docker 与防火墙
 date: 2020-10-16
 author: LM
+tags: ["Linux", "Docker"]
 ---
 
 ## 1.docker操作

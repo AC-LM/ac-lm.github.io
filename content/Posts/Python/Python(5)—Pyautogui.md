@@ -2,6 +2,7 @@
 title: Python(5)—Pyautogui
 date: 2020-09-23
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.什么是 Pyautogui

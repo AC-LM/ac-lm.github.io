@@ -2,6 +2,7 @@
 title: BUG(3)—Windows 下 shell 脚本无法在 Linux 运行
 date: 2020-11-27
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG 描述

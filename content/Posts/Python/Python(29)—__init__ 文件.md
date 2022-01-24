@@ -2,6 +2,7 @@
 title: Python(29)—__init__ 文件
 date: 2021-06-03
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.作用

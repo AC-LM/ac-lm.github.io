@@ -2,6 +2,7 @@
 title: Web开发(18)—箭头函数与 function 的 this 指向问题
 date: 2022-01-24
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.定义

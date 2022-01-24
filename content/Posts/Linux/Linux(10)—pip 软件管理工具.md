@@ -2,6 +2,7 @@
 title: Linux(10)—pip 软件管理工具
 date: 2020-11-23
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.pip

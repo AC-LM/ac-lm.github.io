@@ -2,6 +2,7 @@
 title: Python(3)—xlrd
 date: 2020-09-16
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.什么是xlrd库

@@ -2,6 +2,7 @@
 title: Android(4)—华为设备启动无线调试
 date: 2021-08-03
 author: LM
+tags: ["Android"]
 ---
 
 华为默认不启动无线调试，用户需要进入生产模式，手动启动

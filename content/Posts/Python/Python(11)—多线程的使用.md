@@ -2,6 +2,7 @@
 title: Python(11)—多线程的使用
 date: 2020-12-13
 author: LM
+tags: ["Python"]
 ---
 
 > 参考原文：[ python 多线程  @虫师 ](https://www.cnblogs.com/fnng/p/3670789.html)

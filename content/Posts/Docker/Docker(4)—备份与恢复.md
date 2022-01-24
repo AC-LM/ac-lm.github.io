@@ -2,6 +2,7 @@
 title: Docker(4)—备份和恢复
 date: 2021-08-26
 author: LM
+tags: ["Docker"]
 ---
 
 ## 1.docker 容器的导出备份

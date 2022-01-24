@@ -2,6 +2,7 @@
 title: Python(27)—random 模块
 date: 2021-03-29
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.random.randrange(a, b, c)

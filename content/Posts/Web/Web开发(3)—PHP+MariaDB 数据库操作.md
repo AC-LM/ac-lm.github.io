@@ -2,6 +2,7 @@
 title: Web开发(3)—PHP+MariaDB 数据库操作
 date: 2020-12-04
 author: LM
+tags: ["Web", "服务器"]
 ---
 
 ## 1.连接数据库

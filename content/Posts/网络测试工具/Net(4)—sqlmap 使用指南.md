@@ -2,6 +2,7 @@
 title: Net(4)—sqlmap 使用指南
 date: 2020-11-19
 author: LM
+tags: ["网络测试"]
 ---
 
 ## 1.sqlmap中部分参数的备注

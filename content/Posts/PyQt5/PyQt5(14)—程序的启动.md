@@ -2,6 +2,7 @@
 title: PyQt5(14)—程序的启动
 date: 2020-12-26
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.启动的代码

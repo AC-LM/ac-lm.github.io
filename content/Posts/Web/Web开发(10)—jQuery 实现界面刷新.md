@@ -2,6 +2,7 @@
 title: Web开发(10)—jQuery 实现界面刷新
 date: 2021-07-23
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.使用`Load`实现的局部刷新

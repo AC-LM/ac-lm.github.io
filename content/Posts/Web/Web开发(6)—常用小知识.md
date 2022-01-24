@@ -2,6 +2,7 @@
 title: Web开发(6)—常用小知识
 date: 2021-06-03
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.屏蔽链接

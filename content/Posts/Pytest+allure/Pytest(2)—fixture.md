@@ -2,6 +2,7 @@
 title: Pytest(2)—fixture
 date: 2021-01-15
 author: LM
+tags: ["Pytest"]
 ---
 
 fixture是pytest提供给测试环境初始化与清理的一个函数，通过语法糖@pytest.fixture()，测试用例会在测试开始前与测试结束后自动的执行@pytest.fixture()标记的函数，完成测试环境的初始化与清理。

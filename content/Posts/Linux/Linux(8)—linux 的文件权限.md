@@ -2,6 +2,7 @@
 title: Linux(8)—linux 的文件权限
 date: 2020-11-20
 author: LM
+tags: ["Linux"]
 ---
 
 **示例文件**

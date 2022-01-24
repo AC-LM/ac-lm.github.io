@@ -2,6 +2,7 @@
 title: 随记(23)—XSS攻击
 date: 2021-03-30
 author: LM
+tags: ["随记"]
 ---
 
 > 参考原文：[ XSS(跨站脚本攻击)详解  @615 ](https://www.cnblogs.com/wuqun/p/12484816.html)

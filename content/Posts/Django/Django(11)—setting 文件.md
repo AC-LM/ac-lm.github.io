@@ -2,6 +2,7 @@
 title: Django(11)—setting 文件
 date: 2021-07-27
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.setting.py 配置文件

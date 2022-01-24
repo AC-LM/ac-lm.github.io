@@ -2,6 +2,7 @@
 title: Django(2)—HTML 模板
 date: 2021-06-02
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.遍历字典

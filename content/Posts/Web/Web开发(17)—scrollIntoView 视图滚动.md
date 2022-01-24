@@ -2,6 +2,7 @@
 title: Web开发(17)—scrollIntoView 视图滚动
 date: 2022-01-24
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.scrollIntoView()

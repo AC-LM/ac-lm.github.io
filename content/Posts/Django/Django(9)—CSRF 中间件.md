@@ -2,6 +2,7 @@
 title: Django(9)—CSRF中间件
 date: 2021-07-25
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.CSRF 中间件

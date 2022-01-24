@@ -2,6 +2,7 @@
 title: VSCode(3)—系统禁止运行脚本
 date: 2021-09-16
 author: LM
+tags: ["VSCode"]
 ---
 
 ## 错误描述

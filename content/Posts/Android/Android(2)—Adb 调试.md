@@ -2,6 +2,7 @@
 title: Android(2)—Adb 调试
 date: 2020-09-22
 author: LM
+tags: ["Android"]
 ---
 
 ## 1.Adb 的简单使用

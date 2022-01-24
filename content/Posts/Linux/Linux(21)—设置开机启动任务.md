@@ -2,6 +2,7 @@
 title: Linux(21)—设置开机启动任务
 date: 2021-06-01
 author: LM
+tags: ["Linux"]
 ---
 
 > 参考原文：[ Linux 添加开机启动方法(服务/脚本)  @jb51 ](https://www.jb51.net/article/176257.htm)

@@ -2,6 +2,7 @@
 title: PyQt5(10)—QLineEdit 文本元件
 date: 2020-12-22
 author: LM
+tags: ["PyQt5"]
 ---
 
 ## 1.常用方法

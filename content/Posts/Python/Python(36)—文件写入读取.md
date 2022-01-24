@@ -2,6 +2,7 @@
 title: Python(36)—文件写入读取
 date: 2021-09-18
 author: LM
+tags: ["Python"]
 ---
 
 ## 1.只读模式打开文件

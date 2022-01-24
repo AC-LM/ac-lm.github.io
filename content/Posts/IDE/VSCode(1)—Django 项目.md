@@ -2,6 +2,7 @@
 title: VSCode(1)—Django 项目
 date: 2021-08-26
 author: LM
+tags: ["VSCode"]
 ---
 
 ## 1.环境配置

@@ -2,6 +2,7 @@
 title: Google软件测试之道(2)
 date: 2021-03-31
 author: LM
+tags: ["读书笔记"]
 ---
 
 > 参考原文：[Google软件测试之道  @Whittaker Arb ](http://www.51testing.com/html/12/n-853012.html)

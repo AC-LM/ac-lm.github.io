@@ -2,6 +2,7 @@
 title: Django(15)—on_delete
 date: 2022-01-24
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.使用模式

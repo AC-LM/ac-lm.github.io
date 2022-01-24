@@ -2,6 +2,7 @@
 title: Flutter(18)—内置对话框
 date: 2021-05-19
 author: LM
+tags: ["Flutter"]
 ---
 
 > 参考原文：[ Flutter内置show @老孟Flutter ](https://www.imooc.com/article/302188)

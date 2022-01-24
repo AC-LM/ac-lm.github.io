@@ -2,6 +2,7 @@
 title: Net(6)—JMeter性能测试工具
 date: 2020-11-25
 author: LM
+tags: ["网络测试"]
 ---
 
 > 参考文献：[ JMeter 用户文档 ](https://jmeter.apache.org/usermanual/)

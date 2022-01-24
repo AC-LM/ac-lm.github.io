@@ -2,6 +2,7 @@
 title: BUG(15)—git 提示 LF will be replaced by CRLF
 date: 2021-01-15
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG 描述

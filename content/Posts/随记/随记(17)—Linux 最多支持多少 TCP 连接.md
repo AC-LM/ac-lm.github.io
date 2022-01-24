@@ -2,6 +2,7 @@
 title: 随记(17)—Linux最多支持多少TCP连接
 date: 2020-12-08
 author: LM
+tags: ["随记"]
 ---
 
 > 参考原文：[ 一台Linux服务器最多能支撑多少个TCP连接？ @PHP饭米粒 ](https://mp.weixin.qq.com/s/J0Abwz20IO9N0NxooSEKXQ)

@@ -2,6 +2,7 @@
 title: Web开发(8)—定位点击位置
 date: 2021-06-05
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.实现代码

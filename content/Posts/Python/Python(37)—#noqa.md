@@ -2,6 +2,7 @@
 title: Python(37)—#noqa
 date: 2021-11-18
 author: LM
+tags: ["Python"]
 ---
 
 ## #noqas

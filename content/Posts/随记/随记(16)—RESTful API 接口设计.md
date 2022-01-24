@@ -2,6 +2,7 @@
 title: 随记(16)—RESTful API接口设计
 date: 2020-12-06
 author: LM
+tags: ["随记"]
 ---
 
 > 原文参考：[ RESTful API 设计指南  @阮一峰 ](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)

@@ -2,6 +2,7 @@
 title: BUG(5)—爬虫中乱码的成因及处理
 date: 2020-11-29
 author: LM
+tags: ["Bug"]
 ---
 
 ## 为什么会出现乱码

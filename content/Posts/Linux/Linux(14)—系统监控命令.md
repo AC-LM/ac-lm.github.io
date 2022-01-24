@@ -2,6 +2,7 @@
 title: Linux(14)—系统监控命令
 date: 2021-04-29
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.top – 进程活动监控命令

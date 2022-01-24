@@ -2,6 +2,7 @@
 title: Web开发(5)—实现摄像头开启
 date: 2020-12-23
 author: LM
+tags: ["Web", "Javascript"]
 ---
 
 ## 1.HTML实现

@@ -2,6 +2,7 @@
 title: 随记(2)—什么是CSRF
 date: 2020-09-11
 author: LM
+tags: ["随记"]
 ---
 
 > 参考原文：[ CSRF 是什么？@饥人谷若愚 ](https://zhuanlan.zhihu.com/p/22521378)

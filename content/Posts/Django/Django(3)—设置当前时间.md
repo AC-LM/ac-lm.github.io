@@ -2,6 +2,7 @@
 title: Django(3)—设置当前时间
 date: 2021-06-03
 author: LM
+tags: ["Django"]
 ---
 
 ## 1.时间字段

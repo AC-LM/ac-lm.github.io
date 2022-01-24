@@ -2,6 +2,7 @@
 title: Git(4)—.gitlab-ci.yml 文件配置
 date: 2021-01-13
 author: LM
+tags: ["Git"]
 ---
 
 > 参考原文：[ .gitlab-ci.yml语法  @hellojinni  ](https://blog.51cto.com/7072753/2457095)

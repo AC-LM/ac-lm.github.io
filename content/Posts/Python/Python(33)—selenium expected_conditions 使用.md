@@ -2,6 +2,7 @@
 title: Python(33)—selenium expected_conditions 的使用
 date: 2021-07-30
 author: LM
+tags: ["Python"]
 ---
 
 > 参考原文：[ selenium expected conditions 使用实例  @乙醇 ](https://www.cnblogs.com/nbkhic/p/4885041.html)

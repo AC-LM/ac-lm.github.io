@@ -2,6 +2,7 @@
 title: 随记(19)—什么是SQL漏洞
 date: 2020-12-11
 author: LM
+tags: ["随记"]
 ---
 
 要了解sql漏洞，首先要搞清楚sql语句。sql 全称 Structured Query Language(结构化查询语言)，是一种应用于数据库查询的编程语言。

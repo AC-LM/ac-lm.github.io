@@ -2,6 +2,7 @@
 title: BUG(11)—gitlab-runner无权限
 date: 2021-01-06
 author: LM
+tags: ["Bug"]
 ---
 
 ## Resolution

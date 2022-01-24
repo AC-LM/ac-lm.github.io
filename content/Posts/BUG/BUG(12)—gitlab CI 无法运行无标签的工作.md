@@ -2,6 +2,7 @@
 title: BUG(12)—gitlab CI 无法运行无标签的工作
 date: 2021-01-06
 author: LM
+tags: ["Bug"]
 ---
 
 ## BUG 描述

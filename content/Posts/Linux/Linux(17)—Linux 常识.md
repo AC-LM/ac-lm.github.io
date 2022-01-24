@@ -2,6 +2,7 @@
 title: Linux(17)—Linux 常识
 date: 2021-05-14
 author: LM
+tags: ["Linux"]
 ---
 
 ## 1.解释下什么是GPL,GNU,自由软件？

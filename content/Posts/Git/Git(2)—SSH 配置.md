@@ -2,6 +2,7 @@
 title: Git(2)—SSH 配置
 date: 2021-01-06
 author: LM
+tags: ["Git"]
 ---
 
 ## 1.配置 SSH

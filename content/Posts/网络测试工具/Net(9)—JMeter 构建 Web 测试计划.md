@@ -2,6 +2,7 @@
 title: Net(9)—JMeter构建Web测试计划
 date: 2021-09-09
 author: LM
+tags: ["网络测试"]
 ---
 
 > 参考原文：[Apache JMeter - User's Manual: Building a Web Test Plan](https://jmeter.apache.org/usermanual/build-web-test-plan.html)
