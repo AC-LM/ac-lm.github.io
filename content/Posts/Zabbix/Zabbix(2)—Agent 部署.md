@@ -2,6 +2,7 @@
 title: Zabbix(2)—Agent 部署
 date: 2022-01-21
 author: LM
+tags: ["Zabbix"]
 ---
 
 > 参考：[下载Zabbix](https://www.zabbix.com/cn/download)

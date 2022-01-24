@@ -4,3 +4,6 @@ title = "AC-LM 's blog"
 theme = "hugo-theme-stack"
 paginate = 10
 paginatePath = "page"
+
+[taxonomies]
+  tag = "tags"

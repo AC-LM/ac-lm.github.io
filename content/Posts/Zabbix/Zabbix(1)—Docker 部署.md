@@ -2,6 +2,7 @@
 title: Zabbix(1)—Docker 部署
 date: 2022-01-20
 author: LM
+tags: ["Zabbix"]
 ---
 
 ## 1.Zabbix server 部署脚本

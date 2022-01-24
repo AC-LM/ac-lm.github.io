@@ -2,6 +2,7 @@
 title: Zabbix(3)—监控模式
 date: 2022-01-22
 author: LM
+tags: ["Zabbix"]
 ---
 
 ## 1.Zabbix 的主动监控和被动监控
