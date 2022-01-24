@@ -15,7 +15,7 @@
 2.常用方法 setMinimum() # 设置操作中的“steps”数量 setMaximum() # 设置操作中的“steps”数量 setValue() # 任意选择步数 setAutoReset() # 自动重置 setAutoClose() # 自动关闭 setRange(0,num) # 设置最小和最大值 wasCanceled() # 是否按下取消按钮 3.实例 def showDialog(self): num = int(self.edit.text()) progress = QProgressDialog(self) progress.setWindowTitle(&amp;#34;请稍等&amp;#34;) progress.setLabelText(&amp;#34;正在操作...&amp;#34;) progress.setCancelButtonText(&amp;#34;取消&amp;#34;) progress.setMinimumDuration(5) progress.setWindowModality(Qt.WindowModal) progress.setRange(0,num) for i in range(num): progress.setValue(i) if progress.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/pyqt5/pyqt53qprogressdialog-%E8%BF%9B%E5%BA%A6%E6%9D%A1/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2020-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-12-15T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='PyQt5' /><meta property='article:published_time' content='2020-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-12-15T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="PyQt5(3)—QProgressDialog 进度条">
 <meta name="twitter:description" content="1.QProgressDialog 进度条使用 steps 的概念。在指定最小和最大可能的 step 值后，它将显示已经完成的 step 的百分比。百分比是通过将进度(value() - minimum()) / (maximum() - minimum())来计算的。
 可以使用 setMinimum() 和 setMaximum() 指定最小和最大 steps。默认值是0和99。当前的 step 由 setValue() 设置。进度条可以通过 reset() 重新开始。
@@ -25,7 +25,7 @@
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -51,22 +51,151 @@
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -143,6 +272,12 @@ wasCanceled()  <span style="color:#75715e"># 是否按下取消按钮</span>
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/pyqt5/">PyQt5</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -166,6 +301,37 @@ wasCanceled()  <span style="color:#75715e"># 是否按下取消按钮</span>
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/pyqt5/pyqt52%E7%84%A6%E7%82%B9%E6%8E%A7%E5%88%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PyQt5(2)—焦点控制</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/pyqt5/pyqt51%E5%AE%89%E8%A3%85/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PyQt5(1)—安装</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -269,34 +435,6 @@ wasCanceled()  <span style="color:#75715e"># 是否按下取消按钮</span>
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1qprogressdialog">1.QProgressDialog</a></li>
-    <li><a href="#2常用方法">2.常用方法</a></li>
-    <li><a href="#3实例">3.实例</a></li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>

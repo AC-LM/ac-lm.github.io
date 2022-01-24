@@ -11,7 +11,7 @@
 ②动态语言和静态语言  动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型。如python和ruby等。 静态类型语言：它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型。如C/C&#43;&#43;,java,C#等。  ③强类型定义语言和弱类型定义语言  强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了,如python。 弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。如VScript。  2.python的优点  ①Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。 ②开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。 ③高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节 ④可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行 ⑤可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C&#43;&#43;编写，然后在你的Python程序中使用它们 ⑥可嵌入性————你可以把Python嵌入你的C/C&#43;&#43;程序，从而向你的程序用户提供脚本功能。  3.python的缺点  ①速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。 ②代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。 ③线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是计算机程序设计语言解释器用于同步线程的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。  4.在编写Python程序时，/usr/bin/python和/usr/bin/env python的区别？  #!/usr/bin/python是告诉操作系统执行这个脚本的时候，调用/usr/bin下的python解释器 #!/usr/bin/env python这种用法是为了防止操作系统用户没有将python装在默认的/usr/bin路径里。当系统看到这一行的时候，首先会到env设置里查找python的安装路径，再调用对应路径下的解释器程序完成操作。 #!/usr/bin/python相当于写死了python路径 #!/usr/bin/env python会去环境设置寻找python目录,推荐这种写法  5.变量  ①变量名只能是字母、数字或下划线的任意组合 ②变量名的第一个字符不能是数字 ③以下关键字不能声明为变量名 [&amp;lsquo;and&amp;rsquo;, &amp;lsquo;as&amp;rsquo;, &amp;lsquo;assert&amp;rsquo;, &amp;lsquo;break&amp;rsquo;, &amp;lsquo;class&amp;rsquo;, &amp;lsquo;continue&amp;rsquo;, &amp;lsquo;def&amp;rsquo;, &amp;lsquo;del&amp;rsquo;, &amp;lsquo;elif&amp;rsquo;, &amp;lsquo;else&amp;rsquo;, &amp;lsquo;except&amp;rsquo;, &amp;lsquo;exec&amp;rsquo;, &amp;lsquo;finally&amp;rsquo;, &amp;lsquo;for&amp;rsquo;, &amp;lsquo;from&amp;rsquo;, &amp;lsquo;global&amp;rsquo;, &amp;lsquo;if&amp;rsquo;, &amp;lsquo;import&amp;rsquo;, &amp;lsquo;in&amp;rsquo;, &amp;lsquo;is&amp;rsquo;, &amp;lsquo;lambda&amp;rsquo;, &amp;lsquo;not&amp;rsquo;, &amp;lsquo;or&amp;rsquo;, &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;print&amp;rsquo;, &amp;lsquo;raise&amp;rsquo;, &amp;lsquo;return&amp;rsquo;, &amp;lsquo;try&amp;rsquo;, &amp;lsquo;while&amp;rsquo;, &amp;lsquo;with&amp;rsquo;, &amp;lsquo;yield&amp;rsquo;] ④变量名要见名之义。  6.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/python/python17python-%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-01-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-13T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2021-01-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-13T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Python(17)—Python面试知识">
 <meta name="twitter:description" content="1.语言的分类 ①编译型语言和解释性语言 编译型语言是指在程序执行之前，有一个单独的编译过程，将程序翻译成机器语言，以后执行这个程序的时候，就不用再进行翻译了。解释型语言是指是在运行的时候将程序翻译成机器语言，所以运行速度相对于编译型语言要慢。C/C&#43;&#43; 等都是编译型语言，而Java，C#等都是解释型语言。虽然Java程序在运行之前也有一个编译过程，但是并不是将程序编译成机器语言，而是将它编译成字节码（可以理解为一个中间语言）。在运行的时候，由JVM将字节码再翻译成机器语言。
 ②动态语言和静态语言  动态类型语言：动态类型语言是指在运行期间才去做数据类型检查的语言，也就是说，在用动态类型的语言编程时，永远也不用给任何变量指定数据类型。如python和ruby等。 静态类型语言：它的数据类型是在编译其间检查的，也就是说在写程序时要声明所有变量的数据类型。如C/C&#43;&#43;,java,C#等。  ③强类型定义语言和弱类型定义语言  强类型定义语言：强制数据类型定义的语言。也就是说，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了,如python。 弱类型定义语言：数据类型可以被忽略的语言。它与强类型定义语言相反, 一个变量可以赋不同数据类型的值。如VScript。  2.python的优点  ①Python的定位是“优雅”、“明确”、“简单”，所以Python程序看上去总是简单易懂，初学者学Python，不但入门容易，而且将来深入下去，可以编写那些非常非常复杂的程序。 ②开发效率非常高，Python有非常强大的第三方库，基本上你想通过计算机实现任何功能，Python官方库里都有相应的模块进行支持，直接下载调用后，在基础库的基础上再进行开发，大大降低开发周期，避免重复造轮子。 ③高级语言————当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节 ④可移植性————由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工 作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就几乎可以在市场上所有的系统平台上运行 ⑤可扩展性————如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C&#43;&#43;编写，然后在你的Python程序中使用它们 ⑥可嵌入性————你可以把Python嵌入你的C/C&#43;&#43;程序，从而向你的程序用户提供脚本功能。  3.python的缺点  ①速度慢，Python 的运行速度相比C语言确实慢很多，跟JAVA相比也要慢一些，因此这也是很多所谓的大牛不屑于使用Python的主要原因，但其实这里所指的运行速度慢在大多数情况下用户是无法直接感知到的，必须借助测试工具才能体现出来，其实在大多数情况下Python已经完全可以满足你对程序速度的要求，除非你要写对速度要求极高的搜索引擎等，这种情况下，当然还是建议你用C去实现的。 ②代码不能加密，因为PYTHON是解释性语言，它的源码都是以名文形式存放的，不过我不认为这算是一个缺点，如果你的项目要求源代码必须是加密的，那你一开始就不应该用Python来去实现。 ③线程不能利用多CPU问题，这是Python被人诟病最多的一个缺点，GIL即全局解释器锁（Global Interpreter Lock），是计算机程序设计语言解释器用于同步线程的工具，使得任何时刻仅有一个线程在执行，Python的线程是操作系统的原生线程。在Linux上为pthread，在Windows上为Win thread，完全由操作系统调度线程的执行。一个python解释器进程内有一条主线程，以及多条用户程序的执行线程。即使在多核CPU平台上，由于GIL的存在，所以禁止多线程的并行执行。关于这个问题的折衷解决方法，我们在以后线程和进程章节里再进行详细探讨。  4.在编写Python程序时，/usr/bin/python和/usr/bin/env python的区别？  #!/usr/bin/python是告诉操作系统执行这个脚本的时候，调用/usr/bin下的python解释器 #!/usr/bin/env python这种用法是为了防止操作系统用户没有将python装在默认的/usr/bin路径里。当系统看到这一行的时候，首先会到env设置里查找python的安装路径，再调用对应路径下的解释器程序完成操作。 #!/usr/bin/python相当于写死了python路径 #!/usr/bin/env python会去环境设置寻找python目录,推荐这种写法  5.变量  ①变量名只能是字母、数字或下划线的任意组合 ②变量名的第一个字符不能是数字 ③以下关键字不能声明为变量名 [&amp;lsquo;and&amp;rsquo;, &amp;lsquo;as&amp;rsquo;, &amp;lsquo;assert&amp;rsquo;, &amp;lsquo;break&amp;rsquo;, &amp;lsquo;class&amp;rsquo;, &amp;lsquo;continue&amp;rsquo;, &amp;lsquo;def&amp;rsquo;, &amp;lsquo;del&amp;rsquo;, &amp;lsquo;elif&amp;rsquo;, &amp;lsquo;else&amp;rsquo;, &amp;lsquo;except&amp;rsquo;, &amp;lsquo;exec&amp;rsquo;, &amp;lsquo;finally&amp;rsquo;, &amp;lsquo;for&amp;rsquo;, &amp;lsquo;from&amp;rsquo;, &amp;lsquo;global&amp;rsquo;, &amp;lsquo;if&amp;rsquo;, &amp;lsquo;import&amp;rsquo;, &amp;lsquo;in&amp;rsquo;, &amp;lsquo;is&amp;rsquo;, &amp;lsquo;lambda&amp;rsquo;, &amp;lsquo;not&amp;rsquo;, &amp;lsquo;or&amp;rsquo;, &amp;lsquo;pass&amp;rsquo;, &amp;lsquo;print&amp;rsquo;, &amp;lsquo;raise&amp;rsquo;, &amp;lsquo;return&amp;rsquo;, &amp;lsquo;try&amp;rsquo;, &amp;lsquo;while&amp;rsquo;, &amp;lsquo;with&amp;rsquo;, &amp;lsquo;yield&amp;rsquo;] ④变量名要见名之义。  6.">
@@ -19,7 +19,7 @@
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -45,22 +45,151 @@
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -201,6 +330,12 @@ print(info2)
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -224,6 +359,73 @@ print(info2)
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/python/python16ddt-%E6%A8%A1%E5%9D%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(16)—ddt 模块</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python15%E8%A3%85%E9%A5%B0%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(15)—装饰器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python14%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2-url/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(14)—获取当前页面URL</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python13%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(13)—邮件发送</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python12%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(12)—多线程的返回值</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -327,51 +529,6 @@ print(info2)
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1语言的分类">1.语言的分类</a>
-      <ul>
-        <li><a href="#编译型语言和解释性语言">①编译型语言和解释性语言</a></li>
-        <li><a href="#动态语言和静态语言">②动态语言和静态语言</a></li>
-        <li><a href="#强类型定义语言和弱类型定义语言">③强类型定义语言和弱类型定义语言</a></li>
-      </ul>
-    </li>
-    <li><a href="#2python的优点">2.python的优点</a></li>
-    <li><a href="#3python的缺点">3.python的缺点</a></li>
-    <li><a href="#4在编写python程序时usrbinpython和usrbinenv-python的区别">4.在编写Python程序时，/usr/bin/python和/usr/bin/env python的区别？</a></li>
-    <li><a href="#5变量">5.变量</a></li>
-    <li><a href="#6常量">6.常量</a></li>
-    <li><a href="#7字符编码">7.字符编码</a></li>
-    <li><a href="#8标准化输出">8.标准化输出：</a>
-      <ul>
-        <li><a href="#第一种标准输出">①第一种标准输出：</a></li>
-        <li><a href="#第二种标准输出使用占位符">②第二种标准输出（使用占位符）</a></li>
-        <li><a href="#第三种标准输出">③第三种标准输出</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>

@@ -13,7 +13,7 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
 if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.“脏”链表是待更新的链表 2.更新过后就不“脏”了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/flutter/flutter11setstate-%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-05-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-12T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Flutter' /><meta property='article:published_time' content='2021-05-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-12T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Flutter(11)—setState更新原理和流程">
 <meta name="twitter:description" content="参考原文：Flutter的setState更新原理和流程 @flutter开发精选 
  1.Flutter 的状态类  StatelessWidget：无状态类，没有状态更新，界面一经创建无法更改 StatefulWidget：有状态类，当状态改变，调用 setState() 方法会触发 StatefulWidget 的 UI 状态更新，自定义继承 StatefulWidget 的子类须重写 createState() 方法  2.mounted 调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过 mounted 属性来判断调用此方法是否合法。
@@ -22,7 +22,7 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -48,22 +48,151 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -152,6 +281,12 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/flutter/">Flutter</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -175,6 +310,73 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/flutter/flutter10%E8%AF%BB%E5%8F%96-app-%E5%AE%89%E8%A3%85%E5%8C%85%E8%B5%84%E6%BA%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter(10)—读取 app 安装包资源</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/flutter/flutter9%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter(9)—主题颜色</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/flutter/flutter8%E4%B8%BA-bottomnavigationbar-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E8%89%B2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter(8)—为BottomNavigationBar设置背景色</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/flutter/flutter7%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter(7)—加载动画</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/flutter/flutter6setstate-%E7%94%9F%E5%91%BD%E5%BE%AA%E7%8E%AF/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Flutter(6)—setState 生命循环</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -278,42 +480,6 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1flutter-的状态类">1.Flutter 的状态类</a></li>
-    <li><a href="#2mounted">2.mounted</a></li>
-    <li><a href="#3流程">3.流程</a>
-      <ul>
-        <li><a href="#a条件判断">a.条件判断</a></li>
-        <li><a href="#b添加脏链表-_dirty--true">b.添加脏链表 _dirty = true</a></li>
-        <li><a href="#c管理类">c.管理类</a></li>
-        <li><a href="#d调用-windowscheduleframe-native-方法">d.调用 window.scheduleFrame() =&gt;native 方法</a></li>
-        <li><a href="#e更新帧信号来临从而刷新需要重构的界面">e.更新帧信号来临从而刷新需要重构的界面</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>

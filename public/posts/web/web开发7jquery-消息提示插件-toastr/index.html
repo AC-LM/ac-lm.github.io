@@ -13,7 +13,7 @@
 1.引入toastr的js、css文件 &amp;lt;script src=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.css&amp;#34;&amp;gt; 2.使用 //常规消息提示，默认背景为浅蓝色 toastr.info(&amp;#34;你有新消息了!&amp;#34;); //成功消息提示，默认背景为浅绿色 toastr.success(&amp;#34;你有新消息了!&amp;#34;); //警告消息提示，默认背景为橘黄色 toastr.warning(&amp;#34;你有新消息了!&amp;#34;); //错误消息提示，默认背景为浅红色 toastr.error(&amp;#34;你有新消息了!&amp;#34;); //带标题的消息框 toastr.success(&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); //另一种调用方法 toastr[&amp;#34;info&amp;#34;](&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); 3.自定义参数 toastr.options = { closeButton: false, debug: false, progressBar: true, positionClass: &amp;#34;toast-bottom-center&amp;#34;, onclick: null, showDuration: &amp;#34;300&amp;#34;, hideDuration: &amp;#34;1000&amp;#34;, timeOut: &amp;#34;2000&amp;#34;, extendedTimeOut: &amp;#34;1000&amp;#34;, showEasing: &amp;#34;swing&amp;#34;, hideEasing: &amp;#34;linear&amp;#34;, showMethod: &amp;#34;fadeIn&amp;#34;, hideMethod: &amp;#34;fadeOut&amp;#34; }; 4.参数说明 closeButton：false，是否显示关闭按钮（提示框右上角关闭按钮）； debug：false，是否为调试； progressBar：false，是否显示进度条（设置关闭的超时时间进度条）； positionClass，消息框在页面显示的位置 toast-top-left 顶端左边 toast-top-right 顶端右边 toast-top-center 顶端中间 toast-top-full-width 顶端，宽度铺满整个屏幕 toast-botton-right toast-bottom-left toast-bottom-center toast-bottom-full-width onclick，点击消息框自定义事件 showDuration: “300”，显示动作时间 hideDuration: “1000”，隐藏动作时间 timeOut: “2000”，自动关闭超时时间 extendedTimeOut: “1000” showEasing: “swing”, hideEasing: “linear”, showMethod: “fadeIn” 显示的方式，和jquery相同 hideMethod: “fadeOut” 隐藏的方式，和jquery相同 '>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%917jquery-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6-toastr/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-04T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2021-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-04T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Web开发(7)—Jquery 消息提示插件 toastr">
 <meta name="twitter:description" content=" 参考文献： github-toastr @CodeSeven 
  toastr是一个基于jQuery简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
@@ -22,7 +22,7 @@
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -48,22 +48,151 @@
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -174,6 +303,14 @@
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/javascript/">Javascript</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -197,6 +334,73 @@
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%916%E5%B8%B8%E7%94%A8%E5%B0%8F%E7%9F%A5%E8%AF%86/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发(6)—常用小知识</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%915%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发(5)—实现摄像头开启</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%914js-%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发(4)—JS 实现页面跳转</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%913php&#43;mariadb-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发(3)—PHP&#43;MariaDB 数据库操作</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%912php-%E5%AE%9E%E4%BE%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发(2)—PHP 实例</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -300,35 +504,6 @@
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1引入toastr的jscss文件">1.引入toastr的js、css文件</a></li>
-    <li><a href="#2使用">2.使用</a></li>
-    <li><a href="#3自定义参数">3.自定义参数</a></li>
-    <li><a href="#4参数说明">4.参数说明</a></li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>

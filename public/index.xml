@@ -213,21 +213,6 @@ re_path(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
-        <title>Zabbix(3)—监控模式</title>
-        <link>https://ac-lm.github.io/posts/zabbix/zabbix3%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F/</link>
-        <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://ac-lm.github.io/posts/zabbix/zabbix3%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F/</guid>
-        <description>&lt;h2 id=&#34;1zabbix-的主动监控和被动监控&#34;&gt;1.Zabbix 的主动监控和被动监控&lt;/h2&gt;
-&lt;p&gt;zabbix 默认采用的是被动监控，zabbix 的主动和被动都是对被监控端主机而言的！&lt;/p&gt;
-&lt;h3 id=&#34;a被动监控&#34;&gt;a.被动监控&lt;/h3&gt;
-&lt;p&gt;Server 向 Agent 发起连接，发送监控 key，Agent 接受请求，响应监控数据。&lt;/p&gt;
-&lt;h3 id=&#34;b主动监控&#34;&gt;b.主动监控&lt;/h3&gt;
-&lt;p&gt;Agent 向 Server 发起连接，Agent 请求需要检测的监控项目列表，Server 响应 Agent 发送一个 items 列表，Agent 确认收到监控列表，TCP 连接完成，会话关闭，Agent 开始周期性地收集数据
-这样 Server 不用每次需要数据都连接 Agent，Agent 会自己收集数据并处理数据，Server 仅需要保存数据即可。&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>随记(39)—yaml 的锚点与引用</title>
         <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B039yaml-%E7%9A%84%E9%94%9A%E7%82%B9%E4%B8%8E%E5%BC%95%E7%94%A8/</link>
         <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
@@ -263,7 +248,7 @@ re_path(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
-        <title>随记(39)—yaml 的锚点与引用</title>
+        <title>随记(40)—UltraEdit 试用数据清除</title>
         <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B040ultraedit-%E8%AF%95%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B8%85%E9%99%A4/</link>
         <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
         
@@ -277,39 +262,6 @@ HKCU\SOFTWARE\Classes\WOW6432Node\CLSID\{c0bf323d-faa8-4b16-bdc9-92c6acb76dc1}
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;%userprofile%\AppData\Roaming\IDMComp\UltraEdit\license\uedit32_v.spl
 %ProgramData%\IDMComp\UltraEdit\license\uedit32.spl
 &lt;/code&gt;&lt;/pre&gt;</description>
-        </item>
-        <item>
-        <title>Zabbix(2)—Agent 部署</title>
-        <link>https://ac-lm.github.io/posts/zabbix/zabbix2agent-%E9%83%A8%E7%BD%B2/</link>
-        <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://ac-lm.github.io/posts/zabbix/zabbix2agent-%E9%83%A8%E7%BD%B2/</guid>
-        <description>&lt;blockquote&gt;
-&lt;p&gt;参考：&lt;a class=&#34;link&#34; href=&#34;https://www.zabbix.com/cn/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;下载Zabbix&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;1部署环境-centos7&#34;&gt;1.部署（环境 CentOS7）&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;rpm -Uvh https://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm
-yum clean all
-yum install zabbix-agent
-systemctl restart zabbix-agent
-systemctl enable zabbix-agent
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2检查&#34;&gt;2.检查&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 服务监听&lt;/span&gt;
-netstat -lntup|grep &lt;span style=&#34;color:#ae81ff&#34;&gt;10050&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# 配置文件&lt;/span&gt;
-vim /etc/zabbix/zabbix_agentd.conf
-grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^[a-Z]&amp;#34;&lt;/span&gt; /etc/zabbix/zabbix_agentd.conf
-&lt;span style=&#34;color:#75715e&#34;&gt;# 日志&lt;/span&gt;
-tail -f /var/log/zabbix/zabbix_agentd.log
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3部署环境-windows&#34;&gt;3.部署（环境 Windows）&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;# 安装
-zabbix_agentd.exe -c zabbix_agentd.win.conf -i
-# 启动
-zabbix_agentd.exe -s
-# 卸载
-zabbix_agentd.exe -d
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
         <title>Linux(28)—端口检查</title>
@@ -384,6 +336,54 @@ docker run --name zabbix-web -t &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 docker inspect -f&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{{.Name}} {{.NetworkSettings.IPAddress}} {{.HostConfig.PortBindings}}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;docker ps -aq&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Zabbix(2)—Agent 部署</title>
+        <link>https://ac-lm.github.io/posts/zabbix/zabbix2agent-%E9%83%A8%E7%BD%B2/</link>
+        <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://ac-lm.github.io/posts/zabbix/zabbix2agent-%E9%83%A8%E7%BD%B2/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a class=&#34;link&#34; href=&#34;https://www.zabbix.com/cn/download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载Zabbix&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1部署环境-centos7&#34;&gt;1.部署（环境 CentOS7）&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;rpm -Uvh https://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm
+yum clean all
+yum install zabbix-agent
+systemctl restart zabbix-agent
+systemctl enable zabbix-agent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2检查&#34;&gt;2.检查&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 服务监听&lt;/span&gt;
+netstat -lntup|grep &lt;span style=&#34;color:#ae81ff&#34;&gt;10050&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 配置文件&lt;/span&gt;
+vim /etc/zabbix/zabbix_agentd.conf
+grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^[a-Z]&amp;#34;&lt;/span&gt; /etc/zabbix/zabbix_agentd.conf
+&lt;span style=&#34;color:#75715e&#34;&gt;# 日志&lt;/span&gt;
+tail -f /var/log/zabbix/zabbix_agentd.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3部署环境-windows&#34;&gt;3.部署（环境 Windows）&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;# 安装
+zabbix_agentd.exe -c zabbix_agentd.win.conf -i
+# 启动
+zabbix_agentd.exe -s
+# 卸载
+zabbix_agentd.exe -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Zabbix(3)—监控模式</title>
+        <link>https://ac-lm.github.io/posts/zabbix/zabbix3%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F/</link>
+        <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://ac-lm.github.io/posts/zabbix/zabbix3%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%BC%8F/</guid>
+        <description>&lt;h2 id=&#34;1zabbix-的主动监控和被动监控&#34;&gt;1.Zabbix 的主动监控和被动监控&lt;/h2&gt;
+&lt;p&gt;zabbix 默认采用的是被动监控，zabbix 的主动和被动都是对被监控端主机而言的！&lt;/p&gt;
+&lt;h3 id=&#34;a被动监控&#34;&gt;a.被动监控&lt;/h3&gt;
+&lt;p&gt;Server 向 Agent 发起连接，发送监控 key，Agent 接受请求，响应监控数据。&lt;/p&gt;
+&lt;h3 id=&#34;b主动监控&#34;&gt;b.主动监控&lt;/h3&gt;
+&lt;p&gt;Agent 向 Server 发起连接，Agent 请求需要检测的监控项目列表，Server 响应 Agent 发送一个 items 列表，Agent 确认收到监控列表，TCP 连接完成，会话关闭，Agent 开始周期性地收集数据
+这样 Server 不用每次需要数据都连接 Agent，Agent 会自己收集数据并处理数据，Server 仅需要保存数据即可。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>Linux(27)—固定 IP</title>

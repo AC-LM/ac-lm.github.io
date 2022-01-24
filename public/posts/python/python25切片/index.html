@@ -19,7 +19,7 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
 object[start_index:end_index:step]  step：正负数均可，其绝对值大小决定了切取数据时的‘‘步长”，而正负号决定了“切取方向”，正表示“从左往右”取值，负表示“从右往左”取值。当step省略时，默认为1，即从左往右以步长1取值。 start_index：表示起始索引（包含该索引对应值）；该参数省略时，表示从对象“端点”开始取值，至于是从“起点”还是从“终点”开始，则由step参数的正负决定，step为正从“起点”开始，为负从“终点”开始。 end_index：表示终止索引（不包含该索引对应值）；该参数省略时，表示一直取到数据“端点”，至于是到“起点”还是到“终点”，同样由step参数的正负决定，step为正时直到“终点”，为负时直到“起点”。  3.举例 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] a. 切取单个元素 &amp;gt;&amp;gt;&amp;gt;a[0] &amp;gt;&amp;gt;&amp;gt;0 &amp;gt;&amp;gt;&amp;gt;a[-4] &amp;gt;&amp;gt;&amp;gt;6 当索引只有一个数时，表示切取某一个元素。 b. 切取完整对象 &amp;gt;&amp;gt;&amp;gt;a[:] #从左往右 &amp;gt;&amp;gt;&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] &amp;gt;&amp;gt;&amp;gt;a[::]#从左往右 &amp;gt;&amp;gt;&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] &amp;gt;&amp;gt;&amp;gt;a[::-1]#从右往左 &amp;gt;&amp;gt;&amp;gt; [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] c.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/python/python25%E5%88%87%E7%89%87/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-27T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2021-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-27T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Python(25)—切片">
 <meta name="twitter:description" content="参考原文：彻底搞懂Python切片操作 @马尔代夫Maldives 
  利用python解决问题的过程中，经常会遇到从某个对象中抽取部分值的情况。“切片”操作正是专门用于实现这一目标的有力武器。理论上，只要条件表达式得当，可以通过单次或多次切片操作实现任意目标值切取。切片操作的基本语法比较简单，但如果不彻底搞清楚内在逻辑，也极容易产生错误，而且这种错误有时隐蔽得较深，难以察觉。本文通过详细例子总结归纳了切片操作的各种情形，下文均以list类型作为实验对象，其结论可推广至其他可切片对象。
@@ -31,7 +31,7 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -57,22 +57,151 @@ object[start_index:end_index:step]  step：正负数均可，其绝对值大小�
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -282,6 +411,12 @@ id(b)<span style="color:#f92672">=</span><span style="color:#ae81ff">38669192</s
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -305,6 +440,73 @@ id(b)<span style="color:#f92672">=</span><span style="color:#ae81ff">38669192</s
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/python/python24%E8%8E%B7%E5%8F%96-input-%E8%BE%93%E5%85%A5%E7%9A%84%E6%96%87%E6%9C%AC%E5%80%BC/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(24)—获取 input 输入的文本值</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python23os-%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(23)—os 模块文件操作</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python22sys-%E6%A8%A1%E5%9D%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(22)—sys 模块</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python21yield-%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E7%94%A8%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(21)—yield 生成器的用法</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/python/python20web-localstrorage-%E4%BF%AE%E6%94%B9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Python(20)—Web LocalStorage 修改</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -408,55 +610,6 @@ id(b)<span style="color:#f92672">=</span><span style="color:#ae81ff">38669192</s
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-索引方式">1. 索引方式</a></li>
-    <li><a href="#2操作的一般方式">2.操作的一般方式</a></li>
-    <li><a href="#3举例">3.举例</a>
-      <ul>
-        <li><a href="#a-切取单个元素">a. 切取单个元素</a></li>
-        <li><a href="#b-切取完整对象">b. 切取完整对象</a></li>
-        <li><a href="#c-start_index和end_index全为正索引的情况">c. start_index和end_index全为正（+）索引的情况</a></li>
-        <li><a href="#d-start_index和end_index全为负-索引的情况">d. start_index和end_index全为负（-）索引的情况</a></li>
-        <li><a href="#e-start_index和end_index正负-混合索引的情况">e. start_index和end_index正（+）负（-）混合索引的情况</a></li>
-        <li><a href="#f-多层切片操作">f. 多层切片操作</a></li>
-        <li><a href="#g-切片操作的三个参数可以用表达式">g. 切片操作的三个参数可以用表达式</a></li>
-        <li><a href="#h-其他对象的切片操作">h. 其他对象的切片操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#4常用切片操作">4.常用切片操作</a>
-      <ul>
-        <li><a href="#a取偶数位置">a.取偶数位置</a></li>
-        <li><a href="#b取奇数位置">b.取奇数位置</a></li>
-        <li><a href="#c拷贝整个对象">c.拷贝整个对象</a></li>
-        <li><a href="#d修改单个元素">d.修改单个元素</a></li>
-        <li><a href="#e在某个位置插入元素">e.在某个位置插入元素</a></li>
-        <li><a href="#f替换一部分元素">f.替换一部分元素</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>

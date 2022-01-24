@@ -23,7 +23,7 @@ XSS攻击主要分为以下三种
 script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(/hack/)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; #弹出1，对于数字可以不用引号 &amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt; #弹出cookie &amp;lt;script src=http://xxx.com/xss.js&amp;gt;&amp;lt;/script&amp;gt; #引用外部的xss svg标签 &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;&amp;gt; &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;// img标签 &amp;lt;img src=1 οnerrοr=alert(&amp;#34;hack&amp;#34;)&amp;gt; &amp;lt;img src=1 οnerrοr=alert(document.cookie)&amp;gt; #弹出cookie body标签 &amp;lt;body οnlοad=alert(1)&amp;gt; &amp;lt;body οnpageshοw=alert(1)&amp;gt; video标签 &amp;lt;video οnlοadstart=alert(1) src=&amp;#34;/media/hack-the-planet.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B023xss-%E6%94%BB%E5%87%BB/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-03-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-30T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2021-03-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-30T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="随记(23)—XSS攻击">
 <meta name="twitter:description" content="参考原文：XSS(跨站脚本攻击)详解 @615 
  1.简单介绍 HTML注入与XSS攻击简单来说就是当用户在输入框输入内容，后台对输入内容不做处理直接添加入页面。此时，用户就可以刻意填写HTML、JavaScript脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了，这是一种脚本注入。
@@ -37,7 +37,7 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -63,22 +63,151 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -220,6 +349,12 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9A%8F%E8%AE%B0/">随记</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -243,6 +378,73 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B022%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81%E4%B8%8E%E6%8B%89%E6%B5%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记(22)—视频推流与拉流</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B021%E4%BB%80%E4%B9%88%E6%98%AF-localstorage/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记(21)—什么是localStorage</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B020%E7%9B%AE%E5%BD%95%E7%9A%84%E7%AE%80%E5%8D%95%E8%A1%A8%E7%A4%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记(20)—目录的简单表示</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B019%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记(19)—什么是SQL漏洞</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B018%E4%BB%80%E4%B9%88%E6%98%AF-bash-shell/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记(18)—什么是Bash Shell</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -346,54 +548,6 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1简单介绍">1.简单介绍</a></li>
-    <li><a href="#2xss">2.XSS</a></li>
-    <li><a href="#3xss的攻击载荷">3.XSS的攻击载荷</a>
-      <ul>
-        <li><a href="#script标签">script标签</a></li>
-        <li><a href="#svg标签">svg标签</a></li>
-        <li><a href="#img标签">img标签</a></li>
-        <li><a href="#body标签">body标签</a></li>
-        <li><a href="#video标签">video标签</a></li>
-        <li><a href="#style标签">style标签</a></li>
-      </ul>
-    </li>
-    <li><a href="#4xss可以插在哪里">4.XSS可以插在哪里？</a></li>
-    <li><a href="#5xss漏洞的挖掘">5.XSS漏洞的挖掘</a></li>
-    <li><a href="#6xss的简单过滤和绕过">6.XSS的简单过滤和绕过</a>
-      <ul>
-        <li><a href="#a区分大小写过滤标签">a.区分大小写过滤标签</a></li>
-        <li><a href="#b不区分大小写过滤标签">b.不区分大小写过滤标签</a></li>
-        <li><a href="#c不区分大小写过滤之间的所有内容">c.不区分大小写，过滤之间的所有内容</a></li>
-        <li><a href="#d编码脚本代码绕过关键字过滤">d.编码脚本代码绕过关键字过滤</a></li>
-        <li><a href="#e主动闭合标签实现注入代码">e.主动闭合标签实现注入代码</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>

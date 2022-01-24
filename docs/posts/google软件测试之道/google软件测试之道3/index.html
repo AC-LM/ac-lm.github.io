@@ -41,7 +41,7 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
  避免散漫的文字，推荐使用简明的列表。并不是所有的测试人员都想当小说家，也不具备将一个产品的目标或测试需求表达成散文的技能。而且，冗词赘句容易误读，只列出要点和事实就行了。 不必推销。测试计划不是营销文案，既不是要讨论一个产品满足了多么重要的市场定位，也不是讨论这个产品有多么酷的功能。测试计划不是给客户或分析师看的，它的受众人群是工程师。 简洁。测试计划并没有长度的要求。它不是中学的项目作业，长度无关紧要，不是越长越好。计划的大小与测试问题的规模有关，与作者的写作欲望无关。 不要把不重要的、无法执行的东西放进测试计划。相关人员毫不关心的东西，就一个词也不要出现。 渐进式的描述（Make it flow）。测试计划的每个部分应该是前面部分的延伸，以便读者可以随时停止阅读并且对产品的功能有一个初步的印象。如果读者希望了解更多的细节，那么他可以继续读下去。 指导计划者的思路。一个好的计划过程能帮助计划者思考产品功能及其测试需求，从而有条不紊地从高层概念过渡到可以被直接实现的低层细节。 最终结果应该是测试用例。在计划完成的时候，它不仅要清楚地描述要做什么样的测试，并且还可以清楚地指导测试用例的编写。做出一个不直接指导测试的计划纯粹是在浪费时间。 最后一点非常重要：如果测试计划没有把测试用例应该怎么执行描述得足够详细，它就没有达到预先设定的帮助测试的本义。对测试的计划（the planning of tests）而言，它显然应该让我们清楚地知道需要编写哪些测试用例。当你正好处于&amp;quot;完全了解需要编写哪些测试&amp;quot;这一点时，才算完成了测试计划。  ACC通过指导计划者依次考察产品的三个维度达成这个目标：描述产品目标的形容词和副词；确定产品各部分、各特性的名词；描述产品实际做什么的动词。这样，我们通过测试完成的就是验证这些能力（capabilities）能正常运作、产品各组件（component）能满足应用的目标。'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/google%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/google%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%933/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2021-04-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-27T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='读书笔记' /><meta property='article:published_time' content='2021-04-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-27T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Google软件测试之道(3)">
 <meta name="twitter:description" content="参考原文：Google软件测试之道 @Whittaker Arb 
  测试工程师 测试工程师（Test Engineer，TE）的工作在于评估软件产品对用户的影响以及整体目标上的风险。因此，当TE进入产品的时候，需要考虑以下一些问题。
@@ -64,7 +64,7 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
 
     </head>
     <body class="
-    article-page has-toc
+    article-page 
 ">
     <script>
         (function() {
@@ -90,22 +90,151 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
 </script>
 <div class="container main-container flex 
     
-        extended
+        on-phone--column extended
     
 ">
     
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/AC-LM'
+                            target="_blank"
+                            title="GitHub"
+                        >
+                            
+                            
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
+                
                 <span>Back</span>
             </a>
-        </div>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
     
 <main class="main full-width">
     <article class="main-article">
@@ -272,6 +401,12 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -295,6 +430,37 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
 
     <aside class="related-contents--wrapper">
     
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/google%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/google%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%932/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Google软件测试之道(2)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/google%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%93/google%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E4%B9%8B%E9%81%931/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Google软件测试之道(1)</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
     
 </aside>
 
@@ -398,40 +564,6 @@ ACC ACC（Attribute Component Capability，即特质、组件、能力。这是�
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-                </div>
-                <h2 class="widget-title section-title">Table of contents</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#测试工程师">测试工程师</a></li>
-    <li><a href="#测试计划">测试计划</a></li>
-    <li><a href="#acc">ACC</a>
-      <ul>
-        <li><a href="#a代表特质attribute">A代表特质（Attribute）</a></li>
-        <li><a href="#c代表组件component">C代表组件（component）</a></li>
-        <li><a href="#c代表能力capability">C代表能力（capability）</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-                </div>
-            </section>
-        </aside>
     
 
         </div>
