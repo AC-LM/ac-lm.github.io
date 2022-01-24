@@ -1,5 +1,5 @@
 baseURL = "https://ac-lm.github.io"
-languageCode = "en-us"
+languageCode = "zh-cn"
 title = "AC-LM 's blog"
 theme = "hugo-theme-stack"
 paginate = 10

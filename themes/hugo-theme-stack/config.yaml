@@ -27,7 +27,7 @@ params:
         - Posts
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: img/Infinite_hu36bf0f24ea12a14d33eb3cd5bd9f8ace_21009_300x0_resize_box_3
 
     footer:
         since: 2020
@@ -38,8 +38,8 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🍥
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        emoji: 
+        subtitle: (￣O￣) . Z Z Z
         avatar:
             enabled: true
             local: true
@@ -54,7 +54,7 @@ params:
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
-        enabled: true
+        enabled: false
         provider: disqus
 
         disqusjs:
@@ -128,8 +128,6 @@ params:
 
     widgets:
         enabled:
-            - search
-            - archives
             - tag-cloud
 
         archives:
@@ -157,7 +155,7 @@ params:
         toggle: true
 
         # Available values: auto, light, dark
-        default: auto
+        default: dark
 
     imageProcessing:
         cover:
