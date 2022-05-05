@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.安装 pip install -U pytest 2.运行 python3 -m pytest --help pytest.main([&amp;#39;-s&amp;#39;]) pytest.main([&amp;#39;-x&amp;#39;, &amp;#39;mytestdir&amp;#39;]) # []内传入配置参数，相对于执行 pytest -s  3.约束 文件名以test_*.py文件和*_test.py 以test_开头的函数 以Test开头的类，并且不能带有 init 方法 以test_开头的方法 所有的包pakege必须要有__init__.py文件 4.参数选择 # 查看 pytest 版本 pytest --version # 显示可用的内置函数参数 pytest --fixtures # 通过命令行查看帮助信息及配置文件选项 pytest --help # 在第N个用例失败后，结束测试执行 pytest -x # 第01次失败，就停止测试 pytest --maxfail=2 # 出现2个失败就终止测试 # 指定测试目录 pytest testing/ # 通过关键字表达式过滤执行 # 这条命令会匹配文件名、类名、方法名匹配表达式的用例，这里这条命令会运行 TestMyClass.test_something， 不会执行 TestMyClass.test_method_simple pytest -k &amp;#34;MyClass and not method&amp;#34; # 运行模块中的指定用例 pytest test_mod.'><title>Pytest—测试框架</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Pytest—测试框架'>
+<meta property='og:description' content='1.安装 pip install -U pytest 2.运行 python3 -m pytest --help pytest.main([&amp;#39;-s&amp;#39;]) pytest.main([&amp;#39;-x&amp;#39;, &amp;#39;mytestdir&amp;#39;]) # []内传入配置参数，相对于执行 pytest -s  3.约束 文件名以test_*.py文件和*_test.py 以test_开头的函数 以Test开头的类，并且不能带有 init 方法 以test_开头的方法 所有的包pakege必须要有__init__.py文件 4.参数选择 # 查看 pytest 版本 pytest --version # 显示可用的内置函数参数 pytest --fixtures # 通过命令行查看帮助信息及配置文件选项 pytest --help # 在第N个用例失败后，结束测试执行 pytest -x # 第01次失败，就停止测试 pytest --maxfail=2 # 出现2个失败就终止测试 # 指定测试目录 pytest testing/ # 通过关键字表达式过滤执行 # 这条命令会匹配文件名、类名、方法名匹配表达式的用例，这里这条命令会运行 TestMyClass.test_something， 不会执行 TestMyClass.test_method_simple pytest -k &amp;#34;MyClass and not method&amp;#34; # 运行模块中的指定用例 pytest test_mod.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Pytest' /><meta property='article:published_time' content='2021-01-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-14T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Pytest—测试框架">
+<meta name="twitter:description" content="1.安装 pip install -U pytest 2.运行 python3 -m pytest --help pytest.main([&amp;#39;-s&amp;#39;]) pytest.main([&amp;#39;-x&amp;#39;, &amp;#39;mytestdir&amp;#39;]) # []内传入配置参数，相对于执行 pytest -s  3.约束 文件名以test_*.py文件和*_test.py 以test_开头的函数 以Test开头的类，并且不能带有 init 方法 以test_开头的方法 所有的包pakege必须要有__init__.py文件 4.参数选择 # 查看 pytest 版本 pytest --version # 显示可用的内置函数参数 pytest --fixtures # 通过命令行查看帮助信息及配置文件选项 pytest --help # 在第N个用例失败后，结束测试执行 pytest -x # 第01次失败，就停止测试 pytest --maxfail=2 # 出现2个失败就终止测试 # 指定测试目录 pytest testing/ # 通过关键字表达式过滤执行 # 这条命令会匹配文件名、类名、方法名匹配表达式的用例，这里这条命令会运行 TestMyClass.test_something， 不会执行 TestMyClass.test_method_simple pytest -k &amp;#34;MyClass and not method&amp;#34; # 运行模块中的指定用例 pytest test_mod.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/pytest&#43;allure/pytest%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">Pytest—测试框架</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 14, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1安装">1.安装</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install <span style="color:#f92672">-</span>U pytest
+</code></pre></div><h2 id="2运行">2.运行</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python3 <span style="color:#f92672">-</span>m pytest <span style="color:#f92672">--</span>help
+pytest<span style="color:#f92672">.</span>main([<span style="color:#e6db74">&#39;-s&#39;</span>])
+pytest<span style="color:#f92672">.</span>main([<span style="color:#e6db74">&#39;-x&#39;</span>, <span style="color:#e6db74">&#39;mytestdir&#39;</span>])
+<span style="color:#75715e"># []内传入配置参数，相对于执行 pytest -s </span>
+</code></pre></div><h2 id="3约束">3.约束</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">文件名以test_<span style="color:#f92672">*.</span>py文件和<span style="color:#f92672">*</span>_test<span style="color:#f92672">.</span>py
+以test_开头的函数
+以Test开头的类<span style="color:#960050;background-color:#1e0010">，</span>并且不能带有 init 方法
+以test_开头的方法
+所有的包pakege必须要有__init__<span style="color:#f92672">.</span>py文件
+</code></pre></div><h2 id="4参数选择">4.参数选择</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 查看 pytest 版本</span>
+pytest <span style="color:#f92672">--</span>version
+<span style="color:#75715e"># 显示可用的内置函数参数</span>
+pytest <span style="color:#f92672">--</span>fixtures
+<span style="color:#75715e"># 通过命令行查看帮助信息及配置文件选项</span>
+pytest <span style="color:#f92672">--</span>help
+<span style="color:#75715e"># 在第N个用例失败后，结束测试执行</span>
+pytest <span style="color:#f92672">-</span>x              <span style="color:#75715e"># 第01次失败，就停止测试</span>
+pytest <span style="color:#f92672">--</span>maxfail<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>     <span style="color:#75715e"># 出现2个失败就终止测试</span>
+<span style="color:#75715e"># 指定测试目录</span>
+pytest testing<span style="color:#f92672">/</span>
+<span style="color:#75715e"># 通过关键字表达式过滤执行</span>
+<span style="color:#75715e"># 这条命令会匹配文件名、类名、方法名匹配表达式的用例，这里这条命令会运行 TestMyClass.test_something， 不会执行 TestMyClass.test_method_simple</span>
+pytest <span style="color:#f92672">-</span>k <span style="color:#e6db74">&#34;MyClass and not method&#34;</span>
+<span style="color:#75715e"># 运行模块中的指定用例</span>
+pytest test_mod<span style="color:#f92672">.</span>py::test_func
+<span style="color:#75715e"># 运行模块中的指定方法</span>
+pytest test_mod<span style="color:#f92672">.</span>py::TestClass::test_method
+<span style="color:#75715e"># 通过标记表达式执行</span>
+<span style="color:#75715e"># 这条命令会执行被装饰器 @pytest.mark.slow 装饰的所有测试用例</span>
+pytest <span style="color:#f92672">-</span>m slow
+<span style="color:#75715e"># 获取最慢的10个用例的执行耗时</span>
+pytest <span style="color:#f92672">--</span>durations<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+<span style="color:#75715e"># 在指定目录DIR生成allure报告与如果目录存在则清除目录</span>
+pytest <span style="color:#f92672">--</span>alluredir<span style="color:#f92672">=</span>DIR <span style="color:#f92672">--</span>clean<span style="color:#f92672">-</span>alluredir
+</code></pre></div><h2 id="5多进程运行cases">5.多进程运行cases</h2>
+<p>当cases量很多时，运行时间也会变的很长，如果想缩短脚本运行的时长，就可以用多进程来运行。使用多线程需要安装pytest-xdist。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install <span style="color:#f92672">-</span>U pytest<span style="color:#f92672">-</span>xdist
+pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672">-</span>n NUM <span style="color:#75715e"># NUM填写并发的进程数。</span>
+</code></pre></div><h2 id="6重试运行cases">6.重试运行cases</h2>
+<p>在做接口测试时，有事会遇到503或短时的网络波动，导致case运行失败，而这并非是我们期望的结果，此时可以就可以通过重试运行cases的方式来解决。使用重试需要安装pytest-rerunfailures。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip install <span style="color:#f92672">-</span>U pytest<span style="color:#f92672">-</span>rerunfailures
+pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672">--</span>reruns NUM <span style="color:#75715e"># NUM填写重试的次数。</span>
+</code></pre></div><h2 id="7显示print内容">7.显示print内容</h2>
+<p>在运行测试脚本时，为了调试或打印一些内容，我们会在代码中加一些print内容，但是在运行pytest时，这些内容不会显示出来。如果带上-s，就可以显示了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672">-</span>s
+</code></pre></div><h2 id="8函数级别-setupteardown">8.函数级别 setup()／teardown()</h2>
+<p>运行于测试方法的始末，即:运行一次测试函数会运行一次setup和teardown</p>
+<h2 id="9类级别-setup_class---teardown_class">9.类级别 setup_class() /  teardown_class()</h2>
+<p>运行于测试类的始末，即:在一个测试内只运行一次setup_class和teardown_class，不关心测试类内有多少个测试函数。</p>
+<h2 id="10pytest配置文件">10.Pytest配置文件</h2>
+<p>pytest的配置文件通常放在测试目录下，名称为 <strong>pytest.ini</strong>，命令行运行时会使用该配置文件中的配置.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75715e">#配置pytest命令行运行参数</span>
+<span style="color:#66d9ef">[pytest]</span>
+<span style="color:#a6e22e">addopts</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">-s ... </span>
+<span style="color:#75715e"># 空格分隔，可添加多个命令行参数 -所有参数均为插件包的参数配置测试搜索的路径</span>
+<span style="color:#a6e22e">testpaths</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">./scripts  </span>
+<span style="color:#75715e"># 测试文件路径，当前目录下的scripts文件夹 -可自定义</span>
+<span style="color:#a6e22e">python_files</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">test_* *_test check_* </span>
+<span style="color:#75715e"># 测试文件，当前目录下的scripts文件夹下，以test开头，以.py结尾的所有文件 -可自定义</span>
+<span style="color:#a6e22e">python_classes</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Test_* Test* *Suite</span>
+<span style="color:#75715e"># 配置测试搜索的测试类名，当前目录下的scripts文件夹下，以test开头，以.py结尾的所有文件中，以Test开头的类 -可自定义</span>
+<span style="color:#a6e22e">python_functions</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">test_* *_test check_*</span>
+<span style="color:#75715e"># 配置测试搜索的测试函数名，当前目录下的scripts文件夹下，以test开头，以.py结尾的所有文件中，以Test开头的类内，以test_开头的方法</span>
+</code></pre></div><h2 id="11fixture">11.fixture</h2>
+<p>标记固定的工厂函数,在其他函数，模块，类或整个工程调用它时会被激活并优先执行,通常会被用于完成预置处理和重复操作。</p>
+<p>执行顺序，fixture &gt; setup</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fixture(scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;function&#34;</span>, params<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, autouse<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, ids<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, name<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+<span style="color:#75715e"># scope：被标记方法的作用域 </span>
+<span style="color:#e6db74">&#34;function&#34;</span> (default)<span style="color:#960050;background-color:#1e0010">：</span>作用于每个测试方法<span style="color:#960050;background-color:#1e0010">，</span>每个test都运行一次
+<span style="color:#e6db74">&#34;class&#34;</span><span style="color:#960050;background-color:#1e0010">：</span>作用于整个类<span style="color:#960050;background-color:#1e0010">，</span>每个class的所有test只运行一次
+<span style="color:#e6db74">&#34;module&#34;</span><span style="color:#960050;background-color:#1e0010">：</span>作用于整个模块<span style="color:#960050;background-color:#1e0010">，</span>每个module的所有test只运行一次
+<span style="color:#e6db74">&#34;session：作用于整个session(慎用)，每个session只运行一次</span>
+<span style="color:#75715e"># params：(list类型)提供参数数据，供调用标记方法的函数使用</span>
+<span style="color:#75715e"># autouse：是否自动运行,默认为False不运行,设置为True自动运行</span>
+<span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
+<span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">before</span>(self):
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_a</span>(self,before): <span style="color:#75715e"># ️test_a方法传入了被fixture标识的函数，已变量的形式</span>
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">before</span>():
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>usefixtures(<span style="color:#e6db74">&#34;before&#34;</span>)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test_ABC</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setup</span>(self):
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_a</span>(self):
+        <span style="color:#66d9ef">pass</span>
+<span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
+<span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>fixture()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">need_data</span>():
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># 返回数字2</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test_ABC</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_a</span>(self,need_data):
+        <span style="color:#66d9ef">assert</span> need_data <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># 拿到返回值做一次断言</span>
+</code></pre></div><h2 id="12跳过测试函数">12.跳过测试函数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 根据特定的条件，不执行标识的测试函数.</span>
+<span style="color:#75715e"># 方法：</span>
+     skipif(condition, reason<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+<span style="color:#75715e"># 参数：</span>
+     condition<span style="color:#960050;background-color:#1e0010">：</span>跳过的条件<span style="color:#960050;background-color:#1e0010">，</span>必传参数
+     reason<span style="color:#960050;background-color:#1e0010">：</span>标注原因<span style="color:#960050;background-color:#1e0010">，</span>必传参数
+<span style="color:#75715e"># 使用方法：</span>
+     <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>skipif(condition, reason<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx&#34;</span>) 
+<span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test_ABC</span>:    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_a</span>(self):
+        <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>skipif(condition<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">1</span>,reason <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;跳过该函数&#34;</span>) <span style="color:#75715e"># 跳过测试函数test_b</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_b</span>(self):
+        <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_c</span>(self):
+        pytest<span style="color:#f92672">.</span>skip()
+</code></pre></div><h2 id="13标记为预期失败函数">13.标记为预期失败函数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 标记测试函数为失败函数</span>
+<span style="color:#75715e"># 方法：</span>
+     xfail(condition<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, reason<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, raises<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, run<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, strict<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+<span style="color:#75715e"># 常用参数：</span>
+     condition<span style="color:#960050;background-color:#1e0010">：</span>预期失败的条件<span style="color:#960050;background-color:#1e0010">，</span>必传参数
+     reason<span style="color:#960050;background-color:#1e0010">：</span>失败的原因<span style="color:#960050;background-color:#1e0010">，</span>必传参数
+ 使用方法<span style="color:#960050;background-color:#1e0010">：</span>
+     <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>xfail(condition, reason<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xx&#34;</span>)
+<span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test_ABC</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_a</span>(self):
+        <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>xfail(<span style="color:#ae81ff">2</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>, reason<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;标注为预期失败&#34;</span>) <span style="color:#75715e"># 标记为预期失败函数test_b</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_b</span>(self):
+        <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_c</span>(self):
+        pytest<span style="color:#f92672">.</span>xfail()
+</code></pre></div><h2 id="14函数数据参数化">14.函数数据参数化</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 方便测试函数对测试属于的获取。</span>
+<span style="color:#75715e"># 方法：</span>
+     parametrize(argnames, argvalues, indirect<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, ids<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, scope<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+<span style="color:#75715e"># 常用参数：</span>
+     argnames<span style="color:#960050;background-color:#1e0010">：</span>参数名
+     argvalues<span style="color:#960050;background-color:#1e0010">：</span>参数对应值<span style="color:#960050;background-color:#1e0010">，</span>类型必须为list
+                 当参数为一个时格式<span style="color:#960050;background-color:#1e0010">：</span>[value]
+                 当参数个数大于一个时<span style="color:#960050;background-color:#1e0010">，</span>格式为:[(param_value1,param_value2<span style="color:#f92672">.....</span>),(param_value1,param_value2<span style="color:#f92672">.....</span>)]
+<span style="color:#75715e"># 使用方法:</span>
+     <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>parametrize(argnames,argvalues)
+<span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
+<span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>parametrize(<span style="color:#e6db74">&#34;a&#34;</span>,[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">6</span>]) <span style="color:#75715e"># a参数被赋予两个值，函数会运行两遍</span>
+<span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>parametrize(<span style="color:#e6db74">&#34;a,b&#34;</span>,[(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>),(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>)]) <span style="color:#75715e"># 参数a,b均被赋予两个值，函数会运行两遍</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">return_test_data</span>():
+    <span style="color:#66d9ef">return</span> [(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>),(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>)]
+<span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>parametrize(<span style="color:#e6db74">&#34;a,b&#34;</span>,return_test_data()) <span style="color:#75715e"># 使用函数返回值的形式传入参数值</span>
+</code></pre></div><h2 id="15使用自定义标记mark只执行部分用例">15.使用自定义标记mark只执行部分用例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>webtest
+<span style="color:#75715e"># 标记测试函数为 webtest 执行时可进行选择</span>
+pytest <span style="color:#f92672">-</span>v <span style="color:#f92672">-</span>m webtest
+pytest <span style="color:#f92672">-</span>v <span style="color:#f92672">-</span>m <span style="color:#e6db74">&#39;not webtest&#39;</span>
+</code></pre></div><h2 id="16执行对应严重级别用例">16.执行对应严重级别用例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pytest <span style="color:#f92672">--</span>allure<span style="color:#f92672">-</span>severities<span style="color:#f92672">=</span>critical
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pytest/">Pytest</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/pytest&#43;allure/allure%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">allure—测试报告生成</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

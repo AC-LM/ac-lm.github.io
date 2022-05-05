@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).'><title>Git—gitlab-runner 安装配置</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/git/gitgitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Git—gitlab-runner 安装配置'>
+<meta property='og:description' content='1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/git/gitgitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Git' /><meta property='article:published_time' content='2021-01-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-07T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Git—gitlab-runner 安装配置">
+<meta name="twitter:description" content="1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/git/gitgitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">Git—gitlab-runner 安装配置</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 07, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1linux-注册-gitlab-runner">1.Linux 注册 gitlab-runner</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gitlab-runner register
+Runtime platform                                    arch<span style="color:#f92672">=</span>amd64 os<span style="color:#f92672">=</span>linux pid<span style="color:#f92672">=</span><span style="color:#ae81ff">3639</span> revision<span style="color:#f92672">=</span>943fc252 version<span style="color:#f92672">=</span>13.7.0
+Running in system-mode.
+
+Enter the GitLab instance URL <span style="color:#f92672">(</span><span style="color:#66d9ef">for</span> example, https://gitlab.com/<span style="color:#f92672">)</span>:
+<span style="color:#75715e"># http://gitlab.hison.net/</span>
+Enter the registration token:
+<span style="color:#75715e"># WDKcwQGUoXRC-NR3rUns</span>
+Enter a description <span style="color:#66d9ef">for</span> the runner:
+<span style="color:#75715e"># </span>
+Enter the tags <span style="color:#66d9ef">for</span> the runner:
+<span style="color:#75715e"># </span>
+Enter the runner executor:
+<span style="color:#75715e"># shell</span>
+———————————————————————————————————————————————————————————————————————————————————————————————————————————
+<span style="color:#75715e"># 文档</span>
+sudo gitlab-runner register
+Enter your GitLab instance URL <span style="color:#f92672">(</span>also known as the gitlab-ci coordinator URL<span style="color:#f92672">)</span>.
+token Enter the token you obtained to register the runner.
+Enter a description <span style="color:#66d9ef">for</span> the runner. You can change this value later in the GitLab user interface.
+Enter the tags associated with the runner, separated by commas. You can change this value later in the GitLab user interface.
+Provide the runner executor. For most use cases, enter docker.
+If you entered docker as your executor, you’ll be asked <span style="color:#66d9ef">for</span> the default image to be used <span style="color:#66d9ef">for</span> projects that <span style="color:#66d9ef">do</span> not define one in .gitlab-ci.yml.
+</code></pre></div><h2 id="2linux-安装-gitlab-runner-请确保-git-最新">2.Linux 安装 gitlab-runner （请确保 Git 最新）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#Install GitLab Runner using the official GitLab repositories</span>
+curl -L <span style="color:#e6db74">&#34;https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh&#34;</span> | sudo bash
+export GITLAB_RUNNER_DISABLE_SKEL<span style="color:#f92672">=</span>true; sudo -E yum install gitlab-runner
+<span style="color:#75715e">#https://docs.gitlab.com/runner/install/linux-repository.html</span>
+</code></pre></div><h2 id="3linux-gitlab-runner-命令">3.Linux gitlab-runner 命令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># https://docs.gitlab.com/runner/commands/README.html</span>
+gitlab-runner --debug &lt;command&gt;
+sudo gitlab-runner run
+gitlab-runner install
+gitlab-runner uninstall
+gitlab-runner start <span style="color:#75715e"># 后台运行</span>
+gitlab-runner stop
+gitlab-runner restart
+gitlab-runner status
+</code></pre></div><h2 id="4运行">4.运行</h2>
+<p>在启动后，可以通过 gitlab-runner 在Linux系统上运行脚本，编写 .gitlab-ci.yml 文件来布置任务。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/git/">Git</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/git/gitssh-%E9%85%8D%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git—SSH 配置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/git/git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git—版本管理工具</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

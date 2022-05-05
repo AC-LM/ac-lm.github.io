@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.HTML实现 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- 样式部分可以忽略 --&amp;gt; &amp;lt;style&amp;gt; * { padding: 0; margin: 0; } div { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; } .btn { width: 100px; height: 50px; border-radius: 10px; background: #ff9900; line-height: 50px; text-align: center; color: #fff; box-shadow: 0 0 10px #999; } video, canvas { width: 300px; height: 300px; border: 5px solid #000; border-radius: 10px; margin-left: 5px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div id=&amp;#34;play&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;开启摄像&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;take&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;拍照&amp;lt;/div&amp;gt; &amp;lt;video id=&amp;#34;video&amp;#34;&amp;gt;&amp;lt;/video&amp;gt; &amp;lt;!'><title>Web开发—实现摄像头开启</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web开发—实现摄像头开启'>
+<meta property='og:description' content='1.HTML实现 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- 样式部分可以忽略 --&amp;gt; &amp;lt;style&amp;gt; * { padding: 0; margin: 0; } div { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; } .btn { width: 100px; height: 50px; border-radius: 10px; background: #ff9900; line-height: 50px; text-align: center; color: #fff; box-shadow: 0 0 10px #999; } video, canvas { width: 300px; height: 300px; border: 5px solid #000; border-radius: 10px; margin-left: 5px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div id=&amp;#34;play&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;开启摄像&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;take&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;拍照&amp;lt;/div&amp;gt; &amp;lt;video id=&amp;#34;video&amp;#34;&amp;gt;&amp;lt;/video&amp;gt; &amp;lt;!'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2020-12-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-12-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Web开发—实现摄像头开启">
+<meta name="twitter:description" content="1.HTML实现 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- 样式部分可以忽略 --&amp;gt; &amp;lt;style&amp;gt; * { padding: 0; margin: 0; } div { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; } .btn { width: 100px; height: 50px; border-radius: 10px; background: #ff9900; line-height: 50px; text-align: center; color: #fff; box-shadow: 0 0 10px #999; } video, canvas { width: 300px; height: 300px; border: 5px solid #000; border-radius: 10px; margin-left: 5px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div id=&amp;#34;play&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;开启摄像&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;take&amp;#34; class=&amp;#34;btn&amp;#34;&amp;gt;拍照&amp;lt;/div&amp;gt; &amp;lt;video id=&amp;#34;video&amp;#34;&amp;gt;&amp;lt;/video&amp;gt; &amp;lt;!">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/web/web%E5%BC%80%E5%8F%91%E5%AE%9E%E7%8E%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%BC%80%E5%90%AF/">Web开发—实现摄像头开启</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 23, 2020</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1html实现">1.HTML实现</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+    <span style="color:#75715e">&lt;!-- 样式部分可以忽略 --&gt;</span>
+    &lt;<span style="color:#f92672">style</span>&gt;
+        <span style="color:#f92672">*</span> {
+            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">0</span>;
+            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+        }
+        <span style="color:#f92672">div</span> {
+            <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">vw</span>;
+            <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">vh</span>;
+            <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+            <span style="color:#66d9ef">justify-content</span>: <span style="color:#66d9ef">center</span>;
+            <span style="color:#66d9ef">align-items</span>: <span style="color:#66d9ef">center</span>;
+        }
+        .<span style="color:#a6e22e">btn</span> {
+            <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#ff9900</span>;
+            <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+            <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff</span>;
+            <span style="color:#66d9ef">box-shadow</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">#999</span>;
+        }
+        <span style="color:#f92672">video</span><span style="color:#f92672">,</span> <span style="color:#f92672">canvas</span> {
+            <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#000</span>;
+            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+            <span style="color:#66d9ef">margin-left</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+        }
+    &lt;/<span style="color:#f92672">style</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;play&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;开启摄像&lt;/<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;take&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;拍照&lt;/<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">video</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video&#34;</span>&gt;&lt;/<span style="color:#f92672">video</span>&gt;
+        <span style="color:#75715e">&lt;!-- 尽量在canvas标签上设置宽高 --&gt;</span>
+        &lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;canvas&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;300px&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;300px&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
+    &lt;<span style="color:#f92672">script</span>&gt;
+        <span style="color:#75715e">// 开启摄像
+</span><span style="color:#75715e"></span>        document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;play&#39;</span>).<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () =&gt; {
+            <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">constraints</span> <span style="color:#f92672">=</span> {
+                <span style="color:#75715e">// video属性设置
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">video</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">300</span>,
+                    <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">300</span>
+                },
+                <span style="color:#75715e">// audio属性设置
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">audio</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+            }
+            <span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">mediaDevices</span>.<span style="color:#a6e22e">getUserMedia</span>(<span style="color:#a6e22e">constraints</span>)
+            .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">mediaStream</span> =&gt; {
+                <span style="color:#75715e">// 成功返回promise对象，接收一个mediaStream参数与video标签进行对接
+</span><span style="color:#75715e"></span>                document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;video&#39;</span>).<span style="color:#a6e22e">srcObject</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mediaStream</span>
+                document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;video&#39;</span>).<span style="color:#a6e22e">play</span>()
+            })
+            <span style="color:#75715e">// 失败就失败了
+</span><span style="color:#75715e"></span>        }
+        <span style="color:#75715e">// 拍照、canvas绘制
+</span><span style="color:#75715e"></span>        document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;take&#39;</span>).<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () =&gt; {
+            <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;canvas&#34;</span>).<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>)
+            <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;video&#34;</span>), <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">300</span>)
+        }
+    &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/javascript/">Javascript</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91js-%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—JS 实现页面跳转</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91php&#43;mariadb-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—PHP&#43;MariaDB 数据库操作</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91php-%E5%AE%9E%E4%BE%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—PHP 实例</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91war-%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—War 文件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A8nginx-%E8%A7%A3%E5%86%B3%E4%B9%B1%E7%A0%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web服务器—Nginx 解决乱码</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

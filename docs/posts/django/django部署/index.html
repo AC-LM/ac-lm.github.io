@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.配置 uwsgi  安装：pip install uwsgi 测试：uwsgi --http-socket :80 --file test.py  # test.py def application(env, start_response): start_response(&amp;#39;200 OK&amp;#39;, [(&amp;#39;Content-Type&amp;#39;,&amp;#39;text/html&amp;#39;)]) return [b&amp;#34;Hello World&amp;#34;]  配置文件：uwsgi.ini  [uwsgi] # 使用nginx连接时使用 # socket=0.0.0.0:8000 # 直接做web服务器, python manage.py runserver ip:port http=0.0.0.0:8000 # 路径为 0.0.0.0，表本地，使用127.0.0.1可能会无法从外网访问 # 项目目录 chdir=/home/mayanan/bj18/dailyfresh # 项目中wsgi.py文件的目录，相对于项目目录 wsgi-file=dailyfresh/wsgi.py # 指定启动的工作进程数 processes=4 # 指定工作进程中的线程数 threads=2 master=True # 保存启动后，主进程的pid pidfile=uwsgi.pid # 设置uwsgi后台运行, uwsgi.log保存日志信息 daemonize=uwsgi.log  启动：uwsgi --ini uwsgi.ini，uwsgi 通过 ini 文件启动后会在相同目录下生成一个 pid 文件，包含主进程的进程号 重载：uwsgi --reload uwsgi.'><title>Django—部署</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/django/django%E9%83%A8%E7%BD%B2/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Django—部署'>
+<meta property='og:description' content='1.配置 uwsgi  安装：pip install uwsgi 测试：uwsgi --http-socket :80 --file test.py  # test.py def application(env, start_response): start_response(&amp;#39;200 OK&amp;#39;, [(&amp;#39;Content-Type&amp;#39;,&amp;#39;text/html&amp;#39;)]) return [b&amp;#34;Hello World&amp;#34;]  配置文件：uwsgi.ini  [uwsgi] # 使用nginx连接时使用 # socket=0.0.0.0:8000 # 直接做web服务器, python manage.py runserver ip:port http=0.0.0.0:8000 # 路径为 0.0.0.0，表本地，使用127.0.0.1可能会无法从外网访问 # 项目目录 chdir=/home/mayanan/bj18/dailyfresh # 项目中wsgi.py文件的目录，相对于项目目录 wsgi-file=dailyfresh/wsgi.py # 指定启动的工作进程数 processes=4 # 指定工作进程中的线程数 threads=2 master=True # 保存启动后，主进程的pid pidfile=uwsgi.pid # 设置uwsgi后台运行, uwsgi.log保存日志信息 daemonize=uwsgi.log  启动：uwsgi --ini uwsgi.ini，uwsgi 通过 ini 文件启动后会在相同目录下生成一个 pid 文件，包含主进程的进程号 重载：uwsgi --reload uwsgi.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/django/django%E9%83%A8%E7%BD%B2/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Django' /><meta property='article:published_time' content='2021-08-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-08-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Django—部署">
+<meta name="twitter:description" content="1.配置 uwsgi  安装：pip install uwsgi 测试：uwsgi --http-socket :80 --file test.py  # test.py def application(env, start_response): start_response(&amp;#39;200 OK&amp;#39;, [(&amp;#39;Content-Type&amp;#39;,&amp;#39;text/html&amp;#39;)]) return [b&amp;#34;Hello World&amp;#34;]  配置文件：uwsgi.ini  [uwsgi] # 使用nginx连接时使用 # socket=0.0.0.0:8000 # 直接做web服务器, python manage.py runserver ip:port http=0.0.0.0:8000 # 路径为 0.0.0.0，表本地，使用127.0.0.1可能会无法从外网访问 # 项目目录 chdir=/home/mayanan/bj18/dailyfresh # 项目中wsgi.py文件的目录，相对于项目目录 wsgi-file=dailyfresh/wsgi.py # 指定启动的工作进程数 processes=4 # 指定工作进程中的线程数 threads=2 master=True # 保存启动后，主进程的pid pidfile=uwsgi.pid # 设置uwsgi后台运行, uwsgi.log保存日志信息 daemonize=uwsgi.log  启动：uwsgi --ini uwsgi.ini，uwsgi 通过 ini 文件启动后会在相同目录下生成一个 pid 文件，包含主进程的进程号 重载：uwsgi --reload uwsgi.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/django/django%E9%83%A8%E7%BD%B2/">Django—部署</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 27, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1配置-uwsgi">1.配置 uwsgi</h2>
+<ul>
+<li>安装：<code>pip install uwsgi</code></li>
+<li>测试：<code>uwsgi --http-socket :80 --file test.py</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># test.py</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">application</span>(env, start_response):
+    start_response(<span style="color:#e6db74">&#39;200 OK&#39;</span>, [(<span style="color:#e6db74">&#39;Content-Type&#39;</span>,<span style="color:#e6db74">&#39;text/html&#39;</span>)])
+    <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Hello World&#34;</span>]
+</code></pre></div><ul>
+<li>配置文件：<code>uwsgi.ini</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[uwsgi]</span>
+<span style="color:#75715e"># 使用nginx连接时使用</span>
+<span style="color:#75715e"># socket=0.0.0.0:8000</span>
+<span style="color:#75715e"># 直接做web服务器, python manage.py runserver ip:port</span>
+<span style="color:#a6e22e">http</span><span style="color:#f92672">=</span><span style="color:#e6db74">0.0.0.0:8000</span>
+<span style="color:#75715e"># 路径为 0.0.0.0，表本地，使用127.0.0.1可能会无法从外网访问</span>
+<span style="color:#75715e"># 项目目录</span>
+<span style="color:#a6e22e">chdir</span><span style="color:#f92672">=</span><span style="color:#e6db74">/home/mayanan/bj18/dailyfresh</span>
+<span style="color:#75715e"># 项目中wsgi.py文件的目录，相对于项目目录</span>
+<span style="color:#a6e22e">wsgi-file</span><span style="color:#f92672">=</span><span style="color:#e6db74">dailyfresh/wsgi.py</span>
+<span style="color:#75715e"># 指定启动的工作进程数</span>
+<span style="color:#a6e22e">processes</span><span style="color:#f92672">=</span><span style="color:#e6db74">4</span>
+<span style="color:#75715e"># 指定工作进程中的线程数</span>
+<span style="color:#a6e22e">threads</span><span style="color:#f92672">=</span><span style="color:#e6db74">2</span>
+<span style="color:#a6e22e">master</span><span style="color:#f92672">=</span><span style="color:#e6db74">True</span>
+<span style="color:#75715e"># 保存启动后，主进程的pid</span>
+<span style="color:#a6e22e">pidfile</span><span style="color:#f92672">=</span><span style="color:#e6db74">uwsgi.pid</span>
+<span style="color:#75715e"># 设置uwsgi后台运行, uwsgi.log保存日志信息</span>
+<span style="color:#a6e22e">daemonize</span><span style="color:#f92672">=</span><span style="color:#e6db74">uwsgi.log</span>
+</code></pre></div><ul>
+<li>启动：<code>uwsgi --ini uwsgi.ini</code>，uwsgi 通过 ini 文件启动后会在相同目录下生成一个 pid 文件，包含主进程的进程号</li>
+<li>重载：<code>uwsgi --reload uwsgi.pid</code></li>
+<li>停止：<code>uwsgi --stop uwsgi.pid</code></li>
+</ul>
+<h2 id="2配置-django">2.配置 Django</h2>
+<ul>
+<li>测试：<code>python manage.py runserver 0.0.0.0:8000</code>，访问宿主机 IP:8000</li>
+<li>配置：<code>setting.py</code>，<code>DEBUG=False</code>，<code>ALLOWED_HOSTS=['*']</code></li>
+<li>配置：<code>wsgi.py</code>，默认情况下以配置完成</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> django.core.wsgi <span style="color:#f92672">import</span> get_wsgi_application
+
+os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>setdefault(<span style="color:#e6db74">&#34;DJANGO_SETTINGS_MODULE&#34;</span>, <span style="color:#e6db74">&#34;mysite.settings&#34;</span>)
+application <span style="color:#f92672">=</span> get_wsgi_application()
+</code></pre></div><h2 id="3django-与-uwsgi">3.Django 与 uwsgi</h2>
+<ul>
+<li>测试：<code>uwsgi --ini uwsgi.ini</code>，ini 内容需指定项目目录与 wsgi 文件</li>
+<li>访问宿主机 IP:端口，所有的请求都会经过 uwsgi 然后传递给 Django</li>
+</ul>
+<h2 id="4nginx">4.Nginx</h2>
+<ul>
+<li>Docker 安装：<code>docker pull nginx</code>，<code>docker run --name some-nginx --privileged=true -v /your-content:/usr/share/nginx/html:ro -d -p 8000:80 nginx</code></li>
+<li>检查：<code>nginx -v</code>，<code>/etc/init.d/nginx status</code></li>
+<li>启动：<code>/etc/init.d/nginx start</code></li>
+<li>关闭：<code>/etc/init.d/nginx stop</code></li>
+<li>重启：<code>/etc/init.d/nginx restart</code></li>
+</ul>
+<h2 id="5nginx-与-uwsgi">5.Nginx 与 uwsgi</h2>
+<ul>
+<li>uwsgi 配置：修改 <code>uwsgi.ini</code>，启用<code>socket=0.0.0.0:8080</code>，使用端口通信而不再作为服务器</li>
+<li>修改 Nginx 配置文件：<code>cd /etc/nginx</code>，可以通过<code>nginx -V</code>查看，属性<code>--conf-path</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># vim nginx.conf
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">.....</span>
+<span style="color:#e6db74">http</span>{
+    <span style="color:#f92672">.......</span>
+    <span style="color:#75715e"># include /etc/nginx/conf.d/*.conf 可能需要前往这以修改 server 块配置
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">server</span>{
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+            <span style="color:#f92672">include</span> <span style="color:#e6db74">uwsgi_params</span>;
+            <span style="color:#75715e"># 转交请求给uwsgi，填uwsgi服务地址
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">uwsgi_pass</span> 127.0.0.1:<span style="color:#ae81ff">8000</span>;
+        }
+    }
+}
+</code></pre></div><ul>
+<li>重启，能访问网页，但无静态文件</li>
+<li>配置静态文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># vim nginx.conf
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">.....</span>
+<span style="color:#e6db74">http</span>{
+    <span style="color:#f92672">.......</span>
+    <span style="color:#75715e"># include /etc/nginx/conf.d/*.conf 可能需要前往这以修改 server 块配置
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">server</span>{
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+            <span style="color:#f92672">include</span> <span style="color:#e6db74">uwsgi_params</span>;
+            <span style="color:#75715e"># 转交请求给uwsgi，填uwsgi服务地址
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">uwsgi_pass</span> 127.0.0.1:<span style="color:#ae81ff">8000</span>;
+        }
+        
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/static</span> {
+            <span style="color:#75715e"># 静态文件路径
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">alias</span> <span style="color:#e6db74">/root/static/</span>;
+        }
+    }
+}
+</code></pre></div><ul>
+<li>Django 收集静态文件：<code>python manage.py collectstatic</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 指定收集静态文件的路径</span>
+STATIC_ROOT <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#34;static/&#34;</span>)
+STATICFILES_FINDERS <span style="color:#f92672">=</span> (
+ 
+<span style="color:#e6db74">&#34;django.contrib.staticfiles.finders.FileSystemFinder&#34;</span>,
+ 
+<span style="color:#e6db74">&#34;django.contrib.staticfiles.finders.AppDirectoriesFinder&#34;</span>
+ 
+)
+</code></pre></div><h2 id="6网络拓扑">6.网络拓扑</h2>
+<p>通过上述配置，当用户访问网页时，请求会先经过Nginx，然后Nginx会判断是否是动态请求<code>/</code>，若是则将请求转交给 uwsgi ，由 uwsgi 再转交给 Django；若请求是静态请求 <code>/static</code>，那么 Nginx 将直接从收集的静态文件目录中将资源找到，返回给浏览器。</p>
+<h2 id="7扩展">7.扩展</h2>
+<p>当用户访问网页时，有部分 html 文件可以被直接访问，对于这些，可以使用多个 Nginx 服务器分开处理，以节省 uwsgi 的负担。</p>
+<p>第一个nginx服务，用来提交可直接打开的静态页面</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"> <span style="color:#75715e"># 配置服务提交静态页面
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">server</span> {
+        <span style="color:#f92672">listen</span> <span style="color:#ae81ff">9999</span>;
+        <span style="color:#f92672">server_name</span> <span style="color:#e6db74">localhost</span>;
+ 
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/static</span> {
+            <span style="color:#f92672">alias</span>  <span style="color:#e6db74">/home/mayanan/bj18/dailyfresh/static/</span>;
+        }
+ 
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+            <span style="color:#75715e">#root   html;
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">root</span>  <span style="color:#e6db74">/home/mayanan/bj18/dailyfresh/static/</span>;
+            <span style="color:#f92672">index</span>  <span style="color:#e6db74">index.html</span> <span style="color:#e6db74">index.htm</span>;
+        }
+ 
+        <span style="color:#f92672">error_page</span>   <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">502</span> <span style="color:#ae81ff">503</span> <span style="color:#ae81ff">504</span>  <span style="color:#e6db74">/50x.html</span>;
+        <span style="color:#f92672">location</span> = <span style="color:#e6db74">/50x.html</span> {
+            <span style="color:#f92672">root</span>   <span style="color:#e6db74">html</span>;
+        }
+ 
+    }
+</code></pre></div><p>第二个 nginx 服务，精确匹配<code>/</code>并转交请求给静态文件服务器 nginx，模糊匹配<code>/</code>转交请求给 uwsgi，<code>/static</code>静态文件匹配，从收集的静态文件目录中找到静态文件，直接返回给浏览器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">server</span> {
+        <span style="color:#f92672">listen</span>       <span style="color:#ae81ff">80</span>;
+        <span style="color:#f92672">server_name</span>  <span style="color:#e6db74">localhost</span>;
+ 
+        <span style="color:#75715e">#charset koi8-r;
+</span><span style="color:#75715e"></span> 
+        <span style="color:#75715e">#access_log  logs/host.access.log  main;
+</span><span style="color:#75715e"></span> 
+        <span style="color:#75715e"># = 代表精确匹配
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">location</span> = <span style="color:#e6db74">/</span> {
+                <span style="color:#75715e"># 传递请求给静态文件服务器的nginx
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://192.168.13.128:9999</span>;
+                <span style="color:#75715e">#root  /home/mayanan/bj18/dailyfresh/static/;
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">#index  index.html index.htm;
+</span><span style="color:#75715e"></span>        }
+ 
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+                <span style="color:#75715e"># 包含uwsgi的请求参数
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">include</span> <span style="color:#e6db74">uwsgi_params</span>;
+                <span style="color:#75715e"># 转交请求给uwsgi
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">uwsgi_pass</span> 127.0.0.1:<span style="color:#ae81ff">8080</span>;
+        }
+ 
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/static</span> {
+                <span style="color:#75715e"># 指定静态文件存放的目录
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">alias</span> <span style="color:#e6db74">/home/mayanan/bj18/dailyfresh/static/</span>;
+        }
+ 
+        <span style="color:#75715e">#error_page  404              /404.html;
+</span><span style="color:#75715e"></span> 
+        <span style="color:#75715e"># redirect server error pages to the static page /50x.html
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">#
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">error_page</span>   <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">502</span> <span style="color:#ae81ff">503</span> <span style="color:#ae81ff">504</span>  <span style="color:#e6db74">/50x.html</span>;
+         <span style="color:#f92672">location</span> = <span style="color:#e6db74">/50x.html</span> {
+            <span style="color:#f92672">root</span>   <span style="color:#e6db74">html</span>;
+        }
+ 
+        <span style="color:#f92672">.......</span>
+    <span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/django/">Django</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/django/django404-%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—404 文件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/djangosetting-%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—setting 文件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/djangoauth-%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—auth 用户认证模块</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/djangocsrf%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—CSRF中间件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/django%E5%A4%96%E9%94%AE%E6%9F%A5%E8%AF%A2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—外键查询</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

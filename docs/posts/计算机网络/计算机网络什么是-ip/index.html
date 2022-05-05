@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.IP的分类 Internet 上的每台主机和路由器都拥有一个由网络号和主机号唯一组成的 IP 地址，而且任意两台机器的 IP 地址互不相同。所有的 IP 地址都是一个 32 位长的二进制数，根据网络号和主机号分组方式的不同，细分为 A、B、C、D、E 五类。
+1）A类地址  第一位总是 0，8 位分配给网络号，24 位分配给主机号 地址范围为：0.0.0.0 ~ 127.255.255.255 二进制 32 位：0000-0000.0000-0000.0000-0000.0000-0000 ~ 0111-1111.1111-1111.1111-1111.1111-1111  2）B类地址  前两位总是 10，16 位分配给网络号，16 位分配给主机号 地址范围是：128.0.0.0 ~ 191.255.255.255 网络号：1000-0000.0000-0000 ~ 1011-1111.1111-1111  3）C类地址  前三位总是 110，24 位分配给网络号，8 位分配给主机号 地址范围是：192.0.0.0 ~ 223.255.255.255  4）D类地址  前四位总是 1110，D 类地址作为组播地址（一对多的通信） 地址范围是 224.0.0.0 ~ 239.255.255.255  5）E类地址  前五位总是 11110，E 类地址为保留地址，供以后使用 地址范围是 240.0.0.0 ~ 255.255.255.255 注：只有 A，B，C 有网络号和主机号之分，D 类地址和 E 类地址没有划分网络号和主机号  2.'><title>计算机网络—什么是 IP</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BB%80%E4%B9%88%E6%98%AF-ip/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='计算机网络—什么是 IP'>
+<meta property='og:description' content='1.IP的分类 Internet 上的每台主机和路由器都拥有一个由网络号和主机号唯一组成的 IP 地址，而且任意两台机器的 IP 地址互不相同。所有的 IP 地址都是一个 32 位长的二进制数，根据网络号和主机号分组方式的不同，细分为 A、B、C、D、E 五类。
+1）A类地址  第一位总是 0，8 位分配给网络号，24 位分配给主机号 地址范围为：0.0.0.0 ~ 127.255.255.255 二进制 32 位：0000-0000.0000-0000.0000-0000.0000-0000 ~ 0111-1111.1111-1111.1111-1111.1111-1111  2）B类地址  前两位总是 10，16 位分配给网络号，16 位分配给主机号 地址范围是：128.0.0.0 ~ 191.255.255.255 网络号：1000-0000.0000-0000 ~ 1011-1111.1111-1111  3）C类地址  前三位总是 110，24 位分配给网络号，8 位分配给主机号 地址范围是：192.0.0.0 ~ 223.255.255.255  4）D类地址  前四位总是 1110，D 类地址作为组播地址（一对多的通信） 地址范围是 224.0.0.0 ~ 239.255.255.255  5）E类地址  前五位总是 11110，E 类地址为保留地址，供以后使用 地址范围是 240.0.0.0 ~ 255.255.255.255 注：只有 A，B，C 有网络号和主机号之分，D 类地址和 E 类地址没有划分网络号和主机号  2.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BB%80%E4%B9%88%E6%98%AF-ip/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='计算机网络' /><meta property='article:published_time' content='2020-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-19T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="计算机网络—什么是 IP">
+<meta name="twitter:description" content="1.IP的分类 Internet 上的每台主机和路由器都拥有一个由网络号和主机号唯一组成的 IP 地址，而且任意两台机器的 IP 地址互不相同。所有的 IP 地址都是一个 32 位长的二进制数，根据网络号和主机号分组方式的不同，细分为 A、B、C、D、E 五类。
+1）A类地址  第一位总是 0，8 位分配给网络号，24 位分配给主机号 地址范围为：0.0.0.0 ~ 127.255.255.255 二进制 32 位：0000-0000.0000-0000.0000-0000.0000-0000 ~ 0111-1111.1111-1111.1111-1111.1111-1111  2）B类地址  前两位总是 10，16 位分配给网络号，16 位分配给主机号 地址范围是：128.0.0.0 ~ 191.255.255.255 网络号：1000-0000.0000-0000 ~ 1011-1111.1111-1111  3）C类地址  前三位总是 110，24 位分配给网络号，8 位分配给主机号 地址范围是：192.0.0.0 ~ 223.255.255.255  4）D类地址  前四位总是 1110，D 类地址作为组播地址（一对多的通信） 地址范围是 224.0.0.0 ~ 239.255.255.255  5）E类地址  前五位总是 11110，E 类地址为保留地址，供以后使用 地址范围是 240.0.0.0 ~ 255.255.255.255 注：只有 A，B，C 有网络号和主机号之分，D 类地址和 E 类地址没有划分网络号和主机号  2.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BB%80%E4%B9%88%E6%98%AF-ip/">计算机网络—什么是 IP</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 19, 2020</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1ip的分类">1.IP的分类</h2>
+<p>Internet 上的每台主机和路由器都拥有一个由网络号和主机号唯一组成的 IP 地址，而且任意两台机器的 IP 地址互不相同。所有的 IP 地址都是一个 32 位长的二进制数，根据网络号和主机号分组方式的不同，细分为 A、B、C、D、E 五类。</p>
+<h3 id="1a类地址">1）A类地址</h3>
+<ul>
+<li>第一位总是 0，8 位分配给网络号，24 位分配给主机号</li>
+<li>地址范围为：0.0.0.0 ~ 127.255.255.255</li>
+<li>二进制 32 位：<strong>0000-0000</strong>.0000-0000.0000-0000.0000-0000 ~ <strong>0111-1111</strong>.1111-1111.1111-1111.1111-1111</li>
+</ul>
+<h3 id="2b类地址">2）B类地址</h3>
+<ul>
+<li>前两位总是 10，16 位分配给网络号，16 位分配给主机号</li>
+<li>地址范围是：128.0.0.0 ~ 191.255.255.255</li>
+<li>网络号：1000-0000.0000-0000 ~ 1011-1111.1111-1111</li>
+</ul>
+<h3 id="3c类地址">3）C类地址</h3>
+<ul>
+<li>前三位总是 110，24 位分配给网络号，8 位分配给主机号</li>
+<li>地址范围是：192.0.0.0 ~ 223.255.255.255</li>
+</ul>
+<h3 id="4d类地址">4）D类地址</h3>
+<ul>
+<li>前四位总是 1110，D 类地址作为组播地址（一对多的通信）</li>
+<li>地址范围是 224.0.0.0 ~ 239.255.255.255</li>
+</ul>
+<h3 id="5e类地址">5）E类地址</h3>
+<ul>
+<li>前五位总是 11110，E 类地址为保留地址，供以后使用</li>
+<li>地址范围是 240.0.0.0 ~ 255.255.255.255</li>
+<li>注：只有 A，B，C 有网络号和主机号之分，D 类地址和 E 类地址没有划分网络号和主机号</li>
+</ul>
+<h2 id="2-ip地址-0000--与-255255255255">2. IP地址 0.0.0.0  与 255.255.255.255</h2>
+<h3 id="10000">1）0.0.0.0</h3>
+<p>缺省路由，代表本地，可以用来寻找自己在网络中的 IP 地址。例如在 RARP，BOOTP 和 DHCP 协议中，若某个未知 IP 地址（缺省 0.0.0.0 ）的机器想要知道自己在网络中的 IP 地址，它就可以把 255.255.255.255 作为目的地址，向本地范围内所有的服务器发送 IP 请求分组指令。</p>
+<h3 id="2255255255255">2）255.255.255.255</h3>
+<p>受限的广播地址，常作为局域网内的边界 IP。受限广播地址与直接广播地址（主机字段全为 1 的 IP）的区别在于，受限广播地址只能用于本地网络，路由器不会转发以受限广播地址为目的地址的分组。而一般广播地址既可在本地广播，也可跨网段广播。换句话说，就是一般的广播地址（直接广播地址）能够通过某些路由器（当然不是所有的路由器），而受限的广播地址不能通过路由器。</p>
+<h2 id="3计算机获取ip的过程">3.计算机获取IP的过程</h2>
+<p>当计算机启动时，默认IP地址 0.0.0.0 ，此时没有身份信息，无法进入网络，计算机需要进行广播。</p>
+<h3 id="1discover阶段">1）discover阶段</h3>
+<p>由 0.0.0.0 发送到 255.255.255.255，这个操作实际上是一个广播，正如名字 discover 一样，目的是为主机寻找 DHCP 服务器。这个广播最远到达网关。</p>
+<h3 id="2offer阶段">2）offer阶段</h3>
+<p>DHCP 服务器收到请求后，会给计算机分配地址，然后将地址数据包返回。当电脑收到这个包后，就会根据 DHCP 协议为自己配上地址。注意到的是，此时 DHCP 服务器是通过 MAC 地址与计算机连接并传输信息。MAC 地址也可以用于通信，但是只限于本地通信，无法加入互联网。</p>
+<h3 id="3request阶段">3）request阶段</h3>
+<p>这个阶段计算机会通过广播向 DHCP 发送 request 包，确定使用这个地址。这是由于网络中可能会部署多台 DHCP 服务器，导致计算机可能会收到多个 offer，因此计算机为了确认使用哪个地址，需要再发一个 request 来告知 DHCP 服务器。服务器也是收到请求后，才会真正的把这个地址分配出去。</p>
+<h3 id="4ack阶段">4）ACK阶段</h3>
+<p>DHCP 服务器通过 MAC 地址发送 ACK 包，确认电脑请求的 IP 地址可使用（NAK）</p>
+<h2 id="4回环地址-127001">4.回环地址 127.0.0.1</h2>
+<p>127.0.0.1 到 127.255.255.254（去掉0和255）的范围都是本地回环地址，通常被称为本地回环地址(Loopback Address)，不属于任何一个地址类。它代表设备的本地虚拟接口，所以默认被看作是永远不会宕掉的接口。在 Windows 操作系统中也有相似的定义，所以通常在安装网卡前，可以尝试 ping 通这个本地回环地址，来检查本地网络协议、基本数据接口等是否正常的。</p>
+<h2 id="5本地私有ip地址">5.本地私有IP地址</h2>
+<p>IPv4 地址空间中有一部分特殊的地址，称为私有 IP 地址，私有 IP 地址不能直接访问公网（Internet）的 IP，只能在本地使用。</p>
+<ul>
+<li>
+<p>A类私有地址：10.0.0.0/8，范围是：10.0.0.0 ~ 10.255.255.255</p>
+</li>
+<li>
+<p>B类私有地址：172.16.0.0/12，范围是：172.16.0.0 ~ 172.31.255.255</p>
+</li>
+<li>
+<p>C类私有地址：192.168.0.0/16，范围是：192.168.0.0 ~ 192.168.255.255</p>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%90%E7%BD%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">计算机网络—什么是子网</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

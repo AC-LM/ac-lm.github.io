@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pytest on AC-LM &#39;s blog</title>
+    <link>https://ac-lm.github.io/tags/pytest/</link>
+    <description>Recent content in Pytest on AC-LM &#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 07 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/tags/pytest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytest—用例收集规则</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E7%94%A8%E4%BE%8B%E6%94%B6%E9%9B%86%E8%A7%84%E5%88%99/</link>
+      <pubDate>Fri, 07 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E7%94%A8%E4%BE%8B%E6%94%B6%E9%9B%86%E8%A7%84%E5%88%99/</guid>
+      <description>参考原文：用例收集规则 @jaxon-chen 
+ 1.默认执行顺序 pytest 默认执行顺序是按照 case 在代码中的顺序位置先后执行的。case 的收集默认从当前运行目录开始查找文件，该查找为递归查找，子目录中的文件也会被查找。pytest 能且仅能查找符合命名规则的 py 文件，默认规则是以test _开头或者以test结尾的 py 文件。
+2.指定查找 使用同目录下的pytest.ini或conftest.py来改变搜索顺序。当在配置文件中指定目录后，pytest 就会从该目录中开始查找测试用例文件。testpaths = ./scripts</description>
+    </item>
+    
+    <item>
+      <title>Pytest—数据参数化</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E5%8C%96/</link>
+      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E5%8C%96/</guid>
+      <description>参考原文：参数化@pytest.mark.parametrize @小菠萝测试笔记 
+ 1.使用fixtrue.params参数实现参数化 a.通过 request.param 返回参数值 data = [&amp;#39;anjing&amp;#39;, &amp;#39;test&amp;#39;, &amp;#39;admin&amp;#39;] @pytest.fixture(params=data) def login(request): print(&amp;#39;登录功能&amp;#39;) yield request.param print(&amp;#39;退出登录&amp;#39;) b.使用 参数化的值可以做为返回值使用
+def test_01(self, login): print(&amp;#39;---用例01---&amp;#39;) print(&amp;#39;用户名：%s&amp;#39; % login) c.自定义控制台提示信息 @pytest.fixture(params=data, ids=[&amp;#39;This is anjing&amp;#39;,&amp;#39;This is admin&amp;#39;, &amp;#39;This is test&amp;#39;]) def login(request): print(&amp;#39;登录功能&amp;#39;) yield request.param print(&amp;#39;退出登录&amp;#39;) 2.`@pytest.mark.parametrize`实现参数化 a.使用 def parametrize(self,argnames,argvalues,indirect=False,ids=None,scope=None)
+argnames：参数名称，字符串，多个使用逗号隔开
+argvalues：值，必须是列表
+indirect：是否作为函数执行
+@pytest.mark.parametrize(&amp;#34;test_input,expected&amp;#34;, [(&amp;#34;3+5&amp;#34;, 8), (&amp;#34;2+4&amp;#34;, 6), (&amp;#34;6*9&amp;#34;, 42)]) def test_eval(test_input, expected): print(f&amp;#34;测试数据{test_input},期望结果{expected}&amp;#34;) assert eval(test_input) == expected b.装饰测试类 当装饰器@pytest.mark.parametrize装饰测试类时，会将数据集合传递给类的所有测试用例方法。注意，此时所有的测试方法都必须传入这些参数</description>
+    </item>
+    
+    <item>
+      <title>Pytest—assert 断言</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytestassert-%E6%96%AD%E8%A8%80/</link>
+      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytestassert-%E6%96%AD%E8%A8%80/</guid>
+      <description>参考原文：assert断言详细使用 @小菠萝测试笔记 
+ 1.前言  与unittest不同，pytest使用的是python自带的assert关键字来进行断言 assert关键字后面可以接一个表达式，只要表达式的最终结果为True，那么断言通过，用例执行成功，否则用例执行失败  2.实例 # 异常信息 def f(): return 3 def test_function(): a = f() assert a % 2 == 0, &amp;#34;判断 a 为偶数，当前 a 的值为：%s&amp;#34; % a  
+3.常用断言  assert xx ：判断 xx 为真 assert not xx ：判断 xx 不为真 assert a in b ：判断 b 包含 a assert a == b ：判断 a 等于 b assert a != b ：判断 a 不等于 b  4.</description>
+    </item>
+    
+    <item>
+      <title>Pytest—fixture 实现 setup 和 teardown</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytestfixture-%E5%AE%9E%E7%8E%B0-setup-%E5%92%8C-teardown/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytestfixture-%E5%AE%9E%E7%8E%B0-setup-%E5%92%8C-teardown/</guid>
+      <description>1.setup 与 fixture 的启动顺序 fixture 的启动在 setup 之前，在 fixture 执行完之后执行 setup
+2.setup 和 teardown 的实现 通过使用 yield 关键字实现teardown 操作
+@pytest.fixture() def open(): print(&amp;#34;打开浏览器，并且打开百度&amp;#34;) yield print(&amp;#34;执行teardown&amp;#34;)  如果其中一个用例出现异常，不影响 yield 后面的 teardown 执行，并且全部用例执行完之后，yield 呼唤 teardown 操作 如果在 setup 就异常了，那么是不会去执行 yield 后面的 teardown 内容了  </description>
+    </item>
+    
+    <item>
+      <title>Pytest—fixture</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytestfixture/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytestfixture/</guid>
+      <description>fixture是pytest提供给测试环境初始化与清理的一个函数，通过语法糖@pytest.fixture()，测试用例会在测试开始前与测试结束后自动的执行@pytest.fixture()标记的函数，完成测试环境的初始化与清理。
+1.fixture 的优势  1.有独立的命名，并通过声明它们从测试函数、模块、类或整个项目中的使用来激活。 2.按模块化的方式实现，每个fixture都可以互相调用。 3.fixture的范围从简单的单元测试到复杂的功能测试，可以对fixture配置参数，或者跨函数function，类class，模块module或整个测试session范围。  2.fixture 当做参数传入 定义fixture跟定义普通函数差不多，唯一区别就是在函数上加个装饰器@pytest.fixture()，fixture命名不要以test开头，跟用例区分开。fixture是有返回值得，没有返回值默认为None。用例调用fixture的返回值，直接就是把fixture的函数名称当做变量名称。
+@pytest.fixture() def K(): a = &amp;#39;leo&amp;#39; return a def test2(K): assert test1 == &amp;#39;leo&amp;#39; 3.使用多个 fixture 如果用例需要用到多个fixture的返回数据，fixture也可以返回一个元祖，list或字典，然后从里面取出对应数据。
+@pytest.fixture() def test1(): a = &amp;#39;leo&amp;#39; b = &amp;#39;123456&amp;#39; print(&amp;#39;传出a,b&amp;#39;) return (a, b) def test2(test1): u = test1[0] p = test1[1] assert u == &amp;#39;leo&amp;#39; assert p == &amp;#39;123456&amp;#39; print(&amp;#39;元祖形式正确&amp;#39;) 4.fixture 的作用范围 fixture里面有个scope参数可以控制fixture的作用范围：session&amp;gt;module&amp;gt;class&amp;gt;function
+ function：每一个函数或方法都会调用 class：每一个类调用一次，一个类中可以有多个方法 module：每一个.py文件调用一次，该文件内又有多个function和class session：是多个文件调用一次，可以跨.py文件调用，每个.py文件就是module  5.fixture 的参数 fixture（scope=&amp;#39;function&amp;#39;，params=None，autouse=False，ids=None，name=None）  scope：有四个级别参数&amp;quot;function&amp;quot;（默认），&amp;ldquo;class&amp;rdquo;，&amp;ldquo;module&amp;rdquo;，&amp;ldquo;session&amp;rdquo; params：一个可选的参数列表。 autouse：如果True，则为所有测试都可以自动使用 fixture 函数。如果为False则显示需要传参来激活fixture ids：每个字符串id的列表，每个字符串对应于params这样他们就是测试ID的一部分。如果没有提供ID它们将从params自动生成 name：fixture的名称。这默认为装饰函数的名称。  6.</description>
+    </item>
+    
+    <item>
+      <title>Pytest—测试框架</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/pytest%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</guid>
+      <description>1.安装 pip install -U pytest 2.运行 python3 -m pytest --help pytest.main([&amp;#39;-s&amp;#39;]) pytest.main([&amp;#39;-x&amp;#39;, &amp;#39;mytestdir&amp;#39;]) # []内传入配置参数，相对于执行 pytest -s  3.约束 文件名以test_*.py文件和*_test.py 以test_开头的函数 以Test开头的类，并且不能带有 init 方法 以test_开头的方法 所有的包pakege必须要有__init__.py文件 4.参数选择 # 查看 pytest 版本 pytest --version # 显示可用的内置函数参数 pytest --fixtures # 通过命令行查看帮助信息及配置文件选项 pytest --help # 在第N个用例失败后，结束测试执行 pytest -x # 第01次失败，就停止测试 pytest --maxfail=2 # 出现2个失败就终止测试 # 指定测试目录 pytest testing/ # 通过关键字表达式过滤执行 # 这条命令会匹配文件名、类名、方法名匹配表达式的用例，这里这条命令会运行 TestMyClass.test_something， 不会执行 TestMyClass.test_method_simple pytest -k &amp;#34;MyClass and not method&amp;#34; # 运行模块中的指定用例 pytest test_mod.</description>
+    </item>
+    
+    <item>
+      <title>allure—测试报告生成</title>
+      <link>https://ac-lm.github.io/posts/pytest&#43;allure/allure%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/pytest&#43;allure/allure%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90/</guid>
+      <description>1.命令使用 #----- generate ------------------------------ allure generate DIR -o DIR -c DIR # 参数：-c, --clean 在生成新的Allure报告之前，先清除该目录 # 参数： -o, --report-dir, --output 指定目录生成allure报告 #----- open ------------------------------ allure open DIR # 参数：-h, --host 指定域名地址 # 参数：-p, --port 指定端口号 #----- serve ------------------------------ allure serve./report/html # 参数：-h, --host 指定域名地址 # 参数：-p, --port 指定端口号 # 测试执行，在指定目录DIR生成allure报告与如果目录存在则清除目录 pytest --alluredir=DIR --clean-alluredir 2.生成报告(前台) pytest --alluredir=/tmp/my_allure_results # 执行测试 allure serve /tmp/my_allure_results -p 33333 # 生成报告 3.生成报告(后台) nohup allure serve /tmp/my_allure_results -p 33333 &amp;gt;/tmp/run.</description>
+    </item>
+    
+  </channel>
+</rss>

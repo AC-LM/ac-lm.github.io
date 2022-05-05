@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.解释下什么是GPL,GNU,自由软件？ GPL：（通用公共许可证）：一种授权，任何人有权取得、修改、重新发布自由软件的权力。GNU:(革奴计划)：目标是创建一套完全自由、开放的的操作系统。自由软件：是一种可以不受限制地自由使用、复制、研究、修改和分发的软件。主要许可证有GPL和BSD许可证两种。2.linux系统里，buffer和cache如何区分？ buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。3.描述Linux运行级别0-6的各自含义 0：关机模式1：单用户模式&amp;lt;==破解root密码2：无网络支持的多用户模式3：有网络支持的多用户模式（文本模式，工作中最常用的模式）4：保留，未使用5：有网络支持的X-windows支持多用户模式（桌面）6: 重新引导系统，即重启4.描述Linux系统从开机到登陆界面的启动过程 ⑴开机BIOS自检，加载硬盘。⑵读取MBR,MBR引导。⑶grub引导菜单(Boot Loader)。⑷加载内核kernel。⑸启动init进程，依据inittab文件设定运行级别⑹init进程，执行rc.sysinit文件。⑺启动内核模块，执行不同级别的脚本程序。⑻执行/etc/rc.d/rc.local⑼启动mingetty，进入系统登陆界面。5.描述Linux下软链接和硬链接的区别 在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。①默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。②硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，③ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。④删除软链接文件，对源文件和硬链接文件无任何影响。⑤删除文件的硬链接文件，对源文件及软链接文件无任何影响。⑥删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。⑦同时删除源文件及其硬链接文件，整个文件才会被真正的删除。⑧很多硬件设备的快照功能，使用的就是类似硬链接的原理。⑨软链接可以跨文件系统，硬链接不可以跨文件系统。6.shell脚本中“$?”标记的用途是什么? 在写一个shell脚本时，如果你想要检查前一命令是否执行成功，在if条件中使用“$?”可以来检查前一命令的结束状态。简单的例子如下：root@localhost:~# ls /usr/bin/root@localhost:~# echo $?0如果结束状态是0，说明前一个命令执行成功。root@localhost:~# ls /usr/bin/sharels: cannot access /usr/bin/share: No such file or directoryroot@localhost:~# echo $?2如果结束状态不是0，说明命令执行失败。7.'><title>Linux—一般问题</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/linux/linux%E4%B8%80%E8%88%AC%E9%97%AE%E9%A2%98/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Linux—一般问题'>
+<meta property='og:description' content='1.解释下什么是GPL,GNU,自由软件？ GPL：（通用公共许可证）：一种授权，任何人有权取得、修改、重新发布自由软件的权力。GNU:(革奴计划)：目标是创建一套完全自由、开放的的操作系统。自由软件：是一种可以不受限制地自由使用、复制、研究、修改和分发的软件。主要许可证有GPL和BSD许可证两种。2.linux系统里，buffer和cache如何区分？ buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。3.描述Linux运行级别0-6的各自含义 0：关机模式1：单用户模式&amp;lt;==破解root密码2：无网络支持的多用户模式3：有网络支持的多用户模式（文本模式，工作中最常用的模式）4：保留，未使用5：有网络支持的X-windows支持多用户模式（桌面）6: 重新引导系统，即重启4.描述Linux系统从开机到登陆界面的启动过程 ⑴开机BIOS自检，加载硬盘。⑵读取MBR,MBR引导。⑶grub引导菜单(Boot Loader)。⑷加载内核kernel。⑸启动init进程，依据inittab文件设定运行级别⑹init进程，执行rc.sysinit文件。⑺启动内核模块，执行不同级别的脚本程序。⑻执行/etc/rc.d/rc.local⑼启动mingetty，进入系统登陆界面。5.描述Linux下软链接和硬链接的区别 在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。①默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。②硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，③ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。④删除软链接文件，对源文件和硬链接文件无任何影响。⑤删除文件的硬链接文件，对源文件及软链接文件无任何影响。⑥删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。⑦同时删除源文件及其硬链接文件，整个文件才会被真正的删除。⑧很多硬件设备的快照功能，使用的就是类似硬链接的原理。⑨软链接可以跨文件系统，硬链接不可以跨文件系统。6.shell脚本中“$?”标记的用途是什么? 在写一个shell脚本时，如果你想要检查前一命令是否执行成功，在if条件中使用“$?”可以来检查前一命令的结束状态。简单的例子如下：root@localhost:~# ls /usr/bin/root@localhost:~# echo $?0如果结束状态是0，说明前一个命令执行成功。root@localhost:~# ls /usr/bin/sharels: cannot access /usr/bin/share: No such file or directoryroot@localhost:~# echo $?2如果结束状态不是0，说明命令执行失败。7.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/linux/linux%E4%B8%80%E8%88%AC%E9%97%AE%E9%A2%98/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2021-05-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-14T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Linux—一般问题">
+<meta name="twitter:description" content="1.解释下什么是GPL,GNU,自由软件？ GPL：（通用公共许可证）：一种授权，任何人有权取得、修改、重新发布自由软件的权力。GNU:(革奴计划)：目标是创建一套完全自由、开放的的操作系统。自由软件：是一种可以不受限制地自由使用、复制、研究、修改和分发的软件。主要许可证有GPL和BSD许可证两种。2.linux系统里，buffer和cache如何区分？ buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。3.描述Linux运行级别0-6的各自含义 0：关机模式1：单用户模式&amp;lt;==破解root密码2：无网络支持的多用户模式3：有网络支持的多用户模式（文本模式，工作中最常用的模式）4：保留，未使用5：有网络支持的X-windows支持多用户模式（桌面）6: 重新引导系统，即重启4.描述Linux系统从开机到登陆界面的启动过程 ⑴开机BIOS自检，加载硬盘。⑵读取MBR,MBR引导。⑶grub引导菜单(Boot Loader)。⑷加载内核kernel。⑸启动init进程，依据inittab文件设定运行级别⑹init进程，执行rc.sysinit文件。⑺启动内核模块，执行不同级别的脚本程序。⑻执行/etc/rc.d/rc.local⑼启动mingetty，进入系统登陆界面。5.描述Linux下软链接和硬链接的区别 在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。①默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。②硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，③ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。④删除软链接文件，对源文件和硬链接文件无任何影响。⑤删除文件的硬链接文件，对源文件及软链接文件无任何影响。⑥删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。⑦同时删除源文件及其硬链接文件，整个文件才会被真正的删除。⑧很多硬件设备的快照功能，使用的就是类似硬链接的原理。⑨软链接可以跨文件系统，硬链接不可以跨文件系统。6.shell脚本中“$?”标记的用途是什么? 在写一个shell脚本时，如果你想要检查前一命令是否执行成功，在if条件中使用“$?”可以来检查前一命令的结束状态。简单的例子如下：root@localhost:~# ls /usr/bin/root@localhost:~# echo $?0如果结束状态是0，说明前一个命令执行成功。root@localhost:~# ls /usr/bin/sharels: cannot access /usr/bin/share: No such file or directoryroot@localhost:~# echo $?2如果结束状态不是0，说明命令执行失败。7.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/linux/linux%E4%B8%80%E8%88%AC%E9%97%AE%E9%A2%98/">Linux—一般问题</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 14, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1解释下什么是gplgnu自由软件">1.解释下什么是GPL,GNU,自由软件？</h2>
+<pre tabindex="0"><code>GPL：（通用公共许可证）：一种授权，任何人有权取得、修改、重新发布自由软件的权力。
+GNU:(革奴计划)：目标是创建一套完全自由、开放的的操作系统。
+自由软件：是一种可以不受限制地自由使用、复制、研究、修改和分发的软件。主要许可证有GPL和BSD许可证两种。
+</code></pre><h2 id="2linux系统里buffer和cache如何区分">2.linux系统里，buffer和cache如何区分？</h2>
+<pre tabindex="0"><code>buffer和cache都是内存中的一块区域，
+当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，
+然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；
+
+当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，
+可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。
+</code></pre><h2 id="3描述linux运行级别0-6的各自含义">3.描述Linux运行级别0-6的各自含义</h2>
+<pre tabindex="0"><code>0：关机模式
+1：单用户模式&lt;==破解root密码
+2：无网络支持的多用户模式
+3：有网络支持的多用户模式（文本模式，工作中最常用的模式）
+4：保留，未使用
+5：有网络支持的X-windows支持多用户模式（桌面）
+6: 重新引导系统，即重启
+</code></pre><h2 id="4描述linux系统从开机到登陆界面的启动过程">4.描述Linux系统从开机到登陆界面的启动过程</h2>
+<pre tabindex="0"><code>⑴开机BIOS自检，加载硬盘。
+⑵读取MBR,MBR引导。
+⑶grub引导菜单(Boot Loader)。
+⑷加载内核kernel。
+⑸启动init进程，依据inittab文件设定运行级别
+⑹init进程，执行rc.sysinit文件。
+⑺启动内核模块，执行不同级别的脚本程序。
+⑻执行/etc/rc.d/rc.local
+⑼启动mingetty，进入系统登陆界面。
+</code></pre><h2 id="5描述linux下软链接和硬链接的区别">5.描述Linux下软链接和硬链接的区别</h2>
+<pre tabindex="0"><code>在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。
+①默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。
+②硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，
+③ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。
+④删除软链接文件，对源文件和硬链接文件无任何影响。
+⑤删除文件的硬链接文件，对源文件及软链接文件无任何影响。
+⑥删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。
+⑦同时删除源文件及其硬链接文件，整个文件才会被真正的删除。
+⑧很多硬件设备的快照功能，使用的就是类似硬链接的原理。
+⑨软链接可以跨文件系统，硬链接不可以跨文件系统。
+</code></pre><h2 id="6shell脚本中标记的用途是什么">6.shell脚本中“$?”标记的用途是什么?</h2>
+<pre tabindex="0"><code>在写一个shell脚本时，如果你想要检查前一命令是否执行成功，在if条件中使用“$?”可以来检查前一命令的结束状态。简单的例子如下：
+root@localhost:~# ls /usr/bin/
+root@localhost:~# echo $?
+0
+
+如果结束状态是0，说明前一个命令执行成功。
+root@localhost:~# ls /usr/bin/share
+ls: cannot access /usr/bin/share: No such file or directory
+
+root@localhost:~# echo $?
+2
+如果结束状态不是0，说明命令执行失败。
+</code></pre><h2 id="7如何让history命令显示具体时间">7.如何让history命令显示具体时间？</h2>
+<pre tabindex="0"><code>$ HISTTIMEFORMAT=&quot;%Y-%m-%d %H:%M:%S&quot;
+
+$ export HISTTIMEFORMAT
+
+重新开机后会还原，可以写／etc／profile
+</code></pre><h2 id="8用shell统计ip访问情况要求分析nginx访问日志找出访问页面数量在前10位的ip数以下是nginx的访问日志节选">8.用shell统计ip访问情况，要求分析nginx访问日志，找出访问页面数量在前10位的IP数。以下是nginx的访问日志节选</h2>
+<pre tabindex="0"><code>202.101.129.218- - [26/Mar/2006:23:59:55 +0800] &quot;GET /online/stat_inst.php?pid=d065HTTP/1.1&quot; 302 20-&quot;-&quot; &quot;-&quot; &quot;Mozilla/4.0(compatible; MSIE 6.0; Windows NT 5.1)&quot;
+
+# 请写shell实现输出top10的IP列表。
+
+$ awk '{print $1}' access.log |sort|uniq -c |head -n 10
+
+31 202.101.129.218
+21 123.93.29.11
+11 13.92.19.31
+</code></pre><h2 id="9将本地的80端口的请求转发到8080端口本机地址1000254写出命令">9.将本地的80端口的请求转发到8080端口，本机地址10.0.0.254，写出命令</h2>
+<pre tabindex="0"><code>$ iptables -t nat -A PREROUTING -d 10.0.0.254 -p tcp --dprot 80 -j DNAT --to-destination 10.0.0.254:8080
+</code></pre><h2 id="10load过高的可能性有哪些">10.Load过高的可能性有哪些？</h2>
+<pre tabindex="0"><code>排查思路：
+1. 首先排查哪些进程cpu占用率高。通过命令 ps ux
+2、假如通过第一步看到一个JAVA进程占有资源比较高，查看对应java进程的每个线程的CPU占用率。通过命令：ps -Lp 15047
+3、追踪线程内部，查看load过高原因。通过命令：jstack 15047
+
+其他经验：
+cpu load的飙升，一方面可能和full gc的次数增大有关，一方面可能和死循环有关
+</code></pre><h2 id="11描述etcfstab-文件中每个字段的含义">11.描述/etc/fstab 文件中每个字段的含义？</h2>
+<pre tabindex="0"><code>（1）第一列：将被加载的文件系统名；
+（2）第二列：该文件系统的安装点；
+（3）第三列：文件系统的类型；
+（4）第四列：设置参数；
+（5）第五列：供备份程序确定上次备份距现在的天数；
+（6）第六列：在系统引导时检测文件系统的顺序。
+</code></pre><h2 id="12如何在打包时排除指定目录">12.如何在打包时排除指定目录?</h2>
+<pre tabindex="0"><code>$ tar --exclude=/home/dmtsai --exclude=*.tar -zcvf myfile.tar.gz /home/* /etc
+</code></pre><h2 id="13怎么生成随机密码">13.怎么生成随机密码?</h2>
+<pre tabindex="0"><code>mkpasswd -l 8  -C 2 -c 2 -d 4 -s 0
+</code></pre><h2 id="14如何统计tcp状态">14.如何统计tcp状态？</h2>
+<pre tabindex="0"><code>netstat -an | grep '^tcp' | awk '{++s[$NF]} END{for(i in s) print i &quot;\t&quot;s[i]}'
+</code></pre><h2 id="15mysql-忘记-root-密码怎么办">15.mysql 忘记 root 密码怎么办</h2>
+<pre tabindex="0"><code>$ mysqld_safe --user=mysql --skip-grant-tables --skip-networking &amp; use mysql;
+mysql&gt; update user set password=password('123123') where user='root';。
+</code></pre>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/linux/linux%E5%90%8E%E5%8F%B0%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8F%8A%E5%85%B3%E9%97%AD/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—后台程序的运行及关闭</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linuxtar-%E8%A7%A3%E5%8E%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—tar 解压</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linux%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%91%BD%E4%BB%A4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—系统监控命令</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linuxrpm-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—rpm 软件管理工具</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linuxmtr-%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—MTR 链路测试工具</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：.gitlab-ci.yml语法 @hellojinni 
+ 1..gitlab-ci.yml 文件 GitLab CI 使用 YAML文件—.gitlab-ci.yml 来管理项目配置，用来配置 CI 在你的项目中做哪些操作，这个文件位于仓库的根目录。
+当新内容 push 到仓库或者有代码合并后， GitLab 会查找是否有 .gitlab-ci.yml 文件，如果文件存在， Runners 将会根据该文件的内容开始 build 本次 commit 。
+.gitlab-ci.yml 使用 YAML 语法， 你需要格外注意缩进格式，要用空格来缩进，不能用 tabs 来缩进。
+2.Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认有3个 stages ： build , test , deploy 。我们可以在一次 Pipeline 中定义多个 Stages ，这些 Stages 会有以下特点：
+ 所有 Stages 会按照顺序运行，即当一个 Stage 完成后，下一个 Stage 才会开始 只有当所有 Stages 完成后，该构建任务 (Pipeline) 才会成功 如果任何一个 Stage 失败，那么后面的 Stages 不会执行，该构建任务 (Pipeline) 失败  3.'><title>Git—.gitlab-ci.yml 文件配置</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/git/git.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Git—.gitlab-ci.yml 文件配置'>
+<meta property='og:description' content='参考原文：.gitlab-ci.yml语法 @hellojinni 
+ 1..gitlab-ci.yml 文件 GitLab CI 使用 YAML文件—.gitlab-ci.yml 来管理项目配置，用来配置 CI 在你的项目中做哪些操作，这个文件位于仓库的根目录。
+当新内容 push 到仓库或者有代码合并后， GitLab 会查找是否有 .gitlab-ci.yml 文件，如果文件存在， Runners 将会根据该文件的内容开始 build 本次 commit 。
+.gitlab-ci.yml 使用 YAML 语法， 你需要格外注意缩进格式，要用空格来缩进，不能用 tabs 来缩进。
+2.Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认有3个 stages ： build , test , deploy 。我们可以在一次 Pipeline 中定义多个 Stages ，这些 Stages 会有以下特点：
+ 所有 Stages 会按照顺序运行，即当一个 Stage 完成后，下一个 Stage 才会开始 只有当所有 Stages 完成后，该构建任务 (Pipeline) 才会成功 如果任何一个 Stage 失败，那么后面的 Stages 不会执行，该构建任务 (Pipeline) 失败  3.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/git/git.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Git' /><meta property='article:published_time' content='2021-01-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-13T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Git—.gitlab-ci.yml 文件配置">
+<meta name="twitter:description" content="参考原文：.gitlab-ci.yml语法 @hellojinni 
+ 1..gitlab-ci.yml 文件 GitLab CI 使用 YAML文件—.gitlab-ci.yml 来管理项目配置，用来配置 CI 在你的项目中做哪些操作，这个文件位于仓库的根目录。
+当新内容 push 到仓库或者有代码合并后， GitLab 会查找是否有 .gitlab-ci.yml 文件，如果文件存在， Runners 将会根据该文件的内容开始 build 本次 commit 。
+.gitlab-ci.yml 使用 YAML 语法， 你需要格外注意缩进格式，要用空格来缩进，不能用 tabs 来缩进。
+2.Stages Stages 表示构建阶段，说白了就是上面提到的流程。默认有3个 stages ： build , test , deploy 。我们可以在一次 Pipeline 中定义多个 Stages ，这些 Stages 会有以下特点：
+ 所有 Stages 会按照顺序运行，即当一个 Stage 完成后，下一个 Stage 才会开始 只有当所有 Stages 完成后，该构建任务 (Pipeline) 才会成功 如果任何一个 Stage 失败，那么后面的 Stages 不会执行，该构建任务 (Pipeline) 失败  3.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/git/git.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/">Git—.gitlab-ci.yml 文件配置</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 13, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>参考原文：<a class="link" href="https://blog.51cto.com/7072753/2457095"  target="_blank" rel="noopener"
+    > .gitlab-ci.yml语法  @hellojinni  </a></p>
+</blockquote>
+<h2 id="1gitlab-ciyml-文件">1.<code>.gitlab-ci.yml</code> 文件</h2>
+<p>GitLab CI 使用 YAML文件—.gitlab-ci.yml 来管理项目配置，用来配置 CI 在你的项目中做哪些操作，这个文件位于仓库的根目录。</p>
+<p>当新内容 push 到仓库或者有代码合并后， GitLab 会查找是否有 .gitlab-ci.yml 文件，如果文件存在， Runners 将会根据该文件的内容开始 build 本次 commit 。</p>
+<p>.gitlab-ci.yml 使用 YAML 语法， 你需要格外注意缩进格式，要用空格来缩进，不能用 tabs 来缩进。</p>
+<h2 id="2stages">2.Stages</h2>
+<p>Stages 表示构建阶段，说白了就是上面提到的流程。默认有3个 stages ： build , test , deploy 。我们可以在一次 Pipeline 中定义多个 Stages ，这些 Stages 会有以下特点：</p>
+<ul>
+<li>所有 Stages 会按照顺序运行，即当一个 Stage 完成后，下一个 Stage 才会开始</li>
+<li>只有当所有 Stages 完成后，该构建任务 (Pipeline) 才会成功</li>
+<li>如果任何一个 Stage 失败，那么后面的 Stages 不会执行，该构建任务 (Pipeline) 失败</li>
+</ul>
+<h2 id="3jobs">3.Jobs</h2>
+<p>Jobs 表示构建工作，表示某个 Stage 里面执行的工作。我们可以在 Stages 里面定义多个 Jobs ，Jobs 是由 Runners 接管并且由服务器中 runner 执行。这些 Jobs 会有以下特点：</p>
+<ul>
+<li>每一个 Jobs 的执行过程都是独立运行的</li>
+<li>相同 Stage 中的 Jobs 会并行执行</li>
+<li>相同 Stage 中的 Jobs 都执行成功时，该 Stage 才会成功</li>
+<li>如果任何一个 Job 失败，那么该 Stage 失败，即该构建任务 (Pipeline) 失败</li>
+</ul>
+<h2 id="4约束">4.约束</h2>
+<p>YAML 文件定义了一系列带有约束说明的任务。这些任务都是以任务名开始并且至少要包含 script 部分。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">job1</span>:
+  <span style="color:#f92672">script</span>: <span style="color:#e6db74">&#34;execute-script-for-job1&#34;</span>
+  
+<span style="color:#f92672">job2</span>:
+  <span style="color:#f92672">script</span>: <span style="color:#e6db74">&#34;execute-script-for-job2&#34;</span>
+</code></pre></div><h2 id="5跳过job">5.跳过job</h2>
+<p>如果你的 commit 信息包涵 ci skip 或者 skip ci ，不论大小写，这个 commit 将会被创建，但是 job 会被跳过</p>
+<h2 id="6开始">6.开始</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">before_script</span>:
+  - <span style="color:#ae81ff">echo &#34;每个job之前都会执行&#34;</span>
+</code></pre></div><h2 id="7结束">7.结束</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">after_script</span>:
+  - <span style="color:#ae81ff">echo &#34;每个job之后都会执行&#34;</span>
+</code></pre></div><h2 id="8示例">8.示例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 定义 stages（阶段）。任务将按此顺序执行。</span>
+<span style="color:#f92672">stages</span>:
+  - <span style="color:#ae81ff">build</span>
+  - <span style="color:#ae81ff">test</span>
+ 
+<span style="color:#75715e"># 定义 job（任务）</span>
+<span style="color:#f92672">job1</span>:
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">test</span>
+  <span style="color:#f92672">tags</span>:
+    - <span style="color:#ae81ff">XX </span> <span style="color:#75715e"># 只有标签为XX的runner才会执行这个任务</span>
+  <span style="color:#f92672">only</span>:
+    - <span style="color:#ae81ff">dev</span> <span style="color:#75715e"># 只有dev分支提交代码才会执行这个任务。也可以是分支名称或触发器名称</span>
+    - <span style="color:#ae81ff">/^future-.*$/</span> <span style="color:#75715e"># 正则表达式，只有future-开头的分支才会执行</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">echo &#34;I am job1&#34;</span>
+    - <span style="color:#ae81ff">echo &#34;I am in test stage&#34;</span>
+    
+<span style="color:#f92672">job2</span>:
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">test</span> <span style="color:#75715e"># 如果此处没有定义stage，其默认也是test</span>
+  <span style="color:#f92672">only</span>:
+    - <span style="color:#ae81ff">master</span> <span style="color:#75715e"># 只有master分支提交代码才会执行这个任务</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">echo &#34;I am job2&#34;</span>
+    - <span style="color:#ae81ff">echo &#34;I am in test stage&#34;</span>
+  <span style="color:#f92672">allow_failure</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># 允许失败，即不影响下步构建</span>
+
+<span style="color:#f92672">.job3</span>:
+<span style="color:#75715e"># 对于临时不想执行的job，可以选择在前面加个&#34;.&#34;，这样就会跳过此步任务，否则你除了要注释掉这个job3外，还需要注释上面为build的stage</span>
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build</span>
+  <span style="color:#f92672">except</span>:
+    - <span style="color:#ae81ff">dev</span> <span style="color:#75715e"># 除了dev分支，其它分支提交代码都会执行这个任务</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">echo &#34;I am job3&#34;</span>
+    - <span style="color:#ae81ff">echo &#34;I am in build stage&#34;</span>
+    
+<span style="color:#75715e"># 下面几个都相当于全局变量</span>
+<span style="color:#f92672">before_script</span>:
+  - <span style="color:#ae81ff">echo &#34;每个job之前都会执行&#34;</span>
+  - <span style="color:#ae81ff">export MVN_HOME</span>
+  - <span style="color:#ae81ff">export JAVA_HOME</span>
+  - <span style="color:#ae81ff">java -version</span>
+  - <span style="color:#ae81ff">sh /home/gitlab-runner/kill.sh</span>
+
+<span style="color:#f92672">after_script</span>:
+  - <span style="color:#ae81ff">echo &#34;每个job之后都会执行&#34;</span>
+  
+<span style="color:#f92672">variables</span>: 
+<span style="color:#75715e"># 变量</span>
+  <span style="color:#f92672">DATABASE_URL</span>: <span style="color:#e6db74">&#34;postgres://postgres@postgres/my_database&#34;</span> 
+  <span style="color:#75715e"># 在job中可以用${DATABASE_URL}来使用这个变量。常用的预定义变量有CI_COMMIT_REF_NAME（项目所在的分支或标签名称），CI_JOB_NAME（任务名称），CI_JOB_STAGE（任务阶段）</span>
+
+  <span style="color:#f92672">GIT_STRATEGY</span>: <span style="color:#e6db74">&#34;none&#34;</span> 
+  <span style="color:#75715e"># GIT策略，定义拉取代码的方式，有3种：clone/fetch/none，默认为clone，速度最慢，每步job都会重新clone一次代码。我们一般将它设置为none，在具体任务里设置为fetch就可以满足需求，毕竟不是每步都需要新代码，那也不符合我们测试的流程</span>
+  
+<span style="color:#f92672">cache</span>: 
+<span style="color:#75715e"># 缓存</span>
+<span style="color:#75715e">#因为缓存为不同管道和任务间共享，可能会覆盖，所以有时需要设置key</span>
+  <span style="color:#f92672">key</span>: <span style="color:#ae81ff">${CI_COMMIT_REF_NAME} </span>
+  <span style="color:#75715e"># 启用每分支缓存。</span>
+  <span style="color:#75715e"># key: &#34;$CI_JOB_NAME/$CI_COMMIT_REF_NAME&#34; # 启用每个任务和每个分支缓存。需要注意的是，如果是在windows中运行这个脚本，需要把$换成%</span>
+
+  <span style="color:#f92672">untracked</span>: <span style="color:#66d9ef">true</span> 
+  <span style="color:#75715e"># 缓存所有Git未跟踪的文件</span>
+
+  <span style="color:#f92672">paths</span>: 
+  <span style="color:#75715e"># 以下2个文件夹会被缓存起来，下次构建会解压出来</span>
+    - <span style="color:#ae81ff">node_modules/</span>
+    - <span style="color:#ae81ff">dist/</span>
+    
+</code></pre></div><h2 id="9保留字段">9.保留字段</h2>
+<p>这些保留字段不能被定义为 job 名称</p>
+<ul>
+<li><strong>image和services</strong>：这两个关键字允许使用一个自定义的Docker镜像和一系列的服务，并且可以用于整个job周期</li>
+<li><strong>before_script</strong>：before_script 用来定义所有job之前运行的命令</li>
+<li><strong>after_script</strong>：after_script用来定义所有job之后运行的命令</li>
+<li><strong>stages</strong>：stages用来定义可以被job调用的stages。stages的规范允许有灵活的多级pipelines。stages中的元素顺序决定了对应job的执行顺序</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 相同stage的job可以平行执行。</span>
+<span style="color:#75715e"># 下一个stage的job会在前一个stage的job成功后开始执行。</span>
+<span style="color:#75715e"># 如果.gitlab-ci.yml中没有定义stages，那么job&#39;s stages 会默认定义为 build，test 和 deploy。</span>
+<span style="color:#75715e"># 如果一个job没有指定stage，那么这个任务会分配到test stage。</span>
+</code></pre></div><ul>
+<li><strong>types</strong>：与stages同义</li>
+<li><strong>variables</strong>：变量</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">variables</span>:
+  <span style="color:#ae81ff">DATABASE_URL:&#34;postgres://postgres@postgres/my_database&#34;</span>
+</code></pre></div><ul>
+<li><strong>cache</strong>：用来指定需要在job之间缓存的文件或目录。只能使用该项目工作空间内的路径。</li>
+<li><strong>Jobs</strong>：工作</li>
+<li><strong>script</strong>：脚本</li>
+</ul>
+<h2 id="10only-and-except">10.only and except</h2>
+<p>only 和 except 是两个参数用分支策略来限制jobs构建：</p>
+<ul>
+<li>only 定义哪些分支和标签的 git 项目将会被 job 执行。</li>
+<li>except 定义哪些分支和标签的 git 项目将不会被 job 执行。</li>
+</ul>
+<p>下面是 refs 策略的使用规则：</p>
+<ul>
+<li>only 和 except 可同时使用。如果 only 和 except 在一个 job 配置中同时存在，则以 only 为准，跳过 except。</li>
+<li>only 和 except 可以使用正则表达式。</li>
+<li>only 和 except 允许使用特殊的关键字：branches，tags和triggers。</li>
+<li>only 和 except 允许使用指定仓库地址但不是 forks 的仓库。</li>
+</ul>
+<h2 id="11tags">11.tags</h2>
+<p>tags 可以从允许运行此项目的所有 Runners 中选择特定的 Runners 来执行 jobs。</p>
+<p>在注册 Runner 的过程中，我们可以设置 Runner 的标签，比如 ruby，postgres，development。</p>
+<p>tags 可通过 tags 来指定特殊的 Runners 来运行 jobs。</p>
+<h2 id="12allow_failure">12.allow_failure</h2>
+<p>allow_failure 可以用于当你想设置一个 job 失败的之后并不影响后续的 CI 组件的时候。失败的 jobs 不会影响到 commit 状态。</p>
+<p>当开启了允许 job 失败，所有的 intents 和 purposes 里的 pipeline 都是成功/绿色，但是也会有一个&quot;CI build passed with warnings&quot;信息显示在 merge request 或 commit 或 job page。这被允许失败的作业使用，但是如果失败表示其他地方应采取其他（手动）步骤。</p>
+<h2 id="13when">13.when</h2>
+<p>when is used to implement jobs that are run in case of failure or despite the failure.</p>
+<p>when 可以设置以下值：</p>
+<ul>
+<li>on_success - 只有前面 stages 的所有工作成功时才执行。 这是默认值。</li>
+<li>on_failure - 当前面 stages 中任意一个 jobs 失败后执行。</li>
+<li>always - 无论前面 stages 中 jobs 状态如何都执行。</li>
+<li>manual- 手动执行(GitLab8.10增加)。更多请查看手动操作。</li>
+</ul>
+<h2 id="14manual-actions">14.Manual actions</h2>
+<p>手动操作指令是不自动执行的特殊类型的 job；它们必须要人为启动。手动操作指令可以从 pipeline，build，environment 和 deployment 视图中启动。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/git/">Git</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/git/gitgitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git—gitlab-runner 安装配置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/git/gitssh-%E9%85%8D%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git—SSH 配置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/git/git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Git—版本管理工具</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

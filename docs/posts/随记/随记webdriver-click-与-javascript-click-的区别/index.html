@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='原文参考：webdriver-click-vs-javascript-click @stackoverflow 
+ 问题出现 在自动测试时有时候会出现无法通过 selenium WebDriver 点击命令来单击元素，完成操作，但是可以通过执行JavaScript来单击该元素来解决这个问题。
+element = driver.find_element_by_id(&amp;#34;myid&amp;#34;) driver.execute_script(&amp;#34;arguments[0].click();&amp;#34;, element) 回答 这两种方法的本质区别在浏览器的操作上：
+ WebDriver：**当 WebDriver 执行单击时，它会尽可能地模拟当真实用户使用浏览器时发生的情况。**比如您有一个元素 A，该按钮显示&amp;quot;单击我&amp;quot;，元素 B 是一个透明但具有其尺寸和设置的元素 B，B 完全覆盖 A。然后，您告诉 WebDriver 单击 A，WebDriver 将模拟单击，但结果却是 B 首先接收单击。这是因为 B 覆盖 A，如果用户尝试单击 A，则 B 将首先获取事件。A 最终是否会获得单击事件取决于 B 处理事件的方式。无论如何，在这种情况下，WebDriver 的行为与实际用户尝试单击 A 时的行为相同。 JavaScript：**假如您使用 JavaScript 来做 。单击此方法不会重现用户尝试单击 A 时真正发生的情况。**JavaScript 将事件直接发送到 A，B 不会收到任何事件。  这也就解释了为什么 JavaScript 单击在 WebDriver 单击不起作用时有效？
+正如我上面提到的，WebDriver 将尽力模拟当真实用户使用浏览器时发生的情况。事实是，DOM 可以包含用户无法与之交互的元素，并且 WebDriver 不允许您单击这些元素。除了我提到的重叠情况外，这还要求不能单击不可见的元素。我在其他一些问题中看到的一个常见情况是有人试图与 DOM 中已经存在的 GUI 元素进行交互，但仅在操作某些其他元素时才可见。这有时会与下拉菜单有关：您必须先单击显示下拉列表的按钮，然后才能选择菜单项。如果有人尝试在菜单可见之前单击菜单项，WebDriver 会犹豫，并说无法操作该元素。如果此人随后尝试使用 JavaScript 进行操作，它将起作用，因为事件直接传递到元素，而不考虑可见性。'><title>随记—WebDriver click 与 JavaScript click 的区别</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='随记—WebDriver click 与 JavaScript click 的区别'>
+<meta property='og:description' content='原文参考：webdriver-click-vs-javascript-click @stackoverflow 
+ 问题出现 在自动测试时有时候会出现无法通过 selenium WebDriver 点击命令来单击元素，完成操作，但是可以通过执行JavaScript来单击该元素来解决这个问题。
+element = driver.find_element_by_id(&amp;#34;myid&amp;#34;) driver.execute_script(&amp;#34;arguments[0].click();&amp;#34;, element) 回答 这两种方法的本质区别在浏览器的操作上：
+ WebDriver：**当 WebDriver 执行单击时，它会尽可能地模拟当真实用户使用浏览器时发生的情况。**比如您有一个元素 A，该按钮显示&amp;quot;单击我&amp;quot;，元素 B 是一个透明但具有其尺寸和设置的元素 B，B 完全覆盖 A。然后，您告诉 WebDriver 单击 A，WebDriver 将模拟单击，但结果却是 B 首先接收单击。这是因为 B 覆盖 A，如果用户尝试单击 A，则 B 将首先获取事件。A 最终是否会获得单击事件取决于 B 处理事件的方式。无论如何，在这种情况下，WebDriver 的行为与实际用户尝试单击 A 时的行为相同。 JavaScript：**假如您使用 JavaScript 来做 。单击此方法不会重现用户尝试单击 A 时真正发生的情况。**JavaScript 将事件直接发送到 A，B 不会收到任何事件。  这也就解释了为什么 JavaScript 单击在 WebDriver 单击不起作用时有效？
+正如我上面提到的，WebDriver 将尽力模拟当真实用户使用浏览器时发生的情况。事实是，DOM 可以包含用户无法与之交互的元素，并且 WebDriver 不允许您单击这些元素。除了我提到的重叠情况外，这还要求不能单击不可见的元素。我在其他一些问题中看到的一个常见情况是有人试图与 DOM 中已经存在的 GUI 元素进行交互，但仅在操作某些其他元素时才可见。这有时会与下拉菜单有关：您必须先单击显示下拉列表的按钮，然后才能选择菜单项。如果有人尝试在菜单可见之前单击菜单项，WebDriver 会犹豫，并说无法操作该元素。如果此人随后尝试使用 JavaScript 进行操作，它将起作用，因为事件直接传递到元素，而不考虑可见性。'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2020-12-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-12-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="随记—WebDriver click 与 JavaScript click 的区别">
+<meta name="twitter:description" content="原文参考：webdriver-click-vs-javascript-click @stackoverflow 
+ 问题出现 在自动测试时有时候会出现无法通过 selenium WebDriver 点击命令来单击元素，完成操作，但是可以通过执行JavaScript来单击该元素来解决这个问题。
+element = driver.find_element_by_id(&amp;#34;myid&amp;#34;) driver.execute_script(&amp;#34;arguments[0].click();&amp;#34;, element) 回答 这两种方法的本质区别在浏览器的操作上：
+ WebDriver：**当 WebDriver 执行单击时，它会尽可能地模拟当真实用户使用浏览器时发生的情况。**比如您有一个元素 A，该按钮显示&amp;quot;单击我&amp;quot;，元素 B 是一个透明但具有其尺寸和设置的元素 B，B 完全覆盖 A。然后，您告诉 WebDriver 单击 A，WebDriver 将模拟单击，但结果却是 B 首先接收单击。这是因为 B 覆盖 A，如果用户尝试单击 A，则 B 将首先获取事件。A 最终是否会获得单击事件取决于 B 处理事件的方式。无论如何，在这种情况下，WebDriver 的行为与实际用户尝试单击 A 时的行为相同。 JavaScript：**假如您使用 JavaScript 来做 。单击此方法不会重现用户尝试单击 A 时真正发生的情况。**JavaScript 将事件直接发送到 A，B 不会收到任何事件。  这也就解释了为什么 JavaScript 单击在 WebDriver 单击不起作用时有效？
+正如我上面提到的，WebDriver 将尽力模拟当真实用户使用浏览器时发生的情况。事实是，DOM 可以包含用户无法与之交互的元素，并且 WebDriver 不允许您单击这些元素。除了我提到的重叠情况外，这还要求不能单击不可见的元素。我在其他一些问题中看到的一个常见情况是有人试图与 DOM 中已经存在的 GUI 元素进行交互，但仅在操作某些其他元素时才可见。这有时会与下拉菜单有关：您必须先单击显示下拉列表的按钮，然后才能选择菜单项。如果有人尝试在菜单可见之前单击菜单项，WebDriver 会犹豫，并说无法操作该元素。如果此人随后尝试使用 JavaScript 进行操作，它将起作用，因为事件直接传递到元素，而不考虑可见性。">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0webdriver-click-%E4%B8%8E-javascript-click-%E7%9A%84%E5%8C%BA%E5%88%AB/">随记—WebDriver click 与 JavaScript click 的区别</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 01, 2020</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>原文参考：<a class="link" href="https://stackoverflow.com/questions/34562061/webdriver-click-vs-javascript-click"  target="_blank" rel="noopener"
+    > webdriver-click-vs-javascript-click @stackoverflow </a></p>
+</blockquote>
+<h2 id="问题出现">问题出现</h2>
+<p>在自动测试时有时候会出现无法通过 selenium WebDriver 点击命令来单击元素，完成操作，但是可以通过执行JavaScript来单击该元素来解决这个问题。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">element <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;myid&#34;</span>)
+driver<span style="color:#f92672">.</span>execute_script(<span style="color:#e6db74">&#34;arguments[0].click();&#34;</span>, element)
+</code></pre></div><h2 id="回答">回答</h2>
+<p>这两种方法的本质区别在浏览器的操作上：</p>
+<ul>
+<li>WebDriver：**当 WebDriver 执行单击时，它会尽可能地模拟当真实用户使用浏览器时发生的情况。**比如您有一个元素 A，该按钮显示&quot;单击我&quot;，元素 B 是一个透明但具有其尺寸和设置的元素 B，B 完全覆盖 A。然后，您告诉 WebDriver 单击 A，WebDriver 将模拟单击，但结果却是 B 首先接收单击。这是因为 B 覆盖 A，如果用户尝试单击 A，则 B 将首先获取事件。A 最终是否会获得单击事件取决于 B 处理事件的方式。无论如何，在这种情况下，WebDriver 的行为与实际用户尝试单击 A 时的行为相同。</li>
+<li>JavaScript：**假如您使用 JavaScript 来做 。单击此方法不会重现用户尝试单击 A 时真正发生的情况。**JavaScript 将事件直接发送到 A，B 不会收到任何事件。</li>
+</ul>
+<p><strong>这也就解释了为什么 JavaScript 单击在 WebDriver 单击不起作用时有效？</strong></p>
+<p>正如我上面提到的，WebDriver 将尽力模拟当真实用户使用浏览器时发生的情况。事实是，DOM 可以包含用户无法与之交互的元素，并且 WebDriver 不允许您单击这些元素。除了我提到的重叠情况外，这还要求不能单击不可见的元素。我在其他一些问题中看到的一个常见情况是有人试图与 DOM 中已经存在的 GUI 元素进行交互，但仅在操作某些其他元素时才可见。这有时会与下拉菜单有关：您必须先单击显示下拉列表的按钮，然后才能选择菜单项。如果有人尝试在菜单可见之前单击菜单项，WebDriver 会犹豫，并说无法操作该元素。<strong>如果此人随后尝试使用 JavaScript 进行操作，它将起作用，因为事件直接传递到元素，而不考虑可见性。</strong></p>
+<h2 id="何时应使用-javascript-单击">何时应使用 JavaScript 单击？</h2>
+<p>如果你使用Selenium来测试一个应用程序，我对这个问题的回答是&quot;几乎永远不会&quot;。一方面，您的 Selenium 测试应重现用户对浏览器将执行哪些操作。以下拉菜单为例：测试应单击首先显示下拉菜单的按钮，然后单击菜单项。如果 GUI 出现问题，因为该按钮不可见，或者按钮无法显示菜单项或类似操作，则您的测试将失败，您将检测到 Bug。如果使用 JavaScript 单击四周，则无法通过自动测试检测这些 Bug。</p>
+<p>我说&quot;几乎从不&quot;，因为使用JavaScript可能有例外。不过，它们应该非常罕见。如果使用 Selenium来刮取站点，则尝试重现用户行为就没那么重要了。因此，使用 JavaScript 绕过 GUI 不是问题。</p>
+<h2 id="ps">PS</h2>
+<p>WebDriver 执行的单击尝试在执行事件时尽可能接近模拟真实用户的行为，即使元素不可交互。当出现如下情况时WebDriver 会出现报错。</p>
+<ul>
+<li>当单击坐标处顶部的元素不是目标元素或后代时</li>
+<li>当元素没有正大小或它是完全透明的</li>
+<li>当元素是禁用的输入或按钮时</li>
+<li>当元素禁用鼠标指针时</li>
+</ul>
+<p>WebDriver 与 JavaScript 的异同。</p>
+<ul>
+<li>JavaScript 将始终执行默认操作，如果元素已禁用，则充其量会以静默方式失败。</li>
+<li>WebDriver 会像真实用户一样发出所有事件（鼠标移动、鼠标悬停、鼠标悬停、单击&hellip;）。</li>
+<li>JavaScript 仅发出事件。页面可能依赖于这些额外的事件，如果它们未发出，它们的行为可能会有所不同。</li>
+<li>JavaScript 发出的事件没有单击的坐标。</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9A%8F%E8%AE%B0/">随记</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-cors/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是 CORS</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—测试用例的设计方法</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFmd5%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是MD5加密与耦合</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0web-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—Web 性能测试的指标</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是并发和并行</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

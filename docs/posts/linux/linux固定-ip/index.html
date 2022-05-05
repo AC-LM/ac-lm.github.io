@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：Linux - 配置固定的ip地址 
+ 1.修改配置文件 在文件夹/etc/sysconfig/network-scripts/中，有着 Linux 系统的网络配置文件，其中ifcfg-lo是回环网卡，ifcfg-ens33就是eth0。
+编辑eth0网卡的配置文件vim ifcfg-ens33如下
+TYPE=&amp;#34;Ethernet&amp;#34; PROXY_METHOD=&amp;#34;none&amp;#34; BROWSER_ONLY=&amp;#34;no&amp;#34; # 是否启动 DHCP：none 为禁用 DHCP；static 为使用静态 ip 地址 BOOTPROTO=&amp;#34;static&amp;#34; DEFROUTE=&amp;#34;yes&amp;#34; IPV4_FAILURE_FATAL=&amp;#34;no&amp;#34; IPV6INIT=&amp;#34;yes&amp;#34; IPV6_AUTOCONF=&amp;#34;yes&amp;#34; IPV6_DEFROUTE=&amp;#34;yes&amp;#34; IPV6_FAILURE_FATAL=&amp;#34;no&amp;#34; IPV6_ADDR_GEN_MODE=&amp;#34;stable-privacy&amp;#34; NAME=&amp;#34;ens33&amp;#34; UUID=&amp;#34;b4701c26-8ea8-46a5-b738-1d4d0ca5b5a9&amp;#34; DEVICE=&amp;#34;ens33&amp;#34; # 启动或者重启网络时是否启动该设备：yes是启用；no是禁用 ONBOOT=&amp;#34;yes&amp;#34; # 添加如下配置信息 DNS1=192.168.0.1 # DNS IPADDR=192.168.1.122 # IP地址 GATEWAY=192.168.1.1 # 网关 PREFIX=24 # centos子网掩码长度：24--&amp;gt; 255.255.255.0  # 子网掩码 RedHat，不同版本的Linux的配置是不一样的  # NETMASK=255.255.255.0  重启网络服务service network restart，IP 固定成功'><title>Linux—固定 IP</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/linux/linux%E5%9B%BA%E5%AE%9A-ip/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Linux—固定 IP'>
+<meta property='og:description' content='参考原文：Linux - 配置固定的ip地址 
+ 1.修改配置文件 在文件夹/etc/sysconfig/network-scripts/中，有着 Linux 系统的网络配置文件，其中ifcfg-lo是回环网卡，ifcfg-ens33就是eth0。
+编辑eth0网卡的配置文件vim ifcfg-ens33如下
+TYPE=&amp;#34;Ethernet&amp;#34; PROXY_METHOD=&amp;#34;none&amp;#34; BROWSER_ONLY=&amp;#34;no&amp;#34; # 是否启动 DHCP：none 为禁用 DHCP；static 为使用静态 ip 地址 BOOTPROTO=&amp;#34;static&amp;#34; DEFROUTE=&amp;#34;yes&amp;#34; IPV4_FAILURE_FATAL=&amp;#34;no&amp;#34; IPV6INIT=&amp;#34;yes&amp;#34; IPV6_AUTOCONF=&amp;#34;yes&amp;#34; IPV6_DEFROUTE=&amp;#34;yes&amp;#34; IPV6_FAILURE_FATAL=&amp;#34;no&amp;#34; IPV6_ADDR_GEN_MODE=&amp;#34;stable-privacy&amp;#34; NAME=&amp;#34;ens33&amp;#34; UUID=&amp;#34;b4701c26-8ea8-46a5-b738-1d4d0ca5b5a9&amp;#34; DEVICE=&amp;#34;ens33&amp;#34; # 启动或者重启网络时是否启动该设备：yes是启用；no是禁用 ONBOOT=&amp;#34;yes&amp;#34; # 添加如下配置信息 DNS1=192.168.0.1 # DNS IPADDR=192.168.1.122 # IP地址 GATEWAY=192.168.1.1 # 网关 PREFIX=24 # centos子网掩码长度：24--&amp;gt; 255.255.255.0  # 子网掩码 RedHat，不同版本的Linux的配置是不一样的  # NETMASK=255.255.255.0  重启网络服务service network restart，IP 固定成功'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/linux/linux%E5%9B%BA%E5%AE%9A-ip/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2022-01-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-01-16T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Linux—固定 IP">
+<meta name="twitter:description" content="参考原文：Linux - 配置固定的ip地址 
+ 1.修改配置文件 在文件夹/etc/sysconfig/network-scripts/中，有着 Linux 系统的网络配置文件，其中ifcfg-lo是回环网卡，ifcfg-ens33就是eth0。
+编辑eth0网卡的配置文件vim ifcfg-ens33如下
+TYPE=&amp;#34;Ethernet&amp;#34; PROXY_METHOD=&amp;#34;none&amp;#34; BROWSER_ONLY=&amp;#34;no&amp;#34; # 是否启动 DHCP：none 为禁用 DHCP；static 为使用静态 ip 地址 BOOTPROTO=&amp;#34;static&amp;#34; DEFROUTE=&amp;#34;yes&amp;#34; IPV4_FAILURE_FATAL=&amp;#34;no&amp;#34; IPV6INIT=&amp;#34;yes&amp;#34; IPV6_AUTOCONF=&amp;#34;yes&amp;#34; IPV6_DEFROUTE=&amp;#34;yes&amp;#34; IPV6_FAILURE_FATAL=&amp;#34;no&amp;#34; IPV6_ADDR_GEN_MODE=&amp;#34;stable-privacy&amp;#34; NAME=&amp;#34;ens33&amp;#34; UUID=&amp;#34;b4701c26-8ea8-46a5-b738-1d4d0ca5b5a9&amp;#34; DEVICE=&amp;#34;ens33&amp;#34; # 启动或者重启网络时是否启动该设备：yes是启用；no是禁用 ONBOOT=&amp;#34;yes&amp;#34; # 添加如下配置信息 DNS1=192.168.0.1 # DNS IPADDR=192.168.1.122 # IP地址 GATEWAY=192.168.1.1 # 网关 PREFIX=24 # centos子网掩码长度：24--&amp;gt; 255.255.255.0  # 子网掩码 RedHat，不同版本的Linux的配置是不一样的  # NETMASK=255.255.255.0  重启网络服务service network restart，IP 固定成功">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/linux/linux%E5%9B%BA%E5%AE%9A-ip/">Linux—固定 IP</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 16, 2022</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>参考原文：<a class="link" href="https://zhuanlan.zhihu.com/p/54512739"  target="_blank" rel="noopener"
+    > Linux - 配置固定的ip地址 </a></p>
+</blockquote>
+<h2 id="1修改配置文件">1.修改配置文件</h2>
+<p>在文件夹<code>/etc/sysconfig/network-scripts/</code>中，有着 Linux 系统的网络配置文件，其中<code>ifcfg-lo</code>是回环网卡，<code>ifcfg-ens33</code>就是<code>eth0</code>。</p>
+<p>编辑<code>eth0</code>网卡的配置文件<code>vim ifcfg-ens33</code>如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ethernet&#34;</span>
+PROXY_METHOD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>
+BROWSER_ONLY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
+<span style="color:#75715e"># 是否启动 DHCP：none 为禁用 DHCP；static 为使用静态 ip 地址</span>
+BOOTPROTO<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;static&#34;</span>
+DEFROUTE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+IPV4_FAILURE_FATAL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
+IPV6INIT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+IPV6_AUTOCONF<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+IPV6_DEFROUTE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+IPV6_FAILURE_FATAL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
+IPV6_ADDR_GEN_MODE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stable-privacy&#34;</span>
+NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ens33&#34;</span>
+UUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;b4701c26-8ea8-46a5-b738-1d4d0ca5b5a9&#34;</span>
+DEVICE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ens33&#34;</span>  
+<span style="color:#75715e"># 启动或者重启网络时是否启动该设备：yes是启用；no是禁用</span>
+ONBOOT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
+
+<span style="color:#75715e"># 添加如下配置信息</span>
+DNS1<span style="color:#f92672">=</span>192.168.0.1          <span style="color:#75715e"># DNS</span>
+IPADDR<span style="color:#f92672">=</span>192.168.1.122      <span style="color:#75715e"># IP地址</span>
+GATEWAY<span style="color:#f92672">=</span>192.168.1.1       <span style="color:#75715e"># 网关</span>
+PREFIX<span style="color:#f92672">=</span><span style="color:#ae81ff">24</span>                 <span style="color:#75715e"># centos子网掩码长度：24--&gt; 255.255.255.0    </span>
+
+<span style="color:#75715e"># 子网掩码 RedHat，不同版本的Linux的配置是不一样的 </span>
+<span style="color:#75715e"># NETMASK=255.255.255.0 </span>
+</code></pre></div><p>重启网络服务<code>service network restart</code>，IP 固定成功</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/linux/linux%E7%BD%91%E7%BB%9C%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—网络启动配置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linux%E6%A3%80%E6%9F%A5%E5%91%BD%E4%BB%A4%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—检查命令是否存在</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linuxlscpu/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—lscpu</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linux%E4%BF%AE%E6%94%B9-linux-%E6%97%B6%E5%8C%BA%E6%88%96%E6%97%B6%E9%97%B4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—修改 Linux 时区或时间</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/linux/linuxtop-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux—Top 命令详解</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

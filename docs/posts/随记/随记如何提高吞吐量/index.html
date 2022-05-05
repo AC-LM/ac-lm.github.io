@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.服务器（进程）级别 服务器级别增加网站吞吐量是诸多措施中最容易并且是效果最好的，如果一个网站能通过增加少量的服务器来提高吞吐量，应该优先采用。毕竟一台服务器的费用相比较一个程序员费用来说要低的多。但是有一个前提，就是你的服务器是系统的瓶颈，网站系统之后的其他系统并非瓶颈。如果你的系统的瓶颈在接口或者其他服务，盲目的增加服务器并不能解决你的问题。
+通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如 LVS、Nginx、F5 等
+2.线程级别 当一个请求到达服务器并且正确的被服务器接收之后，最终执行这个请求的载体是一个线程。当一个线程被CPU载入执行其指令的时候，在同步的状态下，当前线程会阻塞在那里等待CPU结果，如果CPU执行的是比较慢的IO操作，线程会一直被阻塞闲置很长时间，这里的很长是对比CPU的速度而言。当一个新的请求到来的时候，如果没有新的线程去领取这个任务并执行，要么会发生异常，要么创建新的线程。
+线程是一种很稀缺的资源，不可能无限制的创建。这种情况下我们就要把线程这种资源充分利用起来，不要让线程停下来。这也是程序推荐采用异步的原因。试想，一个线程不停的在工作，遇到比较慢的IO不会去等待结果，而是接着处理下一个请求，当IO的结果返回来得到通知的时候，线程再去取IO结果，岂不是能在相同时间内处理更多的请求。程序异步化（非阻塞）会明显提高系统的吞吐量，但是响应时间可能会稍微变大。
+还有一点，尽量减少线程上下文在CPU的切换，因为线程上线文切换的成本也是比较大的，在线程切换的时候，CPU需要把当前线程的上下文信息记录下来用以下次调用的时候使用，然后把新线程的上下文信息载入然后执行。这个过程相对于CPU的执行速度而言，要慢很多。
+3.CPU级别 现代操作系统都采用虚拟寻址的方式，它的寻址空间（虚拟存储空间）为4G（2的32次方）。操作系统将虚拟空间分为两类：内核空间和用户空间。
+ 内核空间独立于用户空间，有访问受保护的内存空间、IO设备的权限（所有的用户空间共享）。 用户空间就是我们的应用程序运行的空间，其实用户空间并没有操作各种IO设备的权限，像我们平时读取一个文件，本质上是委托内核空间去执行读取指令的，内核空间读取到数据之后再把数据复制到程序运行的空间，最后应用程序再把数据返回调用方。  内核会为每个I/O设备维护一个 buffer（同一个文件描述符读和写的buffer不同），应用程序发出一个IO操作的指令其实通过了内核空间和用户空间两个部分，并且发生了数据的复制操作。这个过程其实主要包含两个步骤：用户进程发出操作指令并等待数据；内核把数据返回给用户进程（buffer的复制操作）。根据这两个操作的不同表现，所以IO模型有了同步阻塞，同步非阻塞，异步阻塞，异步非阻塞的概念。利用CPU提高系统吞吐量主要目标是提高单位时间内CPU运行的指令数，避免CPU做一些无用功。可以通过增加CPU的个数来增加吞吐量
+CPU负责把buffer的数据copy到应用程序空间，应用程序再把数据返回给调用方，假如这个过程发生的是一次Socket操作，应用程序在得到 IO 返回数据之后，还需要网卡把数据返回给client端，这个过程又需要把刚刚得到的buffer数据再次通过内核发送至网卡，通过网络传送出去。由此可见CPU把buffer数据copy到应用程序空间这个过程完全没有必要，在内核空间完全可以把buffer数据直接传输至网卡，这也是零拷贝技术要解决的问题。
+PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要先将数据从某处内存复制到另一个特定区域。这种技术通常用于通过网络传输文件时节省CPU周期和内存带宽。
+4.网络传输级别 由于协议大部分是TCP/IP，所以在协议传输方面优化的手段比较少，但是应用程序级别协议可以选择压缩率更好的，比如采用GRPC会比单纯的HTTP协议要好很多，HTTP2 要比HTTP 1要好很多。
+另外一方面网卡尽量加大传输速率，比如千兆网卡要比百兆网卡速度更快。由于网络传输比较偏底层，所以人工干预的切入点会少很多。
+5.代码层  加大应用的进程数，增加并发数，特别在进程数是瓶颈的情况下； 优化线程调用，尽量线程池化； 应用的代码异步化，特别是异步非阻塞式编程对于提高吞吐量效果特别明显； 充分利用多核CPU优势，实现并行编程； 减少每个调用的响应时间，缩短调用链，例如通过加索引的方式来减少访问一次数据库的时间；  '><title>随记—如何提高吞吐量</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='随记—如何提高吞吐量'>
+<meta property='og:description' content='1.服务器（进程）级别 服务器级别增加网站吞吐量是诸多措施中最容易并且是效果最好的，如果一个网站能通过增加少量的服务器来提高吞吐量，应该优先采用。毕竟一台服务器的费用相比较一个程序员费用来说要低的多。但是有一个前提，就是你的服务器是系统的瓶颈，网站系统之后的其他系统并非瓶颈。如果你的系统的瓶颈在接口或者其他服务，盲目的增加服务器并不能解决你的问题。
+通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如 LVS、Nginx、F5 等
+2.线程级别 当一个请求到达服务器并且正确的被服务器接收之后，最终执行这个请求的载体是一个线程。当一个线程被CPU载入执行其指令的时候，在同步的状态下，当前线程会阻塞在那里等待CPU结果，如果CPU执行的是比较慢的IO操作，线程会一直被阻塞闲置很长时间，这里的很长是对比CPU的速度而言。当一个新的请求到来的时候，如果没有新的线程去领取这个任务并执行，要么会发生异常，要么创建新的线程。
+线程是一种很稀缺的资源，不可能无限制的创建。这种情况下我们就要把线程这种资源充分利用起来，不要让线程停下来。这也是程序推荐采用异步的原因。试想，一个线程不停的在工作，遇到比较慢的IO不会去等待结果，而是接着处理下一个请求，当IO的结果返回来得到通知的时候，线程再去取IO结果，岂不是能在相同时间内处理更多的请求。程序异步化（非阻塞）会明显提高系统的吞吐量，但是响应时间可能会稍微变大。
+还有一点，尽量减少线程上下文在CPU的切换，因为线程上线文切换的成本也是比较大的，在线程切换的时候，CPU需要把当前线程的上下文信息记录下来用以下次调用的时候使用，然后把新线程的上下文信息载入然后执行。这个过程相对于CPU的执行速度而言，要慢很多。
+3.CPU级别 现代操作系统都采用虚拟寻址的方式，它的寻址空间（虚拟存储空间）为4G（2的32次方）。操作系统将虚拟空间分为两类：内核空间和用户空间。
+ 内核空间独立于用户空间，有访问受保护的内存空间、IO设备的权限（所有的用户空间共享）。 用户空间就是我们的应用程序运行的空间，其实用户空间并没有操作各种IO设备的权限，像我们平时读取一个文件，本质上是委托内核空间去执行读取指令的，内核空间读取到数据之后再把数据复制到程序运行的空间，最后应用程序再把数据返回调用方。  内核会为每个I/O设备维护一个 buffer（同一个文件描述符读和写的buffer不同），应用程序发出一个IO操作的指令其实通过了内核空间和用户空间两个部分，并且发生了数据的复制操作。这个过程其实主要包含两个步骤：用户进程发出操作指令并等待数据；内核把数据返回给用户进程（buffer的复制操作）。根据这两个操作的不同表现，所以IO模型有了同步阻塞，同步非阻塞，异步阻塞，异步非阻塞的概念。利用CPU提高系统吞吐量主要目标是提高单位时间内CPU运行的指令数，避免CPU做一些无用功。可以通过增加CPU的个数来增加吞吐量
+CPU负责把buffer的数据copy到应用程序空间，应用程序再把数据返回给调用方，假如这个过程发生的是一次Socket操作，应用程序在得到 IO 返回数据之后，还需要网卡把数据返回给client端，这个过程又需要把刚刚得到的buffer数据再次通过内核发送至网卡，通过网络传送出去。由此可见CPU把buffer数据copy到应用程序空间这个过程完全没有必要，在内核空间完全可以把buffer数据直接传输至网卡，这也是零拷贝技术要解决的问题。
+PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要先将数据从某处内存复制到另一个特定区域。这种技术通常用于通过网络传输文件时节省CPU周期和内存带宽。
+4.网络传输级别 由于协议大部分是TCP/IP，所以在协议传输方面优化的手段比较少，但是应用程序级别协议可以选择压缩率更好的，比如采用GRPC会比单纯的HTTP协议要好很多，HTTP2 要比HTTP 1要好很多。
+另外一方面网卡尽量加大传输速率，比如千兆网卡要比百兆网卡速度更快。由于网络传输比较偏底层，所以人工干预的切入点会少很多。
+5.代码层  加大应用的进程数，增加并发数，特别在进程数是瓶颈的情况下； 优化线程调用，尽量线程池化； 应用的代码异步化，特别是异步非阻塞式编程对于提高吞吐量效果特别明显； 充分利用多核CPU优势，实现并行编程； 减少每个调用的响应时间，缩短调用链，例如通过加索引的方式来减少访问一次数据库的时间；  '>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2020-09-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-09-13T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="随记—如何提高吞吐量">
+<meta name="twitter:description" content="1.服务器（进程）级别 服务器级别增加网站吞吐量是诸多措施中最容易并且是效果最好的，如果一个网站能通过增加少量的服务器来提高吞吐量，应该优先采用。毕竟一台服务器的费用相比较一个程序员费用来说要低的多。但是有一个前提，就是你的服务器是系统的瓶颈，网站系统之后的其他系统并非瓶颈。如果你的系统的瓶颈在接口或者其他服务，盲目的增加服务器并不能解决你的问题。
+通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如 LVS、Nginx、F5 等
+2.线程级别 当一个请求到达服务器并且正确的被服务器接收之后，最终执行这个请求的载体是一个线程。当一个线程被CPU载入执行其指令的时候，在同步的状态下，当前线程会阻塞在那里等待CPU结果，如果CPU执行的是比较慢的IO操作，线程会一直被阻塞闲置很长时间，这里的很长是对比CPU的速度而言。当一个新的请求到来的时候，如果没有新的线程去领取这个任务并执行，要么会发生异常，要么创建新的线程。
+线程是一种很稀缺的资源，不可能无限制的创建。这种情况下我们就要把线程这种资源充分利用起来，不要让线程停下来。这也是程序推荐采用异步的原因。试想，一个线程不停的在工作，遇到比较慢的IO不会去等待结果，而是接着处理下一个请求，当IO的结果返回来得到通知的时候，线程再去取IO结果，岂不是能在相同时间内处理更多的请求。程序异步化（非阻塞）会明显提高系统的吞吐量，但是响应时间可能会稍微变大。
+还有一点，尽量减少线程上下文在CPU的切换，因为线程上线文切换的成本也是比较大的，在线程切换的时候，CPU需要把当前线程的上下文信息记录下来用以下次调用的时候使用，然后把新线程的上下文信息载入然后执行。这个过程相对于CPU的执行速度而言，要慢很多。
+3.CPU级别 现代操作系统都采用虚拟寻址的方式，它的寻址空间（虚拟存储空间）为4G（2的32次方）。操作系统将虚拟空间分为两类：内核空间和用户空间。
+ 内核空间独立于用户空间，有访问受保护的内存空间、IO设备的权限（所有的用户空间共享）。 用户空间就是我们的应用程序运行的空间，其实用户空间并没有操作各种IO设备的权限，像我们平时读取一个文件，本质上是委托内核空间去执行读取指令的，内核空间读取到数据之后再把数据复制到程序运行的空间，最后应用程序再把数据返回调用方。  内核会为每个I/O设备维护一个 buffer（同一个文件描述符读和写的buffer不同），应用程序发出一个IO操作的指令其实通过了内核空间和用户空间两个部分，并且发生了数据的复制操作。这个过程其实主要包含两个步骤：用户进程发出操作指令并等待数据；内核把数据返回给用户进程（buffer的复制操作）。根据这两个操作的不同表现，所以IO模型有了同步阻塞，同步非阻塞，异步阻塞，异步非阻塞的概念。利用CPU提高系统吞吐量主要目标是提高单位时间内CPU运行的指令数，避免CPU做一些无用功。可以通过增加CPU的个数来增加吞吐量
+CPU负责把buffer的数据copy到应用程序空间，应用程序再把数据返回给调用方，假如这个过程发生的是一次Socket操作，应用程序在得到 IO 返回数据之后，还需要网卡把数据返回给client端，这个过程又需要把刚刚得到的buffer数据再次通过内核发送至网卡，通过网络传送出去。由此可见CPU把buffer数据copy到应用程序空间这个过程完全没有必要，在内核空间完全可以把buffer数据直接传输至网卡，这也是零拷贝技术要解决的问题。
+PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要先将数据从某处内存复制到另一个特定区域。这种技术通常用于通过网络传输文件时节省CPU周期和内存带宽。
+4.网络传输级别 由于协议大部分是TCP/IP，所以在协议传输方面优化的手段比较少，但是应用程序级别协议可以选择压缩率更好的，比如采用GRPC会比单纯的HTTP协议要好很多，HTTP2 要比HTTP 1要好很多。
+另外一方面网卡尽量加大传输速率，比如千兆网卡要比百兆网卡速度更快。由于网络传输比较偏底层，所以人工干预的切入点会少很多。
+5.代码层  加大应用的进程数，增加并发数，特别在进程数是瓶颈的情况下； 优化线程调用，尽量线程池化； 应用的代码异步化，特别是异步非阻塞式编程对于提高吞吐量效果特别明显； 充分利用多核CPU优势，实现并行编程； 减少每个调用的响应时间，缩短调用链，例如通过加索引的方式来减少访问一次数据库的时间；  ">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%90%9E%E5%90%90%E9%87%8F/">随记—如何提高吞吐量</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2020</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1服务器进程级别">1.服务器（进程）级别</h2>
+<p>服务器级别增加网站吞吐量是诸多措施中最容易并且是效果最好的，如果一个网站能通过增加少量的服务器来提高吞吐量，应该优先采用。毕竟一台服务器的费用相比较一个程序员费用来说要低的多。但是有一个前提，就是你的服务器是系统的瓶颈，网站系统之后的其他系统并非瓶颈。如果你的系统的瓶颈在接口或者其他服务，盲目的增加服务器并不能解决你的问题。</p>
+<p>通过增加服务器来解决你的网站瓶颈，意味着你的网站需要做负载均衡。负载均衡(Load Balance)，其含义就是指将负载（工作任务）进行平衡、分摊到多个操作单元上进行运行，例如FTP服务器、Web服务器、企业核心应用服务器和其它主要任务服务器等，从而协同完成工作任务。负载均衡的方案，比如 LVS、Nginx、F5 等</p>
+<h2 id="2线程级别">2.线程级别</h2>
+<p>当一个请求到达服务器并且正确的被服务器接收之后，最终执行这个请求的载体是一个线程。当一个线程被CPU载入执行其指令的时候，在同步的状态下，当前线程会阻塞在那里等待CPU结果，如果CPU执行的是比较慢的IO操作，线程会一直被阻塞闲置很长时间，这里的很长是对比CPU的速度而言。当一个新的请求到来的时候，如果没有新的线程去领取这个任务并执行，要么会发生异常，要么创建新的线程。</p>
+<p>线程是一种很稀缺的资源，不可能无限制的创建。这种情况下我们就要把线程这种资源充分利用起来，不要让线程停下来。这也是程序推荐采用异步的原因。试想，一个线程不停的在工作，遇到比较慢的IO不会去等待结果，而是接着处理下一个请求，当IO的结果返回来得到通知的时候，线程再去取IO结果，岂不是能在相同时间内处理更多的请求。程序异步化（非阻塞）会明显提高系统的吞吐量，但是响应时间可能会稍微变大。</p>
+<p>还有一点，尽量减少线程上下文在CPU的切换，因为线程上线文切换的成本也是比较大的，在线程切换的时候，CPU需要把当前线程的上下文信息记录下来用以下次调用的时候使用，然后把新线程的上下文信息载入然后执行。这个过程相对于CPU的执行速度而言，要慢很多。</p>
+<h2 id="3cpu级别">3.CPU级别</h2>
+<p>现代操作系统都采用虚拟寻址的方式，它的寻址空间（虚拟存储空间）为4G（2的32次方）。操作系统将虚拟空间分为两类：内核空间和用户空间。</p>
+<ul>
+<li>内核空间独立于用户空间，有访问受保护的内存空间、IO设备的权限（所有的用户空间共享）。</li>
+<li>用户空间就是我们的应用程序运行的空间，其实用户空间并没有操作各种IO设备的权限，像我们平时读取一个文件，本质上是委托内核空间去执行读取指令的，内核空间读取到数据之后再把数据复制到程序运行的空间，最后应用程序再把数据返回调用方。</li>
+</ul>
+<p>内核会为每个I/O设备维护一个 buffer（同一个文件描述符读和写的buffer不同），应用程序发出一个IO操作的指令其实通过了内核空间和用户空间两个部分，并且发生了数据的复制操作。这个过程其实主要包含两个步骤：用户进程发出操作指令并等待数据；内核把数据返回给用户进程（buffer的复制操作）。根据这两个操作的不同表现，所以IO模型有了同步阻塞，同步非阻塞，异步阻塞，异步非阻塞的概念。利用CPU提高系统吞吐量主要目标是提高单位时间内CPU运行的指令数，避免CPU做一些无用功。可以通过增加CPU的个数来增加吞吐量</p>
+<p>CPU负责把buffer的数据copy到应用程序空间，应用程序再把数据返回给调用方，假如这个过程发生的是一次Socket操作，应用程序在得到 IO 返回数据之后，还需要网卡把数据返回给client端，这个过程又需要把刚刚得到的buffer数据再次通过内核发送至网卡，通过网络传送出去。由此可见CPU把buffer数据copy到应用程序空间这个过程完全没有必要，在内核空间完全可以把buffer数据直接传输至网卡，这也是零拷贝技术要解决的问题。</p>
+<p><em>PS：零复制 (Zero-copy) 技术是指计算机执行操作时，CPU不需要先将数据从某处内存复制到另一个特定区域。这种技术通常用于通过网络传输文件时节省CPU周期和内存带宽。</em></p>
+<h2 id="4网络传输级别">4.网络传输级别</h2>
+<p>由于协议大部分是TCP/IP，所以在协议传输方面优化的手段比较少，但是应用程序级别协议可以选择压缩率更好的，比如采用GRPC会比单纯的HTTP协议要好很多，HTTP2 要比HTTP 1要好很多。</p>
+<p>另外一方面网卡尽量加大传输速率，比如千兆网卡要比百兆网卡速度更快。由于网络传输比较偏底层，所以人工干预的切入点会少很多。</p>
+<h2 id="5代码层">5.代码层</h2>
+<ul>
+<li>加大应用的进程数，增加并发数，特别在进程数是瓶颈的情况下；</li>
+<li>优化线程调用，尽量线程池化；</li>
+<li>应用的代码异步化，特别是异步非阻塞式编程对于提高吞吐量效果特别明显；</li>
+<li>充分利用多核CPU优势，实现并行编程；</li>
+<li>减少每个调用的响应时间，缩短调用链，例如通过加索引的方式来减少访问一次数据库的时间；</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9A%8F%E8%AE%B0/">随记</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—排序算法</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-csrf/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是 CSRF</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-kafka/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是 Kafka</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

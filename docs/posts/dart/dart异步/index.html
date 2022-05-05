@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Dart - 单线程语言 Dart 是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。为了避免此类情况出现，Dart 使用 Future 对象表示异步操作。
+// Synchronous code printDailyNewsDigest() { String news = gatherNewsReports(); // Can take a while.  print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 在上述示例代码中，存在一个问题函数 printDailyNewsDigest，该函数是阻塞的，在这之后的代码都必须等待 printDailyNewsDigest 结束才能继续执行。因此为了程序能及时响应，Dart 的作者使用异步编程模型 Future 处理可能耗时的函数。
+什么是 Future Future 表示在将来某时获取一个值的方式。当一个返回 Future 的函数被调用的时候，程序做了两件事情：
+ 函数把自己放入队列和返回一个未完成的 Future 对象 当值可用时，Future 带着值变成完成状态。  async 和 await async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用 Future 接口。
+import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news = await gatherNewsReports(); print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 如上述示例代码，在这时 printDailyNewsDigest 虽然是第一个调用的，但是最后打印的。这是因为代码读取和打印内容是异步执行的。'><title>Dart—异步</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/dart/dart%E5%BC%82%E6%AD%A5/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Dart—异步'>
+<meta property='og:description' content='Dart - 单线程语言 Dart 是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。为了避免此类情况出现，Dart 使用 Future 对象表示异步操作。
+// Synchronous code printDailyNewsDigest() { String news = gatherNewsReports(); // Can take a while.  print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 在上述示例代码中，存在一个问题函数 printDailyNewsDigest，该函数是阻塞的，在这之后的代码都必须等待 printDailyNewsDigest 结束才能继续执行。因此为了程序能及时响应，Dart 的作者使用异步编程模型 Future 处理可能耗时的函数。
+什么是 Future Future 表示在将来某时获取一个值的方式。当一个返回 Future 的函数被调用的时候，程序做了两件事情：
+ 函数把自己放入队列和返回一个未完成的 Future 对象 当值可用时，Future 带着值变成完成状态。  async 和 await async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用 Future 接口。
+import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news = await gatherNewsReports(); print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 如上述示例代码，在这时 printDailyNewsDigest 虽然是第一个调用的，但是最后打印的。这是因为代码读取和打印内容是异步执行的。'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/dart/dart%E5%BC%82%E6%AD%A5/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Dart' /><meta property='article:published_time' content='2021-04-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Dart—异步">
+<meta name="twitter:description" content="Dart - 单线程语言 Dart 是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。为了避免此类情况出现，Dart 使用 Future 对象表示异步操作。
+// Synchronous code printDailyNewsDigest() { String news = gatherNewsReports(); // Can take a while.  print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 在上述示例代码中，存在一个问题函数 printDailyNewsDigest，该函数是阻塞的，在这之后的代码都必须等待 printDailyNewsDigest 结束才能继续执行。因此为了程序能及时响应，Dart 的作者使用异步编程模型 Future 处理可能耗时的函数。
+什么是 Future Future 表示在将来某时获取一个值的方式。当一个返回 Future 的函数被调用的时候，程序做了两件事情：
+ 函数把自己放入队列和返回一个未完成的 Future 对象 当值可用时，Future 带着值变成完成状态。  async 和 await async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用 Future 接口。
+import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news = await gatherNewsReports(); print(news); } main() { printDailyNewsDigest(); printWinningLotteryNumbers(); printWeatherForecast(); printBaseballScore(); } 如上述示例代码，在这时 printDailyNewsDigest 虽然是第一个调用的，但是最后打印的。这是因为代码读取和打印内容是异步执行的。">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/dart/dart%E5%BC%82%E6%AD%A5/">Dart—异步</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 30, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="dart---单线程语言">Dart - 单线程语言</h2>
+<p>Dart 是一个单线程编程语言。如果任何代码阻塞线程执行都会导致程序卡死。为了避免此类情况出现，Dart 使用 Future 对象表示异步操作。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// Synchronous code
+</span><span style="color:#75715e"></span>printDailyNewsDigest() {
+  <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> gatherNewsReports(); <span style="color:#75715e">// Can take a while.
+</span><span style="color:#75715e"></span>  print(news);
+}
+
+main() {
+  printDailyNewsDigest();
+  printWinningLotteryNumbers();
+  printWeatherForecast();
+  printBaseballScore();
+}
+</code></pre></div><p>在上述示例代码中，存在一个问题函数 printDailyNewsDigest，该函数是阻塞的，在这之后的代码都必须等待 printDailyNewsDigest 结束才能继续执行。因此为了程序能及时响应，Dart 的作者使用异步编程模型 Future 处理可能耗时的函数。</p>
+<h2 id="什么是-future">什么是 Future</h2>
+<p>Future 表示在将来某时获取一个值的方式。当一个返回 Future 的函数被调用的时候，程序做了两件事情：</p>
+<ul>
+<li>函数把自己放入队列和返回一个未完成的 Future 对象</li>
+<li>当值可用时，Future 带着值变成完成状态。</li>
+</ul>
+<h2 id="async-和-await">async 和 await</h2>
+<p>async 和 await 关键字是 Dart 异步支持的一部分。他们允许你像写同步代码一样写异步代码和不需要使用 Future 接口。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:async&#39;</span>;
+
+printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
+  <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> gatherNewsReports();
+  print(news);
+}
+
+main() {
+  printDailyNewsDigest();
+  printWinningLotteryNumbers();
+  printWeatherForecast();
+  printBaseballScore();
+}
+</code></pre></div><p>如上述示例代码，在这时 printDailyNewsDigest 虽然是第一个调用的，但是最后打印的。这是因为代码读取和打印内容是异步执行的。</p>
+<p>在这个例子中，printDailyNewsDigest 调用 gatherNewsReports 并不会阻塞程序。gatherNewsReports 会把自己放入队列，返回一个 Future 让程序正常执行下去，在 gatherNewsReports 完成收集新闻过后程序再来进行打印。</p>
+<p>下面的图展示代码的执行流程。每一个数字对应着相应的步骤</p>
+<p><figure 
+	>
+	<a href="/drawingbed/img/202204291909670.png" >
+		<img src="/drawingbed/img/202204291909670.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ul>
+<li>开始程序执行</li>
+<li>main 函数调用 printDailyNewsDigest，因为它被标记为 async，所有在该函数任何代码被执行之前立即返回一个 Future</li>
+<li>剩下的打印执行。因为它们是同步的。所有只有当一个打印函数执行完成过后才能执行下一个打印函数。例如：中奖号码在天气预报执行打印。</li>
+<li>函数 printDailyNewsDigest 函数体开始执行</li>
+<li>在到达 await 之后，调用 gatherNewsReports，程序暂停，等待 gatherNewsReports 返回的 Future 完成。</li>
+<li>当 Future 完成，printDailyNewsDigest 继续执行，打印新闻。</li>
+<li>当 printDailyNewsDigest 执行完成过后，最开始的 Future 返回完成，程序退出。</li>
+<li>PS：如果 async 函数没有明确指定返回值，返回的 null 值的 Future</li>
+</ul>
+<p>总结</p>
+<ul>
+<li>await 必须在 async 方法中使用。</li>
+<li>async 方法中在 await 前面的代码会立即同步执行，直到碰到 await。</li>
+<li>await 的作用是等待所标记的方法获取返回结果。当代码跑到 await 时，程序其他部分立即停止，直到标记方法执行完成</li>
+<li>当代码执行到 await，程序会立即返回一个 future。</li>
+</ul>
+<h2 id="错误处理">错误处理</h2>
+<p>如果在 Future 返回时发生错误，你可能想捕获错误。async 函数可以用 try-catch 捕获错误。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">printDailyNewsDigest() <span style="color:#66d9ef">async</span> {
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#66d9ef">String</span> news <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> gatherNewsReports();
+    print(news);
+  } <span style="color:#66d9ef">catch</span> (e) {
+    <span style="color:#75715e">// Handle error...
+</span><span style="color:#75715e"></span>  }
+}
+</code></pre></div><h2 id="连续执行">连续执行</h2>
+<p>你可以使用多个 await 表达式，保证一个 await 执行完成过后再执行下一个</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">main() <span style="color:#66d9ef">async</span> {
+  <span style="color:#66d9ef">await</span> expensiveA();
+  <span style="color:#66d9ef">await</span> expensiveB();
+  doSomethingWith(<span style="color:#66d9ef">await</span> expensiveC());
+}
+</code></pre></div><blockquote>
+<p>参考原文：<a class="link" href="https://www.cnblogs.com/hygblog/p/9078608.html"  target="_blank" rel="noopener"
+    > Dart异步编程-future  @方田 </a></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dart/">Dart</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/dart/dart%E5%87%BD%E6%95%B0%E5%BD%A2%E5%8F%82/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dart—函数形参</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/dart/dart%E5%AD%97%E5%85%B8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dart—字典</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/dart/dart%E7%9D%A1%E7%9C%A0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dart—睡眠</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/dart/dart%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dart—文件操作</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/dart/dart%E6%AD%A3%E5%88%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dart—正则</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

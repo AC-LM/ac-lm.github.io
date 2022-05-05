@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.实现过程  获取文件二进制数据 通过接口传递 写入服务器保存  2.获取文件二进制数据 &amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;，使用 type=&amp;quot;file&amp;quot; 的 input 元素使得用户可以选择一个或多个文件打开。附加属性：accept, capture, files, multiple
+a.accept accept 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;docpicker&amp;#34; accept=&amp;#34;.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document&amp;#34;&amp;gt; 唯一文件类型说明符可使用如下格式：.jpg .pdf；一个不带扩展名的 MIME 类型字符串；字符串 audio/*， 表示任何音频文件；字符串 video/*，表示任何视频文件；字符串 image/*，表示任何图片文件
+b.capture capture 属性是一个字符串，当 input 打开的内容是图片或视频时，则它指定了使用哪个摄像头去捕获这些数据
+c.files FileList 对象为每个已选择的文件。如果 multiple 属性没有指定，则这个列表只有一个成员
+可以通过const numFiles = files.length;来获取 FileList 列表的长度，可以像数组一样简单地访问文件列表来检索各个 File 对象
+for (let i = 0, numFiles = files.length; i &amp;lt; numFiles; i&#43;&#43;) { const file = files[i]; // ... } d.'><title>Django—文件上传</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/django/django%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Django—文件上传'>
+<meta property='og:description' content='1.实现过程  获取文件二进制数据 通过接口传递 写入服务器保存  2.获取文件二进制数据 &amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;，使用 type=&amp;quot;file&amp;quot; 的 input 元素使得用户可以选择一个或多个文件打开。附加属性：accept, capture, files, multiple
+a.accept accept 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;docpicker&amp;#34; accept=&amp;#34;.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document&amp;#34;&amp;gt; 唯一文件类型说明符可使用如下格式：.jpg .pdf；一个不带扩展名的 MIME 类型字符串；字符串 audio/*， 表示任何音频文件；字符串 video/*，表示任何视频文件；字符串 image/*，表示任何图片文件
+b.capture capture 属性是一个字符串，当 input 打开的内容是图片或视频时，则它指定了使用哪个摄像头去捕获这些数据
+c.files FileList 对象为每个已选择的文件。如果 multiple 属性没有指定，则这个列表只有一个成员
+可以通过const numFiles = files.length;来获取 FileList 列表的长度，可以像数组一样简单地访问文件列表来检索各个 File 对象
+for (let i = 0, numFiles = files.length; i &amp;lt; numFiles; i&#43;&#43;) { const file = files[i]; // ... } d.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/django/django%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Django' /><meta property='article:published_time' content='2022-01-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-01-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Django—文件上传">
+<meta name="twitter:description" content="1.实现过程  获取文件二进制数据 通过接口传递 写入服务器保存  2.获取文件二进制数据 &amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;，使用 type=&amp;quot;file&amp;quot; 的 input 元素使得用户可以选择一个或多个文件打开。附加属性：accept, capture, files, multiple
+a.accept accept 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;docpicker&amp;#34; accept=&amp;#34;.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document&amp;#34;&amp;gt; 唯一文件类型说明符可使用如下格式：.jpg .pdf；一个不带扩展名的 MIME 类型字符串；字符串 audio/*， 表示任何音频文件；字符串 video/*，表示任何视频文件；字符串 image/*，表示任何图片文件
+b.capture capture 属性是一个字符串，当 input 打开的内容是图片或视频时，则它指定了使用哪个摄像头去捕获这些数据
+c.files FileList 对象为每个已选择的文件。如果 multiple 属性没有指定，则这个列表只有一个成员
+可以通过const numFiles = files.length;来获取 FileList 列表的长度，可以像数组一样简单地访问文件列表来检索各个 File 对象
+for (let i = 0, numFiles = files.length; i &amp;lt; numFiles; i&#43;&#43;) { const file = files[i]; // ... } d.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/django/django%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">Django—文件上传</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 23, 2022</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1实现过程">1.实现过程</h2>
+<ul>
+<li>获取文件二进制数据</li>
+<li>通过接口传递</li>
+<li>写入服务器保存</li>
+</ul>
+<h2 id="2获取文件二进制数据">2.获取文件二进制数据</h2>
+<p><code>&lt;input type=&quot;file&quot;&gt;</code>，使用 <code>type=&quot;file&quot;</code> 的 <code>input</code> 元素使得用户可以选择一个或多个文件打开。附加属性：<code>accept, capture, files, multiple</code></p>
+<h3 id="aaccept">a.accept</h3>
+<p>accept 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的<strong>唯一文件类型说明符</strong>列表</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;docpicker&#34;</span>
+  <span style="color:#a6e22e">accept</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document&#34;</span>&gt;
+</code></pre></div><p><strong>唯一文件类型说明符</strong>可使用如下格式：<code>.jpg .pdf</code>；一个不带扩展名的 MIME 类型字符串；字符串 <code>audio/*</code>， 表示任何音频文件；字符串 <code>video/*</code>，表示任何视频文件；字符串 <code>image/*</code>，表示任何图片文件</p>
+<h3 id="bcapture">b.capture</h3>
+<p>capture 属性是一个字符串，当 input 打开的内容是图片或视频时，则它指定了使用哪个摄像头去捕获这些数据</p>
+<h3 id="cfiles">c.files</h3>
+<p>FileList 对象为每个已选择的文件。如果 multiple 属性没有指定，则这个列表只有一个成员</p>
+<p>可以通过<code>const numFiles = files.length;</code>来获取 FileList 列表的长度，可以像数组一样简单地访问文件列表来检索各个 File 对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">numFiles</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">numFiles</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">file</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">files</span>[<span style="color:#a6e22e">i</span>];
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="dmultiple">d.multiple</h3>
+<p>复数，是否允许选择多个</p>
+<h2 id="3通过接口传递">3.通过接口传递</h2>
+<p>在获取 File 数据后，我们通过接口上传文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 选择 input 的 files，由于不允许复数，因此可以直接取 FileList 的第一个数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">selectedFile</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;input-file&#39;</span>).<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>];
+<span style="color:#75715e">// 构建 FormData 数据，将文件数据写入 FormData
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fileData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+<span style="color:#a6e22e">fileData</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#39;avatar&#39;</span>, <span style="color:#a6e22e">selectedFile</span>);
+<span style="color:#75715e">// 通过接口传递
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+    <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;post&#39;</span>,
+    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/api/upload&#39;</span>,
+    <span style="color:#a6e22e">cache</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+    <span style="color:#75715e">// 数据不需要编码，contentType 置假
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">contentType</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+    <span style="color:#a6e22e">processData</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+    <span style="color:#75715e">// 传递 FormData 数据
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fileData</span>,
+    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;X-CSRFToken&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">csrftoken</span> },
+    <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>) {
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;10000&#39;</span>){
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;success&#39;</span>)
+        }
+    }
+})
+</code></pre></div><h2 id="4写入服务器保存">4.写入服务器保存</h2>
+<p>通过 FormData 传递的文件数据，在服务器中可以通过 <code>request.FILES</code> 获取，然后再根据属性获取到指定的 File 数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">file_data <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>FILES
+file <span style="color:#f92672">=</span> file_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;avatar&#39;</span>)
+</code></pre></div><p>编写函数，写入数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_uploaded_file</span>(file):
+    ext <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+    <span style="color:#66d9ef">if</span> ext <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;htm&#39;</span>, <span style="color:#e6db74">&#39;js&#39;</span>, <span style="color:#e6db74">&#39;css&#39;</span>, <span style="color:#e6db74">&#39;php&#39;</span>]:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    file_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(uuid<span style="color:#f92672">.</span>uuid4()<span style="color:#f92672">.</span>hex[:<span style="color:#ae81ff">10</span>], ext)
+ 
+    <span style="color:#75715e"># file path relative to &#39;media&#39; folder</span>
+    absolute_file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;main/media&#39;</span>, file_name)
+ 
+    directory <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(absolute_file_path)
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(directory):
+        os<span style="color:#f92672">.</span>makedirs(directory)
+
+    <span style="color:#66d9ef">with</span> open(absolute_file_path, <span style="color:#e6db74">&#39;wb+&#39;</span>) <span style="color:#66d9ef">as</span> destination:
+        <span style="color:#66d9ef">for</span> chunk <span style="color:#f92672">in</span> file<span style="color:#f92672">.</span>chunks():
+            destination<span style="color:#f92672">.</span>write(chunk)
+
+    <span style="color:#66d9ef">return</span> file_name
+</code></pre></div><h2 id="5文件的读取">5.文件的读取</h2>
+<p>通过指定<code>MEDIA_URL MEDIA_ROOT</code>的值，用户可以在前端读取上传的数据。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 在 setting.py 文件中写入如下配置</span>
+MEDIA_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/media/&#39;</span>
+MEDIA_ROOT <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#39;media&#39;</span>)
+<span style="color:#75715e"># 在 url.py 中配置路由</span>
+re_path(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;media/(?P&lt;path&gt;.*)$&#39;</span>,serve,{<span style="color:#e6db74">&#39;document_root&#39;</span>:settings<span style="color:#f92672">.</span>MEDIA_ROOT}),
+</code></pre></div><p>按上配置后，用户可以通过 <code>IP/media/文件名</code> 来读取上传内容</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/django/">Django</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/django/django%E9%83%A8%E7%BD%B2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—部署</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/django404-%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—404 文件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/djangosetting-%E6%96%87%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—setting 文件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/djangoauth-%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—auth 用户认证模块</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/django/djangocsrf%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Django—CSRF中间件</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

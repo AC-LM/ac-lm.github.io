@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='0.测试用例都是可执行的 用例要想可执行，第一条原则是，不要包含一些似是而非的词语，比如是不是，要不要，有没有之类的。换句话说，就是用例里大概率要么包含是，要么包含不是这样的词。比如
+ 装盐的袋子不能（不是）漏 衣服的颜色是红的 衣服的材料是80%的棉，20%的涤纶  像这样的是或者不是的句型，我们可以称之为断言。设计用例的最基本要求——可以执行，没有歧义。应当遵循用例的 3A 原则
+ Arrange: 初始化测试对象或者准备测试数据 Act : 调用被测方法 Assert: 断言  1.什么是测试用例   设计一个情况，软件程序在这种情况下，必须能够正常运行并且达到程序所设计的预期结果。（即把程序可能发生的每种情况列出来）
+  如果程序在这种情况下不能正常运行，而且这种问题会重复发生，那就表示软件程序测试人员已经测出软件有缺陷，这时候就必须将这个问题标识出来，并且通知软件开发人员。软件开发人员接获通知后，将这个问题修改完成于下一个测试版本内。
+  软件测试工程师取得新的测试版本后，必须利用同一个用例来测试这个问题，确保该问题已修改完成。
+  2.用例设计方法 a.等价类 解释：依据需求将输入划分为若干个等价类,从等价类中选出一个测试用例,如果这个测试用例测试通过,则认为所代表的整个等价类测试通过,这样就可以通过较少的测试用例达到尽量多的功能覆盖,解决了不能穷举测试的问题
+弊端：等价类只考虑输入域的分类,没有考虑输入域的组合,需要其他的设计方法和补充
+ 有效等价类:对于程序的规格说明书是合理的,有意义的输入数据构成的集合,利用有效等价类验证程序是否实现了规格说明书中所规定的功能和性能 无效等价类:根据需求说明书,不满足需求的集合  超市买水果有效等价类:苹果,香蕉,桃子...无效等价类:青菜,大米,饮料... b.边界值 解释：边界值分析法就是对输入或者输出的边界值进行测试的一种黑盒测试方法，通常边界值分析法是作为对等价类划分方法的补充,这种情况下,其测试用例来自等价类的边界
+输入框长度为1-11,边界值取值:0,1,11,12运动员参赛项目为1-3项,边界值取值:0项,1项,3项,4项查询面页面有999行,每50行为一页,边界值取值:0行,1行,50行,51行,999行 c.因果图 解释：因果图是一种简化了的逻辑图,能直观的表明程序输入条件(原因)和输出动作(结果)之间的相互关系,因果图法是借助图形来设计测试用例的一种系统方法,特别适用于被测试程序具有多种输入条件,程序的输出又依赖于输入条件的各种情况
+因果图设计测试用例的步骤:
+ 分析所有可能的输入和可能的输出 找出输入与输出之间的关系 画出因果图 把因果图转化成判定表 把判定表对应到每一个测试用例  案例：
+淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠1.对于这条业务规则,首先通过分析所有可能的输入和可能的输出,可以得到如下结果:
+ 输入:订单已提交,订单金额大于300,有红包 输出:优惠,不优惠  2.然后进行第二步,找出输入域输出之间的关系,通过分析得出以下对应关系
+ 订单已提交,订单金额大于300,则优惠 订单已提交,订单金额小于等于300,无红包,不优惠 订单已提交,订单金额小于等于300,有红包,优惠 订单已提交,有红包,优惠 订单未提交,不优惠  3.'><title>随记—测试用例的设计方法</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='随记—测试用例的设计方法'>
+<meta property='og:description' content='0.测试用例都是可执行的 用例要想可执行，第一条原则是，不要包含一些似是而非的词语，比如是不是，要不要，有没有之类的。换句话说，就是用例里大概率要么包含是，要么包含不是这样的词。比如
+ 装盐的袋子不能（不是）漏 衣服的颜色是红的 衣服的材料是80%的棉，20%的涤纶  像这样的是或者不是的句型，我们可以称之为断言。设计用例的最基本要求——可以执行，没有歧义。应当遵循用例的 3A 原则
+ Arrange: 初始化测试对象或者准备测试数据 Act : 调用被测方法 Assert: 断言  1.什么是测试用例   设计一个情况，软件程序在这种情况下，必须能够正常运行并且达到程序所设计的预期结果。（即把程序可能发生的每种情况列出来）
+  如果程序在这种情况下不能正常运行，而且这种问题会重复发生，那就表示软件程序测试人员已经测出软件有缺陷，这时候就必须将这个问题标识出来，并且通知软件开发人员。软件开发人员接获通知后，将这个问题修改完成于下一个测试版本内。
+  软件测试工程师取得新的测试版本后，必须利用同一个用例来测试这个问题，确保该问题已修改完成。
+  2.用例设计方法 a.等价类 解释：依据需求将输入划分为若干个等价类,从等价类中选出一个测试用例,如果这个测试用例测试通过,则认为所代表的整个等价类测试通过,这样就可以通过较少的测试用例达到尽量多的功能覆盖,解决了不能穷举测试的问题
+弊端：等价类只考虑输入域的分类,没有考虑输入域的组合,需要其他的设计方法和补充
+ 有效等价类:对于程序的规格说明书是合理的,有意义的输入数据构成的集合,利用有效等价类验证程序是否实现了规格说明书中所规定的功能和性能 无效等价类:根据需求说明书,不满足需求的集合  超市买水果有效等价类:苹果,香蕉,桃子...无效等价类:青菜,大米,饮料... b.边界值 解释：边界值分析法就是对输入或者输出的边界值进行测试的一种黑盒测试方法，通常边界值分析法是作为对等价类划分方法的补充,这种情况下,其测试用例来自等价类的边界
+输入框长度为1-11,边界值取值:0,1,11,12运动员参赛项目为1-3项,边界值取值:0项,1项,3项,4项查询面页面有999行,每50行为一页,边界值取值:0行,1行,50行,51行,999行 c.因果图 解释：因果图是一种简化了的逻辑图,能直观的表明程序输入条件(原因)和输出动作(结果)之间的相互关系,因果图法是借助图形来设计测试用例的一种系统方法,特别适用于被测试程序具有多种输入条件,程序的输出又依赖于输入条件的各种情况
+因果图设计测试用例的步骤:
+ 分析所有可能的输入和可能的输出 找出输入与输出之间的关系 画出因果图 把因果图转化成判定表 把判定表对应到每一个测试用例  案例：
+淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠1.对于这条业务规则,首先通过分析所有可能的输入和可能的输出,可以得到如下结果:
+ 输入:订单已提交,订单金额大于300,有红包 输出:优惠,不优惠  2.然后进行第二步,找出输入域输出之间的关系,通过分析得出以下对应关系
+ 订单已提交,订单金额大于300,则优惠 订单已提交,订单金额小于等于300,无红包,不优惠 订单已提交,订单金额小于等于300,有红包,优惠 订单已提交,有红包,优惠 订单未提交,不优惠  3.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2020-10-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-10-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="随记—测试用例的设计方法">
+<meta name="twitter:description" content="0.测试用例都是可执行的 用例要想可执行，第一条原则是，不要包含一些似是而非的词语，比如是不是，要不要，有没有之类的。换句话说，就是用例里大概率要么包含是，要么包含不是这样的词。比如
+ 装盐的袋子不能（不是）漏 衣服的颜色是红的 衣服的材料是80%的棉，20%的涤纶  像这样的是或者不是的句型，我们可以称之为断言。设计用例的最基本要求——可以执行，没有歧义。应当遵循用例的 3A 原则
+ Arrange: 初始化测试对象或者准备测试数据 Act : 调用被测方法 Assert: 断言  1.什么是测试用例   设计一个情况，软件程序在这种情况下，必须能够正常运行并且达到程序所设计的预期结果。（即把程序可能发生的每种情况列出来）
+  如果程序在这种情况下不能正常运行，而且这种问题会重复发生，那就表示软件程序测试人员已经测出软件有缺陷，这时候就必须将这个问题标识出来，并且通知软件开发人员。软件开发人员接获通知后，将这个问题修改完成于下一个测试版本内。
+  软件测试工程师取得新的测试版本后，必须利用同一个用例来测试这个问题，确保该问题已修改完成。
+  2.用例设计方法 a.等价类 解释：依据需求将输入划分为若干个等价类,从等价类中选出一个测试用例,如果这个测试用例测试通过,则认为所代表的整个等价类测试通过,这样就可以通过较少的测试用例达到尽量多的功能覆盖,解决了不能穷举测试的问题
+弊端：等价类只考虑输入域的分类,没有考虑输入域的组合,需要其他的设计方法和补充
+ 有效等价类:对于程序的规格说明书是合理的,有意义的输入数据构成的集合,利用有效等价类验证程序是否实现了规格说明书中所规定的功能和性能 无效等价类:根据需求说明书,不满足需求的集合  超市买水果有效等价类:苹果,香蕉,桃子...无效等价类:青菜,大米,饮料... b.边界值 解释：边界值分析法就是对输入或者输出的边界值进行测试的一种黑盒测试方法，通常边界值分析法是作为对等价类划分方法的补充,这种情况下,其测试用例来自等价类的边界
+输入框长度为1-11,边界值取值:0,1,11,12运动员参赛项目为1-3项,边界值取值:0项,1项,3项,4项查询面页面有999行,每50行为一页,边界值取值:0行,1行,50行,51行,999行 c.因果图 解释：因果图是一种简化了的逻辑图,能直观的表明程序输入条件(原因)和输出动作(结果)之间的相互关系,因果图法是借助图形来设计测试用例的一种系统方法,特别适用于被测试程序具有多种输入条件,程序的输出又依赖于输入条件的各种情况
+因果图设计测试用例的步骤:
+ 分析所有可能的输入和可能的输出 找出输入与输出之间的关系 画出因果图 把因果图转化成判定表 把判定表对应到每一个测试用例  案例：
+淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠1.对于这条业务规则,首先通过分析所有可能的输入和可能的输出,可以得到如下结果:
+ 输入:订单已提交,订单金额大于300,有红包 输出:优惠,不优惠  2.然后进行第二步,找出输入域输出之间的关系,通过分析得出以下对应关系
+ 订单已提交,订单金额大于300,则优惠 订单已提交,订单金额小于等于300,无红包,不优惠 订单已提交,订单金额小于等于300,有红包,优惠 订单已提交,有红包,优惠 订单未提交,不优惠  3.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/">随记—测试用例的设计方法</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 30, 2020</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="0测试用例都是可执行的">0.测试用例都是可执行的</h2>
+<p>用例要想可执行，第一条原则是，不要包含一些似是而非的词语，比如是不是，要不要，有没有之类的。换句话说，就是用例里大概率要么包含是，要么包含不是这样的词。比如</p>
+<ul>
+<li>装盐的袋子不能（不是）漏</li>
+<li>衣服的颜色是红的</li>
+<li>衣服的材料是80%的棉，20%的涤纶</li>
+</ul>
+<p>像这样的是或者不是的句型，我们可以称之为断言。设计用例的最基本要求——可以执行，没有歧义。应当遵循用例的 3A 原则</p>
+<ul>
+<li>Arrange: 初始化测试对象或者准备测试数据</li>
+<li>Act : 调用被测方法</li>
+<li>Assert: 断言</li>
+</ul>
+<h2 id="1什么是测试用例">1.什么是测试用例</h2>
+<ol>
+<li>
+<p>设计一个情况，软件程序在这种情况下，必须能够正常运行并且达到程序所设计的预期结果。（即把程序可能发生的每种情况列出来）</p>
+</li>
+<li>
+<p>如果程序在这种情况下不能正常运行，而且这种问题会重复发生，那就表示软件程序测试人员已经测出软件有缺陷，这时候就必须将这个问题标识出来，并且通知软件开发人员。软件开发人员接获通知后，将这个问题修改完成于下一个测试版本内。</p>
+</li>
+<li>
+<p>软件测试工程师取得新的测试版本后，必须利用同一个用例来测试这个问题，确保该问题已修改完成。</p>
+</li>
+</ol>
+<h2 id="2用例设计方法">2.用例设计方法</h2>
+<h3 id="a等价类">a.等价类</h3>
+<p><strong>解释</strong>：依据需求将输入划分为若干个等价类,从等价类中选出一个测试用例,如果这个测试用例测试通过,则认为所代表的整个等价类测试通过,这样就可以通过较少的测试用例达到尽量多的功能覆盖,解决了不能穷举测试的问题</p>
+<p><strong>弊端</strong>：等价类只考虑输入域的分类,没有考虑输入域的组合,需要其他的设计方法和补充</p>
+<ul>
+<li>有效等价类:对于程序的规格说明书是合理的,有意义的输入数据构成的集合,利用有效等价类验证程序是否实现了规格说明书中所规定的功能和性能</li>
+<li>无效等价类:根据需求说明书,不满足需求的集合</li>
+</ul>
+<pre tabindex="0"><code>超市买水果
+有效等价类:苹果,香蕉,桃子...
+无效等价类:青菜,大米,饮料... 
+</code></pre><h3 id="b边界值">b.边界值</h3>
+<p><strong>解释</strong>：边界值分析法就是对输入或者输出的边界值进行测试的一种黑盒测试方法，通常边界值分析法是作为对等价类划分方法的补充,这种情况下,其测试用例来自等价类的边界</p>
+<pre tabindex="0"><code>输入框长度为1-11,边界值取值:0,1,11,12
+运动员参赛项目为1-3项,边界值取值:0项,1项,3项,4项
+查询面页面有999行,每50行为一页,边界值取值:0行,1行,50行,51行,999行 
+</code></pre><h3 id="c因果图">c.因果图</h3>
+<p><strong>解释</strong>：因果图是一种简化了的逻辑图,能直观的表明程序输入条件(原因)和输出动作(结果)之间的相互关系,因果图法是借助图形来设计测试用例的一种系统方法,特别适用于被测试程序具有多种输入条件,程序的输出又依赖于输入条件的各种情况</p>
+<p>因果图设计测试用例的步骤:</p>
+<ul>
+<li>分析所有可能的输入和可能的输出</li>
+<li>找出输入与输出之间的关系</li>
+<li>画出因果图</li>
+<li>把因果图转化成判定表</li>
+<li>把判定表对应到每一个测试用例</li>
+</ul>
+<p><strong>案例</strong>：</p>
+<pre tabindex="0"><code>淘宝在双十一退出打折优惠活动,订单已提交,订单金额大于300或有红包,则优惠
+</code></pre><p>1.对于这条业务规则,首先通过分析所有可能的输入和可能的输出,可以得到如下结果:</p>
+<ul>
+<li>输入:订单已提交,订单金额大于300,有红包</li>
+<li>输出:优惠,不优惠</li>
+</ul>
+<p>2.然后进行第二步,找出输入域输出之间的关系,通过分析得出以下对应关系</p>
+<ul>
+<li>订单已提交,订单金额大于300,则优惠</li>
+<li>订单已提交,订单金额小于等于300,无红包,不优惠</li>
+<li>订单已提交,订单金额小于等于300,有红包,优惠</li>
+<li>订单已提交,有红包,优惠</li>
+<li>订单未提交,不优惠</li>
+</ul>
+<p>3.为了方便画出因果图和判定图,对所有输入和输出编号,编号如下:</p>
+<ul>
+<li>1:订单已提交</li>
+<li>2:订单金额大于300</li>
+<li>3:有红包</li>
+<li>21:优惠</li>
+<li>22:不优惠</li>
+</ul>
+<p>4.画因果图，画判定表，得测试用例</p>
+<h3 id="d正交排列">d.正交排列</h3>
+<p><strong>解释</strong>：正交法的目的是为了减少用例数量,用尽量少的用例,覆盖输入的两两组合，正交试验设计是研究多因素多水平的一种设计方法,它是根据正交性,由实验因素的全部水平组合中挑选出部分有代表性的点进行实验,通过对这部分实验结果的分析了解全面试验的情况,找出最优的水平组合,正交试验设计是一种基于正交表的,高效率,快速,经济的试验.</p>
+<pre tabindex="0"><code>正交排列需要掌握的基本知识:
+
+因素(Factor):在一项试验中,凡是考虑的变量都称为因素(变量)
+
+水平/位级(Level):在试验范围内,因素被考查的值称为水平(变量的取值)
+
+正交表的构成:
+- 行数(Runs):正交表中行的个数,即试验的次数,用N表示
+- 因素数(Factors): 正交表中列的个数,用C表示
+- 水平数(Levels): 任何单个因素能够取到的值的最大个数,正交表中包含的值为从0到数&quot;水平数-1&quot;或者从1到&quot;水平数&quot;,用T表示
+
+正交表的表示形式: L=行数(水平数*因素数) L=N(TC)
+
+正交表的两条性质:
+- 每一列中各数字出现的次数都一样多
+- 任何两列锁构成的各有序数对出现的次数都一样多
+</code></pre><p>正交法设计测试用例的步骤：</p>
+<ul>
+<li>有哪些因素（变量）</li>
+<li>每个因素有哪几个水平（变量的取值）</li>
+<li>选择一个合适的正交表</li>
+<li>把变量的值映射到表中</li>
+<li>把每一行的各因素水平的组合作为一个测试用例</li>
+<li>加上你认为可疑且没有在表中出现的用例组合</li>
+</ul>
+<p><strong>案例</strong>：</p>
+<pre tabindex="0"><code>用户注册
+</code></pre><p>1.因素：姓名,邮箱,密码,确认密码,验证码</p>
+<p>2.水平：填写,不填写</p>
+<p><figure 
+	>
+	<a href="/drawingbed/img/202204291721415.png" >
+		<img src="/drawingbed/img/202204291721415.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>3.计算：表中的因素数=5，表中至每个因素数的水平数=2，行数取最少的一个，即试验次数最少的一个，公式 L=N(TC)=(2-1)*5+1=6(25)  【N试验次数  T水平数  C因素数】</p>
+<p>4.生成测试用例</p>
+<p><figure 
+	>
+	<a href="/drawingbed/img/202204291722792.jpg" >
+		<img src="/drawingbed/img/202204291722792.jpg"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h3 id="e场景设计法">e.场景设计法</h3>
+<p><strong>解释</strong>：现在的软件几乎都是用事件触发来控制流程的,事件触发时的情景便形成了场景,而同一事件不同的触发顺序和处理结果就形成事件流,该方法可以比较生动地描绘出事件触发时的情景,有利于测试设计者设计测试用例,使测试用例更容易理解和执行</p>
+<p><strong>案例</strong>：</p>
+<pre tabindex="0"><code>用户注册
+</code></pre><p>开始—&gt;用户注册—&gt;用户阅读协议—&gt;是否同意协议—是—&gt;填写信息—&gt;发送验证信息—&gt;激活—&gt;注册成功—&gt;结束</p>
+<h3 id="f错误猜测法">f.错误猜测法</h3>
+<p><strong>解释</strong>：基于经验和直觉，找出程序中你认为会出现的错误,有针对性地设计测试用例,经验可能来自于对某项业务的测试较多,也可以来自售后用户的反馈意见,或者从故障管理库中整理出bug,整理出产品越往哪些地方越容易出现问题,问题越多的地方,潜在的bug越多</p>
+<p><strong>案例</strong>：</p>
+<pre tabindex="0"><code>用户注册
+</code></pre><ol>
+<li>校验中特殊字符空格的处理?</li>
+<li>密码校验中的大小写？</li>
+<li>姓名中的特殊字符？</li>
+<li>密码发送是否明文</li>
+</ol>
+<h2 id="3用例举例">3.用例举例</h2>
+<h3 id="q一登录功能测试用例设计">Q：一、登录功能测试用例设计</h3>
+<h4 id="功能测试">功能测试：</h4>
+<ol>
+<li>
+<p>输入正确的账号和密码，点击提交按钮，验证是否能正常登录；</p>
+</li>
+<li>
+<p>输入错误的账号或错误的密码，登录失败，是否有相应的提示信息；</p>
+</li>
+<li>
+<p>登录成功后能否跳转到正确的页面；</p>
+</li>
+<li>
+<p>账号和密码，如果太短或者太长，应该怎么处理，密码太短时是否有提示（密码安全性检测）；</p>
+</li>
+<li>
+<p>账号和密码中有特殊字符（如空格），和其他非英文的情况，是否做了过滤；</p>
+</li>
+<li>
+<p>是否可以记住登录成功的账号；</p>
+</li>
+<li>
+<p>登录失败后，不能记住密码；</p>
+</li>
+<li>
+<p>账号和密码前后有空格是否正常处理；</p>
+</li>
+<li>
+<p>密码是否**显示（星号、圆点等）；</p>
+</li>
+<li>
+<p>验证码文字是否扭曲过度导致辨认难度大，刷新是否正常；</p>
+</li>
+<li>
+<p>登录页面中的注册、忘记密码链接是否正确跳转；</p>
+</li>
+<li>
+<p>输入密码的时候，大写键盘开启时是否有提示信息；</p>
+</li>
+<li>
+<p>不输入任何内容，点击提交按钮，提示信息是否正确（非空校验）；</p>
+</li>
+</ol>
+<h4 id="ui测试">UI测试：</h4>
+<ol>
+<li>
+<p>布局是否合理，文字和按钮是否正确排列；</p>
+</li>
+<li>
+<p>文本输入框和按钮的长度，高度是否符合要求；</p>
+</li>
+<li>
+<p>界面的设计风格是否与UI的设计风格统一；</p>
+</li>
+<li>
+<p>界面中的文字是否简洁易懂，没有错别字；</p>
+</li>
+</ol>
+<h4 id="安全性测试">安全性测试：</h4>
+<ol>
+<li>
+<p>登录成功后生成的Cookie是否有HttpOnly【如果cookie中设置了HttpOnly属性，那么通过JavaScript脚本将无法读取到cookie信息，这样能有效的防止XSS攻击，窃取cookie内容，增加了cookie的安全性】(降低脚本盗取风险）；</p>
+</li>
+<li>
+<p>账号和密码是否通过POST并加密的方式，发送给Web服务器；</p>
+</li>
+<li>
+<p>账号和密码的验证，应该是用服务器端验证，而不能单单是在客户端用JavaScript验证；</p>
+</li>
+<li>
+<p>账号和密码的输入框，应该屏蔽SQL注入攻击；</p>
+</li>
+<li>
+<p>账号和密码的输入框，应该禁止输入脚本（防止XSS攻击）；</p>
+</li>
+<li>
+<p>错误登录的次数限制（防止暴力破解）；</p>
+</li>
+<li>
+<p>考虑是否支持多用户在同一机器上登录；</p>
+</li>
+<li>
+<p>考虑一用户在多台机器上是否允许登录；</p>
+</li>
+</ol>
+<h4 id="可用性测试">可用性测试：</h4>
+<ol>
+<li>
+<p>是否可以全用键盘操作，是否有快捷键；</p>
+</li>
+<li>
+<p>输入账号，密码后按回车，是否可以登录；</p>
+</li>
+<li>
+<p>输入框是否可以以Tab键切换；</p>
+</li>
+<li>
+<p>高对比度下能否显示正常（视力不好的人使用）；</p>
+</li>
+</ol>
+<h4 id="兼容性测试">兼容性测试：</h4>
+<ol>
+<li>
+<p>主流的浏览器下能否显示正常（IE，Firefox，Chrome，Safari等）；</p>
+</li>
+<li>
+<p>不同的平台是否能正常工作，比如Windows，Mac；</p>
+</li>
+<li>
+<p>移动设备上是否正常工作，比如iPhone，Android；</p>
+</li>
+<li>
+<p>不同的分辨率下是否显示正常；</p>
+</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9A%8F%E8%AE%B0/">随记</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFmd5%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是MD5加密与耦合</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0web-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%9A%84%E6%8C%87%E6%A0%87/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—Web 性能测试的指标</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是并发和并行</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E7%9A%84%E7%BB%84%E6%88%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—响应时间的组成</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFweb%E8%AF%B7%E6%B1%82/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—什么是Web请求</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

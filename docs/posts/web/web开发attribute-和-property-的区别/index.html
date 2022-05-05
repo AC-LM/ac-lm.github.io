@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：JS中attribute和property的区别 @L_mj 
+ 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是DOM中的属性，是JavaScript里的对象；attribute是HTML标签上的特性，它的值只能够是字符串；简单理解，attribute就是DOM节点自带的属性，例如HTML中常用的id、class、title、align等。而property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild等。
+&amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
+ 
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如id, className这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在attributes属性中找到我们自定义的属性。
+ 
+从这里就可以看出，attributes是属于property的一个子集，它保存了HTML标签上定义属性。
+2.设置 常用的attribute，例如id、class等，已经被作为property附加到DOM对象上，可以和property一样取值和赋值。
+attribute取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.setAttribute(&amp;#39;title1&amp;#39;, &amp;#39;c&amp;#39;); div1.setAttribute(&amp;#39;title2&amp;#39;, &amp;#39;d&amp;#39;); property取值赋值 property取值赋值只需要使用.就可以了。对属性property可以赋任何类型的值。
+var id = div1.id; var className = div1.className; var childNodes = div1.childNodes; var attrs = div1.attributes; div1.className = &amp;#39;a&amp;#39;; div1.'><title>Web开发—attribute 和 property 的区别</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web开发—attribute 和 property 的区别'>
+<meta property='og:description' content='参考原文：JS中attribute和property的区别 @L_mj 
+ 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是DOM中的属性，是JavaScript里的对象；attribute是HTML标签上的特性，它的值只能够是字符串；简单理解，attribute就是DOM节点自带的属性，例如HTML中常用的id、class、title、align等。而property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild等。
+&amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
+ 
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如id, className这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在attributes属性中找到我们自定义的属性。
+ 
+从这里就可以看出，attributes是属于property的一个子集，它保存了HTML标签上定义属性。
+2.设置 常用的attribute，例如id、class等，已经被作为property附加到DOM对象上，可以和property一样取值和赋值。
+attribute取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.setAttribute(&amp;#39;title1&amp;#39;, &amp;#39;c&amp;#39;); div1.setAttribute(&amp;#39;title2&amp;#39;, &amp;#39;d&amp;#39;); property取值赋值 property取值赋值只需要使用.就可以了。对属性property可以赋任何类型的值。
+var id = div1.id; var className = div1.className; var childNodes = div1.childNodes; var attrs = div1.attributes; div1.className = &amp;#39;a&amp;#39;; div1.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2021-07-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-07-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Web开发—attribute 和 property 的区别">
+<meta name="twitter:description" content="参考原文：JS中attribute和property的区别 @L_mj 
+ 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是DOM中的属性，是JavaScript里的对象；attribute是HTML标签上的特性，它的值只能够是字符串；简单理解，attribute就是DOM节点自带的属性，例如HTML中常用的id、class、title、align等。而property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild等。
+&amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
+ 
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如id, className这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在attributes属性中找到我们自定义的属性。
+ 
+从这里就可以看出，attributes是属于property的一个子集，它保存了HTML标签上定义属性。
+2.设置 常用的attribute，例如id、class等，已经被作为property附加到DOM对象上，可以和property一样取值和赋值。
+attribute取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.setAttribute(&amp;#39;title1&amp;#39;, &amp;#39;c&amp;#39;); div1.setAttribute(&amp;#39;title2&amp;#39;, &amp;#39;d&amp;#39;); property取值赋值 property取值赋值只需要使用.就可以了。对属性property可以赋任何类型的值。
+var id = div1.id; var className = div1.className; var childNodes = div1.childNodes; var attrs = div1.attributes; div1.className = &amp;#39;a&amp;#39;; div1.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/web/web%E5%BC%80%E5%8F%91attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/">Web开发—attribute 和 property 的区别</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 25, 2021</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>参考原文：<a class="link" href="https://www.cnblogs.com/lmjZone/p/8760232.html"  target="_blank" rel="noopener"
+    > JS中attribute和property的区别  @L_mj </a></p>
+</blockquote>
+<h2 id="1介绍">1.介绍</h2>
+<p><code>property</code>属性和<code>attribute</code>特性非常容易混淆，但两者不是同一个东西，<code>property</code>是DOM中的属性，是JavaScript里的对象；<code>attribute</code>是HTML标签上的特性，它的值只能够是字符串；简单理解，<code>attribute</code>就是DOM节点自带的属性，例如HTML中常用的<code>id、class、title、align</code>等。而<code>property</code>是这个DOM元素作为对象，其附加的内容，例如<code>childNodes、firstChild</code>等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;div1&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divClass&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divTitle&#34;</span> <span style="color:#a6e22e">title1</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divTitle1&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p>如上述的<code>div</code>标签，当我们使用<code>var in1=document.getElementById(&quot;div1&quot;)</code>获取这个元素并打印时<code>console.log(in1)</code>，可以看到如下图的属性。</p>
+<p><figure 
+	>
+	<a href="/drawingbed/img/202205051102194.png" >
+		<img src="/drawingbed/img/202205051102194.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>可以发现有一个名为<code>attributes</code>的属性，类型是<code>NamedNodeMap</code>，同时也可以找到标签自带的属性<code>id</code>和<code>className</code>、但明显没有<code>titles</code>这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如<code>id, className</code>这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在<code>attributes</code>属性中找到我们自定义的属性。</p>
+<p><figure 
+	>
+	<a href="/drawingbed/img/202205051102155.png" >
+		<img src="/drawingbed/img/202205051102155.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>从这里就可以看出，<strong><code>attributes</code>是属于<code>property</code>的一个子集</strong>，它保存了HTML标签上定义属性。</p>
+<h2 id="2设置">2.设置</h2>
+<p>常用的<code>attribute</code>，例如<code>id、class</code>等，已经被作为<code>property</code>附加到DOM对象上，可以和<code>property</code>一样取值和赋值。</p>
+<h3 id="attribute取值赋值">attribute取值赋值</h3>
+<p>使用setAttribute()和getAttribute()进行操作，注意，<code>setAttribute()</code>的两个参数，都必须是字符串。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;id&#34;</span>);              
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;class&#34;</span>);
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title&#34;</span>);
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title1&#34;</span>);   <span style="color:#75715e">//自定义特性
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>);
+ <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>);
+ <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title1&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>);
+ <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title2&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>);
+</code></pre></div><h3 id="property取值赋值">property取值赋值</h3>
+<p>property取值赋值只需要使用.就可以了。对属性<code>property</code>可以赋任何类型的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">id</span>;
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">className</span>;
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">childNodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">childNodes</span>;
+ <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">attrs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">attributes</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">align</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">AAAAA</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">BBBBB</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</code></pre></div><h2 id="property和attribute的联系"><code>property</code>和<code>attribute</code>的联系</h2>
+<ul>
+<li><code>property</code>能够从<code>attribute</code>中得到同步；</li>
+<li><code>attribute</code>不会同步<code>property</code>上的值；</li>
+<li><code>attribute</code>和<code>property</code>之间的数据绑定是单向的，<code>attribute-&gt;property</code>；</li>
+<li>更改<code>property</code>和<code>attribute</code>上的任意值，都会将更新反映到HTML页面中；</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// 如下，更改 property 的值不能更改 attribute 的值
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new value of prop&#39;</span>;
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">value</span>);               <span style="color:#75715e">// &#39;new value of prop&#39;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>);    <span style="color:#75715e">// 1
+</span><span style="color:#75715e">// 相反，更改 attribute 的值不能更改 property 的值
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;value&#39;</span>,<span style="color:#e6db74">&#39;ni&#39;</span>)
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">value</span>);          <span style="color:#75715e">//ni
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>); <span style="color:#75715e">//value=&#39;ni&#39;
+</span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/web/">Web</a>
+        
+            <a href="/tags/javascript/">Javascript</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91%E5%BC%82%E6%AD%A5post/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—异步POST</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91jquery-%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%B7%E6%96%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—jQuery 实现界面刷新</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6-bootstrap-select/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—下拉表单插件 bootstrap-select</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—定位点击位置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91jquery-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6-toastr/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web开发—jQuery 消息提示插件 toastr</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
