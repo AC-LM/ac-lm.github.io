@@ -193,13 +193,6 @@ menu:
           params:
               newTab: false
               icon: hash
-    
-    social:
-        - identifier: github
-          name: GitHub
-          url: https://github.com/AC-LM
-          params:
-            icon: brand-github
 
 related:
     includeNewer: true
