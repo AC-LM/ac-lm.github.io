@@ -5,7 +5,7 @@ author: LM
 tags: ["Windows"]
 ---
 
-## 常用的CMD命令
+## 1.CMD 命令
 
 - 进入D盘：`D:`
 - 列出所有文件：`dir`

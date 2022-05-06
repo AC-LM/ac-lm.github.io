@@ -9,7 +9,7 @@ tags: ["Web", "Javascript"]
 
 ## 1.介绍
 
-`property`属性和`attribute`特性非常容易混淆，但两者不是同一个东西，`property`是DOM中的属性，是JavaScript里的对象；`attribute`是HTML标签上的特性，它的值只能够是字符串；简单理解，`attribute`就是DOM节点自带的属性，例如HTML中常用的`id、class、title、align`等。而`property`是这个DOM元素作为对象，其附加的内容，例如`childNodes、firstChild`等。
+`property`属性和`attribute`特性非常容易混淆，但两者不是同一个东西，`property`是 DOM 中的属性，是 JavaScript 里的对象；`attribute`是 HTML 标签上的特性，它的值只能够是字符串；简单理解，`attribute`就是 DOM 节点自带的属性，例如 HTML 中常用的`id、class、title、align`等。而`property`是这个 DOM 元素作为对象，其附加的内容，例如`childNodes、firstChild`等。
 
 ```html
 <div id="div1" class="divClass" title="divTitle" title1="divTitle1"></div>
@@ -19,19 +19,19 @@ tags: ["Web", "Javascript"]
 
 ![](/drawingbed/img/202205051102194.png)
 
-可以发现有一个名为`attributes`的属性，类型是`NamedNodeMap`，同时也可以找到标签自带的属性`id`和`className`、但明显没有`titles`这个自定义的属性。这是因为每一个DOM对象在创建的时候，只会创建如`id, className`这些基本属性，而们在TAG标签中自定义的属性是不会直接放到DOM中的。我们可以在`attributes`属性中找到我们自定义的属性。
+可以发现有一个名为`attributes`的属性，类型是`NamedNodeMap`，同时也可以找到标签自带的属性`id`和`className`、但明显没有`titles`这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如`id, className`这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在`attributes`属性中找到我们自定义的属性。
 
 ![](/drawingbed/img/202205051102155.png)
 
-从这里就可以看出，**`attributes`是属于`property`的一个子集**，它保存了HTML标签上定义属性。
+从这里就可以看出，**`attributes`是属于`property`的一个子集**，它保存了 HTML 标签上定义属性。
 
 ## 2.设置
 
-常用的`attribute`，例如`id、class`等，已经被作为`property`附加到DOM对象上，可以和`property`一样取值和赋值。
+常用的`attribute`，例如`id、class`等，已经被作为`property`附加到 DOM 对象上，可以和`property`一样取值和赋值。
 
-### attribute取值赋值
+### 1.attribute 取值赋值
 
-使用setAttribute()和getAttribute()进行操作，注意，`setAttribute()`的两个参数，都必须是字符串。
+使用`setAttribute()`和`getAttribute()`进行操作，注意，`setAttribute()`的两个参数，都必须是字符串。
 
 ```javascript
  var id = div1.getAttribute("id");              
@@ -44,9 +44,9 @@ tags: ["Web", "Javascript"]
  div1.setAttribute('title2', 'd');
 ```
 
-### property取值赋值
+### 2.property 取值赋值
 
-property取值赋值只需要使用.就可以了。对属性`property`可以赋任何类型的值。
+`property`取值赋值只需要使用`.`就可以了。对属性`property`可以赋任何类型的值。
 
 ```javascript
  var id = div1.id;
@@ -59,12 +59,12 @@ div1.AAAAA = true;
 div1.BBBBB = [1, 2, 3];
 ```
 
-## `property`和`attribute`的联系
+## 3.`property`和`attribute`的联系
 
 - `property`能够从`attribute`中得到同步；
 - `attribute`不会同步`property`上的值；
 - `attribute`和`property`之间的数据绑定是单向的，`attribute->property`；
-- 更改`property`和`attribute`上的任意值，都会将更新反映到HTML页面中；
+- 更改`property`和`attribute`上的任意值，都会将更新反映到 HTML 页面中；
 
 ```javascript
 // 如下，更改 property 的值不能更改 attribute 的值

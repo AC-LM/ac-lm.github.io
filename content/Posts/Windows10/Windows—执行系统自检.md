@@ -5,7 +5,7 @@ author: LM
 tags: ["Windows"]
 ---
 
-## 如何实现
+## 1.实现
 
 ```cmd
 # 系统自检命令

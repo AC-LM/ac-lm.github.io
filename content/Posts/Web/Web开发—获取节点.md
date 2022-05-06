@@ -27,7 +27,7 @@ var getFirstChild = document.getElementById("test").children[0];
 
 ## 2.获取父节点
 
-### a.parentNode获取父节点
+### a.parentNode 获取父节点
 
 ```javascript
 var p = document.getElementById("test").parentNode;

@@ -9,19 +9,18 @@ tags: ["Web", "服务器"]
 
 ```php
 <?php
-  if (extension_loaded('mysqli')){
-    echo 'yes';
- }
- else{
-    echo 'no';
- }
-# mysqli组件是否已经被加载
-  $db = new mysqli('localhost', 'root', 'admin', 'test'); #数据库地址，用户名，密码，表单
-  if (mysqli_connect_errno()){
-    echo '<p>' . 'Connect DB error';
-    exit;
-  }
-#数据库是否连接
+    if (extension_loaded('mysqli')){
+        echo 'yes';
+    }else{
+        echo 'no';
+    }
+    # 判断 mysqli 组件是否已经被加载
+    $db = new mysqli('localhost', 'root', 'admin', 'test'); # 数据库地址，用户名，密码，表单
+    if (mysqli_connect_errno()){
+        echo '<p>' . 'Connect DB error';
+        exit;
+    }
+    # 判断数据库是否连接
 ?>
 ```
 
@@ -30,14 +29,14 @@ tags: ["Web", "服务器"]
 ### a、创建数据库、表和用户。
 
 ```mysql
-DROP DATABASE IF EXISTS `test`;
-CREATE DATABASE `test`
-USE `test`;
-DROP TABLE IF EXISTS `tbl_user`;
-CREATE TABLE `tbl_user` (
- `username` varchar(32) NOT NULL default '',
- `password` varchar(32) NOT NULL default '',
- PRIMARY KEY (`username`)
+DROP DATABASE IF EXISTS 'test';
+CREATE DATABASE 'test'
+USE 'test';
+DROP TABLE IF EXISTS 'tbl_user';
+CREATE TABLE 'tbl_user' (
+ 'username' varchar(32) NOT NULL default '',
+ 'password' varchar(32) NOT NULL default '',
+ PRIMARY KEY ('username')
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 ```
 
@@ -159,24 +158,24 @@ CREATE TABLE `tbl_user` (
 ### 2、建表
 
 ```mysql
-DROP DATABASE IF EXISTS `test`;
-CREATE DATABASE IF NOT EXISTS `test`;
-USE `test`;
-DROP TABLE IF EXISTS `tbl_book`;
-CREATE TABLE IF NOT EXISTS `tbl_book` (
- `isbn` varchar(32) NOT NULL,
- `title` varchar(32) NOT NULL,
- `author` varchar(32) NOT NULL,
- `price` float NOT NULL,
- PRIMARY KEY (`isbn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf-8;DROP` `DATABASE` `IF EXISTS `test`;``CREATE` `DATABASE` `IF ``NOT` `EXISTS `test`;``USE `test`;``DROP` `TABLE` `IF EXISTS `tbl_book`;``CREATE` `TABLE` `IF ``NOT` `EXISTS `tbl_book` (`` ```isbn` ``varchar``(32) ``NOT` `NULL``,`` ```title` ``varchar``(32) ``NOT` `NULL``,`` ```author` ``varchar``(32) ``NOT` `NULL``,`` ```price` ``float` `NOT` `NULL``,`` ``PRIMARY` `KEY` `(`isbn`)``) ENGINE=InnoDB ``DEFAULT` `CHARSET=utf-8;
+DROP DATABASE IF EXISTS 'test';
+CREATE DATABASE IF NOT EXISTS 'test';
+USE 'test';
+DROP TABLE IF EXISTS 'tbl_book';
+CREATE TABLE IF NOT EXISTS 'tbl_book' (
+ 'isbn' varchar(32) NOT NULL,
+ 'title' varchar(32) NOT NULL,
+ 'author' varchar(32) NOT NULL,
+ 'price' float NOT NULL,
+ PRIMARY KEY ('isbn')
+) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
 ```
 
 ### 3、添加的逻辑处理代码（bookadd_do.php）
 
 ```PHP
 $db->query("set names utf-8")
-#注意：向数据库写入数据时，采用utf-8编解码，以防止中文的乱码。
+# 注意：向数据库写入数据时，采用 utf-8 编解码，以防止中文的乱码。
 ```
 
 ```PHP
@@ -191,7 +190,7 @@ $db->query("set names utf-8")
     echo '<p>' . 'Connect DB error';
     exit;
   }
-  $db->query("set names utf-8"); //特别注意这句话
+  $db->query("set names utf-8");
   $stmt = $db->stmt_init();
   $stmt->prepare("insert into tbl_book values (?,?,?,?)");
   $stmt->bind_param("sssd", $isbn, $title, $author, $price);
@@ -211,7 +210,7 @@ $db->query("set names utf-8")
     echo '<p>' . 'Connect DB error';
     exit;
   }
-  $db->query("set names utf-8"); //特别注意这句话
+  $db->query("set names utf-8");
   $stmt = $db->stmt_init();
   $stmt->prepare("select * from tbl_book");
   $stmt->bind_result($isbn, $title, $author, $price);

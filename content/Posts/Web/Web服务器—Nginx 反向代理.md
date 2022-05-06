@@ -13,46 +13,42 @@ tags: ["Web", "服务器"]
 
 **两者的区别在于代理的对象不一样：  正向代理是为客户端代理，反向代理是为服务端代理。**
 
-## 2.通过Nginx实现反向代理
+在现代，通常会使用 Nginx 作为反向代理服务器。
 
-Nginx是最为流行的反向代理服务器之一，而且能用来实现负载均衡。
-
-什么是负载均衡？就是把项目部署在不同的服务器上，但是通过统一的域名进入，由Nginx对请求进行分发，最终减轻服务器的压力。此时，Nginx服务器仅作为分发服务器，而真正的内容可以放在其他的服务器上，这样来，还能起到一层安全隔壁的作用，Nginx作为隔离层。其次，Nginx还能解决跨域的问题。
-
-## 3.Nginx的配置文件
+## 2.Nginx的配置文件
 
 ![](/drawingbed/img/202205051055087.png)
 
 ### 1.全局块
 
-该部分配置主要影响Nginx全局，通常包括下面几个部分：
+该部分配置主要影响 Nginx 全局，通常包括下面几个部分：
 
-- 配置运行Nginx服务器用户（组）
-- worker process数
-- Nginx进程PID存放路径
+- 配置运行 Nginx 服务器用户（组）
+- worker process 数
+- Nginx 进程 PID 存放路径
 - 错误日志的存放路径
 - 配置文件的引入
 
-### 2.events块
+### 2.events 块
 
-该部分配置主要影响Nginx服务器与用户的网络连接，主要包括：
+该部分配置主要影响 Nginx 服务器与用户的网络连接，主要包括：
 
 - 设置网络连接的序列化
 - 是否允许同时接收多个网络连接
 - 事件驱动模型的选择
 - 最大连接数的配置
 
-### 3.http块
+### 3.http 块
 
 这部分是负责网页相关的配置
 
-- 定义MIMI-Type
+- 定义 MIMI-Type
 - 自定义服务日志
-- 允许sendfile方式传输文件
+- 允许 sendfile 方式传输文件
 - 连接超时时间
 - 单连接请求数上限
 
-### 4.server块
+### 4.server 块
 
 这部分是负责服务器相关的配置
 
@@ -60,7 +56,7 @@ Nginx是最为流行的反向代理服务器之一，而且能用来实现负载
 - 基于名称的虚拟主机配置
 - 基于IP的虚拟主机配置
 
-### 5.location块
+### 5.location 块
 
 本地文件配置
 
@@ -68,9 +64,9 @@ Nginx是最为流行的反向代理服务器之一，而且能用来实现负载
 -  更改location的URI
 -  网站默认首页配置
 
-## 4. 代码解析
+## 3. 代码解析
 
-### 1. 全局块----配置运行Nginx服务器用户（组）
+### 1. 全局块----配置运行 Nginx 服务器用户（组）
 
 ```nginx
 user user [group];
@@ -101,7 +97,7 @@ multi_accept on | off;
 
 ```
 
-### 2.Events块----事件配置
+### 2.Events 块----事件配置
 
 ```nginx
 use model;
@@ -112,7 +108,7 @@ worker_connections number;
 ----------------------------------------------------------------------------------
 ```
 
-### 3.Http全局块
+### 3.Http 全局块
 
 ```nginx
 include mime.types;default_type mime-type;
@@ -136,7 +132,7 @@ keepalive_requests number;
 #单连接请求数上限，用于限制用户通过某一个连接向Nginx服务器发起请求的次数
 ```
 
-### 4.Server全局块
+### 4.Server 全局块
 
 ```nginx
 listen IP[:PORT];
@@ -153,7 +149,7 @@ server_name ~^www\d+\.myserver\.com$
 server_name 192.168.1.245;
 ```
 
-### 5.Location块配置
+### 5.Location 块配置
 
 ```nginx
 location [ = | ~ | ~* | ^~ ] uri {...};
@@ -173,7 +169,7 @@ index file ......;
 #file:可以包含多个用空格隔开的文件名，首先找到哪个页面，就使用哪个页面响应请求
 ```
 
-## 5.Nginx配置SSL及HTTP跳转到HTTPS
+## 5.Nginx 配置 SSL 及 HTTP 跳转到 HTTPS
 
 ```nginx
 # Nginx配置SSL并把Http跳转到Https，需修改Nginx.conf配置文件如下

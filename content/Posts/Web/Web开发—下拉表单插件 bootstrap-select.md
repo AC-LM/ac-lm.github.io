@@ -32,7 +32,7 @@ tags: ["Web", "Javascript"]
 
 ## 3.取值
 
-关于组件取值保持原生的jquery方法，比如 `var value = $('#sel').val();` ，需要注意的是，如果是多选，这里得到的value变量是一个数组变量，形如 `['1','2','3']`
+关于组件取值保持原生的 JQuery 方法，比如 `var value = $('#sel').val();` ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 `['1','2','3']`
 
 ## 4.赋值
 
@@ -42,9 +42,9 @@ tags: ["Web", "Javascript"]
 $('.selectpicker').selectpicker('val', '1');
 ```
 
-注意，赋值的值为option的value属性！！
+注意，赋值的值为 option 的 value 属性！！
 
-在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的change事件，我们可以这么做。
+在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。
 
 ```javascript
 $('.selectpicker').selectpicker('val', '1').trigger("change");
@@ -56,7 +56,7 @@ $('.selectpicker').selectpicker('val', '1').trigger("change");
 $('.selectpicker').selectpicker('val', ['1','2','3']).trigger("change");
 ```
 
-## 恢复原状
+## 5.恢复原状
 
 ```javascript
 $('#initializePartyAProject').on('click', function () {

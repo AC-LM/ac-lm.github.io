@@ -5,7 +5,7 @@ author: LM
 tags: ["Zabbix"]
 ---
 
-## 1.Zabbix server 部署脚本
+## 1.Zabbix server Docker 部署脚本
 
 ```shell
 docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net

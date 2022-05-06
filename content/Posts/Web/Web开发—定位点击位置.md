@@ -5,7 +5,7 @@ author: LM
 tags: ["Web", "Javascript"]
 ---
 
-## 1.实现代码
+## 1.实现
 
 ```javascript
 $('body').click(function(e) { 

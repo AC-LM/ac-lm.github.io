@@ -5,7 +5,7 @@ author: LM
 tags: ["Web", "Javascript"]
 ---
 
-## 1.HTML实现
+## 1.HTML 实现
 ```html
 <!DOCTYPE html>
 <html lang="en">
