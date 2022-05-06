@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min文件 min，Minimized的缩写，是压缩后的js或css文件。里面的功能与没有min的文件是一样的。
-js或css文件一般都是从服务器上下载到本地浏览器上解释执行的，如果js文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩js文件的做法。
-实际压缩原理很简单，就是把原来js文件中的空格，回车符，注释全部清除。因此这种js文件通常是不可读的，因为压缩后，文件是一行写到尾。
-3.li标签间的间隔删除 li标签间的间隔是由于：行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。可以将闭合标签写到开头
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min 文件 min，Minimized 的缩写，是压缩后的 js 或 css 文件。里面的功能与没有 min 的文件是一样的。
+js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执行的，如果 js 文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩 js 文件的做法。
+实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
+3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值&amp;raquo;ID选择器&amp;raquo;类选择器&amp;raquo;标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js将html字符串转换成node节点 innerHTML function createNode(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let tempNode = document.createElement(&amp;#39;div&amp;#39;); tempNode.innerHTML = template; return tempNode.firstChild; } const container = document.getElementById(&amp;#39;container&amp;#39;); container.appendChild(createNode(&amp;#39;hello&amp;#39;)); DOMParser function createDocument(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let doc = new DOMParser().'><title>Web开发—一般知识</title>
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js 将 html 字符串转换成 node 节点 1.'><title>Web开发—一般知识</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%80%E8%88%AC%E7%9F%A5%E8%AF%86/'>
 
 <link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web开发—一般知识'>
-<meta property='og:description' content='1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min文件 min，Minimized的缩写，是压缩后的js或css文件。里面的功能与没有min的文件是一样的。
-js或css文件一般都是从服务器上下载到本地浏览器上解释执行的，如果js文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩js文件的做法。
-实际压缩原理很简单，就是把原来js文件中的空格，回车符，注释全部清除。因此这种js文件通常是不可读的，因为压缩后，文件是一行写到尾。
-3.li标签间的间隔删除 li标签间的间隔是由于：行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。可以将闭合标签写到开头
+<meta property='og:description' content='1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min 文件 min，Minimized 的缩写，是压缩后的 js 或 css 文件。里面的功能与没有 min 的文件是一样的。
+js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执行的，如果 js 文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩 js 文件的做法。
+实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
+3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值&amp;raquo;ID选择器&amp;raquo;类选择器&amp;raquo;标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js将html字符串转换成node节点 innerHTML function createNode(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let tempNode = document.createElement(&amp;#39;div&amp;#39;); tempNode.innerHTML = template; return tempNode.firstChild; } const container = document.getElementById(&amp;#39;container&amp;#39;); container.appendChild(createNode(&amp;#39;hello&amp;#39;)); DOMParser function createDocument(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let doc = new DOMParser().'>
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js 将 html 字符串转换成 node 节点 1.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%80%E8%88%AC%E7%9F%A5%E8%AF%86/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2021-06-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-03T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Web开发—一般知识">
-<meta name="twitter:description" content="1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min文件 min，Minimized的缩写，是压缩后的js或css文件。里面的功能与没有min的文件是一样的。
-js或css文件一般都是从服务器上下载到本地浏览器上解释执行的，如果js文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩js文件的做法。
-实际压缩原理很简单，就是把原来js文件中的空格，回车符，注释全部清除。因此这种js文件通常是不可读的，因为压缩后，文件是一行写到尾。
-3.li标签间的间隔删除 li标签间的间隔是由于：行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。可以将闭合标签写到开头
+<meta name="twitter:description" content="1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min 文件 min，Minimized 的缩写，是压缩后的 js 或 css 文件。里面的功能与没有 min 的文件是一样的。
+js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执行的，如果 js 文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩 js 文件的做法。
+实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
+3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值&amp;raquo;ID选择器&amp;raquo;类选择器&amp;raquo;标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js将html字符串转换成node节点 innerHTML function createNode(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let tempNode = document.createElement(&amp;#39;div&amp;#39;); tempNode.innerHTML = template; return tempNode.firstChild; } const container = document.getElementById(&amp;#39;container&amp;#39;); container.appendChild(createNode(&amp;#39;hello&amp;#39;)); DOMParser function createDocument(txt) { const template = `&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;`; let doc = new DOMParser().">
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js 将 html 字符串转换成 node 节点 1.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -224,22 +224,22 @@ js或css文件一般都是从服务器上下载到本地浏览器上解释执行
     <h2 id="1屏蔽链接">1.屏蔽链接</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">href=&#34;javascript:void(0);&#34;
 &lt;<span style="color:#f92672">script</span>&gt;window.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;sometext&#34;</span>)&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><h2 id="2min文件">2.min文件</h2>
-<p>min，Minimized的缩写，是压缩后的js或css文件。里面的功能与没有min的文件是一样的。</p>
-<p>js或css文件一般都是从服务器上下载到本地浏览器上解释执行的，如果js文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩js文件的做法。</p>
-<p>实际压缩原理很简单，就是把原来js文件中的空格，回车符，注释全部清除。因此这种js文件通常是不可读的，因为压缩后，文件是一行写到尾。</p>
-<h2 id="3li标签间的间隔删除">3.li标签间的间隔删除</h2>
-<p>li标签间的间隔是由于：行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。可以将闭合标签写到开头</p>
+</code></pre></div><h2 id="2min-文件">2.min 文件</h2>
+<p>min，Minimized 的缩写，是压缩后的 js 或 css 文件。里面的功能与没有 min 的文件是一样的。</p>
+<p>js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执行的，如果 js 文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩 js 文件的做法。</p>
+<p>实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。</p>
+<h2 id="3li-标签间的间隔删除">3.li 标签间的间隔删除</h2>
+<p>li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">li</span>&gt;BAT
 &lt;/<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">li</span>&gt;BAT&lt;/<span style="color:#f92672">li</span>&gt;
 </code></pre></div><p>也可以通过设置 li 标签的 font-size 为 0，解决该问题。</p>
-<h2 id="4css样式覆盖">4.CSS样式覆盖</h2>
+<h2 id="4css-样式覆盖">4.CSS 样式覆盖</h2>
 <ul>
 <li>规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则）</li>
 <li>规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则）</li>
-<li>规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值&raquo;ID选择器&raquo;类选择器&raquo;标签选择器</li>
+<li>规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &raquo; ID 选择器 &raquo; 类选择器 &raquo; 标签选择器</li>
 <li>规则四：样式权值相同时，后者获胜。注意样式表的出现位置</li>
-<li>规则五：!important的样式属性不被覆盖</li>
+<li>规则五：<code>!important</code> 的样式属性不被覆盖</li>
 </ul>
 <h2 id="5页面跳转">5.页面跳转</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;网址&#34;</span>);
@@ -247,10 +247,10 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;href&#39;</span>, <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>);
 <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;location&#39;</span>,<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>);
 <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;href&#39;</span>,<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>)
-</code></pre></div><h2 id="6js将html字符串转换成node节点">6.js将html字符串转换成node节点</h2>
-<h3 id="innerhtml">innerHTML</h3>
+</code></pre></div><h2 id="6js-将-html-字符串转换成-node-节点">6.js 将 html 字符串转换成 node 节点</h2>
+<h3 id="1innerhtml">1.innerHTML</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createNode</span>(<span style="color:#a6e22e">txt</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#39;child&#39;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;div class=&#39;child&#39;&gt;${txt}&lt;/div&gt;&#34;</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tempNode</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
   <span style="color:#a6e22e">tempNode</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">template</span>;
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">tempNode</span>.<span style="color:#a6e22e">firstChild</span>;
@@ -258,9 +258,9 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;container&#39;</span>);
 <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">createNode</span>(<span style="color:#e6db74">&#39;hello&#39;</span>));
-</code></pre></div><h3 id="domparser">DOMParser</h3>
+</code></pre></div><h3 id="2domparser">2.DOMParser</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDocument</span>(<span style="color:#a6e22e">txt</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#39;child&#39;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;div class=&#39;child&#39;&gt;${txt}&lt;/div&gt;&#34;</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">doc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DOMParser</span>().<span style="color:#a6e22e">parseFromString</span>(<span style="color:#a6e22e">template</span>, <span style="color:#e6db74">&#39;text/html&#39;</span>);
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.child&#39;</span>);
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">div</span>;
@@ -268,16 +268,16 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
   
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;container&#39;</span>);
 <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">createDocument</span>(<span style="color:#e6db74">&#39;hello&#39;</span>));
-</code></pre></div><h3 id="documentfragment">DocumentFragment</h3>
+</code></pre></div><h3 id="3documentfragment">3.DocumentFragment</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDocumentFragment</span>(<span style="color:#a6e22e">txt</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div class=&#39;child&#39;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txt</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;div class=&#39;child&#39;&gt;${txt}&lt;/div&gt;&#34;</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">frag</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createRange</span>().<span style="color:#a6e22e">createContextualFragment</span>(<span style="color:#a6e22e">template</span>);
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">frag</span>;
 }
  
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">container</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;container&#39;</span>);
 <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">createDocumentFragment</span>(<span style="color:#e6db74">&#39;hello&#39;</span>));
-</code></pre></div><h2 id="7获取当前页面url">7.获取当前页面Url</h2>
+</code></pre></div><h2 id="7获取当前页面-url">7.获取当前页面 Url</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span>;
  
 <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>; <span style="color:#75715e">/* 获取完整URL */</span>
@@ -316,32 +316,32 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;undefined&#34;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Null&#34;</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">context</span>;
 }
 
-</code></pre></div><h2 id="8jquery函数attr和prop的区别">8.JQuery函数attr()和prop()的区别</h2>
-<p>attr()，attribute和prop()，property，都表示&quot;属性&quot;的意思，但是两者操作的对象不同。</p>
+</code></pre></div><h2 id="8jquery-函数-attr-和-prop-的区别">8.JQuery 函数 attr() 和 prop() 的区别</h2>
+<p>attr()，attribute 和 prop()，property，都表示&quot;属性&quot;的意思，但是两者操作的对象不同。</p>
 <ul>
-<li>attr()函数操作的是文档节点的属性，因此设置的属性值只能是字符串类型，如果不是字符串类型，也会调用其toString()方法，将其转为字符串类型。</li>
-<li>prop()函数操作的是JS对象的属性，因此设置的属性值可以为包括数组和对象在内的任意类型。</li>
+<li>attr() 函数操作的是文档节点的属性，因此设置的属性值只能是字符串类型，如果不是字符串类型，也会调用其 toString() 方法，将其转为字符串类型。</li>
+<li>prop() 函数操作的是 JS 对象的属性，因此设置的属性值可以为包括数组和对象在内的任意类型。</li>
 </ul>
-<p>在jQuery 1.6之后，对于表单元素的checked、selected、disabled等属性，使用attr()获取这些属性的返回值为String类型，如果被选中(或禁用)就返回checked、selected或disabled，否则(即元素节点没有该属性)返回undefined。而使用prop()则返回bool值的true与false以表示该属性实时状态。</p>
-<h2 id="9js判断一个数组是否包含一个指定的值">9.js判断一个数组是否包含一个指定的值</h2>
-<h3 id="arrayindexofvalue">array.indexOf(value)</h3>
+<p>在 jQuery 1.6 之后，对于表单元素的 checked、selected、disabled 等属性，使用 attr() 获取这些属性的返回值为 String 类型，如果被选中(或禁用)就返回checked、selected 或 disabled，否则(即元素节点没有该属性)返回 undefined。而使用 prop() 则返回 bool 值的 true 与 false 以表示该属性实时状态。</p>
+<h2 id="9js-判断一个数组是否包含一个指定的值">9.js 判断一个数组是否包含一个指定的值</h2>
+<h3 id="1arrayindexofvalue">1.array.indexOf(value)</h3>
 <p>此方法判断数组中是否存在某个值，如果存在返回数组元素的下标，否则返回-1</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;something&#39;</span>, <span style="color:#e6db74">&#39;anything&#39;</span>, <span style="color:#e6db74">&#39;nothing&#39;</span>, <span style="color:#e6db74">&#39;anything&#39;</span>];
 <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;nothing&#39;</span>);
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">index</span>) <span style="color:#75715e">//结果是2
-</span></code></pre></div><h3 id="arrayincludesvalue">array.includes(value)</h3>
+</span></code></pre></div><h3 id="2arrayincludesvalue">2.array.includes(value)</h3>
 <p>此方法判断数组中是否存在某个值，如果存在返回 true，否则返回false。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">redFruits</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;strawberry&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>, <span style="color:#e6db74">&#39;cranberries&#39;</span>];
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">redFruits</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">fruit</span>));
-</code></pre></div><h3 id="arrayfindcallback">array.find(callback())</h3>
+</code></pre></div><h3 id="3arrayfindcallback">3.array.find(callback())</h3>
 <p>返回数组中满足条件的第一个元素的值，如果没有，返回undefined</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// ---------- 元素是普通字面值 ----------
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">130</span>, <span style="color:#ae81ff">44</span>];
 <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">item</span> =&gt; {
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">8</span>;
 });<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>)
-<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">结果</span><span style="color:#960050;background-color:#1e0010">：</span> <span style="color:#ae81ff">12</span>
-<span style="color:#75715e">// ---------- 元素是对象 ----------
+<span style="color:#75715e">// 结果： 12
+</span><span style="color:#75715e">// ---------- 元素是对象 ----------
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">items</span> <span style="color:#f92672">=</span> [
     {<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;something&#39;</span>},
     {<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;anything&#39;</span>},
@@ -351,18 +351,18 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">item</span> =&gt; {
     <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>;
 });<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">item</span>) 
-<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">结果</span><span style="color:#960050;background-color:#1e0010">：</span> Object { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nothing&#34;</span> }
-</code></pre></div><h2 id="10js强制类型转换">10.js强制类型转换</h2>
-<p>将其他数据类型转换成String类型，注意Null与Undefined无toString()方法</p>
+<span style="color:#75715e">// 结果： Object { id: 3, name: &#34;nothing&#34; }
+</span></code></pre></div><h2 id="10js-强制类型转换">10.js 强制类型转换</h2>
+<p>将其他数据类型转换成 String 类型，注意 Null 与 Undefined 无 toString() 方法</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">toString</span>()
 String(<span style="color:#a6e22e">value</span>)
-</code></pre></div><p>将其他的数据类型转换为Number类型，注意对非数字字符类型会转换为NaN，Null会转换为0</p>
+</code></pre></div><p>将其他的数据类型转换为 Number 类型，注意对非数字字符类型会转换为 NaN，Null 会转换为 0</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Number(<span style="color:#a6e22e">value</span>)
-</code></pre></div><p>将其他的数据类型转换为Boolean类型</p>
+</code></pre></div><p>将其他的数据类型转换为 Boolean 类型</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Boolean(<span style="color:#a6e22e">value</span>)
-</code></pre></div><h2 id="11js实现ctrlv粘贴图片">11.js实现ctrl+v粘贴图片</h2>
-<p>ctrl+v粘贴图片都是监听paste事件实现的，复制的数据都存在clipboardData下面。</p>
-<p>打印clipboardData.items，可以发现是一个DataTransferItem，可以使用getAsFile()的方法获取文件</p>
+</code></pre></div><h2 id="11js-实现-ctrlv-粘贴图片">11.js 实现 ctrl+v 粘贴图片</h2>
+<p>ctrl+v 粘贴图片都是监听 paste 事件实现的，复制的数据都存在 clipboardData 下面。</p>
+<p>打印 clipboardData.items，可以发现是一个 DataTransferItem，可以使用 getAsFile() 的方法获取文件</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;paste&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">event</span>);
     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">isChrome</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
@@ -385,22 +385,22 @@ String(<span style="color:#a6e22e">value</span>)
         }
     }
 })
-</code></pre></div><p>此时就可以获取到blob对象了，这时候可以选择显示在页面上，也可以选择发送给后台</p>
-<p>使用blob对象显示</p>
+</code></pre></div><p>此时就可以获取到 blob 对象了，这时候可以选择显示在页面上，也可以选择发送给后台</p>
+<p>使用 blob 对象显示</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">blobUrl</span><span style="color:#f92672">=</span><span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">createObjectURL</span>(<span style="color:#a6e22e">blob</span>);
 document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;imgNode&#34;</span>).<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#a6e22e">blobUrl</span>;
-</code></pre></div><p>使用base64显示</p>
+</code></pre></div><p>使用 base64 显示</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
      <span style="color:#75715e">// event.target.result 即为图片的Base64编码字符串
 </span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">base64_str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">result</span>;
      document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;imgNode&#34;</span>).<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#a6e22e">base64_str</span>;
 }
 <span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">readAsDataURL</span>(<span style="color:#a6e22e">blob</span>);
-</code></pre></div><p>生成formData上传</p>
+</code></pre></div><p>生成 formData 上传</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
 <span style="color:#a6e22e">fd</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;the_file&#34;</span>, <span style="color:#a6e22e">blob</span>, <span style="color:#e6db74">&#39;image.png&#39;</span>);
-</code></pre></div><h2 id="12web应用性能分析工具harhttp-archive-format">12.Web应用性能分析工具HAR（HTTP Archive format）</h2>
-<p>HAR文件，是用来记录浏览器加载网页时所消耗的时间的工具。它可以记录每一个HTTP请求发出直到收到完整的HTTP响应中间所耗费的时间，可以迅速帮助我们知道是哪些HTTP请求没有得到及时的回复，从而进行更一步的排查。同时可以使用Httprunner生成业务脚本</p>
+</code></pre></div><h2 id="12web-应用性能分析工具-harhttp-archive-format">12.Web 应用性能分析工具 HAR（HTTP Archive format）</h2>
+<p>HAR 文件，是用来记录浏览器加载网页时所消耗的时间的工具。它可以记录每一个 HTTP 请求发出直到收到完整的 HTTP 响应中间所耗费的时间，可以迅速帮助我们知道是哪些 HTTP 请求没有得到及时的回复，从而进行更一步的排查。同时可以使用 Httprunner 生成业务脚本</p>
 
 </section>
 

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如何实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth '><title>Windows—执行系统自检</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth '><title>Windows—执行系统自检</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/windows10/windows%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80/'>
 
 <link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Windows—执行系统自检'>
-<meta property='og:description' content='如何实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth '>
+<meta property='og:description' content='1.实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth '>
 <meta property='og:url' content='https://ac-lm.github.io/posts/windows10/windows%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E8%87%AA%E6%A3%80/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Windows' /><meta property='article:published_time' content='2021-03-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-30T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Windows—执行系统自检">
-<meta name="twitter:description" content="如何实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth ">
+<meta name="twitter:description" content="1.实现 # 系统自检命令 sfc /SCANNOW # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况 Dism /Online /Cleanup-Image /ScanHealth # 联网下载与官方不同的系统文件进行替换 Dism /Online /Cleanup-Image /CheckHealth # 将系统中和官方不同的系统文件直接还原成源文件 DISM /Online /Cleanup-image /RestoreHealth ">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -206,7 +206,7 @@
     <section class="article-content">
     
     
-    <h2 id="如何实现">如何实现</h2>
+    <h2 id="1实现">1.实现</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 系统自检命令
 sfc /SCANNOW
 # 扫描系统文件并和官方服务器上文件进行对比，查找是否存在系统文件和官方不一致的情况

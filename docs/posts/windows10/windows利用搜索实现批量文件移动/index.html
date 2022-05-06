@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如何实现  在系统中找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定了大多数文件夹中的格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl&#43;A选择全部，按住Ctrl&#43;C复制全部，然后，在其他地方新建文件夹，按住Ctrl&#43;V提取所有选择的文件到新文件中即可  '><title>Windows—利用搜索实现批量文件移动</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.实现  找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定需要移动的文件格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl&#43;A选择全部，按住Ctrl&#43;C复制全部，然后，在其他地方新建文件夹，按住Ctrl&#43;V复制所有选择的文件到新文件中即可  '><title>Windows—利用搜索实现批量文件移动</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/windows10/windows%E5%88%A9%E7%94%A8%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Windows—利用搜索实现批量文件移动'>
-<meta property='og:description' content='如何实现  在系统中找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定了大多数文件夹中的格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl&#43;A选择全部，按住Ctrl&#43;C复制全部，然后，在其他地方新建文件夹，按住Ctrl&#43;V提取所有选择的文件到新文件中即可  '>
+<meta property='og:description' content='1.实现  找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定需要移动的文件格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl&#43;A选择全部，按住Ctrl&#43;C复制全部，然后，在其他地方新建文件夹，按住Ctrl&#43;V复制所有选择的文件到新文件中即可  '>
 <meta property='og:url' content='https://ac-lm.github.io/posts/windows10/windows%E5%88%A9%E7%94%A8%E6%90%9C%E7%B4%A2%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Windows' /><meta property='article:published_time' content='2021-01-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-13T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Windows—利用搜索实现批量文件移动">
-<meta name="twitter:description" content="如何实现  在系统中找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定了大多数文件夹中的格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl&#43;A选择全部，按住Ctrl&#43;C复制全部，然后，在其他地方新建文件夹，按住Ctrl&#43;V提取所有选择的文件到新文件中即可  ">
+<meta name="twitter:description" content="1.实现  找到目标文件夹 查看文件夹中文件的格式，如.jpg .png .txt 在确定需要移动的文件格式后，在右上角搜索框，输入格式如.txt 正则匹配文件名 在出现的搜索结果中，按住Ctrl&#43;A选择全部，按住Ctrl&#43;C复制全部，然后，在其他地方新建文件夹，按住Ctrl&#43;V复制所有选择的文件到新文件中即可  ">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -206,12 +206,12 @@
     <section class="article-content">
     
     
-    <h2 id="如何实现">如何实现</h2>
+    <h2 id="1实现">1.实现</h2>
 <ol>
-<li>在系统中找到目标文件夹</li>
+<li>找到目标文件夹</li>
 <li>查看文件夹中文件的格式，如<code>.jpg   .png   .txt</code></li>
-<li>在确定了大多数文件夹中的格式后，在右上角搜索框，输入格式如<code>.txt</code> 正则匹配文件名</li>
-<li>在出现的搜索结果中，按住<code>Ctrl+A</code>选择全部，按住<code>Ctrl+C</code>复制全部，然后，在其他地方新建文件夹，按住<code>Ctrl+V</code>提取所有选择的文件到新文件中即可</li>
+<li>在确定需要移动的文件格式后，在右上角搜索框，输入格式如<code>.txt</code> 正则匹配文件名</li>
+<li>在出现的搜索结果中，按住<code>Ctrl+A</code>选择全部，按住<code>Ctrl+C</code>复制全部，然后，在其他地方新建文件夹，按住<code>Ctrl+V</code>复制所有选择的文件到新文件中即可</li>
 </ol>
 
 </section>
