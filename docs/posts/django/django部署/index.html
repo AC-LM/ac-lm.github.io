@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/django/django%E9%83%A8%E7%BD%B2/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Django—部署'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Django—部署'>
 <meta property='og:description' content='1.配置 uwsgi  安装：pip install uwsgi 测试：uwsgi --http-socket :80 --file test.py  # test.py def application(env, start_response): start_response(&amp;#39;200 OK&amp;#39;, [(&amp;#39;Content-Type&amp;#39;,&amp;#39;text/html&amp;#39;)]) return [b&amp;#34;Hello World&amp;#34;]  配置文件：uwsgi.ini  [uwsgi] # 使用nginx连接时使用 # socket=0.0.0.0:8000 # 直接做web服务器, python manage.py runserver ip:port http=0.0.0.0:8000 # 路径为 0.0.0.0，表本地，使用127.0.0.1可能会无法从外网访问 # 项目目录 chdir=/home/mayanan/bj18/dailyfresh # 项目中wsgi.py文件的目录，相对于项目目录 wsgi-file=dailyfresh/wsgi.py # 指定启动的工作进程数 processes=4 # 指定工作进程中的线程数 threads=2 master=True # 保存启动后，主进程的pid pidfile=uwsgi.pid # 设置uwsgi后台运行, uwsgi.log保存日志信息 daemonize=uwsgi.log  启动：uwsgi --ini uwsgi.ini，uwsgi 通过 ini 文件启动后会在相同目录下生成一个 pid 文件，包含主进程的进程号 重载：uwsgi --reload uwsgi.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/django/django%E9%83%A8%E7%BD%B2/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
@@ -511,92 +511,12 @@ STATICFILES_FINDERS <span style="color:#f92672">=</span> (
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

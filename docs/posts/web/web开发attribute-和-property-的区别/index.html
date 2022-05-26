@@ -2,43 +2,40 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：JS中attribute和property的区别 @L_mj 
- 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的特性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
+ 1.介绍 property和attribute虽然都称为属性，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的属性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
 &amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
  
-可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在attributes属性中找到我们自定义的属性。
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。
  
-从这里就可以看出，attributes是属于property的一个子集，它保存了 HTML 标签上定义属性。
-2.设置 常用的attribute，例如id、class等，已经被作为property附加到 DOM 对象上，可以和property一样取值和赋值。
-1.attribute 取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
-var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.'><title>Web开发—attribute 和 property 的区别</title>
+从这里就可以看出，attributes是属于property的一个子集。
+2.attribute 取值赋值 attribute 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div.getAttribute(&amp;#34;id&amp;#34;); var className = div.getAttribute(&amp;#34;class&amp;#34;); var title = div.getAttribute(&amp;#34;title&amp;#34;); var value = div.getAttribute(&amp;#34;value&amp;#34;); // 自定义属性 div.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;c&amp;#39;); div.setAttribute(&amp;#39;value&amp;#39;, &amp;#39;d&amp;#39;); 3.property 取值赋值 property取值赋值只需要使用点.'><title>Web开发—attribute 和 property 的区别</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web开发—attribute 和 property 的区别'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Web开发—attribute 和 property 的区别'>
 <meta property='og:description' content='参考原文：JS中attribute和property的区别 @L_mj 
- 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的特性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
+ 1.介绍 property和attribute虽然都称为属性，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的属性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
 &amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
  
-可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在attributes属性中找到我们自定义的属性。
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。
  
-从这里就可以看出，attributes是属于property的一个子集，它保存了 HTML 标签上定义属性。
-2.设置 常用的attribute，例如id、class等，已经被作为property附加到 DOM 对象上，可以和property一样取值和赋值。
-1.attribute 取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
-var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.'>
+从这里就可以看出，attributes是属于property的一个子集。
+2.attribute 取值赋值 attribute 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div.getAttribute(&amp;#34;id&amp;#34;); var className = div.getAttribute(&amp;#34;class&amp;#34;); var title = div.getAttribute(&amp;#34;title&amp;#34;); var value = div.getAttribute(&amp;#34;value&amp;#34;); // 自定义属性 div.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;c&amp;#39;); div.setAttribute(&amp;#39;value&amp;#39;, &amp;#39;d&amp;#39;); 3.property 取值赋值 property取值赋值只需要使用点.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2021-07-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-07-25T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Web开发—attribute 和 property 的区别">
 <meta name="twitter:description" content="参考原文：JS中attribute和property的区别 @L_mj 
- 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的特性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
+ 1.介绍 property和attribute虽然都称为属性，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的属性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
 &amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
  
-可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在attributes属性中找到我们自定义的属性。
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。
  
-从这里就可以看出，attributes是属于property的一个子集，它保存了 HTML 标签上定义属性。
-2.设置 常用的attribute，例如id、class等，已经被作为property附加到 DOM 对象上，可以和property一样取值和赋值。
-1.attribute 取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
-var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.">
+从这里就可以看出，attributes是属于property的一个子集。
+2.attribute 取值赋值 attribute 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div.getAttribute(&amp;#34;id&amp;#34;); var className = div.getAttribute(&amp;#34;class&amp;#34;); var title = div.getAttribute(&amp;#34;title&amp;#34;); var value = div.getAttribute(&amp;#34;value&amp;#34;); // 自定义属性 div.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;c&amp;#39;); div.setAttribute(&amp;#39;value&amp;#39;, &amp;#39;d&amp;#39;); 3.property 取值赋值 property取值赋值只需要使用点.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -238,7 +235,7 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
     > JS中attribute和property的区别  @L_mj </a></p>
 </blockquote>
 <h2 id="1介绍">1.介绍</h2>
-<p><code>property</code>属性和<code>attribute</code>特性非常容易混淆，但两者不是同一个东西，<code>property</code>是 DOM 中的属性，是 JavaScript 里的对象；<code>attribute</code>是 HTML 标签上的特性，它的值只能够是字符串；简单理解，<code>attribute</code>就是 DOM 节点自带的属性，例如 HTML 中常用的<code>id、class、title、align</code>等。而<code>property</code>是这个 DOM 元素作为对象，其附加的内容，例如<code>childNodes、firstChild</code>等。</p>
+<p><code>property</code>和<code>attribute</code>虽然都称为属性，但两者不是同一个东西，<code>property</code>是 DOM 中的属性，是 JavaScript 里的对象；<code>attribute</code>是 HTML 标签上的属性，它的值只能够是字符串；简单理解，<code>attribute</code>就是 DOM 节点自带的属性，例如 HTML 中常用的<code>id、class、title、align</code>等。而<code>property</code>是这个 DOM 元素作为对象，其附加的内容，例如<code>childNodes、firstChild</code>等。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;div1&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divClass&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divTitle&#34;</span> <span style="color:#a6e22e">title1</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;divTitle1&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
 </code></pre></div><p>如上述的<code>div</code>标签，当我们使用<code>var in1=document.getElementById(&quot;div1&quot;)</code>获取这个元素并打印时<code>console.log(in1)</code>，可以看到如下图的属性。</p>
 <p><figure 
@@ -253,7 +250,7 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
 	</a>
 	
 </figure></p>
-<p>可以发现有一个名为<code>attributes</code>的属性，类型是<code>NamedNodeMap</code>，同时也可以找到标签自带的属性<code>id</code>和<code>className</code>、但明显没有<code>titles</code>这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如<code>id, className</code>这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在<code>attributes</code>属性中找到我们自定义的属性。</p>
+<p>可以发现有一个名为<code>attributes</code>的属性，类型是<code>NamedNodeMap</code>，同时也可以找到标签自带的属性<code>id</code>和<code>className</code>、但明显没有<code>titles</code>这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如<code>id, className</code>这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。</p>
 <p><figure 
 	>
 	<a href="/drawingbed/img/202205051102155.png" >
@@ -266,30 +263,28 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
 	</a>
 	
 </figure></p>
-<p>从这里就可以看出，<strong><code>attributes</code>是属于<code>property</code>的一个子集</strong>，它保存了 HTML 标签上定义属性。</p>
-<h2 id="2设置">2.设置</h2>
-<p>常用的<code>attribute</code>，例如<code>id、class</code>等，已经被作为<code>property</code>附加到 DOM 对象上，可以和<code>property</code>一样取值和赋值。</p>
-<h3 id="1attribute-取值赋值">1.attribute 取值赋值</h3>
-<p>使用<code>setAttribute()</code>和<code>getAttribute()</code>进行操作，注意，<code>setAttribute()</code>的两个参数，都必须是字符串。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;id&#34;</span>);              
- <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;class&#34;</span>);
- <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title&#34;</span>);
- <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title1&#34;</span>);   <span style="color:#75715e">//自定义特性
-</span><span style="color:#75715e"></span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>);
- <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>);
- <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title1&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>);
- <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title2&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>);
-</code></pre></div><h3 id="2property-取值赋值">2.property 取值赋值</h3>
-<p><code>property</code>取值赋值只需要使用<code>.</code>就可以了。对属性<code>property</code>可以赋任何类型的值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">id</span>;
- <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">className</span>;
- <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">childNodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">childNodes</span>;
- <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">attrs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">attributes</span>;
-<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
-<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">align</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>;
-<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">AAAAA</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-<span style="color:#a6e22e">div1</span>.<span style="color:#a6e22e">BBBBB</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
-</code></pre></div><h2 id="3property和attribute的联系">3.<code>property</code>和<code>attribute</code>的联系</h2>
+<p>从这里就可以看出，<strong><code>attributes</code>是属于<code>property</code>的一个子集</strong>。</p>
+<h2 id="2attribute-取值赋值">2.attribute 取值赋值</h2>
+<p><code>attribute</code> 使用<code>setAttribute()</code>和<code>getAttribute()</code>进行操作，注意，<code>setAttribute()</code>的两个参数，都必须是字符串。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;id&#34;</span>);              
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;class&#34;</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;title&#34;</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;value&#34;</span>);   <span style="color:#75715e">// 自定义属性
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>);
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>);
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;title&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>);
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;value&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>);
+</code></pre></div><h2 id="3property-取值赋值">3.property 取值赋值</h2>
+<p><code>property</code>取值赋值只需要使用点<code>.</code>就可以了。对属性<code>property</code>可以赋任何类型的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">id</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">className</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">childNodes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">childNodes</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">attrs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">attributes</span>;
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">align</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;center&#39;</span>;
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">AAAAA</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">BBBBB</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</code></pre></div><h2 id="4property-和-attribute-的联系">4.property 和 attribute 的联系</h2>
 <ul>
 <li><code>property</code>能够从<code>attribute</code>中得到同步；</li>
 <li><code>attribute</code>不会同步<code>property</code>上的值；</li>
@@ -300,10 +295,10 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new value of prop&#39;</span>;
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">value</span>);               <span style="color:#75715e">// &#39;new value of prop&#39;
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in1</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>);    <span style="color:#75715e">// 1
-</span><span style="color:#75715e">// 相反，更改 attribute 的值不能更改 property 的值
+</span><span style="color:#75715e">// 相反，更改 attribute 的值可以更改 property 的值
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;value&#39;</span>,<span style="color:#e6db74">&#39;ni&#39;</span>)
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">value</span>);          <span style="color:#75715e">//ni
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>); <span style="color:#75715e">//value=&#39;ni&#39;
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">value</span>);          <span style="color:#75715e">// ni
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">in2</span>.<span style="color:#a6e22e">attributes</span>.<span style="color:#a6e22e">value</span>); <span style="color:#75715e">// value = &#39;ni&#39;
 </span></code></pre></div>
 </section>
 
@@ -433,92 +428,12 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

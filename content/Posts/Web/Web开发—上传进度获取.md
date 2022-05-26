@@ -5,12 +5,12 @@ author: LM
 tags: ["Web", "Javascript"]
 ---
 
-## 1.Javascript 的 XMLHttpRequest:progress 事件
+## 1.javascript 的 XMLHttpRequest:progress 事件
 
 ```javascript
 var formData = new FormData(); 
 formData.append("file", document.getElementById('file').files[0]); 
-formData.append("token", token_value); // 其他参数按这样子加入
+formData.append("token", token_value);
 
 var xhr = new XMLHttpRequest();
 xhr.open('POST', '/uploadurl');
@@ -44,8 +44,8 @@ $.ajax({
     url: "/uploadurl", 
     type: "POST", 
     data: formData, 
-    processData: false, // 不要对data参数进行序列化处理，默认为true
-    contentType: false, // 不要设置Content-Type请求头，因为文件数据是以 multipart/form-data 来编码
+    processData: false, // 不要对data 参数进行序列化处理，默认为 true
+    contentType: false, // 不要设置 Content-Type 请求头，因为文件数据是以 multipart/form-data 来编码
     xhr: function(){
         myXhr = $.ajaxSettings.xhr();
         if(myXhr.upload){

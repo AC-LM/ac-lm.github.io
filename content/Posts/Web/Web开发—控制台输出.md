@@ -31,14 +31,14 @@ console.debug()     用于输出调试信息
 支持`字符 %s`、`整数 %d %i`、`浮点数 %f `和`对象 %o `四种
 
 ```
-console.log('%d年%d月%d日',2011,3,26); 
-console.log('圆周率是%f',3.1415926);
+console.log('%d年%d月%d日', 2011,3,26); 
+console.log('圆周率是%f', 3.1415926);
 ```
 
 ## 5.断言
 
 ```
 let isDebug = false;
-console.assert(isDebug,'为false时输出的信息');
+console.assert(isDebug, '为false时输出的信息');
 ```
 

@@ -9,7 +9,7 @@ tags: ["Web", "Javascript"]
 
 ## 1.介绍
 
-`property`属性和`attribute`特性非常容易混淆，但两者不是同一个东西，`property`是 DOM 中的属性，是 JavaScript 里的对象；`attribute`是 HTML 标签上的特性，它的值只能够是字符串；简单理解，`attribute`就是 DOM 节点自带的属性，例如 HTML 中常用的`id、class、title、align`等。而`property`是这个 DOM 元素作为对象，其附加的内容，例如`childNodes、firstChild`等。
+`property`和`attribute`虽然都称为属性，但两者不是同一个东西，`property`是 DOM 中的属性，是 JavaScript 里的对象；`attribute`是 HTML 标签上的属性，它的值只能够是字符串；简单理解，`attribute`就是 DOM 节点自带的属性，例如 HTML 中常用的`id、class、title、align`等。而`property`是这个 DOM 元素作为对象，其附加的内容，例如`childNodes、firstChild`等。
 
 ```html
 <div id="div1" class="divClass" title="divTitle" title1="divTitle1"></div>
@@ -19,47 +19,43 @@ tags: ["Web", "Javascript"]
 
 ![](/drawingbed/img/202205051102194.png)
 
-可以发现有一个名为`attributes`的属性，类型是`NamedNodeMap`，同时也可以找到标签自带的属性`id`和`className`、但明显没有`titles`这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如`id, className`这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在`attributes`属性中找到我们自定义的属性。
+可以发现有一个名为`attributes`的属性，类型是`NamedNodeMap`，同时也可以找到标签自带的属性`id`和`className`、但明显没有`titles`这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如`id, className`这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。
 
 ![](/drawingbed/img/202205051102155.png)
 
-从这里就可以看出，**`attributes`是属于`property`的一个子集**，它保存了 HTML 标签上定义属性。
+从这里就可以看出，**`attributes`是属于`property`的一个子集**。
 
-## 2.设置
+## 2.attribute 取值赋值
 
-常用的`attribute`，例如`id、class`等，已经被作为`property`附加到 DOM 对象上，可以和`property`一样取值和赋值。
-
-### 1.attribute 取值赋值
-
-使用`setAttribute()`和`getAttribute()`进行操作，注意，`setAttribute()`的两个参数，都必须是字符串。
+`attribute` 使用`setAttribute()`和`getAttribute()`进行操作，注意，`setAttribute()`的两个参数，都必须是字符串。
 
 ```javascript
- var id = div1.getAttribute("id");              
- var className1 = div1.getAttribute("class");
- var title = div1.getAttribute("title");
- var title1 = div1.getAttribute("title1");   //自定义特性
- div1.setAttribute('class', 'a');
- div1.setAttribute('title', 'b');
- div1.setAttribute('title1', 'c');
- div1.setAttribute('title2', 'd');
+var id = div.getAttribute("id");              
+var className = div.getAttribute("class");
+var title = div.getAttribute("title");
+var value = div.getAttribute("value");   // 自定义属性
+div.setAttribute('class', 'a');
+div.setAttribute('title', 'b');
+div.setAttribute('title', 'c');
+div.setAttribute('value', 'd');
 ```
 
-### 2.property 取值赋值
+## 3.property 取值赋值
 
-`property`取值赋值只需要使用`.`就可以了。对属性`property`可以赋任何类型的值。
+`property`取值赋值只需要使用点`.`就可以了。对属性`property`可以赋任何类型的值。
 
 ```javascript
- var id = div1.id;
- var className = div1.className;
- var childNodes = div1.childNodes;
- var attrs = div1.attributes;
-div1.className = 'a';
-div1.align = 'center';
-div1.AAAAA = true;
-div1.BBBBB = [1, 2, 3];
+var id = div.id;
+var className = div.className;
+var childNodes = div.childNodes;
+var attrs = div.attributes;
+div.className = 'a';
+div.align = 'center';
+div.AAAAA = true;
+div.BBBBB = [1, 2, 3];
 ```
 
-## 3.`property`和`attribute`的联系
+## 4.property 和 attribute 的联系
 
 - `property`能够从`attribute`中得到同步；
 - `attribute`不会同步`property`上的值；
@@ -71,9 +67,9 @@ div1.BBBBB = [1, 2, 3];
 in1.value='new value of prop';
 console.log(in1.value);               // 'new value of prop'
 console.log(in1.attributes.value);    // 1
-// 相反，更改 attribute 的值不能更改 property 的值
+// 相反，更改 attribute 的值可以更改 property 的值
 in2.setAttribute('value','ni')
-console.log(in2.value);          //ni
-console.log(in2.attributes.value); //value='ni'
+console.log(in2.value);          // ni
+console.log(in2.attributes.value); // value = 'ni'
 ```
 

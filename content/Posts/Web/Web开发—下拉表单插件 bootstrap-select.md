@@ -32,25 +32,23 @@ tags: ["Web", "Javascript"]
 
 ## 3.取值
 
-关于组件取值保持原生的 JQuery 方法，比如 `var value = $('#sel').val();` ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 `['1','2','3']`
+ `var value = $('#sel').val();` ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 `['1','2','3']`
 
 ## 4.赋值
-
-组件赋值就需要稍微变换一下了，如果你直接 `$('#sel').val('1');` 这样赋值将会无效，正确的赋值方法为：
 
 ```javascript
 $('.selectpicker').selectpicker('val', '1');
 ```
 
-注意，赋值的值为 option 的 value 属性！！
+注意，所操作的值为 option 的 value 属性
 
-在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。
+在一些级联选择的使用场景中，若需要在赋值的时候触发组件的 change 事件，可以：
 
 ```javascript
 $('.selectpicker').selectpicker('val', '1').trigger("change");
 ```
 
-如果是多选的赋值，也是一样
+多选的赋值
 
 ```javascript
 $('.selectpicker').selectpicker('val', ['1','2','3']).trigger("change");
@@ -60,9 +58,9 @@ $('.selectpicker').selectpicker('val', ['1','2','3']).trigger("change");
 
 ```javascript
 $('#initializePartyAProject').on('click', function () {
-      //回到初始状态
+      // 回到初始状态
       $('#party_a_project_name').selectpicker('val',['noneSelectedText']) 
-      //对party_a_project_name这个下拉框进行重置刷新
+      // 对 party_a_project_name 这个下拉框进行重置刷新
       $("#party_a_project_name").selectpicker('refresh');
 });
 ```

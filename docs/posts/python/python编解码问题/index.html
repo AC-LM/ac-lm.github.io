@@ -7,7 +7,7 @@ print(&amp;#34;\u0394&amp;#34;) print(&amp;#34;\U00000394&amp;#34;) print(&amp;#
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/python/python%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Python—编解码问题'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Python—编解码问题'>
 <meta property='og:description' content='1.二进制字符 在计算机中所有字符都是以二进制代码储存的，系统根据不同的编码格式，将二进制代码转换为字符显示。
 print(&amp;#34;\u0394&amp;#34;) print(&amp;#34;\U00000394&amp;#34;) print(&amp;#34;\N{greek capital letter delta}&amp;#34;) 2.乱码时的处理 当编码格式与解码格式出现冲突时就会出现乱码，而此时往往需要将报错的部分进行替换处理，使得程序整体不出错。
 # 不处理 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;strict&amp;#34;)) # 替换为U&#43;FFFD print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;replace&amp;#34;)) # 加上反斜杠 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) # 直接忽略 print((b&amp;#34;\x80abc&amp;#34;).decode(&amp;#34;utf-8&amp;#34;,&amp;#34;ignore&amp;#34;)) 3.字符与二进制的转换 a.二进制转换字符 u=chr(40960)&#43;&amp;#34;abce&amp;#34;&#43;chr(1972) print(u) u1=chr(123) print(u1) b.字符转换二进制 u=&amp;#34;中国abc&amp;#34; print(u.encode(&amp;#34;utf-8&amp;#34;)) # b&amp;#39;\xe4\xb8\xad\xe5\x9b\xbd&amp;#39; print(u.encode(&amp;#34;ascii&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;ignore&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;replace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;xmlcharrefreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;backslashreplace&amp;#34;)) print(u.encode(&amp;#34;ascii&amp;#34;,&amp;#34;namereplace&amp;#34;)) '>
@@ -370,92 +370,12 @@ print(u<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

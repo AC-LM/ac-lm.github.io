@@ -7,7 +7,7 @@ __all__ = [&amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/python/python__init__-%E6%96%87%E4%BB%B6/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Python—__init__ 文件'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Python—__init__ 文件'>
 <meta property='og:description' content='1.作用  标识该目录是一个 python 的模块包（module package）。 初始化导入操作，当使用 import 导入该目录时，会执行 __init__.py 里面的代码。  在__init__.py 里面加一个 print(&amp;quot;You have imported mypackage&amp;quot;)，如果执行了该文件就会输出，很显然，__init__.py 会在包被导入时执行。
 # 文件构造 └── mypackage ├── __init__.py ├── subpackage_1 │ ├── test11.py │ └── test12.py ├── subpackage_2 │ ├── test21.py │ └── test22.py └── subpackage_3 ├── test31.py └── test32.py &amp;gt;&amp;gt;&amp;gt; import mypackage You have imported mypackage 2.from &amp;hellip;.. import * 这里使用到了__all__变量，__all__关联了一个模块列表，当执行 from &amp;hellip;.. import * 时，就会导入列表中的模块。可以将 __init__.py 增加一个__all__变量。
 __all__ = [&amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;gt;&amp;gt;&amp;gt; from mypackage import * &amp;gt;&amp;gt;&amp;gt; dir() [&amp;#39;__builtins__&amp;#39;, &amp;#39;__doc__&amp;#39;, &amp;#39;__loader__&amp;#39;, &amp;#39;__name__&amp;#39;, &amp;#39;__package__&amp;#39;, &amp;#39;__spec__&amp;#39;, &amp;#39;subpackage_1&amp;#39;, &amp;#39;subpackage_2&amp;#39;] &amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; dir(subpackage_1) [&amp;#39;__doc__&amp;#39;, &amp;#39;__loader__&amp;#39;, &amp;#39;__name__&amp;#39;, &amp;#39;__package__&amp;#39;, &amp;#39;__path__&amp;#39;, &amp;#39;__spec__&amp;#39;] 显然导入了__all__变量的内容，但需要注意的是，此时子目录的中的模块没有导入，即不会导入test*等文件。'>
@@ -382,92 +382,12 @@ You have imported mypackage
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

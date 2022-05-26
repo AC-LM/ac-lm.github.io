@@ -17,27 +17,6 @@
     </item>
     
     <item>
-      <title>Web开发—PHP 实例</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91php-%E5%AE%9E%E4%BE%8B/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91php-%E5%AE%9E%E4%BE%8B/</guid>
-      <description>1.PHP 信息页 &amp;lt;?php phpinfo();?&amp;gt;2.数据库连接实现 &amp;lt;?php $db = new mysqli(&amp;#39;localhost&amp;#39;, &amp;#39;root&amp;#39;, &amp;#39;123456&amp;#39;, &amp;#39;ztest&amp;#39;); if (mysqli_connect_errno()) { echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Connect DB error&amp;#39;; exit; } else { echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Connect DB success&amp;#39;; } echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Test start&amp;#39;; $query = &amp;#34;select * from login&amp;#34;; $result=$db-&amp;gt;query($query); if ($result-&amp;gt;num_rows &amp;gt; 0) { // 输出数据  while($row = $result-&amp;gt;fetch_assoc()) { echo &amp;#34;&amp;lt;p&amp;gt;&amp;#34; . &amp;#34;username: &amp;#34; . $row[&amp;#34;username&amp;#34;]. &amp;#34; - password: &amp;#34; . $row[&amp;#34;password&amp;#34;]; } } else { echo &amp;#34;0 结果&amp;#34;; } $db-&amp;gt;close(); ?</description>
-    </item>
-    
-    <item>
-      <title>Web开发—War 文件</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91war-%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91war-%E6%96%87%E4%BB%B6/</guid>
-      <description>1.War 文件 War包一般是在进行Web开发时，一个网站Project下的所有源码的集合，里面包含前台HTML/CSS/JS/JSP等的代码，也包含编译Java的代码。当开发人员在自己的开发机器上调试所有代码并通过后，为了交给测试人员测试和未来进行产品发布，都需要将开发人员的源码打包成War进行发布。
-War包可以放在Tomcat下的webapps或者word目录下，随着tomcat服务器的启动，它可以自动被解压。
-2.扩展 | Jar、war、EAR 的区别 Jar、war、EAR、在文件结构上，三者并没有什么不同，它们都采用zip或jar档案文件压缩格式。但是它们的使用目的有所区别：
- Jar文件（扩展名为. Jar，Java Application Archive）包含Java类的普通库、资源（resources）、辅助文件（auxiliary files）等。通常是开发时要引用的通用类，打成包便于存放管理。简单来说，jar包就是别人已经写好的一些类，然后对这些类进行打包。可以将这些jar包引入到你的项目中，可以直接使用这些jar包中的类和属性，这些jar包一般放在lib目录下。 War文件（扩展名为.War,Web Application Archive）包含全部Web应用程序。在这种情形下，一个Web应用程序被定义为单独的一组文件、类和资源，用户可以对jar文件进行封装，并把它作为小型服务程序（servlet）来访问。 war包是一个可以直接运行的web模块，通常用于网站，打成包部署到容器中。以Tomcat来说，将war包放置在其\webapps\目录下,然后启动Tomcat，这个包就会自动解压，就相当于发布了。war包是Sun提出的一种web应用程序格式，与jar类似，是很多文件的压缩包。war包中的文件按照一定目录结构来组织。根据其根目录下包含有html和jsp文件，或者包含有这两种文件的目录，另外还有WEB-INF目录。通常在WEB-INF目录下含有一个web.xml文件和一个classes目录，web.xml是这个应用的配置文件，而classes目录下则包含编译好的servlet类和jsp，或者servlet所依赖的其他类（如JavaBean）。通常这些所依赖的类也可以打包成jar包放在WEB-INF下的lib目录下。 Ear文件（扩展名为.Ear,Enterprise Application Archive）包含全部企业应用程序。在这种情形下，一个企业应用程序被定义为多个jar文件、资源、类和Web应用程序的集合。  </description>
-    </item>
-    
-    <item>
       <title>Web服务器—Nginx 解决乱码</title>
       <link>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A8nginx-%E8%A7%A3%E5%86%B3%E4%B9%B1%E7%A0%81/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
@@ -59,12 +38,8 @@ upstream you.example.com { server 127.0.0.1:8081; } server { listen 80; server_n
 两者的区别在于代理的对象不一样： 正向代理是为客户端代理，反向代理是为服务端代理。
 在现代，通常会使用 Nginx 作为反向代理服务器。
 2.Nginx的配置文件  
-1.全局块 该部分配置主要影响 Nginx 全局，通常包括下面几个部分：
- 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 配置文件的引入  2.events 块 该部分配置主要影响 Nginx 服务器与用户的网络连接，主要包括：
- 设置网络连接的序列化 是否允许同时接收多个网络连接 事件驱动模型的选择 最大连接数的配置  3.http 块 这部分是负责网页相关的配置
- 定义 MIMI-Type 自定义服务日志 允许 sendfile 方式传输文件 连接超时时间 单连接请求数上限  4.server 块 这部分是负责服务器相关的配置
- 配置网络监听 基于名称的虚拟主机配置 基于IP的虚拟主机配置  5.location 块 本地文件配置
- 请求根目录配置 更改location的URI 网站默认首页配置  3.</description>
+1.全局块 该部分配置 Nginx 全局内容，包括下面几个部分：
+ 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 外部配置文件的引入  user user [group]; user nobody nobody; # 指定可以运行 Nginx 服务器的用户，如果 user 指令不配置或者配置为 nobody nobody，则默认所有用户都可以启动 Nginx 进程 ------------------------------------------------------------------------------- worker_processes number; # number：Nginx 进程最多可以产生的 worker process 数，配置为 auto：Nginx 进程将自动检测 ------------------------------------------------------------------------------- error_log file; # file：日志输出到某个文件 file，配置为 stderr 日志输出到标准错误输出 error_log logs/error.log; # 将日志输出到 logs/error.</description>
     </item>
     
   </channel>

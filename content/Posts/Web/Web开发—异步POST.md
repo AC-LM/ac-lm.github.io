@@ -12,13 +12,18 @@ $.ajax({
      url: 'http://',
      type: 'post',
      dataType: 'json',
-     data: {name: "xu", foo: 'bar'},
+     data: {name: "x", foo: 'bar'},
      cache: false,
-     headers: { "Authorization": "Bearer token",
-                'Content-Type': 'application/json'
-               },                
-     success: function(res){},
-     error: function(e){},
-       });
+     headers: { 
+         "Authorization": "Bearer token",
+         'Content-Type': 'application/json',
+     },                
+     success: function(res){
+         
+     },
+     error: function(e){
+         
+     },
+});
 ```
 

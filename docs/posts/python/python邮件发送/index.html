@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/python/python%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Python—邮件发送'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Python—邮件发送'>
 <meta property='og:description' content='1.发送简单邮件 import smtplib #发送字符串的邮件 from email.mime.text import MIMEText #处理多种形态的邮件主体我们需要 MIMEMultipart 类 from email.mime.multipart import MIMEMultipart #处理图片需要 MIMEImage 类 from email.mime.image import MIMEImage # qq邮箱smtp服务器 host_server = &amp;#39;smtp.qq.com&amp;#39; # sender_qq为发件人的qq号码 sender_qq = &amp;#39;13VVVVVVVV@qq.com&amp;#39; # pwd为qq邮箱的授权码 pwd = &amp;#39;nzrVVVVVVVV&amp;#39; # 发件人的邮箱 sender_qq_mail = &amp;#39;13VVVVVVV@qq.com&amp;#39; # 收件人邮箱 receiver = &amp;#39;13VVVVVVVVV@qq.com&amp;#39; # 邮件的正文内容 mail_content = &amp;#39;你好，这是使用python登录qq邮箱发邮件的测试&amp;#39; # 邮件标题 mail_title = &amp;#39;Max\&amp;#39;s的邮件&amp;#39; # ssl登录 smtp = SMTP_SSL(host_server) # set_debuglevel()是用来调试的。参数值为1表示开启调试模式，参数值为0关闭调试模式 smtp.set_debuglevel(0) smtp.ehlo(host_server) smtp.login(sender_qq, pwd) msg = MIMEText(mail_content, &amp;#34;plain&amp;#34;, &amp;#39;utf-8&amp;#39;) msg[&amp;#34;Subject&amp;#34;] = Header(mail_title, &amp;#39;utf-8&amp;#39;) msg[&amp;#34;From&amp;#34;] = sender_qq_mail msg[&amp;#34;To&amp;#34;] = receiver smtp.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/python/python%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
@@ -416,92 +416,12 @@ smtp<span style="color:#f92672">.</span>quit()
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

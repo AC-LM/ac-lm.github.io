@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='随记—如何给 hugo 博客添加搜索功能'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='随记—如何给 hugo 博客添加搜索功能'>
 <meta property='og:description' content='参考原文：给Hugo站点添加搜索功能 - Go语言中文网
  实现思路  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].getElementsByTagName(&amp;#34;link&amp;#34;)[0].innerHTML; node = node &#43; &amp;#39;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;&amp;#39; &#43; link &#43; &amp;#39;&amp;#34;&amp;gt;&amp;#39; &#43; title &#43; &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#39; }; i&#43;&#43;; } div = document.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/'>
@@ -371,92 +371,12 @@
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

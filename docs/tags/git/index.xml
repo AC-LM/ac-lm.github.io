@@ -6,13 +6,31 @@
     <description>Recent content in Git on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git—.gitlab-ci.yml 文件配置</title>
-      <link>https://ac-lm.github.io/posts/git/git.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</link>
+      <title>Git—.gitignore 文件配置</title>
+      <link>https://ac-lm.github.io/posts/git/git.gitignore-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/git/git.gitignore-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</guid>
+      <description>1.文件语法 a.忽略指定文件/目录 # 忽略指定文件 HelloWrold.class # 忽略指定文件夹 bin/ bin/gen/ b.通配符忽略规则 # 忽略 .class 的所有文件 *.class # 忽略名称中末尾为 ignore 的文件夹 *ignore/ # 忽略名称中间包含 ignore 的文件夹 *ignore*/ </description>
+    </item>
+    
+    <item>
+      <title>Git—历史删除</title>
+      <link>https://ac-lm.github.io/posts/git/git%E5%8E%86%E5%8F%B2%E5%88%A0%E9%99%A4/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/git/git%E5%8E%86%E5%8F%B2%E5%88%A0%E9%99%A4/</guid>
+      <description>1.删除特定文件的上传历史 a.重写提交记录，将历史中的所有指定文件删除 git filter-branch --force --index-filter &amp;#39;git rm --cached --ignore-unmatch 目标的文件&amp;#39; --prune-empty --tag-name-filter cat -- --all git filter-branch --force --index-filter &amp;#39;git rm --cached -r --ignore-unmatch 目标的文件夹&amp;#39; --prune-empty --tag-name-filter cat -- --all b.删除历史记录 rm -rf .git/refs/original/ c.将历史记录的过期时间设置为此刻，放弃所有历史的找回功能 git reflog expire --expire=now --all d.垃圾回收 git gc --aggressive --prune=now e.强制更新（需要注意的是，远端仓库需要移除保护限制） git push origin --force --all </description>
+    </item>
+    
+    <item>
+      <title>Git—.gitlab-ci 文件配置</title>
+      <link>https://ac-lm.github.io/posts/git/git.gitlab-ci-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/git/git.gitlab-ci.yml-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://ac-lm.github.io/posts/git/git.gitlab-ci-%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/</guid>
       <description>参考原文：.gitlab-ci.yml语法 @hellojinni 
  1..gitlab-ci.yml 文件 GitLab CI 使用 YAML文件—.gitlab-ci.yml 来管理项目配置，用来配置 CI 在你的项目中做哪些操作，这个文件位于仓库的根目录。
 当新内容 push 到仓库或者有代码合并后， GitLab 会查找是否有 .gitlab-ci.yml 文件，如果文件存在， Runners 将会根据该文件的内容开始 build 本次 commit 。

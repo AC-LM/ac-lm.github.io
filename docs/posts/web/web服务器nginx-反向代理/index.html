@@ -6,27 +6,19 @@
 两者的区别在于代理的对象不一样： 正向代理是为客户端代理，反向代理是为服务端代理。
 在现代，通常会使用 Nginx 作为反向代理服务器。
 2.Nginx的配置文件  
-1.全局块 该部分配置主要影响 Nginx 全局，通常包括下面几个部分：
- 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 配置文件的引入  2.events 块 该部分配置主要影响 Nginx 服务器与用户的网络连接，主要包括：
- 设置网络连接的序列化 是否允许同时接收多个网络连接 事件驱动模型的选择 最大连接数的配置  3.http 块 这部分是负责网页相关的配置
- 定义 MIMI-Type 自定义服务日志 允许 sendfile 方式传输文件 连接超时时间 单连接请求数上限  4.server 块 这部分是负责服务器相关的配置
- 配置网络监听 基于名称的虚拟主机配置 基于IP的虚拟主机配置  5.location 块 本地文件配置
- 请求根目录配置 更改location的URI 网站默认首页配置  3.'><title>Web服务器—Nginx 反向代理</title>
+1.全局块 该部分配置 Nginx 全局内容，包括下面几个部分：
+ 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 外部配置文件的引入  user user [group]; user nobody nobody; # 指定可以运行 Nginx 服务器的用户，如果 user 指令不配置或者配置为 nobody nobody，则默认所有用户都可以启动 Nginx 进程 ------------------------------------------------------------------------------- worker_processes number; # number：Nginx 进程最多可以产生的 worker process 数，配置为 auto：Nginx 进程将自动检测 ------------------------------------------------------------------------------- error_log file; # file：日志输出到某个文件 file，配置为 stderr 日志输出到标准错误输出 error_log logs/error.log; # 将日志输出到 logs/error.'><title>Web服务器—Nginx 反向代理</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A8nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web服务器—Nginx 反向代理'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Web服务器—Nginx 反向代理'>
 <meta property='og:description' content='1.什么是正向代理与反向代理 正向代理隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端通过代理服务器来访问服务端，客户端所有的请求都通过代理服务器来发送。某些科学上网工具就是典型的正向代理角色，通过在国外搭建一台代理服务器，让代理代替我去发送请求，然后代理服务器再把响应返回给我。
 反向代理隐藏了真实的服务端，客户不知道真正提供服务人的是谁，客户只需要访问反向代理服务器便可以获取到响应。例如，当我们请求百度的时候，可能有成千上万台服务器准备为我们服务，但具体是哪一台就不清楚了。但实际上，我们不需要知道这个，只需要知道反向代理服务器 www.baidu.com 就可以了，反向代理服务器会帮我们把请求转发到真实的服务器那里去。
 两者的区别在于代理的对象不一样： 正向代理是为客户端代理，反向代理是为服务端代理。
 在现代，通常会使用 Nginx 作为反向代理服务器。
 2.Nginx的配置文件  
-1.全局块 该部分配置主要影响 Nginx 全局，通常包括下面几个部分：
- 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 配置文件的引入  2.events 块 该部分配置主要影响 Nginx 服务器与用户的网络连接，主要包括：
- 设置网络连接的序列化 是否允许同时接收多个网络连接 事件驱动模型的选择 最大连接数的配置  3.http 块 这部分是负责网页相关的配置
- 定义 MIMI-Type 自定义服务日志 允许 sendfile 方式传输文件 连接超时时间 单连接请求数上限  4.server 块 这部分是负责服务器相关的配置
- 配置网络监听 基于名称的虚拟主机配置 基于IP的虚拟主机配置  5.location 块 本地文件配置
- 请求根目录配置 更改location的URI 网站默认首页配置  3.'>
+1.全局块 该部分配置 Nginx 全局内容，包括下面几个部分：
+ 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 外部配置文件的引入  user user [group]; user nobody nobody; # 指定可以运行 Nginx 服务器的用户，如果 user 指令不配置或者配置为 nobody nobody，则默认所有用户都可以启动 Nginx 进程 ------------------------------------------------------------------------------- worker_processes number; # number：Nginx 进程最多可以产生的 worker process 数，配置为 auto：Nginx 进程将自动检测 ------------------------------------------------------------------------------- error_log file; # file：日志输出到某个文件 file，配置为 stderr 日志输出到标准错误输出 error_log logs/error.log; # 将日志输出到 logs/error.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A8nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='服务器' /><meta property='article:published_time' content='2020-03-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-03-02T00:00:00&#43;00:00'/>
@@ -36,12 +28,8 @@
 两者的区别在于代理的对象不一样： 正向代理是为客户端代理，反向代理是为服务端代理。
 在现代，通常会使用 Nginx 作为反向代理服务器。
 2.Nginx的配置文件  
-1.全局块 该部分配置主要影响 Nginx 全局，通常包括下面几个部分：
- 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 配置文件的引入  2.events 块 该部分配置主要影响 Nginx 服务器与用户的网络连接，主要包括：
- 设置网络连接的序列化 是否允许同时接收多个网络连接 事件驱动模型的选择 最大连接数的配置  3.http 块 这部分是负责网页相关的配置
- 定义 MIMI-Type 自定义服务日志 允许 sendfile 方式传输文件 连接超时时间 单连接请求数上限  4.server 块 这部分是负责服务器相关的配置
- 配置网络监听 基于名称的虚拟主机配置 基于IP的虚拟主机配置  5.location 块 本地文件配置
- 请求根目录配置 更改location的URI 网站默认首页配置  3.">
+1.全局块 该部分配置 Nginx 全局内容，包括下面几个部分：
+ 配置运行 Nginx 服务器用户（组） worker process 数 Nginx 进程 PID 存放路径 错误日志的存放路径 外部配置文件的引入  user user [group]; user nobody nobody; # 指定可以运行 Nginx 服务器的用户，如果 user 指令不配置或者配置为 nobody nobody，则默认所有用户都可以启动 Nginx 进程 ------------------------------------------------------------------------------- worker_processes number; # number：Nginx 进程最多可以产生的 worker process 数，配置为 auto：Nginx 进程将自动检测 ------------------------------------------------------------------------------- error_log file; # file：日志输出到某个文件 file，配置为 stderr 日志输出到标准错误输出 error_log logs/error.log; # 将日志输出到 logs/error.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -256,23 +244,48 @@
 	
 </figure></p>
 <h3 id="1全局块">1.全局块</h3>
-<p>该部分配置主要影响 Nginx 全局，通常包括下面几个部分：</p>
+<p>该部分配置 Nginx 全局内容，包括下面几个部分：</p>
 <ul>
 <li>配置运行 Nginx 服务器用户（组）</li>
 <li>worker process 数</li>
 <li>Nginx 进程 PID 存放路径</li>
 <li>错误日志的存放路径</li>
-<li>配置文件的引入</li>
+<li>外部配置文件的引入</li>
 </ul>
-<h3 id="2events-块">2.events 块</h3>
-<p>该部分配置主要影响 Nginx 服务器与用户的网络连接，主要包括：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">user</span> <span style="color:#e6db74">user</span> <span style="color:#e6db74">[group]</span>;
+<span style="color:#66d9ef">user</span> <span style="color:#e6db74">nobody</span> <span style="color:#e6db74">nobody</span>; 
+<span style="color:#75715e"># 指定可以运行 Nginx 服务器的用户，如果 user 指令不配置或者配置为 nobody nobody，则默认所有用户都可以启动 Nginx 进程
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">-------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">worker_processes</span> <span style="color:#e6db74">number</span>;
+<span style="color:#75715e"># number：Nginx 进程最多可以产生的 worker process 数，配置为 auto：Nginx 进程将自动检测
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">-------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">error_log</span> <span style="color:#e6db74">file</span>;
+<span style="color:#75715e"># file：日志输出到某个文件 file，配置为 stderr 日志输出到标准错误输出
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">error_log</span> <span style="color:#e6db74">logs/error.log</span>; <span style="color:#75715e"># 将日志输出到 logs/error.log
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">--------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">pid</span> <span style="color:#e6db74">file</span>;
+<span style="color:#75715e"># file：指定存放路径和文件名称，不指定默认置于路径 logs/nginx.pid
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">----更多配置---------------------------------------------------------------------</span>
+<span style="color:#e6db74">include</span> <span style="color:#e6db74">file</span>;
+<span style="color:#75715e"># 该指令主要用于将其他的 Nginx 配置或者第三方模块的配置引用到当前的主配置文件中
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">accept_mutex</span> <span style="color:#66d9ef">on</span>;
+<span style="color:#75715e"># 该指令默认为 on 状态，表示会对多个 Nginx 进程接收连接进行序列化，防止多个进程对连接的争抢
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">multi_accept</span> <span style="color:#66d9ef">off</span>;
+<span style="color:#75715e"># 该指令默认为 off 状态，意指每个 worker process 一次只能接收一个新到达的网络连接。若想让每个 Nginx 的 worker process 都有能力同时接收多个网络连接，则需要开启此配置
+</span></code></pre></div><h3 id="2events-块">2.Events 块</h3>
+<p>该部分配置 Nginx 服务器与用户的网络连接事件，包括：</p>
 <ul>
 <li>设置网络连接的序列化</li>
 <li>是否允许同时接收多个网络连接</li>
 <li>事件驱动模型的选择</li>
 <li>最大连接数的配置</li>
 </ul>
-<h3 id="3http-块">3.http 块</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">use</span> <span style="color:#e6db74">model</span>;
+<span style="color:#75715e"># 事件驱动模型的选择，可选择项包括：select、poll、kqueue、epoll、rtsig
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">worker_connections</span> <span style="color:#e6db74">number</span>;
+<span style="color:#75715e"># 最大连接数的配置，number 默认值为 512，表示允许每一个 worker process 可以同时开启的最大连接数
+</span></code></pre></div><h3 id="3http-块">3.Http 块</h3>
 <p>这部分是负责网页相关的配置</p>
 <ul>
 <li>定义 MIMI-Type</li>
@@ -281,132 +294,83 @@
 <li>连接超时时间</li>
 <li>单连接请求数上限</li>
 </ul>
-<h3 id="4server-块">4.server 块</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">include</span> mime.types;
+<span style="color:#66d9ef">default_type</span> <span style="color:#e6db74">mime-type</span>;
+<span style="color:#75715e"># 定义 MIME-Type 网络资源的媒体类型，也即前端请求的资源类型
+</span><span style="color:#75715e"># mime.types 是一个 types 结构文件，里面包含了各种浏览器能够识别的 MIME 类型以及对应类型的文件后缀名字
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">access_log</span> <span style="color:#e6db74">path</span> <span style="color:#e6db74">[format]</span>;
+<span style="color:#75715e"># path：自定义服务日志的路径 + 名称
+</span><span style="color:#75715e"># format：可选项，自定义服务日志的字符串格式。其也可以使用 log_format 定义的格式
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">sendfile</span> <span style="color:#66d9ef">on</span>;
+<span style="color:#66d9ef">sendfile_max_chunk</span> <span style="color:#e6db74">size</span>;
+<span style="color:#75715e"># 前者用于开启或关闭使用 sendfile() 传输文件，默认 off
+</span><span style="color:#75715e"># 后者指令若 size&gt;0，则Nginx进程的每个 worker process 每次调用 sendfile() 传输的数据了最大不能超出此值；若 size=0 则表示不限制。默认值为 0
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">---------------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">keepalive_timeout</span> <span style="color:#e6db74">timeout</span> <span style="color:#e6db74">[header_timeout]</span>;
+<span style="color:#75715e"># 连接超时时间配置，timeout 表示 server 端对连接的保持时间，默认75秒
+</span><span style="color:#75715e"># header_timeout 为可选项，表示在应答报文头部的 Keep-Alive 域设置超时时间：&#34;Keep-Alive : timeout = header_timeout&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">-----更多配置---------------------------------------------------------------------------</span>
+<span style="color:#e6db74">keepalive_requests</span> <span style="color:#e6db74">number</span>;
+<span style="color:#75715e"># 单连接请求数上限，用于限制用户通过某一个连接向Nginx服务器发起请求的次数
+</span></code></pre></div><h3 id="4server-块">4.Server 块</h3>
 <p>这部分是负责服务器相关的配置</p>
 <ul>
 <li>配置网络监听</li>
 <li>基于名称的虚拟主机配置</li>
 <li>基于IP的虚拟主机配置</li>
 </ul>
-<h3 id="5location-块">5.location 块</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">listen</span> <span style="color:#e6db74">IP[:PORT]</span>;
+<span style="color:#66d9ef">listen</span> <span style="color:#e6db74">PORT</span>;                  <span style="color:#75715e"># 配置监听的IP地址 或 配置监听的端口
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> 192.168.31.177:<span style="color:#ae81ff">8080</span>;   <span style="color:#75715e"># 监听具体IP和具体端口上的连接
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> <span style="color:#ae81ff">192</span><span style="color:#e6db74">.168.31.177</span>;        <span style="color:#75715e"># 监听IP上所有端口上的连接
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> <span style="color:#ae81ff">8080</span>;                  <span style="color:#75715e"># 监听具体端口上的所有IP的连接
+</span></code></pre></div><h3 id="5location-块">5.Location 块</h3>
 <p>本地文件配置</p>
 <ul>
 <li>请求根目录配置</li>
-<li>更改location的URI</li>
+<li>更改 location 的 URI</li>
 <li>网站默认首页配置</li>
 </ul>
-<h2 id="3-代码解析">3. 代码解析</h2>
-<h3 id="1-全局块----配置运行-nginx-服务器用户组">1. 全局块&mdash;-配置运行 Nginx 服务器用户（组）</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">user</span> <span style="color:#e6db74">user</span> <span style="color:#e6db74">[group]</span>;
-<span style="color:#75715e">#user：指定可以运行Nginx服务器的用户
-</span><span style="color:#75715e">#group：可选项，可以运行Nginx服务器的用户组
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">user</span> <span style="color:#e6db74">nobody</span> <span style="color:#e6db74">nobody</span>; <span style="color:#75715e">#如果user指令不配置或者配置为nobody nobody，则默认所有用户都可以启动Nginx进程
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">-------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">worker_processes</span> <span style="color:#e6db74">number</span> <span style="color:#e6db74">|</span> <span style="color:#e6db74">auto</span>;
-<span style="color:#75715e">#number：Nginx进程最多可以产生的worker process数
-</span><span style="color:#75715e">#auto：Nginx进程将自动检测
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">worker_processes</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">#在后台查看进程//ps -aux | grep nginx//能发现开启了3个worker process进程
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">-------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">error_log</span> <span style="color:#e6db74">file</span> <span style="color:#e6db74">|</span> <span style="color:#e6db74">stderr</span>;
-<span style="color:#75715e">#file：日志输出到某个文件file
-</span><span style="color:#75715e">#stderr：日志输出到标准错误输出
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">error_log</span> <span style="color:#e6db74">logs/error.log</span>; <span style="color:#75715e">#将日志输出到logs/error.log
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">--------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">pid</span> <span style="color:#e6db74">file</span>;
-<span style="color:#75715e">#file：指定存放路径和文件名称
-</span><span style="color:#75715e">#Nginx进程是作为系统守护进程在运行，需要在某文件中保存当前运行程序的主进程号,如果不指定默认置于路径logs/nginx.pid
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">----更多配置---------------------------------------------------------------------</span>
-<span style="color:#e6db74">include</span> <span style="color:#e6db74">file</span>;
-<span style="color:#75715e">#该指令主要用于将其他的Nginx配置或者第三方模块的配置引用到当前的主配置文件中
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">accept_mutex</span> <span style="color:#66d9ef">on</span> <span style="color:#e6db74">|</span> <span style="color:#66d9ef">off</span>;
-<span style="color:#75715e">#该指令默认为on状态，表示会对多个Nginx进程接收连接进行序列化，防止多个进程对连接的争抢
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">multi_accept</span> <span style="color:#66d9ef">on</span> <span style="color:#e6db74">|</span> <span style="color:#66d9ef">off</span>;
-<span style="color:#75715e">#该指令默认为off状态，意指每个worker process 一次只能接收一个新到达的网络连接。若想让每个Nginx的worker process都有能力同时接收多个网络连接，则需要开启此配置
-</span><span style="color:#75715e"></span>
-</code></pre></div><h3 id="2events-块----事件配置">2.Events 块&mdash;-事件配置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">use</span> <span style="color:#e6db74">model</span>;
-<span style="color:#75715e">#事件驱动模型的选择，可选择项包括：select、poll、kqueue、epoll、rtsig
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">worker_connections</span> <span style="color:#e6db74">number</span>;
-<span style="color:#75715e">#最大连接数的配置，number默认值为512，表示允许每一个worker process可以同时开启的最大连接数
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------</span>
-</code></pre></div><h3 id="3http-全局块">3.Http 全局块</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">include</span> mime.types;<span style="color:#66d9ef">default_type</span> <span style="color:#e6db74">mime-type</span>;
-<span style="color:#75715e">#定义MIME-Type网络资源的媒体类型，也即前端请求的资源类型
-</span><span style="color:#75715e">#mime.types文件内容，是一个types结构，里面包含了各种浏览器能够识别的MIME类型以及对应类型的文件后缀名字
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">access_log</span> <span style="color:#e6db74">path</span> <span style="color:#e6db74">[format]</span>;
-<span style="color:#75715e">#path：自定义服务日志的路径 + 名称
-</span><span style="color:#75715e">#format：可选项，自定义服务日志的字符串格式。其也可以使用 log_format 定义的格式
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">----------------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">sendfile</span> <span style="color:#66d9ef">on</span> <span style="color:#e6db74">|</span> <span style="color:#66d9ef">off</span>;<span style="color:#66d9ef">sendfile_max_chunk</span> <span style="color:#e6db74">size</span>;
-<span style="color:#75715e">#前者用于开启或关闭使用sendfile()传输文件，默认off
-</span><span style="color:#75715e">#后者指令若size&gt;0，则Nginx进程的每个worker process每次调用sendfile()传输的数据了最大不能超出此值；若size=0则表示不限制。默认值为0
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">---------------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">keepalive_timeout</span> <span style="color:#e6db74">timeout</span> <span style="color:#e6db74">[header_timeout]</span>;
-<span style="color:#75715e">#连接超时时间配置
-</span><span style="color:#75715e">#timeout 表示server端对连接的保持时间，默认75秒
-</span><span style="color:#75715e">#header_timeout 为可选项，表示在应答报文头部的 Keep-Alive 域设置超时时间：&#34;Keep-Alive : timeout = header_timeout&#34;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">-----更多配置---------------------------------------------------------------------------</span>
-<span style="color:#e6db74">keepalive_requests</span> <span style="color:#e6db74">number</span>;
-<span style="color:#75715e">#单连接请求数上限，用于限制用户通过某一个连接向Nginx服务器发起请求的次数
-</span></code></pre></div><h3 id="4server-全局块">4.Server 全局块</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">listen</span> <span style="color:#e6db74">IP[:PORT]</span>;
-<span style="color:#66d9ef">listen</span> <span style="color:#e6db74">PORT</span>;
-<span style="color:#75715e">#配置监听的IP地址 或 配置监听的端口
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> 192.168.31.177:<span style="color:#ae81ff">8080</span>;   <span style="color:#75715e"># 监听具体IP和具体端口上的连接
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> <span style="color:#ae81ff">192</span><span style="color:#e6db74">.168.31.177</span>;   <span style="color:#75715e"># 监听IP上所有端口上的连接
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">listen</span> <span style="color:#ae81ff">8080</span>;     <span style="color:#75715e"># 监听具体端口上的所有IP的连接
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">server_name</span> <span style="color:#e6db74">name1</span> <span style="color:#e6db74">name2</span> <span style="color:#e6db74">...</span>
-<span style="color:#75715e">#基于名称和IP的虚拟主机配置，name可以有多个并列名称，而且此处的name支持正则表达式书写
-</span><span style="color:#75715e"></span><span style="color:#e6db74">server_name</span> ~<span style="color:#e6db74">^www\d+\.myserver\.com$</span>
-<span style="color:#75715e">#此时表示该虚拟主机可以接收类似域名 www1.myserver.com 等的请求而拒绝 www.myserver.com 的域名请求，所以说用正则表达式可以实现更精准的控制
-</span><span style="color:#75715e"></span><span style="color:#e6db74">server_name</span> <span style="color:#ae81ff">192</span><span style="color:#e6db74">.168.1.245</span>;
-</code></pre></div><h3 id="5location-块配置">5.Location 块配置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">location</span> <span style="color:#e6db74">[</span> = <span style="color:#e6db74">|</span> ~ <span style="color:#e6db74">|</span> ~<span style="color:#e6db74">*</span> <span style="color:#e6db74">|</span> <span style="color:#e6db74">^~</span> <span style="color:#e6db74">]</span> <span style="color:#e6db74">uri</span> {<span style="color:#f92672">...}</span>;
-<span style="color:#75715e">#这里的uri分为标准uri和正则uri
-</span><span style="color:#75715e">#&#34;=&#34;：用于标准uri前，要求请求字符串与uri严格匹配，一旦匹配成功则停止
-</span><span style="color:#75715e">#&#34;~&#34;：用于正则uri前，并且区分大小写
-</span><span style="color:#75715e">#&#34;~*&#34;：用于正则uri前，但不区分大小写
-</span><span style="color:#75715e">#&#34;^~&#34;：用于标准uri前，要求Nginx找到标识uri和请求字符串匹配度最高的location后，立即使用此location处理请求，而不再使用location块中的正则uri和请求字符串做匹配
-</span><span style="color:#75715e"></span><span style="color:#f92672">location</span> = <span style="color:#e6db74">/404.html</span>{<span style="color:#f92672">...}</span>;
-<span style="color:#f92672">------location内部内容-----------------------------------------------------------------------------</span>
-<span style="color:#e6db74">root</span> <span style="color:#e6db74">path</span>;
-<span style="color:#75715e">#path：Nginx接收到请求以后查找资源的根目录路径
-</span><span style="color:#75715e">#可以通过alias指令来更改location接收到的URI请求路径————alias path; # path为修改后的根路径
+<span style="color:#75715e"># 这里的 uri 分为标准 uri 和正则 uri
+</span><span style="color:#75715e"># &#34;=&#34;：用于标准 uri 前，要求请求字符串与 uri 严格匹配，一旦匹配成功则停止
+</span><span style="color:#75715e"># &#34;~&#34;：用于正则 uri 前，并且区分大小写
+</span><span style="color:#75715e"># &#34;~*&#34;：用于正则 uri 前，但不区分大小写
+</span><span style="color:#75715e"># &#34;^~&#34;：用于标准 uri 前，要求 Nginx 找到标识 uri 和请求字符串匹配度最高的 location 后，立即使用此 location 处理请求，而不再使用 location 块中的正则 uri 和请求字符串做匹配
+</span><span style="color:#75715e"></span><span style="color:#f92672">location</span> = <span style="color:#e6db74">/404.html</span>{<span style="color:#f92672">...}</span>;  <span style="color:#75715e"># 示例
 </span><span style="color:#75715e"></span><span style="color:#f92672">-------------------------------------------------------------------------------------------------</span>
-<span style="color:#e6db74">index</span> <span style="color:#e6db74">file</span> <span style="color:#e6db74">......</span>;
-<span style="color:#75715e">#设置网站的默认首页
-</span><span style="color:#75715e">#file:可以包含多个用空格隔开的文件名，首先找到哪个页面，就使用哪个页面响应请求
-</span></code></pre></div><h2 id="5nginx-配置-ssl-及-http-跳转到-https">5.Nginx 配置 SSL 及 HTTP 跳转到 HTTPS</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># Nginx配置SSL并把Http跳转到Https，需修改Nginx.conf配置文件如下
+<span style="color:#e6db74">root</span> <span style="color:#e6db74">path</span>;
+<span style="color:#75715e"># path：Nginx 接收到请求以后查找资源的根目录路径
+</span><span style="color:#75715e"></span><span style="color:#f92672">-------------------------------------------------------------------------------------------------</span>
+<span style="color:#e6db74">index</span> <span style="color:#e6db74">file</span>;
+<span style="color:#75715e"># 设置网站的默认首页
+</span><span style="color:#75715e"># file:可以包含多个用空格隔开的文件名，首先找到哪个页面，就使用哪个页面响应请求
+</span></code></pre></div><h2 id="3nginx-配置-ssl-及-http-跳转到-https-示例">3.Nginx 配置 SSL 及 HTTP 跳转到 HTTPS 示例</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># Nginx 配置 SSL 并把 Http 跳转到 Https，需修改 Nginx.conf 配置文件如下
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">server</span> {
 
   <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
-  <span style="color:#f92672">server_name</span> <span style="color:#e6db74">www.joyitsai.com</span>;
-  <span style="color:#f92672">return</span> <span style="color:#ae81ff">301</span> <span style="color:#e6db74">https://www.joyitsai.com</span>$request_uri;
+  <span style="color:#f92672">server_name</span> <span style="color:#e6db74">www.example.com</span>;
+  <span style="color:#f92672">return</span> <span style="color:#ae81ff">301</span> <span style="color:#e6db74">https://www.example.com</span>$request_uri;
 
-  <span style="color:#75715e"># 把http重定向到https使用了nginx的重定向命令，之前老版本的nginx可能使用了以下类似的格式：
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># rewrite ^/(.*)$ http://www.joyitsai.com/$1 permanent;
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># 或者：
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># rewrite ^ http://www.joyitsai.com$request_uri? permanent;
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># 现在nginx新版本已经换了种写法，上面这些已经不再推荐。现在网上可能还有很多文章写的是第一种。
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># 新的写法比较推荐方式是：return 301 https://www.joyitsai.com$request_uri;
+  <span style="color:#75715e"># 把 http 重定向到 https 使用了nginx 的重定向命令
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># return 301 https://www.example.com$request_uri;
 </span><span style="color:#75715e"></span>}
 
 <span style="color:#66d9ef">server</span> {
 
   <span style="color:#f92672">listen</span> <span style="color:#ae81ff">443</span>;
-  <span style="color:#f92672">server_name</span> <span style="color:#e6db74">www.joyitsai.com</span>;
+  <span style="color:#f92672">server_name</span> <span style="color:#e6db74">www.example.com</span>;
   <span style="color:#f92672">root</span> <span style="color:#e6db74">/data/release/weapp/uploadFiles</span>;
 
   <span style="color:#75715e"># 开启ssl功能
 </span><span style="color:#75715e"></span>  <span style="color:#f92672">ssl</span> <span style="color:#66d9ef">on</span>;
 
   <span style="color:#75715e"># 配置ssl证书，直接用.pem和.key文件的绝对路径
-</span><span style="color:#75715e"></span>  <span style="color:#f92672">ssl_certificate/data/release/nginx/1535530361992.pem</span>;
-  <span style="color:#f92672">ssl_certificate_key/data/release/nginx/1535530361992.key</span>;
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">ssl_certificate/data/release/nginx/ssl_file.pem</span>;
+  <span style="color:#f92672">ssl_certificate_key/data/release/nginx/ssl_file.key</span>;
   <span style="color:#f92672">ssl_session_timeout</span> <span style="color:#ae81ff">5m</span>;
   <span style="color:#f92672">ssl_protocols</span> <span style="color:#e6db74">TLSv1</span> <span style="color:#e6db74">TLSv1.1</span> <span style="color:#e6db74">TLSv1.2</span>;
   <span style="color:#f92672">ssl_ciphers</span> <span style="color:#e6db74">ECDHE</span> <span style="color:#e6db74">-</span> <span style="color:#e6db74">RSA</span> <span style="color:#e6db74">-</span> <span style="color:#e6db74">AES128</span> <span style="color:#e6db74">-</span> <span style="color:#e6db74">GCM</span> <span style="color:#e6db74">-</span> <span style="color:#e6db74">SHA256:</span> <span style="color:#e6db74">ECDHE:</span> <span style="color:#e6db74">ECDH:</span> <span style="color:#e6db74">AES:</span> <span style="color:#e6db74">HIGH:</span> <span style="color:#e6db74">!NULL:</span> <span style="color:#e6db74">!aNULL:</span> <span style="color:#e6db74">!MD5:</span> <span style="color:#e6db74">!ADH:</span> <span style="color:#e6db74">!RC4</span>;
@@ -427,8 +391,8 @@
     <span style="color:#f92672">autoindex</span> <span style="color:#66d9ef">on</span>;
   }
 
-  <span style="color:#75715e"># 配置uri， ~用于正则uri前，其中.(png|jpg)为正则表达式，如果后缀是.png或.jpg的url请求，则匹配成功
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># root用于配置接收到请求以后查找资源的根目录路径
+  <span style="color:#75715e"># 配置 uri， ~ 用于正则 uri 前，其中 .(png|jpg) 为正则表达式
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># root 用于配置接收到请求以后查找资源的根目录路径
 </span><span style="color:#75715e"></span>
   <span style="color:#f92672">location</span> ~ <span style="color:#e6db74">\.(png|jpg)</span> {
      <span style="color:#f92672">root</span> <span style="color:#e6db74">/data/release/weapp/uploadFiles</span>;
@@ -506,92 +470,12 @@
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -6,14 +6,23 @@
     <description>Recent content in Javascript on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web开发—双击修改的实现</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%8F%8C%E5%87%BB%E4%BF%AE%E6%94%B9%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%8F%8C%E5%87%BB%E4%BF%AE%E6%94%B9%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid>
+      <description>1.实现 $(&amp;#39;.edit&amp;#39;).on(&amp;#39;dblclick&amp;#39;, function(event){ let e = event.target if(e.innerHTML.indexOf(&amp;#39;type=&amp;#34;text&amp;#34;&amp;#39;) &amp;gt; 0 ){ //判断是否进入编辑状态  return } let newdiv = document.createElement( &amp;#39;input&amp;#39; )//创建一个input标签  newdiv.type = &amp;#39;text&amp;#39; //设置标签类型  newdiv.className = &amp;#39;edit-input&amp;#39; newdiv.value = e.innerHTML //将原来文本内容赋值给input标签  e.innerHTML = &amp;#39;&amp;#39; //清除原来的内容  e.appendChild(newdiv) //将input标签添加到元素中  newdiv.setSelectionRange(0, e.innerHTML.length) //设置光标选中位置  newdiv.focus() //设置元素获得焦点，失去焦点触发onblur  newdiv.onblur = blur //设置失去焦点事件  function blur(){ e.innerHTML = this.value //将文本内容重新赋值给元素  } newdiv.onkeyup = function(key){ //设置回车时执行失去焦点事件  if(key.key == &amp;#39;Enter&amp;#39;){ newdiv.</description>
+    </item>
+    
     <item>
       <title>Web开发—上传进度获取</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E8%8E%B7%E5%8F%96/</link>
       <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E8%8E%B7%E5%8F%96/</guid>
-      <description>1.Javascript 的 XMLHttpRequest:progress 事件 var formData = new FormData(); formData.append(&amp;#34;file&amp;#34;, document.getElementById(&amp;#39;file&amp;#39;).files[0]); formData.append(&amp;#34;token&amp;#34;, token_value); // 其他参数按这样子加入  var xhr = new XMLHttpRequest(); xhr.open(&amp;#39;POST&amp;#39;, &amp;#39;/uploadurl&amp;#39;); // 上传完成后的回调函数 xhr.onload = function () { if (xhr.status === 200) { console.log(&amp;#39;上传成功&amp;#39;); } else { console.log(&amp;#39;上传出错&amp;#39;); } }; // 获取上传进度 xhr.upload.onprogress = function (event) { if (event.lengthComputable) { var percent = Math.floor(event.loaded / event.total * 100) ; // 设置进度显示  $(&amp;#34;#J_upload_progress&amp;#34;).progress(&amp;#39;set progress&amp;#39;, percent); } }; xhr.send(formData); 2.</description>
+      <description>1.javascript 的 XMLHttpRequest:progress 事件 var formData = new FormData(); formData.append(&amp;#34;file&amp;#34;, document.getElementById(&amp;#39;file&amp;#39;).files[0]); formData.append(&amp;#34;token&amp;#34;, token_value); var xhr = new XMLHttpRequest(); xhr.open(&amp;#39;POST&amp;#39;, &amp;#39;/uploadurl&amp;#39;); // 上传完成后的回调函数 xhr.onload = function () { if (xhr.status === 200) { console.log(&amp;#39;上传成功&amp;#39;); } else { console.log(&amp;#39;上传出错&amp;#39;); } }; // 获取上传进度 xhr.upload.onprogress = function (event) { if (event.lengthComputable) { var percent = Math.floor(event.loaded / event.total * 100) ; // 设置进度显示  $(&amp;#34;#J_upload_progress&amp;#34;).progress(&amp;#39;set progress&amp;#39;, percent); } }; xhr.send(formData); 2.jQuery 封装的 xhr var formData = new FormData(); formData.</description>
     </item>
     
     <item>
@@ -27,11 +36,11 @@ var element = document.getElementById(&amp;#34;box&amp;#34;); element.scrollInto
     </item>
     
     <item>
-      <title>Web开发—箭头函数与 function 的 this 指向问题</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E-function-%E7%9A%84-this-%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/</link>
+      <title>Web开发—箭头函数与 function</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E-function/</link>
       <pubDate>Mon, 24 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E-function-%E7%9A%84-this-%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E-function/</guid>
       <description>1.定义 // function function fn(a, b){ return a + b; } // arrow function var foo = (a, b)=&amp;gt;{ return a + b }; 2.This 的指向 使用function定义的函数，this的指向随着调用环境的变化而变化的，而箭头函数中的this指向是固定不变的，一直指向的是定义函数的环境
 // 使用function定义的函数 function foo(){ console.log(this); } var obj = { aa: foo }; foo(); //Window obj.aa() //obj { aa: foo }  // 使用箭头函数定义函数 var foo = () =&amp;gt; { console.log(this) }; var obj = { aa:foo }; foo(); //Window obj.aa(); //Window 3.构造函数 仅能通过 function 方法定义构造函数</description>
     </item>
@@ -42,30 +51,30 @@ var element = document.getElementById(&amp;#34;box&amp;#34;); element.scrollInto
       <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/</guid>
-      <description>1.获取子节点 a.通过获取 dom 方式直接获取子节点 var a = document.getElementById(&amp;#34;test&amp;#34;).getElementsByTagName(&amp;#34;div&amp;#34;); b. 通过 childNodes 获取子节点 var b =document.getElementById(&amp;#34;test&amp;#34;).childNodes; c.通过 children 来获取子节点 var getFirstChild = document.getElementById(&amp;#34;test&amp;#34;).children[0]; 2.获取父节点 a.parentNode 获取父节点 var p = document.getElementById(&amp;#34;test&amp;#34;).parentNode; 3.获取兄弟节点 a.通过获取父亲节点再获取子节点来获取兄弟节点 var brother1 = document.getElementById(&amp;#34;test&amp;#34;).parentNode.children[1]; b.获取上一个兄弟节点 var brother2 = document.getElementById(&amp;#34;test&amp;#34;).previousElementSibling; c.获取下一个兄弟节点 var brother4 = document.getElementById(&amp;#34;test&amp;#34;).nextElementSibling; </description>
+      <description>1.通过获取 dom 方式直接获取子节点 var child = document.getElementById(&amp;#34;test&amp;#34;).getElementsByTagName(&amp;#34;div&amp;#34;); 2. 通过 childNodes 获取子节点 var child =document.getElementById(&amp;#34;test&amp;#34;).childNodes; 3.通过 children 来获取子节点 var child = document.getElementById(&amp;#34;test&amp;#34;).children[0]; 4.通过 parentNode 获取父节点 var parent = document.getElementById(&amp;#34;test&amp;#34;).parentNode; 5.通过获取父节点再获取子节点来获取兄弟节点 var brother = document.getElementById(&amp;#34;test&amp;#34;).parentNode.children[1]; 6.获取上一个兄弟节点 var brother = document.getElementById(&amp;#34;test&amp;#34;).previousElementSibling; 7.获取下一个兄弟节点 var brother = document.getElementById(&amp;#34;test&amp;#34;).nextElementSibling; </description>
     </item>
     
     <item>
-      <title>Web开发—ES6-ES12</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91es6-es12/</link>
+      <title>Web开发—杂项1</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B91/</link>
       <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91es6-es12/</guid>
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B91/</guid>
       <description>参考原文：ES6-ES12的开发技巧 @Sunshine_Lin 
- ES6 1.let 和 const  var有变量提升，值可变，允许重复声明 let没有变量提升，值可变，不允许重复声明 const没有变量提升，值不可变，但如果是定义对象，则属性可变  // let 无变量提升 t = 2; console.log(t); let t; // Cannot access &amp;#39;t&amp;#39; before initialization console.log(t); let t; // t is not defined t1 = 2; console.log(t1); var t1; // 2 console.log(t1); var t1; // undefined PS：变量提升(声明提升)：函数声明和变量声明总是会被解释器悄悄地被&amp;quot;提升&amp;quot;到方法体的最顶部。
+ ES6 1.let 和 const  var：有变量提升，值可变，允许重复声明 let：没有变量提升，值可变，不允许重复声明 const：没有变量提升，值不可变，但如果是定义对象，则属性可变  // let 无变量提升 t = 2; console.log(t); let t; // Cannot access &amp;#39;t&amp;#39; before initialization console.log(t); let t; // t is not defined t1 = 2; console.log(t1); var t1; // 2 console.log(t1); var t1; // undefined PS：变量提升(声明提升)：函数声明和变量声明总是会被解释器悄悄地被&amp;quot;提升&amp;quot;到方法体的最顶部。
 x = 5; // 变量 x 设置为 5 console.log(x); var x; // 声明 x 实际上，上述代码等于下述代码，在运行时，x 的的声明被提升到最顶部
 var x; // 声明 x x = 5; // 变量 x 设置为 5 console.</description>
     </item>
     
     <item>
-      <title>Web开发—JavaScript 的 Url 编解码</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91javascript-%E7%9A%84-url-%E7%BC%96%E8%A7%A3%E7%A0%81/</link>
+      <title>Web开发—Url 编解码</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91url-%E7%BC%96%E8%A7%A3%E7%A0%81/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91javascript-%E7%9A%84-url-%E7%BC%96%E8%A7%A3%E7%A0%81/</guid>
-      <description>escape() escape() 不能直接用于URL编码，它的作用是返回一个字符的 Unicode 编码值。比如&amp;quot;春节&amp;quot;的返回结果是%u6625%u8282，escape() 仅不对+进行编码，其主要用于汉字编码。
-console.log(escape(&amp;#34;春节+国庆&amp;#34;)) // %u6625%u8282+%u56FD%u5E86 console.log(escape(&amp;#34;春节=+=国庆&amp;#34;)) // %u6625%u8282%3D+%3D%u56FD%u5E86 console.log(unescape(&amp;#39;%u6625%u8282%3D+%3D%u56FD%u5E86&amp;#39;)) // 春节=+=国庆 encodeURI() encodeURI() 是用来对 URL 编码的函数。函数会编码整个 URL 地址，但对特殊含义的符号 ; / ? : @ &amp;amp; = + $ , # 不进行编码。
-console.log(encodeURI(&amp;#39;http://baidu.com?hello=您好&amp;amp;word=文档&amp;#39;)) // http://baidu.com?hello=%E6%82%A8%E5%A5%BD&amp;amp;word=%E6%96%87%E6%A1%A3 console.log(decodeURI(&amp;#39;http://baidu.com?hello=%E6%82%A8%E5%A5%BD&amp;amp;word=%E6%96%87%E6%A1%A3&amp;#39;)) // http://baidu.com?hello=您好&amp;amp;word=文档 encodeURIComponent() encodeURIComponent() 能编码如; / ? : @ &amp;amp; = + $ , #这些特殊字符
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91url-%E7%BC%96%E8%A7%A3%E7%A0%81/</guid>
+      <description>1.escape() escape() 不能直接用于 URL 编码，它的作用是返回一个字符的 Unicode 编码值。比如&amp;quot;春节&amp;quot;的返回结果是 %u6625%u8282 ，escape() 不对+进行编码，其主要用于汉字编码。
+console.log(escape(&amp;#34;春节+国庆&amp;#34;)) // %u6625%u8282+%u56FD%u5E86 console.log(escape(&amp;#34;春节=+=国庆&amp;#34;)) // %u6625%u8282%3D+%3D%u56FD%u5E86 console.log(unescape(&amp;#39;%u6625%u8282%3D+%3D%u56FD%u5E86&amp;#39;)) // 春节=+=国庆 2.encodeURI() encodeURI() 是用来对 URL 编码的函数。函数会编码整个 URL 地址，但对特殊含义的符号 ; / ? : @ &amp;amp; = + $ , # 不进行编码。
+console.log(encodeURI(&amp;#39;http://baidu.com?hello=您好&amp;amp;word=文档&amp;#39;)) // http://baidu.com?hello=%E6%82%A8%E5%A5%BD&amp;amp;word=%E6%96%87%E6%A1%A3 console.log(decodeURI(&amp;#39;http://baidu.com?hello=%E6%82%A8%E5%A5%BD&amp;amp;word=%E6%96%87%E6%A1%A3&amp;#39;)) // http://baidu.com?hello=您好&amp;amp;word=文档 3.encodeURIComponent() encodeURIComponent() 能编码如; / ? : @ &amp;amp; = + $ , #这些特殊字符
 console.log(encodeURIComponent(&amp;#39;http://baidu.com?hello=您好&amp;amp;word=文档&amp;#39;)) // http%3A%2F%2Fbaidu.com%3Fhello%3D%E6%82%A8%E5%A5%BD%26word%3D%E6%96%87%E6%A1%A3 console.log(decodeURIComponent(&amp;#39;http%3A%2F%2Fbaidu.com%3Fhello%3D%E6%82%A8%E5%A5%BD%26word%3D%E6%96%87%E6%A1%A3&amp;#39;)) // http://baidu.com?hello=您好&amp;amp;word=文档 </description>
     </item>
     
@@ -77,7 +86,7 @@ console.log(encodeURIComponent(&amp;#39;http://baidu.com?hello=您好&amp;amp;wo
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA/</guid>
       <description>1.清空控制台 console.clear()clear()2.信息输出 console.log() 用于输出普通信息console.info() 用于输出提示性信息console.error() 用于输出错误信息console.warn() 用于输出警示信息console.debug() 用于输出调试信息3.换行 shift + enter
 4.占位符 支持字符 %s、整数 %d %i、浮点数 %f 和对象 %o 四种
-console.log(&#39;%d年%d月%d日&#39;,2011,3,26); console.log(&#39;圆周率是%f&#39;,3.1415926);5.断言 let isDebug = false;console.assert(isDebug,&#39;为false时输出的信息&#39;);</description>
+console.log(&#39;%d年%d月%d日&#39;, 2011,3,26); console.log(&#39;圆周率是%f&#39;, 3.1415926);5.断言 let isDebug = false;console.assert(isDebug, &#39;为false时输出的信息&#39;);</description>
     </item>
     
     <item>
@@ -87,15 +96,14 @@ console.log(&#39;%d年%d月%d日&#39;,2011,3,26); console.log(&#39;圆周率是%
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91attribute-%E5%92%8C-property-%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>参考原文：JS中attribute和property的区别 @L_mj 
- 1.介绍 property属性和attribute特性非常容易混淆，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的特性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
+ 1.介绍 property和attribute虽然都称为属性，但两者不是同一个东西，property是 DOM 中的属性，是 JavaScript 里的对象；attribute是 HTML 标签上的属性，它的值只能够是字符串；简单理解，attribute就是 DOM 节点自带的属性，例如 HTML 中常用的id、class、title、align等。而property是这个 DOM 元素作为对象，其附加的内容，例如childNodes、firstChild等。
 &amp;lt;div id=&amp;#34;div1&amp;#34; class=&amp;#34;divClass&amp;#34; title=&amp;#34;divTitle&amp;#34; title1=&amp;#34;divTitle1&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如上述的div标签，当我们使用var in1=document.getElementById(&amp;quot;div1&amp;quot;)获取这个元素并打印时console.log(in1)，可以看到如下图的属性。
  
-可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。我们可以在attributes属性中找到我们自定义的属性。
+可以发现有一个名为attributes的属性，类型是NamedNodeMap，同时也可以找到标签自带的属性id和className、但明显没有titles这个自定义的属性。这是因为每一个 DOM 对象在创建的时候，只会创建如id, className这些基本属性，而们在 TAG 标签中自定义的属性是不会直接放到 DOM 中的。
  
-从这里就可以看出，attributes是属于property的一个子集，它保存了 HTML 标签上定义属性。
-2.设置 常用的attribute，例如id、class等，已经被作为property附加到 DOM 对象上，可以和property一样取值和赋值。
-1.attribute 取值赋值 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
-var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttribute(&amp;#34;class&amp;#34;); var title = div1.getAttribute(&amp;#34;title&amp;#34;); var title1 = div1.getAttribute(&amp;#34;title1&amp;#34;); //自定义特性  div1.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div1.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div1.</description>
+从这里就可以看出，attributes是属于property的一个子集。
+2.attribute 取值赋值 attribute 使用setAttribute()和getAttribute()进行操作，注意，setAttribute()的两个参数，都必须是字符串。
+var id = div.getAttribute(&amp;#34;id&amp;#34;); var className = div.getAttribute(&amp;#34;class&amp;#34;); var title = div.getAttribute(&amp;#34;title&amp;#34;); var value = div.getAttribute(&amp;#34;value&amp;#34;); // 自定义属性 div.setAttribute(&amp;#39;class&amp;#39;, &amp;#39;a&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;b&amp;#39;); div.setAttribute(&amp;#39;title&amp;#39;, &amp;#39;c&amp;#39;); div.setAttribute(&amp;#39;value&amp;#39;, &amp;#39;d&amp;#39;); 3.property 取值赋值 property取值赋值只需要使用点.</description>
     </item>
     
     <item>
@@ -104,7 +112,7 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%BC%82%E6%AD%A5post/</guid>
-      <description>1.$ajax $.ajax({ url: &amp;#39;http://&amp;#39;, type: &amp;#39;post&amp;#39;, dataType: &amp;#39;json&amp;#39;, data: {name: &amp;#34;xu&amp;#34;, foo: &amp;#39;bar&amp;#39;}, cache: false, headers: { &amp;#34;Authorization&amp;#34;: &amp;#34;Bearer token&amp;#34;, &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39; }, success: function(res){}, error: function(e){}, }); </description>
+      <description>1.$ajax $.ajax({ url: &amp;#39;http://&amp;#39;, type: &amp;#39;post&amp;#39;, dataType: &amp;#39;json&amp;#39;, data: {name: &amp;#34;x&amp;#34;, foo: &amp;#39;bar&amp;#39;}, cache: false, headers: { &amp;#34;Authorization&amp;#34;: &amp;#34;Bearer token&amp;#34;, &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39;, }, success: function(res){ }, error: function(e){ }, }); </description>
     </item>
     
     <item>
@@ -113,8 +121,8 @@ var id = div1.getAttribute(&amp;#34;id&amp;#34;); var className1 = div1.getAttri
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91jquery-%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%B7%E6%96%B0/</guid>
-      <description>1.使用Load实现的局部刷新 在jQuery中load方法可以加载本地Html文件里的某个元素，使用这个特性可以实现Html的局部更新
-$(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用location实现全局刷新 window.location.reload() </description>
+      <description>1.使用 Load 实现的局部刷新 在jQuery中load方法可以加载本地Html文件里的某个元素，使用这个特性可以实现Html的局部更新
+$(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用 location 实现全局刷新 window.location.reload() </description>
     </item>
     
     <item>
@@ -124,12 +132,11 @@ $(&amp;#34;#content&amp;#34;).load(&amp;#34;list .table&amp;#34;) 2.使用locati
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6-bootstrap-select/</guid>
       <description>参考文献：github.com-bootstrap-select @silviomoreto  &amp;amp; blogs @懒得安分
- 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 关于组件取值保持原生的 JQuery 方法，比如 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
-4.赋值 组件赋值就需要稍微变换一下了，如果你直接 $(&#39;#sel&#39;).val(&#39;1&#39;); 这样赋值将会无效，正确的赋值方法为：
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，赋值的值为 option 的 value 属性！！
-在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 如果是多选的赋值，也是一样
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).</description>
+ 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
+4.赋值 $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，所操作的值为 option 的 value 属性
+在一些级联选择的使用场景中，若需要在赋值的时候触发组件的 change 事件，可以：
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 多选的赋值
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).on(&amp;#39;click&amp;#39;, function () { // 回到初始状态  $(&amp;#39;#party_a_project_name&amp;#39;).</description>
     </item>
     
     <item>
@@ -138,7 +145,7 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%AE%9A%E4%BD%8D%E7%82%B9%E5%87%BB%E4%BD%8D%E7%BD%AE/</guid>
-      <description>1.实现 $(&amp;#39;body&amp;#39;).click(function(e) { // 在页面任意位置点击而触发此事件  // e.target表示被点击的目标  if($(e.target).attr(&amp;#34;id&amp;#34;) == &amp;#39;btn_my_mesg&amp;#39;){ //要隐藏或显示的元素  $(&amp;#34;.myMsgs&amp;#34;).css(&amp;#34;display&amp;#34;,&amp;#34;block&amp;#34;); }else{ $(&amp;#34;.myMsgs&amp;#34;).css(&amp;#34;display&amp;#34;,&amp;#34;none&amp;#34;); } }) </description>
+      <description>1.实现 $(&amp;#39;body&amp;#39;).click(function(even) { // 在页面任意位置点击而触发此事件  // even.target 表示被点击的目标  console.log($(even.target).attr(&amp;#34;id&amp;#34;)) }) </description>
     </item>
     
     <item>
@@ -148,22 +155,22 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91jquery-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6-toastr/</guid>
       <description> 参考文献： github-toastr @CodeSeven 
- toastr是一个基于jQuery简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
-1.引入toastr的js、css文件 &amp;lt;script src=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.css&amp;#34;&amp;gt; 2.使用 //常规消息提示，默认背景为浅蓝色 toastr.info(&amp;#34;你有新消息了!&amp;#34;); //成功消息提示，默认背景为浅绿色 toastr.success(&amp;#34;你有新消息了!&amp;#34;); //警告消息提示，默认背景为橘黄色 toastr.warning(&amp;#34;你有新消息了!&amp;#34;); //错误消息提示，默认背景为浅红色 toastr.error(&amp;#34;你有新消息了!&amp;#34;); //带标题的消息框 toastr.success(&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); //另一种调用方法 toastr[&amp;#34;info&amp;#34;](&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); 3.自定义参数 toastr.options = { closeButton: false, debug: false, progressBar: true, positionClass: &amp;#34;toast-bottom-center&amp;#34;, onclick: null, showDuration: &amp;#34;300&amp;#34;, hideDuration: &amp;#34;1000&amp;#34;, timeOut: &amp;#34;2000&amp;#34;, extendedTimeOut: &amp;#34;1000&amp;#34;, showEasing: &amp;#34;swing&amp;#34;, hideEasing: &amp;#34;linear&amp;#34;, showMethod: &amp;#34;fadeIn&amp;#34;, hideMethod: &amp;#34;fadeOut&amp;#34; }; 4.参数说明 closeButton：false，是否显示关闭按钮（提示框右上角关闭按钮）； debug：false，是否为调试； progressBar：false，是否显示进度条（设置关闭的超时时间进度条）； positionClass，消息框在页面显示的位置 toast-top-left 顶端左边 toast-top-right 顶端右边 toast-top-center 顶端中间 toast-top-full-width 顶端，宽度铺满整个屏幕 toast-botton-right toast-bottom-left toast-bottom-center toast-bottom-full-width onclick，点击消息框自定义事件 showDuration: “300”，显示动作时间 hideDuration: “1000”，隐藏动作时间 timeOut: “2000”，自动关闭超时时间 extendedTimeOut: “1000” showEasing: “swing”, hideEasing: “linear”, showMethod: “fadeIn” 显示的方式，和jquery相同 hideMethod: “fadeOut” 隐藏的方式，和jquery相同 </description>
+ toastr 是一个基于 jQuery 简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
+1.引入toastr的js、css文件 &amp;lt;script src=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.css&amp;#34;&amp;gt; 2.使用 // 常规消息提示，默认背景为浅蓝色 toastr.info(&amp;#34;你有新消息了!&amp;#34;); // 成功消息提示，默认背景为浅绿色 toastr.success(&amp;#34;你有新消息了!&amp;#34;); // 警告消息提示，默认背景为橘黄色 toastr.warning(&amp;#34;你有新消息了!&amp;#34;); // 错误消息提示，默认背景为浅红色 toastr.error(&amp;#34;你有新消息了!&amp;#34;); // 带标题的消息框 toastr.success(&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); // 另一种调用方法 toastr[&amp;#34;info&amp;#34;](&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); 3.自定义参数 toastr.options = { closeButton: false, debug: false, progressBar: true, positionClass: &amp;#34;toast-bottom-center&amp;#34;, onclick: null, showDuration: &amp;#34;300&amp;#34;, hideDuration: &amp;#34;1000&amp;#34;, timeOut: &amp;#34;2000&amp;#34;, extendedTimeOut: &amp;#34;1000&amp;#34;, showEasing: &amp;#34;swing&amp;#34;, hideEasing: &amp;#34;linear&amp;#34;, showMethod: &amp;#34;fadeIn&amp;#34;, hideMethod: &amp;#34;fadeOut&amp;#34; }; 4.参数说明 closeButton：false，是否显示关闭按钮（提示框右上角关闭按钮）； debug：false，是否为调试； progressBar：false，是否显示进度条（设置关闭的超时时间进度条）； positionClass，消息框在页面显示的位置 toast-top-left 顶端左边 toast-top-right 顶端右边 toast-top-center 顶端中间 toast-top-full-width 顶端，宽度铺满整个屏幕 toast-botton-right toast-bottom-left toast-bottom-center toast-bottom-full-width onclick，点击消息框自定义事件 showDuration: “300”，显示动作时间 hideDuration: “1000”，隐藏动作时间 timeOut: “2000”，自动关闭超时时间 extendedTimeOut: “1000” showEasing: “swing”, hideEasing: “linear”, showMethod: “fadeIn” 显示的方式，和jquery相同 hideMethod: “fadeOut” 隐藏的方式，和jquery相同 </description>
     </item>
     
     <item>
-      <title>Web开发—一般知识</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%80%E8%88%AC%E7%9F%A5%E8%AF%86/</link>
+      <title>Web开发—杂项2</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B92/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%80%E8%88%AC%E7%9F%A5%E8%AF%86/</guid>
-      <description>1.屏蔽链接 href=&amp;#34;javascript:void(0);&amp;#34; &amp;lt;script&amp;gt;window.alert(&amp;#34;sometext&amp;#34;)&amp;lt;/script&amp;gt; 2.min 文件 min，Minimized 的缩写，是压缩后的 js 或 css 文件。里面的功能与没有 min 的文件是一样的。
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B92/</guid>
+      <description>1.屏蔽链接 &amp;lt;a href=&amp;#34;javascript:void(0);&amp;#34;&amp;gt;something&amp;lt;/a&amp;gt; 2.min 文件 min，Minimized 的缩写，是压缩后的 js 或 css 文件。里面的功能与没有 min 的文件是一样的。
 js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执行的，如果 js 文件过大，这样必然会导致网页加载速度变慢。所以，有了压缩 js 文件的做法。
 实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
 3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.js 将 html 字符串转换成 node 节点 1.</description>
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.</description>
     </item>
     
     <item>
@@ -176,12 +183,12 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
     </item>
     
     <item>
-      <title>Web开发—JS 实现页面跳转</title>
-      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91js-%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</link>
+      <title>Web开发—页面跳转</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91js-%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</guid>
-      <description>1 页面跳转（原页面跳转） （1）a标签实现 &amp;lt;a href=&amp;#34;https://www.baidu.com&amp;#34;&amp;gt;BAT&amp;lt;/a&amp;gt; （2）window.location.href实现 window.location.href=&amp;#34;https://www.baidu.com&amp;#34;; 2 页面跳转 （打开新标签页） （1）a标签实现 &amp;lt;a href=&amp;#34;https://www.baidu.com&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;BAT&amp;lt;/a&amp;gt; （2）window.open()实现 window.open(&amp;#34;https://www.baidu.com&amp;#34;); </description>
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/</guid>
+      <description>1.页面跳转（原页面跳转） 通过 a 标签实现 &amp;lt;a href=&amp;#34;https://www.baidu.com&amp;#34;&amp;gt;BAT&amp;lt;/a&amp;gt; 通过 window.location.href 实现 window.location.href=&amp;#34;https://www.baidu.com&amp;#34;; 2.页面跳转 （打开新标签页） 通过 a 标签实现 &amp;lt;a href=&amp;#34;https://www.baidu.com&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt;BAT&amp;lt;/a&amp;gt; 通过 window.open() 实现 window.open(&amp;#34;https://www.baidu.com&amp;#34;); </description>
     </item>
     
   </channel>

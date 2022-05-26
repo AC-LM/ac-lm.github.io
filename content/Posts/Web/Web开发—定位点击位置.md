@@ -8,15 +8,10 @@ tags: ["Web", "Javascript"]
 ## 1.实现
 
 ```javascript
-$('body').click(function(e) { 
+$('body').click(function(even) { 
     // 在页面任意位置点击而触发此事件
-    // e.target表示被点击的目标
-    if($(e.target).attr("id") == 'btn_my_mesg'){
-       //要隐藏或显示的元素
-       $(".myMsgs").css("display","block");
-    }else{
-       $(".myMsgs").css("display","none");
-    }
+    // even.target 表示被点击的目标
+    console.log($(even.target).attr("id"))
 })
 ```
 

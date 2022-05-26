@@ -2,34 +2,31 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考文献：github.com-bootstrap-select @silviomoreto  &amp;amp; blogs @懒得安分
- 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 关于组件取值保持原生的 JQuery 方法，比如 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
-4.赋值 组件赋值就需要稍微变换一下了，如果你直接 $(&#39;#sel&#39;).val(&#39;1&#39;); 这样赋值将会无效，正确的赋值方法为：
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，赋值的值为 option 的 value 属性！！
-在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 如果是多选的赋值，也是一样
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).'><title>Web开发—下拉表单插件 bootstrap-select</title>
+ 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
+4.赋值 $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，所操作的值为 option 的 value 属性
+在一些级联选择的使用场景中，若需要在赋值的时候触发组件的 change 事件，可以：
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 多选的赋值
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).on(&amp;#39;click&amp;#39;, function () { // 回到初始状态  $(&amp;#39;#party_a_project_name&amp;#39;).'><title>Web开发—下拉表单插件 bootstrap-select</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6-bootstrap-select/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web开发—下拉表单插件 bootstrap-select'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Web开发—下拉表单插件 bootstrap-select'>
 <meta property='og:description' content='参考文献：github.com-bootstrap-select @silviomoreto  &amp;amp; blogs @懒得安分
- 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 关于组件取值保持原生的 JQuery 方法，比如 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
-4.赋值 组件赋值就需要稍微变换一下了，如果你直接 $(&#39;#sel&#39;).val(&#39;1&#39;); 这样赋值将会无效，正确的赋值方法为：
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，赋值的值为 option 的 value 属性！！
-在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 如果是多选的赋值，也是一样
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).'>
+ 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
+4.赋值 $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，所操作的值为 option 的 value 属性
+在一些级联选择的使用场景中，若需要在赋值的时候触发组件的 change 事件，可以：
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 多选的赋值
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).on(&amp;#39;click&amp;#39;, function () { // 回到初始状态  $(&amp;#39;#party_a_project_name&amp;#39;).'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%8B%E6%8B%89%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6-bootstrap-select/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2021-06-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-06T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Web开发—下拉表单插件 bootstrap-select">
 <meta name="twitter:description" content="参考文献：github.com-bootstrap-select @silviomoreto  &amp;amp; blogs @懒得安分
- 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 关于组件取值保持原生的 JQuery 方法，比如 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
-4.赋值 组件赋值就需要稍微变换一下了，如果你直接 $(&#39;#sel&#39;).val(&#39;1&#39;); 这样赋值将会无效，正确的赋值方法为：
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，赋值的值为 option 的 value 属性！！
-在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 如果是多选的赋值，也是一样
-$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).">
+ 1.引用 &amp;lt;link href=&amp;#34;Content/bootstrap/css/bootstrap.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;Content/bootstrap-select/css/bootstrap-select.min.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;script src=&amp;#34;Content/jquery-1.9.1.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap/js/bootstrap.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;Content/bootstrap-select/js/bootstrap-select.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; 2.使用 &amp;lt;select class=&amp;#34;selectpicker&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;1&amp;#34;&amp;gt;广东省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;2&amp;#34;&amp;gt;广西省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;3&amp;#34;&amp;gt;福建省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;4&amp;#34;&amp;gt;湖南省&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;5&amp;#34;&amp;gt;山东省&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; 3.取值 var value = $(&#39;#sel&#39;).val(); ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
+4.赋值 $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;); 注意，所操作的值为 option 的 value 属性
+在一些级联选择的使用场景中，若需要在赋值的时候触发组件的 change 事件，可以：
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, &amp;#39;1&amp;#39;).trigger(&amp;#34;change&amp;#34;); 多选的赋值
+$(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;]).trigger(&amp;#34;change&amp;#34;); 5.恢复原状 $(&amp;#39;#initializePartyAProject&amp;#39;).on(&amp;#39;click&amp;#39;, function () { // 回到初始状态  $(&amp;#39;#party_a_project_name&amp;#39;).">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -245,20 +242,19 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
     &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5&#34;</span>&gt;山东省&lt;/<span style="color:#f92672">option</span>&gt;                            
 &lt;/<span style="color:#f92672">select</span>&gt;
 </code></pre></div><h2 id="3取值">3.取值</h2>
-<p>关于组件取值保持原生的 JQuery 方法，比如 <code>var value = $('#sel').val();</code> ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 <code>['1','2','3']</code></p>
+<p><code>var value = $('#sel').val();</code> ，需要注意的是，如果是多选，这里得到的 value 变量是一个数组变量，形如 <code>['1','2','3']</code></p>
 <h2 id="4赋值">4.赋值</h2>
-<p>组件赋值就需要稍微变换一下了，如果你直接 <code>$('#sel').val('1');</code> 这样赋值将会无效，正确的赋值方法为：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.selectpicker&#39;</span>).<span style="color:#a6e22e">selectpicker</span>(<span style="color:#e6db74">&#39;val&#39;</span>, <span style="color:#e6db74">&#39;1&#39;</span>);
-</code></pre></div><p>注意，赋值的值为 option 的 value 属性！！</p>
-<p>在一些级联选择的使用场景中，经常需要在赋值的时候顺便触发一下组件的 change 事件，可以这么做。</p>
+</code></pre></div><p>注意，所操作的值为 option 的 value 属性</p>
+<p>在一些级联选择的使用场景中，若需要在赋值的时候触发组件的 change 事件，可以：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.selectpicker&#39;</span>).<span style="color:#a6e22e">selectpicker</span>(<span style="color:#e6db74">&#39;val&#39;</span>, <span style="color:#e6db74">&#39;1&#39;</span>).<span style="color:#a6e22e">trigger</span>(<span style="color:#e6db74">&#34;change&#34;</span>);
-</code></pre></div><p>如果是多选的赋值，也是一样</p>
+</code></pre></div><p>多选的赋值</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.selectpicker&#39;</span>).<span style="color:#a6e22e">selectpicker</span>(<span style="color:#e6db74">&#39;val&#39;</span>, [<span style="color:#e6db74">&#39;1&#39;</span>,<span style="color:#e6db74">&#39;2&#39;</span>,<span style="color:#e6db74">&#39;3&#39;</span>]).<span style="color:#a6e22e">trigger</span>(<span style="color:#e6db74">&#34;change&#34;</span>);
 </code></pre></div><h2 id="5恢复原状">5.恢复原状</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#initializePartyAProject&#39;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
-      <span style="color:#75715e">//回到初始状态
+      <span style="color:#75715e">// 回到初始状态
 </span><span style="color:#75715e"></span>      <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#party_a_project_name&#39;</span>).<span style="color:#a6e22e">selectpicker</span>(<span style="color:#e6db74">&#39;val&#39;</span>,[<span style="color:#e6db74">&#39;noneSelectedText&#39;</span>]) 
-      <span style="color:#75715e">//对party_a_project_name这个下拉框进行重置刷新
+      <span style="color:#75715e">// 对 party_a_project_name 这个下拉框进行重置刷新
 </span><span style="color:#75715e"></span>      <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#party_a_project_name&#34;</span>).<span style="color:#a6e22e">selectpicker</span>(<span style="color:#e6db74">&#39;refresh&#39;</span>);
 });
 </code></pre></div>
@@ -329,12 +325,12 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
                 
                     
 <article class="">
-    <a href="/posts/web/web%E5%BC%80%E5%8F%91%E4%B8%80%E8%88%AC%E7%9F%A5%E8%AF%86/">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B92/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Web开发—一般知识</h2>
+            <h2 class="article-title">Web开发—杂项2</h2>
         </div>
     </a>
 </article>
@@ -353,12 +349,12 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
                 
                     
 <article class="">
-    <a href="/posts/web/web%E5%BC%80%E5%8F%91js-%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/">
+    <a href="/posts/web/web%E5%BC%80%E5%8F%91%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Web开发—JS 实现页面跳转</h2>
+            <h2 class="article-title">Web开发—页面跳转</h2>
         </div>
     </a>
 </article>
@@ -390,92 +386,12 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

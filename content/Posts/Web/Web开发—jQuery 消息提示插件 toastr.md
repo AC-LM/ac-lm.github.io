@@ -7,7 +7,7 @@ tags: ["Web", "Javascript"]
 
 > 参考文献： [ github-toastr @CodeSeven ](https://github.com/CodeSeven/toastr)
 
-toastr是一个基于jQuery简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
+toastr 是一个基于 jQuery 简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
 
 ## 1.引入toastr的js、css文件
 
@@ -19,22 +19,22 @@ toastr是一个基于jQuery简单、漂亮的消息提示插件，使用简单�
 ## 2.使用
 
 ```javascript
-//常规消息提示，默认背景为浅蓝色  
+// 常规消息提示，默认背景为浅蓝色  
 toastr.info("你有新消息了!");  
 
-//成功消息提示，默认背景为浅绿色 
+// 成功消息提示，默认背景为浅绿色 
 toastr.success("你有新消息了!");  
 
-//警告消息提示，默认背景为橘黄色 
+// 警告消息提示，默认背景为橘黄色 
 toastr.warning("你有新消息了!");  
 
-//错误消息提示，默认背景为浅红色 
+// 错误消息提示，默认背景为浅红色 
 toastr.error("你有新消息了!");  
 
-//带标题的消息框
+// 带标题的消息框
 toastr.success("你有新消息了!","消息提示");  
 
-//另一种调用方法
+// 另一种调用方法
 toastr["info"]("你有新消息了!","消息提示");
 ```
 
@@ -42,20 +42,20 @@ toastr["info"]("你有新消息了!","消息提示");
 
 ```javascript
 toastr.options = {  
-        closeButton: false,  
-        debug: false,  
-        progressBar: true,  
-        positionClass: "toast-bottom-center",  
-        onclick: null,  
-        showDuration: "300",  
-        hideDuration: "1000",  
-        timeOut: "2000",  
-        extendedTimeOut: "1000",  
-        showEasing: "swing",  
-        hideEasing: "linear",  
-        showMethod: "fadeIn",  
-        hideMethod: "fadeOut"  
-    };  
+    closeButton: false,  
+    debug: false,  
+    progressBar: true,  
+    positionClass: "toast-bottom-center",  
+    onclick: null,  
+    showDuration: "300",  
+    hideDuration: "1000",  
+    timeOut: "2000",  
+    extendedTimeOut: "1000",  
+    showEasing: "swing",  
+    hideEasing: "linear",  
+    showMethod: "fadeIn",  
+    hideMethod: "fadeOut"  
+};  
 ```
 
 ##  4.参数说明

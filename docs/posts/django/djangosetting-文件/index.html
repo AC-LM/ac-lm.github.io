@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/django/djangosetting-%E6%96%87%E4%BB%B6/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Django—setting 文件'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Django—setting 文件'>
 <meta property='og:description' content='1.setting.py 配置文件  BASE_DIR：即为项目所在目录，__file__可以获得当前文件的路径。 SECRET_KEY：一个特殊的 Django 安装的密钥，每当使用Django-admin startproject时会自动生成一个。 DUBUG：默认值为 FALSE，当选择 TRUE 时，当我们的项目出错时可以使我们看到出错信息，但是为了防止被用户看到或者他人攻击，在项目上线后应改为 FALSE。 ALLOWED_HOSTS：默认值是一个空列表，列表中的值为哪些域名可以访问我们的 Django 项目。 INSTALLED_APPS：安装的 APP 列表，Django 为我们默认添加了一些自带的项目，每个新创建的 APP 都要加入这个列表才可以被使用。 MIDDLEWARE：这是将要使用的中间件列表。 ROOT_URLCONF：表示根 URLconf 的完整 Python 导入路径。 TEMPLATES：模板文件配置。 WSGI_APPLICATION：配置 Django 项目的 WSGI 服务路径。 DATABASES：Django 的数据库设置，Django 默认的是 sqlite3 数据库。ENGINE 是选择对应我们选择的数据库的引擎，NAME 是数据库名称，HOST 是连接数据库所要用到的主机，还有 PORT 选择端口等许多选项。 AUTH_PASSWORD_VALIDATORS：用于检查用户密码强度的验证器列表，在为空的情况下就接受任意强度的用户密码。 LANGUAGE_CODE：Django 项目的语言代码，默认值为 en-us，值 zh-hans 汉语。 TIME_ZONE：时区，默认值是 UTC。当 USE_TZ 为 TRUE 时，无论 TZ 设置为何值 Django 都会使用系统默认的时区，例如要使用上海的时区则需将 USE_TZ=FALSE，TIME_ZONE=&amp;lsquo;Asia/Shanghai&amp;rsquo;。 USE_I18N：国际化，Django 允许开发者指定要翻译的字符串，也可以让访问者进行语言选择。 USE_L10N：是否选择启用数据的本地化。 USE_TZ：如果开启了 Time Zone 功能，则所有的存储和内部处理，甚至包括直接 print 显示全都是UTC的。只有通过模板进行表单输入/渲染输出的时候，才会执行 UTC 本地时间的转换。 STATIC_URL：静态目录的所有文件，存放 css，js 等文件。 STATICFILES_DIRS：static 文件的路径。 MEDIA_URL：与 STATIC_URL 类似，存放用户上传的文件。  2.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/django/djangosetting-%E6%96%87%E4%BB%B6/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
@@ -479,92 +479,12 @@ STATIC_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

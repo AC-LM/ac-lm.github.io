@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91php&#43;mariadb-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Web开发—PHP&#43;MariaDB 数据库操作'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Web开发—PHP&#43;MariaDB 数据库操作'>
 <meta property='og:description' content='1.连接数据库 &amp;lt;?php if (extension_loaded(&amp;#39;mysqli&amp;#39;)){ echo &amp;#39;yes&amp;#39;; }else{ echo &amp;#39;no&amp;#39;; } # 判断 mysqli 组件是否已经被加载  $db = new mysqli(&amp;#39;localhost&amp;#39;, &amp;#39;root&amp;#39;, &amp;#39;admin&amp;#39;, &amp;#39;test&amp;#39;); # 数据库地址，用户名，密码，表单  if (mysqli_connect_errno()){ echo &amp;#39;&amp;lt;p&amp;gt;&amp;#39; . &amp;#39;Connect DB error&amp;#39;; exit; } # 判断数据库是否连接 ?&amp;gt;2.一个用户注册和系统登录 a、创建数据库、表和用户。 DROP DATABASE IF EXISTS &amp;#39;test&amp;#39;; CREATE DATABASE &amp;#39;test&amp;#39; USE &amp;#39;test&amp;#39;; DROP TABLE IF EXISTS &amp;#39;tbl_user&amp;#39;; CREATE TABLE &amp;#39;tbl_user&amp;#39; ( &amp;#39;username&amp;#39; varchar(32) NOT NULL default &amp;#39;&amp;#39;, &amp;#39;password&amp;#39; varchar(32) NOT NULL default &amp;#39;&amp;#39;, PRIMARY KEY (&amp;#39;username&amp;#39;) ) ENGINE=InnoDB DEFAULT CHARSET=gb2312; c、注册的代码： # register_do.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91php&#43;mariadb-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
@@ -228,103 +228,87 @@
 <span style="color:#66d9ef">USE</span> <span style="color:#e6db74">&#39;test&#39;</span>;
 <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#e6db74">&#39;tbl_user&#39;</span>;
 <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#e6db74">&#39;tbl_user&#39;</span> (
- <span style="color:#e6db74">&#39;username&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span>,
- <span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span>,
- <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#e6db74">&#39;username&#39;</span>)
+    <span style="color:#e6db74">&#39;username&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span>,
+    <span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span>,
+    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#e6db74">&#39;username&#39;</span>)
 ) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>gb2312;
 </code></pre></div><h3 id="c注册的代码">c、注册的代码：</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e"># register_do.php
 </span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-  $username <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;username&#39;</span>];
-  $password <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;password&#39;</span>];
-  $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
-    <span style="color:#66d9ef">exit</span>;
-  }
-  $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from tbl_user where username = &#39;&#34;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> $query;
-  $result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
-  <span style="color:#66d9ef">if</span> ($result)
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;The user &#39;</span><span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span><span style="color:#e6db74">&#39; exist&#39;</span>;
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;register.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Back to register&lt;/a&gt;&#39;</span>;
-  }
-  <span style="color:#66d9ef">else</span>
-  {
-    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;insert into tbl_user values (&#39;&#34;</span><span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&#39;, &#39;&#34;</span><span style="color:#f92672">.</span> $password <span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&#39;)&#34;</span>;
+    $username <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;username&#39;</span>];
+    $password <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;password&#39;</span>];
+    $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
+        <span style="color:#66d9ef">exit</span>;
+    }
+    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from tbl_user where username = &#39;&#34;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
     <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> $query;
     $result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
-    <span style="color:#66d9ef">if</span> ($result)
-    {
-      <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;register.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Register successful&lt;/a&gt;&#39;</span>;
+    <span style="color:#66d9ef">if</span> ($result){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;The user &#39;</span><span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span><span style="color:#e6db74">&#39; exist&#39;</span>;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;register.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Back to register&lt;/a&gt;&#39;</span>;
+    }<span style="color:#66d9ef">else</span>{
+        $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;insert into tbl_user values (&#39;&#34;</span><span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&#39;, &#39;&#34;</span><span style="color:#f92672">.</span> $password <span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&#39;)&#34;</span>;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> $query;
+        $result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
+        <span style="color:#66d9ef">if</span> ($result){
+            <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;register.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Register successful&lt;/a&gt;&#39;</span>;
+        }
     }
-  }
 <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="d登录的代码">d、登录的代码：</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e"># login_do.php
 </span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-  $username <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;username&#39;</span>];
-  $password <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;password&#39;</span>];
-  $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
-    <span style="color:#66d9ef">exit</span>;
-  }
-  $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from tbl_user where username = &#39;&#34;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39; and password = &#39;&#34;</span> <span style="color:#f92672">.</span> $password <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> $query;
-  $result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
-  <span style="color:#66d9ef">if</span> ($result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">num_rows</span>)
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;login.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Login successful&lt;/a&gt;&#39;</span>;
-  }
-  <span style="color:#66d9ef">else</span>
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;login.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Login failed&lt;/a&gt;&#39;</span>;
-  }
+    $username <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;username&#39;</span>];
+    $password <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;password&#39;</span>];
+    $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
+        <span style="color:#66d9ef">exit</span>;
+    }
+    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from tbl_user where username = &#39;&#34;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39; and password = &#39;&#34;</span> <span style="color:#f92672">.</span> $password <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> $query;
+    $result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
+    <span style="color:#66d9ef">if</span> ($result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">num_rows</span>){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;login.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Login successful&lt;/a&gt;&#39;</span>;
+    }<span style="color:#66d9ef">else</span>{
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;login.html&#34; rel=&#34;external nofollow&#34; rel=&#34;external nofollow&#34; &gt;Login failed&lt;/a&gt;&#39;</span>;
+    }
 <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="e用户列表的代码">e、用户列表的代码：</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e"># userlist.php
 </span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-  $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
-    <span style="color:#66d9ef">exit</span>;
-  }
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;All user as follows:&#39;</span>;
-  $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from tbl_user order by username&#34;</span>;
-  <span style="color:#66d9ef">if</span> ($result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query))
-  {
-    <span style="color:#66d9ef">while</span> ($row <span style="color:#f92672">=</span> $result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetch_assoc</span>())
-    {
-      <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Username : &#39;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#39;username&#39;</span>] <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;  &lt;a href=&#34;userdelete.php?username=&#39;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#39;username&#39;</span>] <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&#34; rel=&#34;external nofollow&#34; &gt;delete&lt;/a&gt;&#39;</span>;
+    $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
+        <span style="color:#66d9ef">exit</span>;
     }
-  }
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;All user as follows:&#39;</span>;
+    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from tbl_user order by username&#34;</span>;
+    <span style="color:#66d9ef">if</span> ($result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query)){
+        <span style="color:#66d9ef">while</span> ($row <span style="color:#f92672">=</span> $result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetch_assoc</span>()){
+            <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Username : &#39;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#39;username&#39;</span>] <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;  &lt;a href=&#34;userdelete.php?username=&#39;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#39;username&#39;</span>] <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&#34; rel=&#34;external nofollow&#34; &gt;delete&lt;/a&gt;&#39;</span>;
+        }
+    }
 <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="e删除用户的代码">e、删除用户的代码：</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e"># userdelete.php
 </span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-  $username <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;username&#39;</span>];
-  $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
-    <span style="color:#66d9ef">exit</span>;
-  }
-  $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;delete from tbl_user where username = &#39;&#34;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
-  <span style="color:#66d9ef">echo</span> $query;
-  <span style="color:#66d9ef">if</span> ($result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query))
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Delete user &#39;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; successful&#39;</span>;
-  }
-  <span style="color:#66d9ef">else</span>
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Delete user &#39;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; failed&#39;</span>;
-  }
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;userlist.php&#34; rel=&#34;external nofollow&#34; &gt;Back to user list&lt;/a&gt;&#39;</span>;
+    $username <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;username&#39;</span>];
+    $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
+        <span style="color:#66d9ef">exit</span>;
+    }
+    $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;delete from tbl_user where username = &#39;&#34;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
+    <span style="color:#66d9ef">echo</span> $query;
+    <span style="color:#66d9ef">if</span> ($result <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query)){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Delete user &#39;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; successful&#39;</span>;
+    }<span style="color:#66d9ef">else</span>{
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Delete user &#39;</span> <span style="color:#f92672">.</span> $username <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39; failed&#39;</span>;
+    }
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;userlist.php&#34; rel=&#34;external nofollow&#34; &gt;Back to user list&lt;/a&gt;&#39;</span>;
 <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h2 id="3图书管理系统">3.图书管理系统</h2>
 <h3 id="1图书添加如下页面bookaddhtml">1、图书添加如下页面（bookadd.html）</h3>
@@ -346,55 +330,52 @@
 <span style="color:#66d9ef">USE</span> <span style="color:#e6db74">&#39;test&#39;</span>;
 <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#e6db74">&#39;tbl_book&#39;</span>;
 <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#e6db74">&#39;tbl_book&#39;</span> (
- <span style="color:#e6db74">&#39;isbn&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
- <span style="color:#e6db74">&#39;title&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
- <span style="color:#e6db74">&#39;author&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
- <span style="color:#e6db74">&#39;price&#39;</span> <span style="color:#66d9ef">float</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
- <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#e6db74">&#39;isbn&#39;</span>)
+    <span style="color:#e6db74">&#39;isbn&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#e6db74">&#39;title&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#e6db74">&#39;author&#39;</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#e6db74">&#39;price&#39;</span> <span style="color:#66d9ef">float</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#e6db74">&#39;isbn&#39;</span>)
 ) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>;
 </code></pre></div><h3 id="3添加的逻辑处理代码bookadd_dophp">3、添加的逻辑处理代码（bookadd_do.php）</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">$db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>(<span style="color:#e6db74">&#34;set names utf-8&#34;</span>)
 <span style="color:#75715e"># 注意：向数据库写入数据时，采用 utf-8 编解码，以防止中文的乱码。
 </span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-  $isbn <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;isbn&#39;</span>];
-  $title <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;title&#39;</span>];
-  $author <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;author&#39;</span>];
-  $price <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;price&#39;</span>];
-  $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
-    <span style="color:#66d9ef">exit</span>;
-  }
-  $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>(<span style="color:#e6db74">&#34;set names utf-8&#34;</span>);
-  $stmt <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">stmt_init</span>();
-  $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;insert into tbl_book values (?,?,?,?)&#34;</span>);
-  $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bind_param</span>(<span style="color:#e6db74">&#34;sssd&#34;</span>, $isbn, $title, $author, $price);
-  $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Affect rows is &#39;</span> <span style="color:#f92672">.</span> $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">affected_rows</span>;
-  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;booklist.php&#34; rel=&#34;external nofollow&#34; &gt;Go to book list page&lt;/a&gt;&#39;</span>;
+    $isbn <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;isbn&#39;</span>];
+    $title <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;title&#39;</span>];
+    $author <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;author&#39;</span>];
+    $price <span style="color:#f92672">=</span> $_POST[<span style="color:#e6db74">&#39;price&#39;</span>];
+    $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
+        <span style="color:#66d9ef">exit</span>;
+    }
+    $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>(<span style="color:#e6db74">&#34;set names utf-8&#34;</span>);
+    $stmt <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">stmt_init</span>();
+    $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;insert into tbl_book values (?,?,?,?)&#34;</span>);
+    $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bind_param</span>(<span style="color:#e6db74">&#34;sssd&#34;</span>, $isbn, $title, $author, $price);
+    $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Affect rows is &#39;</span> <span style="color:#f92672">.</span> $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">affected_rows</span>;
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;a href=&#34;booklist.php&#34; rel=&#34;external nofollow&#34; &gt;Go to book list page&lt;/a&gt;&#39;</span>;
 <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="4显示图书信息的逻辑代码">4、显示图书信息的逻辑代码</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-  $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
-    <span style="color:#66d9ef">exit</span>;
-  }
-  $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>(<span style="color:#e6db74">&#34;set names utf-8&#34;</span>);
-  $stmt <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">stmt_init</span>();
-  $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;select * from tbl_book&#34;</span>);
-  $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bind_result</span>($isbn, $title, $author, $price);
-  $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
-  <span style="color:#66d9ef">while</span>($stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetch</span>())
-  {
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;ISBN : &#39;</span> <span style="color:#f92672">.</span> $isbn <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Title : &#39;</span> <span style="color:#f92672">.</span> $title <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Author : &#39;</span> <span style="color:#f92672">.</span> $author <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Price : &#39;</span> <span style="color:#f92672">.</span> $price <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
-    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;-----------------------------&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
-  }
+    $db <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysqli_connect_errno</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;Connect DB error&#39;</span>;
+        <span style="color:#66d9ef">exit</span>;
+    }
+    $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>(<span style="color:#e6db74">&#34;set names utf-8&#34;</span>);
+    $stmt <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">stmt_init</span>();
+    $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;select * from tbl_book&#34;</span>);
+    $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bind_result</span>($isbn, $title, $author, $price);
+    $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
+    <span style="color:#66d9ef">while</span>($stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetch</span>()){
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;ISBN : &#39;</span> <span style="color:#f92672">.</span> $isbn <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Title : &#39;</span> <span style="color:#f92672">.</span> $title <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Author : &#39;</span> <span style="color:#f92672">.</span> $author <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Price : &#39;</span> <span style="color:#f92672">.</span> $price <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;-----------------------------&#39;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;&lt;p&gt;&#39;</span>;
+    }
 <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h3 id="5结果">5、结果</h3>
 <p><figure 
@@ -450,30 +431,6 @@
         <h2 class="section-title">Related contents</h2>
         <div class="related-contents">
             <div class="flex article-list--tile">
-                
-                    
-<article class="">
-    <a href="/posts/web/web%E5%BC%80%E5%8F%91php-%E5%AE%9E%E4%BE%8B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Web开发—PHP 实例</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/posts/web/web%E5%BC%80%E5%8F%91war-%E6%96%87%E4%BB%B6/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Web开发—War 文件</h2>
-        </div>
-    </a>
-</article>
                 
                     
 <article class="">
@@ -538,92 +495,12 @@
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

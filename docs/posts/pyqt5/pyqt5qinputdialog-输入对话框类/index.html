@@ -7,7 +7,7 @@ class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags f
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/pyqt5/pyqt5qinputdialog-%E8%BE%93%E5%85%A5%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='PyQt5—QInputDialog 输入对话框类'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='PyQt5—QInputDialog 输入对话框类'>
 <meta property='og:description' content='1.简介 QInputDialog 继承自 QDialog 提供了一种简单的对话框来获得用户的单个输入信息
 class QInputDialog(QDialog) | QInputDialog(QWidget parent=None, Qt.WindowFlags flags=0) 常用以下方法获取对话框的信息
  字符串型 QInputDialog.getText Int类型数据 QInputDialog.getInt double类型数据 QInputDialog.getDouble 下拉列表框的条目 QInputDialog.getItem  2.QInputDialog.getText QString getText( QWidget * parent, #标准输入对话框的父窗口 const QString &amp;amp; title, #输入对话框的标题名 const QString &amp;amp; label,#标准输入对话框的标签提示 const QString &amp;amp; text = QString(), #标准字符串输入对话框弹出时QLineEdit控件中默认出现的文字 bool * ok = 0, #用于指示标准输入对话框的哪个按钮被触发，若ok为true，则表示用户单击了OK（确定）按钮，若ok为false，则表示用户单击了Cancel（取消）按钮 Qt::WindowFlags flags = 0, #知名标准输入对话框的窗体标识 Qt::InputMethodHints inputMethodHints = Qt::ImhNone ); [static] 3.QInputDialog.getItem QString getItem( QWidget * parent, #标准输入对话框的父窗口 const QString &amp;amp; title, #标准输入对话框的标题名 const QString &amp;amp; label, #标准输入对话框的标签提示 const QStringList &amp;amp; list, #指定标准输入对话框中QComboBox控件显示的可选条目，为一个QStringList对象 int current = 0, #指定标准输入对话框中QComboBox控件显示的可选条目，为一个QStringList对象 bool editable = true, #指定QComboBox控件中显示的文字是否可编辑； bool * ok = 0, #用于指定标准输入对话框的哪个那妞被触发，若ok为false，则表示用户单击了Cancel（取消）按钮； Qt::WindowFlags f = 0 ) ; [static] #用于指定标准输入对话框的哪个那妞被触发，若ok为false，则表示用户单击了Cancel（取消）按钮； 4.'>
@@ -438,92 +438,12 @@ Qt::WindowFlags f <span style="color:#f92672">=</span> <span style="color:#ae81f
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

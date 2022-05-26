@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/zabbix/zabbixdocker-%E9%83%A8%E7%BD%B2/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='Zabbix—Docker 部署'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Zabbix—Docker 部署'>
 <meta property='og:description' content='1.Zabbix server Docker 部署脚本 docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 zabbix-net docker run --name zabbix-mysql -t \  -e MYSQL_DATABASE=&amp;#34;zabbix&amp;#34; \  -e MYSQL_USER=&amp;#34;zabbix&amp;#34; \  -e MYSQL_PASSWORD=&amp;#34;123456&amp;#34; \  -e MYSQL_ROOT_PASSWORD=&amp;#34;123456&amp;#34; \  --network=zabbix-net \  --restart unless-stopped \  -d mysql:8.0 \  --character-set-server=utf8 --collation-server=utf8_bin \  --default-authentication-plugin=mysql_native_password docker run --name zabbix-gateway -t \  --network=zabbix-net \  --restart unless-stopped \  -d zabbix/zabbix-java-gateway:alpine-5.4-latest docker run --name zabbix-server -t \  -e DB_SERVER_HOST=&amp;#34;zabbix-mysql&amp;#34; \  -e MYSQL_DATABASE=&amp;#34;zabbix&amp;#34; \  -e MYSQL_USER=&amp;#34;zabbix&amp;#34; \  -e MYSQL_PASSWORD=&amp;#34;123456&amp;#34; \  -e MYSQL_ROOT_PASSWORD=&amp;#34;123456&amp;#34; \  -e ZBX_JAVAGATEWAY=&amp;#34;zabbix-gateway&amp;#34; \  --network=zabbix-net \  -p 10000:10051 \  --restart unless-stopped \  -d zabbix/zabbix-server-mysql:alpine-5.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/zabbix/zabbixdocker-%E9%83%A8%E7%BD%B2/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
@@ -342,92 +342,12 @@ docker inspect -f<span style="color:#f92672">=</span><span style="color:#e6db74"
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

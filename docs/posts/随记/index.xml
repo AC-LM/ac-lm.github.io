@@ -6,7 +6,19 @@
     <description>Recent content in 随记 on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 22 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随记—CPU 系统架构</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0cpu-%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0cpu-%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</guid>
+      <description>参考原文：CPU架构详细介绍_@MasterHu88 
+ 1.主流架构 目前市场上的 CPU 主要分为两大阵营，一个是 intel、AMD 为首的复杂指令集 CPU（ 如 X86 ），另一个是以 IBM、ARM 为首的精简指令集 CPU（ 如 PowerPC，ARM ）
+2.X86 X86 是指美国 Intel 公司为其第一块 16 位 CPU i8086 专门开发的一种计算机语言复杂指令集，其主要应用于个人计算机、服务器的 CPU 设计中。在当前市场中，有如下采用 X86 指令集的 CPU 架构：
+a.IA 系  IA-32：Intel（英特尔）32 位架构 IA-64：Intel（英特尔）64 位架构，英特尔安腾架构（Intel Itanium architecture），使用在 Itanium 处理器家族上的 64 位指令集架构，由英特尔公司与惠普公司共同开发。IA 是 Intel Architecture（英特尔架构）的缩写。需要注意的是此架构与 x86 并不相容，操作系统与软件需使用 IA-64 专用版本。  b.X86 系  x86-32：X86 的 32 位架构，在 Intel 中也被称为 IA-32 x86-64：有 AMD64 与 Intel64，其都是 x86 架构的64位拓展，向后兼容于 16 位及 32 位的 x86 架构  3.</description>
+    </item>
+    
     <item>
       <title>随记—SRS-Bench 进行直播压力测试</title>
       <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0srs-bench-%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%92%AD%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</link>
@@ -236,11 +248,11 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     </item>
     
     <item>
-      <title>随记—什么是SQL漏洞</title>
-      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFsql%E6%BC%8F%E6%B4%9E/</link>
+      <title>随记—什么是 SQL 漏洞</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFsql%E6%BC%8F%E6%B4%9E/</guid>
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%BC%8F%E6%B4%9E/</guid>
       <description>要了解sql漏洞，首先要搞清楚sql语句。sql 全称 Structured Query Language(结构化查询语言)，是一种应用于数据库查询的编程语言。
 SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;123456&amp;#34;; 这一句就是从admin表中查找 user为test 并且 pass为123456 的记录，并将满足要求的记录输出。但是如果我输入的密码是 &amp;quot; OR &amp;ldquo;1&amp;rdquo;=&amp;ldquo;1 ，用户名是 test ，那么sql语句则变为
 SELECT * FROM admin WHERE user = &amp;#34;test&amp;#34; AND pass = &amp;#34;&amp;#34; OR &amp;#34;1&amp;#34;=&amp;#34;1&amp;#34;; 很明显，WHERE后的表达式一定返回true，于是mysql会将每条记录都输出，而网站误以为这个用户名是正确的，然后让你以test的身份登录。如果网站还设有管理权限，那么你可以试试密码为 &amp;quot; OR &amp;ldquo;1&amp;rdquo;=&amp;ldquo;1&amp;rdquo; AND writable = TRUE AND &amp;ldquo;&amp;quot;=&amp;quot;，这样，sql查询语句就是
@@ -364,11 +376,11 @@ GET /cors HTTP/1.1 Access-Control-Allow-Origin: http://api.bob.com Access-Contro
     </item>
     
     <item>
-      <title>随记—什么是MD5加密与耦合</title>
-      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFmd5%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</link>
+      <title>随记—什么是 MD5 加密与耦合</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-md5-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</link>
       <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFmd5%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</guid>
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-md5-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%80%A6%E5%90%88/</guid>
       <description>1.MD5加密 百科 MD5信息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。MD5由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于1992年公开，用以取代MD4算法。这套算法的程序在 RFC 1321 标准中被加以规范。1996年后该算法被证实存在弱点，可以被加以破解，对于需要高度安全性的数据，专家一般建议改用其他算法，如SHA-2。2004年，证实MD5算法无法防止碰撞（collision），因此不适用于安全性认证，如SSL公开密钥认证或是数字签名等用途。
 特点  不可逆，几乎不能还原出原始数据 完全相同的一段数据，不论时间地点（加密算法相同的条件）加密出的32位的字符串完全相同 解密方法只有【碰撞】(撞库，穷举足够的数据，几乎难以实现解密) 【散列】(Hash，哈希，把任意长度的输入通过散列算法变换成固定长度的输出，该输出就是散列值）能力强，数据即使只有百分之零点几的的差别也会导致MD5完全不一样，只要两个数据的MD5相同，那我们可以认为这两个数据完全相同  2.耦合 百科 耦合（Coupling）表示两个子系统（或类）之间的关联程度，当一个子系统（或类）发生变化时对另一个子系统（或类）的影响很小，则称它们是松散耦合的；反之，如果变化的影响很大时，则称它们是紧密耦合的。耦合的强弱取决于模块间接间的复杂性、引用模块的位置和数据的传送方式等。设计时应尽量使模块间的耦合度小，模块间的耦合度直接影响系统的可理解性、可测试性、可靠性和可维护性。
 分类 耦合也可分为七级，从低至高为：非直接耦合（Nondirect coupling）、数据耦合（Data coupling）、标记耦合（Stamp coupling）、控制耦合（Control coupling）、外部耦合（External coupling）、公共耦合（Common coupling）、内容耦合（Content coupling）。耦合度应越低越好 。
@@ -420,11 +432,11 @@ a.吞吐量指标的作用  用于协助设计性能测试场景，以及衡量�
     </item>
     
     <item>
-      <title>随记—什么是Web请求</title>
-      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFweb%E8%AF%B7%E6%B1%82/</link>
+      <title>随记—什么是 Web 请求</title>
+      <link>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-web-%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AFweb%E8%AF%B7%E6%B1%82/</guid>
+      <guid>https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-web-%E8%AF%B7%E6%B1%82/</guid>
       <description>1.POST和GET的区别  发送时都包含请求头请求参数，POST多了请求body GET多用来查询，请求参数放在URL中，不会对服务器上的内容产生作用。POST用来提交，数据放入body中 GET是直接添加到URL后面的，直接就可以在URL中看到内容，而POST是放在报文内部的，用户无法直接看到 GET提交的数据长度是有限制的，因为URL长度有限制，具体的长度限制视浏览器而定。而POST没有  2.响应状态码 访问一个网页时，浏览器会向web服务器发出请求。此网页所在的服务器会返回一个包含HTTP状态码的信息头用以响应浏览器的请求。常见的状态码分类
  1XX- 信息型，服务器收到请求，需要请求者继续操作。 2XX- 成功型，请求成功收到，理解并处理。 3XX - 重定向，需要进一步的操作以完成请求。 4XX - 客户端错误，请求包含语法错误或无法完成请求。 5XX - 服务器错误，服务器在处理请求的过程中发生了错误。  3.常见状态码  200 - 客户端请求成功 301 - 资源（网页等）被永久转移到其它URL 302 - 临时跳转 400 - 客户端请求有语法错误，不能被服务器所理解 401 - 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 404 - 请求资源不存在，可能是输入了错误的URL 500 - 服务器内部发生了不可预期的错误 503 - 服务器当前不能处理客户端的请求，一段时间后可能恢复正常  4.什么是Token Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。推荐用设备号/设备mac地址作为Token或者使用session值作为Token
 5.Cookie与Session 首先我们需要知道HTTP协议的一个重要特点——“无状态”，数据交换完成，服务端和客户端就断开连接了，所以请求之间没有相关联系，每一个请求都是一个独立的新请求，为了实现状态保留的，保证前后正常通信，需要在客户端或服务器端存储与会话相关的数据,所以设计了这两个机制——Cookie与Session

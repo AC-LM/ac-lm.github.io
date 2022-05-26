@@ -7,7 +7,7 @@ payload1 = &amp;#39;{ABC}&amp;#39; # String data = payload1.encode(&amp;#39;utf-
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/bug/bugrequest-%E6%A8%A1%E5%9D%97-url-%E7%BC%96%E7%A0%81%E5%BC%82%E5%B8%B8/'>
 
-<link rel="stylesheet" href="/scss/style.min.3e931a8cde4424572927d210b427021f6d16f455d841774a2844b22bf5e6a143.css"><meta property='og:title' content='BUG—Request 模块 Url 编码异常'>
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='BUG—Request 模块 Url 编码异常'>
 <meta property='og:description' content='BUG 描述 Python 中用户使用 Requests 库发送 Http 请求时，请求的所有参数都会被进行 Url 编码。此时容易出现由于 Url 编码后参数异常的情况，特别是中文字符，最终导致 Http 请求失败。
 Resolution 用户可以将参数提前进行编码传递，以避免 Requests 库对参数的编码
 payload1 = &amp;#39;{ABC}&amp;#39; # String data = payload1.encode(&amp;#39;utf-8&amp;#39;) # b&amp;#39;{ABC}&amp;#39; 转换后的 UTF-8 编码 response = requests.request(&amp;#34;POST&amp;#34;, url, data=data) 复现 def import_school(): api = &#39;http://192.168.1.240/base/school&#39; school_name = [&#39;第一中学&#39;, &#39;第二中学&#39;, &#39;实验中学&#39;] jurisdiction = [&#39;荔湾区&#39;, &#39;越秀区&#39;, &#39;海珠区&#39;, &#39;天河区&#39;, &#39;白云区&#39;, &#39;黄埔区&#39;, &#39;番禺区&#39;, &#39;花都区&#39;, &#39;南沙区&#39;, &#39;从化区&#39;, &#39;增城区&#39;] county_number = [440103, 440104, 440105, 440106, 440111, 440112, 440113, 440114, 440115, 440117, 440118] print(len(jurisdiction)) print(len(county_number)) did = &amp;quot;440104002&amp;quot; area_id = 3 data = {&amp;quot;name&amp;quot;: &amp;quot;越秀第二中学&amp;quot;, &amp;quot;is_famous&amp;quot;: 2, &amp;quot;school_number&amp;quot;: 440104, &amp;quot;principal&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;telephone&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;address&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;email&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;logo_url&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;icon_url&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;official_website&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;org_web_path&amp;quot;: did, &amp;quot;area_id&amp;quot;: area_id, &amp;quot;user_name&amp;quot;: did, &amp;quot;account&amp;quot;: did, &amp;quot;password&amp;quot;: &amp;quot;7c4a8d09ca3762af61e59520943dc26494f8941b&amp;quot;} response = requests.'>
@@ -383,92 +383,12 @@ if __name__ == &quot;__main__&quot;:
 
 
     
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
 
             </main>
     
 
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
