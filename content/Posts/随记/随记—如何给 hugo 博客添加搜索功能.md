@@ -7,7 +7,7 @@ tags: ["随记"]
 
 > 参考原文：[给Hugo站点添加搜索功能 - Go语言中文网](https://studygolang.com/articles/27141?fr=sidebar)
 
-## 实现思路
+## 1.利用自带的 index.xml 文件实现
 
 - 利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public > index.xml。文件包含博客所有文章的标题，链接和概要。
 - JavaScript 实现如下
@@ -41,3 +41,8 @@ tags: ["随记"]
     }
 ```
 
+## 2.利用 Bing 搜索引擎实现
+
+- Bing 搜索可以收录 GitHub Page ，因此可以在 Bing 中进行搜索
+- 使用`site:(https://ac-lm.github.io/posts)` 可以将搜索范围固定在对应的 GitHub Page 中
+- JavaScript 实现略

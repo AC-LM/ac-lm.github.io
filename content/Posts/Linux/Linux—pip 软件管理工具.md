@@ -33,7 +33,7 @@ pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ #环境�
 豆瓣：https://pypi.douban.com/simple/
 ```
 
-*PS：如果系统报错`ERROR: unknown command “config”`，这是因为 pip 版本过低，使用命令 `pip install -U pip`即可*
+*PS：如果系统报错`ERROR: unknown command "config"`，这是因为 pip 版本过低，使用命令 `pip install -U pip`即可*
 
 ## 3.pip的使用
 

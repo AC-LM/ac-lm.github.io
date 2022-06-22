@@ -19,7 +19,7 @@ class mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 ```python
 # python 中的 super(Net, self).__init__() 其执行时
-# 首先找到 Net 的父类（比如是类 NNet），然后把类 Net 的对象 self 转换为类 NNet 的对象，然后“被转换”的类 NNet 对象调用自己的 init函数
+# 首先找到 Net 的父类（比如是类 NNet），然后把类 Net 的对象 self 转换为类 NNet 的对象，然后被转换的类 NNet 对象调用自己的 init 函数
 ```
 
 这是对继承自父类的属性进行初始化，使用父类的初始化方法来初始化继承的属性。

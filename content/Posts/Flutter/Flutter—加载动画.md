@@ -11,10 +11,7 @@ tags: ["Flutter"]
 
 在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，`_childLayout()`方法
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_loading/Toast.dart';
-
+```java
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -49,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return Center(
         child: RaisedButton(
           onPressed: () { _loading = !_loading; }
-          child: Text('显示加载动画'),
+          child: Text("显示加载动画"),
         ),
       );
     }
@@ -62,9 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 在原本布局上面叠加一层半透明背景，显示一个进度条。层叠布局至少有两个控件，自定义一个控件叫`ProgressDialog`，这个控件接收两个必传参数：子布局`child`，是否显示加载进度`loading`
 
-```dart
-import 'package:flutter/material.dart';
-
+```java
 class ProgressDialog extends StatelessWidget {
   final bool loading;
   final Widget child;
@@ -95,7 +90,7 @@ class ProgressDialog extends StatelessWidget {
 
 使用控件`Opacity`
 
-```dart
+```java
 class ProgressDialog extends StatelessWidget {
   final bool loading;
   final Widget child;

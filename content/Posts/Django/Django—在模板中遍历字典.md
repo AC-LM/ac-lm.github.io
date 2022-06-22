@@ -1,5 +1,5 @@
 ---
-title: Django—HTML 模板
+title: Django—在模板中遍历字典
 date: 2021-06-02
 author: LM
 tags: ["Django"]

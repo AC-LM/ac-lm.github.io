@@ -7,7 +7,7 @@ tags: ["随记"]
 
 ## 1.安装
 
-**github**：https://github.com/ossrs/srs-bench
+**github**：[https://github.com/ossrs/srs-bench](https://github.com/ossrs/srs-bench)
 
 ```
 git clone https://github.com/ossrs/srs-bench.git

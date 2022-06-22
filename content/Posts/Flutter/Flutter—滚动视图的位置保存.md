@@ -9,7 +9,7 @@ tags: ["Flutter"]
 
 ## 使用 AutomaticKeepAliveClientMixin 保存状态
 
-```dart
+```java
 class GetListView extends StatefulWidget{
   @override
   State<StatefulWidget> createState() =>_GetListViewState();
@@ -41,9 +41,9 @@ class _GetListViewState extends State<GetListView> with AutomaticKeepAliveClient
 
 ## 使用 PageStorageKey 保存偏移
 
-```dart
+```java
 ListView.builder(
-                key: PageStorageKey<String>('controllerA'),
+                key: PageStorageKey<String>("controllerA"),
                 controller: ScrollController(keepScrollOffset: true),
                 itemCount: 2000,
                 itemBuilder: (context, i) {

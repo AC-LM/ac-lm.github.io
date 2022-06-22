@@ -18,18 +18,18 @@ tags: ["Python"]
 
 system方法会创建子进程运行外部程序，方法只返回外部程序的运行结果。这个方法比较适用于外部程序没有输出结果的情况。
 
-```python
+```shell
 >>> import os  
 >>> os.system("echo \"Hello World\"")   # 直接使用os.system调用一个echo命令  
-Hello World         ——————> 打印命令结果  
-0                   ——————> What's this ? 返回值？  
+Hello World      ——————> 打印命令结果  
+0                ——————> What’s this ? 返回值？  
 >>> val = os.system("ls -al | grep \"log\" ")   # 使用val接收返回值  
--rw-r--r--  1 root       root       6030829 Dec 31 15:14 log    ——————> 此时只打印了命令结果  
+-rw-r--r--  1 root  root  6030829 Dec 31 15:14 log    ——————> 此时只打印了命令结果  
 >>> print val             
-0                   ——————> 注意，此时命令正常运行时，返回值是0  
+0                ——————> 注意，此时命令正常运行时，返回值是0  
 >>> val = os.system("ls -al | grep \"log1\" ")  
 >>> print val         
-256                 ——————> 使用os.system调用一个没有返回结果的命令，返回值为256～  
+256             ——————> 使用os.system调用一个没有返回结果的命令，返回值为256～  
 >>>   
 ```
 
@@ -37,7 +37,7 @@ Hello World         ——————> 打印命令结果
 
 当需要得到外部程序的输出结果时，本方法非常有用，返回一个类文件对象，调用该对象的read()或readlines()方法可以读取输出内容。比如使用urllib调用Web API时，需要对得到的数据进行处理。os.popen(cmd) 要得到命令的输出内容，只需再调用下read()或readlines()等 如a=os.popen(cmd).read()
 
-```python
+```shell
 >>> os.popen('ls -lt')                  # 调用os.popen（cmd）并不能得到我们想要的结果  
 <open file 'ls -lt ', mode 'r' at 0xb7585ee8>  
 >>> print os.popen('ls -lt').read()     # 调用read()方法可以得到命令的结果  

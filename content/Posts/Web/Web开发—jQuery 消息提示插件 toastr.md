@@ -9,9 +9,9 @@ tags: ["Web", "Javascript"]
 
 toastr 是一个基于 jQuery 简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
 
-## 1.引入toastr的js、css文件
+## 1.引入 toastr 的 js、css 文件
 
-```javascript
+```html
 <script src="<%=path%>/res/toastr/toastr.min.js"></script>
 <link rel="stylesheet" href="<%=path%>/res/toastr/toastr.min.css">
 ```
@@ -61,25 +61,29 @@ toastr.options = {
 ##  4.参数说明
 
 ```javascript
-closeButton：false，是否显示关闭按钮（提示框右上角关闭按钮）； 
-debug：false，是否为调试； 
-progressBar：false，是否显示进度条（设置关闭的超时时间进度条）； 
-positionClass，消息框在页面显示的位置
-toast-top-left  顶端左边
-toast-top-right    顶端右边
-toast-top-center  顶端中间
-toast-top-full-width 顶端，宽度铺满整个屏幕
-toast-botton-right  
-toast-bottom-left
-toast-bottom-center
-toast-bottom-full-width
-onclick，点击消息框自定义事件
-showDuration: “300”，显示动作时间
-hideDuration: “1000”，隐藏动作时间
-timeOut: “2000”，自动关闭超时时间
-extendedTimeOut: “1000”
-showEasing: “swing”,
-hideEasing: “linear”,
-showMethod: “fadeIn” 显示的方式，和jquery相同
-hideMethod: “fadeOut” 隐藏的方式，和jquery相同
+options = {
+    closeButton: false,  // 是否显示关闭按钮
+    debug: false,        // 是否为调试
+    progressBar: false,  // 是否显示进度条
+    positionClass: 'toast-top-left'  // 消息框在页面显示的位置
+    /*
+    toast-top-left
+    toast-top-right 
+    toast-top-center 
+    toast-top-full-width
+    toast-botton-right  
+    toast-bottom-left
+    toast-bottom-center
+    toast-bottom-full-width
+    */
+    onclick: null,           // 点击消息框自定义事件
+    showDuration: '300',     // 显示动作时间
+    hideDuration: '1000',    // 隐藏动作时间
+    timeOut: '2000',         // 自动关闭超时时间
+    extendedTimeOut: '1000',
+    showEasing: 'swing',
+    hideEasing: 'linear',
+    showMethod: 'fadeIn',
+    hideMethod: 'fadeOut',
+}
 ```

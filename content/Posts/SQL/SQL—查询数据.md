@@ -12,10 +12,10 @@ tags: ["Mysql"]
 要查询数据库表的数据，我们使用如下的SQL语句：
 
 ```sql
-SELECT * FROM <表名>;
+SELECT * FROM <'表名'>;
 ```
 
-使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，*表示“所有列”，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
+使用`SELECT * FROM students`时，SELECT是关键字，表示将要执行一个查询，* 表示所有列，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
 
 SELECT语句其实并不要求一定要有FROM子句：
 
@@ -27,33 +27,33 @@ SELECT 100+200;
 
 ## 2.条件查询
 
-SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件“分数在80分或以上的学生”，写成WHERE条件就是：
+SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件分数在80分或以上的学生，写成WHERE条件就是：
 
 ```sql
 SELECT * FROM students WHERE score >= 80;
 SELECT * FROM students WHERE score BETWEEN 60 AND 90
 ```
 
-条件表达式可以用<条件1> AND <条件2>表达满足条件1并且满足条件2。例如，符合条件“分数在80分或以上”，并且还符合条件“男生”，把这两个条件写出来：
+条件表达式可以用`<条件1> AND <条件2>`表达满足条件1并且满足条件2。例如，符合条件分数在80分或以上，并且还符合条件男生，把这两个条件写出来：
 
 ```sql
 SELECT * FROM students WHERE score >= 80 AND gender = 'M';
 ```
 
-第二种条件是<条件1> OR <条件2>，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是“分数在80分或以上”或者“男生”，满足任意之一的条件即选出该记录：
+第二种条件是`<条件1> OR <条件2>`，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是分数在80分或以上或者男生，满足任意之一的条件即选出该记录：
 
 ```sql
 SELECT * FROM students WHERE score >= 80 OR gender = 'M';
 ```
 
-第三种条件是NOT <条件>，表示“不符合该条件”的记录。例如，写一个“不是2班的学生”这个条件:
+第三种条件是`NOT <条件>`，表示不符合该条件的记录。例如，写一个不是2班的学生这个条件:
 
 ```sql
 SELECT * FROM students WHERE NOT class_id = 2;
 SELECT * FROM students WHERE class_id <> 2;
 ```
 
-要组合三个或者更多的条件，就需要用小括号()表示如何进行条件运算。例如，编写一个复杂的条件：分数在80以下或者90以上，并且是男生：
+要组合三个或者更多的条件，就需要用小括号 `()` 表示如何进行条件运算。例如，编写一个复杂的条件：分数在80以下或者90以上，并且是男生：
 
 ```sql
 SELECT * FROM students WHERE (score < 80 OR score > 90) AND gender = 'M';
@@ -75,13 +75,13 @@ SELECT * FROM students WHERE (score < 80 OR score > 90) AND gender = 'M';
 
 ## 3.投影查询
 
-如果我们只希望返回某些列的数据，而不是所有列的数据，我们可以用SELECT 列1, 列2, 列3 FROM ...，让结果集仅包含指定列。这种操作称为投影查询
+如果我们只希望返回某些列的数据，而不是所有列的数据，我们可以用`SELECT 列1, 列2, 列3 FROM ...`，让结果集仅包含指定列。这种操作称为投影查询
 
 ```sql
 SELECT id, score, name FROM students;
 ```
 
-使用SELECT 列1, 列2, 列3 FROM ...时，还可以给每一列起个别名，这样，结果集的列名就可以与原表的列名不同。它的语法是SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM ...
+使用`SELECT 列1, 列2, 列3 FROM ..`.时，还可以给每一列起个别名，这样，结果集的列名就可以与原表的列名不同。它的语法是`SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM ...`
 
 ```sql
 SELECT id, score points, name FROM students;
@@ -97,14 +97,14 @@ SELECT id, score points, name FROM students WHERE gender = 'M';
 
 对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。
 
-COUNT(*)表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是COUNT(*)。通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：
+COUNT(\*) 表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是COUNT(\*) 。通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：
 
 ```sql
 SELECT COUNT(*) num FROM students;
 //num 10
 ```
 
-COUNT(*)和COUNT(id)实际上是一样的效果。另外注意，聚合查询同样可以使用WHERE条件，因此我们可以方便地统计出有多少男生、多少女生、多少80分以上的学生等。此外要特别注意：如果聚合查询的WHERE条件没有匹配到任何行，COUNT()会返回0，而SUM()、AVG()、MAX()和MIN()会返回NULL
+COUNT(*) 和 COUNT (id) 实际上是一样的效果。另外注意，聚合查询同样可以使用 WHERE 条件，因此我们可以方便地统计出有多少男生、多少女生、多少80分以上的学生等。此外要特别注意：如果聚合查询的WHERE条件没有匹配到任何行，COUNT() 会返回 0，而 SUM()、AVG()、MAX() 和 MIN() 会返回 NULL。
 
 ```sql
 SELECT COUNT(*) boys FROM students WHERE gender = 'M';
@@ -132,7 +132,7 @@ SELECT class_id, COUNT(*) num FROM students GROUP BY class_id;
 SELECT查询不但可以从一张表查询数据，还可以从多张表同时查询数据。查询多张表的语法是：
 
 ```sql
-SELECT * FROM <表1> <表2>
+SELECT * FROM <'表1'> <'表2'>
 SELECT * FROM students, classes;
 ```
 

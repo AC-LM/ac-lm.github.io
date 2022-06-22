@@ -14,10 +14,6 @@ tags: ["Web", "服务器"]
 此时需要修改 Nginx 的 server 配置内容，增加字段：`charset utf-8;`
 
 ```nginx
-upstream you.example.com {
-    server 127.0.0.1:8081;
-}
- 
 server {
     listen   80;
     server_name you.example.com;
@@ -26,7 +22,6 @@ server {
     location /examples {
         return 403;
     }
-    
-    ......
+
 }
 ```

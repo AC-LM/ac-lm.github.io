@@ -122,10 +122,10 @@ python_functions = test_* *_test check_*
 ```python
 fixture(scope="function", params=None, autouse=False, ids=None, name=None)
 # scope：被标记方法的作用域 
-"function" (default)：作用于每个测试方法，每个test都运行一次
-"class"：作用于整个类，每个class的所有test只运行一次
-"module"：作用于整个模块，每个module的所有test只运行一次
-"session：作用于整个session(慎用)，每个session只运行一次
+"function": 默认值, 作用于每个测试方法, 每个test都运行一次
+"class": 作用于整个类, 每个class的所有test只运行一次
+"module": 作用于整个模块, 每个module的所有test只运行一次
+"session": 作用于整个session(慎用), 每个session只运行一次
 # params：(list类型)提供参数数据，供调用标记方法的函数使用
 # autouse：是否自动运行,默认为False不运行,设置为True自动运行
 # 使用----------------------------------------------------------------------
@@ -159,8 +159,8 @@ class Test_ABC:
 # 方法：
      skipif(condition, reason=None)
 # 参数：
-     condition：跳过的条件，必传参数
-     reason：标注原因，必传参数
+     condition: 跳过的条件, 必传参数
+     reason: 标注原因, 必传参数
 # 使用方法：
      @pytest.mark.skipif(condition, reason="xxx") 
 # 使用----------------------------------------------------------------------
@@ -181,9 +181,9 @@ class Test_ABC:
 # 方法：
      xfail(condition=None, reason=None, raises=None, run=True, strict=False)
 # 常用参数：
-     condition：预期失败的条件，必传参数
-     reason：失败的原因，必传参数
- 使用方法：
+     condition: 预期失败的条件, 必传参数
+     reason: 失败的原因, 必传参数
+# 使用方法:
      @pytest.mark.xfail(condition, reason="xx")
 # 使用----------------------------------------------------------------------
 class Test_ABC:
@@ -203,10 +203,10 @@ class Test_ABC:
 # 方法：
      parametrize(argnames, argvalues, indirect=False, ids=None, scope=None)
 # 常用参数：
-     argnames：参数名
-     argvalues：参数对应值，类型必须为list
-                 当参数为一个时格式：[value]
-                 当参数个数大于一个时，格式为:[(param_value1,param_value2.....),(param_value1,param_value2.....)]
+     argnames: 参数名
+     argvalues: 参数对应值, 类型必须为list
+           当参数为一个时格式: [value]
+           当参数个数大于一个时, 格式为: [(param_value1,param_value2.....),(param_value1,param_value2.....)]
 # 使用方法:
      @pytest.mark.parametrize(argnames,argvalues)
 # 使用----------------------------------------------------------------------
@@ -219,7 +219,7 @@ def return_test_data():
 
 ## 15.使用自定义标记mark只执行部分用例
 
-```python
+```shell
 @pytest.mark.webtest
 # 标记测试函数为 webtest 执行时可进行选择
 pytest -v -m webtest
@@ -228,7 +228,7 @@ pytest -v -m 'not webtest'
 
 ## 16.执行对应严重级别用例
 
-```python
+```shell
 pytest --allure-severities=critical
 ```
 

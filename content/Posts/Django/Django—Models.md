@@ -76,7 +76,7 @@ INSTALLED_APPS = [
 
 字段 ForeignKey
 
-例如，如果一个“汽车”模型有一个“制造商”，也就是说，“制造商”生产多辆汽车，但每辆车都只有一个“制造商”，可以使用以下定义：
+例如，如果一个汽车模型有一个制造商，也就是说，制造商生产多辆汽车，但每辆车都只有一个制造商，可以使用以下定义：
 
 ```python
 from django.db import models
@@ -94,7 +94,7 @@ class Car(models.Model):
 
 字段 ManyToManyField
 
-例如，一个“pizza”有多个“topping”的对象，而一个“topping”也可以在多个”pizza“上，使用以下定义：
+例如，一个 pizza 有多个 topping 的对象，而一个topping也可以在多个 pizza 上，使用以下定义：
 
 ```python
 class Topping(models.Model):
@@ -162,8 +162,10 @@ objects = models.manager
 
 ```python
 models.UserInfo.objects.create(user='yangmv',pwd='123456')
-obj = models.UserInfo(user='yangmv',pwd='123456')；obj.save()
-dic = {'user':'yangmv','pwd':'123456'}；models.UserInfo.objects.create(**dic)
+obj = models.UserInfo(user='yangmv',pwd='123456')
+obj.save()
+dic = {'user':'yangmv','pwd':'123456'}
+models.UserInfo.objects.create(**dic)
 ```
 
 ### 删
@@ -188,5 +190,7 @@ models.Tb1.objects.exclude(id__in=[11, 22, 33]) # not in
 
 ```python
 models.UserInfo.objects.filter(user='yangmv').update(pwd='520')
-obj = models.UserInfo.objects.get(user='yangmv')；obj.pwd = '520'；obj.save()
+obj = models.UserInfo.objects.get(user='yangmv')
+obj.pwd = '520'
+obj.save()
 ```

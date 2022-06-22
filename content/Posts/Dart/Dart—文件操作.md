@@ -25,12 +25,16 @@ void main() async{
     print(e);
   }
 }
-————————————————
-Future<File> writeAsString(String contents,
-      {FileMode mode: FileMode.write,
-      Encoding encoding: utf8,
-      bool flush: false})
-FileMode：read，write，append，writeOnly，writeOnlyAppend
+
+Future<File> writeAsString(
+    String contents,
+    {
+        FileMode mode: FileMode.write,
+        Encoding encoding: utf8,
+        bool flush: false
+    }
+)
+// FileMode: read, write, append, writeOnly, writeOnlyAppend
 ```
 
 需要手动关闭文件
@@ -65,7 +69,7 @@ void main() async{
     print(e);
   }
 }
-————————————————
+/*————————————————*/
 readAsBytes
 readAsBytesSync
 readAsString

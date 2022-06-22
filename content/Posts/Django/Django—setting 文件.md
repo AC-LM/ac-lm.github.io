@@ -38,8 +38,8 @@ SECRET_KEY = '^#kms19!iawj2b&v3egmynpfwj8^v@2f(_1+jlw+#^vy^pg7oy'
 DEBUG = True
 # 代表是调试环境
 ALLOWED_HOSTS = []
-# 允许的主机路径，不填写或者ALLOWED_HOSTS = [“*”]代表允许任意主机域名，如果要指定，在里面输入，
-# 比如域名只允许为 www.baidu.com 那么 ALLOWED_HOSTS = [“www.baidu.com”]
+# 允许的主机路径，不填写或者ALLOWED_HOSTS = ["*"]代表允许任意主机域名，如果要指定，在里面输入，
+# 比如域名只允许为 www.baidu.com 那么 ALLOWED_HOSTS = ["www.baidu.com"]
 INSTALLED_APPS = [
   'django.contrib.admin',
   'django.contrib.auth',

@@ -11,7 +11,7 @@ APK Analyzer 是 Android Studio 提供的 APK 包分析工具，可以打开并�
 
 APK Analyzer 可以在 Android Studio 顶端菜单栏中的 Build 找到。
 
-## 2.利用 APK Analyzer 为应用“瘦身”
+## 2.利用 APK Analyzer 为应用瘦身
 
 APK Analyzer 在应用大小方面可以给你很多有用并且可操作的信息。比如你可以从 Raw File Size 看到应用占磁盘大小。Download size 是一个估计值，表示考虑到在经过 Play Store 的压缩后，你还需要多少流量来下载应用。
 

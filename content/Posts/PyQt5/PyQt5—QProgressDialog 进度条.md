@@ -16,8 +16,8 @@ tags: ["PyQt5"]
 ## 2.常用方法
 
 ```python
-setMinimum()  # 设置操作中的“steps”数量
-setMaximum()  # 设置操作中的“steps”数量
+setMinimum()  # 设置操作中的 steps 数量
+setMaximum()  # 设置操作中的 steps 数量
 setValue()  # 任意选择步数
 setAutoReset()  # 自动重置
 setAutoClose()  # 自动关闭

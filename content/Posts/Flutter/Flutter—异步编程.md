@@ -165,7 +165,7 @@ static void callbackFunction(SendPort callerSendPort){
 
 #### 向 Isolate 提交消息
 
-```dart
+```java
 // 向新 isolate 发送消息并接收回复的方法
 // 在该例中，我将使用字符串进行通信操作
 // （发送和接收的数据）

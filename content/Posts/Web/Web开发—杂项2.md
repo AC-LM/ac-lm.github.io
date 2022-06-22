@@ -43,9 +43,9 @@ li 标签间的间隔是由于行框的排列会受到中间空白（回车\空�
 ```javascript
 window.location.replace("网址");
 window.location.href = "网址";
-$(location).attr('href', ‘网址’);
-$(window).attr('location',‘网址’);
-$(location).prop('href',‘网址’)
+$(location).attr('href', '网址');
+$(window).attr('location','网址');
+$(location).prop('href','网址')
 ```
 
 ## 6.将 html 字符串转换成 node 节点
@@ -99,7 +99,7 @@ var url;
 url = window.location.href; /* 获取完整URL */
 console.log(url); /* http://127.0.0.1:8020/Test/index.html#test?name=test */
  
-url = window.location.pathname; /* 获取文件路径（文件地址） */
+url = window.location.pathname; /* 获取文件路径(文件地址) */
 console.log(url); /* /Test/index.html */
  
 url = window.location.protocol; /* 获取协议 */
@@ -114,10 +114,10 @@ console.log(url); /* http://127.0.0.1/ */
 url = window.location.port; /* 获取端口号 */
 console.log(url); /* 8020 */
  
-url = window.location.hash; /* 获取锚点（“#”后面的分段） */
+url = window.location.hash; /* 获取锚点("#"后面的分段)*/
 console.log(url); /* #test?name=test */
  
-url = window.location.search; /* 获取属性（“?”后面的分段） */
+url = window.location.search; /* 获取属性("?"后面的分段)*/
 console.log(url);
  
 /* 获取请求参数的值 */

@@ -14,12 +14,18 @@ Text()  # -> str返回普通文本
 
 ## 2.使用掩码限制格式
 
+### 掩码使用
+
 ```python
 ipLineEdit.setInputMask('000.000.000.000;_')
 macLineEdit.setInputMask('HH:HH:HH:HH:HH:HH;_')
 dateLineEdit.setInputMask('0000-00-00')
 licenseLineEdit.setInputMask('>AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#')
+```
 
+### 掩码类型
+
+```
 #---掩码类型------------------------------------------------------------
 A    ASCII字母字符是必须输入的(A-Z、a-z)
 a    ASCII字母字符是允许输入的,但不是必需的(A-Z、a-z)

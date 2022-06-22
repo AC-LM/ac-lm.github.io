@@ -56,7 +56,7 @@ backend : WXAgg   # use wxpython with antigrain (agg) rendering
 
 ### b.通过 `MPLBACKEND` 环境变量来设置 backend
 
-```python
+```shell
 # 方式1. 先 export MPLBACKEND 再执行 python 文件
 $ export MPLBACKEN='Agg'
 $ python works.py
@@ -67,7 +67,7 @@ $ MPLBACKEND='Agg' python works.py
 
 ### c.通过 `-d` 选项来设置
 
-```python
+```shell
 $ python script.py -d backend
 ```
 

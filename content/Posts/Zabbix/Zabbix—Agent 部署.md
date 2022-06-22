@@ -31,7 +31,7 @@ tail -f /var/log/zabbix/zabbix_agentd.log
 
 ## 3.部署（环境 Windows）
 
-```cmd
+```shell
 # 安装
 zabbix_agentd.exe -c zabbix_agentd.win.conf -i
 # 启动

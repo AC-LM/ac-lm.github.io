@@ -195,7 +195,7 @@ Options(选项):
     --search            Search column(s), table(s) and/or database name(s)    //搜索列（S），表（S）和/或数据库名称（S）
     --comments          Retrieve DBMS comments
     -D DB               DBMS database to enumerate                               // 要进行枚举的指定数据库名
-    -T TBL              DBMS database table(s) to enumerate                      // 要进行枚举的指定数据库表（如：-T tablename –columns）
+    -T TBL              DBMS database table(s) to enumerate                      // 要进行枚举的指定数据库表(如：-T tablename –columns)
     -C COL              DBMS database table column(s) to enumerate               //要进行枚举的数据库列
     -X EXCLUDECOL       DBMS database table column(s) to not enumerate
     -U USER             DBMS user to enumerate                                   //用来进行枚举的数据库用户

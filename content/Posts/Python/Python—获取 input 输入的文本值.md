@@ -5,7 +5,7 @@ author: LM
 tags: ["Python"]
 ---
 
-## 1.get_attribute(‘value’)获取输入的文本值
+## 1.get_attribute('value')获取输入的文本值
 
 ```python
 inputContext1 = driver.find_element_by_xpath('//input').get_attribute('value')
@@ -18,7 +18,7 @@ inputContext2 = "return document.getElementsByClassName('ivu-input')[0].value"
 driver.execute_script(inputContext2)
 ```
 
-## 3.get_attribute(‘textContent’)获取元素的文本值
+## 3.get_attribute('textContent')获取元素的文本值
 
 ```python
 logoContext1 = driver.find_element_by_xpath('//div[@class="logo"]/span').get_attribute('textContent')

@@ -204,8 +204,9 @@ server {
          location = /50x.html {
             root   html;
         }
+    
+        # ......
  
-        .......
     }
 ```
 

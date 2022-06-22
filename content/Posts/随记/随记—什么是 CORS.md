@@ -13,7 +13,7 @@ CORS是一个W3C标准，全称是"跨域资源共享"，它允许浏览器向�
 
 浏览器只允许请求当前域的资源，而对其他域的资源表示不信任。那怎么才算跨域呢？
 
-- 请求协议http,https的不同
+- 请求协议http，https的不同
 - 域domain的不同
 - 端口port的不同
 
@@ -152,7 +152,7 @@ Access-Control-Allow-Origin: *
 
 如果服务器否定了"预检"请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHttpRequest对象的onerror回调函数捕获。控制台会打印出如下的报错信息。
 
-```http
+```
 HTTP/1.1 200 OK
 XMLHttpRequest cannot load http://api.alice.com.
 Origin http://api.bob.com is not allowed by Access-Control-Allow-Origin.

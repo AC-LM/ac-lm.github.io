@@ -139,10 +139,10 @@ elem1.click()
 | send_keys(Keys.TAB)        | 制表键(Tab)         
 | send_keys(Keys.ESCAPE)     | 回退键（Esc）       
 | send_keys(Keys.ENTER)      | 回车键（Enter）     
-| send_keys(Keys.CONTROL,‘a’) | 全选（Ctrl+A） 
-| send_keys(Keys.CONTROL,‘c’) | 复制（Ctrl+C） 
-| send_keys(Keys.CONTROL,‘x’) | 剪切（Ctrl+X） 
-| send_keys(Keys.CONTROL,‘v’) | 粘贴（Ctrl+V） 
+| send_keys(Keys.CONTROL,'a') | 全选（Ctrl+A） 
+| send_keys(Keys.CONTROL,'c') | 复制（Ctrl+C） 
+| send_keys(Keys.CONTROL,'x') | 剪切（Ctrl+X） 
+| send_keys(Keys.CONTROL,'y') | 粘贴（Ctrl+V） 
 | send_keys(Keys.F1…Fn)       | 键盘 F1…Fn     
 ```
 
@@ -241,9 +241,9 @@ element = WebDriverWait(driver, 5, 0.5).until(EC.presence_of_element_located((By
 from selenium.webdriver.support.select import Select
 | 方法                              | 说明                      
 | --------------------------------- | ------------------------- 
-| select_by_value(“选择值”)         | select标签的value属性的值 
-| select_by_index(“索引值”)         | 下拉框的索引              
-| select_by_visible_testx(“文本值”) | 下拉框的文本值           
+| select_by_value("选择值")         | select标签的value属性的值 
+| select_by_index("索引值")         | 下拉框的索引              
+| select_by_visible_testx("文本值") | 下拉框的文本值           
 ```
 
 ### e.文件上传

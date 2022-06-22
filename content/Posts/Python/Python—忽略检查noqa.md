@@ -1,5 +1,5 @@
 ---
-title: Python—#noqa
+title: Python—忽略检查noqa
 date: 2021-11-18
 author: LM
 tags: ["Python"]

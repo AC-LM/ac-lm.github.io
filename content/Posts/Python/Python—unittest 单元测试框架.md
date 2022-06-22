@@ -18,10 +18,10 @@ class testcase(unittest.TestCase):
     def setUp(self):
         # 每个测试方法运行前运行，一条用例执行一次，若N次用例就执行N次。
         pass
-    def tearDown(self)：
+    def tearDown(self):
         # 每个测试方法运行结束后运行,一条用例执行一次，若N次用例就执行N次。
     @classmethod
-    def tearDownClass(self)：
+    def tearDownClass(self):
         # 所有的测试方法运行结束后运行，整个测试过程中只执行一次。
         pass
     def test_01(self):

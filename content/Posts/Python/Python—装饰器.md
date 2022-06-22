@@ -106,7 +106,7 @@ foo()
 
 ```python
 class Foo(object):
-    def __init__(self， func):
+    def __init__(self, func):
         self._func = func
     
     def __call__(self):

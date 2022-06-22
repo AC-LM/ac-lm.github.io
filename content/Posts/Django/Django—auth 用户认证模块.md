@@ -76,7 +76,7 @@ def index(request):
 
 ```python
 from django.contrib.auth.models import User
-user = User.objects.create_user（username='用户名',password='密码',email='邮箱',...）
+user = User.objects.create_user(username='用户名',password='密码',email='邮箱',...)
 
 def reg(request):
     if request.method == 'POST':

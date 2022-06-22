@@ -10,7 +10,7 @@ tags: ["Python"]
 
 在 Unicode 编码中，汉字的范围是（ 0x4E00，9FBF），因此我们可以从中取值生成中文字符。需要注意的是，Unicode 编码中收录了 2 万多个汉字，其中包含很多生僻的繁体字。
 
-```kotlin
+```python
 import random
 
 def Unicode():

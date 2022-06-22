@@ -9,9 +9,7 @@ tags: ["Flutter"]
 
 ## 1.例程代码
 
-```dart
-import 'package:flutter/material.dart';
-
+```java
 void main() {
   runApp(MyApp());
 }
@@ -20,11 +18,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Flutter Demo",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: "Flutter Demo Home Page"),
     );
   }
 }
@@ -56,10 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              "You have pushed the button this many times:",
             ),
             Text(
-              '$_counter',
+              "$_counter",
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -67,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: "Increment",
         child: Icon(Icons.add),
       ), 
     );
@@ -80,19 +78,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ### 1）应用结构
 
-```dart
+```java
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       //应用名称  
-      title: 'Flutter Demo', 
+      title: "Flutter Demo", 
       theme: new ThemeData(
         //蓝色主题  
         primarySwatch: Colors.blue,
       ),
       //应用首页路由  
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new MyHomePage(title: "Flutter Demo Home Page"),
     );
   }
 }
@@ -106,7 +104,7 @@ class MyApp extends StatelessWidget {
 
 ### 2）首页
 
-```dart
+```java
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -124,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ### 3）界面构建
 
-```dart
+```java
  Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
@@ -135,10 +133,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
-              'You have pushed the button this many times:',
+              "You have pushed the button this many times:",
             ),
             new Text(
-              '$_counter',
+              "$_counter",
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -146,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: "Increment",
         child: new Icon(Icons.add),
       ),
     );
@@ -154,5 +152,5 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 - Scaffold 是 Material 库中提供的页面脚手架，它提供了默认的导航栏、标题和包含主屏幕 widget 树的 body 属性。
-- body 的组件树中包含了一个 Center 组件，Center 可以将其子组件树对齐到屏幕中心。此例中， Center 子组件是一个 Column 组件，Column 的作用是将其所有子组件沿屏幕垂直方向依次排列； 此例中 Column 子组件是两个 Text，第一个Text 显示固定文本 “You have pushed the button this many times:”，第二个 Text 显示 _counter 状态的数值。
-- floatingActionButton 是出现在页面右下角的带“+”的悬浮按钮，它的 onPressed 属性接受一个回调函数，代表它被点击后的处理器，本例中将 _incrementCounter 方法作为其处理函数。
+- body 的组件树中包含了一个 Center 组件，Center 可以将其子组件树对齐到屏幕中心。此例中， Center 子组件是一个 Column 组件，Column 的作用是将其所有子组件沿屏幕垂直方向依次排列； 此例中 Column 子组件是两个 Text，第一个Text 显示固定文本 You have pushed the button this many times，第二个 Text 显示 _counter 状态的数值。
+- floatingActionButton 是出现在页面右下角的带 + 的悬浮按钮，它的 onPressed 属性接受一个回调函数，代表它被点击后的处理器，本例中将 _incrementCounter 方法作为其处理函数。
