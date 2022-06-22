@@ -6,7 +6,7 @@
 安装：pip install matplotlib
 import matplotlib.pyplot as plt # 约定俗成的写法 plt # 首先定义两个函数（正弦&amp;amp;余弦） import numpy as np X=np.linspace(-np.pi,np.pi,256,endpoint=True) # -π，to&#43;π 的 256 个值 C,S=np.cos(X),np.sin(X) plt.plot(X,C) plt.plot(X,S) plt.show()  
 2.绘图命令的基本架构及其属性设置 上面的例子我们可以看出，几乎所有的属性和绘图的框架我们都选用默认设置。其作图时先要定义一个画布，此处的画布就是 Figure，然后再把其他素材“画”到该 Figure 上。
-a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如‘b--’表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.'><title>Python—matplotlib 绘图</title>
+a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如&amp;#39;b--&amp;#39;表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.'><title>Python—matplotlib 绘图</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/python/pythonmatplotlib-%E7%BB%98%E5%9B%BE/'>
 
@@ -16,7 +16,7 @@ a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴
 安装：pip install matplotlib
 import matplotlib.pyplot as plt # 约定俗成的写法 plt # 首先定义两个函数（正弦&amp;amp;余弦） import numpy as np X=np.linspace(-np.pi,np.pi,256,endpoint=True) # -π，to&#43;π 的 256 个值 C,S=np.cos(X),np.sin(X) plt.plot(X,C) plt.plot(X,S) plt.show()  
 2.绘图命令的基本架构及其属性设置 上面的例子我们可以看出，几乎所有的属性和绘图的框架我们都选用默认设置。其作图时先要定义一个画布，此处的画布就是 Figure，然后再把其他素材“画”到该 Figure 上。
-a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如‘b--’表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.'>
+a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如&amp;#39;b--&amp;#39;表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/python/pythonmatplotlib-%E7%BB%98%E5%9B%BE/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2021-11-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-11-23T00:00:00&#43;00:00'/>
@@ -26,7 +26,7 @@ a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴
 安装：pip install matplotlib
 import matplotlib.pyplot as plt # 约定俗成的写法 plt # 首先定义两个函数（正弦&amp;amp;余弦） import numpy as np X=np.linspace(-np.pi,np.pi,256,endpoint=True) # -π，to&#43;π 的 256 个值 C,S=np.cos(X),np.sin(X) plt.plot(X,C) plt.plot(X,S) plt.show()  
 2.绘图命令的基本架构及其属性设置 上面的例子我们可以看出，几乎所有的属性和绘图的框架我们都选用默认设置。其作图时先要定义一个画布，此处的画布就是 Figure，然后再把其他素材“画”到该 Figure 上。
-a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如‘b--’表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.">
+a.在 Figure 上创建子 plot，并设置属性 x=np.linspace(0,10,1000) # X轴数据 y1=np.sin(x) # Y轴数据 y2=np.cos(x**2) # Y轴数据 x^2即x的平方 plt.figure(figsize=(8,4)) plt.plot(x,y1,label=&amp;#34;$sin(x)$&amp;#34;,color=&amp;#34;red&amp;#34;,linewidth=2) # 将$包围的内容渲染为数学公式 plt.plot(x,y2,&amp;#34;b--&amp;#34;,label=&amp;#34;$cos(x^2)$&amp;#34;) # 指定曲线的颜色和线性，如&amp;#39;b--&amp;#39;表示蓝色虚线（b：蓝色，-：虚线） plt.xlabel(&amp;#34;Time(s)&amp;#34;) plt.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -260,7 +260,7 @@ plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672"
 
 plt<span style="color:#f92672">.</span>plot(x,y1,label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;$sin(x)$&#34;</span>,color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;red&#34;</span>,linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># 将$包围的内容渲染为数学公式</span>
 plt<span style="color:#f92672">.</span>plot(x,y2,<span style="color:#e6db74">&#34;b--&#34;</span>,label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;$cos(x^2)$&#34;</span>)
-<span style="color:#75715e"># 指定曲线的颜色和线性，如‘b--’表示蓝色虚线（b：蓝色，-：虚线）</span>
+<span style="color:#75715e"># 指定曲线的颜色和线性，如&#39;b--&#39;表示蓝色虚线（b：蓝色，-：虚线）</span>
 
 plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;Time(s)&#34;</span>)
 plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;Volt&#34;</span>)
@@ -271,8 +271,8 @@ plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;Py
 </span><span style="color:#e6db74">label：给曲线指定一个标签名称，此标签将在图标中显示。如果标签字符串的前后都有字符&#39;$&#39;，则Matplotlib会使用其内嵌的LaTex引擎将其显示为数学公式
 </span><span style="color:#e6db74">color：指定曲线的颜色。颜色可以用如下方法表示
 </span><span style="color:#e6db74">       英文单词
-</span><span style="color:#e6db74">       以‘#’字符开头的3个16进制数，如‘#ff0000’表示红色。
-</span><span style="color:#e6db74">       以0~1的RGB表示，如（1.0,0.0,0.0）也表示红色。
+</span><span style="color:#e6db74">       以 # 字符开头的3个16进制数，如 #ff0000 表示红色。
+</span><span style="color:#e6db74">       以0~1的RGB表示，如(1.0,0.0,0.0)也表示红色。
 </span><span style="color:#e6db74">linewidth：指定权限的宽度，可以不是整数，也可以使用缩写形式的参数名lw。
 </span><span style="color:#e6db74">&#39;&#39;&#39;</span>
 
@@ -458,12 +458,12 @@ plt<span style="color:#f92672">.</span>show()
                 
                     
 <article class="">
-    <a href="/posts/python/python#noqa/">
+    <a href="/posts/python/python%E5%BF%BD%E7%95%A5%E6%A3%80%E6%9F%A5noqa/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Python—#noqa</h2>
+            <h2 class="article-title">Python—忽略检查noqa</h2>
         </div>
     </a>
 </article>

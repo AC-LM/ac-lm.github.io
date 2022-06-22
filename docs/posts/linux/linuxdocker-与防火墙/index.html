@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.'><title>Linux—Docker 与防火墙</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.docker操作 uname -r # 查看内核信息 yum list installed | grep docker # 查找docker是否安装 yum -y install docker # 下载安装docker systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker docker version # docker版本 docker ps -a # 查看docker安装的服务 docker start services # docker运行服务 docker rm -f docker_name # 强制删除 docker exec service_ip/docker_id ping www.baidu.com # 联网查看 docker exec -it docker_id /bin/bash # 进入容器  docker rename new_name old_name # 重命名 docker images docker rmi image docker export docker_id &amp;gt; $(pwd)/backups.'><title>Linux—Docker 与防火墙</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/linux/linuxdocker-%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Linux—Docker 与防火墙'>
-<meta property='og:description' content='1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.'>
+<meta property='og:description' content='1.docker操作 uname -r # 查看内核信息 yum list installed | grep docker # 查找docker是否安装 yum -y install docker # 下载安装docker systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker docker version # docker版本 docker ps -a # 查看docker安装的服务 docker start services # docker运行服务 docker rm -f docker_name # 强制删除 docker exec service_ip/docker_id ping www.baidu.com # 联网查看 docker exec -it docker_id /bin/bash # 进入容器  docker rename new_name old_name # 重命名 docker images docker rmi image docker export docker_id &amp;gt; $(pwd)/backups.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/linux/linuxdocker-%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='Docker' /><meta property='article:published_time' content='2020-10-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-10-16T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Linux—Docker 与防火墙">
-<meta name="twitter:description" content="1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.">
+<meta name="twitter:description" content="1.docker操作 uname -r # 查看内核信息 yum list installed | grep docker # 查找docker是否安装 yum -y install docker # 下载安装docker systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker docker version # docker版本 docker ps -a # 查看docker安装的服务 docker start services # docker运行服务 docker rm -f docker_name # 强制删除 docker exec service_ip/docker_id ping www.baidu.com # 联网查看 docker exec -it docker_id /bin/bash # 进入容器  docker rename new_name old_name # 重命名 docker images docker rmi image docker export docker_id &amp;gt; $(pwd)/backups.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -207,59 +207,57 @@
     
     
     <h2 id="1docker操作">1.docker操作</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsb_release -a <span style="color:#75715e">#查看版本信息，需安装</span>
-uname -r <span style="color:#75715e">#查看内核信息</span>
-yum list installed | grep docker <span style="color:#75715e">#查找docker是否安装</span>
-yum -y install docker  <span style="color:#75715e">#下载安装docker</span>
-systemctl start docker <span style="color:#75715e">#运行docker</span>
-systemctl status docker <span style="color:#75715e">#查看docker状态</span>
-systemctl enable docker  <span style="color:#75715e">#自启动docker</span>
-docker version <span style="color:#75715e">#docker版本</span>
-docker ps -a <span style="color:#75715e">#查看docker安装的服务</span>
-docker start services <span style="color:#75715e">#docker运行服务</span>
-docker rm -f name <span style="color:#75715e">#强制删除</span>
-docker exec service_ip ping <span style="color:#75715e">#联网查看</span>
-docker exec -it id /bin/bash <span style="color:#75715e">#进入容器 </span>
-docker rename gallant_swartz python3.9 <span style="color:#75715e">#重命名</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uname -r <span style="color:#75715e"># 查看内核信息</span>
+yum list installed | grep docker <span style="color:#75715e"># 查找docker是否安装</span>
+yum -y install docker  <span style="color:#75715e"># 下载安装docker</span>
+systemctl start docker <span style="color:#75715e"># 运行docker</span>
+systemctl status docker <span style="color:#75715e"># 查看docker状态</span>
+systemctl enable docker  <span style="color:#75715e"># 自启动docker</span>
+docker version <span style="color:#75715e"># docker版本</span>
+docker ps -a <span style="color:#75715e"># 查看docker安装的服务</span>
+docker start services <span style="color:#75715e"># docker运行服务</span>
+docker rm -f docker_name <span style="color:#75715e"># 强制删除</span>
+docker exec service_ip/docker_id ping www.baidu.com <span style="color:#75715e"># 联网查看</span>
+docker exec -it docker_id /bin/bash <span style="color:#75715e"># 进入容器 </span>
+docker rename new_name old_name <span style="color:#75715e"># 重命名</span>
 docker images
 docker rmi image
-docker export a9ad7f0cb1ad &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/itestserver.tar
-exit <span style="color:#75715e">#退出</span>
+docker export docker_id &gt; <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/backups.tar
+exit <span style="color:#75715e"># 退出</span>
 docker stop <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 停用全部运行中的容器</span>
 docker rm <span style="color:#66d9ef">$(</span>docker ps -aq<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 删除全部容器 </span>
-docker cp testtomcat：/usr/local/tomcat/webapps/test/js/test.js /opt
-docker run --name python3.9 --privileged<span style="color:#f92672">=</span>true -v /root/pythonScript:/pythonScript -it python /bin/bash
+docker cp container：container_file backups_file <span style="color:#75715e"># 复制文件</span>
+docker run --name python3.9 --privileged<span style="color:#f92672">=</span>true -v /root/pythonScript:/pythonScript -it python /bin/bash <span style="color:#75715e"># 运行文件</span>
 docker exec id commend
+docker inspect --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}&#39;</span> <span style="color:#66d9ef">$(</span>docker ps -aq<span style="color:#66d9ef">)</span> <span style="color:#75715e"># 查看容器 IP</span>
 </code></pre></div><h2 id="2防火墙操作">2.防火墙操作</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/firewalld/zones <span style="color:#75715e">#查看配置文件</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>docs --add-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e">#开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>docs --remove-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e">#关闭8080/tcp端口</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>docs --query-port<span style="color:#f92672">=</span>80/tcp <span style="color:#75715e">#查看端口状态</span>
-firewall-cmd --reload <span style="color:#75715e">#重启防火墙</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /etc/firewalld/zones <span style="color:#75715e"># 查看防火墙文件</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e"># 开放8080/tcp端口 （--permanent永久生效，没有此参数重启后失效）</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>public --remove-port<span style="color:#f92672">=</span>8080/tcp --permanent <span style="color:#75715e"># 关闭8080/tcp端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>public --query-port<span style="color:#f92672">=</span>80/tcp <span style="color:#75715e"># 查看端口状态</span>
+firewall-cmd --reload <span style="color:#75715e"># 重启防火墙</span>
 firewall-cmd --completely-reload
-firewall-cmd --list-all <span style="color:#75715e">#列出防火墙所以规则</span>
-firewall-cmd --list-ports <span style="color:#75715e">#列出防火墙开放的端口</span>
-firewall-cmd --version <span style="color:#75715e">#查看版本： </span>
+firewall-cmd --list-all <span style="color:#75715e"># 列出防火墙所以规则</span>
+firewall-cmd --list-ports <span style="color:#75715e"># 列出防火墙开放的端口</span>
+firewall-cmd --version <span style="color:#75715e"># 查看版本： </span>
 firewall-cmd --help
 firewall-cmd --state
+firewall-cmd --panic-on <span style="color:#75715e"># 拒绝所有包：</span>
+firewall-cmd --panic-off <span style="color:#75715e"># 取消拒绝状态： </span>
+firewall-cmd --query-panic <span style="color:#75715e"># 查看是否拒绝： </span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --add-port<span style="color:#f92672">=</span>40000-45000/tcp --permanent <span style="color:#75715e"># 批量开放端口，打开从40000到45000之间的所有端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>docs --remove-port<span style="color:#f92672">=</span>40000-45000/tcp --permanent <span style="color:#75715e"># 批量关闭端口，关闭从40000到45000之间的所有端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>work --add-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e"># 添加服务</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>work --query-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e"># 查看服务</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>work --remove-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e"># 删除服务</span>
 <span style="color:#75715e">#-------------------------------------------------------</span>
-systemctl stop firewalld <span style="color:#75715e">#关闭防火墙</span>
-systemctl start firewalld <span style="color:#75715e">#开启防火墙</span>
-systemctl status firewalld <span style="color:#75715e">#防火墙状态</span>
-systemctl stop firewalld <span style="color:#75715e">#停止</span>
-systemctl disable firewalld <span style="color:#75715e">#开机禁用</span>
-systemctl enable firewalld <span style="color:#75715e">#开机启动</span>
-yum install firewalld <span style="color:#75715e">#安装</span>
-<span style="color:#75715e">#--------------------------------------------------------------</span>
-firewall-cmd --panic-on <span style="color:#75715e">#拒绝所有包：</span>
-firewall-cmd --panic-off <span style="color:#75715e">#取消拒绝状态： </span>
-firewall-cmd --query-panic <span style="color:#75715e">#查看是否拒绝： </span>
-firewall-cmd --zone<span style="color:#f92672">=</span>docs --add-port<span style="color:#f92672">=</span>40000-45000/tcp --permanent <span style="color:#75715e">#批量开放端口，打开从40000到45000之间的所有端口</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>docs --list-ports <span style="color:#75715e">#查看系统所有开放的端口</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>docs --remove-port<span style="color:#f92672">=</span>40000-45000/tcp --permanent <span style="color:#75715e">#批量关闭端口，关闭从40000到45000之间的所有端口</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>work --add-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e">#添加服务</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>work --query-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e">#查看服务</span>
-firewall-cmd --zone<span style="color:#f92672">=</span>work --remove-service<span style="color:#f92672">=</span>smtp  <span style="color:#75715e">#删除服务</span>
+systemctl stop firewalld <span style="color:#75715e"># 关闭防火墙</span>
+systemctl start firewalld <span style="color:#75715e"># 开启防火墙</span>
+systemctl status firewalld <span style="color:#75715e"># 防火墙状态</span>
+systemctl stop firewalld <span style="color:#75715e"># 停止</span>
+systemctl disable firewalld <span style="color:#75715e"># 开机禁用</span>
+systemctl enable firewalld <span style="color:#75715e"># 开机启动</span>
+yum install firewalld <span style="color:#75715e"># 安装</span>
 </code></pre></div>
 </section>
 

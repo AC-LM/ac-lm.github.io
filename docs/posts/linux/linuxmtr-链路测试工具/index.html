@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过MTR等工具进行链路测试来判断问题来源。
-1.MTR  MTR（My traceroute）是几乎所有Linux发行版本预装的网络测试工具，此工具也有对应的Windows版本，名称为WinMTR。 MTR工具将ping和traceroute命令的功能并入了同一个工具中，实现更强大的功能。 Linux版本的mtr命令默认发送ICMP数据包进行链路探测。可以通过“-u”参数来指定使用UDP数据包用于探测。 相对于traceroute命令只会做一次链路跟踪测试，mtr命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，mtr命令能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。  2.MTR的使用 mtr 192.168.1.243 
-默认配置下，返回结果中各数据列的说明如下。
- 第一列（Host）：节点IP地址和域名。如前面所示，按n键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数“-c”指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  '><title>Linux—MTR 链路测试工具</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过 MTR 等工具进行链路测试来判断问题来源。
+1.MTR  MTR（My traceroute）是几乎所有 Linux 发行版本预装的网络测试工具，此工具也有对应的 Windows 版本，名称为 WinMTR。 MTR 工具将 ping 和 traceroute 命令的功能并入了同一个工具中，实现更强大的功能。 Linux 版本的 MTR 命令默认发送 ICMP 数据包进行链路探测。可以通过 -u 参数来指定使用 UDP 数据包用于探测。 相对于 traceroute 命令只会做一次链路跟踪测试，MTR 命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，MTR 命令能避免节点波动对测试结果的影响。  2.MTR的使用 mtr 192.168.1.243默认配置下，返回结果中各数据列的说明如下。
+ 第一列（Host）：节点 IP 地址和域名。如前面所示，按 n 键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数 -c 指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  '><title>Linux—MTR 链路测试工具</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/linux/linuxmtr-%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Linux—MTR 链路测试工具'>
-<meta property='og:description' content='当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过MTR等工具进行链路测试来判断问题来源。
-1.MTR  MTR（My traceroute）是几乎所有Linux发行版本预装的网络测试工具，此工具也有对应的Windows版本，名称为WinMTR。 MTR工具将ping和traceroute命令的功能并入了同一个工具中，实现更强大的功能。 Linux版本的mtr命令默认发送ICMP数据包进行链路探测。可以通过“-u”参数来指定使用UDP数据包用于探测。 相对于traceroute命令只会做一次链路跟踪测试，mtr命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，mtr命令能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。  2.MTR的使用 mtr 192.168.1.243 
-默认配置下，返回结果中各数据列的说明如下。
- 第一列（Host）：节点IP地址和域名。如前面所示，按n键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数“-c”指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  '>
+<meta property='og:description' content='当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过 MTR 等工具进行链路测试来判断问题来源。
+1.MTR  MTR（My traceroute）是几乎所有 Linux 发行版本预装的网络测试工具，此工具也有对应的 Windows 版本，名称为 WinMTR。 MTR 工具将 ping 和 traceroute 命令的功能并入了同一个工具中，实现更强大的功能。 Linux 版本的 MTR 命令默认发送 ICMP 数据包进行链路探测。可以通过 -u 参数来指定使用 UDP 数据包用于探测。 相对于 traceroute 命令只会做一次链路跟踪测试，MTR 命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，MTR 命令能避免节点波动对测试结果的影响。  2.MTR的使用 mtr 192.168.1.243默认配置下，返回结果中各数据列的说明如下。
+ 第一列（Host）：节点 IP 地址和域名。如前面所示，按 n 键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数 -c 指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  '>
 <meta property='og:url' content='https://ac-lm.github.io/posts/linux/linuxmtr-%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2020-12-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-12-03T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Linux—MTR 链路测试工具">
-<meta name="twitter:description" content="当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过MTR等工具进行链路测试来判断问题来源。
-1.MTR  MTR（My traceroute）是几乎所有Linux发行版本预装的网络测试工具，此工具也有对应的Windows版本，名称为WinMTR。 MTR工具将ping和traceroute命令的功能并入了同一个工具中，实现更强大的功能。 Linux版本的mtr命令默认发送ICMP数据包进行链路探测。可以通过“-u”参数来指定使用UDP数据包用于探测。 相对于traceroute命令只会做一次链路跟踪测试，mtr命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，mtr命令能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。  2.MTR的使用 mtr 192.168.1.243 
-默认配置下，返回结果中各数据列的说明如下。
- 第一列（Host）：节点IP地址和域名。如前面所示，按n键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数“-c”指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  ">
+<meta name="twitter:description" content="当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过 MTR 等工具进行链路测试来判断问题来源。
+1.MTR  MTR（My traceroute）是几乎所有 Linux 发行版本预装的网络测试工具，此工具也有对应的 Windows 版本，名称为 WinMTR。 MTR 工具将 ping 和 traceroute 命令的功能并入了同一个工具中，实现更强大的功能。 Linux 版本的 MTR 命令默认发送 ICMP 数据包进行链路探测。可以通过 -u 参数来指定使用 UDP 数据包用于探测。 相对于 traceroute 命令只会做一次链路跟踪测试，MTR 命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，MTR 命令能避免节点波动对测试结果的影响。  2.MTR的使用 mtr 192.168.1.243默认配置下，返回结果中各数据列的说明如下。
+ 第一列（Host）：节点 IP 地址和域名。如前面所示，按 n 键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数 -c 指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  ">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -215,33 +212,21 @@
     <section class="article-content">
     
     
-    <p>当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过MTR等工具进行<strong>链路测试</strong>来判断问题来源。</p>
+    <p>当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过 MTR 等工具进行<strong>链路测试</strong>来判断问题来源。</p>
 <h2 id="1mtr">1.MTR</h2>
 <ul>
-<li>MTR（My traceroute）是几乎所有Linux发行版本预装的网络测试工具，此工具也有对应的Windows版本，名称为WinMTR。</li>
-<li>MTR工具将<strong>ping</strong>和<strong>traceroute</strong>命令的功能并入了同一个工具中，实现更强大的功能。</li>
-<li>Linux版本的mtr命令<strong>默认发送ICMP数据包</strong>进行链路探测。可以<strong>通过“-u”参数来指定使用UDP数据包</strong>用于探测。</li>
-<li>相对于traceroute命令只会做一次链路跟踪测试，mtr命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，mtr命令能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。</li>
+<li>MTR（My traceroute）是几乎所有 Linux 发行版本预装的网络测试工具，此工具也有对应的 Windows 版本，名称为 WinMTR。</li>
+<li>MTR 工具将 <strong>ping</strong> 和 <strong>traceroute</strong> 命令的功能并入了同一个工具中，实现更强大的功能。</li>
+<li>Linux 版本的 MTR 命令<strong>默认发送 ICMP 数据包</strong>进行链路探测。可以<strong>通过 -u 参数来指定使用 UDP 数据包</strong>用于探测。</li>
+<li>相对于 traceroute 命令只会做一次链路跟踪测试，MTR 命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，MTR 命令能避免节点波动对测试结果的影响。</li>
 </ul>
 <h2 id="2mtr的使用">2.MTR的使用</h2>
 <pre tabindex="0"><code>mtr 192.168.1.243
-</code></pre><p><figure 
-	>
-	<a href="/drawingbed/img/999.jpg" >
-		<img src="/drawingbed/img/999.jpg"
-			
-			
-			
-			loading="lazy"
-			>
-	</a>
-	
-</figure></p>
-<p>默认配置下，返回结果中各数据列的说明如下。</p>
+</code></pre><p>默认配置下，返回结果中各数据列的说明如下。</p>
 <ul>
-<li>第一列（Host）：节点IP地址和域名。如前面所示，按n键可以切换显示。</li>
+<li>第一列（Host）：节点 IP 地址和域名。如前面所示，按 n 键可以切换显示。</li>
 <li>第二列（Loss%）：节点丢包率。</li>
-<li>第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数“-c”指定。</li>
+<li>第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数 -c 指定。</li>
 <li>第四列（Last）：最近一次的探测延迟值。</li>
 <li>第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。</li>
 <li>第八列（StDev）：标准偏差。越大说明相应节点越不稳定。</li>

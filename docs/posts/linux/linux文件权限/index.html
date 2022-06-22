@@ -232,18 +232,6 @@ drwxr-xr-x  <span style="color:#ae81ff">2</span> root root     <span style="colo
 </ul>
 <h2 id="2数字表示权限">2.数字表示权限</h2>
 <p>读(read)，写(write)，执行r(recute)简写即为(r,w,x),亦可用数字来(4,2,1)表示</p>
-<p><figure 
-	>
-	<a href="/drawingbed/img/852.png" >
-		<img src="/drawingbed/img/852.png"
-			
-			
-			
-			loading="lazy"
-			>
-	</a>
-	
-</figure></p>
 <ul>
 <li>如果某文件权限为7则代表可读(4)、可写(2)、可执行(1)，即(4+2+1=7).</li>
 <li>若权限为6(4+2)则代表可读(4)、可写(2)。</li>
@@ -251,19 +239,7 @@ drwxr-xr-x  <span style="color:#ae81ff">2</span> root root     <span style="colo
 <li>若权限为3(2+1)代表可写(2)和可执行(1)。</li>
 </ul>
 <h2 id="3文件的详细信息">3.文件的详细信息</h2>
-<p><figure 
-	>
-	<a href="/drawingbed/img/853.png" >
-		<img src="/drawingbed/img/853.png"
-			
-			
-			
-			loading="lazy"
-			>
-	</a>
-	
-</figure></p>
-<p>第一个减号“-”代表的是文件类型：-：普通文件，d:目录文件，l:链接文件，b:设备文件，c:字符设备文件，p:管道文件</p>
+<p>第一个减号代表的是文件类型：-：普通文件，d:目录文件，l:链接文件，b:设备文件，c:字符设备文件，p:管道文件</p>
 <p>第二个符号开始表示文件的权限，rw-r-r- 也就是分别表示所有者(属主)有读写权限，所有组(属组)有读权限，其余人也仅有读权限。</p>
 <h2 id="4授权">4.授权</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod -R <span style="color:#ae81ff">755</span>

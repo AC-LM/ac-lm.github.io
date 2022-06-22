@@ -68,7 +68,7 @@ Docker 在本地主机和容器内分别创建一个虚拟接口，并让它们�
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/linux/linuxdocker-%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
-      <description>1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.</description>
+      <description>1.docker操作 uname -r # 查看内核信息 yum list installed | grep docker # 查找docker是否安装 yum -y install docker # 下载安装docker systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker docker version # docker版本 docker ps -a # 查看docker安装的服务 docker start services # docker运行服务 docker rm -f docker_name # 强制删除 docker exec service_ip/docker_id ping www.baidu.com # 联网查看 docker exec -it docker_id /bin/bash # 进入容器  docker rename new_name old_name # 重命名 docker images docker rmi image docker export docker_id &amp;gt; $(pwd)/backups.</description>
     </item>
     
   </channel>

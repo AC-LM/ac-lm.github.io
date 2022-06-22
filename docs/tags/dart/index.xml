@@ -74,8 +74,7 @@ import &amp;#39;dart:async&amp;#39;; printDailyNewsDigest() async { String news 
       
       <guid>https://ac-lm.github.io/posts/dart/dart%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
       <description>1.写文件 无需手动关闭文件，文件写入完成后自动关闭
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } ———————————————— Future&amp;lt;File&amp;gt; writeAsString(String contents, {FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false}) FileMode：read，write，append，writeOnly，writeOnlyAppend 需要手动关闭文件
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.</description>
+import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } Future&amp;lt;File&amp;gt; writeAsString( String contents, { FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false } ) // FileMode: read, write, append, writeOnly, writeOnlyAppend 需要手动关闭文件</description>
     </item>
     
     <item>

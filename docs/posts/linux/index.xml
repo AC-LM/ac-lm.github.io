@@ -6,7 +6,19 @@
     <description>Recent content in Linux on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux—iptables 开放端口</title>
+      <link>https://ac-lm.github.io/posts/linux/linuxiptables-%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/linux/linuxiptables-%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3/</guid>
+      <description>1.简介 iptables 是集成在 Linux 内核中的网络数据包过滤防火墙系统。iptables 对包的过滤遵循着 &amp;quot; 四表五链 &amp;ldquo;。
+四表：filter 表（过滤规则表）、nat 表（地址转换规则表）、mangle 表（修改数据标记位规则表）、raw 表（跟踪数据表规则表）
+ filter 表：控制数据包进出及转发，控制的链路有 INPUT、FORWARD 和 OUTPUT。 nat 表：控制数据包中的地址转换，控制的链路有 PREROUTING、INPUT、OUTPUT 和 POSTROUTING。 mangle 表：修改数据包中的原数据，控制的链路有 PREROUTING、INPUT、OUTPUT、FORWARD 和 POSTROUTING。 raw 表：控制 nat 表中连接追踪机制的启用状况，控制的链路有 PREROUTING、OUTPUT。  五链：INPUT（入站数据过滤）、OUTPUT（出站数据过滤）、FORWARD（转发数据过滤）、PREROUTING（路由前过滤）和 POSTROUTING（路由后过滤），防火墙规则需要写入到这些具体的数据链中。
+2.使用 iptables -nvL # 查看当前规则 iptables -L # 查看当前规则 iptables -A INPUT -p tcp --dport 22 -j ACCEPT # 开启特定端口输入 iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT # 开启特定端口输出 iptables -L -n --line-number # 显示规则及编号 iptables -D INPUT 2 #删除编号2的规则 </description>
+    </item>
+    
     <item>
       <title>Linux—端口检查</title>
       <link>https://ac-lm.github.io/posts/linux/linux%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%9F%A5/</link>
@@ -124,7 +136,8 @@ top [-d number] # -d：top命令显示的页面更新一次的间隔,单位秒�
       <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/linux/linux%E4%B8%80%E8%88%AC%E9%97%AE%E9%A2%98/</guid>
-      <description>1.解释下什么是GPL,GNU,自由软件？ GPL：（通用公共许可证）：一种授权，任何人有权取得、修改、重新发布自由软件的权力。GNU:(革奴计划)：目标是创建一套完全自由、开放的的操作系统。自由软件：是一种可以不受限制地自由使用、复制、研究、修改和分发的软件。主要许可证有GPL和BSD许可证两种。2.linux系统里，buffer和cache如何区分？ buffer和cache都是内存中的一块区域，当CPU需要写数据到磁盘时，由于磁盘速度比较慢，所以CPU先把数据存进buffer，然后CPU去执行其他任务，buffer中的数据会定期写入磁盘；当CPU需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入cache，CPU直接从Cache中拿数据要快的多。3.描述Linux运行级别0-6的各自含义 0：关机模式1：单用户模式&amp;lt;==破解root密码2：无网络支持的多用户模式3：有网络支持的多用户模式（文本模式，工作中最常用的模式）4：保留，未使用5：有网络支持的X-windows支持多用户模式（桌面）6: 重新引导系统，即重启4.描述Linux系统从开机到登陆界面的启动过程 ⑴开机BIOS自检，加载硬盘。⑵读取MBR,MBR引导。⑶grub引导菜单(Boot Loader)。⑷加载内核kernel。⑸启动init进程，依据inittab文件设定运行级别⑹init进程，执行rc.sysinit文件。⑺启动内核模块，执行不同级别的脚本程序。⑻执行/etc/rc.d/rc.local⑼启动mingetty，进入系统登陆界面。5.描述Linux下软链接和硬链接的区别 在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。①默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。②硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，③ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。④删除软链接文件，对源文件和硬链接文件无任何影响。⑤删除文件的硬链接文件，对源文件及软链接文件无任何影响。⑥删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。⑦同时删除源文件及其硬链接文件，整个文件才会被真正的删除。⑧很多硬件设备的快照功能，使用的就是类似硬链接的原理。⑨软链接可以跨文件系统，硬链接不可以跨文件系统。6.shell脚本中“$?”标记的用途是什么? 在写一个shell脚本时，如果你想要检查前一命令是否执行成功，在if条件中使用“$?”可以来检查前一命令的结束状态。简单的例子如下：root@localhost:~# ls /usr/bin/root@localhost:~# echo $?0如果结束状态是0，说明前一个命令执行成功。root@localhost:~# ls /usr/bin/sharels: cannot access /usr/bin/share: No such file or directoryroot@localhost:~# echo $?2如果结束状态不是0，说明命令执行失败。7.</description>
+      <description>1.linux 系统里，buffer 和 cache 如何区分？ buffer 和 cache 都是内存中的一块区域，区别在于一个是储存时使用，一个在读取时使用。
+ 当 CPU 需要写数据到磁盘时，由于磁盘速度比较慢，所以 CPU 先把数据存进 buffer，然后 CPU 去执行其他任务，然后将 buffer 中的数据定期写入磁盘； 当 CPU 需要从磁盘读入数据时，由于磁盘速度比较慢，可以把即将用到的数据提前存入 cache，CPU 可以直接从 cache 中拿数据。  3.描述 Linux 运行级别 0-6 的各自含义  0：关机模式 1：单用户模式（ 可在该模式下修改 root 密码 ） 2：无网络支持的多用户模式 3：有网络支持的多用户模式（文本模式，工作中最常用的模式 ） 4：保留，未使用 5：有网络支持的多用户窗口模式（ 桌面模式 ） 6：重新引导系统，即重启  4.描述 Linux 系统从开机到登陆界面的启动过程  开机 BIOS 自检，加载硬盘 读取 MBR，MBR 引导 grub 引导菜单 ( Boot Loader ) 加载内核 kernel 启动 init 进程，依据 inittab 文件设定运行级别 init 进程，执行 rc.</description>
     </item>
     
     <item>
@@ -176,10 +189,9 @@ t	是否显示汇总信息m	是否显示内存信息A	根据各种系统资源
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/linux/linuxmtr-%E9%93%BE%E8%B7%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
-      <description>当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过MTR等工具进行链路测试来判断问题来源。
-1.MTR  MTR（My traceroute）是几乎所有Linux发行版本预装的网络测试工具，此工具也有对应的Windows版本，名称为WinMTR。 MTR工具将ping和traceroute命令的功能并入了同一个工具中，实现更强大的功能。 Linux版本的mtr命令默认发送ICMP数据包进行链路探测。可以通过“-u”参数来指定使用UDP数据包用于探测。 相对于traceroute命令只会做一次链路跟踪测试，mtr命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，mtr命令能避免节点波动对测试结果的影响，所以其测试结果更正确，建议优先使用。  2.MTR的使用 mtr 192.168.1.243 
-默认配置下，返回结果中各数据列的说明如下。
- 第一列（Host）：节点IP地址和域名。如前面所示，按n键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数“-c”指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  </description>
+      <description>当客户端访问目标服务器或负载均衡，使用ping命令测试出现丢包或不通时，可以通过 MTR 等工具进行链路测试来判断问题来源。
+1.MTR  MTR（My traceroute）是几乎所有 Linux 发行版本预装的网络测试工具，此工具也有对应的 Windows 版本，名称为 WinMTR。 MTR 工具将 ping 和 traceroute 命令的功能并入了同一个工具中，实现更强大的功能。 Linux 版本的 MTR 命令默认发送 ICMP 数据包进行链路探测。可以通过 -u 参数来指定使用 UDP 数据包用于探测。 相对于 traceroute 命令只会做一次链路跟踪测试，MTR 命令会对链路上的相关节点做持续探测并给出相应的统计信息。所以，MTR 命令能避免节点波动对测试结果的影响。  2.MTR的使用 mtr 192.168.1.243默认配置下，返回结果中各数据列的说明如下。
+ 第一列（Host）：节点 IP 地址和域名。如前面所示，按 n 键可以切换显示。 第二列（Loss%）：节点丢包率。 第三列（Snt）：每秒发送数据包数。默认值是10，可以通过参数 -c 指定。 第四列（Last）：最近一次的探测延迟值。 第五、六、七列（Avg、Best、Wrst）：分别是探测延迟的平均值、最小值和最大值。 第八列（StDev）：标准偏差。越大说明相应节点越不稳定。  </description>
     </item>
     
     <item>
@@ -201,7 +213,7 @@ wget https://cdn.npm.taobao.org/dist/node/latest-v15.x/node-v15.9.0-linux-x64.ta
       <guid>https://ac-lm.github.io/posts/linux/linuxpip-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
       <description>1.pip 不同于 python3 自带 pip 软件管理工具，python2 并不自带，需要自己安装
 wget https://bootstrap.pypa.io/pip/2.7/get-pip.py # pip3 wget https://bootstrap.pypa.io/get-pip.py # wget下载命令，会下载到当前目录，如报错，yum -y install wget python get-pip.py #编译 pip -V PS：如果不想自己安装，可以使用yum install python3安装 python3 来使用 pip，命令 pip3 -V
-2.修改pip下载源 pip -i https://pypi.douban.com/simple install Flask --trusted-host pypi.douban.com #手动指定 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ #环境指定 ############### 清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：https://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 华中理工大学：https://pypi.hustunique.com/ 山东理工大学：https://pypi.sdutlinux.org/ 豆瓣：https://pypi.douban.com/simple/ PS：如果系统报错ERROR: unknown command “config”，这是因为 pip 版本过低，使用命令 pip install -U pip即可
+2.修改pip下载源 pip -i https://pypi.douban.com/simple install Flask --trusted-host pypi.douban.com #手动指定 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ #环境指定 ############### 清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：https://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 华中理工大学：https://pypi.hustunique.com/ 山东理工大学：https://pypi.sdutlinux.org/ 豆瓣：https://pypi.douban.com/simple/ PS：如果系统报错ERROR: unknown command &amp;quot;config&amp;quot;，这是因为 pip 版本过低，使用命令 pip install -U pip即可
 3.pip的使用 pip list #已安装 pip list --outdated #可更新 pip install --upgrade 包 #更新 </description>
     </item>
     
@@ -281,7 +293,7 @@ drwxr-x--- 2 root root 37 Apr 18 10:50 data -rw-r--r-- 1 root root 68549 Sep 26 
       <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/linux/linuxdocker-%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
-      <description>1.docker操作 lsb_release -a #查看版本信息，需安装 uname -r #查看内核信息 yum list installed | grep docker #查找docker是否安装 yum -y install docker #下载安装docker systemctl start docker #运行docker systemctl status docker #查看docker状态 systemctl enable docker #自启动docker docker version #docker版本 docker ps -a #查看docker安装的服务 docker start services #docker运行服务 docker rm -f name #强制删除 docker exec service_ip ping #联网查看 docker exec -it id /bin/bash #进入容器  docker rename gallant_swartz python3.9 #重命名 docker images docker rmi image docker export a9ad7f0cb1ad &amp;gt; $(pwd)/itestserver.</description>
+      <description>1.docker操作 uname -r # 查看内核信息 yum list installed | grep docker # 查找docker是否安装 yum -y install docker # 下载安装docker systemctl start docker # 运行docker systemctl status docker # 查看docker状态 systemctl enable docker # 自启动docker docker version # docker版本 docker ps -a # 查看docker安装的服务 docker start services # docker运行服务 docker rm -f docker_name # 强制删除 docker exec service_ip/docker_id ping www.baidu.com # 联网查看 docker exec -it docker_id /bin/bash # 进入容器  docker rename new_name old_name # 重命名 docker images docker rmi image docker export docker_id &amp;gt; $(pwd)/backups.</description>
     </item>
     
     <item>

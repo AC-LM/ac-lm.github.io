@@ -279,10 +279,10 @@ pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672"
 <p>执行顺序，fixture &gt; setup</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fixture(scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;function&#34;</span>, params<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, autouse<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, ids<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, name<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
 <span style="color:#75715e"># scope：被标记方法的作用域 </span>
-<span style="color:#e6db74">&#34;function&#34;</span> (default)<span style="color:#960050;background-color:#1e0010">：</span>作用于每个测试方法<span style="color:#960050;background-color:#1e0010">，</span>每个test都运行一次
-<span style="color:#e6db74">&#34;class&#34;</span><span style="color:#960050;background-color:#1e0010">：</span>作用于整个类<span style="color:#960050;background-color:#1e0010">，</span>每个class的所有test只运行一次
-<span style="color:#e6db74">&#34;module&#34;</span><span style="color:#960050;background-color:#1e0010">：</span>作用于整个模块<span style="color:#960050;background-color:#1e0010">，</span>每个module的所有test只运行一次
-<span style="color:#e6db74">&#34;session：作用于整个session(慎用)，每个session只运行一次</span>
+<span style="color:#e6db74">&#34;function&#34;</span>: 默认值, 作用于每个测试方法, 每个test都运行一次
+<span style="color:#e6db74">&#34;class&#34;</span>: 作用于整个类, 每个class的所有test只运行一次
+<span style="color:#e6db74">&#34;module&#34;</span>: 作用于整个模块, 每个module的所有test只运行一次
+<span style="color:#e6db74">&#34;session&#34;</span>: 作用于整个session(慎用), 每个session只运行一次
 <span style="color:#75715e"># params：(list类型)提供参数数据，供调用标记方法的函数使用</span>
 <span style="color:#75715e"># autouse：是否自动运行,默认为False不运行,设置为True自动运行</span>
 <span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
@@ -312,8 +312,8 @@ pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672"
 <span style="color:#75715e"># 方法：</span>
      skipif(condition, reason<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
 <span style="color:#75715e"># 参数：</span>
-     condition<span style="color:#960050;background-color:#1e0010">：</span>跳过的条件<span style="color:#960050;background-color:#1e0010">，</span>必传参数
-     reason<span style="color:#960050;background-color:#1e0010">：</span>标注原因<span style="color:#960050;background-color:#1e0010">，</span>必传参数
+     condition: 跳过的条件, 必传参数
+     reason: 标注原因, 必传参数
 <span style="color:#75715e"># 使用方法：</span>
      <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>skipif(condition, reason<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx&#34;</span>) 
 <span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
@@ -330,9 +330,9 @@ pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672"
 <span style="color:#75715e"># 方法：</span>
      xfail(condition<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, reason<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, raises<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, run<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, strict<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
 <span style="color:#75715e"># 常用参数：</span>
-     condition<span style="color:#960050;background-color:#1e0010">：</span>预期失败的条件<span style="color:#960050;background-color:#1e0010">，</span>必传参数
-     reason<span style="color:#960050;background-color:#1e0010">：</span>失败的原因<span style="color:#960050;background-color:#1e0010">，</span>必传参数
- 使用方法<span style="color:#960050;background-color:#1e0010">：</span>
+     condition: 预期失败的条件, 必传参数
+     reason: 失败的原因, 必传参数
+<span style="color:#75715e"># 使用方法:</span>
      <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>xfail(condition, reason<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xx&#34;</span>)
 <span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test_ABC</span>:
@@ -348,10 +348,10 @@ pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672"
 <span style="color:#75715e"># 方法：</span>
      parametrize(argnames, argvalues, indirect<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, ids<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, scope<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
 <span style="color:#75715e"># 常用参数：</span>
-     argnames<span style="color:#960050;background-color:#1e0010">：</span>参数名
-     argvalues<span style="color:#960050;background-color:#1e0010">：</span>参数对应值<span style="color:#960050;background-color:#1e0010">，</span>类型必须为list
-                 当参数为一个时格式<span style="color:#960050;background-color:#1e0010">：</span>[value]
-                 当参数个数大于一个时<span style="color:#960050;background-color:#1e0010">，</span>格式为:[(param_value1,param_value2<span style="color:#f92672">.....</span>),(param_value1,param_value2<span style="color:#f92672">.....</span>)]
+     argnames: 参数名
+     argvalues: 参数对应值, 类型必须为list
+           当参数为一个时格式: [value]
+           当参数个数大于一个时, 格式为: [(param_value1,param_value2<span style="color:#f92672">.....</span>),(param_value1,param_value2<span style="color:#f92672">.....</span>)]
 <span style="color:#75715e"># 使用方法:</span>
      <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>parametrize(argnames,argvalues)
 <span style="color:#75715e"># 使用----------------------------------------------------------------------</span>
@@ -361,12 +361,12 @@ pytest test_se<span style="color:#f92672">.</span>py <span style="color:#f92672"
     <span style="color:#66d9ef">return</span> [(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>),(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>)]
 <span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>parametrize(<span style="color:#e6db74">&#34;a,b&#34;</span>,return_test_data()) <span style="color:#75715e"># 使用函数返回值的形式传入参数值</span>
 </code></pre></div><h2 id="15使用自定义标记mark只执行部分用例">15.使用自定义标记mark只执行部分用例</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@pytest</span><span style="color:#f92672">.</span>mark<span style="color:#f92672">.</span>webtest
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">@pytest.mark.webtest
 <span style="color:#75715e"># 标记测试函数为 webtest 执行时可进行选择</span>
-pytest <span style="color:#f92672">-</span>v <span style="color:#f92672">-</span>m webtest
-pytest <span style="color:#f92672">-</span>v <span style="color:#f92672">-</span>m <span style="color:#e6db74">&#39;not webtest&#39;</span>
+pytest -v -m webtest
+pytest -v -m <span style="color:#e6db74">&#39;not webtest&#39;</span>
 </code></pre></div><h2 id="16执行对应严重级别用例">16.执行对应严重级别用例</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pytest <span style="color:#f92672">--</span>allure<span style="color:#f92672">-</span>severities<span style="color:#f92672">=</span>critical
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pytest --allure-severities<span style="color:#f92672">=</span>critical
 </code></pre></div>
 </section>
 

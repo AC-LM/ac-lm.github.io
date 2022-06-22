@@ -6,7 +6,7 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
 实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
 3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.'><title>Web开发—杂项2</title>
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, &amp;#39;网址&amp;#39;); $(window).attr(&amp;#39;location&amp;#39;,&amp;#39;网址&amp;#39;); $(location).prop(&amp;#39;href&amp;#39;,&amp;#39;网址&amp;#39;) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.'><title>Web开发—杂项2</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B92/'>
 
@@ -16,7 +16,7 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
 实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
 3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.'>
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, &amp;#39;网址&amp;#39;); $(window).attr(&amp;#39;location&amp;#39;,&amp;#39;网址&amp;#39;); $(location).prop(&amp;#39;href&amp;#39;,&amp;#39;网址&amp;#39;) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E6%9D%82%E9%A1%B92/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web' /><meta property='article:tag' content='Javascript' /><meta property='article:published_time' content='2021-06-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-06-03T00:00:00&#43;00:00'/>
@@ -26,7 +26,7 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
 实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
 3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.">
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, &amp;#39;网址&amp;#39;); $(window).attr(&amp;#39;location&amp;#39;,&amp;#39;网址&amp;#39;); $(location).prop(&amp;#39;href&amp;#39;,&amp;#39;网址&amp;#39;) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -243,9 +243,9 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
 <h2 id="5页面跳转">5.页面跳转</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;网址&#34;</span>);
 window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;网址&#34;</span>;
-<span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;href&#39;</span>, <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>);
-<span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;location&#39;</span>,<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>);
-<span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;href&#39;</span>,<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">网址</span><span style="color:#960050;background-color:#1e0010">’</span>)
+<span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;href&#39;</span>, <span style="color:#e6db74">&#39;网址&#39;</span>);
+<span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;location&#39;</span>,<span style="color:#e6db74">&#39;网址&#39;</span>);
+<span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">location</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;href&#39;</span>,<span style="color:#e6db74">&#39;网址&#39;</span>)
 </code></pre></div><h2 id="6将-html-字符串转换成-node-节点">6.将 html 字符串转换成 node 节点</h2>
 <h3 id="1innerhtml">1.innerHTML</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createNode</span>(<span style="color:#a6e22e">txt</span>) {
@@ -282,7 +282,7 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>; <span style="color:#75715e">/* 获取完整URL */</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>); <span style="color:#75715e">/* http://127.0.0.1:8020/Test/index.html#test?name=test */</span>
  
-<span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>; <span style="color:#75715e">/* 获取文件路径（文件地址） */</span>
+<span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>; <span style="color:#75715e">/* 获取文件路径(文件地址) */</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>); <span style="color:#75715e">/* /Test/index.html */</span>
  
 <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">protocol</span>; <span style="color:#75715e">/* 获取协议 */</span>
@@ -297,10 +297,10 @@ window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">h
 <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">port</span>; <span style="color:#75715e">/* 获取端口号 */</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>); <span style="color:#75715e">/* 8020 */</span>
  
-<span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">hash</span>; <span style="color:#75715e">/* 获取锚点（“#”后面的分段） */</span>
+<span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">hash</span>; <span style="color:#75715e">/* 获取锚点(&#34;#&#34;后面的分段)*/</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>); <span style="color:#75715e">/* #test?name=test */</span>
  
-<span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">search</span>; <span style="color:#75715e">/* 获取属性（“?”后面的分段） */</span>
+<span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">search</span>; <span style="color:#75715e">/* 获取属性(&#34;?&#34;后面的分段)*/</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">url</span>);
  
 <span style="color:#75715e">/* 获取请求参数的值 */</span>

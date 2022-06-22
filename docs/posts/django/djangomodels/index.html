@@ -265,7 +265,7 @@ b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据
 </ul>
 <h3 id="a多对一">a.多对一</h3>
 <p>字段 ForeignKey</p>
-<p>例如，如果一个“汽车”模型有一个“制造商”，也就是说，“制造商”生产多辆汽车，但每辆车都只有一个“制造商”，可以使用以下定义：</p>
+<p>例如，如果一个汽车模型有一个制造商，也就是说，制造商生产多辆汽车，但每辆车都只有一个制造商，可以使用以下定义：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Manufacturer</span>(models<span style="color:#f92672">.</span>Model):
@@ -277,7 +277,7 @@ b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据
     <span style="color:#75715e"># ...</span>
 </code></pre></div><h3 id="b多对多">b.多对多</h3>
 <p>字段 ManyToManyField</p>
-<p>例如，一个“pizza”有多个“topping”的对象，而一个“topping”也可以在多个”pizza“上，使用以下定义：</p>
+<p>例如，一个 pizza 有多个 topping 的对象，而一个topping也可以在多个 pizza 上，使用以下定义：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Topping</span>(models<span style="color:#f92672">.</span>Model):
     <span style="color:#75715e"># ...</span>
     <span style="color:#66d9ef">pass</span>
@@ -321,8 +321,10 @@ b.字段选项  max_length：该参数指定用于存储数据的 VARCHAR 数据
 </code></pre></div><h2 id="8增删查改">8.增删查改</h2>
 <h3 id="增">增</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>,pwd<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;123456&#39;</span>)
-obj <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>UserInfo(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>,pwd<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;123456&#39;</span>)<span style="color:#960050;background-color:#1e0010">；</span>obj<span style="color:#f92672">.</span>save()
-dic <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;user&#39;</span>:<span style="color:#e6db74">&#39;yangmv&#39;</span>,<span style="color:#e6db74">&#39;pwd&#39;</span>:<span style="color:#e6db74">&#39;123456&#39;</span>}<span style="color:#960050;background-color:#1e0010">；</span>models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create(<span style="color:#f92672">**</span>dic)
+obj <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>UserInfo(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>,pwd<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;123456&#39;</span>)
+obj<span style="color:#f92672">.</span>save()
+dic <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;user&#39;</span>:<span style="color:#e6db74">&#39;yangmv&#39;</span>,<span style="color:#e6db74">&#39;pwd&#39;</span>:<span style="color:#e6db74">&#39;123456&#39;</span>}
+models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create(<span style="color:#f92672">**</span>dic)
 </code></pre></div><h3 id="删">删</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>)<span style="color:#f92672">.</span>delete()
 </code></pre></div><h3 id="查">查</h3>
@@ -335,7 +337,9 @@ models<span style="color:#f92672">.</span>Tb1<span style="color:#f92672">.</span
 models<span style="color:#f92672">.</span>Tb1<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>exclude(id__in<span style="color:#f92672">=</span>[<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">33</span>]) <span style="color:#75715e"># not in</span>
 </code></pre></div><h3 id="改">改</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>)<span style="color:#f92672">.</span>update(pwd<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;520&#39;</span>)
-obj <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>)<span style="color:#960050;background-color:#1e0010">；</span>obj<span style="color:#f92672">.</span>pwd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;520&#39;</span><span style="color:#960050;background-color:#1e0010">；</span>obj<span style="color:#f92672">.</span>save()
+obj <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>UserInfo<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;yangmv&#39;</span>)
+obj<span style="color:#f92672">.</span>pwd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;520&#39;</span>
+obj<span style="color:#f92672">.</span>save()
 </code></pre></div>
 </section>
 

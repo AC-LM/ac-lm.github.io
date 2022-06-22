@@ -6,7 +6,16 @@
     <description>Recent content in Web on AC-LM &#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ac-lm.github.io/posts/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web开发—JavaScript 修改 CSS 的三种方法</title>
+      <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91javascript-%E4%BF%AE%E6%94%B9-css-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 20 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91javascript-%E4%BF%AE%E6%94%B9-css-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>1.style.cssText div.style.cssText=&amp;#39;width:250px;height:250px;&amp;#39;; 2.style.setProperty() div.style.setProperty(&amp;#39;width&amp;#39;,&amp;#39;250px&amp;#39;); div.style.setProperty(&amp;#39;height&amp;#39;,&amp;#39;250px&amp;#39;); 3.style.property div.style.width = &amp;#34;250px&amp;#34;; div.style.height = &amp;#34;250px&amp;#34;; </description>
+    </item>
+    
     <item>
       <title>Web开发—双击修改的实现</title>
       <link>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91%E5%8F%8C%E5%87%BB%E4%BF%AE%E6%94%B9%E7%9A%84%E5%AE%9E%E7%8E%B0/</link>
@@ -154,9 +163,9 @@ $(&amp;#39;.selectpicker&amp;#39;).selectpicker(&amp;#39;val&amp;#39;, [&amp;#39
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E5%BC%80%E5%8F%91jquery-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6-toastr/</guid>
-      <description> 参考文献： github-toastr @CodeSeven 
+      <description>参考文献： github-toastr @CodeSeven 
  toastr 是一个基于 jQuery 简单、漂亮的消息提示插件，使用简单、方便，可以设置超时时间自动消失。
-1.引入toastr的js、css文件 &amp;lt;script src=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.css&amp;#34;&amp;gt; 2.使用 // 常规消息提示，默认背景为浅蓝色 toastr.info(&amp;#34;你有新消息了!&amp;#34;); // 成功消息提示，默认背景为浅绿色 toastr.success(&amp;#34;你有新消息了!&amp;#34;); // 警告消息提示，默认背景为橘黄色 toastr.warning(&amp;#34;你有新消息了!&amp;#34;); // 错误消息提示，默认背景为浅红色 toastr.error(&amp;#34;你有新消息了!&amp;#34;); // 带标题的消息框 toastr.success(&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); // 另一种调用方法 toastr[&amp;#34;info&amp;#34;](&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); 3.自定义参数 toastr.options = { closeButton: false, debug: false, progressBar: true, positionClass: &amp;#34;toast-bottom-center&amp;#34;, onclick: null, showDuration: &amp;#34;300&amp;#34;, hideDuration: &amp;#34;1000&amp;#34;, timeOut: &amp;#34;2000&amp;#34;, extendedTimeOut: &amp;#34;1000&amp;#34;, showEasing: &amp;#34;swing&amp;#34;, hideEasing: &amp;#34;linear&amp;#34;, showMethod: &amp;#34;fadeIn&amp;#34;, hideMethod: &amp;#34;fadeOut&amp;#34; }; 4.参数说明 closeButton：false，是否显示关闭按钮（提示框右上角关闭按钮）； debug：false，是否为调试； progressBar：false，是否显示进度条（设置关闭的超时时间进度条）； positionClass，消息框在页面显示的位置 toast-top-left 顶端左边 toast-top-right 顶端右边 toast-top-center 顶端中间 toast-top-full-width 顶端，宽度铺满整个屏幕 toast-botton-right toast-bottom-left toast-bottom-center toast-bottom-full-width onclick，点击消息框自定义事件 showDuration: “300”，显示动作时间 hideDuration: “1000”，隐藏动作时间 timeOut: “2000”，自动关闭超时时间 extendedTimeOut: “1000” showEasing: “swing”, hideEasing: “linear”, showMethod: “fadeIn” 显示的方式，和jquery相同 hideMethod: “fadeOut” 隐藏的方式，和jquery相同 </description>
+1.引入 toastr 的 js、css 文件 &amp;lt;script src=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;&amp;lt;%=path%&amp;gt;/res/toastr/toastr.min.css&amp;#34;&amp;gt; 2.使用 // 常规消息提示，默认背景为浅蓝色 toastr.info(&amp;#34;你有新消息了!&amp;#34;); // 成功消息提示，默认背景为浅绿色 toastr.success(&amp;#34;你有新消息了!&amp;#34;); // 警告消息提示，默认背景为橘黄色 toastr.warning(&amp;#34;你有新消息了!&amp;#34;); // 错误消息提示，默认背景为浅红色 toastr.error(&amp;#34;你有新消息了!&amp;#34;); // 带标题的消息框 toastr.success(&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); // 另一种调用方法 toastr[&amp;#34;info&amp;#34;](&amp;#34;你有新消息了!&amp;#34;,&amp;#34;消息提示&amp;#34;); 3.自定义参数 toastr.options = { closeButton: false, debug: false, progressBar: true, positionClass: &amp;#34;toast-bottom-center&amp;#34;, onclick: null, showDuration: &amp;#34;300&amp;#34;, hideDuration: &amp;#34;1000&amp;#34;, timeOut: &amp;#34;2000&amp;#34;, extendedTimeOut: &amp;#34;1000&amp;#34;, showEasing: &amp;#34;swing&amp;#34;, hideEasing: &amp;#34;linear&amp;#34;, showMethod: &amp;#34;fadeIn&amp;#34;, hideMethod: &amp;#34;fadeOut&amp;#34; }; 4.</description>
     </item>
     
     <item>
@@ -170,7 +179,7 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
 实际压缩原理很简单，就是把原来 js 文件中的空格，回车符，注释全部清除。因此这种 js 文件通常是不可读的，因为压缩后，文件是一行写到尾。
 3.li 标签间的间隔删除 li 标签间的间隔是由于行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符，这些空白也会被应用样式，占据空间，所以会有间隔。解决方法可以将闭合标签写到开头
 &amp;lt;li&amp;gt;BAT &amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;BAT&amp;lt;/li&amp;gt; 也可以通过设置 li 标签的 font-size 为 0，解决该问题。
-4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, ‘网址’); $(window).attr(&amp;#39;location&amp;#39;,‘网址’); $(location).prop(&amp;#39;href&amp;#39;,‘网址’) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.</description>
+4.CSS 样式覆盖  规则一：由于继承而发生样式冲突时，最近祖先/父元素获胜（最近原则） 规则二：继承的样式和直接指定的样式冲突时，直接指定的样式获胜（最直接原则） 规则三：直接指定的样式发生冲突时，样式权值高者获胜。内联样式的权值 &amp;raquo; ID 选择器 &amp;raquo; 类选择器 &amp;raquo; 标签选择器 规则四：样式权值相同时，后者获胜。注意样式表的出现位置 规则五：!important 的样式属性不被覆盖  5.页面跳转 window.location.replace(&amp;#34;网址&amp;#34;); window.location.href = &amp;#34;网址&amp;#34;; $(location).attr(&amp;#39;href&amp;#39;, &amp;#39;网址&amp;#39;); $(window).attr(&amp;#39;location&amp;#39;,&amp;#39;网址&amp;#39;); $(location).prop(&amp;#39;href&amp;#39;,&amp;#39;网址&amp;#39;) 6.将 html 字符串转换成 node 节点 1.innerHTML function createNode(txt) { const template = &amp;#34;&amp;lt;div class=&amp;#39;child&amp;#39;&amp;gt;${txt}&amp;lt;/div&amp;gt;&amp;#34;; let tempNode = document.</description>
     </item>
     
     <item>
@@ -208,7 +217,7 @@ js 或 css 文件一般都是从服务器上下载到本地浏览器上解释执
       <guid>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A8nginx-%E8%A7%A3%E5%86%B3%E4%B9%B1%E7%A0%81/</guid>
       <description>1.问题 当 Nginx 服务器运行时，有时用户访问中文内容会出现乱码
 2.解决 此时需要修改 Nginx 的 server 配置内容，增加字段：charset utf-8;
-upstream you.example.com { server 127.0.0.1:8081; } server { listen 80; server_name you.example.com; charset utf-8; location /examples { return 403; } ...... } </description>
+server { listen 80; server_name you.example.com; charset utf-8; location /examples { return 403; } } </description>
     </item>
     
     <item>
@@ -226,8 +235,8 @@ upstream you.example.com { server 127.0.0.1:8081; } server { listen 80; server_n
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/web/web%E6%9C%8D%E5%8A%A1%E5%99%A8nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</guid>
-      <description>1.什么是正向代理与反向代理 正向代理隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端通过代理服务器来访问服务端，客户端所有的请求都通过代理服务器来发送。某些科学上网工具就是典型的正向代理角色，通过在国外搭建一台代理服务器，让代理代替我去发送请求，然后代理服务器再把响应返回给我。
-反向代理隐藏了真实的服务端，客户不知道真正提供服务人的是谁，客户只需要访问反向代理服务器便可以获取到响应。例如，当我们请求百度的时候，可能有成千上万台服务器准备为我们服务，但具体是哪一台就不清楚了。但实际上，我们不需要知道这个，只需要知道反向代理服务器 www.baidu.com 就可以了，反向代理服务器会帮我们把请求转发到真实的服务器那里去。
+      <description>1.正向代理与反向代理 正向代理隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端通过代理服务器来访问服务端，客户端所有的请求都通过代理服务器来发送。某些科学上网工具就是典型的正向代理角色，通过在国外搭建一台代理服务器，让代理代替我去发送请求，然后代理服务器再把响应返回给我。
+反向代理隐藏了真实的服务端，客户不知道真正提供服务人的是谁，客户只需要访问反向代理服务器便可以获取到响应。例如，当我们请求百度的时候，可能有成千上万台服务器准备为我们服务，而我们不需要知道是哪台服务器为我们提供服务，只需要知道反向代理服务器 www.baidu.com 就可以了。反向代理服务器会帮我们把请求转发到真实的服务器。
 两者的区别在于代理的对象不一样： 正向代理是为客户端代理，反向代理是为服务端代理。
 在现代，通常会使用 Nginx 作为反向代理服务器。
 2.Nginx的配置文件  

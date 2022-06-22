@@ -3,39 +3,39 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：SQL教程 @廖雪峰 
  1.基本查询 要查询数据库表的数据，我们使用如下的SQL语句：
-SELECT * FROM &amp;lt;表名&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，*表示“所有列”，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
+SELECT * FROM &amp;lt;&amp;#39;表名&amp;#39;&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，* 表示所有列，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
 SELECT语句其实并不要求一定要有FROM子句：
 SELECT 100&#43;200; 上述查询会直接计算出表达式的结果。虽然SELECT可以用作计算，但它并不是SQL的强项。此外，不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1;来测试数据库连接。
-2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件“分数在80分或以上的学生”，写成WHERE条件就是：
-SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件“分数在80分或以上”，并且还符合条件“男生”，把这两个条件写出来：
-SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是“分数在80分或以上”或者“男生”，满足任意之一的条件即选出该记录：
-SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示“不符合该条件”的记录。例如，写一个“不是2班的学生”这个条件:'><title>SQL—查询数据</title>
+2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件分数在80分或以上的学生，写成WHERE条件就是：
+SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件分数在80分或以上，并且还符合条件男生，把这两个条件写出来：
+SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是分数在80分或以上或者男生，满足任意之一的条件即选出该记录：
+SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示不符合该条件的记录。例如，写一个不是2班的学生这个条件:'><title>SQL—查询数据</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/sql/sql%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='SQL—查询数据'>
 <meta property='og:description' content='参考原文：SQL教程 @廖雪峰 
  1.基本查询 要查询数据库表的数据，我们使用如下的SQL语句：
-SELECT * FROM &amp;lt;表名&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，*表示“所有列”，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
+SELECT * FROM &amp;lt;&amp;#39;表名&amp;#39;&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，* 表示所有列，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
 SELECT语句其实并不要求一定要有FROM子句：
 SELECT 100&#43;200; 上述查询会直接计算出表达式的结果。虽然SELECT可以用作计算，但它并不是SQL的强项。此外，不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1;来测试数据库连接。
-2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件“分数在80分或以上的学生”，写成WHERE条件就是：
-SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件“分数在80分或以上”，并且还符合条件“男生”，把这两个条件写出来：
-SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是“分数在80分或以上”或者“男生”，满足任意之一的条件即选出该记录：
-SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示“不符合该条件”的记录。例如，写一个“不是2班的学生”这个条件:'>
+2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件分数在80分或以上的学生，写成WHERE条件就是：
+SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件分数在80分或以上，并且还符合条件男生，把这两个条件写出来：
+SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是分数在80分或以上或者男生，满足任意之一的条件即选出该记录：
+SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示不符合该条件的记录。例如，写一个不是2班的学生这个条件:'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/sql/sql%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Mysql' /><meta property='article:published_time' content='2020-09-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-09-28T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="SQL—查询数据">
 <meta name="twitter:description" content="参考原文：SQL教程 @廖雪峰 
  1.基本查询 要查询数据库表的数据，我们使用如下的SQL语句：
-SELECT * FROM &amp;lt;表名&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，*表示“所有列”，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
+SELECT * FROM &amp;lt;&amp;#39;表名&amp;#39;&amp;gt;; 使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，* 表示所有列，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。
 SELECT语句其实并不要求一定要有FROM子句：
 SELECT 100&#43;200; 上述查询会直接计算出表达式的结果。虽然SELECT可以用作计算，但它并不是SQL的强项。此外，不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1;来测试数据库连接。
-2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件“分数在80分或以上的学生”，写成WHERE条件就是：
-SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件“分数在80分或以上”，并且还符合条件“男生”，把这两个条件写出来：
-SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是“分数在80分或以上”或者“男生”，满足任意之一的条件即选出该记录：
-SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示“不符合该条件”的记录。例如，写一个“不是2班的学生”这个条件:">
+2.条件查询 SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件分数在80分或以上的学生，写成WHERE条件就是：
+SELECT * FROM students WHERE score &amp;gt;= 80; SELECT * FROM students WHERE score BETWEEN 60 AND 90 条件表达式可以用&amp;lt;条件1&amp;gt; AND &amp;lt;条件2&amp;gt;表达满足条件1并且满足条件2。例如，符合条件分数在80分或以上，并且还符合条件男生，把这两个条件写出来：
+SELECT * FROM students WHERE score &amp;gt;= 80 AND gender = &amp;#39;M&amp;#39;; 第二种条件是&amp;lt;条件1&amp;gt; OR &amp;lt;条件2&amp;gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是分数在80分或以上或者男生，满足任意之一的条件即选出该记录：
+SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;; 第三种条件是NOT &amp;lt;条件&amp;gt;，表示不符合该条件的记录。例如，写一个不是2班的学生这个条件:">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -236,23 +236,23 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
 </blockquote>
 <h2 id="1基本查询">1.基本查询</h2>
 <p>要查询数据库表的数据，我们使用如下的SQL语句：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表名</span><span style="color:#f92672">&gt;</span>;
-</code></pre></div><p>使用SELECT * FROM students时，SELECT是关键字，表示将要执行一个查询，*表示“所有列”，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#39;表名&#39;</span><span style="color:#f92672">&gt;</span>;
+</code></pre></div><p>使用<code>SELECT * FROM students</code>时，SELECT是关键字，表示将要执行一个查询，* 表示所有列，FROM表示将要从哪个表查询，该SQL将查询出students表的所有数据。注意：查询结果也是一个二维表，它包含列名和每一行的数据。</p>
 <p>SELECT语句其实并不要求一定要有FROM子句：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">+</span><span style="color:#ae81ff">200</span>;
 </code></pre></div><p>上述查询会直接计算出表达式的结果。虽然SELECT可以用作计算，但它并不是SQL的强项。此外，不带FROM子句的SELECT语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条SELECT 1;来测试数据库连接。</p>
 <h2 id="2条件查询">2.条件查询</h2>
-<p>SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件“分数在80分或以上的学生”，写成WHERE条件就是：</p>
+<p>SELECT语句可以通过WHERE条件来设定查询条件，查询结果是满足查询条件的记录。例如，要指定条件分数在80分或以上的学生，写成WHERE条件就是：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span>;
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> score <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">60</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">90</span>
-</code></pre></div><p>条件表达式可以用&lt;条件1&gt; AND &lt;条件2&gt;表达满足条件1并且满足条件2。例如，符合条件“分数在80分或以上”，并且还符合条件“男生”，把这两个条件写出来：</p>
+</code></pre></div><p>条件表达式可以用<code>&lt;条件1&gt; AND &lt;条件2&gt;</code>表达满足条件1并且满足条件2。例如，符合条件分数在80分或以上，并且还符合条件男生，把这两个条件写出来：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span> <span style="color:#66d9ef">AND</span> gender <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>;
-</code></pre></div><p>第二种条件是&lt;条件1&gt; OR &lt;条件2&gt;，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是“分数在80分或以上”或者“男生”，满足任意之一的条件即选出该记录：</p>
+</code></pre></div><p>第二种条件是<code>&lt;条件1&gt; OR &lt;条件2&gt;</code>，表示满足条件1或者满足条件2。例如，把上述AND查询的两个条件改为OR，查询结果就是分数在80分或以上或者男生，满足任意之一的条件即选出该记录：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span> <span style="color:#66d9ef">OR</span> gender <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>;
-</code></pre></div><p>第三种条件是NOT &lt;条件&gt;，表示“不符合该条件”的记录。例如，写一个“不是2班的学生”这个条件:</p>
+</code></pre></div><p>第三种条件是<code>NOT &lt;条件&gt;</code>，表示不符合该条件的记录。例如，写一个不是2班的学生这个条件:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">NOT</span> class_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> class_id <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">2</span>;
-</code></pre></div><p>要组合三个或者更多的条件，就需要用小括号()表示如何进行条件运算。例如，编写一个复杂的条件：分数在80以下或者90以上，并且是男生：</p>
+</code></pre></div><p>要组合三个或者更多的条件，就需要用小括号 <code>()</code> 表示如何进行条件运算。例如，编写一个复杂的条件：分数在80以下或者90以上，并且是男生：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> (score <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">80</span> <span style="color:#66d9ef">OR</span> score <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">90</span>) <span style="color:#66d9ef">AND</span> gender <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>;
 </code></pre></div><p>如果不加括号，条件运算按照NOT、AND、OR的优先级进行，即NOT优先级最高，其次是AND，最后是OR。加上括号可以改变优先级。</p>
 <h3 id="常用的条件表达式">常用的条件表达式</h3>
@@ -311,18 +311,18 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
 </tbody>
 </table></div>
 <h2 id="3投影查询">3.投影查询</h2>
-<p>如果我们只希望返回某些列的数据，而不是所有列的数据，我们可以用SELECT 列1, 列2, 列3 FROM &hellip;，让结果集仅包含指定列。这种操作称为投影查询</p>
+<p>如果我们只希望返回某些列的数据，而不是所有列的数据，我们可以用<code>SELECT 列1, 列2, 列3 FROM ...</code>，让结果集仅包含指定列。这种操作称为投影查询</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> id, score, name <span style="color:#66d9ef">FROM</span> students;
-</code></pre></div><p>使用SELECT 列1, 列2, 列3 FROM &hellip;时，还可以给每一列起个别名，这样，结果集的列名就可以与原表的列名不同。它的语法是SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM &hellip;</p>
+</code></pre></div><p>使用<code>SELECT 列1, 列2, 列3 FROM ..</code>.时，还可以给每一列起个别名，这样，结果集的列名就可以与原表的列名不同。它的语法是<code>SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM ...</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> id, score points, name <span style="color:#66d9ef">FROM</span> students;
 </code></pre></div><p>投影查询同样可以接WHERE条件，实现复杂的查询：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> id, score points, name <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> gender <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>;
 </code></pre></div><h2 id="4聚合查询">4.聚合查询</h2>
 <p>对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。</p>
-<p>COUNT(<em>)表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是COUNT(</em>)。通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：</p>
+<p>COUNT(*) 表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是COUNT(*) 。通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) num <span style="color:#66d9ef">FROM</span> students;
 <span style="color:#f92672">//</span>num <span style="color:#ae81ff">10</span>
-</code></pre></div><p>COUNT(*)和COUNT(id)实际上是一样的效果。另外注意，聚合查询同样可以使用WHERE条件，因此我们可以方便地统计出有多少男生、多少女生、多少80分以上的学生等。此外要特别注意：如果聚合查询的WHERE条件没有匹配到任何行，COUNT()会返回0，而SUM()、AVG()、MAX()和MIN()会返回NULL</p>
+</code></pre></div><p>COUNT(*) 和 COUNT (id) 实际上是一样的效果。另外注意，聚合查询同样可以使用 WHERE 条件，因此我们可以方便地统计出有多少男生、多少女生、多少80分以上的学生等。此外要特别注意：如果聚合查询的WHERE条件没有匹配到任何行，COUNT() 会返回 0，而 SUM()、AVG()、MAX() 和 MIN() 会返回 NULL。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) boys <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> gender <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;M&#39;</span>;
 </code></pre></div><h3 id="聚合函数">聚合函数</h3>
 <div class="table-wrapper"><table>
@@ -356,7 +356,7 @@ SELECT * FROM students WHERE score &amp;gt;= 80 OR gender = &amp;#39;M&amp;#39;;
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> class_id, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) num <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> class_id;
 </code></pre></div><h2 id="5多表查询">5.多表查询</h2>
 <p>SELECT查询不但可以从一张表查询数据，还可以从多张表同时查询数据。查询多张表的语法是：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">表</span><span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#39;表1&#39;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#e6db74">&#39;表2&#39;</span><span style="color:#f92672">&gt;</span>
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students, classes;
 </code></pre></div><p>这种一次查询两个表的数据，查询的结果也是一个二维表，它是students表和classes表的“乘积”，即students表的每一行与classes表的每一行都两两拼在一起返回。结果集的列数是students表和classes表的列数之和，行数是students表和classes表的行数之积。</p>
 <p>这种多表查询又称笛卡尔查询，使用笛卡尔查询时要非常小心，由于结果集是目标表的行数乘积，对两个各自有100行记录的表进行笛卡尔查询将返回1万条记录，对两个各自有1万行记录的表进行笛卡尔查询将返回1亿条记录。</p>

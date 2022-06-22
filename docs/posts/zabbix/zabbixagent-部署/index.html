@@ -228,11 +228,11 @@ grep <span style="color:#e6db74">&#34;^[a-Z]&#34;</span> /etc/zabbix/zabbix_agen
 <span style="color:#75715e"># 日志</span>
 tail -f /var/log/zabbix/zabbix_agentd.log
 </code></pre></div><h2 id="3部署环境-windows">3.部署（环境 Windows）</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 安装
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 安装</span>
 zabbix_agentd.exe -c zabbix_agentd.win.conf -i
-# 启动
+<span style="color:#75715e"># 启动</span>
 zabbix_agentd.exe -s
-# 卸载
+<span style="color:#75715e"># 卸载</span>
 zabbix_agentd.exe -d
 </code></pre></div>
 </section>

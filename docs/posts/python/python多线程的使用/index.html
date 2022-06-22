@@ -244,13 +244,13 @@
     print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;all over </span><span style="color:#e6db74">{</span>ctime()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div><p>在执行时，先执行听音乐这件事，通过<code>for</code>循环来控制音乐播放两次，每首音乐播放需要1秒钟。接着执行看电影，每一场电影需要5秒钟，同样通过<code>for</code>循环看两遍。最后输出结束时间。</p>
 <p>运行结果：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">========================</span> RESTART <span style="color:#f92672">================================</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> 
-I was listening to 爱情买卖<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">48</span>:<span style="color:#ae81ff">59</span> <span style="color:#ae81ff">2014</span>
-I was listening to 爱情买卖<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">00</span> <span style="color:#ae81ff">2014</span>
-I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">01</span> <span style="color:#ae81ff">2014</span>
-I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">06</span> <span style="color:#ae81ff">2014</span>
-all over Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">49</span>:<span style="color:#ae81ff">11</span> <span style="color:#ae81ff">2014</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt;&gt;&gt; <span style="color:#f92672">========================</span> RESTART <span style="color:#f92672">================================</span>
+&gt;&gt;&gt; 
+I was listening to 爱情买卖! Thu Apr <span style="color:#ae81ff">17</span> 11:48:59 <span style="color:#ae81ff">2014</span>
+I was listening to 爱情买卖! Thu Apr <span style="color:#ae81ff">17</span> 11:49:00 <span style="color:#ae81ff">2014</span>
+I was at the 阿凡达! Thu Apr <span style="color:#ae81ff">17</span> 11:49:01 <span style="color:#ae81ff">2014</span>
+I was at the 阿凡达! Thu Apr <span style="color:#ae81ff">17</span> 11:49:06 <span style="color:#ae81ff">2014</span>
+all over Thu Apr <span style="color:#ae81ff">17</span> 11:49:11 <span style="color:#ae81ff">2014</span>
 </code></pre></div><h2 id="2多线程">2.多线程</h2>
 <p>在多线程中，我们同时执行多个任务！<code>Python</code>中可以使用<code>threading</code> 来实现多线程，示例代码如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#coding=utf-8</span>
@@ -294,11 +294,11 @@ setDaemon()
 start()
 <span style="color:#75715e"># 开始线程活动</span>
 </code></pre></div><p>运行结果：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">=========================</span> RESTART <span style="color:#f92672">================================</span>
-<span style="color:#f92672">&gt;&gt;&gt;</span> 
-I was listening to 爱情买卖<span style="color:#f92672">.</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">51</span>:<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">2014</span> 
-I was at the 阿凡达<span style="color:#960050;background-color:#1e0010">!</span> Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">51</span>:<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">2014</span>
-all over Thu Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">51</span>:<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">2014</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt;&gt;&gt; <span style="color:#f92672">=========================</span> RESTART <span style="color:#f92672">================================</span>
+&gt;&gt;&gt; 
+I was listening to 爱情买卖. Thu Apr <span style="color:#ae81ff">17</span> 12:51:45 <span style="color:#ae81ff">2014</span> 
+I was at the 阿凡达! Thu Apr <span style="color:#ae81ff">17</span> 12:51:45 <span style="color:#ae81ff">2014</span>
+all over Thu Apr <span style="color:#ae81ff">17</span> 12:51:45 <span style="color:#ae81ff">2014</span>
 </code></pre></div><p>从执行结果来看，子线程和主线程都是同一时间启动，但由于主线程执行完结束，所以导致子线程也终止。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:

@@ -2,19 +2,19 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：给Hugo站点添加搜索功能 - Go语言中文网
- 实现思路  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].getElementsByTagName(&amp;#34;link&amp;#34;)[0].innerHTML; node = node &#43; &amp;#39;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;&amp;#39; &#43; link &#43; &amp;#39;&amp;#34;&amp;gt;&amp;#39; &#43; title &#43; &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#39; }; i&#43;&#43;; } div = document.'><title>随记—如何给 hugo 博客添加搜索功能</title>
+ 1.利用自带的 index.xml 文件实现  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].'><title>随记—如何给 hugo 博客添加搜索功能</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='随记—如何给 hugo 博客添加搜索功能'>
 <meta property='og:description' content='参考原文：给Hugo站点添加搜索功能 - Go语言中文网
- 实现思路  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].getElementsByTagName(&amp;#34;link&amp;#34;)[0].innerHTML; node = node &#43; &amp;#39;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;&amp;#39; &#43; link &#43; &amp;#39;&amp;#34;&amp;gt;&amp;#39; &#43; title &#43; &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#39; }; i&#43;&#43;; } div = document.'>
+ 1.利用自带的 index.xml 文件实现  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%A6%82%E4%BD%95%E7%BB%99-hugo-%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2021-09-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-09-16T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="随记—如何给 hugo 博客添加搜索功能">
 <meta name="twitter:description" content="参考原文：给Hugo站点添加搜索功能 - Go语言中文网
- 实现思路  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].getElementsByTagName(&amp;#34;link&amp;#34;)[0].innerHTML; node = node &#43; &amp;#39;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;#34;&amp;#39; &#43; link &#43; &amp;#39;&amp;#34;&amp;gt;&amp;#39; &#43; title &#43; &amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;#39; }; i&#43;&#43;; } div = document.">
+ 1.利用自带的 index.xml 文件实现  利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &amp;gt; index.xml。文件包含博客所有文章的标题，链接和概要。 JavaScript 实现如下  if(window.location.pathname === &amp;#39;/404.html&amp;#39;){ query = window.location.search.substr(1) if(query){ searchKey = query.replace(&amp;#39;query=&amp;#39;, &amp;#39;&amp;#39;) // $(&amp;#39;#404&amp;#39;).text(decodeURI(searchKey)); 	$(&amp;#39;#404&amp;#39;).text(&amp;#39;搜索结果&amp;#39;) $.get(&amp;#39;/index.xml&amp;#39;, function(data){ items = data.getElementsByTagName(&amp;#34;item&amp;#34;); var i = 0; var node = &amp;#39;&amp;#39; while ( i &amp;lt; items.length) { txt = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML &#43; items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML; if((txt.indexOf(searchKey)) &amp;gt; -1){ var title = items[i].getElementsByTagName(&amp;#34;title&amp;#34;)[0].innerHTML; console.log(items[i].getElementsByTagName(&amp;#34;description&amp;#34;)[0].innerHTML); var link = items[i].">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -213,7 +213,7 @@
 <p>参考原文：<a class="link" href="https://studygolang.com/articles/27141?fr=sidebar"  target="_blank" rel="noopener"
     >给Hugo站点添加搜索功能 - Go语言中文网</a></p>
 </blockquote>
-<h2 id="实现思路">实现思路</h2>
+<h2 id="1利用自带的-indexxml-文件实现">1.利用自带的 index.xml 文件实现</h2>
 <ul>
 <li>利用 hugo 生成的 index.xml 文件进行内容搜索。路径 public &gt; index.xml。文件包含博客所有文章的标题，链接和概要。</li>
 <li>JavaScript 实现如下</li>
@@ -244,7 +244,13 @@
 	       });
 	   }
     }
-</code></pre></div>
+</code></pre></div><h2 id="2利用-bing-搜索引擎实现">2.利用 Bing 搜索引擎实现</h2>
+<ul>
+<li>Bing 搜索可以收录 GitHub Page ，因此可以在 Bing 中进行搜索</li>
+<li>使用<code>site:(https://ac-lm.github.io/posts)</code> 可以将搜索范围固定在对应的 GitHub Page 中</li>
+<li>JavaScript 实现略</li>
+</ul>
+
 </section>
 
 

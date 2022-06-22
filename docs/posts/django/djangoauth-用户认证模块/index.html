@@ -258,7 +258,7 @@ user_obj <span style="color:#f92672">=</span> auth<span style="color:#f92672">.<
 </code></pre></div><h2 id="6create_user">6.create_user()</h2>
 <p>该函数可以创建一个新用户，注意创建时明文输入的密码会在数据库中加密存在。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.contrib.auth.models <span style="color:#f92672">import</span> User
-user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create_user<span style="color:#960050;background-color:#1e0010">（</span>username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;用户名&#39;</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;密码&#39;</span>,email<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;邮箱&#39;</span>,<span style="color:#f92672">...</span><span style="color:#960050;background-color:#1e0010">）</span>
+user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>create_user(username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;用户名&#39;</span>,password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;密码&#39;</span>,email<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;邮箱&#39;</span>,<span style="color:#f92672">...</span>)
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reg</span>(request):
     <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;POST&#39;</span>:

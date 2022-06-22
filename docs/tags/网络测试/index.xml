@@ -29,7 +29,7 @@
     </item>
     
     <item>
-      <title>Net—JMeter 测试计划构建We</title>
+      <title>Net—JMeter 测试计划构建</title>
       <link>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netjmeter-%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -101,15 +101,13 @@ JMeter 允许您保存整个测试计划树或仅保存其中的一部分。要�
       <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/netsqlmap-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
-      <description>1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分
-sqlmap可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。
-&amp;#39;/admin/1/&amp;#39; 类似于这种，SQLMap 便无法进行注入测试，但它实际上可能是这样的：&amp;#39;/admin.php?id=1&amp;#39; 它只是把参数隐藏在了 URL 中，对于这种网页，直接在参数后加上一个星号即可。
-sqlmap -u &amp;#34;www.baidu.com/admin/1*&amp;#34; –data 使用post方式提交的时候，就需要用到data参数了
--p 当我们已经事先知道哪一个参数存在注入就可以直接使用-p来指定，从而减少运行时间
-–level 不同的level等级，sqlmap所采用的策略也不近相同，当–level的参数设定为2或者2以上的时候，sqlmap会尝试注入Cookie参数；当–level参数设定为3或者3以上的时候，会尝试对User-Angent，referer进行注入。
-–random-agent 使用该参数，sqlmap会自动的添加useragent参数，如果你知道它要求你用某一种agent，你也应当用user-agent选项自己指定所需的agent
-–technique 这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
- B: Boolean-based blind SQL injection（布尔型注入） E: Error-based SQL injection（报错型注入） U: UNION query SQL injection（可联合查询注入） S: Stacked queries SQL injection（可多语句查询注入） T: Time-based blind SQL injection（基于时间延迟注入）  2.常用的指令 检查注入点 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; 列数据库信息 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; --dbs 指定库名列出所有表 sqlmap -u &amp;#34;http://ooxx.com.tw/star_photo.php?artist_id=11&amp;#34; -D xxxxx --tables 指定库名表名列出所有字段 sqlmap -u &amp;#34;http://ooxx.</description>
+      <description>1.sqlmap中部分参数的备注 星号（ * ） 在注入的过程中，有时候会存在伪静态的页面，此时可以使用星号表示可能存在注入的部分。sqlmap 可以区分一个 URL 里面的参数来进行注入点测试，但在遇到了一些做了伪静态的网页就无法自动识别了。比如：&#39;/admin/1/&#39;，sqlmap 无法自动识别注入点，对于这种网页，可以直接在参数后加上一个星号，手动标注注入位置，如sqlmap -u &amp;quot;www.baidu.com/admin/1*&amp;quot;
+&amp;ndash;data 使用 post 方式提交时，需要用到 data 参数
+-p 当我们已经事先知道哪一个参数存在注入就可以直接使用 -p 来指定，从而减少运行时间
+&amp;ndash;level 不同的 level 等级，当 level 的参数设定为 2 或者 2 以上的时候，sqlmap 会尝试注入 Cookie 参数；当 level 参数设定为 3 或者 3 以上的时候，会尝试对 User-Angent，referer 进行注入。
+&amp;ndash;random-agent 使用该参数，sqlmap 会自动的添加 useragent 参数，你也可以用 user-agent 选项指定所需的 agent
+&amp;ndash;technique 这个参数可以指定 sqlmap 使用的探测技术，默认情况下会测试所有的方式。支持的探测方式如下：
+ B：Boolean-based blind SQL injection（布尔型注入） E：Error-based SQL injection（报错型注入） U：UNION query SQL injection（可联合查询注入） S：Stacked queries SQL injection（可多语句查询注入） T：Time-based blind SQL injection（基于时间延迟注入）  2.</description>
     </item>
     
     <item>

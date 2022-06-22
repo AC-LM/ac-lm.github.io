@@ -352,57 +352,57 @@ Future is complete
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">//
 </span><span style="color:#75715e"></span>}
 </code></pre></div><h4 id="向-isolate-提交消息">向 Isolate 提交消息</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// 向新 isolate 发送消息并接收回复的方法
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 向新 isolate 发送消息并接收回复的方法
 </span><span style="color:#75715e">// 在该例中，我将使用字符串进行通信操作
 </span><span style="color:#75715e">// （发送和接收的数据）
-</span><span style="color:#75715e"></span>Future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span> sendReceive(<span style="color:#66d9ef">String</span> messageToBeSent) <span style="color:#66d9ef">async</span> {
+</span><span style="color:#75715e"></span>Future<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">sendReceive</span><span style="color:#f92672">(</span>String messageToBeSent<span style="color:#f92672">)</span> async <span style="color:#f92672">{</span>
     <span style="color:#75715e">// 创建一个临时端口来接收回复
-</span><span style="color:#75715e"></span>    ReceivePort port <span style="color:#f92672">=</span> ReceivePort();
+</span><span style="color:#75715e"></span>    ReceivePort port <span style="color:#f92672">=</span> ReceivePort<span style="color:#f92672">();</span>
 
     <span style="color:#75715e">// 发送消息到 Isolate，并且
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// 通知该 isolate 哪个端口是用来提供回复的
-</span><span style="color:#75715e"></span>    newIsolateSendPort.send(
-        CrossIsolatesMessage<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>(
-            sender: port.sendPort,
-            message: messageToBeSent,
-        )
-    );
+</span><span style="color:#75715e"></span>    newIsolateSendPort<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>
+        CrossIsolatesMessage<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;(</span>
+            sender<span style="color:#f92672">:</span> port<span style="color:#f92672">.</span><span style="color:#a6e22e">sendPort</span><span style="color:#f92672">,</span>
+            message<span style="color:#f92672">:</span> messageToBeSent<span style="color:#f92672">,</span>
+        <span style="color:#f92672">)</span>
+    <span style="color:#f92672">);</span>
 
     <span style="color:#75715e">// 等待回复并返回
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> port.first;
-}
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> port<span style="color:#f92672">.</span><span style="color:#a6e22e">first</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
 
 <span style="color:#75715e">// 扩展回调函数来处理接输入报文
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> callbackFunction(SendPort callerSendPort){
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">callbackFunction</span><span style="color:#f92672">(</span>SendPort callerSendPort<span style="color:#f92672">){</span>
     <span style="color:#75715e">// 初始化一个 SendPort 来接收来自调用者的消息
-</span><span style="color:#75715e"></span>    ReceivePort newIsolateReceivePort <span style="color:#f92672">=</span> ReceivePort();
+</span><span style="color:#75715e"></span>    ReceivePort newIsolateReceivePort <span style="color:#f92672">=</span> ReceivePort<span style="color:#f92672">();</span>
 
     <span style="color:#75715e">// 向调用者提供该 isolate 的 SendPort 引用
-</span><span style="color:#75715e"></span>    callerSendPort.send(newIsolateReceivePort.sendPort);
+</span><span style="color:#75715e"></span>    callerSendPort<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>newIsolateReceivePort<span style="color:#f92672">.</span><span style="color:#a6e22e">sendPort</span><span style="color:#f92672">);</span>
 
     <span style="color:#75715e">// 监听输入报文、处理并提供回复的
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// Isolate 主程序
-</span><span style="color:#75715e"></span>    newIsolateReceivePort.listen((<span style="color:#66d9ef">dynamic</span> message){
-        CrossIsolatesMessage incomingMessage <span style="color:#f92672">=</span> message <span style="color:#f92672">as</span> CrossIsolatesMessage;
+</span><span style="color:#75715e"></span>    newIsolateReceivePort<span style="color:#f92672">.</span><span style="color:#a6e22e">listen</span><span style="color:#f92672">((</span>dynamic message<span style="color:#f92672">){</span>
+        CrossIsolatesMessage incomingMessage <span style="color:#f92672">=</span> message as CrossIsolatesMessage<span style="color:#f92672">;</span>
 
         <span style="color:#75715e">// 处理消息
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">String</span> newMessage <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;complemented string &#34;</span> <span style="color:#f92672">+</span> incomingMessage.message;
+</span><span style="color:#75715e"></span>        String newMessage <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;complemented string &#34;</span> <span style="color:#f92672">+</span> incomingMessage<span style="color:#f92672">.</span><span style="color:#a6e22e">message</span><span style="color:#f92672">;</span>
 
         <span style="color:#75715e">// 发送处理的结果
-</span><span style="color:#75715e"></span>        incomingMessage.sender.send(newMessage);
-    });
-}
+</span><span style="color:#75715e"></span>        incomingMessage<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>newMessage<span style="color:#f92672">);</span>
+    <span style="color:#f92672">});</span>
+<span style="color:#f92672">}</span>
 
 <span style="color:#75715e">// 帮助类
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CrossIsolatesMessage</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
-    <span style="color:#66d9ef">final</span> SendPort sender;
-    <span style="color:#66d9ef">final</span> T message;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CrossIsolatesMessage</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">final</span> SendPort sender<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">final</span> T message<span style="color:#f92672">;</span>
 
-    CrossIsolatesMessage({
-        <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.sender,
-        <span style="color:#66d9ef">this</span>.message,
-    });
-}
+    CrossIsolatesMessage<span style="color:#f92672">({</span>
+        <span style="color:#a6e22e">@required</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">,</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">message</span><span style="color:#f92672">,</span>
+    <span style="color:#f92672">});</span>
+<span style="color:#f92672">}</span>
 </code></pre></div><h4 id="销毁这个新的-isolate-实例">销毁这个新的 Isolate 实例</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#75715e">// 释放一个 isolate 的例程
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> dispose(){

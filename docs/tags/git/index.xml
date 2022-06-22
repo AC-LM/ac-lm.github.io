@@ -45,7 +45,7 @@
       <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://ac-lm.github.io/posts/git/gitgitlab-runner-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
-      <description>1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.hison.net/ Enter the registration token: # WDKcwQGUoXRC-NR3rUns Enter a description for the runner: #  Enter the tags for the runner: #  Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).</description>
+      <description>1.Linux 注册 gitlab-runner sudo gitlab-runner register Runtime platform arch=amd64 os=linux pid=3639 revision=943fc252 version=13.7.0 Running in system-mode. Enter the GitLab instance URL (for example, https://gitlab.com/): # http://gitlab.example.net/ Enter the registration token: # token Enter a description for the runner: # description Enter the tags for the runner: # tags Enter the runner executor: # shell ——————————————————————————————————————————————————————————————————————————————————————————————————————————— # 文档 sudo gitlab-runner register Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).</description>
     </item>
     
     <item>

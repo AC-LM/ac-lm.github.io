@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.QMessageBox information(QWdiget parent,title,text,buttons,defaultButton) #| 弹出消息对话框  question（QWidget parent,title,text,buttons,defaultButton） #| 弹出问答对话框 warning（QWidget parent,title,text,buttons,defaultButton） #| 弹出警告对话框  critical（QWidget parent,title,text,buttons,defaultButton） #| 弹出严重错误对话框  about（QWidget parent,title,text） #| 弹出关于对话框  # 参数------------------------------------------------------------------------------ parent：指定的父窗口控件 title：对话框标题 text：对话框文本 buttons：标准按钮，默认为ok按钮，可以有多个，用 | 进行分隔 defaultButton：关闭对话框默认返回的按钮 # 方法------------------------------------------------------------------------------ setTitle() # 设置标题 setText() # 设置正文消息 setIcon() # 设置弹出对话框的图片  2.QMessageBox的标准按钮类型 QMessage.Ok #| 同意操作 | QMessage.Cancel #| 取消操作 | QMessage.Yes #| 同意操作 | QMessage.No #| 取消操作 | QMessage.Abort #| 终止操作 | QMessage.Retry #| 重试操作 | QMessage.'><title>PyQt5—QMessageBox 消息对话框类</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.QMessageBox information(QWdiget parent,title,text,buttons,defaultButton) #| 弹出消息对话框  question(QWidget parent,title,text,buttons,defaultButton) #| 弹出问答对话框 warning(QWidget parent,title,text,buttons,defaultButton) #| 弹出警告对话框  critical(QWidget parent,title,text,buttons,defaultButton) #| 弹出严重错误对话框  about(QWidget parent,title,text) #| 弹出关于对话框  # 参数------------------------------------------------------------------------------ parent: 指定的父窗口控件 title: 对话框标题 text: 对话框文本 buttons: 标准按钮, 默认为ok按钮, 可以有多个, 用 | 进行分隔 defaultButton: 关闭对话框默认返回的按钮 # 方法------------------------------------------------------------------------------ setTitle() # 设置标题 setText() # 设置正文消息 setIcon() # 设置弹出对话框的图片  2.QMessageBox的标准按钮类型 QMessage.Ok #| 同意操作 | QMessage.Cancel #| 取消操作 | QMessage.Yes #| 同意操作 | QMessage.No #| 取消操作 | QMessage.'><title>PyQt5—QMessageBox 消息对话框类</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/pyqt5/pyqt5qmessagebox-%E6%B6%88%E6%81%AF%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='PyQt5—QMessageBox 消息对话框类'>
-<meta property='og:description' content='1.QMessageBox information(QWdiget parent,title,text,buttons,defaultButton) #| 弹出消息对话框  question（QWidget parent,title,text,buttons,defaultButton） #| 弹出问答对话框 warning（QWidget parent,title,text,buttons,defaultButton） #| 弹出警告对话框  critical（QWidget parent,title,text,buttons,defaultButton） #| 弹出严重错误对话框  about（QWidget parent,title,text） #| 弹出关于对话框  # 参数------------------------------------------------------------------------------ parent：指定的父窗口控件 title：对话框标题 text：对话框文本 buttons：标准按钮，默认为ok按钮，可以有多个，用 | 进行分隔 defaultButton：关闭对话框默认返回的按钮 # 方法------------------------------------------------------------------------------ setTitle() # 设置标题 setText() # 设置正文消息 setIcon() # 设置弹出对话框的图片  2.QMessageBox的标准按钮类型 QMessage.Ok #| 同意操作 | QMessage.Cancel #| 取消操作 | QMessage.Yes #| 同意操作 | QMessage.No #| 取消操作 | QMessage.Abort #| 终止操作 | QMessage.Retry #| 重试操作 | QMessage.'>
+<meta property='og:description' content='1.QMessageBox information(QWdiget parent,title,text,buttons,defaultButton) #| 弹出消息对话框  question(QWidget parent,title,text,buttons,defaultButton) #| 弹出问答对话框 warning(QWidget parent,title,text,buttons,defaultButton) #| 弹出警告对话框  critical(QWidget parent,title,text,buttons,defaultButton) #| 弹出严重错误对话框  about(QWidget parent,title,text) #| 弹出关于对话框  # 参数------------------------------------------------------------------------------ parent: 指定的父窗口控件 title: 对话框标题 text: 对话框文本 buttons: 标准按钮, 默认为ok按钮, 可以有多个, 用 | 进行分隔 defaultButton: 关闭对话框默认返回的按钮 # 方法------------------------------------------------------------------------------ setTitle() # 设置标题 setText() # 设置正文消息 setIcon() # 设置弹出对话框的图片  2.QMessageBox的标准按钮类型 QMessage.Ok #| 同意操作 | QMessage.Cancel #| 取消操作 | QMessage.Yes #| 同意操作 | QMessage.No #| 取消操作 | QMessage.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/pyqt5/pyqt5qmessagebox-%E6%B6%88%E6%81%AF%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='PyQt5' /><meta property='article:published_time' content='2020-12-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-12-24T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="PyQt5—QMessageBox 消息对话框类">
-<meta name="twitter:description" content="1.QMessageBox information(QWdiget parent,title,text,buttons,defaultButton) #| 弹出消息对话框  question（QWidget parent,title,text,buttons,defaultButton） #| 弹出问答对话框 warning（QWidget parent,title,text,buttons,defaultButton） #| 弹出警告对话框  critical（QWidget parent,title,text,buttons,defaultButton） #| 弹出严重错误对话框  about（QWidget parent,title,text） #| 弹出关于对话框  # 参数------------------------------------------------------------------------------ parent：指定的父窗口控件 title：对话框标题 text：对话框文本 buttons：标准按钮，默认为ok按钮，可以有多个，用 | 进行分隔 defaultButton：关闭对话框默认返回的按钮 # 方法------------------------------------------------------------------------------ setTitle() # 设置标题 setText() # 设置正文消息 setIcon() # 设置弹出对话框的图片  2.QMessageBox的标准按钮类型 QMessage.Ok #| 同意操作 | QMessage.Cancel #| 取消操作 | QMessage.Yes #| 同意操作 | QMessage.No #| 取消操作 | QMessage.Abort #| 终止操作 | QMessage.Retry #| 重试操作 | QMessage.">
+<meta name="twitter:description" content="1.QMessageBox information(QWdiget parent,title,text,buttons,defaultButton) #| 弹出消息对话框  question(QWidget parent,title,text,buttons,defaultButton) #| 弹出问答对话框 warning(QWidget parent,title,text,buttons,defaultButton) #| 弹出警告对话框  critical(QWidget parent,title,text,buttons,defaultButton) #| 弹出严重错误对话框  about(QWidget parent,title,text) #| 弹出关于对话框  # 参数------------------------------------------------------------------------------ parent: 指定的父窗口控件 title: 对话框标题 text: 对话框文本 buttons: 标准按钮, 默认为ok按钮, 可以有多个, 用 | 进行分隔 defaultButton: 关闭对话框默认返回的按钮 # 方法------------------------------------------------------------------------------ setTitle() # 设置标题 setText() # 设置正文消息 setIcon() # 设置弹出对话框的图片  2.QMessageBox的标准按钮类型 QMessage.Ok #| 同意操作 | QMessage.Cancel #| 取消操作 | QMessage.Yes #| 同意操作 | QMessage.No #| 取消操作 | QMessage.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -208,16 +208,16 @@
     
     <h2 id="1qmessagebox">1.QMessageBox</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">information(QWdiget parent,title,text,buttons,defaultButton) <span style="color:#75715e">#| 弹出消息对话框                    </span>
-question<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text,buttons,defaultButton<span style="color:#960050;background-color:#1e0010">）</span>  <span style="color:#75715e">#| 弹出问答对话框</span>
-warning<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text,buttons,defaultButton<span style="color:#960050;background-color:#1e0010">）</span>   <span style="color:#75715e">#| 弹出警告对话框                       </span>
-critical<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text,buttons,defaultButton<span style="color:#960050;background-color:#1e0010">）</span>  <span style="color:#75715e">#| 弹出严重错误对话框                     </span>
-about<span style="color:#960050;background-color:#1e0010">（</span>QWidget parent,title,text<span style="color:#960050;background-color:#1e0010">）</span>                           <span style="color:#75715e">#| 弹出关于对话框   </span>
+question(QWidget parent,title,text,buttons,defaultButton)  <span style="color:#75715e">#| 弹出问答对话框</span>
+warning(QWidget parent,title,text,buttons,defaultButton)   <span style="color:#75715e">#| 弹出警告对话框                       </span>
+critical(QWidget parent,title,text,buttons,defaultButton)  <span style="color:#75715e">#| 弹出严重错误对话框                     </span>
+about(QWidget parent,title,text)                           <span style="color:#75715e">#| 弹出关于对话框   </span>
 <span style="color:#75715e"># 参数------------------------------------------------------------------------------</span>
-parent<span style="color:#960050;background-color:#1e0010">：</span>指定的父窗口控件
-title<span style="color:#960050;background-color:#1e0010">：</span>对话框标题
-text<span style="color:#960050;background-color:#1e0010">：</span>对话框文本
-buttons<span style="color:#960050;background-color:#1e0010">：</span>标准按钮<span style="color:#960050;background-color:#1e0010">，</span>默认为ok按钮<span style="color:#960050;background-color:#1e0010">，</span>可以有多个<span style="color:#960050;background-color:#1e0010">，</span>用 <span style="color:#f92672">|</span> 进行分隔
-defaultButton<span style="color:#960050;background-color:#1e0010">：</span>关闭对话框默认返回的按钮
+parent: 指定的父窗口控件
+title: 对话框标题
+text: 对话框文本
+buttons: 标准按钮, 默认为ok按钮, 可以有多个, 用 <span style="color:#f92672">|</span> 进行分隔
+defaultButton: 关闭对话框默认返回的按钮
 <span style="color:#75715e"># 方法------------------------------------------------------------------------------</span>
 setTitle()  <span style="color:#75715e"># 设置标题</span>
 setText()   <span style="color:#75715e"># 设置正文消息</span>
@@ -237,7 +237,7 @@ reply1 <span style="color:#f92672">=</span> QMessageBox<span style="color:#f9267
 reply2 <span style="color:#f92672">=</span> QMessageBox<span style="color:#f92672">.</span>warning(self, <span style="color:#e6db74">&#34;标题&#34;</span>, <span style="color:#e6db74">&#34;警告框消息正文&#34;</span>, QMessageBox<span style="color:#f92672">.</span>Yes <span style="color:#f92672">|</span> QMessageBox<span style="color:#f92672">.</span>No, QMessageBox<span style="color:#f92672">.</span>Yes)
 reply3 <span style="color:#f92672">=</span> QMessageBox<span style="color:#f92672">.</span>critical(self, <span style="color:#e6db74">&#34;标题&#34;</span>, <span style="color:#e6db74">&#34;严重错误对话框消息正文&#34;</span>, QMessageBox<span style="color:#f92672">.</span>Yes <span style="color:#f92672">|</span> QMessageBox<span style="color:#f92672">.</span>No, QMessageBox<span style="color:#f92672">.</span>Yes)
 reply4 <span style="color:#f92672">=</span> QMessageBox<span style="color:#f92672">.</span>about(self, <span style="color:#e6db74">&#34;标题&#34;</span>, <span style="color:#e6db74">&#34;关于对话框消息正文&#34;</span>)
-reply<span style="color:#960050;background-color:#1e0010">?</span><span style="color:#f92672">.</span>exec_()
+reply<span style="color:#f92672">.</span>exec_()
 </code></pre></div>
 </section>
 

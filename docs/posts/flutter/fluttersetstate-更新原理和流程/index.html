@@ -3,21 +3,21 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：Flutter的setState更新原理和流程 @flutter开发精选 
  1.Flutter 的状态类  StatelessWidget：无状态类，没有状态更新，界面一经创建无法更改 StatefulWidget：有状态类，当状态改变，调用 setState() 方法会触发 StatefulWidget 的 UI 状态更新，自定义继承 StatefulWidget 的子类须重写 createState() 方法  2.mounted 调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过 mounted 属性来判断调用此方法是否合法。
-if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.“脏”链表是待更新的链表 2.更新过后就不“脏”了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.'><title>Flutter—setState 更新原理和流程</title>
+if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.脏链表是待更新的链表 2.更新过后就不脏了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.'><title>Flutter—setState 更新原理和流程</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/flutter/fluttersetstate-%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Flutter—setState 更新原理和流程'>
 <meta property='og:description' content='参考原文：Flutter的setState更新原理和流程 @flutter开发精选 
  1.Flutter 的状态类  StatelessWidget：无状态类，没有状态更新，界面一经创建无法更改 StatefulWidget：有状态类，当状态改变，调用 setState() 方法会触发 StatefulWidget 的 UI 状态更新，自定义继承 StatefulWidget 的子类须重写 createState() 方法  2.mounted 调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过 mounted 属性来判断调用此方法是否合法。
-if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.“脏”链表是待更新的链表 2.更新过后就不“脏”了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.'>
+if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.脏链表是待更新的链表 2.更新过后就不脏了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/flutter/fluttersetstate-%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86%E5%92%8C%E6%B5%81%E7%A8%8B/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Flutter' /><meta property='article:published_time' content='2021-05-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-12T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Flutter—setState 更新原理和流程">
 <meta name="twitter:description" content="参考原文：Flutter的setState更新原理和流程 @flutter开发精选 
  1.Flutter 的状态类  StatelessWidget：无状态类，没有状态更新，界面一经创建无法更改 StatefulWidget：有状态类，当状态改变，调用 setState() 方法会触发 StatefulWidget 的 UI 状态更新，自定义继承 StatefulWidget 的子类须重写 createState() 方法  2.mounted 调用 setState() 必须是没有调用过 dispose() 方法，不然出错，可通过 mounted 属性来判断调用此方法是否合法。
-if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.“脏”链表是待更新的链表 2.更新过后就不“脏”了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.">
+if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 2.是否可以进行刷新：mounted  b.添加脏链表 _dirty = true  1.脏链表是待更新的链表 2.更新过后就不脏了 3._active=false 的时候直接返回  c.管理类  告诉管理类方法自己需要被重新构建 owner.scheduleBuildFor(this)  d.调用 window.scheduleFrame() =&amp;gt;native 方法  RegisterNatives() 完成 native 方法的注册 最终会注册 vsync 回调。 等待下一次 vsync 信号的到来， 然后再经过层层调用最终会调用到 Window::BeginFrame() UI 的绘制逻辑是在 Render 树中实现的  e.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -234,8 +234,8 @@ if (mounted) {setState(() {});}3.流程 a.条件判断  1.生命周期判断 
 </ul>
 <h3 id="b添加脏链表-_dirty--true">b.添加脏链表 _dirty = true</h3>
 <ul>
-<li>1.“脏”链表是待更新的链表</li>
-<li>2.更新过后就不“脏”了</li>
+<li>1.脏链表是待更新的链表</li>
+<li>2.更新过后就不脏了</li>
 <li>3._active=false 的时候直接返回</li>
 </ul>
 <h3 id="c管理类">c.管理类</h3>

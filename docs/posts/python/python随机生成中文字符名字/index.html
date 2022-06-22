@@ -215,11 +215,11 @@ import random def GBK2312(): head = random.randint(0xb0, 0xf7) body = random.ran
     <h2 id="一如何生成中文字符">一.如何生成中文字符</h2>
 <h3 id="1unicode-编码">1.Unicode 编码</h3>
 <p>在 Unicode 编码中，汉字的范围是（ 0x4E00，9FBF），因此我们可以从中取值生成中文字符。需要注意的是，Unicode 编码中收录了 2 万多个汉字，其中包含很多生僻的繁体字。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">import</span> random
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
 
-def Unicode():
-    <span style="color:#66d9ef">val</span> <span style="color:#960050;background-color:#1e0010">= </span>random.randint(<span style="color:#ae81ff">0x4e00</span>, <span style="color:#ae81ff">0x9fbf</span>)
-    <span style="color:#66d9ef">return</span> chr(<span style="color:#66d9ef">val</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Unicode</span>():
+    val <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0x4e00</span>, <span style="color:#ae81ff">0x9fbf</span>)
+    <span style="color:#66d9ef">return</span> chr(val)
 </code></pre></div><h3 id="2gbk2312">2.GBK2312</h3>
 <p>GBK2312 对字符的编码采用的是两个字节相组合，中文字符第一个字节的范围是（ 0xB0-0xF7 ），第二个字节的范围是（ 0xA1- 0xFE），GBK2312 收录了 6 千多常用汉字。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random

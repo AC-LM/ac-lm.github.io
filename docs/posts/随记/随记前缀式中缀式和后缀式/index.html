@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.前缀式 前缀式又称波兰式，是一种没有括号的算术表达式。其特点是将运算符写在前面，操作数写在后面。例如算式：1 - ( 2 &#43; 3 ) ，等价于 - 1 &#43; 2 3
+2.中缀式 中缀式就是平时人们常用的算术表示方法，操作符处于操作数的中间。例如算式：3 &#43; 4
+3.后缀式 后缀式又称逆波兰式。与前缀式不同的是，后缀式把运算符写在运算对象的后面。例如算式：a &#43; b，等价于 a b &#43; 。这种写法的优点是，可以根据运算对象和算符的出现次序进行计算，而不需要使用括号，便于机器求值
+4.中缀式转化前、后缀式 中缀式可以通过构造二叉树，通过后序遍历二叉树的方法求得后缀式，通过先序遍历二叉树的方法求得前缀式。例如算式： ( 1 &#43; 2 ) * 3 &#43; 2 * 1
+ 
+ 后序遍历的实现思想是：从根节点出发，依次遍历各节点的左右子树，直到当前节点左右子树遍历完成后，才访问该节点元素 先序遍历的实现思想是：从根节点出发，先访问根节点，再访问当前节点的左子树，若当前节点无左子树，访问当前节点的右子树，直至所有元素被访问 中序遍历的实现思想是：从当前节点出发，先当前节点的左子树，再访问根节点最后再访问右子树 后序遍历：1 2 &#43; 3 * 2 1 * &#43; 先序遍历： &#43; * &#43; 1 2 3 * 2 1 中序遍历：( 1 &#43; 2 ) * 3 &#43; 2 * 1  5.'><title>随记—前缀式，中缀式和后缀式</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%89%8D%E7%BC%80%E5%BC%8F%E4%B8%AD%E7%BC%80%E5%BC%8F%E5%92%8C%E5%90%8E%E7%BC%80%E5%BC%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='随记—前缀式，中缀式和后缀式'>
+<meta property='og:description' content='1.前缀式 前缀式又称波兰式，是一种没有括号的算术表达式。其特点是将运算符写在前面，操作数写在后面。例如算式：1 - ( 2 &#43; 3 ) ，等价于 - 1 &#43; 2 3
+2.中缀式 中缀式就是平时人们常用的算术表示方法，操作符处于操作数的中间。例如算式：3 &#43; 4
+3.后缀式 后缀式又称逆波兰式。与前缀式不同的是，后缀式把运算符写在运算对象的后面。例如算式：a &#43; b，等价于 a b &#43; 。这种写法的优点是，可以根据运算对象和算符的出现次序进行计算，而不需要使用括号，便于机器求值
+4.中缀式转化前、后缀式 中缀式可以通过构造二叉树，通过后序遍历二叉树的方法求得后缀式，通过先序遍历二叉树的方法求得前缀式。例如算式： ( 1 &#43; 2 ) * 3 &#43; 2 * 1
+ 
+ 后序遍历的实现思想是：从根节点出发，依次遍历各节点的左右子树，直到当前节点左右子树遍历完成后，才访问该节点元素 先序遍历的实现思想是：从根节点出发，先访问根节点，再访问当前节点的左子树，若当前节点无左子树，访问当前节点的右子树，直至所有元素被访问 中序遍历的实现思想是：从当前节点出发，先当前节点的左子树，再访问根节点最后再访问右子树 后序遍历：1 2 &#43; 3 * 2 1 * &#43; 先序遍历： &#43; * &#43; 1 2 3 * 2 1 中序遍历：( 1 &#43; 2 ) * 3 &#43; 2 * 1  5.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%89%8D%E7%BC%80%E5%BC%8F%E4%B8%AD%E7%BC%80%E5%BC%8F%E5%92%8C%E5%90%8E%E7%BC%80%E5%BC%8F/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2022-06-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-06-13T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="随记—前缀式，中缀式和后缀式">
+<meta name="twitter:description" content="1.前缀式 前缀式又称波兰式，是一种没有括号的算术表达式。其特点是将运算符写在前面，操作数写在后面。例如算式：1 - ( 2 &#43; 3 ) ，等价于 - 1 &#43; 2 3
+2.中缀式 中缀式就是平时人们常用的算术表示方法，操作符处于操作数的中间。例如算式：3 &#43; 4
+3.后缀式 后缀式又称逆波兰式。与前缀式不同的是，后缀式把运算符写在运算对象的后面。例如算式：a &#43; b，等价于 a b &#43; 。这种写法的优点是，可以根据运算对象和算符的出现次序进行计算，而不需要使用括号，便于机器求值
+4.中缀式转化前、后缀式 中缀式可以通过构造二叉树，通过后序遍历二叉树的方法求得后缀式，通过先序遍历二叉树的方法求得前缀式。例如算式： ( 1 &#43; 2 ) * 3 &#43; 2 * 1
+ 
+ 后序遍历的实现思想是：从根节点出发，依次遍历各节点的左右子树，直到当前节点左右子树遍历完成后，才访问该节点元素 先序遍历的实现思想是：从根节点出发，先访问根节点，再访问当前节点的左子树，若当前节点无左子树，访问当前节点的右子树，直至所有元素被访问 中序遍历的实现思想是：从当前节点出发，先当前节点的左子树，再访问根节点最后再访问右子树 后序遍历：1 2 &#43; 3 * 2 1 * &#43; 先序遍历： &#43; * &#43; 1 2 3 * 2 1 中序遍历：( 1 &#43; 2 ) * 3 &#43; 2 * 1  5.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%89%8D%E7%BC%80%E5%BC%8F%E4%B8%AD%E7%BC%80%E5%BC%8F%E5%92%8C%E5%90%8E%E7%BC%80%E5%BC%8F/">随记—前缀式，中缀式和后缀式</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 13, 2022</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="1前缀式">1.前缀式</h2>
+<p>前缀式又称波兰式，是一种没有括号的算术表达式。其特点是将运算符写在前面，操作数写在后面。例如算式：1 - ( 2 + 3 ) ，等价于 - 1 + 2 3</p>
+<h2 id="2中缀式">2.中缀式</h2>
+<p>中缀式就是平时人们常用的算术表示方法，操作符处于操作数的中间。例如算式：3 + 4</p>
+<h2 id="3后缀式">3.后缀式</h2>
+<p>后缀式又称逆波兰式。与前缀式不同的是，后缀式把运算符写在运算对象的后面。例如算式：a + b，等价于 a b + 。这种写法的优点是，可以根据运算对象和算符的出现次序进行计算，而不需要使用括号，便于机器求值</p>
+<h2 id="4中缀式转化前后缀式">4.中缀式转化前、后缀式</h2>
+<p>中缀式可以通过构造二叉树，通过后序遍历二叉树的方法求得后缀式，通过先序遍历二叉树的方法求得前缀式。例如算式： ( 1 + 2 ) * 3 + 2 * 1</p>
+<p><figure 
+	>
+	<a href="/drawingbed/img/202206131636723.png" >
+		<img src="/drawingbed/img/202206131636723.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ul>
+<li>后序遍历的实现思想是：从根节点出发，依次遍历各节点的左右子树，直到当前节点左右子树遍历完成后，才访问该节点元素</li>
+<li>先序遍历的实现思想是：从根节点出发，先访问根节点，再访问当前节点的左子树，若当前节点无左子树，访问当前节点的右子树，直至所有元素被访问</li>
+<li>中序遍历的实现思想是：从当前节点出发，先当前节点的左子树，再访问根节点最后再访问右子树</li>
+<li>后序遍历：1 2 + 3 * 2 1 * +</li>
+<li>先序遍历： + * + 1 2 3 * 2 1</li>
+<li>中序遍历：( 1 + 2 ) * 3 + 2 * 1</li>
+</ul>
+<h2 id="5栈">5.栈</h2>
+<p>前后缀式都是使用栈进行储存，遵循后进先出的原则。例如使用栈计算后缀式：xyc + 8 * -，【中缀式：x - ( y + c ) * 8】</p>
+<ul>
+<li>栈依序存入 x，y，c</li>
+<li>遵循后进先出，取出 c，y，进行加法运算得 y + c，存入栈中，此时栈底为 x，栈顶为 y + c</li>
+<li>存入 8</li>
+<li>取出 8，y + c，进行乘法运算得 ( y + c ) * 8，入栈</li>
+<li>取出 ( y + c ) * 8，x，进行减法运算得 x - ( y + c ) * 8，注意后取出的 x 为被减数</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9A%8F%E8%AE%B0/">随记</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0jsmind-%E5%A4%9A%E8%A1%8C%E5%B1%95%E7%A4%BA%E4%BF%AE%E6%94%B9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—jsMind 多行展示修改</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%8F%96%E4%B8%8E%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%8F%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—随机存取与顺序存取</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0cpu-%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—CPU 系统架构</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0srs-bench-%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%92%AD%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—SRS-Bench 进行直播压力测试</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0ultraedit-%E8%AF%95%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B8%85%E9%99%A4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—UltraEdit 试用数据清除</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+            </main>
+    
+
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

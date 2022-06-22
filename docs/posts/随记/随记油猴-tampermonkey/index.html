@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考：如何开发一个油猴脚本_ @mukes 
+ 1.什么是油猴( Tampermonkey ) Tampermonkey 是最为流行的用户脚本管理器扩展，它适用于 Chrome，Microsoft Edge，Firefox 等主流浏览器。配合油猴脚本( 用户脚本 / User Script )的使用，可以实现如：为网站添加新的功能；改变网站样式、排版；隐藏网站上烦人的部分内容等功能。
+2.安装油猴( Tampermonkey )  前往官网获取，Tampermonkey  或在各浏览器的扩展商店中搜索 Tampermonkey  3.油猴脚本( User Script ) 下面是一个默认的 User Script
+// ==UserScript== // @name New Userscript // @namespace http://tampermonkey.net/ // @version 0.1 // @description try to take over the world! // @author You // @match https://blog.csdn.net/mukes/article/details/109727662 // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=csdn.net // @grant none // ==/UserScript==  (function() { &amp;#39;use strict&amp;#39;; // Your code here.'><title>随记—油猴 Tampermonkey</title>
+
+<link rel='canonical' href='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B2%B9%E7%8C%B4-tampermonkey/'>
+
+<link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='随记—油猴 Tampermonkey'>
+<meta property='og:description' content='参考：如何开发一个油猴脚本_ @mukes 
+ 1.什么是油猴( Tampermonkey ) Tampermonkey 是最为流行的用户脚本管理器扩展，它适用于 Chrome，Microsoft Edge，Firefox 等主流浏览器。配合油猴脚本( 用户脚本 / User Script )的使用，可以实现如：为网站添加新的功能；改变网站样式、排版；隐藏网站上烦人的部分内容等功能。
+2.安装油猴( Tampermonkey )  前往官网获取，Tampermonkey  或在各浏览器的扩展商店中搜索 Tampermonkey  3.油猴脚本( User Script ) 下面是一个默认的 User Script
+// ==UserScript== // @name New Userscript // @namespace http://tampermonkey.net/ // @version 0.1 // @description try to take over the world! // @author You // @match https://blog.csdn.net/mukes/article/details/109727662 // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=csdn.net // @grant none // ==/UserScript==  (function() { &amp;#39;use strict&amp;#39;; // Your code here.'>
+<meta property='og:url' content='https://ac-lm.github.io/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B2%B9%E7%8C%B4-tampermonkey/'>
+<meta property='og:site_name' content='AC-LM &#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='随记' /><meta property='article:published_time' content='2022-06-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-06-20T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="随记—油猴 Tampermonkey">
+<meta name="twitter:description" content="参考：如何开发一个油猴脚本_ @mukes 
+ 1.什么是油猴( Tampermonkey ) Tampermonkey 是最为流行的用户脚本管理器扩展，它适用于 Chrome，Microsoft Edge，Firefox 等主流浏览器。配合油猴脚本( 用户脚本 / User Script )的使用，可以实现如：为网站添加新的功能；改变网站样式、排版；隐藏网站上烦人的部分内容等功能。
+2.安装油猴( Tampermonkey )  前往官网获取，Tampermonkey  或在各浏览器的扩展商店中搜索 Tampermonkey  3.油猴脚本( User Script ) 下面是一个默认的 User Script
+// ==UserScript== // @name New Userscript // @namespace http://tampermonkey.net/ // @version 0.1 // @description try to take over the world! // @author You // @match https://blog.csdn.net/mukes/article/details/109727662 // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=csdn.net // @grant none // ==/UserScript==  (function() { &amp;#39;use strict&amp;#39;; // Your code here.">
+    <link rel="shortcut icon" href="/images/Infinite.png" />
+
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu0e5bb052ec3dba437a0eff173370edc8_1029_300x0_resize_box_3.png" width="300"
+                            height="273" class="site-logo" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">AC-LM &#39;s blog</a></h1>
+        <h2 class="site-description">(￣O￣) . Z Z Z</h2></header>
+
+    <ol class="menu" id="main-menu" style='font-size: larger;'>
+        
+        
+        
+
+        <li id="menu-Back" >
+            <a href='#' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                
+                <span>Back</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Home" >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li id="menu-Posts" >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E6%B2%B9%E7%8C%B4-tampermonkey/">随记—油猴 Tampermonkey</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 20, 2022</time>
+            </div>
+        
+
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>参考：<a class="link" href="https://blog.csdn.net/mukes/article/details/109727662"  target="_blank" rel="noopener"
+    > 如何开发一个油猴脚本_ @mukes </a></p>
+</blockquote>
+<h2 id="1什么是油猴-tampermonkey-">1.什么是油猴( Tampermonkey )</h2>
+<p>Tampermonkey 是最为流行的用户脚本管理器扩展，它适用于 Chrome，Microsoft Edge，Firefox 等主流浏览器。配合油猴脚本( 用户脚本 / User Script )的使用，可以实现如：为网站添加新的功能；改变网站样式、排版；隐藏网站上烦人的部分内容等功能。</p>
+<h2 id="2安装油猴-tampermonkey-">2.安装油猴( Tampermonkey )</h2>
+<ul>
+<li>前往官网获取，<a class="link" href="https://www.tampermonkey.net/"  target="_blank" rel="noopener"
+    > Tampermonkey </a></li>
+<li>或在各浏览器的扩展商店中搜索 Tampermonkey</li>
+</ul>
+<h2 id="3油猴脚本-user-script-">3.油猴脚本( User Script )</h2>
+<p>下面是一个默认的 User Script</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// ==UserScript==
+</span><span style="color:#75715e">// @name         New Userscript
+</span><span style="color:#75715e">// @namespace    http://tampermonkey.net/
+</span><span style="color:#75715e">// @version      0.1
+</span><span style="color:#75715e">// @description  try to take over the world!
+</span><span style="color:#75715e">// @author       You
+</span><span style="color:#75715e">// @match        https://blog.csdn.net/mukes/article/details/109727662
+</span><span style="color:#75715e">// @icon         https://www.google.com/s2/favicons?sz=64&amp;domain=csdn.net
+</span><span style="color:#75715e">// @grant        none
+</span><span style="color:#75715e">// ==/UserScript==
+</span><span style="color:#75715e"></span>
+(<span style="color:#66d9ef">function</span>() {
+    <span style="color:#e6db74">&#39;use strict&#39;</span>;
+
+    <span style="color:#75715e">// Your code here...
+</span><span style="color:#75715e"></span>})();
+</code></pre></div><h3 id="a元数据">a.元数据</h3>
+<p>被 <code>==UserScript== </code>包括的数据被称为元数据，是用来向 Tampermonkey 描述这个脚本的信息。更多：<a class="link" href="https://www.tampermonkey.net/documentation.php#metadata"  target="_blank" rel="noopener"
+    >Tampermonkey • 文档</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// ==UserScript==
+</span><span style="color:#75715e">// @name         编写的油猴脚本名称
+</span><span style="color:#75715e">// @namespace    命名空间；用来区分名称相同但是作者不同的用户脚本，一般写作者的个人网址或博客地址
+</span><span style="color:#75715e">// @version      0.1；版本号
+</span><span style="color:#75715e">// @description  功能描述
+</span><span style="color:#75715e">// @author       作者
+</span><span style="color:#75715e">// @match        脚本匹配的网址，支持通配符匹配
+</span><span style="color:#75715e">// @include      脚本匹配的网址，支持通配符匹配，不安全，会出现警告，建议使用 match
+</span><span style="color:#75715e">// @exclude      排除匹配到的网址，优先于 include
+</span><span style="color:#75715e">// @icon         脚本的图标
+</span><span style="color:#75715e">// @grant        none 禁用沙盒，使脚本直接在上下文运行
+</span><span style="color:#75715e">// ==/UserScript==
+</span></code></pre></div><h3 id="b用户代码">b.用户代码</h3>
+<p>函数 <code>(function(){ ... })() </code>代表立即执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#66d9ef">function</span>() {
+    <span style="color:#e6db74">&#39;use strict&#39;</span>;
+
+    <span style="color:#75715e">// Your code here...
+</span><span style="color:#75715e"></span>})();
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9A%8F%E8%AE%B0/">随记</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—前端中的异常</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0jsmind-%E5%A4%9A%E8%A1%8C%E5%B1%95%E7%A4%BA%E4%BF%AE%E6%94%B9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—jsMind 多行展示修改</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E5%89%8D%E7%BC%80%E5%BC%8F%E4%B8%AD%E7%BC%80%E5%BC%8F%E5%92%8C%E5%90%8E%E7%BC%80%E5%BC%8F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—前缀式，中缀式和后缀式</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%8F%96%E4%B8%8E%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%8F%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—随机存取与顺序存取</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/posts/%E9%9A%8F%E8%AE%B0/%E9%9A%8F%E8%AE%B0cpu-%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">随记—CPU 系统架构</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 AC-LM &#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+
+            </main>
+    
+
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

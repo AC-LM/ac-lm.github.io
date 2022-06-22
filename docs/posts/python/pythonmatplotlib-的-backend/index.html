@@ -286,14 +286,14 @@ matplotlib<span style="color:#f92672">.</span>get_configdir()
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">backend : WXAgg   <span style="color:#75715e"># use wxpython with antigrain (agg) rendering</span>
 </code></pre></div><p>其中的 <code>WXAgg</code> 可以换成任意的你的系统支持的 backend 类型。 <strong>注意：backend 不区分大小写</strong></p>
 <h3 id="b通过-mplbackend-环境变量来设置-backend">b.通过 <code>MPLBACKEND</code> 环境变量来设置 backend</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 方式1. 先 export MPLBACKEND 再执行 python 文件</span>
-<span style="color:#960050;background-color:#1e0010">$</span> export MPLBACKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Agg&#39;</span>
-<span style="color:#960050;background-color:#1e0010">$</span> python works<span style="color:#f92672">.</span>py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 方式1. 先 export MPLBACKEND 再执行 python 文件</span>
+$ export MPLBACKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Agg&#39;</span>
+$ python works.py
 
 <span style="color:#75715e"># 方式2. 在 python 命令前加 MPLBACKEND=&#39;XXX&#39;</span>
-<span style="color:#960050;background-color:#1e0010">$</span> MPLBACKEND<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Agg&#39;</span> python works<span style="color:#f92672">.</span>py
+$ MPLBACKEND<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Agg&#39;</span> python works.py
 </code></pre></div><h3 id="c通过--d-选项来设置">c.通过 <code>-d</code> 选项来设置</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> python script<span style="color:#f92672">.</span>py <span style="color:#f92672">-</span>d backend
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ python script.py -d backend
 </code></pre></div><p>因为这种方式很容易和脚本内部的参数解析冲突，所以不建议使用这种方式。</p>
 <h3 id="d通过-matplotlibuse-函数来设置">d.通过 <code>matplotlib.use()</code> 函数来设置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib <span style="color:#66d9ef">as</span> mpl

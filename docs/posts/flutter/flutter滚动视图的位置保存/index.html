@@ -2,19 +2,19 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：how-to-get-flutter-scrollcontroller-to-save @stackoverflow 
- 使用 AutomaticKeepAliveClientMixin 保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用 PageStorageKey 保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#39;controllerA&amp;#39;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.'><title>Flutter—滚动视图的位置保存</title>
+ 使用 AutomaticKeepAliveClientMixin 保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用 PageStorageKey 保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#34;controllerA&amp;#34;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.'><title>Flutter—滚动视图的位置保存</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/flutter/flutter%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BF%9D%E5%AD%98/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Flutter—滚动视图的位置保存'>
 <meta property='og:description' content='参考原文：how-to-get-flutter-scrollcontroller-to-save @stackoverflow 
- 使用 AutomaticKeepAliveClientMixin 保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用 PageStorageKey 保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#39;controllerA&amp;#39;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.'>
+ 使用 AutomaticKeepAliveClientMixin 保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用 PageStorageKey 保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#34;controllerA&amp;#34;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/flutter/flutter%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BF%9D%E5%AD%98/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Flutter' /><meta property='article:published_time' content='2021-05-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-05-15T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Flutter—滚动视图的位置保存">
 <meta name="twitter:description" content="参考原文：how-to-get-flutter-scrollcontroller-to-save @stackoverflow 
- 使用 AutomaticKeepAliveClientMixin 保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用 PageStorageKey 保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#39;controllerA&amp;#39;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.">
+ 使用 AutomaticKeepAliveClientMixin 保存状态 class GetListView extends StatefulWidget{ @override State&amp;lt;StatefulWidget&amp;gt; createState() =&amp;gt;_GetListViewState(); } class _GetListViewState extends State&amp;lt;GetListView&amp;gt; with AutomaticKeepAliveClientMixin&amp;lt;GetListView&amp;gt;{ @override Widget build(BuildContext context){ return ListView.builder( itemCount: 2000, itemBuilder: (context, i) { return ListTile( title: Text( i.toString(), textScaleFactor: 1.5, style: TextStyle(color: Colors.blue), )); }); } @override bool get wantKeepAlive =&amp;gt; true; } 使用 PageStorageKey 保存偏移 ListView.builder( key: PageStorageKey&amp;lt;String&amp;gt;(&amp;#34;controllerA&amp;#34;), controller: ScrollController(keepScrollOffset: true), itemCount: 2000, itemBuilder: (context, i) { print(&amp;#34;Rebuilded 1&amp;#34;); return ListTile( title: Text( i.">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -214,47 +214,47 @@
     > how-to-get-flutter-scrollcontroller-to-save @stackoverflow </a></p>
 </blockquote>
 <h2 id="使用-automatickeepaliveclientmixin-保存状态">使用 AutomaticKeepAliveClientMixin 保存状态</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GetListView</span> <span style="color:#66d9ef">extends</span> StatefulWidget{
-  <span style="color:#960050;background-color:#1e0010">@</span>override
-  State<span style="color:#f92672">&lt;</span>StatefulWidget<span style="color:#f92672">&gt;</span> createState() <span style="color:#f92672">=&gt;</span>_GetListViewState();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GetListView</span> <span style="color:#66d9ef">extends</span> StatefulWidget<span style="color:#f92672">{</span>
+  <span style="color:#a6e22e">@override</span>
+  State<span style="color:#f92672">&lt;</span>StatefulWidget<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">createState</span><span style="color:#f92672">()</span> <span style="color:#f92672">=&gt;</span>_GetListViewState<span style="color:#f92672">();</span>
 
-}
+<span style="color:#f92672">}</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_GetListViewState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>GetListView<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">with</span> AutomaticKeepAliveClientMixin<span style="color:#f92672">&lt;</span>GetListView<span style="color:#f92672">&gt;</span>{
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_GetListViewState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>GetListView<span style="color:#f92672">&gt;</span> with AutomaticKeepAliveClientMixin<span style="color:#f92672">&lt;</span>GetListView<span style="color:#f92672">&gt;{</span>
 
-  <span style="color:#960050;background-color:#1e0010">@</span>override
-  Widget build(BuildContext context){
-    <span style="color:#66d9ef">return</span> ListView.builder(
+  <span style="color:#a6e22e">@override</span>
+  Widget <span style="color:#a6e22e">build</span><span style="color:#f92672">(</span>BuildContext context<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">return</span> ListView<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span>
 
-                itemCount: <span style="color:#ae81ff">2000</span>,
-                itemBuilder: (context, i) {
-                  <span style="color:#66d9ef">return</span> ListTile(
-                      title: Text(
-                    i.toString(),
-                    textScaleFactor: <span style="color:#ae81ff">1.5</span>,
-                    style: TextStyle(color: Colors.blue),
-                  ));
-                });
-  }
+                itemCount: 2000<span style="color:#f92672">,</span>
+                itemBuilder<span style="color:#f92672">:</span> <span style="color:#f92672">(</span>context<span style="color:#f92672">,</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                  <span style="color:#66d9ef">return</span> ListTile<span style="color:#f92672">(</span>
+                      title<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>
+                    i<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(),</span>
+                    textScaleFactor<span style="color:#f92672">:</span> 1<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span>
+                    style<span style="color:#f92672">:</span> TextStyle<span style="color:#f92672">(</span>color<span style="color:#f92672">:</span> Colors<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">),</span>
+                  <span style="color:#f92672">));</span>
+                <span style="color:#f92672">});</span>
+  <span style="color:#f92672">}</span>
 
-  <span style="color:#960050;background-color:#1e0010">@</span>override
-  <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">get</span> wantKeepAlive <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span>;
+  <span style="color:#a6e22e">@override</span>
+  bool get wantKeepAlive <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
 
-} 
+<span style="color:#f92672">}</span> 
 </code></pre></div><h2 id="使用-pagestoragekey-保存偏移">使用 PageStorageKey 保存偏移</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">ListView.builder(
-                key: PageStorageKey<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">String</span><span style="color:#f92672">&gt;</span>(<span style="color:#e6db74">&#39;controllerA&#39;</span>),
-                controller: ScrollController(keepScrollOffset: <span style="color:#66d9ef">true</span>),
-                itemCount: <span style="color:#ae81ff">2000</span>,
-                itemBuilder: (context, i) {
-                  print(<span style="color:#e6db74">&#34;Rebuilded 1&#34;</span>);
-                  <span style="color:#66d9ef">return</span> ListTile(
-                      title: Text(
-                    i.toString(),
-                    textScaleFactor: <span style="color:#ae81ff">1.5</span>,
-                    style: TextStyle(color: Colors.blue),
-                  ));
-                }),
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ListView<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span>
+                key<span style="color:#f92672">:</span> PageStorageKey<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;(</span><span style="color:#e6db74">&#34;controllerA&#34;</span><span style="color:#f92672">),</span>
+                controller<span style="color:#f92672">:</span> ScrollController<span style="color:#f92672">(</span>keepScrollOffset<span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">),</span>
+                itemCount<span style="color:#f92672">:</span> 2000<span style="color:#f92672">,</span>
+                itemBuilder<span style="color:#f92672">:</span> <span style="color:#f92672">(</span>context<span style="color:#f92672">,</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                  print<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Rebuilded 1&#34;</span><span style="color:#f92672">);</span>
+                  <span style="color:#66d9ef">return</span> ListTile<span style="color:#f92672">(</span>
+                      title<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>
+                    i<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(),</span>
+                    textScaleFactor<span style="color:#f92672">:</span> 1<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">,</span>
+                    style<span style="color:#f92672">:</span> TextStyle<span style="color:#f92672">(</span>color<span style="color:#f92672">:</span> Colors<span style="color:#f92672">.</span><span style="color:#a6e22e">blue</span><span style="color:#f92672">),</span>
+                  <span style="color:#f92672">));</span>
+                <span style="color:#f92672">}),</span>
 </code></pre></div>
 </section>
 

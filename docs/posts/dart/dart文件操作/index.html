@@ -2,22 +2,19 @@
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.写文件 无需手动关闭文件，文件写入完成后自动关闭
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } ———————————————— Future&amp;lt;File&amp;gt; writeAsString(String contents, {FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false}) FileMode：read，write，append，writeOnly，writeOnlyAppend 需要手动关闭文件
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.'><title>Dart—文件操作</title>
+import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } Future&amp;lt;File&amp;gt; writeAsString( String contents, { FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false } ) // FileMode: read, write, append, writeOnly, writeOnlyAppend 需要手动关闭文件'><title>Dart—文件操作</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/dart/dart%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Dart—文件操作'>
 <meta property='og:description' content='1.写文件 无需手动关闭文件，文件写入完成后自动关闭
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } ———————————————— Future&amp;lt;File&amp;gt; writeAsString(String contents, {FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false}) FileMode：read，write，append，writeOnly，writeOnlyAppend 需要手动关闭文件
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.'>
+import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } Future&amp;lt;File&amp;gt; writeAsString( String contents, { FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false } ) // FileMode: read, write, append, writeOnly, writeOnlyAppend 需要手动关闭文件'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/dart/dart%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Dart' /><meta property='article:published_time' content='2021-04-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-26T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Dart—文件操作">
 <meta name="twitter:description" content="1.写文件 无需手动关闭文件，文件写入完成后自动关闭
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } ———————————————— Future&amp;lt;File&amp;gt; writeAsString(String contents, {FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false}) FileMode：read，write，append，writeOnly，writeOnlyAppend 需要手动关闭文件
-import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.">
+import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file = new File(&amp;#39;test.txt&amp;#39;); String content = &amp;#39;The easiest way to write text to a file is to create a File&amp;#39;; try { // 向文件写入字符串  await file.writeAsString(content); print(&amp;#39;Data written.&amp;#39;); } catch (e) { print(e); } } Future&amp;lt;File&amp;gt; writeAsString( String contents, { FileMode mode: FileMode.write, Encoding encoding: utf8, bool flush: false } ) // FileMode: read, write, append, writeOnly, writeOnlyAppend 需要手动关闭文件">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -229,13 +226,17 @@ import &amp;#39;dart:io&amp;#39;; void main() async{ // 创建文件  File file 
     print(e);
   }
 }
-<span style="color:#960050;background-color:#1e0010">————————————————</span>
-Future<span style="color:#f92672">&lt;</span>File<span style="color:#f92672">&gt;</span> writeAsString(<span style="color:#66d9ef">String</span> contents,
-      {FileMode mode: FileMode.write,
-      Encoding encoding: utf8,
-      <span style="color:#66d9ef">bool</span> flush: <span style="color:#66d9ef">false</span>})
-FileMode<span style="color:#960050;background-color:#1e0010">：</span>read<span style="color:#960050;background-color:#1e0010">，</span>write<span style="color:#960050;background-color:#1e0010">，</span>append<span style="color:#960050;background-color:#1e0010">，</span>writeOnly<span style="color:#960050;background-color:#1e0010">，</span>writeOnlyAppend
-</code></pre></div><p>需要手动关闭文件</p>
+
+Future<span style="color:#f92672">&lt;</span>File<span style="color:#f92672">&gt;</span> writeAsString(
+    <span style="color:#66d9ef">String</span> contents,
+    {
+        FileMode mode: FileMode.write,
+        Encoding encoding: utf8,
+        <span style="color:#66d9ef">bool</span> flush: <span style="color:#66d9ef">false</span>
+    }
+)
+<span style="color:#75715e">// FileMode: read, write, append, writeOnly, writeOnlyAppend
+</span></code></pre></div><p>需要手动关闭文件</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;dart:io&#39;</span>;
 
 <span style="color:#66d9ef">void</span> main() <span style="color:#66d9ef">async</span>{
@@ -261,7 +262,7 @@ FileMode<span style="color:#960050;background-color:#1e0010">：</span>read<span
     print(e);
   }
 }
-<span style="color:#960050;background-color:#1e0010">————————————————</span>
+<span style="color:#75715e">/*————————————————*/</span>
 readAsBytes
 readAsBytesSync
 readAsString

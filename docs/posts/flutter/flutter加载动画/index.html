@@ -3,21 +3,21 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='参考原文：Flutter做一个加载动画 @limhGeek 
  1.根据情况返回不同布局 在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，_childLayout()方法
-import &amp;#39;package:flutter/material.dart&amp;#39;; import &amp;#39;package:flutter_loading/Toast.dart&amp;#39;; void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { ......... } class MyHomePage extends StatefulWidget { ......... } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { bool _loading = false; //标志！是否加载状态  @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.title), ), body: _childLayout(), ); } Widget _childLayout() { if (_loading) { return Center( child: Container( child: CircularProgressIndicator(), ), ); } else { return Center( child: RaisedButton( onPressed: () { _loading = !'><title>Flutter—加载动画</title>
+void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { ......... } class MyHomePage extends StatefulWidget { ......... } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { bool _loading = false; //标志！是否加载状态  @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.title), ), body: _childLayout(), ); } Widget _childLayout() { if (_loading) { return Center( child: Container( child: CircularProgressIndicator(), ), ); } else { return Center( child: RaisedButton( onPressed: () { _loading = !'><title>Flutter—加载动画</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/flutter/flutter%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='Flutter—加载动画'>
 <meta property='og:description' content='参考原文：Flutter做一个加载动画 @limhGeek 
  1.根据情况返回不同布局 在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，_childLayout()方法
-import &amp;#39;package:flutter/material.dart&amp;#39;; import &amp;#39;package:flutter_loading/Toast.dart&amp;#39;; void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { ......... } class MyHomePage extends StatefulWidget { ......... } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { bool _loading = false; //标志！是否加载状态  @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.title), ), body: _childLayout(), ); } Widget _childLayout() { if (_loading) { return Center( child: Container( child: CircularProgressIndicator(), ), ); } else { return Center( child: RaisedButton( onPressed: () { _loading = !'>
+void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { ......... } class MyHomePage extends StatefulWidget { ......... } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { bool _loading = false; //标志！是否加载状态  @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.title), ), body: _childLayout(), ); } Widget _childLayout() { if (_loading) { return Center( child: Container( child: CircularProgressIndicator(), ), ); } else { return Center( child: RaisedButton( onPressed: () { _loading = !'>
 <meta property='og:url' content='https://ac-lm.github.io/posts/flutter/flutter%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Flutter' /><meta property='article:published_time' content='2021-04-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-04-29T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Flutter—加载动画">
 <meta name="twitter:description" content="参考原文：Flutter做一个加载动画 @limhGeek 
  1.根据情况返回不同布局 在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，_childLayout()方法
-import &amp;#39;package:flutter/material.dart&amp;#39;; import &amp;#39;package:flutter_loading/Toast.dart&amp;#39;; void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { ......... } class MyHomePage extends StatefulWidget { ......... } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { bool _loading = false; //标志！是否加载状态  @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.title), ), body: _childLayout(), ); } Widget _childLayout() { if (_loading) { return Center( child: Container( child: CircularProgressIndicator(), ), ); } else { return Center( child: RaisedButton( onPressed: () { _loading = !">
+void main() =&amp;gt; runApp(MyApp()); class MyApp extends StatelessWidget { ......... } class MyHomePage extends StatefulWidget { ......... } class _MyHomePageState extends State&amp;lt;MyHomePage&amp;gt; { bool _loading = false; //标志！是否加载状态  @override Widget build(BuildContext context) { return Scaffold( appBar: AppBar( title: Text(widget.title), ), body: _childLayout(), ); } Widget _childLayout() { if (_loading) { return Center( child: Container( child: CircularProgressIndicator(), ), ); } else { return Center( child: RaisedButton( onPressed: () { _loading = !">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -218,113 +218,108 @@ import &amp;#39;package:flutter/material.dart&amp;#39;; import &amp;#39;package:
 </blockquote>
 <h2 id="1根据情况返回不同布局">1.根据情况返回不同布局</h2>
 <p>在加载的时候返回加载的布局，不加载的时候返回登陆页面布局，<code>_childLayout()</code>方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter_loading/Toast.dart&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">()</span> <span style="color:#f92672">=&gt;</span> runApp<span style="color:#f92672">(</span>MyApp<span style="color:#f92672">());</span>
 
-<span style="color:#66d9ef">void</span> main() <span style="color:#f92672">=&gt;</span> runApp(MyApp());
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget <span style="color:#f92672">{</span>
+  <span style="color:#f92672">.........</span>
+<span style="color:#f92672">}</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyApp</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
-  .........
-}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHomePage</span> <span style="color:#66d9ef">extends</span> StatefulWidget <span style="color:#f92672">{</span>
+  <span style="color:#f92672">.........</span>
+<span style="color:#f92672">}</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyHomePage</span> <span style="color:#66d9ef">extends</span> StatefulWidget {
-  .........
-}
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_MyHomePageState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>MyHomePage<span style="color:#f92672">&gt;</span> {
-  <span style="color:#66d9ef">bool</span> _loading <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e">//标志！是否加载状态
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">_MyHomePageState</span> <span style="color:#66d9ef">extends</span> State<span style="color:#f92672">&lt;</span>MyHomePage<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+  bool _loading <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">//标志！是否加载状态
 </span><span style="color:#75715e"></span>
-  <span style="color:#960050;background-color:#1e0010">@</span>override
-  Widget build(BuildContext context) {
-    <span style="color:#66d9ef">return</span> Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: _childLayout(),
-    );
-  }
+  <span style="color:#a6e22e">@override</span>
+  Widget <span style="color:#a6e22e">build</span><span style="color:#f92672">(</span>BuildContext context<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> Scaffold<span style="color:#f92672">(</span>
+      appBar<span style="color:#f92672">:</span> AppBar<span style="color:#f92672">(</span>
+        title<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span>widget<span style="color:#f92672">.</span><span style="color:#a6e22e">title</span><span style="color:#f92672">),</span>
+      <span style="color:#f92672">),</span>
+      body<span style="color:#f92672">:</span> _childLayout<span style="color:#f92672">(),</span>
+    <span style="color:#f92672">);</span>
+  <span style="color:#f92672">}</span>
 
-  Widget _childLayout() {
-    <span style="color:#66d9ef">if</span> (_loading) {
-      <span style="color:#66d9ef">return</span> Center(
-        child: Container(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    } <span style="color:#66d9ef">else</span> {
-      <span style="color:#66d9ef">return</span> Center(
-        child: RaisedButton(
-          onPressed: () { _loading <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>_loading; }
-          child: Text(<span style="color:#e6db74">&#39;显示加载动画&#39;</span>),
-        ),
-      );
-    }
-  }
+  Widget <span style="color:#a6e22e">_childLayout</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>_loading<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> Center<span style="color:#f92672">(</span>
+        child<span style="color:#f92672">:</span> Container<span style="color:#f92672">(</span>
+          child<span style="color:#f92672">:</span> CircularProgressIndicator<span style="color:#f92672">(),</span>
+        <span style="color:#f92672">),</span>
+      <span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> Center<span style="color:#f92672">(</span>
+        child<span style="color:#f92672">:</span> RaisedButton<span style="color:#f92672">(</span>
+          onPressed<span style="color:#f92672">:</span> <span style="color:#f92672">()</span> <span style="color:#f92672">{</span> _loading <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>_loading<span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+          child<span style="color:#f92672">:</span> Text<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;显示加载动画&#34;</span><span style="color:#f92672">),</span>
+        <span style="color:#f92672">),</span>
+      <span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
 
-}
+<span style="color:#f92672">}</span>
 </code></pre></div><h2 id="2使用stack层叠布局">2.使用Stack层叠布局</h2>
 <p>在原本布局上面叠加一层半透明背景，显示一个进度条。层叠布局至少有两个控件，自定义一个控件叫<code>ProgressDialog</code>，这个控件接收两个必传参数：子布局<code>child</code>，是否显示加载进度<code>loading</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;package:flutter/material.dart&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProgressDialog</span> <span style="color:#66d9ef">extends</span> StatelessWidget <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">final</span> bool loading<span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">final</span> Widget child<span style="color:#f92672">;</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProgressDialog</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
-  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> loading;
-  <span style="color:#66d9ef">final</span> Widget child;
+  ProgressDialog<span style="color:#f92672">({</span>Key key<span style="color:#f92672">,</span> <span style="color:#a6e22e">@required</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">loading</span><span style="color:#f92672">,</span> <span style="color:#a6e22e">@required</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">child</span><span style="color:#f92672">})</span>
+      <span style="color:#f92672">:</span> <span style="color:#66d9ef">assert</span><span style="color:#f92672">(</span>child <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">),</span>
+        <span style="color:#66d9ef">assert</span><span style="color:#f92672">(</span>loading <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">),</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>key<span style="color:#f92672">:</span> key<span style="color:#f92672">);</span>
 
-  ProgressDialog({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.loading, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.child})
-      <span style="color:#f92672">:</span> <span style="color:#66d9ef">assert</span>(child <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>),
-        <span style="color:#66d9ef">assert</span>(loading <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>),
-        <span style="color:#66d9ef">super</span>(key: key);
-
-  <span style="color:#960050;background-color:#1e0010">@</span>override
-  Widget build(BuildContext context) {
-    List<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span> widgetList <span style="color:#f92672">=</span> [];
-    widgetList.add(child);
+  <span style="color:#a6e22e">@override</span>
+  Widget <span style="color:#a6e22e">build</span><span style="color:#f92672">(</span>BuildContext context<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    List<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span> widgetList <span style="color:#f92672">=</span> <span style="color:#f92672">[];</span>
+    widgetList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>child<span style="color:#f92672">);</span>
     <span style="color:#75715e">//如果正在加载，则显示加载添加加载中布局
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (loading) {
-      widgetList.add(Center(
-        child: CircularProgressIndicator(),
-      ));
-    }
-    <span style="color:#66d9ef">return</span> Stack(
-      children: widgetList,
-    );
-  }
-}
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>loading<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      widgetList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Center<span style="color:#f92672">(</span>
+        child<span style="color:#f92672">:</span> CircularProgressIndicator<span style="color:#f92672">(),</span>
+      <span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> Stack<span style="color:#f92672">(</span>
+      children<span style="color:#f92672">:</span> widgetList<span style="color:#f92672">,</span>
+    <span style="color:#f92672">);</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div><h2 id="3绘制透明效果">3.绘制透明效果</h2>
 <p>使用控件<code>Opacity</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProgressDialog</span> <span style="color:#66d9ef">extends</span> StatelessWidget {
-  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">bool</span> loading;
-  <span style="color:#66d9ef">final</span> Widget child;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProgressDialog</span> <span style="color:#66d9ef">extends</span> StatelessWidget <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">final</span> bool loading<span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">final</span> Widget child<span style="color:#f92672">;</span>
 
-  ProgressDialog({Key key, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.loading, <span style="color:#960050;background-color:#1e0010">@</span>required <span style="color:#66d9ef">this</span>.child})
-      <span style="color:#f92672">:</span> <span style="color:#66d9ef">assert</span>(child <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>),
-        <span style="color:#66d9ef">assert</span>(loading <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>),
-        <span style="color:#66d9ef">super</span>(key: key);
+  ProgressDialog<span style="color:#f92672">({</span>Key key<span style="color:#f92672">,</span> <span style="color:#a6e22e">@required</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">loading</span><span style="color:#f92672">,</span> <span style="color:#a6e22e">@required</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">child</span><span style="color:#f92672">})</span>
+      <span style="color:#f92672">:</span> <span style="color:#66d9ef">assert</span><span style="color:#f92672">(</span>child <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">),</span>
+        <span style="color:#66d9ef">assert</span><span style="color:#f92672">(</span>loading <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">),</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>key<span style="color:#f92672">:</span> key<span style="color:#f92672">);</span>
 
-  <span style="color:#960050;background-color:#1e0010">@</span>override
-  Widget build(BuildContext context) {
-    List<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span> widgetList <span style="color:#f92672">=</span> [];
-    widgetList.add(child);
+  <span style="color:#a6e22e">@override</span>
+  Widget <span style="color:#a6e22e">build</span><span style="color:#f92672">(</span>BuildContext context<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    List<span style="color:#f92672">&lt;</span>Widget<span style="color:#f92672">&gt;</span> widgetList <span style="color:#f92672">=</span> <span style="color:#f92672">[];</span>
+    widgetList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>child<span style="color:#f92672">);</span>
     <span style="color:#75715e">//如果正在加载，则显示加载添加加载中布局
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (loading) {
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>loading<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
       <span style="color:#75715e">//增加一层黑色背景透明度为0.8
-</span><span style="color:#75715e"></span>      widgetList.add(
-        Opacity(
-            opacity: <span style="color:#ae81ff">0.8</span>,
-            child: ModalBarrier(
-              color: Colors.black87,
-            )),
-      );
+</span><span style="color:#75715e"></span>      widgetList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>
+        Opacity<span style="color:#f92672">(</span>
+            opacity<span style="color:#f92672">:</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">,</span>
+            child<span style="color:#f92672">:</span> ModalBarrier<span style="color:#f92672">(</span>
+              color<span style="color:#f92672">:</span> Colors<span style="color:#f92672">.</span><span style="color:#a6e22e">black87</span><span style="color:#f92672">,</span>
+            <span style="color:#f92672">)),</span>
+      <span style="color:#f92672">);</span>
       <span style="color:#75715e">//环形进度条
-</span><span style="color:#75715e"></span>      widgetList.add(Center(
-        child: CircularProgressIndicator(),
-      ));
-    }
-    <span style="color:#66d9ef">return</span> Stack(
-      children: widgetList,
-    );
-  }
-}
+</span><span style="color:#75715e"></span>      widgetList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Center<span style="color:#f92672">(</span>
+        child<span style="color:#f92672">:</span> CircularProgressIndicator<span style="color:#f92672">(),</span>
+      <span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> Stack<span style="color:#f92672">(</span>
+      children<span style="color:#f92672">:</span> widgetList<span style="color:#f92672">,</span>
+    <span style="color:#f92672">);</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div>
 </section>
 

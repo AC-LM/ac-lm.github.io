@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.改变颜色  在设置中搜索workbench.colorCustomizations 点击编辑setting.json  &amp;#34;workbench.colorCustomizations&amp;#34;: { &amp;#34;statusBar.background&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.noFolderBackground&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.debuggingBackground&amp;#34;: &amp;#34;#008cff&amp;#34; } '><title>VSCode—底部状态栏</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1.改变颜色  在设置中搜索workbench.colorCustomizations 点击编辑setting.json进行修改  { &amp;#34;workbench.colorCustomizations&amp;#34;: { &amp;#34;statusBar.background&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.noFolderBackground&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.debuggingBackground&amp;#34;: &amp;#34;#008cff&amp;#34;, }, } '><title>VSCode—底部状态栏</title>
 
 <link rel='canonical' href='https://ac-lm.github.io/posts/ide/vscode%E5%BA%95%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/'>
 
 <link rel="stylesheet" href="/scss/style.min.fa98bf14afdac09951c5b3f15d691ead49c9487b98b0a744d758d7966dd96652.css"><meta property='og:title' content='VSCode—底部状态栏'>
-<meta property='og:description' content='1.改变颜色  在设置中搜索workbench.colorCustomizations 点击编辑setting.json  &amp;#34;workbench.colorCustomizations&amp;#34;: { &amp;#34;statusBar.background&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.noFolderBackground&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.debuggingBackground&amp;#34;: &amp;#34;#008cff&amp;#34; } '>
+<meta property='og:description' content='1.改变颜色  在设置中搜索workbench.colorCustomizations 点击编辑setting.json进行修改  { &amp;#34;workbench.colorCustomizations&amp;#34;: { &amp;#34;statusBar.background&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.noFolderBackground&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.debuggingBackground&amp;#34;: &amp;#34;#008cff&amp;#34;, }, } '>
 <meta property='og:url' content='https://ac-lm.github.io/posts/ide/vscode%E5%BA%95%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/'>
 <meta property='og:site_name' content='AC-LM &#39;s blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='VSCode' /><meta property='article:published_time' content='2021-08-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-08-27T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="VSCode—底部状态栏">
-<meta name="twitter:description" content="1.改变颜色  在设置中搜索workbench.colorCustomizations 点击编辑setting.json  &amp;#34;workbench.colorCustomizations&amp;#34;: { &amp;#34;statusBar.background&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.noFolderBackground&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.debuggingBackground&amp;#34;: &amp;#34;#008cff&amp;#34; } ">
+<meta name="twitter:description" content="1.改变颜色  在设置中搜索workbench.colorCustomizations 点击编辑setting.json进行修改  { &amp;#34;workbench.colorCustomizations&amp;#34;: { &amp;#34;statusBar.background&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.noFolderBackground&amp;#34; : &amp;#34;#008cff&amp;#34;, &amp;#34;statusBar.debuggingBackground&amp;#34;: &amp;#34;#008cff&amp;#34;, }, } ">
     <link rel="shortcut icon" href="/images/Infinite.png" />
 
     </head>
@@ -209,12 +209,14 @@
     <h2 id="1改变颜色">1.改变颜色</h2>
 <ol>
 <li>在设置中搜索<code>workbench.colorCustomizations</code></li>
-<li>点击编辑<code>setting.json</code></li>
+<li>点击编辑<code>setting.json</code>进行修改</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;workbench.colorCustomizations&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
-    <span style="color:#f92672">&#34;statusBar.background&#34;</span> : <span style="color:#e6db74">&#34;#008cff&#34;</span>,
-    <span style="color:#f92672">&#34;statusBar.noFolderBackground&#34;</span> : <span style="color:#e6db74">&#34;#008cff&#34;</span>,
-    <span style="color:#f92672">&#34;statusBar.debuggingBackground&#34;</span>: <span style="color:#e6db74">&#34;#008cff&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;workbench.colorCustomizations&#34;</span>: {
+        <span style="color:#f92672">&#34;statusBar.background&#34;</span> : <span style="color:#e6db74">&#34;#008cff&#34;</span>,
+        <span style="color:#f92672">&#34;statusBar.noFolderBackground&#34;</span> : <span style="color:#e6db74">&#34;#008cff&#34;</span>,
+        <span style="color:#f92672">&#34;statusBar.debuggingBackground&#34;</span>: <span style="color:#e6db74">&#34;#008cff&#34;</span>,
+    },
 }
 </code></pre></div>
 </section>
